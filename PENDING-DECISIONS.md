@@ -17,6 +17,8 @@ Verified live on 10 Sep 2026 with Ahmed's approval: a test lead sent through the
 
 ## Decided and implemented (no action)
 
+- 11 Sep 2026: the GitHub Pages preview form now posts directly to Odoo (`FORM_MODE=odoo-direct`). Verified with real-browser submissions on the live URL: leads #900 (Arabic) and #901 (English) in CRM, plus #899 from the session-less curl probe. All four test leads (#898–#901) are labelled "delete me" — delete them from CRM when convenient.
+
 - 11 Sep 2026, from Ahmed's reference HTML: navy is the dominant colour, cyan the accent. Home uses hero B (split dashboard), the navbar is navy with the white logo and cyan CTA, and the navy / cyan / gold / gray palette applies site-wide. Two earlier blue-accent iterations were reverted.
 
 - Logo: no vector exists. All web assets are derived directly from the official 5906×5906 PNG pack (`scripts/logo-assets.js`, cropped to the alpha bounding box, 2000 px lockups, 1024 px mark, favicon set 32/192/512 + 180 touch icon). 17× oversampled for the 40 px header; final.
