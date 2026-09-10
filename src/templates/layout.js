@@ -29,8 +29,10 @@ function head(ctx, page) {
   <meta property="og:image" content="${config.siteUrl}/assets/img/og-${ctx.lang}.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#101B3A">
-  <link rel="icon" href="/assets/logo/mft-mark-navy.png" type="image/png">
-  <link rel="apple-touch-icon" href="/assets/logo/mft-mark-navy.png">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
   <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   ${ctx.lang === 'ar' ? '<link rel="preload" href="/assets/fonts/cairo-arabic-var.woff2" as="font" type="font/woff2" crossorigin>' : ''}
   <link rel="stylesheet" href="/assets/css/main.css?v=${ctx.buildId}">
@@ -67,7 +69,7 @@ function header(ctx) {
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/${ctx.lang}/" aria-label="${esc(c.meta.siteName)} — ${esc(c.ui.home)}">
-      <img src="/assets/logo/mft-lockup-navy.png" alt="${esc(c.meta.siteName)}" width="1400" height="478" decoding="async" fetchpriority="high">
+      <img src="/assets/logo/mft-lockup-navy.png" alt="${esc(c.meta.siteName)}" width="2000" height="683" decoding="async" fetchpriority="high">
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">${t(c.ui.menu)}</span>
@@ -116,7 +118,7 @@ function footer(ctx) {
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="/assets/logo/mft-lockup-white.png" alt="${esc(c.meta.siteName)}" width="1400" height="478" loading="lazy" decoding="async">
+        <img src="/assets/logo/mft-lockup-white.png" alt="${esc(c.meta.siteName)}" width="2000" height="683" loading="lazy" decoding="async">
         <p>${t(c.footer.blurb)}</p>
       </div>
       ${cols}

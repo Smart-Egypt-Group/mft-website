@@ -16,7 +16,7 @@ const OUT = path.join(ROOT, 'src/assets/img');
 const config = require('../src/site.config.js');
 const b64 = (p) => fs.readFileSync(path.join(ROOT, p)).toString('base64');
 
-const LOGO = b64('src/assets/logo/mft-lockup-white.png');
+const LOGO_FILE = 'file://' + path.join(ROOT, 'src/assets/logo/mft-lockup-white.png');
 const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 
@@ -37,7 +37,7 @@ h1 .a{color:#1BB7CD}
 .tag{font-size:24px;font-weight:600;color:rgba(255,255,255,.78)}
 .rule{width:180px;height:6px;background:#1BB7CD}
 </style></head><body>
-<div class="top"><img src="data:image/png;base64,${LOGO}" alt=""><span class="eyebrow" dir="${c.dir}">${c.home.hero.eyebrow}</span></div>
+<div class="top"><img src="${LOGO_FILE}" alt=""><span class="eyebrow" dir="${c.dir}">${c.home.hero.eyebrow}</span></div>
 <h1>${headline}</h1>
 <div class="bottom"><span class="tag">${c.home.hero.trust[4]}</span><span class="rule"></span></div>
 </body></html>`;
@@ -53,6 +53,7 @@ h1 .a{color:#1BB7CD}
     fs.writeFileSync(tmp, html(c));
     await page.goto('file://' + tmp);
     await page.evaluate(() => document.fonts.ready);
+    await page.waitForTimeout(300);
     const file = path.join(OUT, `og-${lang}.png`);
     await page.screenshot({ path: file });
     console.log('wrote', path.relative(ROOT, file));

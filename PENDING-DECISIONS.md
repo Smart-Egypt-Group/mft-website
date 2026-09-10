@@ -1,12 +1,11 @@
 # Pending decisions (Ahmed)
 
-All site copy is final. Only the three items below are open. Each is marked in exactly one place in the code, so nothing else needs to change when a decision lands.
+All site copy is final. Only the two items below are open. Each is marked in exactly one place in the code, so nothing else needs to change when a decision lands.
 
 | # | Decision | Where to apply it | Current state |
 |---|---|---|---|
 | 1 | **Production domain** — buy `mftfintech.com` or fix the certificate on `mft-eg.com` | `src/site.config.js → siteUrl` (one line, boxed comment) | `https://PENDING-DOMAIN.example`. `npm run check` prints a warning until it is set. Drives canonical, hreflang, sitemap, robots, OG. |
 | 2 | **Pricing packages** — fixed packages vs. indicative ranges, and the prices | `src/site.config.js → showPricingSlot` (flip to `true`), prices into `home.pricing.tiers` in both content files | Section fully written (Starter / Growth / Enterprise, no prices) and **hidden**. |
-| 3 | **Vector logo** — SVG/AI from Ahmed or extracted from the PSD | replace `src/assets/logo/mft-lockup-navy.png`, `mft-lockup-white.png`, `mft-mark-navy.png` with SVGs; update the `<img>` tags in `src/templates/layout.js` | Trimmed PNGs from the official pack (1400 px lockups, 512 px mark). Fine on standard screens, slightly soft on retina. |
 
 ## Blocked, not a decision
 
@@ -17,6 +16,8 @@ All site copy is final. Only the three items below are open. Each is marked in e
 - Or set `LEAD_WEBHOOK_URL` to any Zapier / Make / Slack webhook as an interim inbox.
 
 ## Decided and implemented (no action)
+
+- Logo: no vector exists. All web assets are derived directly from the official 5906×5906 PNG pack (`scripts/logo-assets.js`, cropped to the alpha bounding box, 2000 px lockups, 1024 px mark, favicon set 32/192/512 + 180 touch icon). 17× oversampled for the 40 px header; final.
 
 - Accent text on light backgrounds uses `#0E7C8C` (4.9:1, WCAG AA); brand cyan `#1BB7CD` for buttons, fills and text on navy. Final.
 - Logo pinned top-left in Arabic as well as English (brand consistency over RTL convention). Final.

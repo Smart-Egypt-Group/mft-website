@@ -3,7 +3,7 @@
 Standalone bilingual (Arabic default / English) marketing site for **Modern Financial Technology**.
 Deliberately separate from the Odoo ERP site (`fin-tech.odoo.com`) and from the seg-audit SaaS (`app.seg-audit.com`).
 
-Sessions 1–3 complete: brand & hero (approved), final copy in both languages, technical build. The only open items are three business decisions listed in [PENDING-DECISIONS.md](PENDING-DECISIONS.md) (domain, pricing packages, vector logo).
+Sessions 1–3 complete: brand & hero (approved), final copy in both languages, technical build. The only open items are two business decisions listed in [PENDING-DECISIONS.md](PENDING-DECISIONS.md) (domain, pricing packages).
 
 ## Stack
 
@@ -43,6 +43,7 @@ src/
 functions/lead.js       Netlify function → Odoo CRM (JSON-RPC, or website-form route, or webhook)
 scripts/check.js        quality gate (contrast, HTML, links, bidi tokens, gradients)
 scripts/og-image.js     regenerates the 1200×630 share images (needs Playwright + Chrome)
+scripts/logo-assets.js  re-derives logos + favicons from the official 5906 px PNG pack (same requirement)
 build.js / serve.js     build pipeline / dev server
 netlify.toml            build, headers (CSP, caching), functions
 ```
@@ -120,5 +121,5 @@ Before production:
 
 ## Regenerating assets
 
-- Logos: trimmed from the official pack at `/Users/mac/Desktop/ MFT/LOGO Modern Financial Technology/` (PNG only; no vector exists). A vector export from the PSD would improve crispness on high-DPI screens.
+- Logos: `PLAYWRIGHT_PATH=<path to playwright> node scripts/logo-assets.js` re-derives every logo file and favicon from the official 5906×5906 PNG pack at `/Users/mac/Desktop/ MFT/LOGO Modern Financial Technology/` (`LOGO_PACK` env var to point elsewhere). No vector exists; the pack's resolution is more than sufficient for retina.
 - OG images: `PLAYWRIGHT_PATH=<path to playwright> node scripts/og-image.js` (uses installed Google Chrome; macOS 12 cannot run Playwright's bundled Chromium).
