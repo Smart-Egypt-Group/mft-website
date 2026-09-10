@@ -9,6 +9,22 @@ const ROOT = __dirname;
 const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
 const config = require('./src/site.config.js');
+// Preview/CI overrides (never edit site.config.js for a temporary deploy):
+//   SITE_URL       canonical origin, e.g. https://smart-egypt-group.github.io/mft-website-preview
+//   BASE_PATH      sub-path the site is served from, e.g. /mft-website-preview  (default: none)
+//   FORM_ENDPOINT  '' to disable online submission on hosts without the function
+if (process.env.SITE_URL) config.siteUrl = process.env.SITE_URL.replace(/\/$/, '');
+if (process.env.FORM_ENDPOINT !== undefined) config.formEndpoint = process.env.FORM_ENDPOINT;
+const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
+// Rewrite root-absolute URLs (href="/…", src="/…", url('/…'), content="…/assets") to the base path.
+function rebase(text) {
+  if (!BASE) return text;
+  return text
+    .replace(/(href|src|action|data-endpoint)="\/(?!\/)/g, `$1="${BASE}/`)
+    .replace(/url\('\/(?!\/)/g, `url('${BASE}/`)
+    .replace(/location\.replace\('\//g, `location.replace('${BASE}/`)
+    .replace(/url=\/(?!\/)/g, `url=${BASE}/`);
+}
 const { layout } = require('./src/templates/layout');
 const home = require('./src/templates/pages/home');
 const services = require('./src/templates/pages/services');
@@ -26,7 +42,7 @@ function mkdirp(p) { fs.mkdirSync(p, { recursive: true }); }
 function write(rel, content) {
   const out = path.join(DIST, rel);
   mkdirp(path.dirname(out));
-  fs.writeFileSync(out, content);
+  fs.writeFileSync(out, /\.(html|css|js|xml|txt)$/.test(rel) ? rebase(content) : content);
 }
 function copyDir(from, to) {
   mkdirp(to);
@@ -63,8 +79,8 @@ function build() {
 
   // Assets
   copyDir(path.join(SRC, 'assets'), path.join(DIST, 'assets'));
-  copyDir(path.join(SRC, 'styles'), path.join(DIST, 'assets', 'css'));
-  copyDir(path.join(SRC, 'scripts'), path.join(DIST, 'assets', 'js'));
+  for (const f of fs.readdirSync(path.join(SRC, 'styles'))) write(`assets/css/${f}`, fs.readFileSync(path.join(SRC, 'styles', f), 'utf8'));
+  for (const f of fs.readdirSync(path.join(SRC, 'scripts'))) write(`assets/js/${f}`, fs.readFileSync(path.join(SRC, 'scripts', f), 'utf8'));
 
   const contents = {};
   for (const lang of config.languages) contents[lang] = require(`./src/content/${lang}.js`);
@@ -102,6 +118,7 @@ function build() {
   );
   // Root 404 (Netlify/Cloudflare/GitHub Pages serve /404.html)
   fs.copyFileSync(path.join(DIST, d, '404.html'), path.join(DIST, '404.html'));
+  if (BASE) write('.nojekyll', '');
 
   // Netlify-style redirects: language-aware root, legacy paths, 404s.
   write(
@@ -128,7 +145,7 @@ function build() {
       '\n</urlset>\n'
   );
 
-  console.log(`built ${count} pages (${config.languages.join(', ')}) → dist/ in ${Date.now() - started}ms${markPlaceholders ? ' [placeholders marked]' : ''}`);
+  console.log(`built ${count} pages (${config.languages.join(', ')}) → dist/ in ${Date.now() - started}ms${markPlaceholders ? ' [placeholders marked]' : ''}${BASE ? ` [base ${BASE}]` : ''}${process.env.SITE_URL ? ` [siteUrl ${config.siteUrl}]` : ''}`);
 }
 
 if (require.main === module) build();
