@@ -77,8 +77,8 @@ The pricing section is written but hidden (`site.config.js → showPricingSlot: 
 
 ## Brand rules enforced in code
 
-- Colours: navy `#101B3A`, **blue `#1F5FE0`** (primary — Ahmed's decision, 11 Sep 2026: the dominant colour is blue, not the logo's cyan), gold `#C9A227`, white, mist `#F5F7FA`. The logo keeps its own cyan; the UI never uses it.
-- Blue tokens: `--blue #1F5FE0` for buttons, fills, rules, dots (white text on it 5.6:1); `--blue-text #1A52C7` for text on white/mist (6.8:1); `--blue-on-navy #7AA7FF` for accents on navy (7.1:1, never on white). `npm run check` fails if any token pair drops below AA or if `--cyan` is used in the UI.
+- Colours: navy `#101B3A`, cyan `#1BB7CD`, gold `#C9A227`, white, mist `#F5F7FA`. Nothing else except derived text tints.
+- **Cyan on white fails WCAG AA (2.4:1).** Brand cyan is used only as a fill (CTA, dots, rules) or on navy. Text in the cyan hue on light backgrounds uses `--cyan-text: #0E7C8C` (same hue, 4.9:1). `npm run check` fails if any token pair drops below AA.
 - **Gold** appears once per page as a 64×3 rule under the page eyebrow. Never as text (2.4:1 on white); the checker fails if it is.
 - Fonts: `'Inter','Cairo'`. Inter has no Arabic glyphs, so Arabic falls through to Cairo automatically; digits and Latin stay Inter. Cairo is only downloaded on Arabic pages (`unicode-range`).
 - Arabic: no `letter-spacing`, no `text-transform`, looser line-height. All enforced by `[dir="rtl"]` overrides.

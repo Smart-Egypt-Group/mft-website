@@ -30,12 +30,12 @@ function html(c) {
 body{width:1200px;height:630px;background:#101B3A;color:#fff;font-family:Inter,Cairo,sans-serif;padding:64px 72px;display:flex;flex-direction:column;justify-content:space-between}
 .top{display:flex;justify-content:space-between;align-items:center;direction:ltr}
 .top img{height:64px}
-.eyebrow{font-size:22px;font-weight:700;color:#7AA7FF;${rtl ? '' : 'letter-spacing:3px;text-transform:uppercase;'}}
+.eyebrow{font-size:22px;font-weight:700;color:#1BB7CD;${rtl ? '' : 'letter-spacing:3px;text-transform:uppercase;'}}
 h1{font-size:${rtl ? 76 : 80}px;font-weight:800;line-height:${rtl ? 1.3 : 1.08};max-width:1000px}
-h1 .a{color:#7AA7FF}
+h1 .a{color:#1BB7CD}
 .bottom{display:flex;justify-content:space-between;align-items:flex-end}
 .tag{font-size:24px;font-weight:600;color:rgba(255,255,255,.78)}
-.rule{width:180px;height:6px;background:#7AA7FF}
+.rule{width:180px;height:6px;background:#1BB7CD}
 </style></head><body>
 <div class="top"><img src="${LOGO_FILE}" alt=""><span class="eyebrow" dir="${c.dir}">${c.home.hero.eyebrow}</span></div>
 <h1>${headline}</h1>

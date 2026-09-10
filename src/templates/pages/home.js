@@ -108,7 +108,7 @@ module.exports = function home(ctx, opts = {}) {
   </div>
 </section>
 
-<section class="section section-blue" aria-labelledby="proof-title">
+<section class="section section-cyan" aria-labelledby="proof-title">
   <div class="container">
     <div class="section-head"><p class="eyebrow">${t(H.proof.eyebrow)}</p><h2 id="proof-title">${t(H.proof.title)}</h2></div>
     <ul class="grid grid-4 facts">${facts}</ul>
