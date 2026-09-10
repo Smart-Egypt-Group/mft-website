@@ -43,10 +43,11 @@ const PAIRS = [
   ['ink-3', 'white', 4.5, 'hints, captions, footer-size text'],
   ['ink-2', 'mist', 4.5, 'card text on mist sections'],
   ['ink-3', 'mist', 4.5, 'hints on mist'],
-  ['cyan-text', 'white', 4.5, 'eyebrow, accent word, links on white'],
-  ['cyan-text', 'mist', 4.5, 'eyebrow on mist'],
-  ['cyan', 'navy', 4.5, 'eyebrow / numbers on navy sections'],
-  ['navy', 'cyan', 4.5, 'primary CTA label, cyan band text'],
+  ['blue-text', 'white', 4.5, 'eyebrow, accent word, links on white'],
+  ['blue-text', 'mist', 4.5, 'eyebrow on mist'],
+  ['blue-on-navy', 'navy', 4.5, 'eyebrow / numbers / dots on navy sections'],
+  ['white', 'blue', 4.5, 'primary CTA label, blue band text'],
+  ['blue', 'white', 3, 'blue fills, rules and dots as non-text UI (3:1)'],
   ['white', 'navy', 4.5, 'navy sections, footer'],
   ['on-navy-2', 'navy', 4.5, 'secondary text on navy'],
   ['on-navy-3', 'navy', 4.5, 'tertiary text on navy'],
@@ -60,9 +61,10 @@ for (const [fg, bg, min, where] of PAIRS) {
   const line = `${fg} on ${bg} = ${r.toFixed(2)}:1 (min ${min}) — ${where}`;
   r >= min ? ok(line) : fail(line);
 }
-const cyanOnWhite = ratio(token('cyan'), token('white'));
+const lightBlueOnWhite = ratio(token('blue-on-navy'), token('white'));
 const goldOnWhite = ratio(token('gold'), token('white'));
-console.log(`  · reference: brand cyan on white = ${cyanOnWhite.toFixed(2)}:1, gold on white = ${goldOnWhite.toFixed(2)}:1 → never used for text on light backgrounds`);
+console.log(`  · reference: light blue on white = ${lightBlueOnWhite.toFixed(2)}:1, gold on white = ${goldOnWhite.toFixed(2)}:1 → never used for text on light backgrounds`);
+if (/var\(--cyan\)/.test(CSS)) fail('logo cyan is used in the UI (CEO decision: blue is the primary)'); else ok('logo cyan not used for UI');
 // Make sure no rule sets text colour to raw cyan/gold on a light surface.
 if (/color:\s*var\(--gold\)/.test(CSS)) fail('CSS sets a text colour to --gold');
 else ok('gold is never used as a text colour');
