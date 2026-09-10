@@ -50,6 +50,7 @@ const PAIRS = [
   ['white', 'navy', 4.5, 'navy sections, footer'],
   ['on-navy-2', 'navy', 4.5, 'secondary text on navy'],
   ['on-navy-3', 'navy', 4.5, 'tertiary text on navy'],
+  ['on-navy-4', 'navy', 4.5, 'hero B trust line (reference: white at 50%)'],
   ['line-strong', 'white', 3, 'input borders (non-text 3:1)'],
   // Guard rails — these MUST stay out of text use. Documented, not asserted:
   // cyan on white ≈ 2.4:1, gold on white ≈ 2.4:1.

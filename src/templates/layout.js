@@ -69,7 +69,7 @@ function header(ctx) {
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/${ctx.lang}/" aria-label="${esc(c.meta.siteName)} — ${esc(c.ui.home)}">
-      <img src="/assets/logo/mft-lockup-navy.png" alt="${esc(c.meta.siteName)}" width="2000" height="683" decoding="async" fetchpriority="high">
+      <img src="/assets/logo/mft-lockup-white.png" alt="${esc(c.meta.siteName)}" width="2000" height="682" decoding="async" fetchpriority="high">
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">${t(c.ui.menu)}</span>
@@ -78,7 +78,7 @@ function header(ctx) {
       <ul>${items}</ul>
       <div class="nav-actions">
         <a class="lang-switch" href="/${alt}/${ctx.altPaths[alt]}" lang="${alt}" hreflang="${alt}" dir="${alt === 'ar' ? 'rtl' : 'ltr'}">${esc(c.switchLabel)}</a>
-        ${btn(ctx, c.nav.cta, 'btn btn-navy btn-sm')}
+        ${btn(ctx, c.nav.cta, 'btn btn-primary btn-sm')}
       </div>
     </nav>
   </div>

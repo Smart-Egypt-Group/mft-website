@@ -84,11 +84,11 @@ The pricing section is written but hidden (`site.config.js → showPricingSlot: 
 - Arabic: no `letter-spacing`, no `text-transform`, looser line-height. All enforced by `[dir="rtl"]` overrides.
 - Three font sizes per view (display/heading, body, small). `h3` is body-size bold.
 - No gradients, no stock icons, no clipart. Numbering (`01`–`07`) and the cyan dot are the only ornaments.
-- Logo pinned **top-left in both languages** (brand rule from the social system). The header bar is LTR; the nav inside it follows the page direction.
+- Logo pinned **top-left in both languages** (brand rule from the social system). The header bar is navy with the white lockup and a cyan CTA (reference nav); it is LTR, and the nav inside it follows the page direction.
 
 ## Hero variant
 
-`site.config.js → heroVariant: 'A' | 'B'`. Both build to `/{lang}/_preview/hero-a/` and `/_preview/hero-b/` for side-by-side review regardless of the setting.
+`site.config.js → heroVariant: 'A' | 'B'`. **B (split-screen dashboard) is live** — Ahmed's reference file, 11 Sep 2026: navy navbar, navy left column with white headline and cyan CTA, light-gray right panel with the KPI dashboard card. Both build to `/{lang}/_preview/hero-a/` and `/_preview/hero-b/` for side-by-side review regardless of the setting.
 
 ## Lead form
 
