@@ -77,8 +77,8 @@ The pricing section is written but hidden (`site.config.js → showPricingSlot: 
 
 ## Brand rules enforced in code
 
-- Colours: navy `#101B3A`, **blue `#1F5FE0`** (primary — Ahmed's decision, 11 Sep 2026: the dominant colour is blue, not the logo's cyan), gold `#C9A227`, white, mist `#F5F7FA`. The logo keeps its own cyan; the UI never uses it.
-- Blue tokens: `--blue #1F5FE0` for buttons, fills, rules, dots (white text on it 5.6:1); `--blue-text #1A52C7` for text on white/mist (6.8:1); `--blue-on-navy #7AA7FF` for accents on navy (7.1:1, never on white). `npm run check` fails if any token pair drops below AA or if `--cyan` is used in the UI.
+- Colours: navy `#101B3A`, **dark navy blue `#0B3D6D`** (primary — Ahmed's decision, 11 Sep 2026: the dominant colour is dark navy blue, not the logo's cyan), gold `#C9A227`, white, mist `#F5F7FA`. The logo keeps its own cyan; the UI never uses it.
+- Blue tokens: `--blue #0B3D6D` for buttons, fills, rules, dots and accent text on white/mist (white on it 11:1, it on white 11:1); `--blue-on-navy #8FB8E8` for accents on navy sections (8.2:1, never on white). Secondary buttons are outlined in the same blue so the filled primary stays dominant. `npm run check` fails if any token pair drops below AA or if `--cyan` is used in the UI.
 - **Gold** appears once per page as a 64×3 rule under the page eyebrow. Never as text (2.4:1 on white); the checker fails if it is.
 - Fonts: `'Inter','Cairo'`. Inter has no Arabic glyphs, so Arabic falls through to Cairo automatically; digits and Latin stay Inter. Cairo is only downloaded on Arabic pages (`unicode-range`).
 - Arabic: no `letter-spacing`, no `text-transform`, looser line-height. All enforced by `[dir="rtl"]` overrides.
