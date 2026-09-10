@@ -99,7 +99,7 @@ Default endpoint: `/.netlify/functions/lead` → `functions/lead.js`. It records
 | Path | Env vars | Notes |
 |---|---|---|
 | 1. Odoo JSON-RPC → `crm.lead` | `ODOO_URL`, `ODOO_DB`, `ODOO_LOGIN`, `ODOO_API_KEY` (+ optional `ODOO_TEAM_ID`, `ODOO_SOURCE_ID`) | Needs a dedicated API user. **Blocked** by the VPS user-creation bug on `erp.seg-audit.com` as of 10 Sep 2026. |
-| 2. Odoo public website form | `ODOO_WEBSITE_FORM_URL=https://fin-tech.odoo.com` | Same route the Odoo site's own form uses; no API user. Handshake verified; submit one test lead after enabling. |
+| 2. Odoo public website form (**active**) | `ODOO_WEBSITE_FORM_URL=https://fin-tech.odoo.com` (set in `netlify.toml`) | Same route the Odoo site's own form uses; no API user. Verified live 10 Sep 2026 (crm.lead #898). Creates leads, not opportunities; existing CRM automations fire. |
 | 3. Generic webhook | `LEAD_WEBHOOK_URL` | Zapier / Make / Slack / n8n. |
 | 0. None | — | Lead is logged in full in the function log and 200 returned. Nothing is lost, but read the log. |
 
@@ -115,7 +115,7 @@ Spam: honeypot field (`website`) + server-side validation. Add a captcha only if
 
 Before production:
 1. Set `siteUrl` in `site.config.js` (canonical, hreflang, sitemap, OG all depend on it) — the only hard blocker.
-2. Pick a lead delivery path above and set its env vars in the host.
+2. Lead delivery is configured (path 2). Optionally set `ALLOWED_ORIGIN` once the domain is known.
 3. `npm test` must pass.
 4. If analytics are ever added (`analytics.plausibleDomain`), extend `script-src` / `connect-src` in the CSP and update the privacy page, which currently states that no analytics run.
 

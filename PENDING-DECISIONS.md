@@ -7,13 +7,13 @@ All site copy is final. Only the two items below are open. Each is marked in exa
 | 1 | **Production domain** — buy `mftfintech.com` or fix the certificate on `mft-eg.com` | `src/site.config.js → siteUrl` (one line, boxed comment) | `https://PENDING-DOMAIN.example`. `npm run check` prints a warning until it is set. Drives canonical, hreflang, sitemap, robots, OG. |
 | 2 | **Pricing packages** — fixed packages vs. indicative ranges, and the prices | `src/site.config.js → showPricingSlot` (flip to `true`), prices into `home.pricing.tiers` in both content files | Section fully written (Starter / Growth / Enterprise, no prices) and **hidden**. |
 
-## Blocked, not a decision
+## Resolved: lead form → Odoo CRM
 
-**Odoo CRM link for the lead form.** Creating the API user on `erp.seg-audit.com` is blocked by the VPS database bug (see the `project_odoo_fintech` memo). Until an admin fixes it:
+Verified live on 10 Sep 2026 with Ahmed's approval: a test lead sent through the public website-form route created **crm.lead #898** on fin-tech.odoo.com ("Virtual CFO — MFT Website — test 10 Sep 2026") with contact name, email, phone and the full description (service, country, language, page). Odoo's existing CRM automations fired on it: a welcome email from OdooBot and two "Follow up the call" activities. No API user was needed, so the VPS user-creation bug no longer blocks the site.
 
-- Leads are accepted (200) and written in full to the Netlify function log (`Functions → lead → Logs`). Nothing is lost, but someone has to read the log.
-- **Workaround ready:** `functions/lead.js` can post through Odoo's public website-form route, which needs no API user. Set `ODOO_WEBSITE_FORM_URL=https://fin-tech.odoo.com` in the host and submit one test lead to verify it appears in CRM. The CSRF/session handshake was verified read-only on 10 Sep 2026; the POST itself has not been exercised against production.
-- Or set `LEAD_WEBHOOK_URL` to any Zapier / Make / Slack webhook as an interim inbox.
+- `ODOO_WEBSITE_FORM_URL` is set in `netlify.toml` for production; nothing else to configure.
+- Records arrive as **leads** (not opportunities) — the website route ignores the type field. Convert from the lead view, or switch to the JSON-RPC path once an API user can be created.
+- Lead #898 is labelled "delete me"; delete it from CRM when convenient.
 
 ## Decided and implemented (no action)
 

@@ -6,6 +6,13 @@
 [functions]
   node_bundler = "esbuild"
 
+# Lead delivery: Odoo public website-form route (no API user needed).
+# Verified live 10 Sep 2026 — test lead crm.lead #898 landed in CRM with the
+# existing auto-email + follow-up-call automations firing. Not a secret, so it
+# lives here; the JSON-RPC credentials (if ever used) go in the Netlify UI.
+[context.production.environment]
+  ODOO_WEBSITE_FORM_URL = "https://fin-tech.odoo.com"
+
 # Long cache for fingerprinted-by-query assets; HTML always revalidates.
 [[headers]]
   for = "/assets/*"
