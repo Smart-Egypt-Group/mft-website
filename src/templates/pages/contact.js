@@ -21,7 +21,7 @@ module.exports = function contact(ctx) {
 <section class="section">
   <div class="container contact-grid">
     <form class="lead-form card" id="lead-form" method="post" action="${esc(cfg.formEndpoint || '#')}" novalidate
-          data-endpoint="${esc(cfg.formEndpoint || '')}" data-lang="${ctx.lang}" aria-labelledby="form-title">
+          data-endpoint="${esc(cfg.formEndpoint || '')}" data-mode="${esc(cfg.formMode || 'function')}" data-lang="${ctx.lang}" aria-labelledby="form-title">
       <h2 id="form-title">${t(F.heading)}</h2>
       <p class="form-status" role="status" aria-live="polite" data-success="${esc(F.success)}" data-error="${esc(F.error)}" data-offline="${esc(F.offline)}" data-sending="${esc(F.sending)}"></p>
 

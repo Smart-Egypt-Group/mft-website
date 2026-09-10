@@ -105,6 +105,8 @@ Default endpoint: `/.netlify/functions/lead` → `functions/lead.js`. It records
 
 Also `ALLOWED_ORIGIN=https://<site domain>` to restrict CORS. With `formEndpoint: ''` the form shows the direct-contact fallback instead of submitting.
 
+**Static hosts without a function runtime (GitHub Pages):** build with `FORM_MODE=odoo-direct`. The browser then posts form-encoded data straight to Odoo's public website-form route (`site.config.js → odooFormUrl`). Odoo skips CSRF for unauthenticated sessions and returns no CORS header, so the request is sent in `no-cors` mode and a delivered request is reported as success (verified live: lead #899 and the browser tests of 11 Sep 2026).
+
 Spam: honeypot field (`website`) + server-side validation. Add a captcha only if real spam appears.
 
 ## Deploy

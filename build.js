@@ -15,6 +15,9 @@ const config = require('./src/site.config.js');
 //   FORM_ENDPOINT  '' to disable online submission on hosts without the function
 if (process.env.SITE_URL) config.siteUrl = process.env.SITE_URL.replace(/\/$/, '');
 if (process.env.FORM_ENDPOINT !== undefined) config.formEndpoint = process.env.FORM_ENDPOINT;
+//   FORM_MODE      'function' (default) or 'odoo-direct' (static hosts without a function runtime)
+if (process.env.FORM_MODE) config.formMode = process.env.FORM_MODE;
+if (config.formMode === 'odoo-direct') config.formEndpoint = config.odooFormUrl;
 const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
 // Rewrite root-absolute URLs (href="/…", src="/…", url('/…'), content="…/assets") to the base path.
 function rebase(text) {

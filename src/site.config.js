@@ -21,6 +21,14 @@ module.exports = {
   // Set to '' to disable network submission (the form then shows the direct
   // contact fallback). See README → "Lead form".
   formEndpoint: '/.netlify/functions/lead',
+  // 'function'    → POST JSON to formEndpoint (Netlify function → Odoo). Readable response.
+  // 'odoo-direct' → POST form-encoded straight to Odoo's public website-form route from the
+  //                 browser (no server needed — used on GitHub Pages). Odoo skips the CSRF check
+  //                 for unauthenticated sessions and returns no CORS header, so the browser sends
+  //                 in no-cors mode and treats a delivered request as success. Verified live:
+  //                 leads #898 (server path) and #899 (session-less POST) on fin-tech.odoo.com.
+  formMode: 'function',
+  odooFormUrl: 'https://fin-tech.odoo.com/website/form/crm.lead',
 
   // Contact details — taken from the official contact page
   // https://fin-tech.odoo.com/contactus (31 Aug 2026), same source the September
