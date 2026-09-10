@@ -30,6 +30,12 @@
 
   var status = form.querySelector('.form-status');
   var endpoint = form.getAttribute('data-endpoint') || '';
+  var mode = form.getAttribute('data-mode') || 'function';
+  var SERVICE_LABELS = {
+    'odoo-erp': 'Odoo ERP Implementation', 'internal-audit': 'Internal Audit', 'virtual-cfo': 'Virtual CFO',
+    'financial-consulting': 'Financial Consulting', 'business-analysis': 'Business Analysis',
+    'training': 'User Training', 'technical-support': 'Technical Support', 'unsure': 'Not sure yet'
+  };
   var submitBtn = form.querySelector('button[type="submit"]');
 
   function setStatus(kind, text) {
@@ -113,12 +119,30 @@
     submitBtn.disabled = true;
     setStatus('info', status.getAttribute('data-sending'));
 
-    fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json().catch(function () { return {}; }); })
+    var request;
+    if (mode === 'odoo-direct') {
+      // Odoo public website-form route (crm.lead). Field names are Odoo's.
+      var service = SERVICE_LABELS[data.service] || data.service || '';
+      var params = new URLSearchParams();
+      params.set('name', (service || 'Website') + ' \u2014 ' + (data.company || data.name));
+      params.set('contact_name', data.name);
+      params.set('partner_name', data.company);
+      params.set('email_from', data.email);
+      params.set('phone', data.phone || '');
+      params.set('description', [data.message, '', 'Service: ' + service, 'Country: ' + data.country, 'Language: ' + data.lang, 'Page: ' + data.page].join('\n'));
+      // Odoo sends no CORS header: the response is opaque, so a resolved fetch means the
+      // request was delivered; a network failure rejects and shows the error message.
+      request = fetch(endpoint, { method: 'POST', mode: 'no-cors', credentials: 'omit', body: params })
+        .then(function () { return {}; });
+    } else {
+      request = fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json().catch(function () { return {}; }); });
+    }
+
+    request
       .then(function () {
         setStatus('ok', status.getAttribute('data-success'));
         form.reset();
