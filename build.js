@@ -16,6 +16,7 @@ const industries = require('./src/templates/pages/industries');
 const about = require('./src/templates/pages/about');
 const contact = require('./src/templates/pages/contact');
 const notFound = require('./src/templates/pages/notfound');
+const privacy = require('./src/templates/pages/privacy');
 
 const markPlaceholders = process.argv.includes('--mark-placeholders') || process.env.MARK_PLACEHOLDERS === '1';
 const buildId = Date.now().toString(36);
@@ -46,6 +47,7 @@ function pageList(c) {
     { path: 'industries/', render: (ctx) => industries(ctx) },
     { path: 'about/', render: (ctx) => about(ctx) },
     { path: 'contact/', render: (ctx) => contact(ctx) },
+    { path: 'privacy/', render: (ctx) => privacy(ctx) },
     { path: '404.html', render: (ctx) => notFound(ctx), file: true, noindex: true },
     // Review-only preview of the alternative hero. Excluded from sitemap, disallowed in robots.
     { path: '_preview/hero-b/', render: (ctx) => home(ctx, { heroVariant: 'B' }), noindex: true },

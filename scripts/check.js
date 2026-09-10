@@ -112,7 +112,20 @@ for (const file of files) {
 }
 if (!htmlIssues) ok('lang/dir, single h1, alt text, labels, tokens, links, assets');
 
-/* ---------- 3. CSS sanity ---------- */
+/* ---------- 3. Content is final ---------- */
+console.log('\nContent:');
+let todo = 0;
+for (const lang of ['en', 'ar']) {
+  const src = fs.readFileSync(path.join(ROOT, `src/content/${lang}.js`), 'utf8');
+  const hits = src.match(/TODO\(|lorem ipsum|placeholder text/gi) || [];
+  if (hits.length) { todo += hits.length; fail(`${lang}.js still has ${hits.length} TODO/placeholder marker(s)`); }
+}
+if (!todo) ok('no TODO or placeholder markers in content files');
+const cfg = fs.readFileSync(path.join(ROOT, 'src/site.config.js'), 'utf8');
+if (/PENDING-DOMAIN/.test(cfg)) console.log('  ! siteUrl still PENDING (decision with Ahmed) — set it before production deploy');
+else ok('siteUrl set');
+
+/* ---------- 4. CSS sanity ---------- */
 console.log('\nCSS:');
 if (/\[dir="rtl"\][^{]*\{[^}]*letter-spacing:\s*0/.test(CSS)) ok('RTL resets letter-spacing');
 else fail('RTL letter-spacing reset missing');

@@ -102,7 +102,15 @@ function footer(ctx) {
     .map((p) => `<li><a href="tel:${esc(p.tel)}" class="lat">${esc(p.display)}</a></li>`)
     .join('');
   const offices = config.contact.offices
-    .map((o) => `<li>${t(c.footer.offices[o.key])}${o.line ? ` <span class="muted">— ${t(o.line)}</span>` : ''}</li>`)
+    .map((o) => {
+      const line = ctx.lang === 'ar' ? o.lineAr : o.line;
+      return `<li>${t(c.footer.offices[o.key])}${line ? ` <span class="muted">— ${t(line)}</span>` : ''}</li>`;
+    })
+    .join('');
+  const socialNames = { linkedin: 'LinkedIn', facebook: 'Facebook', instagram: 'Instagram', x: 'X' };
+  const social = Object.entries(config.contact.social || {})
+    .filter(([, href]) => href)
+    .map(([k, href]) => `<li><a href="${esc(href)}" rel="noopener" target="_blank" class="lat">${esc(socialNames[k] || k)}</a></li>`)
     .join('');
   return `<footer class="site-footer">
   <div class="container">
@@ -120,6 +128,7 @@ function footer(ctx) {
         </ul>
         <h2 class="footer-title">${t(c.footer.officesTitle)}</h2>
         <ul>${offices}</ul>
+        ${social ? `<h2 class="footer-title">${t(c.footer.socialTitle)}</h2><ul>${social}</ul>` : ''}
       </div>
     </div>
     <div class="footer-bottom">

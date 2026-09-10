@@ -4,7 +4,7 @@ const { t, esc, plain, btn } = require('../html');
 
 function heroA(ctx) {
   const h = ctx.c.home.hero;
-  const trust = h.trust.map((b) => `<li class="badge"><span class="dot" aria-hidden="true"></span>${t(b)}</li>`).join('');
+  const trust = h.trust.map((b) => `<li class="badge"><span class="dot" aria-hidden="true"></span><span class="badge-label">${t(b)}</span></li>`).join('');
   return `<section class="hero hero-a" aria-labelledby="hero-title">
   <div class="container">
     <div class="hero-inner">

@@ -3,7 +3,7 @@
 Standalone bilingual (Arabic default / English) marketing site for **Modern Financial Technology**.
 Deliberately separate from the Odoo ERP site (`fin-tech.odoo.com`) and from the seg-audit SaaS (`app.seg-audit.com`).
 
-Session 3 of 3 (technical / UX). Session 1 = brand & hero (done, approved). Session 2 = final copy (pending — see [CONTENT-TODO.md](CONTENT-TODO.md)).
+Sessions 1–3 complete: brand & hero (approved), final copy in both languages, technical build. The only open items are three business decisions listed in [PENDING-DECISIONS.md](PENDING-DECISIONS.md) (domain, pricing packages, vector logo).
 
 ## Stack
 
@@ -36,11 +36,11 @@ src/
     html.js             helpers: escaping, {lat}/{accent} tokens, URL resolution
     layout.js           <head> (canonical, hreflang, OG, JSON-LD), header, footer, CTA band
     partials/hero.js    hero A (trust strip, primary) and hero B (split dashboard, alternative)
-    pages/              home, services (index + detail), industries, about, contact, 404
+    pages/              home, services (index + detail), industries, about, contact, privacy, 404
   styles/main.css       tokens, base, components, RTL rules, print
   scripts/main.js       mobile nav, form validation + submit (progressive enhancement)
   assets/               fonts/, logo/, img/ (OG images)
-functions/lead.js       Netlify function → Odoo CRM crm.lead (JSON-RPC)
+functions/lead.js       Netlify function → Odoo CRM (JSON-RPC, or website-form route, or webhook)
 scripts/check.js        quality gate (contrast, HTML, links, bidi tokens, gradients)
 scripts/og-image.js     regenerates the 1200×630 share images (needs Playwright + Chrome)
 build.js / serve.js     build pipeline / dev server
@@ -57,9 +57,9 @@ dist/
   404.html  sitemap.xml  robots.txt  _redirects  assets/
 ```
 
-## Content editing (Session 2)
+## Content editing
 
-Copy lives only in `src/content/en.js` and `src/content/ar.js`, keyed by page and section. Templates never contain copy.
+Copy lives only in `src/content/en.js` and `src/content/ar.js`, keyed by page and section. Templates never contain copy. All copy is final; `npm run check` fails if a `TODO(` marker reappears in either file.
 
 Inline tokens available in any string:
 
@@ -71,8 +71,8 @@ Inline tokens available in any string:
 
 Slugs (`services.items[].slug`, `industries.items[].slug`) are shared between languages and become URLs. Do not rename them.
 
-`CONTENT-TODO.md` lists every slot still holding placeholder copy or a pending decision.
-`npm run dev` renders a yellow "Placeholder" tag on sections that are pending decisions (case study, pricing, leadership); `npm run build` does not.
+`PENDING-DECISIONS.md` lists the three open decisions and exactly where each lands in the code.
+The pricing section is written but hidden (`site.config.js → showPricingSlot: false`) until packages are approved; `npm run dev` marks it with a yellow tag when shown.
 
 ## Brand rules enforced in code
 
@@ -93,19 +93,16 @@ Slugs (`services.items[].slug`, `industries.items[].slug`) are shared between la
 
 `src/scripts/main.js` validates client-side and POSTs JSON to `site.config.js → formEndpoint`.
 
-Default endpoint: `/.netlify/functions/lead` → `functions/lead.js`, which creates a **crm.lead** (type opportunity) in Odoo via JSON-RPC. Set these environment variables in the host dashboard:
+Default endpoint: `/.netlify/functions/lead` → `functions/lead.js`. It records the lead through the first configured path:
 
-```
-ODOO_URL=https://fin-tech.odoo.com
-ODOO_DB=<database>
-ODOO_LOGIN=<dedicated API user, CRM rights only>
-ODOO_API_KEY=<that user's API key>
-ODOO_TEAM_ID=<optional crm.team id>
-ODOO_SOURCE_ID=<optional utm.source id>
-ALLOWED_ORIGIN=https://<site domain>
-```
+| Path | Env vars | Notes |
+|---|---|---|
+| 1. Odoo JSON-RPC → `crm.lead` | `ODOO_URL`, `ODOO_DB`, `ODOO_LOGIN`, `ODOO_API_KEY` (+ optional `ODOO_TEAM_ID`, `ODOO_SOURCE_ID`) | Needs a dedicated API user. **Blocked** by the VPS user-creation bug on `erp.seg-audit.com` as of 10 Sep 2026. |
+| 2. Odoo public website form | `ODOO_WEBSITE_FORM_URL=https://fin-tech.odoo.com` | Same route the Odoo site's own form uses; no API user. Handshake verified; submit one test lead after enabling. |
+| 3. Generic webhook | `LEAD_WEBHOOK_URL` | Zapier / Make / Slack / n8n. |
+| 0. None | — | Lead is logged in full in the function log and 200 returned. Nothing is lost, but read the log. |
 
-Without the variables the function accepts the lead, logs it and returns 200, so the site can go live before the CRM link is decided. With `formEndpoint: ''` the form shows the direct-contact fallback instead of submitting.
+Also `ALLOWED_ORIGIN=https://<site domain>` to restrict CORS. With `formEndpoint: ''` the form shows the direct-contact fallback instead of submitting.
 
 Spam: honeypot field (`website`) + server-side validation. Add a captcha only if real spam appears.
 
@@ -116,11 +113,10 @@ Spam: honeypot field (`website`) + server-side validation. Add a captcha only if
 **Cloudflare Pages / Vercel / GitHub Pages:** publish `dist/`. Port `functions/lead.js` to the host's function format (it is plain Node) or point `formEndpoint` at any endpoint that accepts the JSON payload.
 
 Before production:
-1. Set `siteUrl` in `site.config.js` (canonical, hreflang, sitemap, OG all depend on it).
-2. Set `showPricingSlot` / `showCaseStudySlot` to `false` if those decisions are still open.
-3. Fill `contact.offices[].line` and `contact.social` or leave empty (empty values are not rendered).
-4. `npm test` must pass.
-5. If analytics are added (`analytics.plausibleDomain`), extend `script-src` / `connect-src` in the CSP.
+1. Set `siteUrl` in `site.config.js` (canonical, hreflang, sitemap, OG all depend on it) — the only hard blocker.
+2. Pick a lead delivery path above and set its env vars in the host.
+3. `npm test` must pass.
+4. If analytics are ever added (`analytics.plausibleDomain`), extend `script-src` / `connect-src` in the CSP and update the privacy page, which currently states that no analytics run.
 
 ## Regenerating assets
 

@@ -1,8 +1,10 @@
-// English content — placeholder copy written in the approved hero voice.
-// Every block tagged TODO(session-2) is a slot for the final copy from Session 2.
-// Rules: never invent statistics. The only approved figures are the ones in the
-// hero trust strip (CPA-led team, Odoo Certified Partner, 500+ reports delivered,
-// Egypt · Saudi Arabia · US). Anything else stays qualitative.
+// English content — FINAL (Session 2). Single source for all English copy.
+// Sources: approved hero (Session 1), official company story and testimonials
+// published on fin-tech.odoo.com, August/September 2026 campaign copy approved
+// by Ahmed, and the competitor-research execution plan (positioning).
+// Rule: no figure appears here that was not already published by MFT.
+// Remaining decisions (domain, pricing packages, vector logo) live in
+// PENDING-DECISIONS.md — nothing else in this file is a placeholder.
 
 module.exports = {
   lang: 'en',
@@ -16,9 +18,8 @@ module.exports = {
     siteName: 'Modern Financial Technology',
     shortName: 'MFT',
     tagline: 'Financial clarity, delivered',
-    // TODO(session-2): final meta description (<=155 chars)
     description:
-      'MFT combines Odoo ERP implementation, internal audit and Virtual CFO services in one CPA-led team serving Egypt, Saudi Arabia and the US.'
+      'MFT is a CPA-led firm that implements Odoo ERP, runs internal audit and acts as your Virtual CFO — one team, one set of numbers, in Egypt, Saudi Arabia and the US.'
   },
 
   ui: {
@@ -31,7 +32,7 @@ module.exports = {
     allIndustries: 'All industries',
     readMore: 'Read more',
     breadcrumbHome: 'Home',
-    placeholderTag: 'Placeholder — final copy pending (Session 2)'
+    placeholderTag: 'Pending decision — hidden in production'
   },
 
   nav: {
@@ -45,7 +46,6 @@ module.exports = {
   },
 
   footer: {
-    // TODO(session-2): footer blurb
     blurb:
       'A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO — one team, one set of numbers.',
     columns: [
@@ -76,23 +76,22 @@ module.exports = {
         links: [
           { label: 'About MFT', href: 'about/' },
           { label: 'Contact', href: 'contact/' },
+          { label: 'Privacy', href: 'privacy/' },
           { label: 'seg-audit platform', href: 'https://app.seg-audit.com', external: true }
         ]
       }
     ],
     contactTitle: 'Contact',
     officesTitle: 'Offices',
+    socialTitle: 'Follow',
     offices: { eg: 'Egypt', sa: 'Saudi Arabia', us: 'United States' },
-    legal: '© {year} Modern Financial Technology. All rights reserved.',
-    // TODO(session-2): privacy policy page / link
-    privacy: 'Privacy'
+    legal: '© {year} Modern Financial Technology. All rights reserved.'
   },
 
   home: {
     title: 'Modern Financial Technology — Odoo ERP, Internal Audit & Virtual CFO',
     hero: {
       eyebrow: 'Financial Clarity, Delivered',
-      // {accent} wraps the emphasised word. Approved copy from hero-final-A.
       headline: 'Decisions built on {accent}numbers{/accent}.\nNot on guesses.',
       subhead:
         'MFT turns your data into clear financial reports — profitability, cash flow, internal controls — backed by a licensed audit team, Odoo ERP experts, and the seg-audit platform.',
@@ -106,7 +105,6 @@ module.exports = {
         'Egypt · Saudi Arabia · US'
       ]
     },
-    // Variant B (split dashboard) — kept as the approved alternative.
     heroB: {
       eyebrow: 'Financial Clarity, Delivered',
       headline: 'Making decisions on numbers — or on guesses?',
@@ -127,24 +125,23 @@ module.exports = {
       }
     },
 
-    // TODO(session-2): positioning block — "the only integrated provider" message
     positioning: {
       eyebrow: 'One team. One set of numbers.',
       title: 'ERP, audit and CFO — usually three vendors. Here, one.',
       body:
-        'Most firms stop at go-live, or advise without ever touching the system. MFT implements the Odoo ERP your numbers live in, audits the controls around it, and reads the results with you every month.',
+        'Odoo partners stop at go-live. Advisors write reports without ever opening the system. Audit software flags exceptions and leaves you to explain them. MFT is the only firm in the region that implements the ERP your numbers live in, audits the controls around it, and reads the results with you every month — with Egyptian e-invoicing and Saudi ZATCA compliance built in.',
       pillars: [
         {
           title: 'Odoo ERP',
-          body: 'Implemented by certified partners who also understand the accounting behind every configuration.'
+          body: 'Implemented by certified partners who are also the accountants reading the output. Configuration decisions are accounting decisions here.'
         },
         {
           title: 'Internal Audit',
-          body: 'A CPA-led team that tests controls, closes gaps and reports in language the board can act on.'
+          body: 'Smart audit: controls designed into the system so errors are prevented and caught as they happen, not discovered in the annual review.'
         },
         {
           title: 'Virtual CFO',
-          body: 'Monthly reporting, cash-flow forecasting and decisions — without the cost of a full-time CFO.'
+          body: 'Monthly profitability, cash-flow forecasting and the decisions that follow — CFO judgement without a full-time hire.'
         }
       ]
     },
@@ -153,30 +150,29 @@ module.exports = {
       eyebrow: 'Services',
       title: 'Everything between raw data and a confident decision.',
       intro:
-        'Seven services, one accountable team. Start with a single report or hand us the whole finance function.',
+        'Seven services, one accountable team. Start with a single report, or hand us the whole finance function.',
       cta: 'Explore all services'
     },
 
-    // TODO(session-2): confirm the engagement steps
     how: {
       eyebrow: 'How we work',
-      title: 'From first call to first report in weeks, not quarters.',
+      title: 'From first message to first report in 24 hours. Not quarters.',
       steps: [
         {
-          title: 'Discovery',
-          body: 'A structured session on your entity, systems, reporting gaps and compliance obligations (ZATCA, e-invoicing, tax).'
+          title: 'Send your data',
+          body: 'Share your last closed month — a trial balance, an Odoo export or a spreadsheet. No preparation, no commitment.'
+        },
+        {
+          title: 'First report in 24 hours',
+          body: 'You receive a cash-flow and profitability snapshot with the three questions your board should be asking. Free, one per company.'
         },
         {
           title: 'Diagnosis',
-          body: 'We map your current numbers against what a decision-ready close looks like, and quote the gap in plain terms.'
+          body: 'A 30-minute call with a licensed accountant, not a sales rep, on your entity, your system and what a decision-ready close would take.'
         },
         {
           title: 'Delivery',
-          body: 'Implementation, audit fieldwork or reporting starts on an agreed calendar, with a named lead on our side.'
-        },
-        {
-          title: 'Decision',
-          body: 'You get reports built to be read — profitability, cash, controls — and a monthly review to act on them.'
+          body: 'Implementation, audit fieldwork or monthly reporting starts on an agreed calendar, with one named lead on our side until closure.'
         }
       ]
     },
@@ -200,50 +196,78 @@ module.exports = {
       ]
     },
 
-    // TODO(ops, execution plan week 10): replace with the first real case study.
-    caseStudy: {
-      eyebrow: 'Client story',
-      title: 'A real client, real numbers — coming here.',
-      body:
-        'This slot is reserved for the first published case study with verified figures. Until then, MFT does not publish anonymised or illustrative results.',
-      cta: { label: 'Ask us for references', href: 'contact/' }
+    stories: {
+      eyebrow: 'From our engagements',
+      title: 'What the numbers found.',
+      intro:
+        'Two findings from recent audit engagements, as published by MFT. Clients are anonymised; the figures are not.',
+      cases: [
+        {
+          sector: 'Food & beverage distribution · Cairo',
+          figure: 'EGP 340,000',
+          label: 'duplicate payment to one supplier under two vendor codes',
+          body:
+            'Running seg-audit alongside the external audit of the second quarter, the engine surfaced 23 transactions the manual review had missed, in six weeks.',
+          quote: '“We would have found it eventually. Eventually is expensive.”'
+        },
+        {
+          sector: 'Construction · Riyadh',
+          figure: 'SAR 1.2 million',
+          label: 'inventory valuation gap, three weeks before year-end close',
+          body:
+            'A costing method never updated after a supplier contract changed. Found before the close, it was a board discussion. After it, it would have been a restatement.',
+          quote: ''
+        }
+      ],
+      testimonialsTitle: 'What clients say',
+      testimonials: [
+        {
+          quote:
+            'Honestly, it has been a great experience. If we continue like this, progress will reach a whole new level. The team is highly professional, respectful, cooperative and always responsive — we can clearly see the continuous improvement.',
+          name: 'Mr. Mahmoud',
+          company: 'Al-Kayan Steel'
+        },
+        {
+          quote:
+            'There has definitely been a noticeable improvement in reducing errors. We really hope the progress and the continuous follow-up carry on.',
+          name: 'Mr. Tarek',
+          company: 'Jacquardina'
+        }
+      ]
     },
 
-    // TODO(Ahmed): pricing decision — fixed packages (Starter / Growth / Enterprise)
-    // or indicative ranges. Structure below is a placeholder only; no prices shown.
+    // Hidden until Ahmed approves the package structure (site.config.js → showPricingSlot).
     pricing: {
       eyebrow: 'Engagement models',
       title: 'Transparent scope. No “custom quote” black box.',
-      body:
-        'Pricing packages are being finalised. Each will publish its scope, deliverables and monthly commitment up front.',
+      body: 'Each package publishes its scope, deliverables and monthly commitment up front.',
       tiers: [
         { name: 'Starter', body: 'One report, one system, one month. For teams that need a first clear picture.' },
         { name: 'Growth', body: 'Monthly reporting plus ERP support for companies scaling across entities or countries.' },
         { name: 'Enterprise', body: 'Full finance function: ERP, audit programme and Virtual CFO under one agreement.' }
       ],
-      note: 'Scope and pricing to be confirmed.'
+      note: 'Package pricing to be published.'
     },
 
     cta: {
       title: 'Start with one report. Free.',
       body:
-        'Send us your last closed month and we will return a profitability and cash-flow snapshot with the three questions your board should be asking.',
+        'Send us your last closed month and within 24 hours you get a cash-flow and profitability snapshot with the three questions your board should be asking. One free report per company, defined scope, no commitment.',
       button: { label: 'Get Your First Report Free', href: 'contact/' },
       alt: 'Or call us directly'
     }
   },
 
-  // Shared CTA band used on inner pages
   ctaBand: {
     title: 'Talk to a CPA, not a sales rep.',
-    body: 'A 30-minute call to understand your entity, your systems and what a decision-ready close would look like.',
+    body: 'A 30-minute call to understand your entity, your systems and what a decision-ready close would look like. Free, and you leave with one concrete next step.',
     button: { label: 'Book a call', href: 'contact/' }
   },
 
   services: {
     title: 'Services — Modern Financial Technology',
     description:
-      'Odoo ERP implementation, internal audit, Virtual CFO, financial consulting, business analysis, training and technical support from one CPA-led team.',
+      'Odoo ERP implementation, internal audit, Virtual CFO, financial consulting, business analysis, training and technical support from one CPA-led team in Egypt, Saudi Arabia and the US.',
     page: {
       eyebrow: 'Services',
       title: 'Seven services. One accountable team.',
@@ -257,7 +281,6 @@ module.exports = {
       related: 'Related services',
       cta: 'Discuss this service'
     },
-    // TODO(session-2): final copy for each service. Slugs are stable — do not rename.
     items: [
       {
         slug: 'odoo-erp',
@@ -265,14 +288,15 @@ module.exports = {
         short: 'Configured by accountants, not just developers — so the ledger is right on day one.',
         tagline: 'An ERP that mirrors the business and closes the books.',
         body: [
-          'Odoo implementation fails when the chart of accounts, cost centres and tax setup are an afterthought. MFT starts there. Our certified partners configure finance, inventory, manufacturing, sales and HR around how your operation actually runs.',
-          'Egyptian e-invoicing, Saudi ZATCA phase two, withholding tax and multi-entity consolidation are part of the standard build — not a change request.'
+          'Odoo implementations fail when the chart of accounts, cost centres and tax setup are an afterthought. MFT starts there. Our certified partners configure finance, inventory, manufacturing, sales, purchasing and HR around how your operation actually runs — for industrial, trading and service companies in Egypt and the Gulf.',
+          'Egyptian e-invoicing (ETA), Saudi ZATCA phase two, withholding tax and multi-entity consolidation are part of the standard build, not change requests. And because we practise smart audit, permissions, segregation of duties and documentation cycles are designed into the system from the first configuration, so the ERP prevents errors instead of just recording them.'
         ],
         deliverables: [
           'Process mapping and gap analysis',
           'Chart of accounts, analytic and cost-centre design',
           'Module configuration: Accounting, Inventory, Manufacturing, Sales, Purchase, HR',
           'Tax and e-invoicing compliance (Egypt ETA, Saudi ZATCA)',
+          'Access rights and segregation of duties built in',
           'Data migration with reconciled opening balances',
           'Go-live support and 90-day stabilisation'
         ],
@@ -284,13 +308,14 @@ module.exports = {
         short: 'Control testing and risk reviews by a CPA-led team, reported for the board.',
         tagline: 'Find the gap before the auditor, the bank or the tax authority does.',
         body: [
-          'An internal audit programme designed around your actual risks: revenue leakage, duplicate payments, inventory shrinkage, access rights, tax exposure. Fieldwork is done inside your ERP and supported by the seg-audit platform.',
-          'Findings are ranked by financial impact and each one comes with an owner, a fix and a deadline.'
+          'An internal audit programme designed around your actual risks: revenue leakage, duplicate payments, near-duplicate vendors, inventory shrinkage, access rights and tax exposure. Fieldwork is done inside your ERP and supported by seg-audit, MFT’s own platform, which scores every transaction by risk instead of sampling five percent and hoping the errors are in it.',
+          'Annual audits leave eleven months uncovered. Our programmes run monthly or continuously with the same rigour, and every finding is ranked by financial impact and comes with an owner, a fix and a deadline.'
         ],
         deliverables: [
           'Risk-based annual audit plan',
           'Control design and effectiveness testing',
           'Procure-to-pay, order-to-cash and inventory reviews',
+          'Vendor master, duplicate-payment and near-duplicate analysis',
           'Access-rights and segregation-of-duties review',
           'Board-ready audit reports with ranked findings',
           'Follow-up tracking until closure'
@@ -303,8 +328,8 @@ module.exports = {
         short: 'Monthly reporting, cash forecasting and decisions — a CFO on your calendar, not your payroll.',
         tagline: 'The reports a CFO would build. The questions a CFO would ask.',
         body: [
-          'Every month you receive a management pack: profitability by product and customer, cash-flow forecast, working-capital position and the variances that matter. Then we sit with you and decide what to do about them.',
-          'The service scales from a single monthly review to a full finance-function lead with your team reporting to us.'
+          'Every month you receive a management pack you can read in five minutes: profitability by product and customer, cash-flow forecast, working-capital position and the variances that matter. Then we sit with you and decide what to do about them.',
+          'The service scales from a single monthly review to a full finance-function lead with your team reporting to us. It works best on Odoo, but it does not require it.'
         ],
         deliverables: [
           'Monthly management reporting pack',
@@ -322,13 +347,13 @@ module.exports = {
         short: 'Restructuring, feasibility, valuation and tax planning grounded in your actual ledger.',
         tagline: 'Advice that starts from your numbers, not a template.',
         body: [
-          'Project-based work where a decision needs a financial answer: opening in Saudi Arabia, pricing a new line, restructuring debt, valuing a stake or preparing for investment.',
+          'Project-based work for the moments when a decision needs a financial answer: opening in Saudi Arabia, pricing a new line, restructuring debt, valuing a stake or preparing for investment. Cross-border work draws on our own ZATCA, SOCPA and Egyptian tax research and the Egypt–Saudi treaty position.',
           'Every engagement ends with a document you can hand to a bank, a partner or a buyer.'
         ],
         deliverables: [
           'Feasibility studies and financial models',
           'Cross-border structuring (Egypt, Saudi Arabia, US)',
-          'Tax planning and compliance reviews',
+          'Tax, zakat and compliance reviews',
           'Valuation and due-diligence support',
           'Cost reduction and margin programmes'
         ],
@@ -340,7 +365,7 @@ module.exports = {
         short: 'Process mapping and requirements that make systems fit the business — not the reverse.',
         tagline: 'Before configuring anything, understand the operation.',
         body: [
-          'We document how orders, stock, production and cash actually move, find where information is lost or re-typed, and specify what the system should do about it.',
+          'We document how orders, stock, production and cash actually move, find where information is lost or re-typed, and specify what the system should do about it — including which audit requirements become operating rules inside the system.',
           'The output is a requirements document detailed enough to implement and clear enough for the owner to approve.'
         ],
         deliverables: [
@@ -376,8 +401,8 @@ module.exports = {
         short: 'Odoo administration, upgrades, integrations and fixes under a response-time agreement.',
         tagline: 'Keep the system current, integrated and closing on time.',
         body: [
-          'A support agreement that covers the day-to-day: user issues, report changes, access rights, upgrades, integrations with banks, e-invoicing portals and third-party tools.',
-          'Every request is logged, prioritised and answered within the agreed window — by people who know your configuration.'
+          'A support agreement that covers the day-to-day: user issues, report changes, access rights, upgrades, and integrations with banks, e-invoicing portals, WhatsApp and third-party tools.',
+          'Every request is logged, prioritised and answered within the agreed window — by people who know your configuration and your chart of accounts.'
         ],
         deliverables: [
           'Help desk with agreed response times',
@@ -399,21 +424,20 @@ module.exports = {
       eyebrow: 'Industries',
       title: 'Where the numbers depend on the operation.',
       intro:
-        'Five sectors where MFT has implemented, audited and reported. In each, the finance answer lives in the operational detail — costing, stock, contracts, compliance.'
+        'Five sectors where MFT implements, audits and reports. In each, the finance answer lives in the operational detail — costing, stock, contracts, compliance.'
     },
     labels: {
       challenges: 'What usually goes wrong',
       how: 'How MFT helps',
       cta: 'Talk about your sector'
     },
-    // TODO(session-2): final copy per industry. Slugs are stable — do not rename.
     items: [
       {
         slug: 'manufacturing',
         name: 'Manufacturing',
         short: 'True product cost, from bill of materials to landed overhead.',
         challenges: [
-          'Standard costs that nobody has updated since the BoM changed',
+          'Standard costs that nobody has updated since the bill of materials changed',
           'Work-in-progress that never reconciles to the ledger',
           'Scrap, rework and yield losses invisible in the margin report'
         ],
@@ -430,11 +454,11 @@ module.exports = {
         challenges: [
           'Gross margin reported before rebates, returns and logistics',
           'Stock in transit and consignment stock outside the system',
-          'Credit exposure growing faster than sales'
+          'Duplicate and near-duplicate vendors paid twice for months'
         ],
         how: [
           'Odoo Sales, Purchase and Inventory with landed-cost allocation',
-          'Receivables ageing, credit limits and collection controls',
+          'Vendor-master, receivables ageing and credit-limit controls',
           'Channel and customer profitability in the monthly pack'
         ]
       },
@@ -475,7 +499,7 @@ module.exports = {
         challenges: [
           'Cost-to-complete and margin per project known only at the end',
           'Retentions, advances and subcontractor certificates tracked in spreadsheets',
-          'Cash forecasts that ignore billing milestones'
+          'Inventory costing methods left unchanged after supplier contracts change'
         ],
         how: [
           'Project-based analytic accounting and budgets in Odoo',
@@ -489,19 +513,19 @@ module.exports = {
   about: {
     title: 'About — Modern Financial Technology',
     description:
-      'MFT is a CEO-led financial technology and auditing firm combining Odoo ERP, internal audit and Virtual CFO expertise across Egypt, Saudi Arabia and the US.',
+      'MFT started in financial audit, developed the smart-audit approach, and now implements Odoo ERP and acts as Virtual CFO for companies in Egypt, Saudi Arabia and the US.',
     page: {
       eyebrow: 'About MFT',
       title: 'Accountants who build systems. Technologists who read ledgers.',
       intro:
-        'Modern Financial Technology was founded on one observation: ERP partners stop at go-live, and advisors rarely touch the system. We do both.'
+        'Modern Financial Technology grew out of a deep professional background in accounting, audit and internal control — and one observation from the field: audit findings kept describing errors that the systems should have prevented.'
     },
-    // TODO(session-2): company story, founding year, CEO profile
     story: {
       title: 'The story',
       paras: [
-        'MFT is a CEO-led firm operating from Egypt and Saudi Arabia, now expanding to the United States. The team combines licensed accountants and auditors with certified Odoo implementers — the same people who configure the system also read what comes out of it.',
-        'That combination is the reason clients keep us after go-live: the ERP, the audit programme and the monthly reporting are built to the same chart of accounts by the same team.'
+        'MFT began as a financial audit and review practice, focused on analysing financial data, evaluating internal control systems and identifying operational and compliance risk for companies in Egypt and Saudi Arabia.',
+        'Working inside those companies exposed a clear gap between what the audit found and what traditional systems could prevent. Out of that gap came smart audit: moving from reviewing what already happened to building a system that prevents errors and detects them in real time — strong documentation cycles, defined permissions and segregation of duties, and audit requirements translated into operating rules inside the system.',
+        'That approach led MFT into ERP implementation, above all Odoo, as the platform that turns audit and control concepts into daily practice. Today the firm is led by its CEO and combines licensed accountants and auditors with certified Odoo implementers, serving Egypt and Saudi Arabia and expanding to the United States. We do not separate audit, system and decision. We treat them as one ecosystem.'
       ]
     },
     values: {
@@ -517,28 +541,29 @@ module.exports = {
       title: 'Credentials',
       items: [
         'CPA-led team of licensed accountants and auditors',
+        '40+ years of combined experience in manufacturing, trading and financial services',
         'Odoo Certified Partner',
         'ISO-aligned internal-control framework',
         '500+ reports delivered across Egypt, Saudi Arabia and the US',
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
-        'seg-audit: MFT’s own audit-management platform'
+        'seg-audit: MFT’s own audit, control and cash-flow reporting platform'
       ]
     },
-    // TODO(session-2): leadership profiles, photos, LinkedIn links
     team: {
-      title: 'Leadership',
-      intro: 'Profiles and photographs to be supplied.',
-      members: [
-        { name: 'Chief Executive Officer', role: 'Founder & CEO — licensed auditor' },
-        { name: 'Head of Audit', role: 'Internal audit & controls' },
-        { name: 'Head of ERP', role: 'Odoo implementation & support' }
+      title: 'The team',
+      intro:
+        'Behind the platform is a team that has sat inside real audit committees: chartered accountants and auditors with more than forty years of combined experience in manufacturing, trading and financial services in Egypt and Saudi Arabia, working alongside certified Odoo implementers.',
+      points: [
+        { title: 'CEO-led', body: 'The firm is run by its founding auditor, who still leads client engagements.' },
+        { title: 'Two disciplines, one desk', body: 'The people who configure the ERP are the people who audit it and read its output.' },
+        { title: 'Bilingual by default', body: 'Every deliverable is available in Arabic and English.' }
       ]
     },
     offices: {
       title: 'Where we are',
       items: [
-        { key: 'eg', name: 'Egypt', body: 'Head office and delivery team.' },
-        { key: 'sa', name: 'Saudi Arabia', body: 'ZATCA-compliant implementations and audit engagements.' },
+        { key: 'eg', name: 'Egypt', body: 'Head office: Dr. Sayed Abdel Wahed Street, Korba, Heliopolis, Cairo. Delivery team for all services.' },
+        { key: 'sa', name: 'Saudi Arabia', body: 'ZATCA-compliant Odoo implementations and audit engagements for Saudi companies, delivered on site and remotely.' },
         { key: 'us', name: 'United States', body: 'Virtual CFO and Odoo services for US companies — expanding.' }
       ]
     }
@@ -546,19 +571,19 @@ module.exports = {
 
   contact: {
     title: 'Contact — Modern Financial Technology',
-    description: 'Book a call with MFT: Odoo ERP, internal audit and Virtual CFO for companies in Egypt, Saudi Arabia and the US.',
+    description: 'Send one question or your last closed month. A licensed accountant replies within one business day with a first diagnosis and one concrete next step.',
     page: {
       eyebrow: 'Contact',
-      title: 'Tell us about your numbers.',
+      title: 'One question can save you months.',
       intro:
-        'Fill in the form and a licensed accountant — not a sales rep — will reply within one business day. Or call us directly.'
+        'You do not need to prepare anything. Send your question or your last closed month, and a licensed accountant — not a sales rep — replies within one business day with a first diagnosis and one concrete next step. Full confidentiality.'
     },
     form: {
       heading: 'Request your first report',
       name: 'Full name',
       company: 'Company',
       email: 'Work email',
-      phone: 'Phone',
+      phone: 'Phone / WhatsApp',
       phoneHint: 'Include your country code',
       country: 'Country',
       countries: [
@@ -572,12 +597,12 @@ module.exports = {
       serviceOther: 'Not sure yet',
       message: 'Tell us briefly about your situation',
       messageHint: 'Entity, current system, what you need first.',
-      consent: 'I agree to be contacted by MFT about this request.',
+      consent: 'I agree to be contacted by MFT about this request and have read the privacy notice.',
       submit: 'Send request',
       sending: 'Sending…',
       success: 'Thank you. Your request has been received — we will reply within one business day.',
-      error: 'The request could not be sent. Please email or call us directly using the details on this page.',
-      offline: 'Online submission is not configured yet. Please email or call us using the details on this page.',
+      error: 'The request could not be sent. Please email or WhatsApp us directly using the details on this page.',
+      offline: 'Online submission is not available right now. Please email or WhatsApp us using the details on this page.',
       required: 'Required',
       invalidEmail: 'Enter a valid email address.',
       honeypotLabel: 'Leave this field empty'
@@ -587,10 +612,45 @@ module.exports = {
       email: 'Email',
       phone: 'Phone',
       whatsapp: 'WhatsApp',
-      hours: 'Sunday – Thursday, 9:00 – 18:00 (Cairo / Riyadh)',
-      hoursLabel: 'Hours',
-      officesLabel: 'Offices'
+      whatsappCta: 'Start a WhatsApp conversation',
+      responseLabel: 'Response time',
+      response: 'Within one business day. Most clients started with a single WhatsApp message.',
+      officesLabel: 'Offices',
+      address: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis, Cairo'
     }
+  },
+
+  privacy: {
+    title: 'Privacy notice — Modern Financial Technology',
+    description: 'What MFT collects through this website, why, and how to contact us about your data.',
+    page: {
+      eyebrow: 'Privacy',
+      title: 'What we collect, and why.',
+      intro: 'This website is a marketing site. It collects only what you type into the contact form.'
+    },
+    sections: [
+      {
+        title: 'What we collect',
+        body: 'When you submit the contact form we receive the name, company, email, phone number, country, service of interest and message you enter, plus the page you sent it from and the language you used. The site sets no tracking cookies and uses no third-party analytics.'
+      },
+      {
+        title: 'Why we collect it',
+        body: 'To reply to your request, prepare your first report and, if you become a client, to run the engagement. Your details are recorded in MFT’s customer system and are not sold, rented or shared with third parties for their own purposes.'
+      },
+      {
+        title: 'Financial data you send us',
+        body: 'Any ledger, trial balance or report you share for a first report is treated as confidential client data: read-only access, restricted to the engagement team, and deleted on request once the engagement ends.'
+      },
+      {
+        title: 'Your rights',
+        body: 'You can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted at any time by emailing {email}. We answer within one business day.'
+      },
+      {
+        title: 'Other MFT platforms',
+        body: 'The seg-audit platform (app.seg-audit.com) has its own terms and privacy policy, which apply when you create an account there.'
+      }
+    ],
+    updated: 'Last updated: September 2026'
   },
 
   notFound: {

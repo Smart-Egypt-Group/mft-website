@@ -1,10 +1,12 @@
 // Site-wide configuration. Everything marked TODO is a decision that belongs to
 // Ahmed / Session 2 and must be confirmed before production deploy.
 module.exports = {
-  // TODO(Ahmed): final production domain. The old www.mft-eg.com has a broken TLS
-  // certificate (noted 31 Aug 2026) and fin-tech.odoo.com is the Odoo site. Used for
-  // canonical URLs, hreflang, sitemap and Open Graph.
-  siteUrl: 'https://www.example.com',
+  // ┌──────────────────────────────────────────────────────────────────────┐
+  // │ PENDING (Ahmed): production domain — buying mftfintech.com vs fixing  │
+  // │ the certificate on mft-eg.com. Replace this ONE value before deploy.  │
+  // │ Drives canonical URLs, hreflang, sitemap.xml, robots.txt, OG tags.    │
+  // └──────────────────────────────────────────────────────────────────────┘
+  siteUrl: 'https://PENDING-DOMAIN.example',
 
   // Default language for the root redirect (/). 'ar' per brief (Arabic default).
   defaultLang: 'ar',
@@ -28,26 +30,25 @@ module.exports = {
       { display: '+20 106 239 9941', tel: '+201062399941' },
       { display: '+20 104 005 7520', tel: '+201040057520' }
     ],
-    whatsapp: '+201062399941', // TODO(Ahmed): confirm WhatsApp business number
-    // TODO(Session 2): office addresses (Cairo, Riyadh, US)
+    whatsapp: '+201062399941', // official WhatsApp number on the contact page
+    // Cairo address from the official contact page. Saudi and US have no street
+    // address published; country names only.
     offices: [
-      { key: 'eg', line: '' },
-      { key: 'sa', line: '' },
-      { key: 'us', line: '' }
+      { key: 'eg', line: 'Korba, Heliopolis, Cairo', lineAr: 'الكوربة، مصر الجديدة، القاهرة' },
+      { key: 'sa', line: '', lineAr: '' },
+      { key: 'us', line: '', lineAr: '' }
     ],
+    // Public profiles linked from the official site footer.
     social: {
-      // TODO(Session 2): confirm public profile URLs
-      linkedin: '',
-      facebook: '',
-      instagram: '',
-      x: ''
+      linkedin: 'https://www.linkedin.com/company/92779112',
+      facebook: 'https://www.facebook.com/Fintech2030',
+      instagram: 'https://www.instagram.com/egypt.smart'
     }
   },
 
-  // Sections whose content is a decision still pending. Kept in the build so the
-  // slot is visible in preview; flip to false to hide on production.
-  showPricingSlot: true,     // TODO(Ahmed): fixed packages vs. price ranges (execution plan §4)
-  showCaseStudySlot: true,   // TODO(Ops): first real case study with real numbers (plan, week 10)
+  // PENDING (Ahmed): package structure/prices. Section is fully written in
+  // home.pricing; flip to true once the packages are approved.
+  showPricingSlot: false,
 
   // Related MFT platforms (kept separate from this site by design).
   platform: {

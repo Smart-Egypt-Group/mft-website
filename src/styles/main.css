@@ -94,7 +94,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   text-transform: none;
 }
 /* Latin / digits inside Arabic: isolate so bidi never reorders "100%" or ".xlsx" */
-.lat { direction: ltr; unicode-bidi: isolate; }
+.lat { direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
+.prose .lat, .form-status .lat { white-space: normal; }
 [dir="rtl"] .lat { font-family: 'Inter', 'Cairo', system-ui, sans-serif; }
 
 /* ---------- Utilities ---------- */
@@ -317,6 +318,29 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .fact-value { font-size: var(--fs-display); font-weight: 800; line-height: 1; color: var(--navy); }
 .fact-label { font-size: var(--fs-small); font-weight: 700; color: var(--navy); }
 
+/* Client stories & testimonials */
+.cases { margin-bottom: clamp(32px, 4vw, 48px); }
+.case { padding: 28px; background: var(--white); border-radius: var(--radius); border-top: 3px solid var(--cyan); }
+.case p { margin: 0; }
+.case-sector { font-size: var(--fs-small); font-weight: 700; color: var(--cyan-text); margin-bottom: 14px !important; }
+.case-figure { font-size: var(--fs-h2); font-weight: 800; line-height: 1.1; color: var(--navy); }
+.case-label { font-weight: 700; color: var(--navy); margin: 6px 0 14px !important; }
+.case-body { color: var(--ink-2); }
+.case-quote { margin-top: 14px !important; color: var(--ink-2); font-weight: 600; }
+.testimonials-title { margin-bottom: 20px; }
+.testimonial { padding: 24px 28px; border-inline-start: 3px solid var(--navy); background: var(--white); border-radius: 0 var(--radius) var(--radius) 0; }
+[dir="rtl"] .testimonial { border-radius: var(--radius) 0 0 var(--radius); }
+.testimonial blockquote { margin: 0 0 12px; }
+.testimonial blockquote p { color: var(--ink-2); }
+.testimonial-by { font-size: var(--fs-small); color: var(--ink-3); }
+.testimonial-by strong { color: var(--navy); }
+
+/* Prose pages (privacy) */
+.prose h2 { font-size: 1.5rem; margin: 36px 0 12px; }
+.prose h2:first-child { margin-top: 0; }
+.prose p { color: var(--ink-2); max-width: 68ch; }
+.prose a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+
 /* Tiers (pricing slot) */
 .tier h3 { font-size: var(--fs-h2); font-weight: 800; }
 
@@ -383,6 +407,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .footer-col ul + .footer-title { margin-top: 24px; }
 .footer-col li { margin-bottom: 8px; }
 .footer-col a:hover { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+.site-footer .muted { color: var(--on-navy-3); }
 .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--navy-line); color: var(--on-navy-3); }
 @media (max-width: 899px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
 @media (max-width: 599px) { .footer-grid { grid-template-columns: 1fr; } }
@@ -420,7 +445,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
 [dir="rtl"] .contact-details dt { letter-spacing: 0; text-transform: none; }
 .contact-details dd { margin: 4px 0 0; color: var(--ink-2); }
 .contact-details a { color: var(--navy); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.contact-details a.btn { color: var(--white); text-decoration: none; }
 .plain li { margin-bottom: 4px; }
+.wa-btn { margin-top: 4px; }
+.address { margin-bottom: 8px; }
 
 /* ---------- Motion / print ---------- */
 @media (prefers-reduced-motion: reduce) {

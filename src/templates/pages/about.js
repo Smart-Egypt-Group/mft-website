@@ -1,4 +1,4 @@
-const { t, phTag } = require('../html');
+const { t } = require('../html');
 const { ctaBand } = require('../layout');
 const { pageHeader } = require('./services');
 
@@ -25,21 +25,16 @@ module.exports = function about(ctx) {
   <div class="container">
     <div class="section-head"><h2 id="cred-title">${t(A.credentials.title)}</h2></div>
     <ul class="badge-grid">
-      ${A.credentials.items.map((x) => `<li class="badge"><span class="dot" aria-hidden="true"></span>${t(x)}</li>`).join('')}
+      ${A.credentials.items.map((x) => `<li class="badge"><span class="dot" aria-hidden="true"></span><span class="badge-label">${t(x)}</span></li>`).join('')}
     </ul>
   </div>
 </section>
 
 <section class="section" aria-labelledby="team-title">
   <div class="container">
-    ${phTag(ctx)}
     <div class="section-head"><h2 id="team-title">${t(A.team.title)}</h2><p class="lead">${t(A.team.intro)}</p></div>
-    <ul class="grid grid-3 team">
-      ${A.team.members
-        .map(
-          (m) => `<li class="card team-card"><div class="avatar" aria-hidden="true"></div><h3>${t(m.name)}</h3><p>${t(m.role)}</p></li>`
-        )
-        .join('')}
+    <ul class="grid grid-3 pillars">
+      ${A.team.points.map((m, i) => `<li class="pillar"><span class="num lat" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span><h3>${t(m.title)}</h3><p>${t(m.body)}</p></li>`).join('')}
     </ul>
   </div>
 </section>

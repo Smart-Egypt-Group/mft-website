@@ -35,15 +35,30 @@ module.exports = function home(ctx, opts = {}) {
     .map((f) => `<li class="fact"><span class="fact-value lat">${esc(f.value)}</span><span class="fact-label">${t(f.label)}</span></li>`)
     .join('');
 
-  const caseStudy = config.showCaseStudySlot
-    ? `<section class="section section-mist" aria-labelledby="case-title">
-  <div class="container narrow">
-    ${phTag(ctx)}
-    <div class="section-head"><p class="eyebrow">${t(H.caseStudy.eyebrow)}</p><h2 id="case-title">${t(H.caseStudy.title)}</h2><p class="lead">${t(H.caseStudy.body)}</p></div>
-    ${btn(ctx, H.caseStudy.cta, 'btn btn-navy')}
+  const cases = H.stories.cases
+    .map(
+      (cs) => `<li class="case">
+        <p class="case-sector">${t(cs.sector)}</p>
+        <p class="case-figure">${t(cs.figure)}</p>
+        <p class="case-label">${t(cs.label)}</p>
+        <p class="case-body">${t(cs.body)}</p>
+        ${cs.quote ? `<p class="case-quote">${t(cs.quote)}</p>` : ''}
+      </li>`
+    )
+    .join('');
+  const testimonials = H.stories.testimonials
+    .map(
+      (q) => `<li class="testimonial"><blockquote><p>${t(q.quote)}</p></blockquote><p class="testimonial-by"><strong>${t(q.name)}</strong> · ${t(q.company)}</p></li>`
+    )
+    .join('');
+  const caseStudy = `<section class="section section-mist" aria-labelledby="stories-title">
+  <div class="container">
+    <div class="section-head"><p class="eyebrow">${t(H.stories.eyebrow)}</p><h2 id="stories-title">${t(H.stories.title)}</h2><p class="lead">${t(H.stories.intro)}</p></div>
+    <ul class="grid grid-2 cases">${cases}</ul>
+    <h3 class="testimonials-title">${t(H.stories.testimonialsTitle)}</h3>
+    <ul class="grid grid-2 testimonials">${testimonials}</ul>
   </div>
-</section>`
-    : '';
+</section>`;
 
   const pricing = config.showPricingSlot
     ? `<section class="section" aria-labelledby="pricing-title">

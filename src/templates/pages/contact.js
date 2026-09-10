@@ -14,7 +14,7 @@ module.exports = function contact(ctx) {
     .join('');
   const wa = cfg.contact.whatsapp.replace(/[^0-9]/g, '');
   const offices = cfg.contact.offices
-    .map((o) => `<li>${t(ctx.c.footer.offices[o.key])}${o.line ? ` — ${t(o.line)}` : ''}</li>`)
+    .map((o) => `<li>${t(ctx.c.footer.offices[o.key])}</li>`)
     .join('');
 
   const body = `${pageHeader(ctx, C.page)}
@@ -86,11 +86,11 @@ module.exports = function contact(ctx) {
         <dt>${t(C.details.phone)}</dt>
         <dd><ul class="plain">${phones}</ul></dd>
         <dt>${t(C.details.whatsapp)}</dt>
-        <dd><a href="https://wa.me/${esc(wa)}" rel="noopener" target="_blank" class="lat">+${esc(wa)}</a></dd>
-        <dt>${t(C.details.hoursLabel)}</dt>
-        <dd>${t(C.details.hours)}</dd>
+        <dd><a href="https://wa.me/${esc(wa)}" rel="noopener" target="_blank" class="btn btn-navy btn-sm wa-btn">${t(C.details.whatsappCta)}</a></dd>
+        <dt>${t(C.details.responseLabel)}</dt>
+        <dd>${t(C.details.response)}</dd>
         <dt>${t(C.details.officesLabel)}</dt>
-        <dd><ul class="plain">${offices}</ul></dd>
+        <dd><p class="address">${t(C.details.address)}</p><ul class="plain">${offices}</ul></dd>
       </dl>
     </aside>
   </div>
