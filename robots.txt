@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /*/_preview/
+Sitemap: https://smart-egypt-group.github.io/mft-website/sitemap.xml
