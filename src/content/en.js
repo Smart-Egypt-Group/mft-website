@@ -206,20 +206,20 @@ module.exports = {
       eyebrow: 'From our engagements',
       title: 'What the numbers found.',
       intro:
-        'Two findings from recent audit engagements, as published by MFT. Clients are anonymised; the figures are not.',
+        'Two findings from recent audit engagements. Clients are anonymised and no financial amounts are published — only what was found, and when.',
       cases: [
         {
           sector: 'Food & beverage distribution · Cairo',
-          figure: 'EGP 340,000',
-          label: 'duplicate payment to one supplier under two vendor codes',
+          figure: '23 transactions',
+          label: 'missed by manual review, surfaced in six weeks',
           body:
-            'Running seg-audit alongside the external audit of the second quarter, the engine surfaced 23 transactions the manual review had missed, in six weeks.',
+            'Running seg-audit alongside the external audit of the second quarter, the engine flagged a duplicate payment to one supplier registered under two vendor codes — caught before the close, not after it.',
           quote: '“We would have found it eventually. Eventually is expensive.”'
         },
         {
           sector: 'Construction · Riyadh',
-          figure: 'SAR 1.2 million',
-          label: 'inventory valuation gap, three weeks before year-end close',
+          figure: '3 weeks before close',
+          label: 'an inventory valuation gap caught before year-end',
           body:
             'A costing method never updated after a supplier contract changed. Found before the close, it was a board discussion. After it, it would have been a restatement.',
           quote: ''

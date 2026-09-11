@@ -122,6 +122,15 @@ for (const lang of ['en', 'ar']) {
   if (hits.length) { todo += hits.length; fail(`${lang}.js still has ${hits.length} TODO/placeholder marker(s)`); }
 }
 if (!todo) ok('no TODO or placeholder markers in content files');
+// Client confidentiality (Ahmed, 11 Sep 2026): no real financial amount of any client on the
+// site. The only allowed currency figures are the illustrative dashboard KPIs in heroB.dashboard.
+let money = 0;
+for (const lang of ['en', 'ar']) {
+  const src = fs.readFileSync(path.join(ROOT, `src/content/${lang}.js`), 'utf8').replace(/dashboard:\s*\{[\s\S]*?bars:/g, '');
+  const hits = src.match(/\b(EGP|SAR|USD|AED)\b|\$\s?\d|\d\s?(million|billion)|جنيه|ريال|مليون|مليار|دولار/g) || [];
+  if (hits.length) { money += hits.length; fail(`${lang}.js contains currency amounts: ${[...new Set(hits)].join(', ')}`); }
+}
+if (!money) ok('no client financial amounts in content (dashboard sample excluded)');
 const cfg = fs.readFileSync(path.join(ROOT, 'src/site.config.js'), 'utf8');
 if (/PENDING-DOMAIN/.test(cfg)) console.log('  ! siteUrl still PENDING (decision with Ahmed) — set it before production deploy');
 else ok('siteUrl set');
