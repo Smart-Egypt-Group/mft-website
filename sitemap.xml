@@ -51,6 +51,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/industries/"/>
   </url>
   <url>
+    <loc>https://smart-egypt-group.github.io/mft-website/ar/intelligence/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/intelligence/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/intelligence/"/>
+  </url>
+  <url>
     <loc>https://smart-egypt-group.github.io/mft-website/ar/about/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/about/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/about/"/>
@@ -114,6 +119,11 @@
     <loc>https://smart-egypt-group.github.io/mft-website/en/industries/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/industries/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/industries/"/>
+  </url>
+  <url>
+    <loc>https://smart-egypt-group.github.io/mft-website/en/intelligence/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/intelligence/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/intelligence/"/>
   </url>
   <url>
     <loc>https://smart-egypt-group.github.io/mft-website/en/about/</loc>
