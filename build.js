@@ -36,6 +36,7 @@ const about = require('./src/templates/pages/about');
 const contact = require('./src/templates/pages/contact');
 const notFound = require('./src/templates/pages/notfound');
 const privacy = require('./src/templates/pages/privacy');
+const intelligence = require('./src/templates/pages/intelligence');
 
 const markPlaceholders = process.argv.includes('--mark-placeholders') || process.env.MARK_PLACEHOLDERS === '1';
 const buildId = Date.now().toString(36);
@@ -64,6 +65,7 @@ function pageList(c) {
     { path: 'services/', render: (ctx) => services.index(ctx) },
     ...c.services.items.map((item) => ({ path: `services/${item.slug}/`, render: (ctx) => services.detail(ctx, ctx.c.services.items.find((s) => s.slug === item.slug)) })),
     { path: 'industries/', render: (ctx) => industries(ctx) },
+    { path: 'intelligence/', render: (ctx) => intelligence(ctx) },
     { path: 'about/', render: (ctx) => about(ctx) },
     { path: 'contact/', render: (ctx) => contact(ctx) },
     { path: 'privacy/', render: (ctx) => privacy(ctx) },

@@ -100,6 +100,17 @@ module.exports = function home(ctx, opts = {}) {
   </div>
 </section>
 
+<section class="section teaser" aria-labelledby="intel-title">
+  <div class="container teaser-inner">
+    <div>
+      <p class="eyebrow">${t(c.intelligenceTeaser.eyebrow)}</p>
+      <h2 id="intel-title">${t(c.intelligenceTeaser.title)}</h2>
+      <p class="lead">${t(c.intelligenceTeaser.body)}</p>
+    </div>
+    ${btn(ctx, c.intelligenceTeaser.cta, 'btn btn-navy')}
+  </div>
+</section>
+
 <section class="section" aria-labelledby="ind-title">
   <div class="container">
     <div class="section-head"><p class="eyebrow">${t(H.industries.eyebrow)}</p><h2 id="ind-title">${t(H.industries.title)}</h2><p class="lead">${t(H.industries.intro)}</p></div>

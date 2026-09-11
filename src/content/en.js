@@ -39,6 +39,7 @@ module.exports = {
     items: [
       { label: 'Services', href: 'services/' },
       { label: 'Industries', href: 'industries/' },
+      { label: 'MFT Intelligence', href: 'intelligence/' },
       { label: 'About', href: 'about/' },
       { label: 'Contact', href: 'contact/' }
     ],
@@ -75,6 +76,7 @@ module.exports = {
         title: 'Company',
         links: [
           { label: 'About MFT', href: 'about/' },
+          { label: 'MFT Intelligence AI Agents', href: 'intelligence/' },
           { label: 'Contact', href: 'contact/' },
           { label: 'Privacy', href: 'privacy/' },
           { label: 'seg-audit platform', href: 'https://app.seg-audit.com', external: true }
@@ -256,6 +258,14 @@ module.exports = {
       button: { label: 'Get Your First Report Free', href: 'contact/' },
       alt: 'Or call us directly'
     }
+  },
+
+  // Home teaser for the agents page
+  intelligenceTeaser: {
+    eyebrow: 'MFT Intelligence',
+    title: 'AI agents that watch your books every day — reviewed by our accountants.',
+    body: 'An Auditor agent that applies ISA 320 materiality to every transaction, and a Virtual CFO agent that turns your Odoo data into board-ready reports. Available now; four more agents in validation.',
+    cta: { label: 'Meet the agents', href: 'intelligence/' }
   },
 
   ctaBand: {
@@ -651,6 +661,125 @@ module.exports = {
       }
     ],
     updated: 'Last updated: September 2026'
+  },
+
+  intelligence: {
+    title: 'MFT Intelligence AI Agents — Modern Financial Technology',
+    description:
+      'Six AI agents built by MFT’s accountants: continuous audit against ISA 320 materiality, Virtual CFO reporting, month-end close, warehouse, HR and consulting. Two available now.',
+    page: {
+      eyebrow: 'MFT Intelligence',
+      title: 'AI agents that work your numbers. Accountants who sign off.',
+      intro:
+        'MFT Intelligence is a set of specialised agents built by our audit and Odoo teams. Each one does a single finance job continuously, on your own data, and every finding is reviewed by a licensed accountant before it reaches you.'
+    },
+    principles: {
+      title: 'How every agent operates',
+      items: [
+        { title: 'Read-only on your data', body: 'Agents read your ERP; they never post, pay or change a record. Corrections arrive as proposals for your team to approve.' },
+        { title: 'Materiality, not sampling', body: 'Thresholds follow ISA 320 and are calibrated to your business, so the agents surface what is material to you, not generic anomalies.' },
+        { title: 'A human signs every report', body: 'Output is reviewed by an MFT accountant before delivery. The agent does the coverage; the CPA takes the responsibility.' }
+      ]
+    },
+    statusLabels: {
+      available: 'Available now',
+      validation: 'Internal validation — launching soon',
+      design: 'In design'
+    },
+    benefitLabel: 'What it does for you',
+    agentsTitle: 'The agents',
+    agents: [
+      {
+        slug: 'auditor',
+        name: 'Auditor agent',
+        status: 'available',
+        does: [
+          'Reviews your books continuously against internationally recognised materiality methodology (ISA 320)',
+          'Flags any transaction or balance that exceeds the materiality threshold set for your activity',
+          'Ranks findings by financial impact for your team and ours'
+        ],
+        benefit: 'You catch problems when they happen instead of waiting for the annual audit — and the risk of a material misstatement drops.'
+      },
+      {
+        slug: 'virtual-cfo',
+        name: 'Virtual CFO agent',
+        status: 'available',
+        does: [
+          'Analyses financial performance: profitability, cash flow and variances against budget',
+          'Generates board-ready reports on a monthly cycle',
+          'Works with the MFT Virtual CFO service, whose accountants review and present the results'
+        ],
+        benefit: 'CFO-level financial visibility without the cost of a full-time hire — built for small and mid-sized companies.'
+      },
+      {
+        slug: 'accountant',
+        name: 'Accountant agent',
+        status: 'validation',
+        does: [
+          'Runs a complete month-end close checklist',
+          'Bank reconciliation and detection of entries above the materiality threshold',
+          'Proposes correcting entries — never posts automatically'
+        ],
+        benefit: 'A faster, more accurate monthly close, with your team keeping the final say on every entry.'
+      },
+      {
+        slug: 'warehouse',
+        name: 'Warehouse agent',
+        status: 'validation',
+        does: [
+          'Stock levels and reorder points, inventory valuation, slow-moving items',
+          'Matches receipts against purchase orders',
+          'Detects abnormal stock movements'
+        ],
+        benefit: 'Less capital locked in idle stock, and receiving discrepancies caught early.'
+      },
+      {
+        slug: 'hr',
+        name: 'HR agent',
+        status: 'validation',
+        does: [
+          'Workforce reports: headcount, probation periods and contracts approaching expiry',
+          'Reconciles the payroll register against the employee master',
+          'Full protection of personal data throughout'
+        ],
+        benefit: 'Payroll discrepancies surface early and no contract renewal is forgotten.'
+      },
+      {
+        slug: 'consultant',
+        name: 'Consultant agent',
+        status: 'design',
+        does: [
+          'Business analysis and advisory synthesis built on the output of the other agents',
+          'Connects audit findings, financial performance, stock and people into one view'
+        ],
+        benefit: 'Recommendations grounded in real data from your own operation, not a template.'
+      }
+    ],
+    plans: {
+      eyebrow: 'Subscription',
+      title: 'Three plans. Priced to your scope.',
+      intro: 'Every plan includes onboarding by an MFT accountant and read-only integration with your Odoo (or other ERP) data. Prices are set per engagement — tell us your scope and we quote it.',
+      cta: 'Contact us for the right price',
+      note: 'No fixed prices are published. Each plan is priced to your entity count, transaction volume and reporting scope.',
+      tiers: [
+        {
+          name: 'Essential',
+          summary: 'One agent, one monthly report.',
+          features: ['Your choice of the Auditor or the Virtual CFO agent', 'One monthly report reviewed by an MFT accountant', 'Read-only ERP connection and onboarding']
+        },
+        {
+          name: 'Professional',
+          summary: 'Audit and CFO together, continuously.',
+          features: ['Auditor and Virtual CFO agents together', 'Continuous weekly review of your books', 'Instant alerts when a transaction exceeds your materiality threshold', 'Monthly review call with your MFT accountant'],
+          featured: true
+        },
+        {
+          name: 'Complete',
+          summary: 'Every agent, fully integrated.',
+          features: ['All six agents, including those still in validation as they launch', 'Full Odoo integration across finance, inventory and HR', 'Custom reports and dashboards', 'Named MFT lead for the engagement']
+        }
+      ]
+    }
   },
 
   notFound: {
