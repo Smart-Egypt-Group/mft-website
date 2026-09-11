@@ -15,16 +15,15 @@ module.exports = function home(ctx, opts = {}) {
 
   const services = c.services.items
     .map(
-      (s, i) => `<li class="card service-card">
+      (s, i) => `<li class="index-row">
         <span class="num lat" aria-hidden="true">${pad2(i + 1)}</span>
-        <h3><a href="${url(ctx, `services/${s.slug}/`)}">${t(s.name)}</a></h3>
-        <p>${t(s.short)}</p>
+        <div><h3><a href="${url(ctx, `services/${s.slug}/`)}">${t(s.name)}</a></h3><p>${t(s.short)}</p></div>
       </li>`
     )
     .join('');
 
   const steps = H.how.steps
-    .map((s, i) => `<li class="step"><span class="num lat" aria-hidden="true">${pad2(i + 1)}</span><h3>${t(s.title)}</h3><p>${t(s.body)}</p></li>`)
+    .map((s, i) => `<li class="step"><span class="step-dot" aria-hidden="true"></span><span class="step-when">${t(s.when)}</span><h3>${t(s.title)}</h3><p>${t(s.body)}</p></li>`)
     .join('');
 
   const industries = c.industries.items
@@ -88,7 +87,7 @@ module.exports = function home(ctx, opts = {}) {
 <section class="section section-mist" aria-labelledby="svc-title">
   <div class="container">
     <div class="section-head"><p class="eyebrow">${t(H.services.eyebrow)}</p><h2 id="svc-title">${t(H.services.title)}</h2><p class="lead">${t(H.services.intro)}</p></div>
-    <ul class="grid grid-3 service-grid">${services}</ul>
+    <ol class="index-list">${services}</ol>
     <p class="section-foot"><a class="btn btn-link" href="${url(ctx, 'services/')}">${t(H.services.cta)}</a></p>
   </div>
 </section>
@@ -96,7 +95,7 @@ module.exports = function home(ctx, opts = {}) {
 <section class="section section-navy" aria-labelledby="how-title">
   <div class="container">
     <div class="section-head"><p class="eyebrow">${t(H.how.eyebrow)}</p><h2 id="how-title">${t(H.how.title)}</h2></div>
-    <ol class="grid grid-4 steps">${steps}</ol>
+    <ol class="timeline">${steps}</ol>
   </div>
 </section>
 

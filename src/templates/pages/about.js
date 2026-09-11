@@ -15,9 +15,9 @@ module.exports = function about(ctx) {
 <section class="section section-mist" aria-labelledby="values-title">
   <div class="container">
     <div class="section-head"><h2 id="values-title">${t(A.values.title)}</h2></div>
-    <ul class="grid grid-2 values">
-      ${A.values.items.map((v) => `<li class="card"><h3>${t(v.title)}</h3><p>${t(v.body)}</p></li>`).join('')}
-    </ul>
+    <dl class="deflist">
+      ${A.values.items.map((v) => `<div class="deflist-row"><dt>${t(v.title)}</dt><dd>${t(v.body)}</dd></div>`).join('')}
+    </dl>
   </div>
 </section>
 

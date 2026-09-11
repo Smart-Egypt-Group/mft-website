@@ -150,7 +150,7 @@ module.exports = {
 
     services: {
       eyebrow: 'Services',
-      title: 'Everything between raw data and a confident decision.',
+      title: 'From the first journal entry to the board pack.',
       intro:
         'Seven services, one accountable team. Start with a single report, or hand us the whole finance function.',
       cta: 'Explore all services'
@@ -161,18 +161,22 @@ module.exports = {
       title: 'From first message to first report in 24 hours. Not quarters.',
       steps: [
         {
+          when: 'Day 0',
           title: 'Send your data',
           body: 'Share your last closed month — a trial balance, an Odoo export or a spreadsheet. No preparation, no commitment.'
         },
         {
+          when: 'Within 24 hours',
           title: 'First report in 24 hours',
           body: 'You receive a cash-flow and profitability snapshot with the three questions your board should be asking. Free, one per company.'
         },
         {
+          when: 'Week 1',
           title: 'Diagnosis',
           body: 'A 30-minute call with a licensed accountant, not a sales rep, on your entity, your system and what a decision-ready close would take.'
         },
         {
+          when: 'On an agreed date',
           title: 'Delivery',
           body: 'Implementation, audit fieldwork or monthly reporting starts on an agreed calendar, with one named lead on our side until closure.'
         }
