@@ -676,7 +676,7 @@ module.exports = {
     principles: {
       title: 'How every agent operates',
       items: [
-        { title: 'Read-only on your data', body: 'Agents read your ERP; they never post, pay or change a record. Corrections arrive as proposals for your team to approve.' },
+        { title: 'Analysis and proposals — never automatic execution', body: 'Agents do real analytical work and propose concrete actions: correcting entries, reconciliations, alerts. Every proposal stays a draft until someone on your side explicitly approves it. Nothing is posted or executed automatically, ever.' },
         { title: 'Materiality, not sampling', body: 'Thresholds follow ISA 320 and are calibrated to your business, so the agents surface what is material to you, not generic anomalies.' },
         { title: 'A human signs every report', body: 'Output is reviewed by an MFT accountant before delivery. The agent does the coverage; the CPA takes the responsibility.' }
       ]
@@ -718,7 +718,7 @@ module.exports = {
         does: [
           'Runs a complete month-end close checklist',
           'Bank reconciliation and detection of entries above the materiality threshold',
-          'Proposes correcting entries — never posts automatically'
+          'Drafts correcting entries for your approval — never posts automatically'
         ],
         benefit: 'A faster, more accurate monthly close, with your team keeping the final say on every entry.'
       },
@@ -758,14 +758,14 @@ module.exports = {
     plans: {
       eyebrow: 'Subscription',
       title: 'Three plans. Priced to your scope.',
-      intro: 'Every plan includes onboarding by an MFT accountant and read-only integration with your Odoo (or other ERP) data. Prices are set per engagement — tell us your scope and we quote it.',
+      intro: 'Every plan includes onboarding by an MFT accountant and integration with your Odoo (or other ERP) data, with every proposed action held as a draft for your approval. Prices are set per engagement — tell us your scope and we quote it.',
       cta: 'Contact us for the right price',
       note: 'No fixed prices are published. Each plan is priced to your entity count, transaction volume and reporting scope.',
       tiers: [
         {
           name: 'Essential',
           summary: 'One agent, one monthly report.',
-          features: ['Your choice of the Auditor or the Virtual CFO agent', 'One monthly report reviewed by an MFT accountant', 'Read-only ERP connection and onboarding']
+          features: ['Your choice of the Auditor or the Virtual CFO agent', 'One monthly report reviewed by an MFT accountant', 'ERP connection and onboarding; proposals delivered as drafts for your approval']
         },
         {
           name: 'Professional',
