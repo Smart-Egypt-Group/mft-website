@@ -1,0 +1,37 @@
+# Modern Financial Technology (MFT)
+
+> MFT is a CPA-led firm that implements Odoo ERP, runs internal audit and acts as your Virtual CFO — one team, one set of numbers, in Egypt, Saudi Arabia and the US.
+
+## Services
+- [Odoo ERP Implementation](https://smart-egypt-group.github.io/mft-website/en/services/odoo-erp/): Odoo ERP implementation by MFT is a finance-led deployment: certified Odoo partners who are also licensed accountants configure the system around your chart of accounts, tax obligations and controls, so the ledger is right from day one.
+- [Internal Audit](https://smart-egypt-group.github.io/mft-website/en/services/internal-audit/): Internal audit by MFT is a risk-based programme run by a CPA-led team inside your ERP: controls are tested, findings are ranked by financial impact, and each one carries an owner, a fix and a deadline.
+- [Virtual CFO](https://smart-egypt-group.github.io/mft-website/en/services/virtual-cfo/): Virtual CFO by MFT is a monthly finance-leadership service: an MFT accountant delivers a management pack, a cash-flow forecast and a decision review, with the Virtual CFO agent doing the analysis from your ERP.
+- [Financial Consulting](https://smart-egypt-group.github.io/mft-website/en/services/financial-consulting/): Financial consulting by MFT is project-based advisory for one-off decisions — feasibility, restructuring, valuation, cross-border structuring and tax — grounded in your actual ledger.
+- [Business Analysis](https://smart-egypt-group.github.io/mft-website/en/services/business-analysis/): Business analysis by MFT documents how orders, stock, production and cash actually move through your company and specifies what a system must do about it — before anything is configured.
+- [User Training](https://smart-egypt-group.github.io/mft-website/en/services/training/): User training by MFT is role-based Odoo and finance training delivered on your own configuration and data, in Arabic or English, with recorded sessions and bilingual guides.
+- [Technical Support](https://smart-egypt-group.github.io/mft-website/en/services/technical-support/): Technical support by MFT is an Odoo administration and maintenance agreement with agreed response times: user issues, report changes, access rights, upgrades and integrations, handled by people who know your chart of accounts.
+
+## MFT Intelligence AI agents
+- MFT Intelligence is a managed AI-agent service from Modern Financial Technology: MFT runs specialised audit, CFO and finance-operations agents on a client’s ERP data and delivers reviewed findings, draft entries and reports under a governance policy enforced in code.
+- Auditor agent (Available now): Continuous review of your books against ISA 320 materiality thresholds calibrated to your business. Problems surface when they happen, not at the annual audit — and the risk of a material misstatement drops.
+- Virtual CFO agent (Available now): Profitability, cash flow and budget-variance analysis every month. CFO-level visibility without the cost of a full-time hire — built for small and mid-sized companies.
+- Accountant agent (Internal validation — launching soon): Complete month-end close checklist. A faster, more accurate monthly close with your team keeping the final say.
+- Warehouse, inventory & production agent (Internal validation — launching soon): Stock levels, reorder points, valuation and slow-moving items. Less capital locked in idle stock; receiving and production discrepancies caught early.
+- HR agent (Internal validation — launching soon): Headcount, probation periods and contracts approaching expiry. Payroll discrepancies surface early and no contract renewal is forgotten.
+- Payroll & workforce-cost agent (Internal validation — launching soon): Workforce cost by department and project. You see where labour cost is going before the payroll run closes.
+- Sales & CRM agent (Internal validation — launching soon): Pipeline, conversion and customer concentration. Margin and credit exposure become visible per customer, not just per month.
+- Procurement agent (Internal validation — launching soon): Purchase-order to receipt to invoice matching. Leakage in the purchase cycle is caught at the order, not at the audit.
+- Tax & compliance agent (Internal validation — launching soon): VAT and withholding checks per country (Egypt 14%, Saudi 15%). Tax exposure is known before the return, not after the assessment.
+- Treasury & cash-flow agent (Internal validation — launching soon): 13-week cash-flow view from open receivables, payables and commitments. No cash surprise reaches the board first.
+- Fixed assets agent (Internal validation — launching soon): Register completeness against purchases. The asset register matches reality and the depreciation charge is defensible.
+- Project costing agent (Internal validation — launching soon): Cost-to-complete and margin per project. Project margin is known during the project, not at handover.
+- Pricing: No fixed prices are published. Each engagement is priced to entity count, transaction volume and reporting scope. Request a quote: https://smart-egypt-group.github.io/mft-website/en/request-quote/
+
+## Facts
+- CPA-led team; Odoo Certified Partner; ISO-aligned internal controls; 500+ reports delivered; Egypt, Saudi Arabia, US.
+- Agents draft only; every action needs a named human approval (two above ISA 320 materiality); corrections by reversal, never deletion.
+- AI governance policy enforced in code; run log retained 7 years (ISA 230); client data stays on the client’s own ERP.
+
+## Contact
+- info@seg-audit.com · +20 106 239 9941 · +20 104 005 7520 · https://smart-egypt-group.github.io/mft-website/en/contact/
+- Arabic site: https://smart-egypt-group.github.io/mft-website/ar/

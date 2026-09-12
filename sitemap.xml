@@ -56,6 +56,21 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/intelligence/"/>
   </url>
   <url>
+    <loc>https://smart-egypt-group.github.io/mft-website/ar/intelligence/auditor/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/intelligence/auditor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/intelligence/auditor/"/>
+  </url>
+  <url>
+    <loc>https://smart-egypt-group.github.io/mft-website/ar/intelligence/virtual-cfo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/intelligence/virtual-cfo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/intelligence/virtual-cfo/"/>
+  </url>
+  <url>
+    <loc>https://smart-egypt-group.github.io/mft-website/ar/request-quote/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/request-quote/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/request-quote/"/>
+  </url>
+  <url>
     <loc>https://smart-egypt-group.github.io/mft-website/ar/about/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/about/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/about/"/>
@@ -124,6 +139,21 @@
     <loc>https://smart-egypt-group.github.io/mft-website/en/intelligence/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/intelligence/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/intelligence/"/>
+  </url>
+  <url>
+    <loc>https://smart-egypt-group.github.io/mft-website/en/intelligence/auditor/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/intelligence/auditor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/intelligence/auditor/"/>
+  </url>
+  <url>
+    <loc>https://smart-egypt-group.github.io/mft-website/en/intelligence/virtual-cfo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/intelligence/virtual-cfo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/intelligence/virtual-cfo/"/>
+  </url>
+  <url>
+    <loc>https://smart-egypt-group.github.io/mft-website/en/request-quote/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smart-egypt-group.github.io/mft-website/ar/request-quote/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smart-egypt-group.github.io/mft-website/en/request-quote/"/>
   </url>
   <url>
     <loc>https://smart-egypt-group.github.io/mft-website/en/about/</loc>

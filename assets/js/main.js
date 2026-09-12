@@ -46,7 +46,12 @@
         io.unobserve(e.target);
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
-    Array.prototype.forEach.call(document.querySelectorAll('.reveal, .timeline, .facts, .hero-trust, .dashboard-card'), function (el) { io.observe(el); });
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal, .timeline, .facts, .hero-trust, .dashboard-card, .flow-wrap, .latest-facts'), function (el) { io.observe(el); });
+    // Insurance: if an observer never fires (print, unusual viewports), reveal everything after 5 s.
+    setTimeout(function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.reveal:not(.in), .timeline:not(.in), .flow-wrap:not(.in)'), function (el) { el.classList.add('in'); Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp); });
+    }, 5000);
+    window.addEventListener('beforeprint', function () { document.documentElement.classList.remove('js-motion'); });
     // hero counters run on load (the card is above the fold)
     Array.prototype.forEach.call(document.querySelectorAll('.hero [data-count]'), function (el) { setTimeout(function () { countUp(el); }, 350); });
   }
@@ -168,12 +173,15 @@
       // Odoo public website-form route (crm.lead). Field names are Odoo's.
       var service = SERVICE_LABELS[data.service] || data.service || '';
       var params = new URLSearchParams();
-      params.set('name', (service || 'Website') + ' \u2014 ' + (data.company || data.name));
+      var kind = form.getAttribute('data-kind') || '';
+      params.set('name', (kind ? kind + ': ' : '') + (service || 'Website') + ' \u2014 ' + (data.company || data.name));
       params.set('contact_name', data.name);
       params.set('partner_name', data.company);
       params.set('email_from', data.email);
       params.set('phone', data.phone || '');
-      params.set('description', [data.message, '', 'Service: ' + service, 'Country: ' + data.country, 'Language: ' + data.lang, 'Page: ' + data.page].join('\n'));
+      var extra = [];
+      ['agents', 'erp', 'entities', 'volume', 'cadence'].forEach(function (k) { if (data[k]) extra.push(k.charAt(0).toUpperCase() + k.slice(1) + ': ' + data[k]); });
+      params.set('description', [data.message, ''].concat(extra, ['Service: ' + service, 'Country: ' + data.country, 'Language: ' + data.lang, 'Page: ' + data.page]).join('\n'));
       // Odoo sends no CORS header: the response is opaque, so a resolved fetch means the
       // request was delivered; a network failure rejects and shows the error message.
       request = fetch(endpoint, { method: 'POST', mode: 'no-cors', credentials: 'omit', body: params })
