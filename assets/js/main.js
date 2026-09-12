@@ -24,6 +24,50 @@
     });
   }
 
+  /* ---------- Motion (progressive; final state without JS or with reduced motion) ---------- */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('js-motion');
+    // mark section children for viewport reveal
+    Array.prototype.forEach.call(document.querySelectorAll('main .section .section-head, main .section .grid > *, main .section .index-row, main .section .deflist-row, main .section .cases > *, main .section .testimonials > *, main .section .plans > *, main .section .agents > *, main .section .pillars > *, main .section .badge-grid > *, main .section .chip-row > *'), function (el, i) {
+      if (el.closest('.hero')) return;
+      el.classList.add('reveal');
+      if (!el.style.getPropertyValue('--i')) {
+        var sib = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+        el.style.setProperty('--i', String(Math.min(sib, 8)));
+      }
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        Array.prototype.forEach.call(e.target.querySelectorAll('[data-count]'), countUp);
+        if (e.target.hasAttribute('data-count')) countUp(e.target);
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal, .timeline, .facts, .hero-trust, .dashboard-card'), function (el) { io.observe(el); });
+    // hero counters run on load (the card is above the fold)
+    Array.prototype.forEach.call(document.querySelectorAll('.hero [data-count]'), function (el) { setTimeout(function () { countUp(el); }, 350); });
+  }
+  function countUp(el) {
+    if (el.getAttribute('data-counted')) return;
+    el.setAttribute('data-counted', '1');
+    var target = parseFloat(el.getAttribute('data-count'));
+    var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    if (isNaN(target)) return;
+    var start = null, dur = 1100;
+    var fmt = function (v) { var s = v.toFixed(decimals); return decimals ? s : s.replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * eased);
+      if (p < 1) requestAnimationFrame(frame); else el.textContent = fmt(target);
+    }
+    requestAnimationFrame(frame);
+  }
+
   /* ---------- Lead form ---------- */
   var form = document.getElementById('lead-form');
   if (!form) return;
