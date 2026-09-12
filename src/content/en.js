@@ -123,7 +123,13 @@ module.exports = {
           { label: 'Cash Position', value: '$211K' }
         ],
         bars: [40, 55, 48, 70, 62, 88],
-        caption: 'Revenue by month — last 6 months (illustrative)'
+        caption: 'Revenue by month — last 6 months (illustrative)',
+        findingsTitle: 'Agent findings (sample)',
+        findings: [
+          { text: 'Payment above materiality threshold — draft awaiting approval', tag: 'Auditor' },
+          { text: 'Near-duplicate vendor detected — two codes, one tax id', tag: 'Auditor' },
+          { text: 'Cash runway recalculated after supplier terms changed', tag: 'Virtual CFO' }
+        ]
       }
     },
 

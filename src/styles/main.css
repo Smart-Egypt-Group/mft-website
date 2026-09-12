@@ -161,6 +161,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   color: var(--cyan-text); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: transparent;
 }
 .btn-link:hover { text-decoration-color: currentColor; }
+.btn-link-light { color: var(--on-navy-2); }
+.btn-link-light:hover { color: var(--white); }
 .section-navy .btn-link, .cta-band .btn-link { color: var(--cyan); }
 
 /* ---------- Header ---------- */
@@ -263,6 +265,20 @@ button, input, select, textarea { font: inherit; color: inherit; }
 [dir="rtl"] .hero-b-left .hero-inner { margin-inline-start: auto; }
 .hero-b-left .subhead { margin-top: 24px; max-width: 480px; color: var(--on-navy-2); }
 .trust-line { margin-top: 28px; font-size: var(--fs-small); font-weight: 600; color: var(--on-navy-4); }
+.hero-b .eyebrow::after { content: ''; display: block; width: 64px; height: 3px; margin-top: 14px; background: var(--gold); }
+.hero-trust { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--navy-line); }
+.hero-trust .badge { color: var(--on-navy-2); }
+.hero-trust .dot { background: var(--cyan); }
+.findings { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+.findings-title { font-size: var(--fs-small); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; }
+[dir="rtl"] .findings-title { letter-spacing: 0; text-transform: none; }
+.findings li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-top: 1px solid var(--mist); font-size: var(--fs-small); color: var(--ink-2); }
+.findings li:first-child { border-top: 0; }
+.findings .dot { margin-top: 6px; }
+.findings li > span:nth-child(2) { flex: 1; }
+.finding-tag { flex: none; padding: 2px 8px; border-radius: 999px; background: var(--mist); color: var(--ink-3); font-weight: 700; }
+.dc-badge { display: inline-flex; align-items: center; gap: 6px; }
+.pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); }
 .hero-b-right { display: flex; align-items: center; justify-content: center; background: var(--mist); padding: clamp(32px, 5vw, 48px) var(--gutter); }
 .dashboard-card { width: 100%; max-width: 520px; padding: 28px; background: var(--white); border-radius: 10px; box-shadow: var(--shadow-card); }
 .dc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -522,6 +538,45 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .plain li { margin-bottom: 4px; }
 .wa-btn { margin-top: 4px; }
 .address { margin-bottom: 8px; }
+
+/* ---------- Motion ----------
+   Everything is transform/opacity (compositor-only). Load-time entrance in the hero, viewport-triggered
+   reveals elsewhere via a small IntersectionObserver in main.js (adds .in / .js-motion). Users who prefer
+   reduced motion get final states immediately; without JS everything is visible. */
+.js-motion .rise { opacity: 0; transform: translateY(14px); animation: rise .6s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--i, 0) * 110ms); }
+@keyframes rise { to { opacity: 1; transform: none; } }
+.js-motion .bar { transform: scaleY(0); transform-origin: bottom; animation: grow .8s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(420ms + var(--i, 0) * 90ms); }
+@keyframes grow { to { transform: scaleY(1); } }
+.js-motion .kpi { opacity: 0; animation: rise .5s ease-out forwards; animation-delay: calc(300ms + var(--i, 0) * 90ms); }
+.js-motion .findings li { opacity: 0; transform: translateX(-8px); animation: slide .5s ease-out forwards; animation-delay: calc(1100ms + var(--i, 0) * 140ms); }
+[dir="rtl"] .js-motion .findings li { transform: translateX(8px); }
+@keyframes slide { to { opacity: 1; transform: none; } }
+.js-motion .pulse { animation: pulse 1.6s ease-out 1.2s 2; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(27,183,205,.55); } 100% { box-shadow: 0 0 0 10px rgba(27,183,205,0); } }
+/* viewport reveals */
+.js-motion .reveal { opacity: 0; transform: translateY(12px); transition: opacity .45s ease-out, transform .45s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i, 0) * 70ms); }
+.js-motion .reveal.in { opacity: 1; transform: none; }
+/* timeline draws when it enters */
+.js-motion .timeline::before { transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(.2,.7,.2,1); }
+[dir="rtl"] .js-motion .timeline::before { transform-origin: right; }
+.js-motion .timeline.in::before { transform: scaleX(1); }
+.js-motion .timeline .step-dot { transform: scale(0); transition: transform .35s cubic-bezier(.2,.7,.2,1); transition-delay: calc(200ms + var(--i, 0) * 220ms); }
+.js-motion .timeline.in .step-dot { transform: scale(1); }
+@media (max-width: 899px) { .js-motion .timeline::before { transform: scaleY(0); transform-origin: top; } .js-motion .timeline.in::before { transform: scaleY(1); } }
+/* hover precision: top rule extends, number tints */
+.index-row .num, .agent .num, .pillar .num, .service-card .num { transition: color .2s; }
+.index-row:hover .num, .agent:hover .num, .service-card:hover .num { color: var(--cyan); }
+.page-services .service-card { position: relative; transition: border-color .2s; }
+.page-services .service-card::before { content: ''; position: absolute; top: -2px; inset-inline-start: 0; width: 40px; height: 2px; background: var(--cyan); transition: width .35s cubic-bezier(.2,.7,.2,1); }
+.page-services .service-card:hover::before { width: 100%; }
+.agent, .case, .plan { transition: border-color .2s; }
+.status-available .dot-pulse { animation: pulse 1.6s ease-out 1; }
+.count { font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js-motion .rise, .js-motion .bar, .js-motion .kpi, .js-motion .findings li, .js-motion .reveal, .js-motion .timeline::before, .js-motion .timeline .step-dot { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+  .js-motion .pulse { animation: none; }
+}
 
 /* ---------- Motion / print ---------- */
 @media (prefers-reduced-motion: reduce) {

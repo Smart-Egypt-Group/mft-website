@@ -31,7 +31,11 @@ module.exports = function home(ctx, opts = {}) {
     .join('');
 
   const facts = H.proof.facts
-    .map((f) => `<li class="fact"><span class="fact-value lat">${esc(f.value)}</span><span class="fact-label">${t(f.label)}</span></li>`)
+    .map((f, i) => {
+      const m = String(f.value).match(/^(\d+)(\+?)$/);
+      const val = m ? `<span class="count" data-count="${m[1]}">${m[1]}</span>${m[2]}` : esc(f.value);
+      return `<li class="fact reveal" style="--i:${i}"><span class="fact-value lat">${val}</span><span class="fact-label">${t(f.label)}</span></li>`;
+    })
     .join('');
 
   const cases = H.stories.cases
