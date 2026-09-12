@@ -17,7 +17,9 @@ Verified live on 10 Sep 2026 with Ahmed's approval: a test lead sent through the
 
 ## Decided and implemented (no action)
 
-- 11 Sep 2026: the GitHub Pages preview form now posts directly to Odoo (`FORM_MODE=odoo-direct`). Verified with real-browser submissions on the live URL: leads #900 (Arabic) and #901 (English) in CRM, plus #899 from the session-less curl probe. All four test leads (#898–#901) are labelled "delete me" — delete them from CRM when convenient.
+- 12 Sep 2026 (sales-channel update, Ahmed's assumptions accepted): all 12 agent roles published with real statuses; Consultant omitted (not built). Auditor + Virtual CFO sold as a **managed service by MFT** (standalone MFT Intelligence). Inside seg-audit the same two agents are **built into the report pipeline** ("every report AI-reviewed before it reaches you"), not a paid add-on; described as "in final review, enabled after the AI disclosure is published". AI providers are not named on the site; policy "available on request". Odoo ERP-delivery agents are not mentioned. Quote form posts to CRM with title prefix "Quote request:" and scope fields in the description (verified: leads #904/#905).
+
+- 11 Sep 2026: the GitHub Pages preview form now posts directly to Odoo (`FORM_MODE=odoo-direct`). Verified with real-browser submissions on the live URL: leads #900 (Arabic) and #901 (English) in CRM, plus #899 from the session-less curl probe. Test leads #898–#905 are labelled "delete me" — delete them from CRM when convenient (#902–#905 are the 12 Sep contact + quote form tests).
 
 - 11 Sep 2026, from Ahmed's reference HTML: navy is the dominant colour, cyan the accent. Home uses hero B (split dashboard), the navbar is navy with the white logo and cyan CTA, and the navy / cyan / gold / gray palette applies site-wide. Two earlier blue-accent iterations were reverted.
 

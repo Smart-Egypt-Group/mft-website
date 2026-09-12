@@ -36,7 +36,7 @@ src/
     html.js             helpers: escaping, {lat}/{accent} tokens, URL resolution
     layout.js           <head> (canonical, hreflang, OG, JSON-LD), header, footer, CTA band
     partials/hero.js    hero A (trust strip, primary) and hero B (split dashboard, alternative)
-    pages/              home, services (index + detail), industries, about, contact, privacy, 404
+    pages/              home, services (index + detail), industries, intelligence (+ agent pages), request-quote, about, contact, privacy, 404
   styles/main.css       tokens, base, components, RTL rules, print
   scripts/main.js       mobile nav, form validation + submit (progressive enhancement)
   assets/               fonts/, logo/, img/ (OG images)
@@ -74,6 +74,16 @@ Slugs (`services.items[].slug`, `industries.items[].slug`) are shared between la
 
 `PENDING-DECISIONS.md` lists the three open decisions and exactly where each lands in the code.
 The pricing section is written but hidden (`site.config.js → showPricingSlot: false`) until packages are approved; `npm run dev` marks it with a yellow tag when shown.
+
+## SEO / GEO
+
+- Every page: schema.org graph (Organization with address and sameAs, WebSite, WebPage, BreadcrumbList); service and agent pages add `Service`; pages with FAQs add `FAQPage`. `npm run check` fails on invalid JSON-LD.
+- Each service and agent page opens with an explicit one-sentence definition; FAQs are real question/answer pairs in `<details>`.
+- `dist/llms.txt` summarises services, agents, facts and contact for generative engines; `sitemap.xml` with hreflang; canonical + `hreflang` on every page.
+
+## Motion
+
+Compositor-only (`transform`/`opacity`), no libraries. Hero: staggered entrance, bars grow, counters count up, sample findings slide in. Site-wide: viewport reveals via one IntersectionObserver, timeline draw, governance flow diagram draw (SVG `stroke-dashoffset`), hover rules. `prefers-reduced-motion` and print show final states; a 5 s fallback reveals anything an observer missed. Note: `scroll-behavior: smooth` means programmatic scroll tests must use `behavior: 'instant'`.
 
 ## Brand rules enforced in code
 
