@@ -103,14 +103,17 @@ module.exports = function home(ctx, opts = {}) {
   </div>
 </section>
 
-<section class="section teaser" aria-labelledby="intel-title">
-  <div class="container teaser-inner">
+<section class="section latest" aria-labelledby="latest-title">
+  <div class="container latest-inner">
     <div>
-      <p class="eyebrow">${t(c.intelligenceTeaser.eyebrow)}</p>
-      <h2 id="intel-title">${t(c.intelligenceTeaser.title)}</h2>
-      <p class="lead">${t(c.intelligenceTeaser.body)}</p>
+      <p class="eyebrow">${t(c.latest.eyebrow)}</p>
+      <h2 id="latest-title">${t(c.latest.title)}</h2>
+      <p class="lead">${t(c.latest.body)}</p>
+      <div class="cta-row">${btn(ctx, c.latest.cta, 'btn btn-navy')}${btn(ctx, c.latest.quote, 'btn btn-link')}</div>
     </div>
-    ${btn(ctx, c.intelligenceTeaser.cta, 'btn btn-navy')}
+    <ul class="latest-facts">
+      ${c.latest.facts.map((f, i) => `<li class="reveal" style="--i:${i}"><span class="fact-value lat"><span class="count" data-count="${esc(f.value)}">${esc(f.value)}</span></span><span class="fact-label">${t(f.label)}</span></li>`).join('')}
+    </ul>
   </div>
 </section>
 

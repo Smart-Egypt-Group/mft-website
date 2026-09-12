@@ -1,4 +1,4 @@
-const { t, url, btn, sectionHead, pad2 } = require('../html');
+const { t, esc, plain, url, btn, sectionHead, pad2 } = require('../html');
 const { ctaBand } = require('../layout');
 
 function pageHeader(ctx, o, crumbs) {
@@ -13,6 +13,26 @@ function pageHeader(ctx, o, crumbs) {
     ${sectionHead(o, 1)}
   </div>
 </section>`;
+}
+
+// FAQ block (details/summary) + FAQPage schema — shared by services, agents and intelligence pages.
+function faqBlock(ctx, title, items) {
+  if (!items || !items.length) return '';
+  return `<section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">${t(title)}</h2>
+    <div class="faq-list">
+      ${items.map((f, i) => `<details class="faq-item reveal" style="--i:${i}"${i === 0 ? ' open' : ''}><summary><h3>${t(f.q)}</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>${t(f.a)}</p></details>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+function faqSchema(items) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((f) => ({ '@type': 'Question', name: plain(f.q), acceptedAnswer: { '@type': 'Answer', text: plain(f.a) } }))
+  };
 }
 
 function index(ctx) {
@@ -52,7 +72,8 @@ function detail(ctx, item) {
   <div class="container detail-grid">
     <article class="detail-main">
       <h2 class="visually-hidden">${t(L.overview)}</h2>
-      ${item.body.map((p) => `<p class="lead">${t(p)}</p>`).join('')}
+      ${item.definition ? `<p class="lead definition">${t(item.definition)}</p>` : ''}
+      ${item.body.map((p) => `<p>${t(p)}</p>`).join('')}
       <h2>${t(L.deliverables)}</h2>
       <ul class="check-list">${item.deliverables.map((d) => `<li>${t(d)}</li>`).join('')}</ul>
       <h2>${t(L.forWho)}</h2>
@@ -66,13 +87,28 @@ function detail(ctx, item) {
     </aside>
   </div>
 </section>
+${faqBlock(ctx, ctx.c.services.faqTitle || (ctx.lang === 'ar' ? 'أسئلة شائعة' : 'Frequently asked'), item.faq)}
 ${ctaBand(ctx)}`;
+  const jsonld = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: plain(item.name),
+      serviceType: plain(item.name),
+      description: plain(item.definition || item.short),
+      provider: { '@type': 'Organization', name: ctx.c.meta.siteName, url: ctx.config.siteUrl },
+      areaServed: ['EG', 'SA', 'US'],
+      availableLanguage: ['ar', 'en']
+    }
+  ];
+  if (item.faq) jsonld.push(faqSchema(item.faq));
   return {
-    title: `${item.name} — ${ctx.c.meta.siteName}`,
+    title: `${plain(item.name)} — ${ctx.c.meta.siteName}`,
     description: item.short,
     body,
-    bodyClass: 'page-service-detail'
+    bodyClass: 'page-service-detail',
+    jsonld
   };
 }
 
-module.exports = { index, detail, pageHeader };
+module.exports = { index, detail, pageHeader, faqBlock, faqSchema };

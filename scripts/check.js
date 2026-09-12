@@ -107,6 +107,10 @@ for (const file of files) {
   for (const m of html.matchAll(/(?:src|href)="(\/assets\/[^"?]+)/g)) {
     if (!fs.existsSync(path.join(DIST, m[1]))) problems.push(`missing asset ${m[1]}`);
   }
+  // JSON-LD must parse and carry a @type
+  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try { const o = JSON.parse(m[1]); if (!o['@type'] && !o['@graph']) problems.push('JSON-LD without @type'); } catch { problems.push('invalid JSON-LD'); }
+  }
   // RTL: no letter-spacing anywhere except inside .lat / reset rules
   if (/dir="rtl"/.test(html) && /style="[^"]*letter-spacing/.test(html)) problems.push('inline letter-spacing on RTL page');
   if (problems.length) { htmlIssues++; fail(`${rel}: ${problems.join('; ')}`); }

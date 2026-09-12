@@ -3,7 +3,7 @@ const { ctaBand } = require('../layout');
 const { pageHeader } = require('./services');
 
 module.exports = function about(ctx) {
-  const A = ctx.c.about;
+  const A = Object.assign({}, ctx.c.about, { milestones: ctx.c.milestones });
   const body = `${pageHeader(ctx, A.page)}
 <section class="section" aria-labelledby="story-title">
   <div class="container narrow">
@@ -39,7 +39,16 @@ module.exports = function about(ctx) {
   </div>
 </section>
 
-<section class="section section-mist" aria-labelledby="offices-title">
+<section class="section section-mist" aria-labelledby="ms-title">
+  <div class="container">
+    <div class="section-head"><h2 id="ms-title">${t(A.milestones.title)}</h2></div>
+    <ol class="milestones">
+      ${A.milestones.items.map((m, i) => `<li class="milestone reveal" style="--i:${i}"><span class="ms-when lat">${t(m.when)}</span><div><h3>${t(m.title)}</h3><p>${t(m.body)}</p></div></li>`).join('')}
+    </ol>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="offices-title">
   <div class="container">
     <div class="section-head"><h2 id="offices-title">${t(A.offices.title)}</h2></div>
     <ul class="grid grid-3 offices">

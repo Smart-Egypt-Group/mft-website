@@ -37,6 +37,8 @@ const contact = require('./src/templates/pages/contact');
 const notFound = require('./src/templates/pages/notfound');
 const privacy = require('./src/templates/pages/privacy');
 const intelligence = require('./src/templates/pages/intelligence');
+const agentPage = require('./src/templates/pages/agent');
+const quote = require('./src/templates/pages/quote');
 
 const markPlaceholders = process.argv.includes('--mark-placeholders') || process.env.MARK_PLACEHOLDERS === '1';
 const buildId = Date.now().toString(36);
@@ -66,6 +68,8 @@ function pageList(c) {
     ...c.services.items.map((item) => ({ path: `services/${item.slug}/`, render: (ctx) => services.detail(ctx, ctx.c.services.items.find((s) => s.slug === item.slug)) })),
     { path: 'industries/', render: (ctx) => industries(ctx) },
     { path: 'intelligence/', render: (ctx) => intelligence(ctx) },
+    ...c.agentPages.items.map((a) => ({ path: `intelligence/${a.slug}/`, render: (ctx) => agentPage(ctx, ctx.c.agentPages.items.find((x) => x.slug === a.slug)) })),
+    { path: 'request-quote/', render: (ctx) => quote(ctx) },
     { path: 'about/', render: (ctx) => about(ctx) },
     { path: 'contact/', render: (ctx) => contact(ctx) },
     { path: 'privacy/', render: (ctx) => privacy(ctx) },
@@ -135,6 +139,32 @@ function build() {
       ''
     ].join('\n')
   );
+
+  // llms.txt — plain-text summary for generative engines (GEO)
+  const en = contents.en;
+  write('llms.txt', [
+    `# ${en.meta.siteName} (MFT)`,
+    '',
+    `> ${en.meta.description}`,
+    '',
+    '## Services',
+    ...en.services.items.map((sv) => `- [${sv.name}](${config.siteUrl}/en/services/${sv.slug}/): ${sv.definition || sv.short}`),
+    '',
+    '## MFT Intelligence AI agents',
+    `- ${en.intelligence.definition}`,
+    ...en.intelligence.agents.map((a) => `- ${a.name} (${en.intelligence.statusLabels[a.status]}): ${a.does[0]}. ${a.benefit}`),
+    `- Pricing: ${en.intelligence.plans.note} Request a quote: ${config.siteUrl}/en/request-quote/`,
+    '',
+    '## Facts',
+    '- CPA-led team; Odoo Certified Partner; ISO-aligned internal controls; 500+ reports delivered; Egypt, Saudi Arabia, US.',
+    '- Agents draft only; every action needs a named human approval (two above ISA 320 materiality); corrections by reversal, never deletion.',
+    '- AI governance policy enforced in code; run log retained 7 years (ISA 230); client data stays on the client’s own ERP.',
+    '',
+    '## Contact',
+    `- ${config.contact.email} · ${config.contact.phones.map((p) => p.display).join(' · ')} · ${config.siteUrl}/en/contact/`,
+    `- Arabic site: ${config.siteUrl}/ar/`,
+    ''
+  ].join('\n'));
 
   write('robots.txt', `User-agent: *\nAllow: /\nDisallow: /*/_preview/\nSitemap: ${config.siteUrl}/sitemap.xml\n`);
   write(

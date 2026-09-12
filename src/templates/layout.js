@@ -37,13 +37,32 @@ function head(ctx, page) {
   ${ctx.lang === 'ar' ? '<link rel="preload" href="/assets/fonts/cairo-arabic-var.woff2" as="font" type="font/woff2" crossorigin>' : ''}
   <link rel="stylesheet" href="/assets/css/main.css?v=${ctx.buildId}">
   ${analytics}
-  <script type="application/ld+json">${JSON.stringify(orgSchema(ctx))}</script>`;
+  <script type="application/ld+json">${JSON.stringify(siteGraph(ctx, page))}</script>
+  ${(page.jsonld || []).map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n  ')}`;
+}
+
+function siteGraph(ctx, page) {
+  const { c, config } = ctx;
+  const org = orgSchema(ctx);
+  org['@id'] = `${config.siteUrl}/#organization`;
+  const crumbs = [{ name: c.ui.breadcrumbHome, item: `${config.siteUrl}/${ctx.lang}/` }];
+  const parts = ctx.path.replace(/\/$/, '').split('/').filter(Boolean);
+  let acc = '';
+  for (const part of parts) { acc += part + '/'; crumbs.push({ name: part, item: `${config.siteUrl}/${ctx.lang}/${acc}` }); }
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      org,
+      { '@type': 'WebSite', '@id': `${config.siteUrl}/#website`, url: config.siteUrl, name: c.meta.siteName, inLanguage: ['ar', 'en'], publisher: { '@id': org['@id'] } },
+      { '@type': 'WebPage', url: `${config.siteUrl}/${ctx.lang}/${ctx.path}`, name: plain(page.title || c.meta.siteName), description: plain(page.description || c.meta.description), inLanguage: ctx.lang, isPartOf: { '@id': `${config.siteUrl}/#website` } },
+      ...(crumbs.length > 1 ? [{ '@type': 'BreadcrumbList', itemListElement: crumbs.map((cr, i) => ({ '@type': 'ListItem', position: i + 1, name: cr.name, item: cr.item })) }] : [])
+    ]
+  };
 }
 
 function orgSchema(ctx) {
   const { c, config } = ctx;
   return {
-    '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: c.meta.siteName,
     alternateName: c.meta.shortName,
@@ -52,7 +71,10 @@ function orgSchema(ctx) {
     email: config.contact.email,
     telephone: config.contact.phones[0] && config.contact.phones[0].tel,
     areaServed: ['EG', 'SA', 'US'],
-    knowsLanguage: ['ar', 'en']
+    knowsLanguage: ['ar', 'en'],
+    address: { '@type': 'PostalAddress', streetAddress: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis', addressLocality: 'Cairo', addressCountry: 'EG' },
+    sameAs: Object.values(config.contact.social || {}).filter(Boolean),
+    knowsAbout: ['Odoo ERP implementation', 'Internal audit', 'Virtual CFO', 'ISA 320 materiality', 'ZATCA e-invoicing', 'Egyptian e-invoicing (ETA)', 'AI agents for finance']
   };
 }
 
