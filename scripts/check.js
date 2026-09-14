@@ -46,7 +46,16 @@ const PAIRS = [
   ['cyan-text', 'white', 4.5, 'eyebrow, accent word, links on white'],
   ['cyan-text', 'mist', 4.5, 'eyebrow on mist'],
   ['cyan', 'navy', 4.5, 'eyebrow / numbers on navy sections'],
-  ['navy', 'cyan', 4.5, 'primary CTA label, cyan band text'],
+  ['navy', 'cyan', 4.5, 'cyan band text'],
+  ['white', 'accent', 4.5, 'primary CTA label (brand accent #0F7C91)'],
+  ['accent', 'white', 4.5, 'links / accent text on white'],
+  ['accent', 'mist', 4.5, 'links / accent text on mist'],
+  ['sev-critical', 'navy', 4.5, 'risk panel: critical count'],
+  ['sev-critical-text', 'navy', 4.5, 'risk panel: critical label'],
+  ['sev-high', 'navy', 4.5, 'risk panel: high count'],
+  ['sev-high-text', 'navy', 4.5, 'risk panel: high label'],
+  ['sev-medium', 'navy', 4.5, 'risk panel: medium count'],
+  ['sev-medium-text', 'navy', 4.5, 'risk panel: medium label'],
   ['white', 'navy', 4.5, 'navy sections, footer'],
   ['on-navy-2', 'navy', 4.5, 'secondary text on navy'],
   ['on-navy-3', 'navy', 4.5, 'tertiary text on navy'],
@@ -67,6 +76,9 @@ console.log(`  · reference: brand cyan on white = ${cyanOnWhite.toFixed(2)}:1, 
 // Make sure no rule sets text colour to raw cyan/gold on a light surface.
 if (/color:\s*var\(--gold\)/.test(CSS)) fail('CSS sets a text colour to --gold');
 else ok('gold is never used as a text colour');
+// Brand rule (palette.json): mark-cyan #1BB7CD is never a button fill.
+if (/\.btn[\w-]*\s*\{[^}]*background:\s*var\(--cyan\)/.test(CSS)) fail('a button uses --cyan as its fill (brand: accent only)');
+else ok('no button is filled with mark-cyan');
 
 /* ---------- 2. HTML ---------- */
 function walk(dir, out = []) {
@@ -113,9 +125,14 @@ for (const file of files) {
   }
   // RTL: no letter-spacing anywhere except inside .lat / reset rules
   if (/dir="rtl"/.test(html) && /style="[^"]*letter-spacing/.test(html)) problems.push('inline letter-spacing on RTL page');
+  // Copy rule (Ahmed, 14 Sep 2026): no em/en dash in any user-facing text. Check rendered text,
+  // attributes (title, alt, aria-label) and JSON-LD alike: everything a visitor or crawler reads.
+  const visible = html.replace(/<script(?![^>]*ld\+json)[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<!--[\s\S]*?-->/g, '');
+  const dashes = visible.match(/[\u2013\u2014\u2015]/g) || [];
+  if (dashes.length) problems.push(`${dashes.length} long dash(es) in user-facing text`);
   if (problems.length) { htmlIssues++; fail(`${rel}: ${problems.join('; ')}`); }
 }
-if (!htmlIssues) ok('lang/dir, single h1, alt text, labels, tokens, links, assets');
+if (!htmlIssues) ok('lang/dir, single h1, alt text, labels, tokens, links, assets, no long dashes');
 
 /* ---------- 3. Content is final ---------- */
 console.log('\nContent:');

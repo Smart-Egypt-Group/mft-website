@@ -12,9 +12,10 @@ module.exports = {
   defaultLang: 'ar',
   languages: ['ar', 'en'],
 
-  // Home hero variant. 'B' = split-screen dashboard (Ahmed's reference file, 11 Sep 2026);
-  // 'A' = trust-strip hero, still previewable at /_preview/hero-a/.
-  heroVariant: 'B',
+  // Home hero variant. 'C' = single navy hero with the risk-dashboard hook (Ahmed approved the
+  // concept, 14 Sep 2026). 'B' = split dashboard (11 Sep) and 'A' = trust strip stay previewable
+  // at /_preview/hero-b/ and /_preview/hero-a/.
+  heroVariant: 'C',
 
   // Lead form. The static form POSTs JSON to this endpoint. Default is the
   // Netlify function in /functions/lead.js which forwards to Odoo CRM (crm.lead).

@@ -103,7 +103,7 @@ ${ctaBand(ctx)}`;
   ];
   if (item.faq) jsonld.push(faqSchema(item.faq));
   return {
-    title: `${plain(item.name)} — ${ctx.c.meta.siteName}`,
+    title: `${plain(item.name)} | ${ctx.c.meta.siteName}`,
     description: item.short,
     body,
     bodyClass: 'page-service-detail',
