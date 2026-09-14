@@ -119,6 +119,12 @@ for (const file of files) {
   for (const m of html.matchAll(/(?:src|href)="(\/assets\/[^"?]+)/g)) {
     if (!fs.existsSync(path.join(DIST, m[1]))) problems.push(`missing asset ${m[1]}`);
   }
+  // Lead forms must be wired: never ship a form with an empty endpoint (dead CTA)
+  for (const f of html.match(/<form[^>]*id="lead-form"[^>]*>/g) || []) {
+    const ep = (f.match(/data-endpoint="([^"]*)"/) || [])[1];
+    if (!ep) problems.push('lead form has an EMPTY data-endpoint (form would show "not available")');
+    else if (!/^https:\/\/fin-tech\.odoo\.com\/website\/form\/crm\.lead$|^\/\.netlify\/functions\/lead$|^https?:\/\//.test(ep)) problems.push(`lead form endpoint looks wrong: ${ep}`);
+  }
   // JSON-LD must parse and carry a @type
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try { const o = JSON.parse(m[1]); if (!o['@type'] && !o['@graph']) problems.push('JSON-LD without @type'); } catch { problems.push('invalid JSON-LD'); }

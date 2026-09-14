@@ -21,14 +21,15 @@ module.exports = {
   // Netlify function in /functions/lead.js which forwards to Odoo CRM (crm.lead).
   // Set to '' to disable network submission (the form then shows the direct
   // contact fallback). See README → "Lead form".
-  formEndpoint: '/.netlify/functions/lead',
-  // 'function'    → POST JSON to formEndpoint (Netlify function → Odoo). Readable response.
-  // 'odoo-direct' → POST form-encoded straight to Odoo's public website-form route from the
-  //                 browser (no server needed — used on GitHub Pages). Odoo skips the CSRF check
-  //                 for unauthenticated sessions and returns no CORS header, so the browser sends
-  //                 in no-cors mode and treats a delivered request as success. Verified live:
-  //                 leads #898 (server path) and #899 (session-less POST) on fin-tech.odoo.com.
-  formMode: 'function',
+  // Lead delivery. DEFAULT = 'odoo-direct': the browser posts straight to Odoo's public
+  // website-form route, which works on ANY host (GitHub Pages, Netlify, a plain folder) with
+  // no server and no env var. This is the mode verified live (leads #898-#907). The Netlify
+  // function path is opt-in: FORM_MODE=function at build time (readable response, needs the
+  // function deployed). An EMPTY endpoint is refused by `npm run check` so the
+  // "online submission not available" message can never ship by accident (14 Sep 2026 incident:
+  // a preview built with FORM_ENDPOINT= was reviewed as if it were the live site).
+  formMode: 'odoo-direct',
+  formEndpoint: '/.netlify/functions/lead', // used only when formMode === 'function'
   odooFormUrl: 'https://fin-tech.odoo.com/website/form/crm.lead',
 
   // Contact details — taken from the official contact page

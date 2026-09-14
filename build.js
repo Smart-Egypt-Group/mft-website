@@ -12,12 +12,16 @@ const config = require('./src/site.config.js');
 // Preview/CI overrides (never edit site.config.js for a temporary deploy):
 //   SITE_URL       canonical origin, e.g. https://smart-egypt-group.github.io/mft-website-preview
 //   BASE_PATH      sub-path the site is served from, e.g. /mft-website-preview  (default: none)
-//   FORM_ENDPOINT  '' to disable online submission on hosts without the function
+//   FORM_ENDPOINT  override the function endpoint (formMode=function only). An empty value is REFUSED.
 if (process.env.SITE_URL) config.siteUrl = process.env.SITE_URL.replace(/\/$/, '');
-if (process.env.FORM_ENDPOINT !== undefined) config.formEndpoint = process.env.FORM_ENDPOINT;
-//   FORM_MODE      'function' (default) or 'odoo-direct' (static hosts without a function runtime)
+if (process.env.FORM_ENDPOINT !== undefined) {
+  if (!process.env.FORM_ENDPOINT.trim()) { console.error('FORM_ENDPOINT is empty: the lead form would be disabled. Refusing to build.'); process.exit(2); }
+  config.formEndpoint = process.env.FORM_ENDPOINT;
+}
+//   FORM_MODE      'odoo-direct' (default, works on any host) or 'function' (Netlify function)
 if (process.env.FORM_MODE) config.formMode = process.env.FORM_MODE;
 if (config.formMode === 'odoo-direct') config.formEndpoint = config.odooFormUrl;
+if (!config.formEndpoint) { console.error('formEndpoint is empty: refusing to build a site with a dead lead form.'); process.exit(2); }
 const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
 // Rewrite root-absolute URLs (href="/…", src="/…", url('/…'), content="…/assets") to the base path.
 function rebase(text) {
