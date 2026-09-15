@@ -60,5 +60,5 @@ module.exports = function quote(ctx) {
   </div>
 </section>
 ${seeAlso(ctx, [{ label: ctx.c.intelligence.page.eyebrow, href: 'intelligence/' }, ...ctx.c.agentPages.items.map((a) => ({ label: a.name, href: `intelligence/${a.slug}/` })), { label: ctx.c.contact.page.eyebrow, href: 'contact/' }])}`;
-  return { title: Q.title, description: Q.description, body, bodyClass: 'page-quote' };
+  return { title: Q.title, description: Q.description, body, bodyClass: 'page-quote', motion: false };
 };

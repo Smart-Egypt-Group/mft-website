@@ -18,5 +18,5 @@ module.exports = function privacy(ctx) {
   </div>
 </section>
 ${seeAlso(ctx, [{ label: ctx.c.contact.page.eyebrow, href: 'contact/' }, { label: ctx.c.about.page.eyebrow, href: 'about/' }])}`;
-  return { title: P.title, description: P.description, body, bodyClass: 'page-privacy' };
+  return { title: P.title, description: P.description, body, bodyClass: 'page-privacy', motion: false };
 };

@@ -87,7 +87,7 @@ Audited against Ahmed's 20-point list; 19 of 20 in place. Location pages (`egypt
 
 ## Motion
 
-Compositor-only (`transform`/`opacity`), no libraries. Hero: staggered entrance, bars grow, counters count up, sample findings slide in. Site-wide: viewport reveals via one IntersectionObserver, timeline draw, governance flow diagram draw (SVG `stroke-dashoffset`), hover rules. `prefers-reduced-motion` and print show final states; a 5 s fallback reveals anything an observer missed. Note: `scroll-behavior: smooth` means programmatic scroll tests must use `behavior: 'instant'`.
+Scroll reveals use **GSAP 3 + ScrollTrigger** (npm dependency `gsap`, free for commercial use since April 2025), self-hosted from `node_modules` into `dist/assets/js/vendor/` at build time so the CSP stays `script-src 'self'`. `src/scripts/motion.js` registers ScrollTrigger once and exposes one utility, `mftReveal(selector, opts)`: opacity plus a 14 px vertical offset, starting at 92% of the viewport, once per element; vertical only, so RTL and LTR behave identically. It wraps section heads, grids, index rows, cards, FAQ items and the drawn elements (timeline, governance flow, counters). Hover states on buttons and cards are CSS transitions only. `prefers-reduced-motion` or a missing GSAP shows every element in its final state; a 5 s insurance reveals anything a trigger missed. Pages that do not need it (contact, quote, privacy, 404) do not load GSAP (`page.motion = false`). Cost on motion pages: about 117 KB raw / roughly 45 KB gzipped, deferred, after first paint.
 
 ## Brand rules enforced in code
 

@@ -10,5 +10,5 @@ module.exports = function notFound(ctx) {
     <p class="cta-row"><a class="btn btn-navy" href="${url(ctx, '')}">${t(N.link)}</a></p>
   </div>
 </section>`;
-  return { title: `${N.title} | ${ctx.c.meta.siteName}`, description: N.body, body, bodyClass: 'page-404' };
+  return { title: `${N.title} | ${ctx.c.meta.siteName}`, description: N.body, body, bodyClass: 'page-404', motion: false };
 };

@@ -94,6 +94,10 @@ function build() {
 
   // Assets
   copyDir(path.join(SRC, 'assets'), path.join(DIST, 'assets'));
+  // GSAP + ScrollTrigger (npm dependency, self-hosted so the CSP stays script-src 'self').
+  mkdirp(path.join(DIST, 'assets', 'js', 'vendor'));
+  for (const f of ['gsap.min.js', 'ScrollTrigger.min.js']) fs.copyFileSync(path.join(ROOT, 'node_modules', 'gsap', 'dist', f), path.join(DIST, 'assets', 'js', 'vendor', f));
+  const gsapVersion = require('./node_modules/gsap/package.json').version;
   for (const f of fs.readdirSync(path.join(SRC, 'styles'))) write(`assets/css/${f}`, fs.readFileSync(path.join(SRC, 'styles', f), 'utf8'));
   for (const f of fs.readdirSync(path.join(SRC, 'scripts'))) write(`assets/js/${f}`, fs.readFileSync(path.join(SRC, 'scripts', f), 'utf8'));
 
@@ -107,7 +111,7 @@ function build() {
     for (const page of pageList(c)) {
       const altPaths = {};
       for (const l of config.languages) altPaths[l] = page.path;
-      const ctx = { lang, c, config, path: page.path, altPaths, buildId, markPlaceholders };
+      const ctx = { lang, c, config, path: page.path, altPaths, buildId, gsapVersion, markPlaceholders };
       const rendered = page.render(ctx);
       let html = layout(ctx, rendered);
       if (page.noindex) html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n  <meta name="viewport"');

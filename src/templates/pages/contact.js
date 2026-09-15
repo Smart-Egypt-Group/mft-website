@@ -97,5 +97,5 @@ module.exports = function contact(ctx) {
 </section>
 ${faqBlock(ctx, ctx.c.ui.faqTitle, ctx.c.contactFaq)}
 ${seeAlso(ctx, [{ label: ctx.c.quote.page.eyebrow, href: 'request-quote/' }, { label: ctx.c.services.page.eyebrow, href: 'services/' }, ...ctx.c.locations.items.map((x) => ({ label: x.name, href: `${x.slug}/` }))])}`;
-  return { title: C.title, description: C.description, body, bodyClass: 'page-contact', jsonld: [faqSchema(ctx.c.contactFaq)] };
+  return { title: C.title, description: C.description, body, bodyClass: 'page-contact', jsonld: [faqSchema(ctx.c.contactFaq)], motion: false };
 };

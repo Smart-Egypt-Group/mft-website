@@ -195,6 +195,9 @@ ${header(ctx)}
 ${page.body}
 </main>
 ${footer(ctx)}
+${page.motion === false ? '' : `<script src="/assets/js/vendor/gsap.min.js?v=${ctx.gsapVersion}" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=${ctx.gsapVersion}" defer></script>
+<script src="/assets/js/motion.js?v=${ctx.buildId}" defer></script>`}
 <script src="/assets/js/main.js?v=${ctx.buildId}" defer></script>
 </body>
 </html>

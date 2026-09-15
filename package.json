@@ -4,12 +4,17 @@
   "private": true,
   "description": "Modern Financial Technology (MFT) — standalone bilingual marketing website. Zero-dependency static build.",
   "type": "commonjs",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "node build.js",
     "dev": "node serve.js",
     "check": "node scripts/check.js",
     "test": "node build.js && node scripts/check.js"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "gsap": "^3.15.0"
+  }
 }
