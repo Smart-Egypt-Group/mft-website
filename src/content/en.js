@@ -32,7 +32,11 @@ module.exports = {
     allIndustries: 'All industries',
     readMore: 'Read more',
     breadcrumbHome: 'Home',
-    placeholderTag: 'Pending decision, hidden in production'
+    placeholderTag: 'Pending decision, hidden in production',
+    seeAlso: 'See also',
+    proofTitle: 'From our engagements',
+    reviewsTitle: 'What clients say',
+    faqTitle: 'Frequently asked'
   },
 
   nav: {
@@ -70,6 +74,13 @@ module.exports = {
           { label: 'Food & Beverage', href: 'industries/#food-beverage' },
           { label: 'Healthcare', href: 'industries/#healthcare' },
           { label: 'Construction', href: 'industries/#construction' }
+        ]
+      },
+      {
+        title: 'Where we work',
+        links: [
+          { label: 'Egypt: Odoo, audit and Virtual CFO', href: 'egypt/' },
+          { label: 'Saudi Arabia: ZATCA-ready Odoo and audit', href: 'saudi-arabia/' }
         ]
       },
       {
@@ -349,6 +360,7 @@ module.exports = {
       intro:
         'Every engagement is led by a licensed accountant who also knows the system your numbers live in. Pick one service, or hand us the whole finance function.'
     },
+    titleSuffix: 'in Egypt and Saudi Arabia | MFT',
     detailLabels: {
       overview: 'Overview',
       deliverables: 'What you get',
@@ -983,6 +995,93 @@ module.exports = {
       { when: 'September 2026', title: 'Execute after approval', body: 'Approved drafts carried into Odoo by a restricted user; one or two named approvals by materiality; reversal-only corrections.' },
       { when: 'September 2026', title: 'seg-audit integration, phase 1', body: 'Auditor and CFO drafts enter the platform’s existing two-stage approval chain. In final review; enabled after the AI disclosure is published.' },
       { when: 'August 2026', title: 'Continuous-audit campaign', body: 'Published anonymised findings from live engagements: transactions missed by manual review surfaced in weeks; a valuation gap caught before year-end close.' }
+    ]
+  },
+
+  homeFaq: [
+    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the seg-audit platform and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
+    { q: 'Is the first report really free?', a: 'Yes. Send your last closed month and you receive a cash-flow and profitability snapshot within 24 hours, one per company, with no commitment.' },
+    { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
+  ],
+  industriesFaq: [
+    { q: 'Which industries does MFT serve?', a: 'Manufacturing, trading and distribution, food and beverage, healthcare and construction, in Egypt and Saudi Arabia. Each sector page lists what usually goes wrong in that sector and how MFT addresses it in Odoo and in the audit programme.' },
+    { q: 'Do you configure Odoo differently per industry?', a: 'Yes. Manufacturing gets routings, work centres and actual costing; trading gets landed costs and credit controls; food and beverage gets lot and expiry tracking with recipe costing; healthcare gets service-line accounting and insurer billing; construction gets project analytic accounting and retentions.' },
+    { q: 'My sector is not listed. Can you still help?', a: 'Usually yes. The five sectors are where MFT has the deepest experience; services companies and groups with mixed activities are onboarded after a scoping call.' }
+  ],
+  aboutFaq: [
+    { q: 'Where is MFT based?', a: 'The head office is on Dr. Sayed Abdel Wahed Street in Korba, Heliopolis, Cairo. Saudi engagements are delivered on site and remotely, and US clients are served remotely.' },
+    { q: 'Who is on the team?', a: 'Licensed accountants and auditors with more than forty years of combined experience in manufacturing, trading and financial services, working alongside certified Odoo implementers, led by the founding auditor.' },
+    { q: 'What is smart audit?', a: 'MFT’s approach of building controls into the system so errors are prevented and caught as they happen: documentation cycles, permissions and segregation of duties, and audit requirements turned into operating rules inside Odoo.' }
+  ],
+  contactFaq: [
+    { q: 'How fast do you reply?', a: 'Within one business day, by email or WhatsApp. Most clients started with a single WhatsApp message.' },
+    { q: 'What should I send for the free first report?', a: 'Your last closed month: a trial balance, an Odoo export or a spreadsheet. No preparation is needed.' },
+    { q: 'Is my data confidential?', a: 'Yes. Files shared for a first report are treated as confidential client data, restricted to the engagement team and deleted on request. Nothing is published about any client without written consent.' }
+  ],
+
+  locations: {
+    labels: { obligations: 'What compliance looks like here', services: 'What MFT delivers in this market', how: 'How engagements run', faq: 'Questions from this market', cta: 'Book a call', quote: 'Request a quote', related: 'Related pages' },
+    items: [
+      {
+        slug: 'egypt',
+        country: 'EG',
+        name: 'Egypt',
+        city: 'Cairo',
+        title: 'Odoo ERP, Internal Audit and Virtual CFO in Egypt | MFT Cairo',
+        description: 'MFT is a CPA-led Odoo partner and audit firm headquartered in Cairo. Odoo ERP with ETA e-invoicing, internal audit programmes and Virtual CFO reporting for Egyptian companies.',
+        eyebrow: 'Egypt',
+        headline: 'Odoo, audit and Virtual CFO for Egyptian companies, from Cairo.',
+        definition: 'MFT is a CPA-led financial technology and audit firm headquartered in Korba, Heliopolis, Cairo, serving companies across Egypt with Odoo ERP implementation, internal audit and Virtual CFO reporting, in Arabic and English.',
+        intro: 'Egyptian finance teams carry the Egyptian Tax Authority e-invoicing mandate, 14% VAT, withholding tax and a market where most ERP implementations stop at go-live. MFT’s Cairo team implements the system, audits the controls around it and reads the results with you every month.',
+        obligations: [
+          'ETA e-invoicing: every issued invoice submitted and validated, with the receipt mandate for B2C',
+          'VAT at 14% with monthly returns, and withholding tax on supplier payments',
+          'Egyptian Accounting Standards and the annual external audit',
+          'Data-protection obligations for personal data held in payroll and HR'
+        ],
+        services: [
+          { title: 'Odoo ERP with ETA built in', body: 'Chart of accounts, e-invoicing submission, withholding and VAT configured by accountants, not just developers.', href: 'services/odoo-erp/' },
+          { title: 'Internal audit, monthly or continuous', body: 'Risk-based programmes run inside your ERP, with findings ranked by impact and an owner for each.', href: 'services/internal-audit/' },
+          { title: 'Virtual CFO', body: 'A monthly management pack and a review call with an MFT accountant, from your first closed month.', href: 'services/virtual-cfo/' },
+          { title: 'MFT Intelligence agents', body: 'The Auditor and Virtual CFO agents, delivered as a managed service with human sign-off.', href: 'intelligence/' }
+        ],
+        how: ['Discovery call at our Cairo office or remotely', 'First free report within 24 hours of receiving your last closed month', 'On-site fieldwork across Egypt when the engagement needs it', 'Reports in Arabic or English, written for owners and boards'],
+        faq: [
+          { q: 'Do you handle ETA e-invoicing inside Odoo?', a: 'Yes. Submission, validation and the B2C receipt mandate are configured in the standard implementation, not as a change request.' },
+          { q: 'Can you work with my external auditor?', a: 'Yes. Findings are classified against ISA and delivered with an evidence trail your external auditor can use directly.' },
+          { q: 'Where is the office?', a: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis, Cairo. Calls and fieldwork are arranged on request.' }
+        ]
+      },
+      {
+        slug: 'saudi-arabia',
+        country: 'SA',
+        name: 'Saudi Arabia',
+        city: 'Riyadh',
+        title: 'ZATCA-ready Odoo ERP, Internal Audit and Virtual CFO in Saudi Arabia | MFT',
+        description: 'MFT delivers ZATCA phase-two Odoo implementations, internal audit and Virtual CFO reporting for Saudi companies, with client data kept in the Kingdom under PDPL.',
+        eyebrow: 'Saudi Arabia',
+        headline: 'ZATCA-ready Odoo, audit and Virtual CFO for Saudi companies.',
+        definition: 'MFT serves Saudi companies with ZATCA phase-two compliant Odoo ERP implementation, internal audit programmes and Virtual CFO reporting, delivered on site and remotely in Arabic and English, with client data remaining on the client’s own systems in line with the Saudi Personal Data Protection Law.',
+        intro: 'Saudi finance teams face ZATCA phase-two integration, 15% VAT, zakat and withholding rules, and a data-protection law that decides where client data may live. MFT builds all of that into the implementation and the audit programme, and its own tax and zakat research covers the Egypt and Saudi treaty position for groups operating in both.',
+        obligations: [
+          'ZATCA e-invoicing phase two: integration, clearance and reporting of invoices',
+          'VAT at 15%, zakat for Saudi and GCC-owned entities, and withholding on payments abroad',
+          'SOCPA standards and the annual external audit',
+          'Personal Data Protection Law: client data stays on the client’s own systems'
+        ],
+        services: [
+          { title: 'Odoo ERP with ZATCA phase two', body: 'Integration, clearance and reporting configured as part of the standard build, with zakat and VAT set per entity.', href: 'services/odoo-erp/' },
+          { title: 'Internal audit', body: 'Risk-based programmes with ISA-classified findings, run on site in the Kingdom or remotely.', href: 'services/internal-audit/' },
+          { title: 'Virtual CFO', body: 'Monthly management packs and cash forecasts in Arabic or English, with a review call each month.', href: 'services/virtual-cfo/' },
+          { title: 'Cross-border structuring', body: 'Egypt and Saudi groups: treaty position, transfer of profits and consolidated reporting.', href: 'services/financial-consulting/' }
+        ],
+        how: ['Discovery call in Arabic or English; on-site visits arranged for fieldwork', 'First free report within 24 hours of receiving your last closed month', 'Client data read from your own Odoo at query time and never copied out of the Kingdom', 'Reports written for owners, boards and Saudi auditors'],
+        faq: [
+          { q: 'Is your Odoo implementation ZATCA phase-two compliant?', a: 'Yes. Integration, clearance and reporting are part of the standard implementation, and the configuration is tested against the ZATCA sandbox before go-live.' },
+          { q: 'Where does my data live?', a: 'On your own Odoo or ERP in the Kingdom. MFT and the MFT Intelligence agents read it at query time and do not copy it, in line with the Personal Data Protection Law.' },
+          { q: 'Do you have a Saudi office?', a: 'Engagements are delivered on site in Saudi Arabia and remotely from Cairo. Fieldwork visits are scheduled as part of the engagement.' }
+        ]
+      }
     ]
   },
 

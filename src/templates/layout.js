@@ -63,16 +63,24 @@ function siteGraph(ctx, page) {
 function orgSchema(ctx) {
   const { c, config } = ctx;
   return {
-    '@type': 'ProfessionalService',
+    '@type': ['ProfessionalService', 'LocalBusiness', 'Organization'],
     name: c.meta.siteName,
     alternateName: c.meta.shortName,
     url: config.siteUrl,
     logo: `${config.siteUrl}/assets/logo/mft-lockup-navy.png`,
     email: config.contact.email,
     telephone: config.contact.phones[0] && config.contact.phones[0].tel,
-    areaServed: ['EG', 'SA', 'US'],
+    areaServed: [
+      { '@type': 'Country', name: 'Egypt', identifier: 'EG' },
+      { '@type': 'Country', name: 'Saudi Arabia', identifier: 'SA' },
+      { '@type': 'Country', name: 'United States', identifier: 'US' }
+    ],
     knowsLanguage: ['ar', 'en'],
-    address: { '@type': 'PostalAddress', streetAddress: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis', addressLocality: 'Cairo', addressCountry: 'EG' },
+    address: { '@type': 'PostalAddress', streetAddress: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis', addressLocality: 'Cairo', addressRegion: 'Cairo Governorate', addressCountry: 'EG' },
+    geo: { '@type': 'GeoCoordinates', latitude: 30.0879, longitude: 31.3241 },
+    contactPoint: [
+      { '@type': 'ContactPoint', contactType: 'sales', telephone: config.contact.phones[0] && config.contact.phones[0].tel, email: config.contact.email, availableLanguage: ['ar', 'en'], areaServed: ['EG', 'SA', 'US'] }
+    ],
     sameAs: Object.values(config.contact.social || {}).filter(Boolean),
     knowsAbout: ['Odoo ERP implementation', 'Internal audit', 'Virtual CFO', 'ISA 320 materiality', 'ZATCA e-invoicing', 'Egyptian e-invoicing (ETA)', 'AI agents for finance']
   };

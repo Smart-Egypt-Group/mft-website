@@ -1,5 +1,5 @@
 const { t, esc, plain } = require('../html');
-const { pageHeader } = require('./services');
+const { pageHeader, seeAlso } = require('./services');
 
 const select = (id, name, label, options) =>
   `<div class="field"><label for="${id}">${t(label)}</label><select id="${id}" name="${name}">${options
@@ -13,7 +13,7 @@ module.exports = function quote(ctx) {
   const cfg = ctx.config;
   const countries = C.countries.map((o) => `<option value="${esc(o.value)}">${esc(o.label)}</option>`).join('');
 
-  const body = `${pageHeader(ctx, Q.page)}
+  const body = `${pageHeader(ctx, Q.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: Q.page.eyebrow }])}
 <section class="section">
   <div class="container contact-grid">
     <form class="lead-form card" id="lead-form" method="post" action="${esc(cfg.formEndpoint || '#')}" novalidate
@@ -58,6 +58,7 @@ module.exports = function quote(ctx) {
       </dl>
     </aside>
   </div>
-</section>`;
+</section>
+${seeAlso(ctx, [{ label: ctx.c.intelligence.page.eyebrow, href: 'intelligence/' }, ...ctx.c.agentPages.items.map((a) => ({ label: a.name, href: `intelligence/${a.slug}/` })), { label: ctx.c.contact.page.eyebrow, href: 'contact/' }])}`;
   return { title: Q.title, description: Q.description, body, bodyClass: 'page-quote' };
 };

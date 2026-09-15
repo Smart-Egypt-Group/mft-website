@@ -1,4 +1,5 @@
 const { t, esc, url, btn, sectionHead, phTag, pad2 } = require('../html');
+const { faqBlock, faqSchema, seeAlso, reviewSchema } = require('./services');
 const { heroA, heroB, heroC } = require('../partials/hero');
 
 module.exports = function home(ctx, opts = {}) {
@@ -150,6 +151,9 @@ ${trust}
 ${caseStudy}
 ${pricing}
 
+${faqBlock(ctx, c.ui.faqTitle, c.homeFaq)}
+${seeAlso(ctx, [{ label: c.services.page.eyebrow, href: 'services/' }, { label: c.intelligence.page.eyebrow, href: 'intelligence/' }, ...c.locations.items.map((x) => ({ label: x.name, href: `${x.slug}/` })), { label: c.about.page.eyebrow, href: 'about/' }])}
+
 <section class="section section-navy final-cta" aria-labelledby="final-title">
   <div class="container narrow">
     <h2 id="final-title" class="display">${t(H.cta.title)}</h2>
@@ -159,5 +163,5 @@ ${pricing}
   </div>
 </section>`;
 
-  return { title: H.title, description: c.meta.description, body, bodyClass: `page-home variant-${variant.toLowerCase()}` };
+  return { title: H.title, description: c.meta.description, body, bodyClass: `page-home variant-${variant.toLowerCase()}`, jsonld: [faqSchema(c.homeFaq), reviewSchema(ctx)].filter(Boolean) };
 };

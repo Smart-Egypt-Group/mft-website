@@ -43,6 +43,7 @@ const privacy = require('./src/templates/pages/privacy');
 const intelligence = require('./src/templates/pages/intelligence');
 const agentPage = require('./src/templates/pages/agent');
 const quote = require('./src/templates/pages/quote');
+const locationPage = require('./src/templates/pages/locations');
 
 const markPlaceholders = process.argv.includes('--mark-placeholders') || process.env.MARK_PLACEHOLDERS === '1';
 const buildId = Date.now().toString(36);
@@ -74,6 +75,7 @@ function pageList(c) {
     { path: 'intelligence/', render: (ctx) => intelligence(ctx) },
     ...c.agentPages.items.map((a) => ({ path: `intelligence/${a.slug}/`, render: (ctx) => agentPage(ctx, ctx.c.agentPages.items.find((x) => x.slug === a.slug)) })),
     { path: 'request-quote/', render: (ctx) => quote(ctx) },
+    ...c.locations.items.map((l) => ({ path: `${l.slug}/`, render: (ctx) => locationPage(ctx, ctx.c.locations.items.find((x) => x.slug === l.slug)) })),
     { path: 'about/', render: (ctx) => about(ctx) },
     { path: 'contact/', render: (ctx) => contact(ctx) },
     { path: 'privacy/', render: (ctx) => privacy(ctx) },
@@ -158,6 +160,9 @@ function build() {
     `- ${en.intelligence.definition}`,
     ...en.intelligence.agents.map((a) => `- ${a.name} (${en.intelligence.statusLabels[a.status]}): ${a.does[0]}. ${a.benefit}`),
     `- Pricing: ${en.intelligence.plans.note} Request a quote: ${config.siteUrl}/en/request-quote/`,
+    '',
+    '## Where we work',
+    ...en.locations.items.map((l) => `- [${l.name}](${config.siteUrl}/en/${l.slug}/): ${l.definition}`),
     '',
     '## Facts',
     '- CPA-led team; Odoo Certified Partner; ISO-aligned internal controls; 500+ reports delivered; Egypt, Saudi Arabia, US.',

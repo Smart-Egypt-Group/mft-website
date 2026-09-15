@@ -81,6 +81,10 @@ The pricing section is written but hidden (`site.config.js → showPricingSlot: 
 - Each service and agent page opens with an explicit one-sentence definition; FAQs are real question/answer pairs in `<details>`.
 - `dist/llms.txt` summarises services, agents, facts and contact for generative engines; `sitemap.xml` with hreflang; canonical + `hreflang` on every page.
 
+## SEO checklist (15 Sep 2026)
+
+Audited against Ahmed's 20-point list; 19 of 20 in place. Location pages (`egypt/`, `saudi-arabia/`), service titles with the market, LocalBusiness schema with geo and contact point, visible breadcrumbs on every inner page, "See also" links on every page, FAQ + FAQPage on home, industries, about, contact and locations, Review schema for the two named testimonials, and client stories plus testimonials on the audit and Virtual CFO service pages. Not done by decision: author bio (no blog exists).
+
 ## Motion
 
 Compositor-only (`transform`/`opacity`), no libraries. Hero: staggered entrance, bars grow, counters count up, sample findings slide in. Site-wide: viewport reveals via one IntersectionObserver, timeline draw, governance flow diagram draw (SVG `stroke-dashoffset`), hover rules. `prefers-reduced-motion` and print show final states; a 5 s fallback reveals anything an observer missed. Note: `scroll-behavior: smooth` means programmatic scroll tests must use `behavior: 'instant'`.
