@@ -17,6 +17,8 @@ Verified live on 10 Sep 2026 with Ahmed's approval: a test lead sent through the
 
 ## Decided and implemented (no action)
 
+- 16 Sep 2026, motion complaints from Ahmed on live: (1) content flickered on every load because the motion class was added after first paint; (2) content lagged behind fast scrolling (invisible up to 600 ms). Frame rate was never the problem (16.6 ms frames, zero long tasks). Fixed and deployed (gh-pages da31e8b): pre-paint class via `pre.js`, hide only below-viewport elements, earlier trigger, instant reveal on fast scroll, hero entrance once per session, ScrollTrigger ignores mobile URL-bar resizes.
+
 - 16 Sep 2026: SEO checklist + GSAP motion deployed to production (gh-pages f31ddcb from feat/risk-hero-trust 9002e58) with Ahmed's approval; 44 pages live at www.seg-audit.com. Post-deploy contact test lead is labelled "delete me".
 
 - 15 Sep 2026, SEO checklist: 12 partial or missing items implemented (location pages EG/SA, market in service titles, LocalBusiness+geo schema, visible breadcrumbs, see-also blocks, FAQ on level-1 pages, Review schema, proof on service pages). Author bio (item 15) skipped by decision: no blog. A blog is a separate content decision.
