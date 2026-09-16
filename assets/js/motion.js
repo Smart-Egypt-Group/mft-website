@@ -32,42 +32,50 @@
 
   // 1) Register once, for the whole site.
   gsap.registerPlugin(ScrollTrigger);
-  html.classList.add('js-motion');
+  html.classList.add('js-motion');   // normally already set by pre.js before first paint
 
-  // 2) The one reveal utility: opacity + a light vertical offset, starting just before the
-  //    element enters the viewport. Vertical only, so RTL and LTR behave identically.
+  // 2) The one reveal utility: opacity + a light vertical offset for content that is still BELOW the
+  //    viewport when the script runs. Anything already visible (fully or partly) is left exactly as
+  //    painted, so a page load or a navigation never flickers. Vertical only, so RTL == LTR.
+  var vh = window.innerHeight;
   function reveal(targets, opts) {
     opts = opts || {};
     var els = typeof targets === 'string' ? document.querySelectorAll(targets) : targets;
-    Array.prototype.forEach.call(els, function (el, i) {
+    Array.prototype.forEach.call(els, function (el) {
       if (el.closest('.hero')) return;                 // hero has its own load-time entrance (CSS)
+      var top = el.getBoundingClientRect().top;
+      if (top < vh) { el.classList.add('in'); Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp); return; }
       el.classList.add('reveal');
-      var delay = parseFloat(el.style.getPropertyValue('--i') || 0) * (opts.stagger || 0.07);
-      gsap.fromTo(el, { autoAlpha: 0, y: opts.y || 14 }, {
-        autoAlpha: 1, y: 0, duration: opts.duration || 0.5, delay: delay, ease: 'power2.out', overwrite: 'auto', clearProps: 'transform',
-        scrollTrigger: { trigger: el, start: 'top 92%', once: true,
-          onEnter: function () { el.classList.add('in'); Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp); if (el.hasAttribute('data-count')) countUp(el); } }
-      });
+      var idx = parseFloat(el.style.getPropertyValue('--i') || 0);
+      var delay = Math.min(idx, 3) * (opts.stagger || 0.05);
+      gsap.set(el, { autoAlpha: 0, y: opts.y || 14 });
+      ScrollTrigger.create({ trigger: el, start: 'top 96%', once: true, onEnter: function () {
+        gsap.to(el, { autoAlpha: 1, y: 0, duration: opts.duration || 0.45, delay: delay, ease: 'power2.out', overwrite: 'auto', clearProps: 'transform' });
+        el.classList.add('in');
+        Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp);
+        if (el.hasAttribute('data-count')) countUp(el);
+      } });
     });
   }
   window.mftReveal = reveal;
 
   // 3) Wrap the main sections: section heads, grids, index rows, definition rows, cards, chips, FAQ items.
+  //    Sibling index for the small stagger is assigned first, so the utility can read it.
   var scope = 'main .section';
-  reveal(scope + ' .section-head', { y: 12 });
-  reveal(scope + ' .grid > *, ' + scope + ' .index-row, ' + scope + ' .deflist-row, ' + scope + ' .cases > *, ' + scope + ' .testimonials > *, ' +
-         scope + ' .plans > *, ' + scope + ' .agents > *, ' + scope + ' .pillars > *, ' + scope + ' .badge-grid > *, ' + scope + ' .chip-row > *, ' +
-         scope + ' .milestone, ' + scope + ' .faq-item, ' + scope + ' .latest-facts > *, ' + scope + ' .num-list > li, ' + scope + ' .see-also-list > li');
-  // Give siblings a stagger index if the template did not set one.
-  Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function (el) {
+  var sel = scope + ' .section-head, ' + scope + ' .grid > *, ' + scope + ' .index-row, ' + scope + ' .deflist-row, ' + scope + ' .cases > *, ' +
+            scope + ' .testimonials > *, ' + scope + ' .plans > *, ' + scope + ' .agents > *, ' + scope + ' .pillars > *, ' + scope + ' .badge-grid > *, ' +
+            scope + ' .chip-row > *, ' + scope + ' .milestone, ' + scope + ' .faq-item, ' + scope + ' .latest-facts > *, ' + scope + ' .num-list > li, ' + scope + ' .see-also-list > li';
+  Array.prototype.forEach.call(document.querySelectorAll(sel), function (el) {
     if (!el.style.getPropertyValue('--i') && el.parentElement) {
       el.style.setProperty('--i', String(Math.min(Array.prototype.indexOf.call(el.parentElement.children, el), 8)));
     }
   });
+  reveal(sel);
 
   // Drawn elements (timeline rail, governance flow, hero trust counters, facts band): class-driven CSS transitions, fired once.
   Array.prototype.forEach.call(document.querySelectorAll('.timeline, .flow-wrap, .facts, .hero-trust, .dashboard-card, .latest-facts'), function (el) {
-    ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: function () {
+    if (el.getBoundingClientRect().top < vh) { el.classList.add('in'); Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp); return; }
+    ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: function () {
       el.classList.add('in');
       Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp);
     } });

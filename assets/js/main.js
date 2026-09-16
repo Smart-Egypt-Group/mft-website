@@ -46,7 +46,11 @@
     requestAnimationFrame(frame);
   }
   var countUp = window.mftCountUp || localCountUp;
-  Array.prototype.forEach.call(document.querySelectorAll('.hero [data-count]'), function (el) { setTimeout(function () { countUp(el); }, 350); });
+  var heroSeen = document.documentElement.classList.contains('hero-seen');
+  Array.prototype.forEach.call(document.querySelectorAll('.hero [data-count]'), function (el) {
+    if (heroSeen) { el.setAttribute('data-counted', '1'); return; }   // settled hero on later pages: final numbers, no replay
+    setTimeout(function () { countUp(el); }, 350);
+  });
 
   /* ---------- Lead form ---------- */
   var form = document.getElementById('lead-form');
