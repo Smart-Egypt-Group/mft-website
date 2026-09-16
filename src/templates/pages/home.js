@@ -1,11 +1,12 @@
 const { t, esc, url, btn, sectionHead, phTag, pad2 } = require('../html');
-const { heroA, heroB } = require('../partials/hero');
+const { faqBlock, faqSchema, seeAlso, reviewSchema } = require('./services');
+const { heroA, heroB, heroC } = require('../partials/hero');
 
 module.exports = function home(ctx, opts = {}) {
   const { c, config } = ctx;
   const H = c.home;
   const variant = opts.heroVariant || config.heroVariant;
-  const hero = variant === 'B' ? heroB(ctx) : heroA(ctx);
+  const hero = variant === 'C' ? heroC(ctx) : variant === 'B' ? heroB(ctx) : heroA(ctx);
 
   const pillars = H.positioning.pillars
     .map(
@@ -79,8 +80,23 @@ module.exports = function home(ctx, opts = {}) {
     .map((p) => `<a href="tel:${esc(p.tel)}" class="lat">${esc(p.display)}</a>`)
     .join(' <span aria-hidden="true">·</span> ');
 
-  const body = `${hero}
+  // Trust: five guarantees that are built, tested and already true on the platform today
+  // (audit ledger, tenant isolation, restored backup, container hardening, test suite).
+  // Nothing here depends on a platform screen that does not exist yet.
+  const trust = H.trust
+    ? `<section class="section trust" aria-labelledby="trust-title">
+  <div class="container">
+    <div class="section-head"><p class="eyebrow">${t(H.trust.eyebrow)}</p><h2 id="trust-title">${t(H.trust.title)}</h2><p class="lead">${t(H.trust.intro)}</p></div>
+    <dl class="deflist">
+      ${H.trust.items.map((x) => `<div class="deflist-row"><dt>${t(x.title)}</dt><dd>${t(x.body)}</dd></div>`).join('')}
+    </dl>
+    <p class="trust-note">${t(H.trust.note)}</p>
+  </div>
+</section>`
+    : '';
 
+  const body = `${hero}
+${trust}
 <section class="section" aria-labelledby="pos-title">
   <div class="container">
     <div class="section-head"><p class="eyebrow">${t(H.positioning.eyebrow)}</p><h2 id="pos-title">${t(H.positioning.title)}</h2><p class="lead">${t(H.positioning.body)}</p></div>
@@ -135,14 +151,17 @@ module.exports = function home(ctx, opts = {}) {
 ${caseStudy}
 ${pricing}
 
+${faqBlock(ctx, c.ui.faqTitle, c.homeFaq)}
+${seeAlso(ctx, [{ label: c.services.page.eyebrow, href: 'services/' }, { label: c.intelligence.page.eyebrow, href: 'intelligence/' }, ...c.locations.items.map((x) => ({ label: x.name, href: `${x.slug}/` })), { label: c.about.page.eyebrow, href: 'about/' }])}
+
 <section class="section section-navy final-cta" aria-labelledby="final-title">
   <div class="container narrow">
     <h2 id="final-title" class="display">${t(H.cta.title)}</h2>
     <p class="lead">${t(H.cta.body)}</p>
     <div class="cta-row">${btn(ctx, H.cta.button, 'btn btn-primary btn-lg')}</div>
-    <p class="alt-contact">${t(H.cta.alt)} — ${phones}</p>
+    <p class="alt-contact">${t(H.cta.alt)} ${phones}</p>
   </div>
 </section>`;
 
-  return { title: H.title, description: c.meta.description, body, bodyClass: `page-home variant-${variant.toLowerCase()}` };
+  return { title: H.title, description: c.meta.description, body, bodyClass: `page-home variant-${variant.toLowerCase()}`, jsonld: [faqSchema(c.homeFaq), reviewSchema(ctx)].filter(Boolean) };
 };

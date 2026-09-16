@@ -1,5 +1,5 @@
 const { t, esc } = require('../html');
-const { pageHeader } = require('./services');
+const { pageHeader, seeAlso } = require('./services');
 
 module.exports = function privacy(ctx) {
   const P = ctx.c.privacy;
@@ -10,12 +10,13 @@ module.exports = function privacy(ctx) {
       return `<h2>${t(s.title)}</h2><p>${body}</p>`;
     })
     .join('');
-  const body = `${pageHeader(ctx, P.page)}
+  const body = `${pageHeader(ctx, P.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: P.page.eyebrow }])}
 <section class="section">
   <div class="container narrow prose">
     ${sections}
     <p class="muted small">${t(P.updated)}</p>
   </div>
-</section>`;
-  return { title: P.title, description: P.description, body, bodyClass: 'page-privacy' };
+</section>
+${seeAlso(ctx, [{ label: ctx.c.contact.page.eyebrow, href: 'contact/' }, { label: ctx.c.about.page.eyebrow, href: 'about/' }])}`;
+  return { title: P.title, description: P.description, body, bodyClass: 'page-privacy', motion: false };
 };

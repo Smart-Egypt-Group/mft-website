@@ -1,5 +1,6 @@
-// Home hero. Variant A = trust-strip hero (primary, approved). Variant B =
-// split-screen dashboard preview (approved alternative). Switch in site.config.js.
+// Home hero. Variant C = single navy surface with the risk-dashboard hook (live, Ahmed's approved
+// concept, 14 Sep 2026). A = trust-strip hero and B = split dashboard stay as /_preview/ pages.
+// Switch in site.config.js.
 const { t, esc, plain, btn } = require('../html');
 
 function heroA(ctx) {
@@ -63,7 +64,7 @@ function heroB(ctx) {
     </div>
   </div>
   <div class="hero-b-right">
-    <div class="dashboard-card rise" style="--i:2" role="img" aria-label="${esc(plain(d.title))} — ${esc(plain(d.caption))}">
+    <div class="dashboard-card rise" style="--i:2" role="img" aria-label="${esc(plain(d.title))}. ${esc(plain(d.caption))}">
       <div class="dc-header"><div class="dc-title">${t(d.title)}</div><div class="dc-badge"><span class="pulse" aria-hidden="true"></span>${t(d.badge)}</div></div>
       <div class="kpi-row">${kpis}</div>
       <div class="chart-area"><div class="bars" aria-hidden="true">${bars}</div><div class="chart-caption">${t(d.caption)}</div></div>
@@ -73,4 +74,32 @@ function heroB(ctx) {
 </section>`;
 }
 
-module.exports = { heroA, heroB };
+// Variant C: navy hero + risk panel. Counters are content-driven (home.heroRisk.risk.counters) and
+// animate with the existing countUp (main.js runs every `.hero [data-count]` on load).
+function heroC(ctx) {
+  const h = ctx.c.home.heroRisk;
+  const r = h.risk;
+  const counters = r.counters
+    .map(
+      (k, i) => `<li class="risk-card risk-${esc(k.level)}" style="--i:${i}"><span class="risk-num lat"><span class="count" data-count="${esc(k.value)}">${esc(k.value)}</span></span><span class="risk-label">${t(k.label)}</span></li>`
+    )
+    .join('');
+  const panelLabel = `${plain(r.title)} ${r.counters.map((k) => `${k.value} ${plain(k.label)}`).join(', ')}. ${plain(r.caption)}`;
+  return `<section class="hero hero-c" aria-labelledby="hero-title">
+  <div class="container hero-c-inner">
+    <div class="hero-copy">
+      <p class="eyebrow rise" style="--i:0">${t(h.eyebrow)}</p>
+      <h1 id="hero-title" class="display rise" style="--i:1">${t(h.headline)}</h1>
+      <p class="subhead rise" style="--i:2">${t(h.subhead)}</p>
+      <div class="cta-row rise" style="--i:3">${btn(ctx, h.cta, 'btn btn-primary btn-lg')}${btn(ctx, h.secondary, 'btn btn-ghost btn-lg')}</div>
+    </div>
+    <div class="risk-panel rise" style="--i:2" role="img" aria-label="${esc(panelLabel)}">
+      <div class="risk-head"><p class="risk-title">${t(r.title)}</p><span class="risk-badge">${t(r.badge)}</span></div>
+      <ul class="risk-row" aria-hidden="true">${counters}</ul>
+      <p class="risk-caption" aria-hidden="true">${t(r.caption)}</p>
+    </div>
+  </div>
+</section>`;
+}
+
+module.exports = { heroA, heroB, heroC };

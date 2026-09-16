@@ -28,7 +28,7 @@ function head(ctx, page) {
   <meta property="og:locale" content="${c.ogLocale}">
   <meta property="og:image" content="${config.siteUrl}/assets/img/og-${ctx.lang}.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#101B3A">
+  <meta name="theme-color" content="#0D1B3E">
   <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
@@ -63,16 +63,24 @@ function siteGraph(ctx, page) {
 function orgSchema(ctx) {
   const { c, config } = ctx;
   return {
-    '@type': 'ProfessionalService',
+    '@type': ['ProfessionalService', 'LocalBusiness', 'Organization'],
     name: c.meta.siteName,
     alternateName: c.meta.shortName,
     url: config.siteUrl,
     logo: `${config.siteUrl}/assets/logo/mft-lockup-navy.png`,
     email: config.contact.email,
     telephone: config.contact.phones[0] && config.contact.phones[0].tel,
-    areaServed: ['EG', 'SA', 'US'],
+    areaServed: [
+      { '@type': 'Country', name: 'Egypt', identifier: 'EG' },
+      { '@type': 'Country', name: 'Saudi Arabia', identifier: 'SA' },
+      { '@type': 'Country', name: 'United States', identifier: 'US' }
+    ],
     knowsLanguage: ['ar', 'en'],
-    address: { '@type': 'PostalAddress', streetAddress: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis', addressLocality: 'Cairo', addressCountry: 'EG' },
+    address: { '@type': 'PostalAddress', streetAddress: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis', addressLocality: 'Cairo', addressRegion: 'Cairo Governorate', addressCountry: 'EG' },
+    geo: { '@type': 'GeoCoordinates', latitude: 30.0879, longitude: 31.3241 },
+    contactPoint: [
+      { '@type': 'ContactPoint', contactType: 'sales', telephone: config.contact.phones[0] && config.contact.phones[0].tel, email: config.contact.email, availableLanguage: ['ar', 'en'], areaServed: ['EG', 'SA', 'US'] }
+    ],
     sameAs: Object.values(config.contact.social || {}).filter(Boolean),
     knowsAbout: ['Odoo ERP implementation', 'Internal audit', 'Virtual CFO', 'ISA 320 materiality', 'ZATCA e-invoicing', 'Egyptian e-invoicing (ETA)', 'AI agents for finance']
   };
@@ -90,7 +98,7 @@ function header(ctx) {
   return `<a class="skip-link" href="#main">${t(c.ui.skip)}</a>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/${ctx.lang}/" aria-label="${esc(c.meta.siteName)} — ${esc(c.ui.home)}">
+    <a class="brand" href="/${ctx.lang}/" aria-label="${esc(c.meta.siteName)}: ${esc(c.ui.home)}">
       <img src="/assets/logo/mft-lockup-white.png" alt="${esc(c.meta.siteName)}" width="2000" height="682" decoding="async" fetchpriority="high">
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -128,7 +136,7 @@ function footer(ctx) {
   const offices = config.contact.offices
     .map((o) => {
       const line = ctx.lang === 'ar' ? o.lineAr : o.line;
-      return `<li>${t(c.footer.offices[o.key])}${line ? ` <span class="muted">— ${t(line)}</span>` : ''}</li>`;
+      return `<li>${t(c.footer.offices[o.key])}${line ? `: <span class="muted">${t(line)}</span>` : ''}</li>`;
     })
     .join('');
   const socialNames = { linkedin: 'LinkedIn', facebook: 'Facebook', instagram: 'Instagram', x: 'X' };
@@ -187,6 +195,9 @@ ${header(ctx)}
 ${page.body}
 </main>
 ${footer(ctx)}
+${page.motion === false ? '' : `<script src="/assets/js/vendor/gsap.min.js?v=${ctx.gsapVersion}" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=${ctx.gsapVersion}" defer></script>
+<script src="/assets/js/motion.js?v=${ctx.buildId}" defer></script>`}
 <script src="/assets/js/main.js?v=${ctx.buildId}" defer></script>
 </body>
 </html>

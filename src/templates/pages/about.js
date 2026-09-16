@@ -1,10 +1,10 @@
 const { t } = require('../html');
 const { ctaBand } = require('../layout');
-const { pageHeader } = require('./services');
+const { pageHeader, faqBlock, faqSchema, seeAlso } = require('./services');
 
 module.exports = function about(ctx) {
   const A = Object.assign({}, ctx.c.about, { milestones: ctx.c.milestones });
-  const body = `${pageHeader(ctx, A.page)}
+  const body = `${pageHeader(ctx, A.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: A.page.eyebrow }])}
 <section class="section" aria-labelledby="story-title">
   <div class="container narrow">
     <h2 id="story-title">${t(A.story.title)}</h2>
@@ -56,6 +56,8 @@ module.exports = function about(ctx) {
     </ul>
   </div>
 </section>
+${faqBlock(ctx, ctx.c.ui.faqTitle, ctx.c.aboutFaq)}
+${seeAlso(ctx, [{ label: ctx.c.intelligence.page.eyebrow, href: 'intelligence/' }, { label: ctx.c.services.page.eyebrow, href: 'services/' }, ...ctx.c.locations.items.map((x) => ({ label: x.name, href: `${x.slug}/` }))])}
 ${ctaBand(ctx)}`;
-  return { title: A.title, description: A.description, body, bodyClass: 'page-about' };
+  return { title: A.title, description: A.description, body, bodyClass: 'page-about', jsonld: [faqSchema(ctx.c.aboutFaq)] };
 };

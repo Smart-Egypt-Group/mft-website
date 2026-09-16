@@ -12,12 +12,16 @@ const config = require('./src/site.config.js');
 // Preview/CI overrides (never edit site.config.js for a temporary deploy):
 //   SITE_URL       canonical origin, e.g. https://smart-egypt-group.github.io/mft-website-preview
 //   BASE_PATH      sub-path the site is served from, e.g. /mft-website-preview  (default: none)
-//   FORM_ENDPOINT  '' to disable online submission on hosts without the function
+//   FORM_ENDPOINT  override the function endpoint (formMode=function only). An empty value is REFUSED.
 if (process.env.SITE_URL) config.siteUrl = process.env.SITE_URL.replace(/\/$/, '');
-if (process.env.FORM_ENDPOINT !== undefined) config.formEndpoint = process.env.FORM_ENDPOINT;
-//   FORM_MODE      'function' (default) or 'odoo-direct' (static hosts without a function runtime)
+if (process.env.FORM_ENDPOINT !== undefined) {
+  if (!process.env.FORM_ENDPOINT.trim()) { console.error('FORM_ENDPOINT is empty: the lead form would be disabled. Refusing to build.'); process.exit(2); }
+  config.formEndpoint = process.env.FORM_ENDPOINT;
+}
+//   FORM_MODE      'odoo-direct' (default, works on any host) or 'function' (Netlify function)
 if (process.env.FORM_MODE) config.formMode = process.env.FORM_MODE;
 if (config.formMode === 'odoo-direct') config.formEndpoint = config.odooFormUrl;
+if (!config.formEndpoint) { console.error('formEndpoint is empty: refusing to build a site with a dead lead form.'); process.exit(2); }
 const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
 // Rewrite root-absolute URLs (href="/…", src="/…", url('/…'), content="…/assets") to the base path.
 function rebase(text) {
@@ -39,6 +43,7 @@ const privacy = require('./src/templates/pages/privacy');
 const intelligence = require('./src/templates/pages/intelligence');
 const agentPage = require('./src/templates/pages/agent');
 const quote = require('./src/templates/pages/quote');
+const locationPage = require('./src/templates/pages/locations');
 
 const markPlaceholders = process.argv.includes('--mark-placeholders') || process.env.MARK_PLACEHOLDERS === '1';
 const buildId = Date.now().toString(36);
@@ -70,6 +75,7 @@ function pageList(c) {
     { path: 'intelligence/', render: (ctx) => intelligence(ctx) },
     ...c.agentPages.items.map((a) => ({ path: `intelligence/${a.slug}/`, render: (ctx) => agentPage(ctx, ctx.c.agentPages.items.find((x) => x.slug === a.slug)) })),
     { path: 'request-quote/', render: (ctx) => quote(ctx) },
+    ...c.locations.items.map((l) => ({ path: `${l.slug}/`, render: (ctx) => locationPage(ctx, ctx.c.locations.items.find((x) => x.slug === l.slug)) })),
     { path: 'about/', render: (ctx) => about(ctx) },
     { path: 'contact/', render: (ctx) => contact(ctx) },
     { path: 'privacy/', render: (ctx) => privacy(ctx) },
@@ -88,6 +94,10 @@ function build() {
 
   // Assets
   copyDir(path.join(SRC, 'assets'), path.join(DIST, 'assets'));
+  // GSAP + ScrollTrigger (npm dependency, self-hosted so the CSP stays script-src 'self').
+  mkdirp(path.join(DIST, 'assets', 'js', 'vendor'));
+  for (const f of ['gsap.min.js', 'ScrollTrigger.min.js']) fs.copyFileSync(path.join(ROOT, 'node_modules', 'gsap', 'dist', f), path.join(DIST, 'assets', 'js', 'vendor', f));
+  const gsapVersion = require('./node_modules/gsap/package.json').version;
   for (const f of fs.readdirSync(path.join(SRC, 'styles'))) write(`assets/css/${f}`, fs.readFileSync(path.join(SRC, 'styles', f), 'utf8'));
   for (const f of fs.readdirSync(path.join(SRC, 'scripts'))) write(`assets/js/${f}`, fs.readFileSync(path.join(SRC, 'scripts', f), 'utf8'));
 
@@ -101,7 +111,7 @@ function build() {
     for (const page of pageList(c)) {
       const altPaths = {};
       for (const l of config.languages) altPaths[l] = page.path;
-      const ctx = { lang, c, config, path: page.path, altPaths, buildId, markPlaceholders };
+      const ctx = { lang, c, config, path: page.path, altPaths, buildId, gsapVersion, markPlaceholders };
       const rendered = page.render(ctx);
       let html = layout(ctx, rendered);
       if (page.noindex) html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n  <meta name="viewport"');
@@ -154,6 +164,9 @@ function build() {
     `- ${en.intelligence.definition}`,
     ...en.intelligence.agents.map((a) => `- ${a.name} (${en.intelligence.statusLabels[a.status]}): ${a.does[0]}. ${a.benefit}`),
     `- Pricing: ${en.intelligence.plans.note} Request a quote: ${config.siteUrl}/en/request-quote/`,
+    '',
+    '## Where we work',
+    ...en.locations.items.map((l) => `- [${l.name}](${config.siteUrl}/en/${l.slug}/): ${l.definition}`),
     '',
     '## Facts',
     '- CPA-led team; Odoo Certified Partner; ISO-aligned internal controls; 500+ reports delivered; Egypt, Saudi Arabia, US.',

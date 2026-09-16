@@ -1,6 +1,6 @@
 const { t, esc, plain, url, btn, pad2 } = require('../html');
 const { ctaBand } = require('../layout');
-const { pageHeader, faqBlock, faqSchema } = require('./services');
+const { pageHeader, faqBlock, faqSchema, seeAlso } = require('./services');
 
 // Governance flow diagram: draft → named approval (1 or 2 by materiality) → execution & log.
 function flowDiagram(ctx) {
@@ -65,7 +65,7 @@ module.exports = function intelligence(ctx) {
     )
     .join('');
 
-  const body = `${pageHeader(ctx, I.page)}
+  const body = `${pageHeader(ctx, I.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: I.page.eyebrow }])}
 <section class="section" aria-labelledby="agents-title">
   <div class="container">
     <div class="section-head"><h2 id="agents-title">${t(I.agentsTitle)}</h2><p class="lead">${t(I.agentsIntro)}</p></div>
@@ -109,6 +109,7 @@ module.exports = function intelligence(ctx) {
 </section>
 
 ${faqBlock(ctx, I.faq.title, I.faq.items)}
+${seeAlso(ctx, [...ctx.c.agentPages.items.map((a) => ({ label: a.name, href: `intelligence/${a.slug}/` })), { label: ctx.c.quote.page.eyebrow, href: 'request-quote/' }, ...ctx.c.locations.items.map((x) => ({ label: x.name, href: `${x.slug}/` }))])}
 ${ctaBand(ctx)}`;
 
   const jsonld = [

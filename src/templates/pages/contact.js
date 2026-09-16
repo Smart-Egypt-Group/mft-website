@@ -1,5 +1,5 @@
 const { t, esc, plain } = require('../html');
-const { pageHeader } = require('./services');
+const { pageHeader, faqBlock, faqSchema, seeAlso } = require('./services');
 
 module.exports = function contact(ctx) {
   const C = ctx.c.contact;
@@ -17,7 +17,7 @@ module.exports = function contact(ctx) {
     .map((o) => `<li>${t(ctx.c.footer.offices[o.key])}</li>`)
     .join('');
 
-  const body = `${pageHeader(ctx, C.page)}
+  const body = `${pageHeader(ctx, C.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: C.page.eyebrow }])}
 <section class="section">
   <div class="container contact-grid">
     <form class="lead-form card" id="lead-form" method="post" action="${esc(cfg.formEndpoint || '#')}" novalidate
@@ -94,6 +94,8 @@ module.exports = function contact(ctx) {
       </dl>
     </aside>
   </div>
-</section>`;
-  return { title: C.title, description: C.description, body, bodyClass: 'page-contact' };
+</section>
+${faqBlock(ctx, ctx.c.ui.faqTitle, ctx.c.contactFaq)}
+${seeAlso(ctx, [{ label: ctx.c.quote.page.eyebrow, href: 'request-quote/' }, { label: ctx.c.services.page.eyebrow, href: 'services/' }, ...ctx.c.locations.items.map((x) => ({ label: x.name, href: `${x.slug}/` }))])}`;
+  return { title: C.title, description: C.description, body, bodyClass: 'page-contact', jsonld: [faqSchema(ctx.c.contactFaq)], motion: false };
 };

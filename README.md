@@ -81,9 +81,13 @@ The pricing section is written but hidden (`site.config.js → showPricingSlot: 
 - Each service and agent page opens with an explicit one-sentence definition; FAQs are real question/answer pairs in `<details>`.
 - `dist/llms.txt` summarises services, agents, facts and contact for generative engines; `sitemap.xml` with hreflang; canonical + `hreflang` on every page.
 
+## SEO checklist (15 Sep 2026)
+
+Audited against Ahmed's 20-point list; 19 of 20 in place. Location pages (`egypt/`, `saudi-arabia/`), service titles with the market, LocalBusiness schema with geo and contact point, visible breadcrumbs on every inner page, "See also" links on every page, FAQ + FAQPage on home, industries, about, contact and locations, Review schema for the two named testimonials, and client stories plus testimonials on the audit and Virtual CFO service pages. Not done by decision: author bio (no blog exists).
+
 ## Motion
 
-Compositor-only (`transform`/`opacity`), no libraries. Hero: staggered entrance, bars grow, counters count up, sample findings slide in. Site-wide: viewport reveals via one IntersectionObserver, timeline draw, governance flow diagram draw (SVG `stroke-dashoffset`), hover rules. `prefers-reduced-motion` and print show final states; a 5 s fallback reveals anything an observer missed. Note: `scroll-behavior: smooth` means programmatic scroll tests must use `behavior: 'instant'`.
+Scroll reveals use **GSAP 3 + ScrollTrigger** (npm dependency `gsap`, free for commercial use since April 2025), self-hosted from `node_modules` into `dist/assets/js/vendor/` at build time so the CSP stays `script-src 'self'`. `src/scripts/motion.js` registers ScrollTrigger once and exposes one utility, `mftReveal(selector, opts)`: opacity plus a 14 px vertical offset, starting at 92% of the viewport, once per element; vertical only, so RTL and LTR behave identically. It wraps section heads, grids, index rows, cards, FAQ items and the drawn elements (timeline, governance flow, counters). Hover states on buttons and cards are CSS transitions only. `prefers-reduced-motion` or a missing GSAP shows every element in its final state; a 5 s insurance reveals anything a trigger missed. Pages that do not need it (contact, quote, privacy, 404) do not load GSAP (`page.motion = false`). Cost on motion pages: about 117 KB raw / roughly 45 KB gzipped, deferred, after first paint.
 
 ## Brand rules enforced in code
 
@@ -115,7 +119,7 @@ Default endpoint: `/.netlify/functions/lead` → `functions/lead.js`. It records
 
 Also `ALLOWED_ORIGIN=https://<site domain>` to restrict CORS. With `formEndpoint: ''` the form shows the direct-contact fallback instead of submitting.
 
-**Static hosts without a function runtime (GitHub Pages):** build with `FORM_MODE=odoo-direct`. The browser then posts form-encoded data straight to Odoo's public website-form route (`site.config.js → odooFormUrl`). Odoo skips CSRF for unauthenticated sessions and returns no CORS header, so the request is sent in `no-cors` mode and a delivered request is reported as success (verified live: lead #899 and the browser tests of 11 Sep 2026).
+**Default on every host:** `formMode: 'odoo-direct'` (no env var needed). The browser then posts form-encoded data straight to Odoo's public website-form route (`site.config.js → odooFormUrl`). Odoo skips CSRF for unauthenticated sessions and returns no CORS header, so the request is sent in `no-cors` mode and a delivered request is reported as success (verified live: leads #899 to #907, last on 14 Sep 2026). A build with an empty endpoint is refused, and `npm run check` fails on any page whose lead form is unwired. Opt into the Netlify function with `FORM_MODE=function`.
 
 Spam: honeypot field (`website`) + server-side validation. Add a captcha only if real spam appears.
 

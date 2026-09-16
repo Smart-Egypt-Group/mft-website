@@ -1,7 +1,10 @@
 /* =====================================================================
    MFT website — single stylesheet. No preprocessor, no framework.
-   Brand: navy #101B3A · cyan #1BB7CD · gold #C9A227 · white · mist #F5F7FA
+   Brand (seg-audit/brand/palette.json, Ahmed 2026-08-23): navy #0D1B3E primary ·
+   accent #0F7C91 for every button/link/focus ring · cyan #1BB7CD is the logo mark and
+   large graphics only, never a button fill or text on light · white · mist.
    Fonts: Inter (Latin/digits) → Cairo (Arabic). Never letter-space Arabic.
+   Type scale: golden ratio (1.618) from the 17px body: h2 = 27.5px, h1/display = 44.5px.
    ===================================================================== */
 
 /* ---------- Fonts (self-hosted variable subsets) ---------- */
@@ -25,9 +28,18 @@
 /* ---------- Tokens ---------- */
 :root {
   /* brand */
-  --navy: #101B3A;
-  --cyan: #1BB7CD;          /* fills and accents on navy only — 2.4:1 on white, NOT for text on light */
-  --cyan-text: #0E7C8C;     /* same hue, darkened for text on white/mist — 4.9:1 (WCAG AA) */
+  --navy: #0D1B3E;
+  --accent: #0F7C91;        /* interaction colour: buttons, links, focus — 4.87:1 with white either way */
+  --accent-hover: #0C6A7C;
+  --cyan: #1BB7CD;          /* logo mark + decorative fills on navy only — 2.4:1 on white, NOT for text on light, never a button */
+  --cyan-text: var(--accent); /* accent text on white/mist — 4.87:1 (WCAG AA) */
+  /* severity (risk panel on navy) — numbers ≥ 5.6:1, labels ≥ 8.5:1 on navy */
+  --sev-critical: #F26A6A;
+  --sev-critical-text: #F5A3A3;
+  --sev-high: #F59E0B;
+  --sev-high-text: #F7C877;
+  --sev-medium: #EAB308;
+  --sev-medium-text: #F3D778;
   --gold: #C9A227;          /* one decorative rule per page, never text */
   --white: #FFFFFF;
   --mist: #F5F7FA;
@@ -43,11 +55,11 @@
   --line: #E6E9F0;
   --line-strong: #6B7390;   /* input borders — 4.7:1 on white (non-text ≥ 3:1) */
   --navy-line: rgba(255, 255, 255, 0.12);
-  --shadow-cta: 0 4px 14px rgba(27, 183, 205, 0.35);
+  --shadow-cta: 0 4px 14px rgba(15, 124, 145, 0.35);
   --shadow-card: 0 20px 50px rgba(16, 27, 58, 0.15);
-  /* type scale — three sizes per view: display/heading, body, small */
-  --fs-display: clamp(2.25rem, 1.35rem + 3.4vw, 4rem);     /* 36 → 64px */
-  --fs-h2: clamp(1.75rem, 1.25rem + 1.8vw, 2.5rem);        /* 28 → 40px */
+  /* type scale — golden ratio (φ = 1.618) from the body size: h2 = body×φ, h1 = body×φ² */
+  --fs-display: clamp(2.125rem, 1.75rem + 1.25vw, 2.78rem); /* 34 → 44.5px (17 × φ²) */
+  --fs-h2: clamp(1.5rem, 1.35rem + 0.5vw, 1.72rem);         /* 24 → 27.5px (17 × φ) */
   --fs-body: 1.0625rem;                                     /* 17px */
   --fs-small: 0.8125rem;                                    /* 13px */
   --lh-tight: 1.1;
@@ -114,7 +126,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 .skip-link:focus { top: 12px; outline: 3px solid var(--cyan); outline-offset: 2px; }
 :focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; border-radius: 3px; }
-.section-navy :focus-visible, .cta-band :focus-visible, .site-footer :focus-visible, .hero-b-left :focus-visible { outline-color: var(--cyan); }
+.section-navy :focus-visible, .cta-band :focus-visible, .site-footer :focus-visible, .hero-b-left :focus-visible, .hero-c :focus-visible { outline-color: var(--white); }
 
 /* ---------- Type components ---------- */
 .eyebrow {
@@ -125,10 +137,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
   text-transform: uppercase;
   color: var(--cyan-text);
 }
-.section-navy .eyebrow, .hero-b-left .eyebrow { color: var(--cyan); }
+.section-navy .eyebrow, .hero-b-left .eyebrow, .hero-c .eyebrow { color: var(--cyan); }
 .section-cyan .eyebrow { color: var(--navy); }
 .accent { color: var(--cyan-text); }
-.section-navy .accent, .hero-b .accent { color: var(--cyan); }
+.section-navy .accent, .hero-b .accent, .hero-c .accent { color: var(--cyan); }
 .lead { font-size: var(--fs-body); color: var(--ink-2); max-width: 62ch; }
 .section-navy .lead, .cta-band .lead { color: var(--on-navy-2); }
 .num {
@@ -151,11 +163,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 .btn-lg { min-height: 52px; padding: 14px 30px; font-weight: 800; }
 .btn-sm { min-height: 40px; padding: 8px 18px; font-size: var(--fs-small); }
-.btn-primary { background: var(--cyan); color: var(--navy); box-shadow: var(--shadow-cta); }
-.btn-primary:hover { background: #22C4DB; transform: translateY(-1px); }
+.btn-primary { background: var(--accent); color: var(--white); box-shadow: var(--shadow-cta); }
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
 .btn-primary:active { transform: translateY(0); }
+/* Ghost (outline) button on navy: hero secondary action */
+.btn-ghost { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.38); }
+.btn-ghost:hover { border-color: var(--white); background: rgba(255, 255, 255, 0.06); }
 .btn-navy { background: var(--navy); color: var(--white); }
-.btn-navy:hover { background: #1A2A57; }
+.btn-navy:hover { background: #172A5C; }
 .btn-link {
   padding-inline: 0; min-height: 0; border: 0; border-radius: 0;
   color: var(--cyan-text); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: transparent;
@@ -301,6 +316,50 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .kpi { padding: 10px; }
   .kpi-value { font-size: var(--fs-body); }
 }
+
+/* ---------- Hero C (risk dashboard, live) ----------
+   One navy surface, copy on the start side, a small risk panel on the end side. The panel is the
+   hook: three severity counters that say "there are issues in your books you do not know about".
+   Counts come from content (illustrative until Ahmed supplies real aggregates). */
+.hero-c { background: var(--navy); color: var(--on-navy); padding-block: clamp(56px, 8vw, 104px); }
+.hero-c-inner { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
+.hero-c h1 { max-width: 24ch; }
+.hero-c .subhead { margin-top: 24px; max-width: 52ch; color: var(--on-navy-2); line-height: var(--lh-body); }
+[dir="rtl"] .hero-c .subhead { line-height: 1.8; }
+.hero-c .cta-row { margin-top: 32px; }
+.risk-panel { width: 100%; max-width: 520px; justify-self: end; padding: 24px 28px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--navy-line); border-radius: 10px; }
+[dir="rtl"] .risk-panel { justify-self: start; }
+.risk-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.risk-title { margin: 0; font-size: var(--fs-small); font-weight: 600; color: var(--on-navy-3); max-width: 34ch; }
+.risk-badge { flex: none; padding: 3px 10px; border-radius: 4px; background: rgba(255, 255, 255, 0.1); color: var(--on-navy-2); font-size: var(--fs-small); font-weight: 700; }
+.risk-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.risk-card { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 18px 10px 14px; border-radius: 8px; text-align: center; }
+.risk-num { font-size: 2rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.risk-label { font-size: var(--fs-small); font-weight: 600; }
+.risk-critical { background: rgba(217, 45, 45, 0.14); }
+.risk-critical .risk-num { color: var(--sev-critical); }
+.risk-critical .risk-label { color: var(--sev-critical-text); }
+.risk-high { background: rgba(217, 119, 6, 0.14); }
+.risk-high .risk-num { color: var(--sev-high); }
+.risk-high .risk-label { color: var(--sev-high-text); }
+.risk-medium { background: rgba(217, 180, 6, 0.12); }
+.risk-medium .risk-num { color: var(--sev-medium); }
+.risk-medium .risk-label { color: var(--sev-medium-text); }
+.risk-caption { margin: 16px 0 0; font-size: var(--fs-small); color: var(--on-navy-3); }
+@media (max-width: 899px) {
+  .hero-c-inner { grid-template-columns: 1fr; }
+  .risk-panel, [dir="rtl"] .risk-panel { justify-self: stretch; max-width: none; padding: 20px; }
+  .risk-row { gap: 8px; }
+  .risk-num { font-size: 1.75rem; }
+}
+
+/* ---------- Trust (home): five tested guarantees, rules not boxes ---------- */
+.trust .deflist dt { font-size: 1.125rem; line-height: 1.35; }
+[dir="rtl"] .trust .deflist dt { line-height: 1.6; }
+.trust .deflist-row { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr); }
+.trust .deflist dd { max-width: 62ch; }
+.trust-note { margin-top: 20px; font-size: var(--fs-small); color: var(--ink-3); }
+@media (max-width: 599px) { .trust .deflist-row { grid-template-columns: 1fr; } }
 
 /* ---------- Cards, pillars, steps ---------- */
 .card { padding: 28px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
@@ -536,6 +595,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .contact-details .num-list { margin: 16px 0 24px; }
 .form-rule { border: 0; border-top: 1px solid var(--line); margin: 8px 0 22px; }
 
+/* ---------- See also ---------- */
+.see-also { padding-block: clamp(28px, 4vw, 40px); border-top: 1px solid var(--line); }
+.see-also .footer-title { color: var(--ink-3); margin-bottom: 12px; }
+.see-also-list { display: flex; flex-wrap: wrap; gap: 10px 28px; }
+.see-also-list a { font-weight: 700; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line-strong); }
+.see-also-list a:hover { text-decoration-color: currentColor; }
+.proof .cases { margin-bottom: 28px; }
+
 /* ---------- About ---------- */
 .badge-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px; }
 .badge-grid .badge { font-size: var(--fs-body); font-weight: 600; align-items: flex-start; }
@@ -550,7 +617,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--navy); color: var(--on-navy-2); padding: clamp(48px, 6vw, 72px) 0 32px; font-size: var(--fs-small); }
-.footer-grid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 40px 32px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr repeat(5, minmax(0, 1fr)); gap: 40px 24px; }
+@media (max-width: 1099px) and (min-width: 900px) { .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .footer-brand { grid-column: 1 / -1; } }
 .footer-brand img { width: auto; height: 44px; margin-bottom: 20px; }
 .footer-brand p { max-width: 36ch; }
 .footer-title { margin: 0 0 14px; font-size: var(--fs-small); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--white); }
@@ -609,14 +677,17 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .js-motion .bar { transform: scaleY(0); transform-origin: bottom; animation: grow .8s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(420ms + var(--i, 0) * 90ms); }
 @keyframes grow { to { transform: scaleY(1); } }
 .js-motion .kpi { opacity: 0; animation: rise .5s ease-out forwards; animation-delay: calc(300ms + var(--i, 0) * 90ms); }
+.js-motion .risk-card { opacity: 0; animation: rise .5s ease-out forwards; animation-delay: calc(420ms + var(--i, 0) * 120ms); }
 .js-motion .findings li { opacity: 0; transform: translateX(-8px); animation: slide .5s ease-out forwards; animation-delay: calc(1100ms + var(--i, 0) * 140ms); }
 [dir="rtl"] .js-motion .findings li { transform: translateX(8px); }
 @keyframes slide { to { opacity: 1; transform: none; } }
 .js-motion .pulse { animation: pulse 1.6s ease-out 1.2s 2; }
-@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(27,183,205,.55); } 100% { box-shadow: 0 0 0 10px rgba(27,183,205,0); } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(15,124,145,.55); } 100% { box-shadow: 0 0 0 10px rgba(15,124,145,0); } }
 /* viewport reveals */
-.js-motion .reveal { opacity: 0; transform: translateY(12px); transition: opacity .45s ease-out, transform .45s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i, 0) * 70ms); }
-.js-motion .reveal.in { opacity: 1; transform: none; }
+/* Scroll reveals: GSAP ScrollTrigger (motion.js) tweens opacity + a 14px vertical offset. CSS only
+   holds the pre-paint state and a class-based fallback; hover states below are CSS transitions only. */
+.js-motion .reveal { opacity: 0; visibility: hidden; }
+.js-motion .reveal.in { opacity: 1; visibility: visible; }
 /* timeline draws when it enters */
 .js-motion .timeline::before { transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(.2,.7,.2,1); }
 [dir="rtl"] .js-motion .timeline::before { transform-origin: right; }
@@ -636,7 +707,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .count { font-variant-numeric: tabular-nums; }
 
 @media (prefers-reduced-motion: reduce) {
-  .js-motion .rise, .js-motion .bar, .js-motion .kpi, .js-motion .findings li, .js-motion .reveal, .js-motion .timeline::before, .js-motion .timeline .step-dot { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+  .js-motion .rise, .js-motion .bar, .js-motion .kpi, .js-motion .risk-card, .js-motion .findings li, .js-motion .reveal, .js-motion .timeline::before, .js-motion .timeline .step-dot { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
   .js-motion .pulse { animation: none; }
 }
 
@@ -646,7 +717,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 @media print {
-  .js-motion .reveal, .js-motion .rise, .js-motion .kpi, .js-motion .findings li, .js-motion .flow-node, .js-motion .flow-dot { opacity: 1 !important; transform: none !important; }
+  .js-motion .reveal, .js-motion .rise, .js-motion .kpi, .js-motion .risk-card, .js-motion .findings li, .js-motion .flow-node, .js-motion .flow-dot { opacity: 1 !important; transform: none !important; }
   .site-header, .site-footer, .cta-band, .nav-toggle, .skip-link { display: none !important; }
   .section { padding-block: 24px; }
   .section-navy, .section-cyan { background: none; color: var(--ink); }

@@ -1,6 +1,6 @@
 const { t, esc, plain, url, btn } = require("../html");
 const { ctaBand } = require('../layout');
-const { pageHeader } = require('./services');
+const { pageHeader, faqBlock, faqSchema, seeAlso } = require('./services');
 
 module.exports = function industries(ctx) {
   const I = ctx.c.industries;
@@ -29,9 +29,11 @@ module.exports = function industries(ctx) {
     )
     .join('\n');
 
-  const body = `${pageHeader(ctx, I.page)}
+  const body = `${pageHeader(ctx, I.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: I.page.eyebrow }])}
 <div class="container"><ul class="chip-row jump-row" aria-label="${esc(plain(I.page.eyebrow))}">${jump}</ul></div>
 ${sections}
+${faqBlock(ctx, ctx.c.ui.faqTitle, ctx.c.industriesFaq)}
+${seeAlso(ctx, [{ label: ctx.c.services.page.eyebrow, href: 'services/' }, ...ctx.c.locations.items.map((x) => ({ label: x.name, href: `${x.slug}/` })), { label: ctx.c.intelligence.page.eyebrow, href: 'intelligence/' }])}
 ${ctaBand(ctx)}`;
-  return { title: I.title, description: I.description, body, bodyClass: 'page-industries' };
+  return { title: I.title, description: I.description, body, bodyClass: 'page-industries', jsonld: [faqSchema(ctx.c.industriesFaq)] };
 };

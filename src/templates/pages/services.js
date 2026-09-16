@@ -27,6 +27,49 @@ function faqBlock(ctx, title, items) {
   </div>
 </section>`;
 }
+// "See also" block: internal links at the end of a page (related content).
+function seeAlso(ctx, links) {
+  if (!links || !links.length) return '';
+  return `<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">${t(ctx.c.ui.seeAlso)}</h2>
+    <ul class="see-also-list">${links.map((l) => `<li><a href="${url(ctx, l.href)}">${t(l.label)}</a></li>`).join('')}</ul>
+  </div>
+</nav>`;
+}
+// Social proof: published client stories (non-financial) and named testimonials, reused from home.stories.
+function proofBlock(ctx, { stories = true } = {}) {
+  const S = ctx.c.home.stories;
+  if (!S) return '';
+  const cases = stories
+    ? `<ul class="grid grid-2 cases">${S.cases.map((cs) => `<li class="case"><p class="case-sector">${t(cs.sector)}</p><p class="case-figure">${t(cs.figure)}</p><p class="case-label">${t(cs.label)}</p><p class="case-body">${t(cs.body)}</p></li>`).join('')}</ul>`
+    : '';
+  const quotes = `<ul class="grid grid-2 testimonials">${S.testimonials.map((q) => `<li class="testimonial"><blockquote><p>${t(q.quote)}</p></blockquote><p class="testimonial-by"><strong>${t(q.name)}</strong> · ${t(q.company)}</p></li>`).join('')}</ul>`;
+  return `<section class="section section-mist proof" aria-labelledby="proof-block-title">
+  <div class="container">
+    <div class="section-head"><h2 id="proof-block-title">${t(stories ? ctx.c.ui.proofTitle : ctx.c.ui.reviewsTitle)}</h2></div>
+    ${cases}
+    ${stories ? `<h3 class="testimonials-title">${t(ctx.c.ui.reviewsTitle)}</h3>` : ''}
+    ${quotes}
+  </div>
+</section>`;
+}
+function reviewSchema(ctx) {
+  const S = ctx.c.home.stories;
+  if (!S) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${ctx.config.siteUrl}/#organization`,
+    review: S.testimonials.map((q) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: plain(q.name) },
+      publisher: { '@type': 'Organization', name: plain(q.company) },
+      reviewBody: plain(q.quote),
+      inLanguage: ctx.lang
+    }))
+  };
+}
 function faqSchema(items) {
   return {
     '@context': 'https://schema.org',
@@ -47,10 +90,11 @@ function index(ctx) {
     </li>`
     )
     .join('');
-  const body = `${pageHeader(ctx, S.page)}
+  const body = `${pageHeader(ctx, S.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: S.page.eyebrow }])}
 <section class="section">
   <div class="container"><ul class="grid grid-3 service-grid">${cards}</ul></div>
 </section>
+${seeAlso(ctx, [{ label: ctx.c.industries.page.eyebrow, href: 'industries/' }, { label: ctx.c.intelligence.page.eyebrow, href: 'intelligence/' }, ...ctx.c.locations.items.map((x) => ({ label: x.name, href: `${x.slug}/` }))])}
 ${ctaBand(ctx)}`;
   return { title: S.title, description: S.description, body, bodyClass: 'page-services' };
 }
@@ -87,9 +131,11 @@ function detail(ctx, item) {
     </aside>
   </div>
 </section>
-${faqBlock(ctx, ctx.c.services.faqTitle || (ctx.lang === 'ar' ? 'أسئلة شائعة' : 'Frequently asked'), item.faq)}
+${faqBlock(ctx, ctx.c.ui.faqTitle, item.faq)}
+${proofBlock(ctx, { stories: item.slug === 'internal-audit' || item.slug === 'virtual-cfo' })}
 ${ctaBand(ctx)}`;
   const jsonld = [
+    reviewSchema(ctx),
     {
       '@context': 'https://schema.org',
       '@type': 'Service',
@@ -103,7 +149,7 @@ ${ctaBand(ctx)}`;
   ];
   if (item.faq) jsonld.push(faqSchema(item.faq));
   return {
-    title: `${plain(item.name)} — ${ctx.c.meta.siteName}`,
+    title: `${plain(item.name)} ${plain(ctx.c.services.titleSuffix)}`,
     description: item.short,
     body,
     bodyClass: 'page-service-detail',
@@ -111,4 +157,4 @@ ${ctaBand(ctx)}`;
   };
 }
 
-module.exports = { index, detail, pageHeader, faqBlock, faqSchema };
+module.exports = { index, detail, pageHeader, faqBlock, faqSchema, seeAlso, proofBlock, reviewSchema };
