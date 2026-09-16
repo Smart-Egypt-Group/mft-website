@@ -17,6 +17,8 @@ Verified live on 10 Sep 2026 with Ahmed's approval: a test lead sent through the
 
 ## Decided and implemented (no action)
 
+- 16 Sep 2026, blog: Ahmed asked for a blog. Built `blog/` (AR/EN) with five founding articles (ISA 320 materiality, ZATCA phase two in Odoo, Egyptian e-invoicing mistakes in Odoo, continuous audit, agents draft / people approve), RSS per language, Article + Blog schema, home "Latest insights" block, nav and footer links. SEO item 15 (author bio) is closed: articles carry an author box for Ahmed Ashraf Mostafa (name from the execution-plan document; bio built from verified facts; LinkedIn points to the company page). **To confirm with Ahmed:** the author name spelling, the one-paragraph bio, and whether to use a personal LinkedIn URL instead of the company page. Edit in one place: `src/content/blog.<lang>.js → authors.ahmed`.
+
 - 16 Sep 2026, motion complaints from Ahmed on live: (1) content flickered on every load because the motion class was added after first paint; (2) content lagged behind fast scrolling (invisible up to 600 ms). Frame rate was never the problem (16.6 ms frames, zero long tasks). Fixed and deployed (gh-pages da31e8b): pre-paint class via `pre.js`, hide only below-viewport elements, earlier trigger, instant reveal on fast scroll, hero entrance once per session, ScrollTrigger ignores mobile URL-bar resizes.
 
 - 16 Sep 2026: SEO checklist + GSAP motion deployed to production (gh-pages f31ddcb from feat/risk-hero-trust 9002e58) with Ahmed's approval; 44 pages live at www.seg-audit.com. Post-deploy contact test lead is labelled "delete me".

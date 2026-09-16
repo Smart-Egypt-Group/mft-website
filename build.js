@@ -44,6 +44,7 @@ const intelligence = require('./src/templates/pages/intelligence');
 const agentPage = require('./src/templates/pages/agent');
 const quote = require('./src/templates/pages/quote');
 const locationPage = require('./src/templates/pages/locations');
+const blog = require('./src/templates/pages/blog');
 
 const markPlaceholders = process.argv.includes('--mark-placeholders') || process.env.MARK_PLACEHOLDERS === '1';
 const buildId = Date.now().toString(36);
@@ -75,6 +76,8 @@ function pageList(c) {
     { path: 'intelligence/', render: (ctx) => intelligence(ctx) },
     ...c.agentPages.items.map((a) => ({ path: `intelligence/${a.slug}/`, render: (ctx) => agentPage(ctx, ctx.c.agentPages.items.find((x) => x.slug === a.slug)) })),
     { path: 'request-quote/', render: (ctx) => quote(ctx) },
+    { path: 'blog/', render: (ctx) => blog.index(ctx) },
+    ...c.blog.posts.map((post) => ({ path: `blog/${post.slug}/`, render: (ctx) => blog.article(ctx, ctx.c.blog.posts.find((x) => x.slug === post.slug)) })),
     ...c.locations.items.map((l) => ({ path: `${l.slug}/`, render: (ctx) => locationPage(ctx, ctx.c.locations.items.find((x) => x.slug === l.slug)) })),
     { path: 'about/', render: (ctx) => about(ctx) },
     { path: 'contact/', render: (ctx) => contact(ctx) },
@@ -102,7 +105,7 @@ function build() {
   for (const f of fs.readdirSync(path.join(SRC, 'scripts'))) write(`assets/js/${f}`, fs.readFileSync(path.join(SRC, 'scripts', f), 'utf8'));
 
   const contents = {};
-  for (const lang of config.languages) contents[lang] = require(`./src/content/${lang}.js`);
+  for (const lang of config.languages) { contents[lang] = require(`./src/content/${lang}.js`); contents[lang].blog = require(`./src/content/blog.${lang}.js`); }
 
   const urls = [];
   let count = 0;
@@ -120,6 +123,13 @@ function build() {
       count++;
       if (!page.noindex) urls.push(`${config.siteUrl}/${lang}/${page.path}`);
     }
+  }
+
+  // RSS feed per language
+  for (const lang of config.languages) {
+    const c = contents[lang];
+    const ctx = { lang, c, config, path: 'blog/', altPaths: {}, buildId, gsapVersion, markPlaceholders };
+    write(`${lang}/blog/feed.xml`, blog.feed(ctx));
   }
 
   // Root: language chooser / redirect. Server-side rules (see _redirects) take
@@ -167,6 +177,9 @@ function build() {
     '',
     '## Where we work',
     ...en.locations.items.map((l) => `- [${l.name}](${config.siteUrl}/en/${l.slug}/): ${l.definition}`),
+    '',
+    '## Insights (blog)',
+    ...en.blog.posts.map((p) => `- [${p.title}](${config.siteUrl}/en/blog/${p.slug}/): ${p.description}`),
     '',
     '## Facts',
     '- CPA-led team; Odoo Certified Partner; ISO-aligned internal controls; 500+ reports delivered; Egypt, Saudi Arabia, US.',

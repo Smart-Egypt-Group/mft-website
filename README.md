@@ -75,6 +75,10 @@ Slugs (`services.items[].slug`, `industries.items[].slug`) are shared between la
 `PENDING-DECISIONS.md` lists the three open decisions and exactly where each lands in the code.
 The pricing section is written but hidden (`site.config.js → showPricingSlot: false`) until packages are approved; `npm run dev` marks it with a yellow tag when shown.
 
+## Blog (Insights)
+
+`src/content/blog.en.js` and `blog.ar.js` hold the articles as block arrays (`h2`, `p`, `ul`, `quote`) with shared slugs, so hreflang and the language switch work per article. `src/templates/pages/blog.js` renders the index (`blog/`), each article (`blog/<slug>/`, with author box, related articles, `Article` schema carrying `author` as a `Person` with `jobTitle` and `worksFor`), an RSS 2.0 feed per language (`/<lang>/blog/feed.xml`, autodiscovery link in every page head) and the home page "Latest insights" block. Reading time is computed from word count. Authors live in `blog.<lang>.js → authors`; the founder is the initial author. New article: add one object to each language file; everything else (index, feed, sitemap, llms.txt, related) follows.
+
 ## SEO / GEO
 
 - Every page: schema.org graph (Organization with address and sameAs, WebSite, WebPage, BreadcrumbList); service and agent pages add `Service`; pages with FAQs add `FAQPage`. `npm run check` fails on invalid JSON-LD.
@@ -83,7 +87,7 @@ The pricing section is written but hidden (`site.config.js → showPricingSlot: 
 
 ## SEO checklist (15 Sep 2026)
 
-Audited against Ahmed's 20-point list; 19 of 20 in place. Location pages (`egypt/`, `saudi-arabia/`), service titles with the market, LocalBusiness schema with geo and contact point, visible breadcrumbs on every inner page, "See also" links on every page, FAQ + FAQPage on home, industries, about, contact and locations, Review schema for the two named testimonials, and client stories plus testimonials on the audit and Virtual CFO service pages. Not done by decision: author bio (no blog exists).
+Audited against Ahmed's 20-point list; 19 of 20 in place. Location pages (`egypt/`, `saudi-arabia/`), service titles with the market, LocalBusiness schema with geo and contact point, visible breadcrumbs on every inner page, "See also" links on every page, FAQ + FAQPage on home, industries, about, contact and locations, Review schema for the two named testimonials, and client stories plus testimonials on the audit and Virtual CFO service pages. Author bio (item 15) is now covered by the blog: every article carries an author box and `Person` schema.
 
 ## Motion
 

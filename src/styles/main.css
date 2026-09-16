@@ -597,11 +597,38 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ---------- See also ---------- */
 .see-also { padding-block: clamp(28px, 4vw, 40px); border-top: 1px solid var(--line); }
-.see-also .footer-title { color: var(--ink-3); margin-bottom: 12px; }
+.see-also .footer-title, .related-posts .footer-title { color: var(--ink-3); margin-bottom: 12px; }
 .see-also-list { display: flex; flex-wrap: wrap; gap: 10px 28px; }
 .see-also-list a { font-weight: 700; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line-strong); }
 .see-also-list a:hover { text-decoration-color: currentColor; }
 .proof .cases { margin-bottom: 28px; }
+
+/* ---------- Blog ---------- */
+.post-list { border-top: 1px solid var(--line); }
+.post-card { padding: 26px 0; border-bottom: 1px solid var(--line); }
+.post-card h2 { font-size: 1.375rem; margin: 8px 0 10px; }
+.post-card h2 a:hover { color: var(--cyan-text); text-decoration: underline; text-underline-offset: 4px; }
+.post-card p:last-child { color: var(--ink-2); max-width: 68ch; margin: 0; }
+.post-list.compact .post-card h2 { font-size: var(--fs-body); }
+.post-list.columns { columns: 3; column-gap: 40px; }
+.post-list.columns .post-card { break-inside: avoid; }
+@media (max-width: 899px) { .post-list.columns { columns: 1; } }
+.post-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; font-size: var(--fs-small); color: var(--ink-3); font-weight: 600; }
+.topic-tag { color: var(--cyan-text); font-weight: 700; }
+.feed-link { margin-bottom: 8px; }
+.feed-link a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 3px; }
+.article .page-header .post-meta { margin-top: 18px; }
+.article-body p { font-size: 1.125rem; line-height: 1.75; }
+[dir="rtl"] .article-body p { line-height: 1.95; }
+.article-body h2 { font-size: 1.5rem; margin: 40px 0 14px; }
+.article-body .check-list { margin: 0 0 24px; }
+.article-body .check-list li { font-size: 1.0625rem; color: var(--ink-2); margin-bottom: 12px; }
+.pull { margin: 32px 0; padding: 4px 0 4px 24px; border-inline-start: 3px solid var(--cyan); }
+[dir="rtl"] .pull { padding: 4px 24px 4px 0; }
+.pull p { font-size: 1.375rem; font-weight: 700; line-height: 1.4; color: var(--navy); margin: 0; }
+.author-box h2 { font-size: 1.375rem; margin-bottom: 4px; }
+.author-role { color: var(--ink-3); font-weight: 600; margin-bottom: 12px !important; }
+.author-box p { color: var(--ink-2); max-width: 68ch; }
 
 /* ---------- About ---------- */
 .badge-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px; }

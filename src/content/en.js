@@ -45,6 +45,7 @@ module.exports = {
       { label: 'Industries', href: 'industries/' },
       { label: 'MFT Intelligence', href: 'intelligence/' },
       { label: 'About', href: 'about/' },
+      { label: 'Insights', href: 'blog/' },
       { label: 'Contact', href: 'contact/' }
     ],
     cta: { label: 'Talk to Us', href: 'contact/' }
@@ -89,6 +90,7 @@ module.exports = {
           { label: 'About MFT', href: 'about/' },
           { label: 'MFT Intelligence AI Agents', href: 'intelligence/' },
           { label: 'Request a quote', href: 'request-quote/' },
+          { label: 'Insights (blog)', href: 'blog/' },
           { label: 'Contact', href: 'contact/' },
           { label: 'Privacy', href: 'privacy/' },
           { label: 'seg-audit platform', href: 'https://app.seg-audit.com', external: true }

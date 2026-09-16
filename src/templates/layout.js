@@ -29,6 +29,7 @@ function head(ctx, page) {
   <meta property="og:image" content="${config.siteUrl}/assets/img/og-${ctx.lang}.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="${esc(plain(c.blog ? c.blog.title : c.meta.siteName))}" href="${config.siteUrl}/${ctx.lang}/blog/feed.xml">
   <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">

@@ -143,7 +143,7 @@ if (!htmlIssues) ok('lang/dir, single h1, alt text, labels, tokens, links, asset
 /* ---------- 3. Content is final ---------- */
 console.log('\nContent:');
 let todo = 0;
-for (const lang of ['en', 'ar']) {
+for (const lang of ['en', 'ar', 'blog.en', 'blog.ar']) {
   const src = fs.readFileSync(path.join(ROOT, `src/content/${lang}.js`), 'utf8');
   const hits = src.match(/TODO\(|lorem ipsum|placeholder text/gi) || [];
   if (hits.length) { todo += hits.length; fail(`${lang}.js still has ${hits.length} TODO/placeholder marker(s)`); }
@@ -152,7 +152,7 @@ if (!todo) ok('no TODO or placeholder markers in content files');
 // Client confidentiality (Ahmed, 11 Sep 2026): no real financial amount of any client on the
 // site. The only allowed currency figures are the illustrative dashboard KPIs in heroB.dashboard.
 let money = 0;
-for (const lang of ['en', 'ar']) {
+for (const lang of ['en', 'ar', 'blog.en', 'blog.ar']) {
   const src = fs.readFileSync(path.join(ROOT, `src/content/${lang}.js`), 'utf8').replace(/dashboard:\s*\{[\s\S]*?bars:/g, '');
   const hits = src.match(/\b(EGP|SAR|USD|AED)\b|\$\s?\d|\d\s?(million|billion)|جنيه|ريال|مليون|مليار|دولار/g) || [];
   if (hits.length) { money += hits.length; fail(`${lang}.js contains currency amounts: ${[...new Set(hits)].join(', ')}`); }
