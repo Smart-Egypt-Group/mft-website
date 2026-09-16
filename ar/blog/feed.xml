@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>المقالات | Modern Financial Technology</title>
+    <link>https://www.seg-audit.com/ar/blog/</link>
+    <atom:link href="https://www.seg-audit.com/ar/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>كتابات عملية من MFT عن المراجعة الداخلية والأهمية النسبية والامتثال لهيئة الزكاة والضريبة والجمارك السعودية والفوترة الإلكترونية المصرية وتشغيل Odoo كنظام مالي.</description>
+    <language>ar</language>
+    <lastBuildDate>Wed, 16 Sep 2026 09:54:11 GMT</lastBuildDate>
+    <item>
+      <title>الأهمية النسبية منهج، لا رقم مدوّر</title>
+      <link>https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <description>دليل عملي لتحديد حد الأهمية النسبية وفق ISA 320 للمراجعة الداخلية والمراجعة المستمرة: المقاييس، والمعايرة، وكيف تطبّقه MFT داخل Odoo.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>المرحلة الثانية من ZATCA داخل Odoo: ما يجب أن يكون صحيحًا قبل التشغيل</title>
+      <link>https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <description>قائمة MFT للمرحلة الثانية من الفوترة الإلكترونية ZATCA في Odoo: تسجيل الجهاز، الإجازة مقابل الإبلاغ، حقول الفاتورة، اختبار البيئة التجريبية، ومسألة إقامة البيانات.</description>
+      <category>الامتثال</category>
+    </item>
+    <item>
+      <title>الفوترة الإلكترونية المصرية في Odoo: سبعة أخطاء إعداد تمنع الإرسال</title>
+      <link>https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <description>أخطاء إعداد Odoo السبعة الأكثر تكرارًا خلف رفض الفواتير الإلكترونية من مصلحة الضرائب المصرية، وكيف يُعالَج كل منها من المصدر.</description>
+      <category>الامتثال</category>
+    </item>
+    <item>
+      <title>الأشهر الأحد عشر التي لا تراها مراجعتك السنوية</title>
+      <link>https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <description>لماذا تترك العينة السنوية أغلب السنة بلا تغطية، وما الذي تجده المراجعة الداخلية المستمرة عمليًا (مدفوعات مكررة، موردون شبه مكررين، فصل زمني)، وكيف تكمّل المراجعة الخارجية.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>الوكلاء يُعدّون المسودة. البشر يعتمدون. لماذا بنيناها هكذا.</title>
+      <link>https://www.seg-audit.com/ar/blog/agents-draft-people-approve/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/agents-draft-people-approve/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <description>كيف تنفّذ MFT Intelligence بعد الاعتماد: الوكلاء يُعدّون مسودات القيود التصحيحية والتسويات، ومعتمِدون مسجّلون بالاسم يوقّعونها حسب مستوى الأهمية النسبية، والتصحيحات قيود عكسية لا حذف.</description>
+      <category>MFT Intelligence</category>
+    </item>
+  </channel>
+</rss>

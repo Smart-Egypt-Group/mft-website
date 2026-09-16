@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Insights | Modern Financial Technology</title>
+    <link>https://www.seg-audit.com/en/blog/</link>
+    <atom:link href="https://www.seg-audit.com/en/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Practical writing from MFT on internal audit, materiality, Saudi ZATCA and Egyptian e-invoicing compliance, and running Odoo as a finance system.</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 16 Sep 2026 09:54:11 GMT</lastBuildDate>
+    <item>
+      <title>Materiality is a method, not a round number</title>
+      <link>https://www.seg-audit.com/en/blog/materiality-isa-320-threshold/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/materiality-isa-320-threshold/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <description>A practical guide to setting an ISA 320 materiality threshold for internal audit and continuous review: the benchmarks, the calibration, and how MFT applies it inside Odoo.</description>
+      <category>Internal audit</category>
+    </item>
+    <item>
+      <title>ZATCA phase two inside Odoo: what must be right before go-live</title>
+      <link>https://www.seg-audit.com/en/blog/zatca-phase-two-odoo-checklist/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/zatca-phase-two-odoo-checklist/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <description>The MFT checklist for ZATCA phase two e-invoicing in Odoo: device onboarding, clearance versus reporting, invoice fields, sandbox testing and the data-residency question.</description>
+      <category>Compliance</category>
+    </item>
+    <item>
+      <title>Egyptian e-invoicing in Odoo: seven configuration mistakes that block submissions</title>
+      <link>https://www.seg-audit.com/en/blog/egypt-eta-einvoicing-odoo-mistakes/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/egypt-eta-einvoicing-odoo-mistakes/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <description>The seven Odoo configuration errors MFT sees most often behind Egyptian Tax Authority e-invoice rejections, and how to fix each one at the source.</description>
+      <category>Compliance</category>
+    </item>
+    <item>
+      <title>The eleven months your annual audit does not see</title>
+      <link>https://www.seg-audit.com/en/blog/continuous-audit-eleven-months/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/continuous-audit-eleven-months/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <description>Why annual sampling leaves most of the year uncovered, what continuous internal audit finds in practice (duplicate payments, near-duplicate vendors, cut-off), and how it complements the external audit.</description>
+      <category>Internal audit</category>
+    </item>
+    <item>
+      <title>Agents draft. People approve. Why we built it that way.</title>
+      <link>https://www.seg-audit.com/en/blog/agents-draft-people-approve/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/agents-draft-people-approve/</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
+      <description>How MFT Intelligence executes after approval: agents draft correcting entries and adjustments, named registered approvers sign them by materiality tier, and corrections are reversals, never deletions.</description>
+      <category>MFT Intelligence</category>
+    </item>
+  </channel>
+</rss>

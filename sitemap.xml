@@ -71,6 +71,36 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/request-quote/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/materiality-isa-320-threshold/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/zatca-phase-two-odoo-checklist/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/continuous-audit-eleven-months/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/agents-draft-people-approve/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/agents-draft-people-approve/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/agents-draft-people-approve/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/ar/egypt/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/egypt/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/egypt/"/>
@@ -164,6 +194,36 @@
     <loc>https://www.seg-audit.com/en/request-quote/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/request-quote/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/request-quote/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/materiality-isa-320-threshold/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/materiality-isa-320-threshold/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/zatca-phase-two-odoo-checklist/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/zatca-phase-two-odoo-checklist/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/egypt-eta-einvoicing-odoo-mistakes/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/continuous-audit-eleven-months/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/continuous-audit-eleven-months/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/agents-draft-people-approve/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/agents-draft-people-approve/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/agents-draft-people-approve/"/>
   </url>
   <url>
     <loc>https://www.seg-audit.com/en/egypt/</loc>
