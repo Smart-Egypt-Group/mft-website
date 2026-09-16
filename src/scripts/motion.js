@@ -88,6 +88,20 @@
     } });
   });
 
+  // A single jump (End key, anchor link, a hard flick on a short page) can pass a trigger's start and end in
+  // one frame; limitCallbacks then suppresses onEnter. On scroll end, show anything at or above the viewport.
+  function sweep() {
+    var vh2 = window.innerHeight;
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal:not(.in), .timeline:not(.in), .flow-wrap:not(.in), .facts:not(.in), .hero-trust:not(.in), .dashboard-card:not(.in), .latest-facts:not(.in)'), function (el) {
+      if (el.getBoundingClientRect().top >= vh2) return;
+      el.classList.add('in');
+      if (el.classList.contains('reveal')) gsap.set(el, { autoAlpha: 1, y: 0, clearProps: 'transform' });
+      Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp);
+      if (el.hasAttribute('data-count')) countUp(el);
+    });
+  }
+  ScrollTrigger.addEventListener('scrollEnd', sweep);
+
   // Insurance: anything still hidden after 5 s is shown (print, odd viewports, trigger never fires).
   setTimeout(function () {
     Array.prototype.forEach.call(document.querySelectorAll('.reveal:not(.in), .timeline:not(.in), .flow-wrap:not(.in)'), function (el) {
