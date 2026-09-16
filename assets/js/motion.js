@@ -32,6 +32,9 @@
 
   // 1) Register once, for the whole site.
   gsap.registerPlugin(ScrollTrigger);
+  // ignoreMobileResize: the mobile URL bar showing/hiding must not force a full refresh mid-scroll.
+  // limitCallbacks: fire enter/leave callbacks only when their state actually changes.
+  ScrollTrigger.config({ ignoreMobileResize: true, limitCallbacks: true });
   html.classList.add('js-motion');   // normally already set by pre.js before first paint
 
   // 2) The one reveal utility: opacity + a light vertical offset for content that is still BELOW the
@@ -47,10 +50,14 @@
       if (top < vh) { el.classList.add('in'); Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp); return; }
       el.classList.add('reveal');
       var idx = parseFloat(el.style.getPropertyValue('--i') || 0);
-      var delay = Math.min(idx, 3) * (opts.stagger || 0.05);
-      gsap.set(el, { autoAlpha: 0, y: opts.y || 14 });
-      ScrollTrigger.create({ trigger: el, start: 'top 96%', once: true, onEnter: function () {
-        gsap.to(el, { autoAlpha: 1, y: 0, duration: opts.duration || 0.45, delay: delay, ease: 'power2.out', overwrite: 'auto', clearProps: 'transform' });
+      var delay = Math.min(idx, 2) * (opts.stagger || 0.04);
+      gsap.set(el, { autoAlpha: 0, y: opts.y || 10 });
+      // Start before the element enters (160px below the viewport) so it is already fading in when it
+      // arrives; when the user is scrolling fast, show it at once so content never lags the scroll.
+      ScrollTrigger.create({ trigger: el, start: 'top bottom+=160', once: true, onEnter: function (self) {
+        var fast = Math.abs(self.getVelocity()) > 1200;
+        if (fast) { gsap.set(el, { autoAlpha: 1, y: 0, clearProps: 'transform' }); }
+        else gsap.to(el, { autoAlpha: 1, y: 0, duration: opts.duration || 0.35, delay: delay, ease: 'power2.out', overwrite: 'auto', clearProps: 'transform' });
         el.classList.add('in');
         Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp);
         if (el.hasAttribute('data-count')) countUp(el);
@@ -75,7 +82,7 @@
   // Drawn elements (timeline rail, governance flow, hero trust counters, facts band): class-driven CSS transitions, fired once.
   Array.prototype.forEach.call(document.querySelectorAll('.timeline, .flow-wrap, .facts, .hero-trust, .dashboard-card, .latest-facts'), function (el) {
     if (el.getBoundingClientRect().top < vh) { el.classList.add('in'); Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp); return; }
-    ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: function () {
+    ScrollTrigger.create({ trigger: el, start: 'top bottom+=120', once: true, onEnter: function () {
       el.classList.add('in');
       Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp);
     } });
