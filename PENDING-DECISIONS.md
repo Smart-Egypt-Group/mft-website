@@ -17,6 +17,8 @@ Verified live on 10 Sep 2026 with Ahmed's approval: a test lead sent through the
 
 ## Decided and implemented (no action)
 
+- 16 Sep 2026: SEO checklist + GSAP motion deployed to production (gh-pages f31ddcb from feat/risk-hero-trust 9002e58) with Ahmed's approval; 44 pages live at www.seg-audit.com. Post-deploy contact test lead is labelled "delete me".
+
 - 15 Sep 2026, SEO checklist: 12 partial or missing items implemented (location pages EG/SA, market in service titles, LocalBusiness+geo schema, visible breadcrumbs, see-also blocks, FAQ on level-1 pages, Review schema, proof on service pages). Author bio (item 15) skipped by decision: no blog. A blog is a separate content decision.
 
 - 14 Sep 2026, "dead contact form" report: NOT reproducible on the live site (www.seg-audit.com, GitHub Pages build of the same morning). Real-browser submissions in Arabic and English returned the success message, Odoo answered 200, and leads #906/#907 landed in CRM. The "online submission not available" text only appears in a build made with an empty endpoint, i.e. the review artifact, not the site. Hardened anyway: `odoo-direct` is now the default mode, an empty `FORM_ENDPOINT` refuses to build, and `npm run check` fails on any unwired lead form. Test leads now #898 to #907, all "delete me".
