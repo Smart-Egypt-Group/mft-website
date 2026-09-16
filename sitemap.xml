@@ -71,6 +71,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/request-quote/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/egypt/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/egypt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/egypt/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/saudi-arabia/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/saudi-arabia/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/saudi-arabia/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/ar/about/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/about/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/about/"/>
@@ -154,6 +164,16 @@
     <loc>https://www.seg-audit.com/en/request-quote/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/request-quote/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/request-quote/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/egypt/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/egypt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/egypt/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/saudi-arabia/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/saudi-arabia/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/saudi-arabia/"/>
   </url>
   <url>
     <loc>https://www.seg-audit.com/en/about/</loc>

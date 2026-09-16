@@ -27,6 +27,10 @@
 - Project costing agent (Internal validation, launching soon): Cost-to-complete and margin per project. Project margin is known during the project, not at handover.
 - Pricing: No fixed prices are published. Each engagement is priced to entity count, transaction volume and reporting scope. Request a quote: https://www.seg-audit.com/en/request-quote/
 
+## Where we work
+- [Egypt](https://www.seg-audit.com/en/egypt/): MFT is a CPA-led financial technology and audit firm headquartered in Korba, Heliopolis, Cairo, serving companies across Egypt with Odoo ERP implementation, internal audit and Virtual CFO reporting, in Arabic and English.
+- [Saudi Arabia](https://www.seg-audit.com/en/saudi-arabia/): MFT serves Saudi companies with ZATCA phase-two compliant Odoo ERP implementation, internal audit programmes and Virtual CFO reporting, delivered on site and remotely in Arabic and English, with client data remaining on the client’s own systems in line with the Saudi Personal Data Protection Law.
+
 ## Facts
 - CPA-led team; Odoo Certified Partner; ISO-aligned internal controls; 500+ reports delivered; Egypt, Saudi Arabia, US.
 - Agents draft only; every action needs a named human approval (two above ISA 320 materiality); corrections by reversal, never deletion.
