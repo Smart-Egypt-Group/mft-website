@@ -36,6 +36,7 @@ function head(ctx, page) {
   <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   ${ctx.lang === 'ar' ? '<link rel="preload" href="/assets/fonts/cairo-arabic-var.woff2" as="font" type="font/woff2" crossorigin>' : ''}
   <link rel="stylesheet" href="/assets/css/main.css?v=${ctx.buildId}">
+  ${page.motion === false ? '' : `<script src="/assets/js/pre.js?v=${ctx.buildId}"></script>`}
   ${analytics}
   <script type="application/ld+json">${JSON.stringify(siteGraph(ctx, page))}</script>
   ${(page.jsonld || []).map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n  ')}`;
