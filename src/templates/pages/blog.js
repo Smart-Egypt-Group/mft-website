@@ -1,6 +1,6 @@
 const { t, esc, plain, url, btn } = require('../html');
 const { ctaBand } = require('../layout');
-const { pageHeader, seeAlso, faqSchema } = require('./services');
+const { pageHeader, seeAlso, faqSchema, faqBlock } = require('./services');
 
 const WORDS_PER_MIN = { en: 220, ar: 180 };
 
@@ -82,10 +82,13 @@ function article(ctx, post) {
   </header>
   <section class="section">
     <div class="container narrow prose article-body">
+      ${post.answer ? `<aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">${t(B.labels.answer)}</p><p class="answer-text">${t(post.answer)}</p>${post.takeaways && post.takeaways.length ? `<p class="takeaways-title">${t(B.labels.takeaways)}</p><ul class="check-list">${post.takeaways.map((k) => `<li>${t(k)}</li>`).join('')}</ul>` : ''}</aside>` : ''}
       ${renderBody(post.body)}
+      <p class="cta-row article-cta">${btn(ctx, { label: B.labels.cta, href: post.topic === 'odoo' || post.topic === 'compliance' ? 'request-quote/' : 'contact/' }, 'btn btn-primary')}</p>
     </div>
   </section>
-  <section class="section section-mist" aria-labelledby="author-title">
+  ${faqBlock(ctx, B.labels.faq, post.faq)}
+  <section class="section" aria-labelledby="author-title">
     <div class="container narrow">
       <div class="author-box">
         <p class="eyebrow" id="author-title">${t(B.labels.author)}</p>
@@ -118,14 +121,16 @@ ${ctaBand(ctx)}`;
     description: plain(post.description),
     inLanguage: ctx.lang,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated || post.date,
     wordCount: wordCount(post),
     articleSection: plain(B.topics[post.topic]),
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
     author: { '@type': 'Person', name: plain(a.name), jobTitle: plain(a.role), url: a.url, worksFor: { '@id': `${ctx.config.siteUrl}/#organization` } },
     publisher: { '@type': 'Organization', '@id': `${ctx.config.siteUrl}/#organization`, name: ctx.c.meta.siteName, logo: { '@type': 'ImageObject', url: `${ctx.config.siteUrl}/assets/logo/mft-lockup-navy.png` } },
-    image: `${ctx.config.siteUrl}/assets/img/og-${ctx.lang}.png`
+    image: `${ctx.config.siteUrl}/assets/img/og-${ctx.lang}.png`,
+    ...(post.answer ? { abstract: plain(post.answer), speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.answer-text', 'h1'] } } : {})
   }];
+  if (post.faq && post.faq.length) jsonld.push(faqSchema(post.faq));
   return { title: `${plain(post.title)} | ${ctx.c.meta.shortName}`, description: post.description, body, bodyClass: 'page-article', jsonld };
 }
 

@@ -45,6 +45,17 @@ const agentPage = require('./src/templates/pages/agent');
 const quote = require('./src/templates/pages/quote');
 const locationPage = require('./src/templates/pages/locations');
 const blog = require('./src/templates/pages/blog');
+// Blog = base file + extra post batches + AEO fields (short answer, takeaways, FAQ) for the original posts.
+function loadBlog(lang) {
+  const b = require(`./src/content/blog.${lang}.js`);
+  const opt = (f) => (fs.existsSync(path.join(ROOT, 'src', 'content', f)) ? require(`./src/content/${f}`) : null);
+  for (const f of ['blog-posts-a.js', 'blog-posts-b.js']) { const m = opt(f); if (m) b.posts = b.posts.concat(m[lang]); }
+  const aeo = opt('blog-aeo-existing.js');
+  if (aeo) b.posts = b.posts.map((p) => (aeo[lang][p.slug] ? { ...aeo[lang][p.slug], ...p } : p));
+  const seen = new Set();
+  for (const p of b.posts) { if (seen.has(p.slug)) throw new Error(`duplicate blog slug: ${p.slug}`); seen.add(p.slug); }
+  return b;
+}
 
 const markPlaceholders = process.argv.includes('--mark-placeholders') || process.env.MARK_PLACEHOLDERS === '1';
 const buildId = Date.now().toString(36);
@@ -105,7 +116,7 @@ function build() {
   for (const f of fs.readdirSync(path.join(SRC, 'scripts'))) write(`assets/js/${f}`, fs.readFileSync(path.join(SRC, 'scripts', f), 'utf8'));
 
   const contents = {};
-  for (const lang of config.languages) { contents[lang] = require(`./src/content/${lang}.js`); contents[lang].blog = require(`./src/content/blog.${lang}.js`); }
+  for (const lang of config.languages) { contents[lang] = require(`./src/content/${lang}.js`); contents[lang].blog = loadBlog(lang); }
 
   const urls = [];
   let count = 0;
@@ -179,7 +190,8 @@ function build() {
     ...en.locations.items.map((l) => `- [${l.name}](${config.siteUrl}/en/${l.slug}/): ${l.definition}`),
     '',
     '## Insights (blog)',
-    ...en.blog.posts.map((p) => `- [${p.title}](${config.siteUrl}/en/blog/${p.slug}/): ${p.description}`),
+    ...en.blog.posts.map((p) => `- [${p.title}](${config.siteUrl}/en/blog/${p.slug}/): ${p.answer || p.description}`),
+    `- Full text of every article with short answers and FAQs: ${config.siteUrl}/llms-full.txt`,
     '',
     '## Facts',
     '- CPA-led team; Odoo Certified Partner; ISO-aligned internal controls; 500+ reports delivered; Egypt, Saudi Arabia, US.',
@@ -192,7 +204,37 @@ function build() {
     ''
   ].join('\n'));
 
-  write('robots.txt', `User-agent: *\nAllow: /\nDisallow: /*/_preview/\nSitemap: ${config.siteUrl}/sitemap.xml\n`);
+  // robots.txt: everything public is open to search and to AI answer engines (GEO/AEO). The AI
+  // crawlers are named explicitly so the intent is unambiguous; previews stay closed to all.
+  const aiBots = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot-Extended', 'Bingbot'];
+  write('robots.txt', [
+    'User-agent: *', 'Allow: /', 'Disallow: /*/_preview/', '',
+    ...aiBots.map((b) => `User-agent: ${b}`), 'Allow: /', 'Disallow: /*/_preview/', '',
+    `Sitemap: ${config.siteUrl}/sitemap.xml`, ''
+  ].join('\n'));
+
+  // llms-full.txt: every article's short answer, takeaways and FAQ in plain text, both languages,
+  // so answer engines can quote MFT accurately without parsing HTML.
+  const stripLat = (x) => String(x).replace(/\{\/?lat\}/g, '');
+  const full = [`# ${en.meta.siteName} (MFT): full insights`, '', `> ${en.meta.description}`, ''];
+  for (const lang of config.languages) {
+    const B = contents[lang].blog;
+    full.push(`## ${lang === 'ar' ? 'Arabic insights' : 'English insights'}`, '');
+    for (const p of B.posts) {
+      full.push(`### ${stripLat(p.title)}`, `URL: ${config.siteUrl}/${lang}/blog/${p.slug}/`, `Published: ${p.updated || p.date}`, '');
+      if (p.answer) full.push(stripLat(p.answer), '');
+      if (p.takeaways) full.push(...p.takeaways.map((k) => `- ${stripLat(k)}`), '');
+      for (const blk of p.body) {
+        if (blk.h2) full.push(`#### ${stripLat(blk.h2)}`);
+        else if (blk.p) full.push(stripLat(blk.p));
+        else if (blk.quote) full.push(`> ${stripLat(blk.quote)}`);
+        else if (blk.ul) full.push(...blk.ul.map((li) => `- ${stripLat(li)}`));
+        full.push('');
+      }
+      if (p.faq) for (const f of p.faq) full.push(`Q: ${stripLat(f.q)}`, `A: ${stripLat(f.a)}`, '');
+    }
+  }
+  write('llms-full.txt', full.join('\n'));
   write(
     'sitemap.xml',
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n` +

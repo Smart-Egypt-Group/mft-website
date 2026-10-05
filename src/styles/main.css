@@ -623,6 +623,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .article-body h2 { font-size: 1.5rem; margin: 40px 0 14px; }
 .article-body .check-list { margin: 0 0 24px; }
 .article-body .check-list li { font-size: 1.0625rem; color: var(--ink-2); margin-bottom: 12px; }
+.answer-box { background: var(--mist); border-inline-start: 4px solid var(--accent); padding: 20px 24px; margin: 0 0 36px; }
+.answer-box .eyebrow { margin-bottom: 8px; }
+.article-body .answer-box .answer-text { font-size: 1.1875rem; font-weight: 600; color: var(--ink); margin: 0; }
+.answer-box .takeaways-title { font-weight: 700; color: var(--ink); margin: 16px 0 8px; font-size: 1rem; }
+.answer-box .check-list { margin: 0; }
+.answer-box .check-list li { margin-bottom: 6px; }
+.article-cta { margin-top: 36px; }
 .pull { margin: 32px 0; padding: 4px 0 4px 24px; border-inline-start: 3px solid var(--cyan); }
 [dir="rtl"] .pull { padding: 4px 24px 4px 0; }
 .pull p { font-size: 1.375rem; font-weight: 700; line-height: 1.4; color: var(--navy); margin: 0; }
@@ -677,7 +684,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: #B3261E; }
 .field-error { font-size: var(--fs-small); font-weight: 700; color: #B3261E; }
 .field-check { flex-direction: row; align-items: flex-start; gap: 12px; }
-.field-check input { width: 20px; height: 20px; min-height: 0; margin-top: 3px; flex: none; accent-color: var(--navy); }
+.field-check input { width: 24px; height: 24px; min-height: 0; margin-top: 1px; flex: none; accent-color: var(--navy); }
 .field-check label { font-weight: 500; color: var(--ink-2); }
 .hp { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .form-status { min-height: 0; margin: 0 0 16px; font-weight: 600; color: var(--ink-2); }
@@ -748,4 +755,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .site-header, .site-footer, .cta-band, .nav-toggle, .skip-link { display: none !important; }
   .section { padding-block: 24px; }
   .section-navy, .section-cyan { background: none; color: var(--ink); }
+}
+
+/* Touch targets (WCAG 2.2 SC 2.5.8, 24×24 minimum): list, breadcrumb and footer links were 16–20px tall on phones. */
+@media (max-width: 899px), (pointer: coarse) {
+  li > a, .breadcrumb a, .feed-link a { display: inline-block; min-height: 24px; padding-block: 3px; }
+  .breadcrumb ol { row-gap: 4px; }
 }
