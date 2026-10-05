@@ -8,7 +8,7 @@
 //        BLOCKED as of 10 Sep 2026: the VPS database bug prevents creating any
 //        new user on erp.seg-audit.com (see project_odoo_fintech memo).
 //
-//   2. ODOO_WEBSITE_FORM_URL   e.g. https://fin-tech.odoo.com
+//   2. ODOO_WEBSITE_FORM_URL   e.g. https://erp.seg-audit.com
 //        Server-side POST to Odoo's public website form controller
 //        (/website/form/crm.lead), the same route the Odoo site's own contact
 //        form uses. Needs NO API user, so it works around the bug above.

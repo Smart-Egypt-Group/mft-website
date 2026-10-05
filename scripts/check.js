@@ -123,7 +123,7 @@ for (const file of files) {
   for (const f of html.match(/<form[^>]*id="lead-form"[^>]*>/g) || []) {
     const ep = (f.match(/data-endpoint="([^"]*)"/) || [])[1];
     if (!ep) problems.push('lead form has an EMPTY data-endpoint (form would show "not available")');
-    else if (!/^https:\/\/fin-tech\.odoo\.com\/website\/form\/crm\.lead$|^\/\.netlify\/functions\/lead$|^https?:\/\//.test(ep)) problems.push(`lead form endpoint looks wrong: ${ep}`);
+    else if (!/^https:\/\/erp\.seg-audit\.com\/website\/form\/crm\.lead$|^\/\.netlify\/functions\/lead$|^https?:\/\//.test(ep)) problems.push(`lead form endpoint looks wrong: ${ep}`);
   }
   // JSON-LD must parse and carry a @type
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
