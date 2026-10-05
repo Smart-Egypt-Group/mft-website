@@ -30,7 +30,7 @@ module.exports = {
   // a preview built with FORM_ENDPOINT= was reviewed as if it were the live site).
   formMode: 'odoo-direct',
   formEndpoint: '/.netlify/functions/lead', // used only when formMode === 'function'
-  odooFormUrl: 'https://fin-tech.odoo.com/website/form/crm.lead',
+  odooFormUrl: 'https://erp.seg-audit.com/website/form/crm.lead',
 
   // Contact details — taken from the official contact page
   // https://fin-tech.odoo.com/contactus (31 Aug 2026), same source the September
@@ -64,7 +64,7 @@ module.exports = {
   // Related MFT platforms (kept separate from this site by design).
   platform: {
     segAudit: 'https://app.seg-audit.com',
-    odooSite: 'https://fin-tech.odoo.com'
+    odooSite: 'https://erp.seg-audit.com'
   },
 
   // Analytics — leave empty until a decision is made. Injected only if set.
