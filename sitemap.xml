@@ -161,6 +161,31 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/thirteen-week-cash-flow-forecast/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-agents-finance-controls/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-upgrade-plan-17-18-19/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/ar/egypt/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/egypt/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/egypt/"/>
@@ -344,6 +369,31 @@
     <loc>https://www.seg-audit.com/en/blog/thirteen-week-cash-flow-forecast/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/thirteen-week-cash-flow-forecast/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-ai-agents-finance-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-agents-finance-controls/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-bank-reconciliation-and-bill-payments/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-upgrade-plan-17-18-19/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-upgrade-plan-17-18-19/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/"/>
   </url>
   <url>
     <loc>https://www.seg-audit.com/en/egypt/</loc>

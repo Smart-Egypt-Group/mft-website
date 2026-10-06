@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>التسوية البنكية وسداد فواتير الموردين في Odoo 20: القواعد الجديدة والضوابط التي تحتاجها | MFT</title>
+  <meta name="description" content="التسوية البنكية وسداد الفواتير في Odoo 20: قيود تنشأ من معاملات البنك، وتقرير ملخص التسوية، وقواعد المطابقة، والدفع عبر PISP، وتحذيرات التكرار، والضوابط.">
+  <link rel="canonical" href="https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-bank-reconciliation-and-bill-payments/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="التسوية البنكية وسداد فواتير الموردين في Odoo 20: القواعد الجديدة والضوابط التي تحتاجها | MFT">
+  <meta property="og:description" content="التسوية البنكية وسداد الفواتير في Odoo 20: قيود تنشأ من معاملات البنك، وتقرير ملخص التسوية، وقواعد المطابقة، والدفع عبر PISP، وتحذيرات التكرار، والضوابط.">
+  <meta property="og:url" content="https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-ar.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="المقالات | Modern Financial Technology" href="https://www.seg-audit.com/ar/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/cairo-arabic-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css?v=muvxi6zz">
+  <script src="/assets/js/pre.js?v=muvxi6zz"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/","name":"التسوية البنكية وسداد فواتير الموردين في Odoo 20: القواعد الجديدة والضوابط التي تحتاجها | MFT","description":"التسوية البنكية وسداد الفواتير في Odoo 20: قيود تنشأ من معاملات البنك، وتقرير ملخص التسوية، وقواعد المطابقة، والدفع عبر PISP، وتحذيرات التكرار، والضوابط.","inLanguage":"ar","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://www.seg-audit.com/ar/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/ar/blog/"},{"@type":"ListItem","position":3,"name":"odoo-20-bank-reconciliation-and-bill-payments","item":"https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"التسوية البنكية وسداد فواتير الموردين في Odoo 20: القواعد الجديدة والضوابط التي تحتاجها","description":"التسوية البنكية وسداد الفواتير في Odoo 20: قيود تنشأ من معاملات البنك، وتقرير ملخص التسوية، وقواعد المطابقة، والدفع عبر PISP، وتحذيرات التكرار، والضوابط.","inLanguage":"ar","datePublished":"2026-10-04","dateModified":"2026-10-04","wordCount":633,"articleSection":"Odoo","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/"},"author":{"@type":"Person","name":"أحمد أشرف مصطفى","jobTitle":"المؤسس والرئيس التنفيذي، Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-ar.png","abstract":"بحسب ملاحظات إصدار Odoo 20، كل قيد يومية يمس حساب البنك يجب أن ينشأ من معاملة بنكية، ويعرض تقرير ملخص البنود المسوّاة وغير المسوّاة في نهاية الفترة، ويمكن سداد فواتير الموردين عبر خدمة بدء الدفع حيث يسمح البنك والدولة. اقرن ذلك باعتماد قبل الدفع، وعدد محدود ممن يبدؤون الدفعات، ومراجعة موثّقة للتكرار.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل ما زال بإمكاني ترحيل قيود يدوية على حساب البنك في Odoo 20؟","acceptedAnswer":{"@type":"Answer","text":"بحسب ملاحظات إصدار Odoo 20، كل قيود اليومية المؤثرة في حسابات البنك يجب أن تنشأ من معاملات بنكية، لمنع القيود اليدوية التي تُخلّ باتساق البنك."}},{"@type":"Question","name":"هل أستطيع سداد فواتير الموردين مباشرة من Odoo 20 في مصر أو السعودية؟","acceptedAnswer":{"@type":"Answer","text":"يدعم Odoo 20 سداد الفواتير عبر خدمة بدء الدفع (PISP)، فرديًا أو دفعة واحدة، لكن الإتاحة تعتمد على البنك والدولة. تحقق مع بنكك أولًا."}},{"@type":"Question","name":"ما الفرق بين تحذير التكرار الأحمر والأصفر؟","acceptedAnswer":{"@type":"Answer","text":"الأحمر يعلّم فاتورة مكررة على الأرجح يجب تصحيحها، والأصفر يعلّم احتمال تكرار يجب فحصه قبل الترحيل."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/ar/" aria-label="Modern Financial Technology: الرئيسية">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">القائمة</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="القائمة">
+      <ul><li><a href="/ar/services/">الخدمات</a></li><li><a href="/ar/industries/">القطاعات</a></li><li><a href="/ar/intelligence/">وكلاء <span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/about/">عن الشركة</a></li><li><a href="/ar/blog/" aria-current="page">المقالات</a></li><li><a href="/ar/contact/">تواصل معنا</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/en/blog/odoo-20-bank-reconciliation-and-bill-payments/" lang="en" hreflang="en" dir="ltr">English</a>
+        <a class="btn btn-primary btn-sm" href="/ar/contact/">تحدث معنا</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">الرئيسية</a></li><li><a href="/ar/blog/">المقالات</a></li><li aria-current="page"><span class="lat">Odoo</span></li></ol></nav>
+      <p class="eyebrow"><span class="lat">Odoo</span></p>
+      <h1>التسوية البنكية وسداد فواتير الموردين في <span class="lat">Odoo 20</span>: القواعد الجديدة والضوابط التي تحتاجها</h1>
+      <p class="lead">قيود البنك تنشأ الآن من معاملات بنكية، والفواتير يمكن سدادها من داخل <span class="lat">Odoo</span>، والتكرار يُعلَّم بلونين. وكل تغيير من هذه ينقل ضابطًا رقابيًا.</p>
+      <p class="post-meta"><span class="topic-tag"><span class="lat">Odoo</span></span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-10-04">4 أكتوبر 2026</time><span><span class="lat">4</span> دقائق قراءة</span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">الإجابة المختصرة</p><p class="answer-text">بحسب ملاحظات إصدار <span class="lat">Odoo 20</span>، كل قيد يومية يمس حساب البنك يجب أن ينشأ من معاملة بنكية، ويعرض تقرير ملخص البنود المسوّاة وغير المسوّاة في نهاية الفترة، ويمكن سداد فواتير الموردين عبر خدمة بدء الدفع حيث يسمح البنك والدولة. اقرن ذلك باعتماد قبل الدفع، وعدد محدود ممن يبدؤون الدفعات، ومراجعة موثّقة للتكرار.</p><p class="takeaways-title">أهم النقاط</p><ul class="check-list"><li>قيود اليومية التي تمس حسابات البنك يجب أن تنشأ من معاملات بنكية.</li><li>تقرير ملخص التسوية يقدّم دليلًا في نهاية الفترة على البنود المسوّاة وغير المسوّاة.</li><li>السداد عبر <span class="lat">PISP</span> يعتمد على البنك والدولة، وينقل إطلاق الدفعات إلى داخل <span class="lat">Odoo</span>.</li><li>التحذير الأحمر للتكرار يستلزم التصحيح، والأصفر يستلزم الفحص قبل الترحيل.</li></ul></aside>
+      <p>التسوية البنكية وسداد الموردين هما الموضع الذي تعيش فيه أغلب ضوابط النقدية في أي شركة. وبحسب ملاحظات إصدار <span class="lat">Odoo 20</span>، يتغير كلاهما في هذا الإصدار. بعض التغييرات يسد ثغرات نراها منذ سنوات، وبعضها ينقل ضابطًا من بوابة البنك إلى داخل <span class="lat">Odoo</span>، وهذا يعني أن الضابط يجب أن ينتقل معه.</p>
+<h2>لماذا يجب أن تنشأ قيود البنك الآن من معاملات بنكية؟</h2>
+<p>تنص ملاحظات الإصدار على أن كل قيود اليومية المؤثرة في حسابات البنك يجب أن تنشأ من معاملات بنكية، لمنع القيود اليدوية التي تُخلّ باتساق البنك. والمشكلة الكلاسيكية في التسوية قيد يدوي يُرحّل مباشرة إلى حساب البنك: عمولة بنكية، أو تحويل، أو تصحيح. يتحرك الدفتر ولا يتحرك الكشف، ويبقى الفرق في التسوية إلى أن يفسّره أحد. وبموجب القاعدة الجديدة تأتي المعاملة البنكية أولًا ثم تتبعها المحاسبة.</p>
+<p>على فرق المالية التي اعتمدت على القيود اليدوية للتحويل بين الحسابات أو للأرصدة الافتتاحية أو للتصحيحات أن تحصر هذه الحالات قبل الترقية، وأن تقرر كيف ستُسجَّل كل حالة من الآن. وتذكر ملاحظات الإصدار أيضًا رسائل أدق عند اعتماد كشف الحساب تساعد على اكتشاف فروق الأرصدة وإصلاحها.</p>
+<h2>ماذا يقدّم لك تقرير ملخص التسوية؟</h2>
+<p>يعرض تقرير ملخص التسوية البنكية المعاملات المسوّاة وغير المسوّاة في تاريخ نهاية الفترة. وهذا هو المستند الذي يطلبه المراجع في كل إقفال: ما الذي سُوّي، وما الذي بقي مفتوحًا، وفي أي تاريخ. اجعله جزءًا من ملف الإقفال الشهري، موقّعًا من المُعِدّ والمراجِع، وافحص البنود غير المسوّاة حسب عمرها لا حسب حجمها فقط.</p>
+<h2>كيف تغيّر قواعد المطابقة والتوزيع التحليلي للشطب العمل اليومي؟</h2>
+<p>تبحث قواعد المطابقة عن فاتورة عميل أو مورد مفتوحة تناسب المعاملة وتسوّيها. هذا يرفع عبئًا روتينيًا، لكنه يعني أيضًا أن قاعدة واسعة أكثر من اللازم قد تسوّي البند الخطأ. راجع القواعد عند إنشائها، وخذ عينة شهرية من البنود المسوّاة آليًا. وتسمح ملاحظات الإصدار أيضًا بتوزيع تحليلي على قيد الشطب الذي يُنشأ أثناء التسوية، فتُحمَّل الفروق الصغيرة مثل العمولات البنكية على مركز تكلفة بدل أن تسقط في حساب عام. اتفقوا على الشطب المقبول، وحتى أي حد، ومن يحق له ترحيله.</p>
+<h2>كيف يعمل سداد فواتير الموردين من داخل <span class="lat">Odoo</span>؟</h2>
+<p>بحسب ملاحظات الإصدار، يمكنك اختيار فاتورة أو أكثر، والدفع، ثم التأكيد مع البنك، فرديًا أو دفعة واحدة، عبر خدمة بدء الدفع (<span class="lat">PISP</span>). الإتاحة تعتمد على البنك والدولة، فتحقق مع بنكك في مصر أو السعودية قبل أن تخطط لها. وحيث تتاح، ينتقل إطلاق الدفعات من بوابة البنك إلى داخل <span class="lat">Odoo</span>، وقد لا تبقى سلسلة الاعتماد في بوابة البنك هي البوابة الوحيدة.</p>
+<h2>ماذا تعني تحذيرات التكرار الحمراء والصفراء؟</h2>
+<p>لكشف التكرار في فواتير العملاء والموردين مستويان. الأحمر يعني فاتورة مكررة على الأرجح يجب تصحيحها، والأصفر يعني احتمال تكرار يجب فحصه قبل الترحيل. وتصف ملاحظات الإصدار أيضًا حماية من السداد المزدوج. الفواتير المكررة من أكثر أخطاء الدائنين التي نجدها، لذا فهذه ميزة مفيدة، لكن التحذير لا يصبح ضابطًا إلا إذا تصرف أحد بناءً عليه وسُجّل تصرفه.</p>
+<h2>ما الضوابط التي يجب أن تتغير؟</h2>
+<ul class="check-list"><li>الاعتماد قبل الدفع: تُعتمد الفاتورة وفق مصفوفة الاعتماد لديك قبل أن يمكن اختيارها للسداد، ويكون هذا الاعتماد ظاهرًا على الفاتورة.</li><li>من يبدأ الدفعات: اقصر بدء الدفع على مجموعة صغيرة مسمّاة لا تنشئ الموردين ولا تُدخل فواتيرهم.</li><li>التأكيد من جهة البنك: أبقِ حدود التفويض في البنك متسقة مع <span class="lat">Odoo</span>، حتى لا يتحول أي طرف إلى ختم شكلي.</li><li>مراجعة التكرار: لا يُتجاوز تحذير أحمر دون سبب موثّق، ويُغلق التحذير الأصفر شخص غير من أدخل الفاتورة.</li><li>قواعد المطابقة والشطب: تُعتمد التغييرات على القواعد وحدود الشطب وتُسجَّل.</li></ul>
+<blockquote class="pull"><p>حين ينتقل زر الدفع إلى نظام تخطيط الموارد، يجب أن تنتقل معه مصفوفة الاعتماد.</p></blockquote>
+<h2>ما الذي يجب اختباره قبل الاعتماد عليه؟</h2>
+<p>شغّل تقرير الملخص لفترة أقفلتها بالفعل وقارنه بتسويتك الخاصة. أدخل فواتير مكررة معروفة وفواتير متكررة مشروعة معروفة، وتحقق من التحذير الذي تحصل عليه كل منها. وإن كان بنكك يتيح بدء الدفع، فاختبر دفعة كاملة من أولها إلى آخرها باعتمادات حقيقية، وتأكد أن مستخدمًا بلا صلاحية دفع لا يستطيع إطلاقها. وضمن أعمال المراجعة الداخلية التي نقدمها، نراجع صلاحيات الوصول وتغييرات القواعد وعينة من الدفعات مقابل الفواتير المعتمدة، لأن الميزات الجديدة لا تكون أقوى من الأشخاص المسموح لهم باستخدامها.</p>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/ar/request-quote/">تحدّث مع <span class="lat">MFT</span> عن هذا</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">أسئلة شائعة</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>هل ما زال بإمكاني ترحيل قيود يدوية على حساب البنك في <span class="lat">Odoo 20</span>؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>بحسب ملاحظات إصدار <span class="lat">Odoo 20</span>، كل قيود اليومية المؤثرة في حسابات البنك يجب أن تنشأ من معاملات بنكية، لمنع القيود اليدوية التي تُخلّ باتساق البنك.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>هل أستطيع سداد فواتير الموردين مباشرة من <span class="lat">Odoo 20</span> في مصر أو السعودية؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>يدعم <span class="lat">Odoo 20</span> سداد الفواتير عبر خدمة بدء الدفع (<span class="lat">PISP</span>)، فرديًا أو دفعة واحدة، لكن الإتاحة تعتمد على البنك والدولة. تحقق مع بنكك أولًا.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>ما الفرق بين تحذير التكرار الأحمر والأصفر؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>الأحمر يعلّم فاتورة مكررة على الأرجح يجب تصحيحها، والأصفر يعلّم احتمال تكرار يجب فحصه قبل الترحيل.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">عن الكاتب</p>
+        <h2>أحمد أشرف مصطفى</h2>
+        <p class="author-role">المؤسس والرئيس التنفيذي، <span class="lat">Modern Financial Technology</span></p>
+        <p>مراجع مرخّص ومؤسس <span class="lat">MFT</span>. بنى الشركة من ممارسة للتدقيق المالي إلى أعمال تنفيذ <span class="lat">Odoo</span> والمدير المالي الافتراضي تخدم مصر والسعودية، وما زال يقود تعاقدات العملاء بنفسه. يكتب عمّا يُظهره دفتر الأستاذ فعلًا.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">مقالات ذات صلة</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag"><span class="lat">Odoo</span></span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-27">27 سبتمبر 2026</time><span><span class="lat">3</span> دقائق قراءة</span></p>
+    <h2><a href="/ar/blog/odoo-accounting-implementation-steps/">مراحل تنفيذ المحاسبة على <span class="lat">Odoo</span>، والأخطاء الأعلى كلفة</a></h2>
+    <p>تثبيت <span class="lat">Odoo</span> يستغرق ظهيرة واحدة. أما تنفيذ يقبله المراجع فيمر بمراحل، تنتهي كل منها بمطابقة.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag"><span class="lat">Odoo</span></span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-30">30 سبتمبر 2026</time><span><span class="lat">3</span> دقائق قراءة</span></p>
+    <h2><a href="/ar/blog/odoo-inventory-valuation-fifo-avco/"><span class="lat">FIFO</span> أم متوسط التكلفة في <span class="lat">Odoo</span>: اختيار طريقة تقييم تستطيع التعايش معها</a></h2>
+    <p>طريقة التكلفة تحدد مجمل الربح الذي يراه مجلس الإدارة كل شهر. اختيارها سهل أثناء الإعداد، وتغييرها لاحقًا مكلف.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag"><span class="lat">Odoo</span></span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-10-03">3 أكتوبر 2026</time><span><span class="lat">3</span> دقائق قراءة</span></p>
+    <h2><a href="/ar/blog/month-end-close-checklist-odoo/">قائمة إقفال شهري في <span class="lat">Odoo</span> يستطيع المراجع أن يوقّع عليها</a></h2>
+    <p>أغلب الأدوات موجودة في <span class="lat">Odoo</span> بالفعل. ما ينقص عادة هو الترتيب والأدلة والتوقيع.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/ar/blog/">كل المقالات</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">اقرأ أيضًا</h2>
+    <ul class="see-also-list"><li><a href="/ar/intelligence/">الخدمات</a></li><li><a href="/ar/intelligence/"><span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/egypt/">مصر</a></li><li><a href="/ar/saudi-arabia/">السعودية</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">تحدث مع محاسب معتمد، لا مع مندوب مبيعات.</h2>
+      <p>مكالمة <span class="lat">30</span> دقيقة لفهم كيانك وأنظمتك وما يجب أن يبدو عليه الإقفال الجاهز للقرار. مجانًا، وتخرج منها بخطوة عملية واحدة محددة.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/ar/contact/">احجز مكالمة</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>شركة تكنولوجيا مالية ومراجعة بقيادة محاسبين معتمدين. <span class="lat">Odoo ERP</span> والمراجعة الداخلية والمدير المالي الافتراضي من فريق واحد وبأرقام واحدة.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">الخدمات</h2>
+        <ul><li><a href="/ar/services/odoo-erp/">تنفيذ <span class="lat">Odoo ERP</span></a></li><li><a href="/ar/services/internal-audit/">المراجعة الداخلية</a></li><li><a href="/ar/services/virtual-cfo/">المدير المالي الافتراضي</a></li><li><a href="/ar/services/financial-consulting/">الاستشارات المالية</a></li><li><a href="/ar/services/business-analysis/">تحليل الأعمال</a></li><li><a href="/ar/services/training/">تدريب المستخدمين</a></li><li><a href="/ar/services/technical-support/">الدعم الفني</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">القطاعات</h2>
+        <ul><li><a href="/ar/industries/#manufacturing">التصنيع</a></li><li><a href="/ar/industries/#trading">التجارة والتوزيع</a></li><li><a href="/ar/industries/#food-beverage">الأغذية والمشروبات</a></li><li><a href="/ar/industries/#healthcare">الرعاية الصحية</a></li><li><a href="/ar/industries/#construction">المقاولات</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">أين نعمل</h2>
+        <ul><li><a href="/ar/egypt/">مصر: <span class="lat">Odoo</span> والمراجعة والمدير المالي الافتراضي</a></li><li><a href="/ar/saudi-arabia/">السعودية: <span class="lat">Odoo</span> ومراجعة متوافقة مع <span class="lat">ZATCA</span></a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">الشركة</h2>
+        <ul><li><a href="/ar/about/">عن <span class="lat">MFT</span></a></li><li><a href="/ar/intelligence/">وكلاء <span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/request-quote/">اطلب عرض سعر</a></li><li><a href="/ar/blog/">المقالات</a></li><li><a href="/ar/contact/">تواصل معنا</a></li><li><a href="/ar/privacy/">الخصوصية</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">منصة <span class="lat">seg-audit</span></a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">التواصل</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">المكاتب</h2>
+        <ul><li>مصر: <span class="muted">الكوربة، مصر الجديدة، القاهرة</span></li><li>السعودية</li><li>الولايات المتحدة</li></ul>
+        <h2 class="footer-title">تابعنا</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span class="lat">Modern Financial Technology</span>. جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=muvxi6zz" defer></script>
+<script src="/assets/js/main.js?v=muvxi6zz" defer></script>
+</body>
+</html>

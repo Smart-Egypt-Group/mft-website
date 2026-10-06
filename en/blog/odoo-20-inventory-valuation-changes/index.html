@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Odoo 20 inventory valuation changes: what they mean for COGS and margin | MFT</title>
+  <meta name="description" content="Odoo 20 inventory valuation changes and their effect on COGS and margin: closing accruals, retroactive COGS, landed costs, aging, and month-end controls.">
+  <link rel="canonical" href="https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="Odoo 20 inventory valuation changes: what they mean for COGS and margin | MFT">
+  <meta property="og:description" content="Odoo 20 inventory valuation changes and their effect on COGS and margin: closing accruals, retroactive COGS, landed costs, aging, and month-end controls.">
+  <meta property="og:url" content="https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-en.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="Insights | Modern Financial Technology" href="https://www.seg-audit.com/en/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="/assets/css/main.css?v=muvxi6zz">
+  <script src="/assets/js/pre.js?v=muvxi6zz"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/","name":"Odoo 20 inventory valuation changes: what they mean for COGS and margin | MFT","description":"Odoo 20 inventory valuation changes and their effect on COGS and margin: closing accruals, retroactive COGS, landed costs, aging, and month-end controls.","inLanguage":"en","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.seg-audit.com/en/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/en/blog/"},{"@type":"ListItem","position":3,"name":"odoo-20-inventory-valuation-changes","item":"https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Odoo 20 inventory valuation changes: what they mean for COGS and margin","description":"Odoo 20 inventory valuation changes and their effect on COGS and margin: closing accruals, retroactive COGS, landed costs, aging, and month-end controls.","inLanguage":"en","datePublished":"2026-10-02","dateModified":"2026-10-02","wordCount":820,"articleSection":"Odoo","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/"},"author":{"@type":"Person","name":"Ahmed Ashraf Mostafa","jobTitle":"Founder and CEO, Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-en.png","abstract":"According to the Odoo 20 release notes, valuation accruals can post directly to the inventory valuation account, COGS updates retroactively when a cost changes after delivery, landed costs can target individual products, and inventory can be reported at a past date. Margins become more accurate, so cost changes and period locks need tighter control.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does Odoo 20 change COGS on goods already delivered?","acceptedAnswer":{"@type":"Answer","text":"According to the Odoo 20 release notes, COGS is updated retroactively when a cost changes after delivery. Lock reported periods so such changes do not alter closed months without a documented adjustment."}},{"@type":"Question","name":"Can landed costs be assigned to only some products in a receipt?","acceptedAnswer":{"@type":"Answer","text":"Yes. According to the release notes, Odoo 20 lets you assign landed costs to individual products of a transfer, instead of spreading them across everything received."}},{"@type":"Question","name":"How do we confirm inventory valuation is correct at month end?","acceptedAnswer":{"@type":"Answer","text":"Reconcile the stock valuation report to the inventory valuation account in the general ledger, explain every difference, and only then lock the period. Inventory at a past date helps for prior dates."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/en/" aria-label="Modern Financial Technology: Home">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Menu">
+      <ul><li><a href="/en/services/">Services</a></li><li><a href="/en/industries/">Industries</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/" aria-current="page">Insights</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/ar/blog/odoo-20-inventory-valuation-changes/" lang="ar" hreflang="ar" dir="rtl">العربية</a>
+        <a class="btn btn-primary btn-sm" href="/en/contact/">Talk to Us</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Home</a></li><li><a href="/en/blog/">Insights</a></li><li aria-current="page">Odoo</li></ol></nav>
+      <p class="eyebrow">Odoo</p>
+      <h1>Odoo 20 inventory valuation changes: what they mean for COGS and margin</h1>
+      <p class="lead">Several Odoo 20 changes touch the line between inventory and cost of goods sold. Each one helps, and each one needs a control around it.</p>
+      <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-02"><span class="lat">2 October 2026</span></time><span><span class="lat">4</span> min read</span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">Short answer</p><p class="answer-text">According to the Odoo 20 release notes, valuation accruals can post directly to the inventory valuation account, COGS updates retroactively when a cost changes after delivery, landed costs can target individual products, and inventory can be reported at a past date. Margins become more accurate, so cost changes and period locks need tighter control.</p><p class="takeaways-title">Key takeaways</p><ul class="check-list"><li>Retroactive COGS means a late cost change can move margin on goods already delivered.</li><li>Landed costs per product give more precise unit costs on mixed receipts.</li><li>Inventory at a past date and stock aging support month-end and audit work.</li><li>Lock periods, restrict who changes costs, and reconcile stock valuation to the GL monthly.</li></ul></aside>
+      <p>Inventory is where gross margin is won or lost on paper. The selling price is rarely in dispute; the cost of goods sold behind it often is. Odoo 20 brings a group of changes that sit exactly on that line between inventory and COGS. This article goes through them from a finance point of view, then sets out the controls we would put around them. It assumes you already know the costing methods themselves; if not, start with our guide to FIFO and AVCO valuation in Odoo.</p>
+<h2>What changes in perpetual valuation closing?</h2>
+<p>According to the Odoo 20 release notes, under perpetual valuation, accrual entries affecting inventory valuation can be made from the inventory valuation closing report, and they post directly to the inventory valuation account rather than through the stock variation account. In practice this shortens the path from a closing adjustment to the balance sheet line it affects. It also means fewer intermediate balances to clear at month end, but only if the team knows the new route and stops reaching for the old one.</p>
+<h2>How does retroactive COGS affect margin?</h2>
+<p>The release notes describe a retroactive COGS update when a cost changes after delivery. Think of a receipt valued at a provisional cost, goods delivered to a customer, and the final vendor cost arriving later. In earlier versions that difference often stayed in inventory or needed a manual correction. In Odoo 20, cost of goods sold on the delivered quantity follows the corrected cost.</p>
+<p>For margin reporting this is better: margin reflects what the goods actually cost. For the close it is a new risk: a cost change made after a month is reported can move COGS for goods that left the warehouse in that month. That is why the period lock matters more, not less, after this change.</p>
+<h2>What is new in landed costs?</h2>
+<p>Landed costs can now be assigned to individual products of a transfer. When one container holds several products and the freight or customs relates to only some of them, you no longer have to spread the charge across everything received. Unit costs, and therefore margins by product, become more precise. The control question is who decides the allocation and where the supporting document is kept.</p>
+<h2>Which new reports help at month end and in audit?</h2>
+<p>According to the release notes, Odoo 20 can show inventory at a past date and adds a stock aging report. Inventory at a past date answers the question auditors ask every year: what did you hold at the balance sheet date? Stock aging shows which items have not moved, which is the starting point for a slow-moving or obsolete stock review and any write-down discussion. Neither report decides the write-down for you, but both shorten the evidence work.</p>
+<h2>What else changes for valuation?</h2>
+<ul class="check-list"><li>Stock on hand and valuation can be managed without the Inventory app, which suits companies that hold some stock but do not run full warehouse operations.</li><li>Suggested reordering rules propose minimum and maximum quantities from demand history, desired days of coverage and order frequency. They affect how much cash sits in stock, so treat the suggestions as proposals to approve, not settings to accept.</li><li>Intercompany resupply from another company’s warehouse transfers valuation correctly, according to the release notes, which matters for groups that move stock between legal entities.</li></ul>
+<p>Feature availability can differ between Community and Enterprise, and much of the accounting automation remains Enterprise-only, so confirm what your edition includes before you design a process around it.</p>
+<blockquote class="pull"><p>A more accurate cost is only useful if nobody can change it after the month is reported.</p></blockquote>
+<h2>Which controls should go around these changes?</h2>
+<p>Each change above makes valuation more accurate. Each one also gives more people a way to move COGS. We recommend three controls, and we add them to the inventory section of the month-end close checklist:</p>
+<ul class="check-list"><li>Period lock: lock each period once it is reported, so a retroactive cost change cannot silently alter COGS in a closed month. Changes after the lock go through a documented adjustment in the open period.</li><li>Who can change costs: restrict product cost changes, landed cost allocations and valuation accruals to named roles, separate from the people who receive goods, and review a log of cost changes every month.</li><li>Stock valuation to GL reconciliation: at each month end, reconcile the stock valuation report to the inventory valuation account in the general ledger, and explain every difference before the period is locked.</li></ul>
+<h2>Should these changes drive your upgrade?</h2>
+<p>If inventory is material to your balance sheet and margins are a board-level number, they are a fair reason to plan the move to Odoo 20, especially from an older version. Test them on a copy of your own data first, and compare COGS for a closed month before and after. Where we act as Virtual CFO at MFT, that comparison is the evidence we want before any margin report is trusted.</p>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/en/request-quote/">Talk to MFT about this</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">Questions people ask</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>Does Odoo 20 change COGS on goods already delivered?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>According to the Odoo 20 release notes, COGS is updated retroactively when a cost changes after delivery. Lock reported periods so such changes do not alter closed months without a documented adjustment.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>Can landed costs be assigned to only some products in a receipt?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Yes. According to the release notes, Odoo 20 lets you assign landed costs to individual products of a transfer, instead of spreading them across everything received.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>How do we confirm inventory valuation is correct at month end?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Reconcile the stock valuation report to the inventory valuation account in the general ledger, explain every difference, and only then lock the period. Inventory at a past date helps for prior dates.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">About the author</p>
+        <h2>Ahmed Ashraf Mostafa</h2>
+        <p class="author-role">Founder and CEO, Modern Financial Technology</p>
+        <p>Licensed auditor and the founder of MFT. Ahmed built the firm from a financial audit practice into an Odoo implementation and Virtual CFO business serving Egypt and Saudi Arabia, and still leads client engagements. He writes about what the ledger actually shows.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">Related articles</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-27"><span class="lat">27 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/odoo-accounting-implementation-steps/">The phases of an Odoo accounting implementation, and the mistakes that cost the most</a></h2>
+    <p>Installing Odoo takes an afternoon. An implementation an auditor will accept takes phases, and each one ends in a reconciliation.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-30"><span class="lat">30 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/odoo-inventory-valuation-fifo-avco/">FIFO or average cost in Odoo: choosing a valuation method you can live with</a></h2>
+    <p>The costing method decides the gross margin the board sees every month. It is easy to choose during setup and expensive to change later.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-03"><span class="lat">3 October 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/month-end-close-checklist-odoo/">A month-end close checklist for Odoo that a reviewer can sign</a></h2>
+    <p>Most of the tools are already in Odoo. What is usually missing is the order, the evidence and the sign-off.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/en/blog/">All articles</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">See also</h2>
+    <ul class="see-also-list"><li><a href="/en/intelligence/">Services</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/egypt/">Egypt</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">Talk to a CPA, not a sales rep.</h2>
+      <p>A 30-minute call to understand your entity, your systems and what a decision-ready close would look like. Free, and you leave with one concrete next step.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/en/contact/">Book a call</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Services</h2>
+        <ul><li><a href="/en/services/odoo-erp/">Odoo ERP Implementation</a></li><li><a href="/en/services/internal-audit/">Internal Audit</a></li><li><a href="/en/services/virtual-cfo/">Virtual CFO</a></li><li><a href="/en/services/financial-consulting/">Financial Consulting</a></li><li><a href="/en/services/business-analysis/">Business Analysis</a></li><li><a href="/en/services/training/">User Training</a></li><li><a href="/en/services/technical-support/">Technical Support</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Industries</h2>
+        <ul><li><a href="/en/industries/#manufacturing">Manufacturing</a></li><li><a href="/en/industries/#trading">Trading &amp; Distribution</a></li><li><a href="/en/industries/#food-beverage">Food &amp; Beverage</a></li><li><a href="/en/industries/#healthcare">Healthcare</a></li><li><a href="/en/industries/#construction">Construction</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Where we work</h2>
+        <ul><li><a href="/en/egypt/">Egypt: Odoo, audit and Virtual CFO</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia: ZATCA-ready Odoo and audit</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Company</h2>
+        <ul><li><a href="/en/about/">About MFT</a></li><li><a href="/en/intelligence/">MFT Intelligence AI Agents</a></li><li><a href="/en/request-quote/">Request a quote</a></li><li><a href="/en/blog/">Insights (blog)</a></li><li><a href="/en/contact/">Contact</a></li><li><a href="/en/privacy/">Privacy</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">seg-audit platform</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Contact</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">Offices</h2>
+        <ul><li>Egypt: <span class="muted">Korba, Heliopolis, Cairo</span></li><li>Saudi Arabia</li><li>United States</li></ul>
+        <h2 class="footer-title">Follow</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Modern Financial Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=muvxi6zz" defer></script>
+<script src="/assets/js/main.js?v=muvxi6zz" defer></script>
+</body>
+</html>

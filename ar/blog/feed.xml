@@ -6,13 +6,53 @@
     <atom:link href="https://www.seg-audit.com/ar/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>كتابات عملية من MFT عن المراجعة الداخلية والأهمية النسبية والامتثال لهيئة الزكاة والضريبة والجمارك السعودية والفوترة الإلكترونية المصرية وتشغيل Odoo كنظام مالي.</description>
     <language>ar</language>
-    <lastBuildDate>Tue, 06 Oct 2026 00:05:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 00:16:47 GMT</lastBuildDate>
+    <item>
+      <title>Odoo 20 لفرق المالية: ما الذي يتغير، وما الذي يمكن تجاهله، وما الذي يجب اختباره</title>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/</guid>
+      <pubDate>Tue, 06 Oct 2026 09:00:00 GMT</pubDate>
+      <description>ما الذي يغيّره Odoo 20 لفرق المالية في مصر والسعودية: قيود البنك، وسداد فواتير الموردين، وكشف التكرار، وتقييم المخزون، والمساعد الذكي، وما يجب اختباره.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>وكلاء الذكاء الاصطناعي في Odoo 20 للمالية: مفيدون، بتكلفة، ويحتاجون إلى معتمِد</title>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/</guid>
+      <pubDate>Mon, 05 Oct 2026 09:00:00 GMT</pubDate>
+      <description>ما الذي يستطيعه وكلاء الذكاء الاصطناعي في Odoo 20 للمالية، وتكلفتهم برصيد IAP، وكيف تحكمهم: الوكيل يعدّ المسودة، وشخص مسمّى يعتمد، وسجلات التشغيل تُحفظ.</description>
+      <category>MFT Intelligence</category>
+    </item>
+    <item>
+      <title>التسوية البنكية وسداد فواتير الموردين في Odoo 20: القواعد الجديدة والضوابط التي تحتاجها</title>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/</guid>
+      <pubDate>Sun, 04 Oct 2026 09:00:00 GMT</pubDate>
+      <description>التسوية البنكية وسداد الفواتير في Odoo 20: قيود تنشأ من معاملات البنك، وتقرير ملخص التسوية، وقواعد المطابقة، والدفع عبر PISP، وتحذيرات التكرار، والضوابط.</description>
+      <category>Odoo</category>
+    </item>
     <item>
       <title>قائمة إقفال شهري في Odoo يستطيع المراجع أن يوقّع عليها</title>
       <link>https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/</link>
       <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/</guid>
       <pubDate>Sat, 03 Oct 2026 09:00:00 GMT</pubDate>
       <description>قائمة عملية للإقفال الشهري في Odoo: التسويات البنكية، وأعمار العملاء والموردين، والمستحقات، وتقييم المخزون، والاستهلاك، والضريبة، والمراجعة، وتواريخ القفل.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>هل تنتقل إلى Odoo 20؟ خطة للشركات على الإصدارات 17 و18 و19</title>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/</guid>
+      <pubDate>Sat, 03 Oct 2026 09:00:00 GMT</pubDate>
+      <description>متى تنتقل إلى Odoo 20 من 17 أو 18 أو 19، ومخاطر تخطي الإصدارات، وخطة اختبار تبدأ بالمالية: مطابقة الأرصدة والضرائب والفوترة الإلكترونية وإقفال شهر موازٍ.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>تغييرات تقييم المخزون في Odoo 20: ماذا تعني لتكلفة المبيعات وهامش الربح</title>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/</guid>
+      <pubDate>Fri, 02 Oct 2026 09:00:00 GMT</pubDate>
+      <description>تغييرات تقييم المخزون في Odoo 20 وأثرها على تكلفة المبيعات والهامش: استحقاقات الإقفال، والتكلفة بأثر رجعي، وتكاليف الشحن، وتقادم المخزون، ورقابة نهاية الشهر.</description>
       <category>Odoo</category>
     </item>
     <item>

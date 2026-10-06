@@ -6,13 +6,53 @@
     <atom:link href="https://www.seg-audit.com/en/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical writing from MFT on internal audit, materiality, Saudi ZATCA and Egyptian e-invoicing compliance, and running Odoo as a finance system.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2026 00:05:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 00:16:47 GMT</lastBuildDate>
+    <item>
+      <title>Odoo 20 for finance teams: what changes, what to ignore, what to test</title>
+      <link>https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/</guid>
+      <pubDate>Tue, 06 Oct 2026 09:00:00 GMT</pubDate>
+      <description>What Odoo 20 changes for finance teams in Egypt and Saudi Arabia: bank entries, bill payments, duplicate checks, valuation, the AI assistant and what to test.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>Odoo 20 AI agents in finance: useful, billable, and in need of an approver</title>
+      <link>https://www.seg-audit.com/en/blog/odoo-20-ai-agents-finance-controls/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/odoo-20-ai-agents-finance-controls/</guid>
+      <pubDate>Mon, 05 Oct 2026 09:00:00 GMT</pubDate>
+      <description>What Odoo 20 AI agents can do in finance, what they cost in IAP credits, and how to govern them: agents draft, a named person approves, run logs are kept.</description>
+      <category>MFT Intelligence</category>
+    </item>
+    <item>
+      <title>Odoo 20 bank reconciliation and bill payments: the new rules and the controls they need</title>
+      <link>https://www.seg-audit.com/en/blog/odoo-20-bank-reconciliation-and-bill-payments/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/odoo-20-bank-reconciliation-and-bill-payments/</guid>
+      <pubDate>Sun, 04 Oct 2026 09:00:00 GMT</pubDate>
+      <description>Odoo 20 bank reconciliation and bill payments: bank-originated entries, the summary report, matching rules, PISP, duplicate warnings and the controls they need.</description>
+      <category>Odoo</category>
+    </item>
     <item>
       <title>A month-end close checklist for Odoo that a reviewer can sign</title>
       <link>https://www.seg-audit.com/en/blog/month-end-close-checklist-odoo/</link>
       <guid isPermaLink="true">https://www.seg-audit.com/en/blog/month-end-close-checklist-odoo/</guid>
       <pubDate>Sat, 03 Oct 2026 09:00:00 GMT</pubDate>
       <description>A practical month-end close checklist for Odoo: bank reconciliation, AR and AP ageing, accruals, inventory valuation, depreciation, VAT, review and lock dates.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>Should you upgrade to Odoo 20? A plan for companies on 17, 18 and 19</title>
+      <link>https://www.seg-audit.com/en/blog/odoo-20-upgrade-plan-17-18-19/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/odoo-20-upgrade-plan-17-18-19/</guid>
+      <pubDate>Sat, 03 Oct 2026 09:00:00 GMT</pubDate>
+      <description>When to upgrade to Odoo 20 from 17, 18 or 19, the risk of skipping versions, and a finance-first test plan: tie-outs, taxes, e-invoicing, parallel close.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>Odoo 20 inventory valuation changes: what they mean for COGS and margin</title>
+      <link>https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/</guid>
+      <pubDate>Fri, 02 Oct 2026 09:00:00 GMT</pubDate>
+      <description>Odoo 20 inventory valuation changes and their effect on COGS and margin: closing accruals, retroactive COGS, landed costs, aging, and month-end controls.</description>
       <category>Odoo</category>
     </item>
     <item>

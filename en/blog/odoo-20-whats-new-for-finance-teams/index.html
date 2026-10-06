@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Odoo 20 for finance teams: what changes, what to ignore, what to test | MFT</title>
+  <meta name="description" content="What Odoo 20 changes for finance teams in Egypt and Saudi Arabia: bank entries, bill payments, duplicate checks, valuation, the AI assistant and what to test.">
+  <link rel="canonical" href="https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="Odoo 20 for finance teams: what changes, what to ignore, what to test | MFT">
+  <meta property="og:description" content="What Odoo 20 changes for finance teams in Egypt and Saudi Arabia: bank entries, bill payments, duplicate checks, valuation, the AI assistant and what to test.">
+  <meta property="og:url" content="https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-en.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="Insights | Modern Financial Technology" href="https://www.seg-audit.com/en/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="/assets/css/main.css?v=muvxi6zz">
+  <script src="/assets/js/pre.js?v=muvxi6zz"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/","name":"Odoo 20 for finance teams: what changes, what to ignore, what to test | MFT","description":"What Odoo 20 changes for finance teams in Egypt and Saudi Arabia: bank entries, bill payments, duplicate checks, valuation, the AI assistant and what to test.","inLanguage":"en","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.seg-audit.com/en/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/en/blog/"},{"@type":"ListItem","position":3,"name":"odoo-20-whats-new-for-finance-teams","item":"https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Odoo 20 for finance teams: what changes, what to ignore, what to test","description":"What Odoo 20 changes for finance teams in Egypt and Saudi Arabia: bank entries, bill payments, duplicate checks, valuation, the AI assistant and what to test.","inLanguage":"en","datePublished":"2026-10-06","dateModified":"2026-10-06","wordCount":889,"articleSection":"Odoo","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/"},"author":{"@type":"Person","name":"Ahmed Ashraf Mostafa","jobTitle":"Founder and CEO, Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-en.png","abstract":"According to the Odoo 20 release notes, the finance changes that matter are in the bank and payables: bank entries must originate from bank transactions, bills can be paid through bank payment initiation where bank and country allow, and duplicate bills get red or yellow warnings. An AI assistant follows. Re-test ETA and ZATCA e-invoicing after upgrading.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When was Odoo 20 released?","acceptedAnswer":{"@type":"Answer","text":"Odoo 20 was released on 24 September 2026 at Odoo Experience in Brussels, with one version number for Community and Enterprise."}},{"@type":"Question","name":"How long will Odoo 20 be supported?","acceptedAnswer":{"@type":"Answer","text":"Odoo supports each major version for three years, which places standard support for Odoo 20 at roughly September 2029. Odoo 17.0 reaches its planned end of standard support in September 2026."}},{"@type":"Question","name":"Does Odoo 20 change Egyptian ETA or Saudi ZATCA e-invoicing?","acceptedAnswer":{"@type":"Answer","text":"No Odoo 20 specific change for ETA or ZATCA is verified. Re-test e-invoicing in a sandbox or pre-production environment after any upgrade, before production invoices are issued."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/en/" aria-label="Modern Financial Technology: Home">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Menu">
+      <ul><li><a href="/en/services/">Services</a></li><li><a href="/en/industries/">Industries</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/" aria-current="page">Insights</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/ar/blog/odoo-20-whats-new-for-finance-teams/" lang="ar" hreflang="ar" dir="rtl">العربية</a>
+        <a class="btn btn-primary btn-sm" href="/en/contact/">Talk to Us</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Home</a></li><li><a href="/en/blog/">Insights</a></li><li aria-current="page">Odoo</li></ol></nav>
+      <p class="eyebrow">Odoo</p>
+      <h1>Odoo 20 for finance teams: what changes, what to ignore, what to test</h1>
+      <p class="lead">Most of the launch noise is about AI. For a finance team in Egypt or Saudi Arabia, the changes that matter are in the bank, in payables and in the valuation close.</p>
+      <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-06"><span class="lat">6 October 2026</span></time><span><span class="lat">4</span> min read</span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">Short answer</p><p class="answer-text">According to the Odoo 20 release notes, the finance changes that matter are in the bank and payables: bank entries must originate from bank transactions, bills can be paid through bank payment initiation where bank and country allow, and duplicate bills get red or yellow warnings. An AI assistant follows. Re-test ETA and ZATCA e-invoicing after upgrading.</p><p class="takeaways-title">Key takeaways</p><ul class="check-list"><li>Odoo 20 was released on 24 September 2026; Odoo 17.0 reaches the planned end of standard support the same month.</li><li>The bank, payables and valuation changes alter controls, not just screens, so they need testing.</li><li>AI features run on IAP credits bought separately, and AI agents are Enterprise-only.</li><li>No Odoo 20 specific ETA or ZATCA changes are verified; re-test e-invoicing in a sandbox anyway.</li></ul></aside>
+      <p>Odoo 20 was released on 24 September 2026 at Odoo Experience in Brussels, with one version number for Community and Enterprise. For a finance team in Cairo or Riyadh, the more important changes are quieter: how bank entries are created, how bills are paid, how duplicates are caught and how inventory valuation is closed. This is a reading of the Odoo 20 release notes from the finance side: what changes, what can wait, and what to test before you move.</p>
+<h2>Does the release date matter if we are not upgrading yet?</h2>
+<p>It matters because of support, not features. Odoo supports each major version for three years. According to Odoo’s published plan, standard support for 17.0 ends in September 2026, for 18.0 in September 2027 and for 19.0 in September 2028, which places Odoo 20 at roughly September 2029. If you run 17.0, the question is no longer whether to plan an upgrade but which version to land on. Odoo’s upgrade service can take an Enterprise database across several versions in one request, for example from 17 to 20, but skipping versions raises the testing burden, because every change in between arrives at once.</p>
+<h2>What changes in accounting and the bank?</h2>
+<p>The most consequential change, according to the release notes, is that all journal entries affecting bank accounts must originate from bank transactions. A manual entry straight to the bank account, the usual cause of a bank balance that no longer agrees with the statement, is no longer the normal path. Around it sit several smaller improvements:</p>
+<ul class="check-list"><li>Refined statement validation feedback to help find and fix balance inconsistencies.</li><li>A bank reconciliation summary report listing reconciled and unreconciled transactions as at the period end date.</li><li>Matching rules that find an open invoice or bill fitting a transaction and reconcile it.</li><li>Analytic distribution on a write-off created during reconciliation.</li><li>Exchange gains and losses consolidated into a single line per invoice, expandable to show the calculation.</li><li>Depreciation that accepts rates and decimal numbers, and intercompany vendor bills auto-matched with synchronized purchase orders.</li></ul>
+<h2>What changes in payables?</h2>
+<p>Three things. First, bills can be paid from Odoo: select one or several, pay, and confirm with the bank, individually or in batch, through payment initiation (PISP). Availability depends on your bank and country, so confirm it with your bank before you plan around it. Second, invoices and bills get duplicate detection with two levels: red for a highly likely duplicate to correct, yellow for a potential duplicate to investigate before posting, with protection against double payments. Third, bill lines can be predicted from bill history, which speeds entry but also repeats yesterday’s coding mistakes if nobody reviews them.</p>
+<h2>What changes in inventory valuation?</h2>
+<p>Under perpetual valuation, accrual entries affecting inventory valuation can be made from the inventory valuation closing report and post directly to the inventory valuation account, rather than through the stock variation account. The release notes also list a retroactive COGS update when a cost changes after delivery, landed costs assignable to individual products of a transfer, inventory at a past date, a stock aging report, and the ability to manage stock on hand and valuation without the Inventory app. Each changes how a balance sheet or gross profit figure is produced, so each belongs in your close review.</p>
+<h2>What does the AI assistant do for accounting?</h2>
+<p>According to the release notes, you can ask the accounting AI assistant about receivables, gross profit or cash flow and get figures drawn from the reports, and it can review suspected bank reconciliation errors and return recommendations. AI features consume IAP credits bought separately from user licences and billed per request. Treat its answers as a fast way to find the right report, and its recommendations as proposals that a person checks against the ledger.</p>
+<h2>What about ETA and ZATCA e-invoicing?</h2>
+<p>We have not verified any Odoo 20 specific change for Egypt’s ETA e-invoicing or Saudi ZATCA. The localization modules you rely on today still exist, but an upgrade touches the data and code underneath them. After any upgrade, re-test e-invoicing end to end in a sandbox or pre-production environment before production invoices flow.</p>
+<h2>What can a finance team safely ignore for now?</h2>
+<p>Anything that does not change how a balance is produced or approved can wait for a second phase: presentation changes such as the consolidated exchange difference line, purchasing helpers such as vendor quality ratings and suggested reordering rules, and AI agents until you have decided who governs them.</p>
+<h2>What should you test before you upgrade?</h2>
+<ul class="check-list"><li>Any process that posted manual entries to bank accounts, since those entries must now come from bank transactions.</li><li>The bank reconciliation summary report at a month end you have already closed, compared with your own reconciliation.</li><li>Duplicate warnings on a sample of known duplicates and known legitimate repeats.</li><li>Payment initiation with your actual bank, if it is offered for your country, and who is allowed to use it.</li><li>The valuation closing report and COGS on a product whose cost changed after delivery.</li><li>ETA or ZATCA e-invoicing in a sandbox or pre-production environment.</li></ul>
+<blockquote class="pull"><p>An upgrade is a change in how your numbers are produced. Test it like one.</p></blockquote>
+<p>When we run an Odoo upgrade for a client, these tests are part of acceptance, run on a copy of the client’s own closed periods, before anyone is asked to sign off.</p>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/en/request-quote/">Talk to MFT about this</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">Questions people ask</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>When was Odoo 20 released?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Odoo 20 was released on 24 September 2026 at Odoo Experience in Brussels, with one version number for Community and Enterprise.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>How long will Odoo 20 be supported?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Odoo supports each major version for three years, which places standard support for Odoo 20 at roughly September 2029. Odoo 17.0 reaches its planned end of standard support in September 2026.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>Does Odoo 20 change Egyptian ETA or Saudi ZATCA e-invoicing?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>No Odoo 20 specific change for ETA or ZATCA is verified. Re-test e-invoicing in a sandbox or pre-production environment after any upgrade, before production invoices are issued.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">About the author</p>
+        <h2>Ahmed Ashraf Mostafa</h2>
+        <p class="author-role">Founder and CEO, Modern Financial Technology</p>
+        <p>Licensed auditor and the founder of MFT. Ahmed built the firm from a financial audit practice into an Odoo implementation and Virtual CFO business serving Egypt and Saudi Arabia, and still leads client engagements. He writes about what the ledger actually shows.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">Related articles</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-27"><span class="lat">27 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/odoo-accounting-implementation-steps/">The phases of an Odoo accounting implementation, and the mistakes that cost the most</a></h2>
+    <p>Installing Odoo takes an afternoon. An implementation an auditor will accept takes phases, and each one ends in a reconciliation.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-30"><span class="lat">30 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/odoo-inventory-valuation-fifo-avco/">FIFO or average cost in Odoo: choosing a valuation method you can live with</a></h2>
+    <p>The costing method decides the gross margin the board sees every month. It is easy to choose during setup and expensive to change later.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-03"><span class="lat">3 October 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/month-end-close-checklist-odoo/">A month-end close checklist for Odoo that a reviewer can sign</a></h2>
+    <p>Most of the tools are already in Odoo. What is usually missing is the order, the evidence and the sign-off.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/en/blog/">All articles</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">See also</h2>
+    <ul class="see-also-list"><li><a href="/en/intelligence/">Services</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/egypt/">Egypt</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">Talk to a CPA, not a sales rep.</h2>
+      <p>A 30-minute call to understand your entity, your systems and what a decision-ready close would look like. Free, and you leave with one concrete next step.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/en/contact/">Book a call</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Services</h2>
+        <ul><li><a href="/en/services/odoo-erp/">Odoo ERP Implementation</a></li><li><a href="/en/services/internal-audit/">Internal Audit</a></li><li><a href="/en/services/virtual-cfo/">Virtual CFO</a></li><li><a href="/en/services/financial-consulting/">Financial Consulting</a></li><li><a href="/en/services/business-analysis/">Business Analysis</a></li><li><a href="/en/services/training/">User Training</a></li><li><a href="/en/services/technical-support/">Technical Support</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Industries</h2>
+        <ul><li><a href="/en/industries/#manufacturing">Manufacturing</a></li><li><a href="/en/industries/#trading">Trading &amp; Distribution</a></li><li><a href="/en/industries/#food-beverage">Food &amp; Beverage</a></li><li><a href="/en/industries/#healthcare">Healthcare</a></li><li><a href="/en/industries/#construction">Construction</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Where we work</h2>
+        <ul><li><a href="/en/egypt/">Egypt: Odoo, audit and Virtual CFO</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia: ZATCA-ready Odoo and audit</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Company</h2>
+        <ul><li><a href="/en/about/">About MFT</a></li><li><a href="/en/intelligence/">MFT Intelligence AI Agents</a></li><li><a href="/en/request-quote/">Request a quote</a></li><li><a href="/en/blog/">Insights (blog)</a></li><li><a href="/en/contact/">Contact</a></li><li><a href="/en/privacy/">Privacy</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">seg-audit platform</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Contact</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">Offices</h2>
+        <ul><li>Egypt: <span class="muted">Korba, Heliopolis, Cairo</span></li><li>Saudi Arabia</li><li>United States</li></ul>
+        <h2 class="footer-title">Follow</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Modern Financial Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=muvxi6zz" defer></script>
+<script src="/assets/js/main.js?v=muvxi6zz" defer></script>
+</body>
+</html>
