@@ -49,7 +49,7 @@ const blog = require('./src/templates/pages/blog');
 function loadBlog(lang) {
   const b = require(`./src/content/blog.${lang}.js`);
   const opt = (f) => (fs.existsSync(path.join(ROOT, 'src', 'content', f)) ? require(`./src/content/${f}`) : null);
-  for (const f of ['blog-posts-a.js', 'blog-posts-b.js']) { const m = opt(f); if (m) b.posts = b.posts.concat(m[lang]); }
+  for (const f of ['blog-posts-a.js', 'blog-posts-b.js', 'blog-posts-c.js', 'blog-posts-d.js']) { const m = opt(f); if (m) b.posts = b.posts.concat(m[lang]); }
   const aeo = opt('blog-aeo-existing.js');
   if (aeo) b.posts = b.posts.map((p) => (aeo[lang][p.slug] ? { ...aeo[lang][p.slug], ...p } : p));
   const seen = new Set();
