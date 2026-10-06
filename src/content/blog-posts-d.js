@@ -1,5 +1,5 @@
 // Blog posts batch D: Odoo 20 upgrade planning and Odoo 20 inventory valuation changes.
-// Odoo 20 claims come only from Odoo's 20 release notes as summarised in the verified fact sheet.
+// Odoo 20 claims come only from the Odoo 20 release notes as summarised in the verified fact sheet.
 // Same rules as blog.en.js / blog.ar.js: no client amounts, no long dashes, methodology or MFT practice only.
 module.exports = {
   en: [
@@ -21,7 +21,7 @@ module.exports = {
       body: [
         { p: 'Odoo 20 was released on 24 September 2026, and the first question we hear from finance teams is not about features. It is about timing: do we have to move, and when? The honest answer depends on which version you run today, how much custom code sits on top of it, and whether your e-invoicing integration is stable. This article sets out how we think about the decision and the test plan we use, written for the finance team that will sign off the result.' },
         { h2: 'How long is each Odoo version supported?' },
-        { p: 'Odoo supports each major version for three years. According to Odoo’s 20 release notes and its published support policy, the planned end of standard support is September 2026 for 17.0, September 2027 for 18.0 and September 2028 for 19.0, which puts Odoo 20 at roughly September 2029. Community and Enterprise share one version number, so the calendar is the same for both, although what is included in each edition is not.' },
+        { p: 'Odoo supports each major version for three years. According to the Odoo 20 release notes and its published support policy, the planned end of standard support is September 2026 for 17.0, September 2027 for 18.0 and September 2028 for 19.0, which puts Odoo 20 at roughly September 2029. Community and Enterprise share one version number, so the calendar is the same for both, although what is included in each edition is not.' },
         { h2: 'What should a company on Odoo 17 do?' },
         { p: 'Plan the upgrade now. September 2026 has arrived, and running a finance system outside standard support means fixes and upgrade assistance are no longer something you can count on. That does not mean upgrading next week. It means choosing a target version, booking the test window and freezing non-essential customisation so the scope stops moving. For most companies on 17, the target will be Odoo 20 rather than 18 or 19, because it buys the longest support horizon.' },
         { h2: 'What about Odoo 18 and Odoo 19?' },
@@ -38,7 +38,7 @@ module.exports = {
           'Custom modules: list every custom module, decide to migrate, replace with standard features or retire, and test each one that touches accounting.',
           'Access rights: check that roles, approval limits and segregation of duties look the same after the upgrade as they did before it.'
         ] },
-        { p: 'Expect some behaviour to change on purpose. According to Odoo’s 20 release notes, journal entries that affect bank accounts must now originate from bank transactions, which stops manual entries that break bank consistency. If your team posts bank charges or transfers by manual journal entry today, that habit has to change, and the test should prove the replacement process works.' },
+        { p: 'Expect some behaviour to change on purpose. According to the Odoo 20 release notes, journal entries that affect bank accounts must now originate from bank transactions, which stops manual entries that break bank consistency. If your team posts bank charges or transfers by manual journal entry today, that habit has to change, and the test should prove the replacement process works.' },
         { quote: 'An upgrade is finished when the trial balance agrees, not when the login screen loads.' },
         { h2: 'Why run a parallel close of one month?' },
         { p: 'Because a close exercises everything at once: reconciliations, accruals, depreciation, inventory valuation, tax and reporting. We close one recent month in the upgraded test database, following the same month-end close checklist the team uses in production, and compare the financial statements with the ones already approved. Differences found here cost an afternoon. Differences found after go-live cost a restatement.' },
@@ -61,7 +61,7 @@ module.exports = {
       title: 'Odoo 20 inventory valuation changes: what they mean for COGS and margin',
       dek: 'Several Odoo 20 changes touch the line between inventory and cost of goods sold. Each one helps, and each one needs a control around it.',
       description: 'Odoo 20 inventory valuation changes and their effect on COGS and margin: closing accruals, retroactive COGS, landed costs, aging, and month-end controls.',
-      answer: 'According to Odoo’s 20 release notes, valuation accruals can post directly to the inventory valuation account, COGS updates retroactively when a cost changes after delivery, landed costs can target individual products, and inventory can be reported at a past date. Margins become more accurate, so cost changes and period locks need tighter control.',
+      answer: 'According to the Odoo 20 release notes, valuation accruals can post directly to the inventory valuation account, COGS updates retroactively when a cost changes after delivery, landed costs can target individual products, and inventory can be reported at a past date. Margins become more accurate, so cost changes and period locks need tighter control.',
       takeaways: [
         'Retroactive COGS means a late cost change can move margin on goods already delivered.',
         'Landed costs per product give more precise unit costs on mixed receipts.',
@@ -71,7 +71,7 @@ module.exports = {
       body: [
         { p: 'Inventory is where gross margin is won or lost on paper. The selling price is rarely in dispute; the cost of goods sold behind it often is. Odoo 20 brings a group of changes that sit exactly on that line between inventory and COGS. This article goes through them from a finance point of view, then sets out the controls we would put around them. It assumes you already know the costing methods themselves; if not, start with our guide to FIFO and AVCO valuation in Odoo.' },
         { h2: 'What changes in perpetual valuation closing?' },
-        { p: 'According to Odoo’s 20 release notes, under perpetual valuation, accrual entries affecting inventory valuation can be made from the inventory valuation closing report, and they post directly to the inventory valuation account rather than through the stock variation account. In practice this shortens the path from a closing adjustment to the balance sheet line it affects. It also means fewer intermediate balances to clear at month end, but only if the team knows the new route and stops reaching for the old one.' },
+        { p: 'According to the Odoo 20 release notes, under perpetual valuation, accrual entries affecting inventory valuation can be made from the inventory valuation closing report, and they post directly to the inventory valuation account rather than through the stock variation account. In practice this shortens the path from a closing adjustment to the balance sheet line it affects. It also means fewer intermediate balances to clear at month end, but only if the team knows the new route and stops reaching for the old one.' },
         { h2: 'How does retroactive COGS affect margin?' },
         { p: 'The release notes describe a retroactive COGS update when a cost changes after delivery. Think of a receipt valued at a provisional cost, goods delivered to a customer, and the final vendor cost arriving later. In earlier versions that difference often stayed in inventory or needed a manual correction. In Odoo 20, cost of goods sold on the delivered quantity follows the corrected cost.' },
         { p: 'For margin reporting this is better: margin reflects what the goods actually cost. For the close it is a new risk: a cost change made after a month is reported can move COGS for goods that left the warehouse in that month. That is why the period lock matters more, not less, after this change.' },
@@ -98,7 +98,7 @@ module.exports = {
         { p: 'If inventory is material to your balance sheet and margins are a board-level number, they are a fair reason to plan the move to Odoo 20, especially from an older version. Test them on a copy of your own data first, and compare COGS for a closed month before and after. Where we act as Virtual CFO at MFT, that comparison is the evidence we want before any margin report is trusted.' }
       ],
       faq: [
-        { q: 'Does Odoo 20 change COGS on goods already delivered?', a: 'According to Odoo’s 20 release notes, COGS is updated retroactively when a cost changes after delivery. Lock reported periods so such changes do not alter closed months without a documented adjustment.' },
+        { q: 'Does Odoo 20 change COGS on goods already delivered?', a: 'According to the Odoo 20 release notes, COGS is updated retroactively when a cost changes after delivery. Lock reported periods so such changes do not alter closed months without a documented adjustment.' },
         { q: 'Can landed costs be assigned to only some products in a receipt?', a: 'Yes. According to the release notes, Odoo 20 lets you assign landed costs to individual products of a transfer, instead of spreading them across everything received.' },
         { q: 'How do we confirm inventory valuation is correct at month end?', a: 'Reconcile the stock valuation report to the inventory valuation account in the general ledger, explain every difference, and only then lock the period. Inventory at a past date helps for prior dates.' }
       ]
