@@ -346,6 +346,37 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .risk-medium .risk-num { color: var(--sev-medium); }
 .risk-medium .risk-label { color: var(--sev-medium-text); }
 .risk-caption { margin: 16px 0 0; font-size: var(--fs-small); color: var(--on-navy-3); }
+/* Hero hook: live-check strip, one-line assurances, and a scan that surfaces findings one by one.
+   Static state (no JS, reduced motion, hero already seen this session) = finished scan, all findings shown. */
+.hero-live { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 20px; padding: 6px 14px; border: 1px solid var(--navy-line); border-radius: 999px; background: rgba(27, 183, 205, 0.08); color: var(--on-navy); font-size: var(--fs-small); font-weight: 700; }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 0 rgba(27, 183, 205, 0.6); flex: none; }
+.hero-assurance { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 20px; color: var(--on-navy-2); font-size: var(--fs-small); font-weight: 600; }
+.hero-assurance li { display: inline-flex; align-items: center; gap: 8px; }
+.hero-assurance li::before { content: '\2713'; color: var(--cyan); font-weight: 800; flex: none; }
+.scan-status { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 16px; }
+.scan-label { grid-area: 1 / 1; font-size: var(--fs-small); font-weight: 700; color: var(--cyan); }
+.scan-running { visibility: hidden; }
+.scan-track { display: block; height: 3px; border-radius: 3px; background: var(--navy-line); overflow: hidden; }
+.scan-fill { display: block; height: 100%; width: 100%; background: var(--cyan); }
+.risk-findings { margin-top: 16px; display: grid; gap: 8px; }
+.risk-findings li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 6px; background: rgba(255, 255, 255, 0.04); border-inline-start: 3px solid var(--line-strong); font-size: var(--fs-small); color: var(--on-navy); }
+.risk-findings .finding-tag { flex: none; font-weight: 700; background: none; padding: 0; border: 0; }
+.risk-findings .sev-critical { border-inline-start-color: var(--sev-critical); }
+.risk-findings .sev-critical .finding-tag { color: var(--sev-critical-text); }
+.risk-findings .sev-high { border-inline-start-color: var(--sev-high); }
+.risk-findings .sev-high .finding-tag { color: var(--sev-high-text); }
+.risk-findings .sev-medium { border-inline-start-color: var(--sev-medium); }
+.risk-findings .sev-medium .finding-tag { color: var(--sev-medium-text); }
+.js-motion .live-dot { animation: live 1.8s ease-out infinite; }
+@keyframes live { 0% { box-shadow: 0 0 0 0 rgba(27, 183, 205, 0.6); } 100% { box-shadow: 0 0 0 10px rgba(27, 183, 205, 0); } }
+.js-motion:not(.hero-seen) .scan-fill { transform-origin: left; animation: scanfill 2.4s cubic-bezier(.3,.6,.3,1) .5s both; }
+[dir="rtl"] .js-motion:not(.hero-seen) .scan-fill { transform-origin: right; }
+@keyframes scanfill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.js-motion:not(.hero-seen) .scan-running { animation: showthenhide 2.9s steps(1, end) both; }
+.js-motion:not(.hero-seen) .scan-done { animation: hidethenshow 2.9s steps(1, end) both; }
+@keyframes showthenhide { 0% { visibility: visible; } 100% { visibility: hidden; } }
+@keyframes hidethenshow { 0% { visibility: hidden; } 100% { visibility: visible; } }
+.js-motion:not(.hero-seen) .risk-findings li { opacity: 0; transform: translateY(6px); animation: rise .45s ease-out forwards; animation-delay: calc(900ms + var(--i, 0) * 450ms); }
 @media (max-width: 899px) {
   .hero-c-inner { grid-template-columns: 1fr; }
   .risk-panel, [dir="rtl"] .risk-panel { justify-self: stretch; max-width: none; padding: 20px; }
@@ -746,6 +777,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .js-motion .rise, .js-motion .bar, .js-motion .kpi, .js-motion .risk-card, .js-motion .findings li, .js-motion .reveal, .js-motion .timeline::before, .js-motion .timeline .step-dot { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
   .js-motion:not(.hero-seen) .pulse { animation: none; }
+  .js-motion .live-dot, .js-motion .scan-fill, .js-motion .scan-running, .js-motion .scan-done, .js-motion .risk-findings li { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
 
 /* ---------- Motion / print ---------- */

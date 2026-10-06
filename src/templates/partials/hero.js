@@ -84,18 +84,24 @@ function heroC(ctx) {
       (k, i) => `<li class="risk-card risk-${esc(k.level)}" style="--i:${i}"><span class="risk-num lat"><span class="count" data-count="${esc(k.value)}">${esc(k.value)}</span></span><span class="risk-label">${t(k.label)}</span></li>`
     )
     .join('');
-  const panelLabel = `${plain(r.title)} ${r.counters.map((k) => `${k.value} ${plain(k.label)}`).join(', ')}. ${plain(r.caption)}`;
+  const findings = (r.findings || []).length
+    ? `<ul class="risk-findings" aria-hidden="true">${r.findings.map((f, i) => `<li class="sev-${esc(f.level)}" style="--i:${i}"><span>${t(f.text)}</span><span class="finding-tag">${t(f.tag)}</span></li>`).join('')}</ul>`
+    : '';
+  const panelLabel = `${plain(r.title)} ${r.counters.map((k) => `${k.value} ${plain(k.label)}`).join(', ')}. ${(r.findings || []).map((f) => `${plain(f.text)} (${plain(f.tag)})`).join('. ')}. ${plain(r.caption)}`;
   return `<section class="hero hero-c" aria-labelledby="hero-title">
   <div class="container hero-c-inner">
     <div class="hero-copy">
-      <p class="eyebrow rise" style="--i:0">${t(h.eyebrow)}</p>
+      ${h.live ? `<p class="hero-live rise" style="--i:0"><span class="live-dot" aria-hidden="true"></span>${t(h.live)}</p>` : `<p class="eyebrow rise" style="--i:0">${t(h.eyebrow)}</p>`}
       <h1 id="hero-title" class="display rise" style="--i:1">${t(h.headline)}</h1>
       <p class="subhead rise" style="--i:2">${t(h.subhead)}</p>
       <div class="cta-row rise" style="--i:3">${btn(ctx, h.cta, 'btn btn-primary btn-lg')}${btn(ctx, h.secondary, 'btn btn-ghost btn-lg')}</div>
+      ${h.assurance ? `<ul class="hero-assurance rise" style="--i:4">${h.assurance.map((a) => `<li>${t(a)}</li>`).join('')}</ul>` : ''}
     </div>
     <div class="risk-panel rise" style="--i:2" role="img" aria-label="${esc(panelLabel)}">
       <div class="risk-head"><p class="risk-title">${t(r.title)}</p><span class="risk-badge">${t(r.badge)}</span></div>
+      ${r.scanning ? `<div class="scan-status" aria-hidden="true"><span class="scan-label scan-running">${t(r.scanning)}</span><span class="scan-label scan-done">${t(r.done)}</span><span class="scan-track"><span class="scan-fill"></span></span></div>` : ''}
       <ul class="risk-row" aria-hidden="true">${counters}</ul>
+      ${findings}
       <p class="risk-caption" aria-hidden="true">${t(r.caption)}</p>
     </div>
   </div>

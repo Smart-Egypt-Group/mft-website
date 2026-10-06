@@ -150,15 +150,25 @@ module.exports = {
     // real aggregates from actual reports (no client named). The headline carries the real fear:
     // unknown risk sitting in the books.
     heroRisk: {
+      // The hero hooks on the first line: a live "scanning" strip, then a question about real money, not audit jargon.
       eyebrow: 'Financial Clarity, Delivered',
-      headline: 'There are critical findings sitting in your books, and nobody knows yet.',
-      subhead:
-        'seg-audit reads your data straight from your ERP, read-only, and shows you what you could not reach on your own: every finding ranked by severity, with its evidence from your own ledger.',
+      live: 'Live check: entries, vendors, payments',
+      headline: 'How many duplicate payments left your company this year {accent}without anyone noticing?{/accent}',
+      subhead: 'We read your books straight from your ERP, read-only, and show you every finding ranked by severity, with its evidence.',
+      assurance: ['Read-only', 'Your data stays on your system', 'No number without evidence'],
       cta: { label: 'Check your books for free', href: 'contact/' },
       secondary: { label: 'See our services', href: 'services/' },
       risk: {
         title: 'Illustrative sample of a check result. You will see this same screen on your data.',
         badge: 'Sample',
+        scanning: 'Scanning',
+        done: 'Check complete',
+        findings: [
+          { text: 'Same vendor bill paid twice', tag: 'Critical', level: 'critical' },
+          { text: 'One vendor registered under two names', tag: 'High', level: 'high' },
+          { text: 'Entry posted after the period was closed', tag: 'High', level: 'high' },
+          { text: 'Vendor bill with no purchase order', tag: 'Medium', level: 'medium' }
+        ],
         counters: [
           { value: 3, label: 'Critical findings', level: 'critical' },
           { value: 7, label: 'High findings', level: 'high' },
