@@ -10,7 +10,7 @@ module.exports = {
     title: 'Notes from the ledger.',
     intro: 'Short, practical articles from MFT’s accountants on audit, compliance in Egypt and Saudi Arabia, and Odoo, written for owners and finance teams, not for other consultants.'
   },
-  labels: { readingTime: 'min read', readingTimeOne: '{lat}1{/lat} min read', readingTimeTwo: '{lat}2{/lat} min read', by: 'By', published: 'Published', updated: 'Updated', topic: 'Topic', related: 'Related articles', all: 'All articles', author: 'About the author', latest: 'Latest insights', rss: 'RSS feed' },
+  labels: { readingTime: 'min read', readingTimeOne: '{lat}1{/lat} min read', readingTimeTwo: '{lat}2{/lat} min read', by: 'By', published: 'Published', updated: 'Updated', topic: 'Topic', related: 'Related articles', all: 'All articles', author: 'About the author', latest: 'Latest insights', rss: 'RSS feed', answer: 'Short answer', takeaways: 'Key takeaways', faq: 'Questions people ask', cta: 'Talk to MFT about this' },
   topics: { audit: 'Internal audit', compliance: 'Compliance', odoo: 'Odoo', intelligence: 'MFT Intelligence' },
   authors: {
     ahmed: {
