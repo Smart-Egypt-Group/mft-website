@@ -733,6 +733,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .index-row .num, .agent .num, .pillar .num, .service-card .num { transition: color .2s; }
 .index-row:hover .num, .agent:hover .num, .service-card:hover .num { color: var(--cyan); }
 .page-services .service-card { position: relative; transition: border-color .2s; }
+/* Whole card is clickable: the title link stretches over the card; "Learn more" stays a real link above it. */
+.page-services .service-card h2 a::after { content: ''; position: absolute; inset: 0; }
+.page-services .service-card .card-more { position: relative; z-index: 1; }
 .page-services .service-card::before { content: ''; position: absolute; top: -2px; inset-inline-start: 0; width: 40px; height: 2px; background: var(--cyan); transition: width .35s cubic-bezier(.2,.7,.2,1); }
 .page-services .service-card:hover::before { width: 100%; }
 .agent, .case, .plan { transition: border-color .2s; }

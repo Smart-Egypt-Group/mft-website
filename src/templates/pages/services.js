@@ -86,7 +86,7 @@ function index(ctx) {
       <span class="num lat" aria-hidden="true">${pad2(i + 1)}</span>
       <h2><a href="${url(ctx, `services/${s.slug}/`)}">${t(s.name)}</a></h2>
       <p>${t(s.short)}</p>
-      <p class="card-more"><span class="btn btn-link" aria-hidden="true">${t(ctx.c.ui.learnMore)}</span></p>
+      <p class="card-more"><a class="btn btn-link" href="${url(ctx, `services/${s.slug}/`)}" aria-label="${esc(plain(ctx.c.ui.learnMore))}: ${esc(plain(s.name))}">${t(ctx.c.ui.learnMore)}</a></p>
     </li>`
     )
     .join('');
