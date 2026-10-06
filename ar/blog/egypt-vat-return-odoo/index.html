@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>إعداد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo، بلا جدول بيانات | MFT</title>
+  <meta name="description" content="كيف تعد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo: ربط الضرائب بشبكات التقرير، وضريبة المدخلات والمخرجات، ومطابقته مع دفتر الأستاذ والفواتير الإلكترونية.">
+  <link rel="canonical" href="https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="إعداد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo، بلا جدول بيانات | MFT">
+  <meta property="og:description" content="كيف تعد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo: ربط الضرائب بشبكات التقرير، وضريبة المدخلات والمخرجات، ومطابقته مع دفتر الأستاذ والفواتير الإلكترونية.">
+  <meta property="og:url" content="https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-ar.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="المقالات | Modern Financial Technology" href="https://www.seg-audit.com/ar/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/cairo-arabic-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css?v=muvx31be">
+  <script src="/assets/js/pre.js?v=muvx31be"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/","name":"إعداد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo، بلا جدول بيانات | MFT","description":"كيف تعد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo: ربط الضرائب بشبكات التقرير، وضريبة المدخلات والمخرجات، ومطابقته مع دفتر الأستاذ والفواتير الإلكترونية.","inLanguage":"ar","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://www.seg-audit.com/ar/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/ar/blog/"},{"@type":"ListItem","position":3,"name":"egypt-vat-return-odoo","item":"https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"إعداد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo، بلا جدول بيانات","description":"كيف تعد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo: ربط الضرائب بشبكات التقرير، وضريبة المدخلات والمخرجات، ومطابقته مع دفتر الأستاذ والفواتير الإلكترونية.","inLanguage":"ar","datePublished":"2026-09-18","dateModified":"2026-09-18","wordCount":720,"articleSection":"الامتثال","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/"},"author":{"@type":"Person","name":"أحمد أشرف مصطفى","jobTitle":"المؤسس والرئيس التنفيذي، Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-ar.png","abstract":"أعدّه من تقرير الضرائب في Odoo لا من جدول بيانات: اربط كل ضريبة مستخدمة بالشبكة الضريبية الصحيحة، وطابق ضريبة المخرجات والمدخلات في التقرير مع حسابات الضريبة في دفتر الأستاذ، وقارن المبيعات والمشتريات بالفواتير الإلكترونية المقبولة على منظومة مصلحة الضرائب، ثم قدّمه في الموعد القانوني واضبط تاريخ قفل الضرائب.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما السعر العام لضريبة القيمة المضافة في مصر؟","acceptedAnswer":{"@type":"Answer","text":"السعر العام أربعة عشر بالمئة. بعض التوريدات معفاة، والصادرات عمومًا بسعر صفر، وبعض السلع تخضع لضريبة الجدول، لذا يحتاج كل منها ضريبة مستقلة في Odoo."}},{"@type":"Question","name":"هل يُخرج Odoo إقرار القيمة المضافة المصري تلقائيًا؟","acceptedAnswer":{"@type":"Answer","text":"يُخرج Odoo تقرير ضرائب من الشبكات المعدّة في الحزمة المحلية المصرية، ودقته بقدر دقة ربط الضرائب والترحيلات التي خلفه، لذا طابقه مع دفتر الأستاذ وبوابة المصلحة قبل التقديم."}},{"@type":"Question","name":"لماذا لا يطابق تقرير الضرائب دفتر الأستاذ العام؟","acceptedAnswer":{"@type":"Answer","text":"غالبًا لأن قيدًا يدويًا رُحّل إلى حساب ضريبة دون ضريبة، أو لأن ضريبة معدّة لترحّل إلى الحساب الخطأ. تتبّع الفرق إلى البنود وأصلح الإعداد، لا القيد وحده."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/ar/" aria-label="Modern Financial Technology: الرئيسية">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">القائمة</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="القائمة">
+      <ul><li><a href="/ar/services/">الخدمات</a></li><li><a href="/ar/industries/">القطاعات</a></li><li><a href="/ar/intelligence/">وكلاء <span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/about/">عن الشركة</a></li><li><a href="/ar/blog/" aria-current="page">المقالات</a></li><li><a href="/ar/contact/">تواصل معنا</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/en/blog/egypt-vat-return-odoo/" lang="en" hreflang="en" dir="ltr">English</a>
+        <a class="btn btn-primary btn-sm" href="/ar/contact/">تحدث معنا</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">الرئيسية</a></li><li><a href="/ar/blog/">المقالات</a></li><li aria-current="page">الامتثال</li></ol></nav>
+      <p class="eyebrow">الامتثال</p>
+      <h1>إعداد إقرار ضريبة القيمة المضافة المصري الشهري من <span class="lat">Odoo</span>، بلا جدول بيانات</h1>
+      <p class="lead">الإقرار يجب أن يخرج من دفتر الأستاذ، ودفتر الأستاذ يجب أن يتفق مع ما تملكه مصلحة الضرائب المصرية بالفعل من فواتيرك الإلكترونية.</p>
+      <p class="post-meta"><span class="topic-tag">الامتثال</span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-18">18 سبتمبر 2026</time><span><span class="lat">4</span> دقائق قراءة</span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">الإجابة المختصرة</p><p class="answer-text">أعدّه من تقرير الضرائب في <span class="lat">Odoo</span> لا من جدول بيانات: اربط كل ضريبة مستخدمة بالشبكة الضريبية الصحيحة، وطابق ضريبة المخرجات والمدخلات في التقرير مع حسابات الضريبة في دفتر الأستاذ، وقارن المبيعات والمشتريات بالفواتير الإلكترونية المقبولة على منظومة مصلحة الضرائب، ثم قدّمه في الموعد القانوني واضبط تاريخ قفل الضرائب.</p><p class="takeaways-title">أهم النقاط</p><ul class="check-list"><li>كل ضريبة مستخدمة يجب أن ترتبط بالشبكة الضريبية الصحيحة، للفواتير والمرتجعات.</li><li>تقرير الضرائب وأرصدة حسابات الضريبة يجب أن يتفقا كل شهر.</li><li>ضريبة المخرجات والمدخلات يجب أن تطابق الفواتير الإلكترونية التي قبلتها المصلحة.</li><li>اقفل الفترة المُقرّ عنها في <span class="lat">Odoo</span> فور تقديم الإقرار.</li></ul></aside>
+      <p>في أغلب الشركات المصرية التي نعمل معها، يُعدّ إقرار ضريبة القيمة المضافة الشهري في جدول بيانات يبدأ بتصدير من <span class="lat">Odoo</span> وينتهي برقم يكتبه أحدهم يدويًا على بوابة مصلحة الضرائب المصرية. ينجح الجدول حتى الشهر الذي لا ينجح فيه: إشعار دائن رُحّل بعد التصدير، أو فاتورة شراء بلا رقم تسجيل ضريبي صالح، أو فاتورة إلكترونية رُفضت ولم يُعد إرسالها. الإقرار يجب أن يخرج من دفتر الأستاذ، ودفتر الأستاذ يجب أن يتفق مع ما تملكه المصلحة بالفعل.</p>
+<h2>ماذا يلخّص إقرار القيمة المضافة المصري فعلًا؟</h2>
+<p>يعرض الإقرار عن كل فترة ضريبية ضريبة المخرجات المحصّلة على المبيعات الخاضعة، وضريبة المدخلات القابلة للخصم على المشتريات، والصافي المستحق أو المرحّل. السعر العام أربعة عشر بالمئة، وبعض التوريدات معفاة، والصادرات عمومًا بسعر صفر، وبعض السلع تخضع لضريبة الجدول بقواعدها الخاصة. كل فئة من هذه يجب أن تقع في سطرها في الإقرار، أي يجب أن تكون مميّزة في <span class="lat">Odoo</span> قبل أن يبدأ الشهر، لا بعد أن ينتهي.</p>
+<h2>كيف تُربط الضرائب في <span class="lat">Odoo</span>؟</h2>
+<p>كل ضريبة في <span class="lat">Odoo</span> تحمل شبكات ضريبية، تُسمّى أحيانًا وسومًا، تخبر النظام بأي سطر في تقرير الضرائب ينتمي إليه المبلغ. توفّر الحزمة المحلية المصرية مجموعة للبداية، والعمل الحقيقي هو التأكد من أن كل ضريبة مستخدمة فعلًا، بما فيها ما أُنشئ يدويًا في السنة الأولى، مربوطة بالشبكة الصحيحة للوعاء وللضريبة معًا، وللفواتير وللمرتجعات معًا.</p>
+<ul class="check-list"><li>ضريبة مخرجات بأربعة عشر بالمئة على المبيعات المحلية الخاضعة، مع الوعاء والضريبة على شبكتين منفصلتين.</li><li>الصادرات بسعر صفر والمبيعات المعفاة كضرائب مستقلة، حتى تظهر في الإقرار بدل أن تختفي داخل ضريبة صفرية عامة.</li><li>ضريبة مدخلات على المشتريات المحلية، مقسّمة حيث يتطلب الإقرار أو تحليلك ذلك.</li><li>ضريبة الواردات المسددة في الجمارك، مسجّلة على المستندات الجمركية لا على فاتورة المورد.</li><li>نسخة المرتجعات من كل ضريبة مربوطة بحيث تعكس الشبكة الصحيحة، فتخفّض الإشعارات الدائنة السطر الصحيح.</li></ul>
+<h2>المدخلات والمخرجات: من أين تأتي الأخطاء عادة؟</h2>
+<p>أخطاء ضريبة المخرجات غالبًا أخطاء توقيت: فاتورة مؤرخة في شهر ومرحّلة في الشهر التالي، أو إشعار دائن صدر دون إشارة إلى الفاتورة الأصلية. أما أخطاء ضريبة المدخلات فغالبًا أخطاء أحقية: ضريبة خُصمت على مشتريات لا يستوفي مستند المورد فيها شروط الخصم، أو خُصمت مرتين لأن فاتورة المورد نفسها أُدخلت مرتين، أو خُصمت على مصروفات لا يجيز القانون خصم ضريبتها. يسجّل <span class="lat">Odoo</span> كل ذلك دون اعتراض ما لم يُعدّ ليرفضه.</p>
+<p>ممارستنا أن نقصر صلاحية إنشاء الضرائب وتعديلها على عدد محدود، وأن نشترط رقم التسجيل الضريبي للمورد في كل فاتورة شراء تحمل ضريبة مدخلات، وأن نشغّل فحصًا للتكرار على مرجع المورد والمبلغ قبل إقفال الفترة.</p>
+<h2>كيف يُطابق الإقرار مع دفتر الأستاذ العام؟</h2>
+<p>يُحسب تقرير الضرائب في <span class="lat">Odoo</span> من بنود القيود التي تحمل شبكات ضريبية، ويُحسب رصيد حسابات الضريبة في دفتر الأستاذ من البنود نفسها مجمّعة حسب الحساب. فإذا اختلفا، فهناك شيء رُحّل إلى حساب ضريبة دون شبكة، غالبًا قيد يومية يدوي، أو ضريبة معدّة لترحّل إلى الحساب الخطأ. المطابقة بسيطة ومكانها كل شهر:</p>
+<ul class="check-list"><li>حركة حساب ضريبة المخرجات عن الفترة تساوي ضريبة المخرجات في التقرير.</li><li>حركة حساب ضريبة المدخلات عن الفترة تساوي ضريبة المدخلات القابلة للخصم في التقرير.</li><li>أي فرق يُتتبّع إلى بنود قيود بعينها، وكل قيد يدوي على حساب ضريبة يُراجع ويُبرَّر.</li><li>قيد تسوية الضريبة يصفّي الحسابين إلى حساب الضريبة المستحقة أو الرصيد المرحّل، فتبدأ الفترة التالية نظيفة.</li></ul>
+<h2>كيف يرتبط الإقرار بالفواتير الإلكترونية لدى <span class="lat">ETA</span>؟</h2>
+<p>منذ أن أصبحت الفاتورة الإلكترونية إلزامية، تتلقى المصلحة كل فاتورة <span class="lat">B2B</span> تصدرها شركتك، وكل فاتورة يصدرها موردوك لك، في صورة بيانات منظّمة. وهذا يغيّر المراجعة: ضريبة المخرجات في الإقرار يجب أن تتفق مع الفواتير التي أرسلتها شركتك وقبلتها المصلحة عن الفترة بعد الإشعارات الدائنة والمدينة، وضريبة المدخلات يجب أن تسندها فواتير إلكترونية أرسلها الموردون. قبل التقديم نقارن دفتر المبيعات في <span class="lat">Odoo</span> بقائمة المستندات المقبولة على البوابة، ونفحص ثلاث مجموعات: فواتير في <span class="lat">Odoo</span> لم تُقبل قط، ومستندات قبلتها المصلحة وليست في <span class="lat">Odoo</span>، ومستندات يختلف مبلغها أو تاريخها بين الطرفين.</p>
+<p>والمقارنة نفسها على جانب المشتريات تكشف فواتير موردين سُجّلت من ورق أو من ملف <span class="lat">PDF</span> دون وجود فاتورة إلكترونية صالحة. راجع إرشادات المصلحة الحالية بشأن ما يسند ضريبة المدخلات عن الفترة المعنية، فالقواعد تشددت مع توسّع الفاتورة الإلكترونية.</p>
+<blockquote class="pull"><p>إذا لم تستطع إعادة بناء الإقرار من دفتر الأستاذ في عشر دقائق، فهو لم يُعدّ من دفتر الأستاذ.</p></blockquote>
+<h2>أين يقع إقرار القيمة المضافة في الإقفال الشهري؟</h2>
+<p>يُقدَّم الإقرار في الموعد القانوني، لكن العمل نفسه مكانه داخل الإقفال الشهري، بعد التسوية البنكية وقبل قفل الفترة. وبعد التقديم اضبط تاريخ قفل الضرائب في <span class="lat">Odoo</span> حتى لا يُرحّل شيء في فترة مُقرّ عنها إلا بتغيير متعمد ومسجّل. وعندما ننفّذ <span class="lat">Odoo</span> لعملائنا في مصر، يكون ربط الشبكات الضريبية وهذه المطابقة جزءًا من اختبارات القبول، لا تحسينًا يأتي لاحقًا.</p>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/ar/request-quote/">تحدّث مع <span class="lat">MFT</span> عن هذا</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">أسئلة شائعة</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>ما السعر العام لضريبة القيمة المضافة في مصر؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>السعر العام أربعة عشر بالمئة. بعض التوريدات معفاة، والصادرات عمومًا بسعر صفر، وبعض السلع تخضع لضريبة الجدول، لذا يحتاج كل منها ضريبة مستقلة في <span class="lat">Odoo</span>.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>هل يُخرج <span class="lat">Odoo</span> إقرار القيمة المضافة المصري تلقائيًا؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>يُخرج <span class="lat">Odoo</span> تقرير ضرائب من الشبكات المعدّة في الحزمة المحلية المصرية، ودقته بقدر دقة ربط الضرائب والترحيلات التي خلفه، لذا طابقه مع دفتر الأستاذ وبوابة المصلحة قبل التقديم.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>لماذا لا يطابق تقرير الضرائب دفتر الأستاذ العام؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>غالبًا لأن قيدًا يدويًا رُحّل إلى حساب ضريبة دون ضريبة، أو لأن ضريبة معدّة لترحّل إلى الحساب الخطأ. تتبّع الفرق إلى البنود وأصلح الإعداد، لا القيد وحده.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">عن الكاتب</p>
+        <h2>أحمد أشرف مصطفى</h2>
+        <p class="author-role">المؤسس والرئيس التنفيذي، <span class="lat">Modern Financial Technology</span></p>
+        <p>مراجع مرخّص ومؤسس <span class="lat">MFT</span>. بنى الشركة من ممارسة للتدقيق المالي إلى أعمال تنفيذ <span class="lat">Odoo</span> والمدير المالي الافتراضي تخدم مصر والسعودية، وما زال يقود تعاقدات العملاء بنفسه. يكتب عمّا يُظهره دفتر الأستاذ فعلًا.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">مقالات ذات صلة</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">الامتثال</span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-16">16 سبتمبر 2026</time><span>دقيقة قراءة</span></p>
+    <h2><a href="/ar/blog/zatca-phase-two-odoo-checklist/">المرحلة الثانية من <span class="lat">ZATCA</span> داخل <span class="lat">Odoo</span>: ما يجب أن يكون صحيحًا قبل التشغيل</a></h2>
+    <p>الربط والإجازة والإبلاغ قرارات إعداد، لا زر. قائمة الفحص التي ننفّذها قبل تشغيل أي تنفيذ <span class="lat">Odoo</span> سعودي.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">الامتثال</span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-16">16 سبتمبر 2026</time><span>دقيقة قراءة</span></p>
+    <h2><a href="/ar/blog/egypt-eta-einvoicing-odoo-mistakes/">الفوترة الإلكترونية المصرية في <span class="lat">Odoo</span>: سبعة أخطاء إعداد تمنع الإرسال</a></h2>
+    <p>أغلب حالات رفض مصلحة الضرائب ليست مشاكل ضريبية، بل مشاكل بيانات أساسية كانت ظاهرة في <span class="lat">Odoo</span> قبل أسابيع.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">الامتثال</span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-21">21 سبتمبر 2026</time><span><span class="lat">3</span> دقائق قراءة</span></p>
+    <h2><a href="/ar/blog/egypt-e-receipt-b2c/">منظومة الإيصال الإلكتروني في مصر: ما الذي يتغير للتجزئة، وما الذي تحتاجه نقاط البيع في <span class="lat">Odoo</span></a></h2>
+    <p>غطّت الفاتورة الإلكترونية المبيعات بين الشركات. أما الإيصال الإلكتروني فيغطي المبيعات للمستهلك، عند الكاشير، لحظة حدوثها، وهو مشروع مختلف.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/ar/blog/">كل المقالات</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">اقرأ أيضًا</h2>
+    <ul class="see-also-list"><li><a href="/ar/services/odoo-erp/">الخدمات</a></li><li><a href="/ar/intelligence/"><span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/egypt/">مصر</a></li><li><a href="/ar/saudi-arabia/">السعودية</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">تحدث مع محاسب معتمد، لا مع مندوب مبيعات.</h2>
+      <p>مكالمة <span class="lat">30</span> دقيقة لفهم كيانك وأنظمتك وما يجب أن يبدو عليه الإقفال الجاهز للقرار. مجانًا، وتخرج منها بخطوة عملية واحدة محددة.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/ar/contact/">احجز مكالمة</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>شركة تكنولوجيا مالية ومراجعة بقيادة محاسبين معتمدين. <span class="lat">Odoo ERP</span> والمراجعة الداخلية والمدير المالي الافتراضي من فريق واحد وبأرقام واحدة.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">الخدمات</h2>
+        <ul><li><a href="/ar/services/odoo-erp/">تنفيذ <span class="lat">Odoo ERP</span></a></li><li><a href="/ar/services/internal-audit/">المراجعة الداخلية</a></li><li><a href="/ar/services/virtual-cfo/">المدير المالي الافتراضي</a></li><li><a href="/ar/services/financial-consulting/">الاستشارات المالية</a></li><li><a href="/ar/services/business-analysis/">تحليل الأعمال</a></li><li><a href="/ar/services/training/">تدريب المستخدمين</a></li><li><a href="/ar/services/technical-support/">الدعم الفني</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">القطاعات</h2>
+        <ul><li><a href="/ar/industries/#manufacturing">التصنيع</a></li><li><a href="/ar/industries/#trading">التجارة والتوزيع</a></li><li><a href="/ar/industries/#food-beverage">الأغذية والمشروبات</a></li><li><a href="/ar/industries/#healthcare">الرعاية الصحية</a></li><li><a href="/ar/industries/#construction">المقاولات</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">أين نعمل</h2>
+        <ul><li><a href="/ar/egypt/">مصر: <span class="lat">Odoo</span> والمراجعة والمدير المالي الافتراضي</a></li><li><a href="/ar/saudi-arabia/">السعودية: <span class="lat">Odoo</span> ومراجعة متوافقة مع <span class="lat">ZATCA</span></a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">الشركة</h2>
+        <ul><li><a href="/ar/about/">عن <span class="lat">MFT</span></a></li><li><a href="/ar/intelligence/">وكلاء <span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/request-quote/">اطلب عرض سعر</a></li><li><a href="/ar/blog/">المقالات</a></li><li><a href="/ar/contact/">تواصل معنا</a></li><li><a href="/ar/privacy/">الخصوصية</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">منصة <span class="lat">seg-audit</span></a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">التواصل</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">المكاتب</h2>
+        <ul><li>مصر: <span class="muted">الكوربة، مصر الجديدة، القاهرة</span></li><li>السعودية</li><li>الولايات المتحدة</li></ul>
+        <h2 class="footer-title">تابعنا</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span class="lat">Modern Financial Technology</span>. جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=muvx31be" defer></script>
+<script src="/assets/js/main.js?v=muvx31be" defer></script>
+</body>
+</html>

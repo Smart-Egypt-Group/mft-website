@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FIFO or average cost in Odoo: choosing a valuation method you can live with | MFT</title>
+  <meta name="description" content="FIFO or average cost in Odoo: the effect on COGS and margin, why automated perpetual valuation matters, landed costs, and the risk of changing method mid-year.">
+  <link rel="canonical" href="https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="FIFO or average cost in Odoo: choosing a valuation method you can live with | MFT">
+  <meta property="og:description" content="FIFO or average cost in Odoo: the effect on COGS and margin, why automated perpetual valuation matters, landed costs, and the risk of changing method mid-year.">
+  <meta property="og:url" content="https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-en.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="Insights | Modern Financial Technology" href="https://www.seg-audit.com/en/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="/assets/css/main.css?v=muvx31be">
+  <script src="/assets/js/pre.js?v=muvx31be"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/","name":"FIFO or average cost in Odoo: choosing a valuation method you can live with | MFT","description":"FIFO or average cost in Odoo: the effect on COGS and margin, why automated perpetual valuation matters, landed costs, and the risk of changing method mid-year.","inLanguage":"en","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.seg-audit.com/en/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/en/blog/"},{"@type":"ListItem","position":3,"name":"odoo-inventory-valuation-fifo-avco","item":"https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"FIFO or average cost in Odoo: choosing a valuation method you can live with","description":"FIFO or average cost in Odoo: the effect on COGS and margin, why automated perpetual valuation matters, landed costs, and the risk of changing method mid-year.","inLanguage":"en","datePublished":"2026-09-30","dateModified":"2026-09-30","wordCount":753,"articleSection":"Odoo","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/"},"author":{"@type":"Person","name":"Ahmed Ashraf Mostafa","jobTitle":"Founder and CEO, Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-en.png","abstract":"Choose FIFO when purchase costs move and you need cost of goods sold to reflect the actual layers consumed; choose average cost (AVCO) when items are interchangeable and you want smoother margins. In Odoo, set the method and automated valuation on the product category before transactions begin, because changing it mid-year revalues stock and breaks comparability.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is FIFO or average cost better in Odoo?","acceptedAnswer":{"@type":"Answer","text":"Neither is better in general. FIFO suits goods with distinct batches or price-sensitive margins; average cost suits interchangeable goods bought continuously. Choose per product category and apply it consistently."}},{"@type":"Question","name":"Can I change the costing method in Odoo after go-live?","acceptedAnswer":{"@type":"Answer","text":"Odoo allows it and revalues stock on hand, but a change of cost formula is a change in accounting policy. Do it at a period end, document it and agree it with your auditor."}},{"@type":"Question","name":"Do landed costs work with standard price in Odoo?","acceptedAnswer":{"@type":"Answer","text":"No. Landed costs in Odoo require FIFO or average cost with automated inventory valuation."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/en/" aria-label="Modern Financial Technology: Home">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Menu">
+      <ul><li><a href="/en/services/">Services</a></li><li><a href="/en/industries/">Industries</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/" aria-current="page">Insights</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/ar/blog/odoo-inventory-valuation-fifo-avco/" lang="ar" hreflang="ar" dir="rtl">العربية</a>
+        <a class="btn btn-primary btn-sm" href="/en/contact/">Talk to Us</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Home</a></li><li><a href="/en/blog/">Insights</a></li><li aria-current="page">Odoo</li></ol></nav>
+      <p class="eyebrow">Odoo</p>
+      <h1>FIFO or average cost in Odoo: choosing a valuation method you can live with</h1>
+      <p class="lead">The costing method decides the gross margin the board sees every month. It is easy to choose during setup and expensive to change later.</p>
+      <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-30"><span class="lat">30 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">Short answer</p><p class="answer-text">Choose FIFO when purchase costs move and you need cost of goods sold to reflect the actual layers consumed; choose average cost (AVCO) when items are interchangeable and you want smoother margins. In Odoo, set the method and automated valuation on the product category before transactions begin, because changing it mid-year revalues stock and breaks comparability.</p><p class="takeaways-title">Key takeaways</p><ul class="check-list"><li>FIFO follows actual cost layers; average cost smooths price changes.</li><li>Automated valuation posts every stock move to the ledger, so category accounts must be right first.</li><li>Landed costs belong in inventory cost, not in expenses.</li><li>Changing the method mid-year is an accounting policy change, not just a setting.</li></ul></aside>
+      <p>Inventory valuation in Odoo is set by two choices on each product category: the costing method and the valuation mode. Together they decide how stock is valued on the balance sheet, what lands in cost of goods sold, and therefore what gross margin the board sees each month. Both choices are easy to make during setup and expensive to change later.</p>
+<h2>What costing methods does Odoo offer?</h2>
+<ul class="check-list"><li>Standard price: every unit is valued at a fixed cost you set, and differences from actual cost must be handled separately. Useful in manufacturing with a disciplined costing process, rarely right for trading.</li><li>Average cost (AVCO): each receipt updates a weighted average cost per product, and deliveries are valued at the current average.</li><li>First in, first out (FIFO): stock is held in layers by receipt, and deliveries consume the oldest layers first, each at its own cost.</li></ul>
+<p>Under IAS 2, and the Egyptian standard based on it, both FIFO and weighted average are acceptable cost formulas; LIFO is not. Saudi Arabia applies IFRS as endorsed locally, with the same result. The standard also requires the same formula for inventories of a similar nature and use.</p>
+<h2>How do FIFO and average cost affect COGS and margin?</h2>
+<p>When purchase prices are stable, the two methods give similar results. When prices move, they diverge. In a rising price environment, FIFO charges older, cheaper layers to cost of goods sold, so margins look higher and closing stock is valued nearer current prices. Average cost blends old and new, so margins move more smoothly and react to price changes more slowly. With a volatile currency, as Egyptian importers have experienced, the gap between the two can be large enough to change how management reads a quarter.</p>
+<p>Neither method is more correct. The question is which one matches how the business buys and sells. Interchangeable goods bought continuously suit average cost. Goods with distinct batches, expiry dates or price-sensitive margins often suit FIFO. Whatever you choose, apply it consistently within each category of similar items.</p>
+<h2>Why use perpetual (automated) valuation?</h2>
+<p>With manual, or periodic, valuation, Odoo tracks quantities and the accountant posts the stock value in a journal entry at period end. With automated, or perpetual, valuation, every receipt and delivery posts its own journal entry to the stock valuation, stock input and stock output accounts configured on the category. Automated valuation keeps the ledger and the stock valuation report in step every day, and it is what makes landed costs and accurate cost of goods sold per invoice possible. It also means configuration errors reach the ledger immediately, which is why the category accounts must be right before the first receipt.</p>
+<h2>How do landed costs work?</h2>
+<p>Freight, customs duties, insurance and clearing charges are part of the cost of inventory under IAS 2. In Odoo, the landed costs feature allocates these charges to the receipts they relate to, by quantity, weight, volume, current cost or equally, and adds them to the stock layers. It works with FIFO and average cost under automated valuation. If landed costs are posted as expenses instead, margins on imported goods are overstated in the month of sale and understated in the month of import.</p>
+<blockquote class="pull"><p>The costing method is an accounting policy. Change it the way you would change any policy: rarely, deliberately and in writing.</p></blockquote>
+<h2>What are the risks of changing the method mid-year?</h2>
+<p>Odoo allows the costing method on a category to be changed, and revalues the stock on hand when you do. That convenience hides several risks:</p>
+<ul class="check-list"><li>A change of cost formula is a change in accounting policy under IAS 8, which needs justification and disclosure, not just a configuration change.</li><li>Comparatives become inconsistent: the months before and after the change are not measured the same way.</li><li>The revaluation entry can be large and lands on a single day, distorting that month’s margin.</li><li>Open receipts, returns and landed costs that straddle the change are easy to misvalue.</li></ul>
+<p>If a change is genuinely needed, make it at a period end after a stock count, document the reason, record the revaluation separately and agree the approach with your external auditor beforehand.</p>
+<h2>How we set it up</h2>
+<p>In an Odoo implementation, we decide the method per product category with the finance lead, configure automated valuation with dedicated accounts, and reconcile the stock valuation report to the ledger before go-live and at every month end. The same reconciliation is one of the first checks in our internal audit work, because inventory valuation drift is rarely visible anywhere else.</p>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/en/request-quote/">Talk to MFT about this</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">Questions people ask</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>Is FIFO or average cost better in Odoo?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Neither is better in general. FIFO suits goods with distinct batches or price-sensitive margins; average cost suits interchangeable goods bought continuously. Choose per product category and apply it consistently.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>Can I change the costing method in Odoo after go-live?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Odoo allows it and revalues stock on hand, but a change of cost formula is a change in accounting policy. Do it at a period end, document it and agree it with your auditor.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>Do landed costs work with standard price in Odoo?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>No. Landed costs in Odoo require FIFO or average cost with automated inventory valuation.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">About the author</p>
+        <h2>Ahmed Ashraf Mostafa</h2>
+        <p class="author-role">Founder and CEO, Modern Financial Technology</p>
+        <p>Licensed auditor and the founder of MFT. Ahmed built the firm from a financial audit practice into an Odoo implementation and Virtual CFO business serving Egypt and Saudi Arabia, and still leads client engagements. He writes about what the ledger actually shows.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">Related articles</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-27"><span class="lat">27 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/odoo-accounting-implementation-steps/">The phases of an Odoo accounting implementation, and the mistakes that cost the most</a></h2>
+    <p>Installing Odoo takes an afternoon. An implementation an auditor will accept takes phases, and each one ends in a reconciliation.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-03"><span class="lat">3 October 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/month-end-close-checklist-odoo/">A month-end close checklist for Odoo that a reviewer can sign</a></h2>
+    <p>Most of the tools are already in Odoo. What is usually missing is the order, the evidence and the sign-off.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-26"><span class="lat">26 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/bank-reconciliation-controls/">Bank reconciliation is a control, not a chore</a></h2>
+    <p>Done often and reviewed by someone else, the bank reconciliation is the cheapest error and fraud detection a company has. Done late by the person who pays, it is decoration.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/en/blog/">All articles</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">See also</h2>
+    <ul class="see-also-list"><li><a href="/en/intelligence/">Services</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/egypt/">Egypt</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">Talk to a CPA, not a sales rep.</h2>
+      <p>A 30-minute call to understand your entity, your systems and what a decision-ready close would look like. Free, and you leave with one concrete next step.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/en/contact/">Book a call</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Services</h2>
+        <ul><li><a href="/en/services/odoo-erp/">Odoo ERP Implementation</a></li><li><a href="/en/services/internal-audit/">Internal Audit</a></li><li><a href="/en/services/virtual-cfo/">Virtual CFO</a></li><li><a href="/en/services/financial-consulting/">Financial Consulting</a></li><li><a href="/en/services/business-analysis/">Business Analysis</a></li><li><a href="/en/services/training/">User Training</a></li><li><a href="/en/services/technical-support/">Technical Support</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Industries</h2>
+        <ul><li><a href="/en/industries/#manufacturing">Manufacturing</a></li><li><a href="/en/industries/#trading">Trading &amp; Distribution</a></li><li><a href="/en/industries/#food-beverage">Food &amp; Beverage</a></li><li><a href="/en/industries/#healthcare">Healthcare</a></li><li><a href="/en/industries/#construction">Construction</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Where we work</h2>
+        <ul><li><a href="/en/egypt/">Egypt: Odoo, audit and Virtual CFO</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia: ZATCA-ready Odoo and audit</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Company</h2>
+        <ul><li><a href="/en/about/">About MFT</a></li><li><a href="/en/intelligence/">MFT Intelligence AI Agents</a></li><li><a href="/en/request-quote/">Request a quote</a></li><li><a href="/en/blog/">Insights (blog)</a></li><li><a href="/en/contact/">Contact</a></li><li><a href="/en/privacy/">Privacy</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">seg-audit platform</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Contact</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">Offices</h2>
+        <ul><li>Egypt: <span class="muted">Korba, Heliopolis, Cairo</span></li><li>Saudi Arabia</li><li>United States</li></ul>
+        <h2 class="footer-title">Follow</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Modern Financial Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=muvx31be" defer></script>
+<script src="/assets/js/main.js?v=muvx31be" defer></script>
+</body>
+</html>

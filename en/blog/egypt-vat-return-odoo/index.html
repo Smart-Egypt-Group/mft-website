@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preparing Egypt’s monthly VAT return from Odoo, without the spreadsheet | MFT</title>
+  <meta name="description" content="How to prepare Egypt’s monthly VAT return from Odoo: tax grid mapping, input versus output tax, reconciling to the general ledger and matching ETA e-invoices.">
+  <link rel="canonical" href="https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="Preparing Egypt’s monthly VAT return from Odoo, without the spreadsheet | MFT">
+  <meta property="og:description" content="How to prepare Egypt’s monthly VAT return from Odoo: tax grid mapping, input versus output tax, reconciling to the general ledger and matching ETA e-invoices.">
+  <meta property="og:url" content="https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-en.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="Insights | Modern Financial Technology" href="https://www.seg-audit.com/en/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="/assets/css/main.css?v=muvx31be">
+  <script src="/assets/js/pre.js?v=muvx31be"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/","name":"Preparing Egypt’s monthly VAT return from Odoo, without the spreadsheet | MFT","description":"How to prepare Egypt’s monthly VAT return from Odoo: tax grid mapping, input versus output tax, reconciling to the general ledger and matching ETA e-invoices.","inLanguage":"en","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.seg-audit.com/en/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/en/blog/"},{"@type":"ListItem","position":3,"name":"egypt-vat-return-odoo","item":"https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Preparing Egypt’s monthly VAT return from Odoo, without the spreadsheet","description":"How to prepare Egypt’s monthly VAT return from Odoo: tax grid mapping, input versus output tax, reconciling to the general ledger and matching ETA e-invoices.","inLanguage":"en","datePublished":"2026-09-18","dateModified":"2026-09-18","wordCount":898,"articleSection":"Compliance","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/"},"author":{"@type":"Person","name":"Ahmed Ashraf Mostafa","jobTitle":"Founder and CEO, Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-en.png","abstract":"Prepare it from Odoo’s tax report, not a spreadsheet. Map every tax in use to the correct tax grid, reconcile output and input VAT on the report to the VAT accounts in the general ledger, compare sales and purchases with the e-invoices accepted on the ETA portal, then file by the statutory deadline and set the tax lock date.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the standard VAT rate in Egypt?","acceptedAnswer":{"@type":"Answer","text":"The standard VAT rate is 14%. Some supplies are exempt, exports are generally zero-rated, and certain goods are subject to schedule tax, so each needs its own tax in Odoo."}},{"@type":"Question","name":"Can Odoo produce the Egyptian VAT return automatically?","acceptedAnswer":{"@type":"Answer","text":"Odoo produces a tax report from the tax grids configured in the Egyptian localization. It is only as accurate as the tax mapping and the postings behind it, so reconcile it to the ledger and the ETA portal before filing."}},{"@type":"Question","name":"Why does my VAT report not match the general ledger?","acceptedAnswer":{"@type":"Answer","text":"Usually because a manual journal entry was posted to a VAT account without a tax, or a tax posts to the wrong account. Trace the difference to individual journal items and fix the configuration, not just the entry."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/en/" aria-label="Modern Financial Technology: Home">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Menu">
+      <ul><li><a href="/en/services/">Services</a></li><li><a href="/en/industries/">Industries</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/" aria-current="page">Insights</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/ar/blog/egypt-vat-return-odoo/" lang="ar" hreflang="ar" dir="rtl">العربية</a>
+        <a class="btn btn-primary btn-sm" href="/en/contact/">Talk to Us</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Home</a></li><li><a href="/en/blog/">Insights</a></li><li aria-current="page">Compliance</li></ol></nav>
+      <p class="eyebrow">Compliance</p>
+      <h1>Preparing Egypt’s monthly VAT return from Odoo, without the spreadsheet</h1>
+      <p class="lead">The return should come out of the ledger, and the ledger should agree with what the Egyptian Tax Authority already holds from your e-invoices.</p>
+      <p class="post-meta"><span class="topic-tag">Compliance</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-18"><span class="lat">18 September 2026</span></time><span><span class="lat">4</span> min read</span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">Short answer</p><p class="answer-text">Prepare it from Odoo’s tax report, not a spreadsheet. Map every tax in use to the correct tax grid, reconcile output and input VAT on the report to the VAT accounts in the general ledger, compare sales and purchases with the e-invoices accepted on the ETA portal, then file by the statutory deadline and set the tax lock date.</p><p class="takeaways-title">Key takeaways</p><ul class="check-list"><li>Every tax in use must map to the right tax grid, for invoices and refunds.</li><li>The tax report and the VAT account balances must agree every month.</li><li>Output and input tax should match the e-invoices accepted by the ETA.</li><li>Lock the declared period in Odoo once the return is filed.</li></ul></aside>
+      <p>In most Egyptian companies we meet, the monthly VAT return is prepared in a spreadsheet that starts from an Odoo export and ends in a figure someone types into the Egyptian Tax Authority portal. The spreadsheet works until the month it does not: a credit note posted after the export, a purchase invoice without a valid tax registration number, an e-invoice that was rejected and never resubmitted. The return should come out of the ledger, and the ledger should agree with what the Authority already holds.</p>
+<h2>What does the Egyptian VAT return actually summarise?</h2>
+<p>For each tax period, the return reports the output tax charged on taxable sales, the input tax recoverable on purchases, and the net amount payable or carried forward. The standard rate is 14%. Some supplies are exempt, exports are generally zero-rated, and certain goods carry schedule (table) tax under its own rules. Each of these must land in its own line on the return, which means each must be distinguishable in Odoo before the month starts, not after it ends.</p>
+<h2>How should taxes be mapped in Odoo?</h2>
+<p>Every tax in Odoo carries tax grids that tell the system which line of the tax report an amount belongs to. The Egyptian localization provides a starting set. The work is checking that every tax actually in use, including any created by hand during the first year, is mapped to the right grid for both the base and the tax amount, and for both invoices and refunds.</p>
+<ul class="check-list"><li>Output VAT at 14% on local taxable sales, with the base and the tax on separate grids.</li><li>Zero-rated exports and exempt sales as distinct taxes, so they appear on the return instead of hiding inside a generic 0% tax.</li><li>Input VAT on local purchases, split where the return or your own analysis requires it.</li><li>Import VAT paid at customs, recorded against the customs documentation rather than the supplier invoice.</li><li>Refund versions of each tax mapped to reverse the correct grid, so credit notes reduce the right line.</li></ul>
+<h2>Input versus output: where do the errors usually come from?</h2>
+<p>Output tax errors are usually about timing: an invoice dated in one month and posted in the next, or a credit note issued without reference to the original invoice. Input tax errors are usually about eligibility: VAT claimed on a purchase whose supplier document does not meet the conditions for deduction, VAT claimed twice because the same vendor bill was entered twice, or VAT on expenses for which the law does not allow deduction. Odoo will record any of these without complaint unless the configuration tells it otherwise.</p>
+<p>Our practice is to restrict who can create or edit taxes, require the supplier’s tax registration number on any vendor bill that carries input VAT, and run a duplicate check on vendor reference and amount before the period is closed.</p>
+<h2>How do you reconcile the return to the general ledger?</h2>
+<p>The tax report in Odoo is computed from journal items that carry tax grids. The balance of the VAT accounts in the general ledger is computed from the same journal items, grouped by account. If the two disagree, something was posted to a VAT account without a tax grid, usually a manual journal entry, or a tax was configured to post to the wrong account. The reconciliation is simple and monthly:</p>
+<ul class="check-list"><li>The movement on the output VAT account for the period equals the output tax on the report.</li><li>The movement on the input VAT account for the period equals the recoverable input tax on the report.</li><li>Any difference is traced to specific journal items, and every manual entry to a VAT account is reviewed and justified.</li><li>The VAT settlement entry clears both accounts to the payable or carry-forward account, so the next period opens clean.</li></ul>
+<h2>How does the return link to ETA e-invoices?</h2>
+<p>Since e-invoicing became mandatory, the Authority receives every B2B invoice your company issues, and every one your suppliers issue to you, as structured data. That changes the review. Output tax on the return should agree with the e-invoices your company submitted and the Authority accepted for the period, after credit and debit notes. Input tax should be supported by e-invoices your suppliers submitted. Before filing, we compare the Odoo sales journal with the list of accepted documents on the portal and investigate three populations: invoices in Odoo that were never accepted, documents accepted by the Authority that are not in Odoo, and documents whose amount or date differs between the two.</p>
+<p>The same comparison on the purchase side catches vendor bills recorded from paper or PDF where no valid e-invoice exists. Check the current ETA guidance on what supports input tax for the period in question, since the rules have tightened as e-invoicing has rolled out.</p>
+<blockquote class="pull"><p>If the return cannot be rebuilt from the ledger in ten minutes, it was not prepared from the ledger.</p></blockquote>
+<h2>Where does the VAT return sit in the monthly close?</h2>
+<p>The return is filed by the statutory deadline, but the work belongs inside the month-end close, after bank reconciliation and before the period is locked. Once the return is filed, set the tax lock date in Odoo so that nothing can be posted into a declared period without a deliberate, logged change. When we run an Odoo implementation for Egyptian clients, tax grid mapping and this reconciliation are part of the acceptance tests, not a later improvement.</p>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/en/request-quote/">Talk to MFT about this</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">Questions people ask</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>What is the standard VAT rate in Egypt?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>The standard VAT rate is 14%. Some supplies are exempt, exports are generally zero-rated, and certain goods are subject to schedule tax, so each needs its own tax in Odoo.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>Can Odoo produce the Egyptian VAT return automatically?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Odoo produces a tax report from the tax grids configured in the Egyptian localization. It is only as accurate as the tax mapping and the postings behind it, so reconcile it to the ledger and the ETA portal before filing.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>Why does my VAT report not match the general ledger?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Usually because a manual journal entry was posted to a VAT account without a tax, or a tax posts to the wrong account. Trace the difference to individual journal items and fix the configuration, not just the entry.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">About the author</p>
+        <h2>Ahmed Ashraf Mostafa</h2>
+        <p class="author-role">Founder and CEO, Modern Financial Technology</p>
+        <p>Licensed auditor and the founder of MFT. Ahmed built the firm from a financial audit practice into an Odoo implementation and Virtual CFO business serving Egypt and Saudi Arabia, and still leads client engagements. He writes about what the ledger actually shows.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">Related articles</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Compliance</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-16"><span class="lat">16 September 2026</span></time><span><span class="lat">1</span> min read</span></p>
+    <h2><a href="/en/blog/zatca-phase-two-odoo-checklist/">ZATCA phase two inside Odoo: what must be right before go-live</a></h2>
+    <p>Integration, clearance and reporting are configuration decisions, not a button. The checklist we run before any Saudi Odoo implementation goes live.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Compliance</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-16"><span class="lat">16 September 2026</span></time><span><span class="lat">1</span> min read</span></p>
+    <h2><a href="/en/blog/egypt-eta-einvoicing-odoo-mistakes/">Egyptian e-invoicing in Odoo: seven configuration mistakes that block submissions</a></h2>
+    <p>Most ETA rejections are not tax problems. They are master-data problems that were visible in Odoo weeks earlier.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Compliance</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-21"><span class="lat">21 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/egypt-e-receipt-b2c/">Egypt’s e-receipt system: what changes for retail, and what Odoo POS needs</a></h2>
+    <p>E-invoicing covered sales between businesses. The e-receipt covers sales to consumers, at the till, as they happen, and it is a different project.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/en/blog/">All articles</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">See also</h2>
+    <ul class="see-also-list"><li><a href="/en/services/odoo-erp/">Services</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/egypt/">Egypt</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">Talk to a CPA, not a sales rep.</h2>
+      <p>A 30-minute call to understand your entity, your systems and what a decision-ready close would look like. Free, and you leave with one concrete next step.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/en/contact/">Book a call</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Services</h2>
+        <ul><li><a href="/en/services/odoo-erp/">Odoo ERP Implementation</a></li><li><a href="/en/services/internal-audit/">Internal Audit</a></li><li><a href="/en/services/virtual-cfo/">Virtual CFO</a></li><li><a href="/en/services/financial-consulting/">Financial Consulting</a></li><li><a href="/en/services/business-analysis/">Business Analysis</a></li><li><a href="/en/services/training/">User Training</a></li><li><a href="/en/services/technical-support/">Technical Support</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Industries</h2>
+        <ul><li><a href="/en/industries/#manufacturing">Manufacturing</a></li><li><a href="/en/industries/#trading">Trading &amp; Distribution</a></li><li><a href="/en/industries/#food-beverage">Food &amp; Beverage</a></li><li><a href="/en/industries/#healthcare">Healthcare</a></li><li><a href="/en/industries/#construction">Construction</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Where we work</h2>
+        <ul><li><a href="/en/egypt/">Egypt: Odoo, audit and Virtual CFO</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia: ZATCA-ready Odoo and audit</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Company</h2>
+        <ul><li><a href="/en/about/">About MFT</a></li><li><a href="/en/intelligence/">MFT Intelligence AI Agents</a></li><li><a href="/en/request-quote/">Request a quote</a></li><li><a href="/en/blog/">Insights (blog)</a></li><li><a href="/en/contact/">Contact</a></li><li><a href="/en/privacy/">Privacy</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">seg-audit platform</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Contact</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">Offices</h2>
+        <ul><li>Egypt: <span class="muted">Korba, Heliopolis, Cairo</span></li><li>Saudi Arabia</li><li>United States</li></ul>
+        <h2 class="footer-title">Follow</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Modern Financial Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=muvx31be" defer></script>
+<script src="/assets/js/main.js?v=muvx31be" defer></script>
+</body>
+</html>

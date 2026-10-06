@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The phases of an Odoo accounting implementation, and the mistakes that cost the most | MFT</title>
+  <meta name="description" content="The phases of a sound Odoo accounting implementation, from chart of accounts and taxes to opening balances, parallel run and go-live, and the costly mistakes.">
+  <link rel="canonical" href="https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="The phases of an Odoo accounting implementation, and the mistakes that cost the most | MFT">
+  <meta property="og:description" content="The phases of a sound Odoo accounting implementation, from chart of accounts and taxes to opening balances, parallel run and go-live, and the costly mistakes.">
+  <meta property="og:url" content="https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-en.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="Insights | Modern Financial Technology" href="https://www.seg-audit.com/en/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="/assets/css/main.css?v=muvx31be">
+  <script src="/assets/js/pre.js?v=muvx31be"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/","name":"The phases of an Odoo accounting implementation, and the mistakes that cost the most | MFT","description":"The phases of a sound Odoo accounting implementation, from chart of accounts and taxes to opening balances, parallel run and go-live, and the costly mistakes.","inLanguage":"en","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.seg-audit.com/en/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/en/blog/"},{"@type":"ListItem","position":3,"name":"odoo-accounting-implementation-steps","item":"https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The phases of an Odoo accounting implementation, and the mistakes that cost the most","description":"The phases of a sound Odoo accounting implementation, from chart of accounts and taxes to opening balances, parallel run and go-live, and the costly mistakes.","inLanguage":"en","datePublished":"2026-09-27","dateModified":"2026-09-27","wordCount":713,"articleSection":"Odoo","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/"},"author":{"@type":"Person","name":"Ahmed Ashraf Mostafa","jobTitle":"Founder and CEO, Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-en.png","abstract":"A sound Odoo accounting implementation runs in phases: design the chart of accounts, configure taxes and journals, set access rights and approvals, load and reconcile opening balances, run Odoo in parallel with the old system for at least one closed period, then go live with lock dates set. Skipping the parallel run is the costliest mistake.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long does an Odoo accounting implementation take?","acceptedAnswer":{"@type":"Answer","text":"It depends on the number of companies, modules and integrations, and on the quality of the existing data. Plan for at least one parallel month in addition to configuration and testing."}},{"@type":"Question","name":"Should opening balances be imported as totals or as open items?","acceptedAnswer":{"@type":"Answer","text":"Load the trial balance as totals, but load open customer invoices and vendor bills individually, so ageing reports and payment reconciliation work from the first day."}},{"@type":"Question","name":"What is a parallel run in an ERP implementation?","acceptedAnswer":{"@type":"Answer","text":"It is a period in which transactions are recorded in both the old and the new system and both are closed, so the results can be compared and configuration errors found before go-live."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/en/" aria-label="Modern Financial Technology: Home">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Menu">
+      <ul><li><a href="/en/services/">Services</a></li><li><a href="/en/industries/">Industries</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/" aria-current="page">Insights</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/ar/blog/odoo-accounting-implementation-steps/" lang="ar" hreflang="ar" dir="rtl">العربية</a>
+        <a class="btn btn-primary btn-sm" href="/en/contact/">Talk to Us</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Home</a></li><li><a href="/en/blog/">Insights</a></li><li aria-current="page">Odoo</li></ol></nav>
+      <p class="eyebrow">Odoo</p>
+      <h1>The phases of an Odoo accounting implementation, and the mistakes that cost the most</h1>
+      <p class="lead">Installing Odoo takes an afternoon. An implementation an auditor will accept takes phases, and each one ends in a reconciliation.</p>
+      <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-27"><span class="lat">27 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">Short answer</p><p class="answer-text">A sound Odoo accounting implementation runs in phases: design the chart of accounts, configure taxes and journals, set access rights and approvals, load and reconcile opening balances, run Odoo in parallel with the old system for at least one closed period, then go live with lock dates set. Skipping the parallel run is the costliest mistake.</p><p class="takeaways-title">Key takeaways</p><ul class="check-list"><li>Design the chart of accounts for statutory and tax reporting; use analytics for management views.</li><li>Treat access rights as segregation of duties, not as an IT setting.</li><li>Load open items individually and reconcile every control account at cut-over.</li><li>Run at least one parallel month before go-live.</li></ul></aside>
+      <p>Odoo can be installed in an afternoon. An accounting implementation that an auditor will accept takes longer, because the hard part is not the software. It is deciding how the business should be recorded, then making the system enforce those decisions. These are the phases we follow, in the order we follow them, and the mistakes we are most often called in to fix.</p>
+<h2>Phase one: what should the chart of accounts look like?</h2>
+<p>Start from the localization chart for Egypt or Saudi Arabia, then shape it around how management and the tax returns need to read the numbers. Keep the chart of accounts for the statutory and tax view, and use analytic accounts for branches, projects and cost centres rather than multiplying ledger accounts. Agree the mapping from the old chart to the new one in writing, because opening balances and comparative reports both depend on it.</p>
+<h2>Phase two: how should taxes and journals be configured?</h2>
+<p>Each tax the company actually uses is configured with the correct rate, accounts and tax grids, including refunds. Journals are set up for each bank account, each cash box, sales, purchases and miscellaneous entries, with sequences that match the company’s numbering policy and, where relevant, the e-invoicing requirements of the ETA or ZATCA. Payment terms, fiscal positions for exports and foreign suppliers, and currency settings also belong in this phase.</p>
+<h2>Phase three: who can do what?</h2>
+<p>Access rights are an internal control, not an IT task. Decide who can create and post vendor bills, who can register payments, who can create customers and vendors, who can edit taxes and accounts, and who can post manual journal entries. Separate the person who creates a vendor from the person who pays it. Odoo’s user groups and approval features cover most of this natively; anything that needs Studio or custom development should be documented as such.</p>
+<h2>Phase four: how do you load opening balances correctly?</h2>
+<ul class="check-list"><li>Choose a cut-over date at a period end, ideally a closed and reviewed month or year.</li><li>Load the trial balance at that date into a dedicated opening journal, through a suspense account that must end at zero.</li><li>Load open customer invoices and vendor bills individually, so ageing and payment matching work from day one.</li><li>Load inventory quantities and values that agree with the stock count and the ledger, and fixed assets with their accumulated depreciation.</li><li>Reconcile every control account, bank, receivables, payables, inventory and VAT, to its subledger before anything else is posted.</li></ul>
+<h2>Phase five: why run in parallel?</h2>
+<p>For at least one month, transactions are recorded in both the old system and Odoo, and the month is closed in both. The two trial balances, the VAT position and the receivable and payable ageing are compared line by line. The differences are almost always configuration: a tax posting to the wrong account, a journal with the wrong default account, a product category with the wrong valuation accounts. Finding them in a parallel month costs days. Finding them after go-live costs a restatement.</p>
+<h2>Phase six: what does go-live look like?</h2>
+<p>Go-live is a decision, signed by the finance lead, based on a passed parallel run and a short list of known issues, each with an owner. The old system is set to read-only. Lock dates are set in Odoo for every period before go-live. Users are trained on their own processes, not on Odoo in general, and the first month-end close is run with the implementation team present.</p>
+<blockquote class="pull"><p>The parallel month is the cheapest audit you will ever buy.</p></blockquote>
+<h2>What are the typical mistakes?</h2>
+<ul class="check-list"><li>Copying the old chart of accounts line by line, including accounts nobody has used in years.</li><li>Loading opening receivables and payables as a single total, so nothing can be matched or aged.</li><li>Giving every finance user the adviser or administrator role to save time during setup, and never taking it back.</li><li>Creating taxes by hand during go-live week without tax grids, so the tax report is wrong from the first month.</li><li>Skipping the parallel run because the deadline is close.</li><li>Treating inventory as a separate project, when its valuation accounts drive the balance sheet.</li></ul>
+<p>Our Odoo implementations are led by accountants for this reason. Every phase above ends with a reconciliation, and the project is not finished until the numbers agree.</p>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/en/request-quote/">Talk to MFT about this</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">Questions people ask</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>How long does an Odoo accounting implementation take?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>It depends on the number of companies, modules and integrations, and on the quality of the existing data. Plan for at least one parallel month in addition to configuration and testing.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>Should opening balances be imported as totals or as open items?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Load the trial balance as totals, but load open customer invoices and vendor bills individually, so ageing reports and payment reconciliation work from the first day.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>What is a parallel run in an ERP implementation?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>It is a period in which transactions are recorded in both the old and the new system and both are closed, so the results can be compared and configuration errors found before go-live.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">About the author</p>
+        <h2>Ahmed Ashraf Mostafa</h2>
+        <p class="author-role">Founder and CEO, Modern Financial Technology</p>
+        <p>Licensed auditor and the founder of MFT. Ahmed built the firm from a financial audit practice into an Odoo implementation and Virtual CFO business serving Egypt and Saudi Arabia, and still leads client engagements. He writes about what the ledger actually shows.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">Related articles</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-30"><span class="lat">30 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/odoo-inventory-valuation-fifo-avco/">FIFO or average cost in Odoo: choosing a valuation method you can live with</a></h2>
+    <p>The costing method decides the gross margin the board sees every month. It is easy to choose during setup and expensive to change later.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-03"><span class="lat">3 October 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/month-end-close-checklist-odoo/">A month-end close checklist for Odoo that a reviewer can sign</a></h2>
+    <p>Most of the tools are already in Odoo. What is usually missing is the order, the evidence and the sign-off.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-26"><span class="lat">26 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/bank-reconciliation-controls/">Bank reconciliation is a control, not a chore</a></h2>
+    <p>Done often and reviewed by someone else, the bank reconciliation is the cheapest error and fraud detection a company has. Done late by the person who pays, it is decoration.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/en/blog/">All articles</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">See also</h2>
+    <ul class="see-also-list"><li><a href="/en/intelligence/">Services</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/egypt/">Egypt</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">Talk to a CPA, not a sales rep.</h2>
+      <p>A 30-minute call to understand your entity, your systems and what a decision-ready close would look like. Free, and you leave with one concrete next step.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/en/contact/">Book a call</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Services</h2>
+        <ul><li><a href="/en/services/odoo-erp/">Odoo ERP Implementation</a></li><li><a href="/en/services/internal-audit/">Internal Audit</a></li><li><a href="/en/services/virtual-cfo/">Virtual CFO</a></li><li><a href="/en/services/financial-consulting/">Financial Consulting</a></li><li><a href="/en/services/business-analysis/">Business Analysis</a></li><li><a href="/en/services/training/">User Training</a></li><li><a href="/en/services/technical-support/">Technical Support</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Industries</h2>
+        <ul><li><a href="/en/industries/#manufacturing">Manufacturing</a></li><li><a href="/en/industries/#trading">Trading &amp; Distribution</a></li><li><a href="/en/industries/#food-beverage">Food &amp; Beverage</a></li><li><a href="/en/industries/#healthcare">Healthcare</a></li><li><a href="/en/industries/#construction">Construction</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Where we work</h2>
+        <ul><li><a href="/en/egypt/">Egypt: Odoo, audit and Virtual CFO</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia: ZATCA-ready Odoo and audit</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Company</h2>
+        <ul><li><a href="/en/about/">About MFT</a></li><li><a href="/en/intelligence/">MFT Intelligence AI Agents</a></li><li><a href="/en/request-quote/">Request a quote</a></li><li><a href="/en/blog/">Insights (blog)</a></li><li><a href="/en/contact/">Contact</a></li><li><a href="/en/privacy/">Privacy</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">seg-audit platform</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Contact</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">Offices</h2>
+        <ul><li>Egypt: <span class="muted">Korba, Heliopolis, Cairo</span></li><li>Saudi Arabia</li><li>United States</li></ul>
+        <h2 class="footer-title">Follow</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Modern Financial Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=muvx31be" defer></script>
+<script src="/assets/js/main.js?v=muvx31be" defer></script>
+</body>
+</html>

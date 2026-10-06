@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bank reconciliation is a control, not a chore | MFT</title>
+  <meta name="description" content="Bank reconciliation as an internal control: how often to reconcile, reconciling items, unexplained differences, Odoo reconciliation models, and who reviews.">
+  <link rel="canonical" href="https://www.seg-audit.com/en/blog/bank-reconciliation-controls/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/bank-reconciliation-controls/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="Bank reconciliation is a control, not a chore | MFT">
+  <meta property="og:description" content="Bank reconciliation as an internal control: how often to reconcile, reconciling items, unexplained differences, Odoo reconciliation models, and who reviews.">
+  <meta property="og:url" content="https://www.seg-audit.com/en/blog/bank-reconciliation-controls/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-en.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="Insights | Modern Financial Technology" href="https://www.seg-audit.com/en/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="/assets/css/main.css?v=muvx31be">
+  <script src="/assets/js/pre.js?v=muvx31be"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/en/blog/bank-reconciliation-controls/","name":"Bank reconciliation is a control, not a chore | MFT","description":"Bank reconciliation as an internal control: how often to reconcile, reconciling items, unexplained differences, Odoo reconciliation models, and who reviews.","inLanguage":"en","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.seg-audit.com/en/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/en/blog/"},{"@type":"ListItem","position":3,"name":"bank-reconciliation-controls","item":"https://www.seg-audit.com/en/blog/bank-reconciliation-controls/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Bank reconciliation is a control, not a chore","description":"Bank reconciliation as an internal control: how often to reconcile, reconciling items, unexplained differences, Odoo reconciliation models, and who reviews.","inLanguage":"en","datePublished":"2026-09-26","dateModified":"2026-09-26","wordCount":677,"articleSection":"Odoo","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/bank-reconciliation-controls/"},"author":{"@type":"Person","name":"Ahmed Ashraf Mostafa","jobTitle":"Founder and CEO, Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-en.png","abstract":"A bank reconciliation is a control because it proves that every movement on the bank statement is recorded in the ledger and every recorded payment actually went through the bank. To work as a control it is done at least monthly, with reconciling items explained and aged, no unexplained difference carried forward, and review by someone who makes no payments.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How often should bank accounts be reconciled?","acceptedAnswer":{"@type":"Answer","text":"At least monthly for every account, including dormant and foreign currency accounts. Active operating accounts benefit from weekly or even daily matching, because recent differences are much easier to trace."}},{"@type":"Question","name":"What are reconciliation models in Odoo?","acceptedAnswer":{"@type":"Answer","text":"They are rules that help match bank statement lines, for example to open invoices by reference or partner, or that propose a counterpart entry for recurring items such as bank charges. They can suggest a match for review or apply it automatically, so they should be configured and reviewed with care."}},{"@type":"Question","name":"Who should review the bank reconciliation?","acceptedAnswer":{"@type":"Answer","text":"Someone who does not create or release payments, often the owner, general manager or finance manager. The reviewer agrees the balances, questions old or unusual reconciling items, and signs and dates the reconciliation."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/en/" aria-label="Modern Financial Technology: Home">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Menu">
+      <ul><li><a href="/en/services/">Services</a></li><li><a href="/en/industries/">Industries</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/" aria-current="page">Insights</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/ar/blog/bank-reconciliation-controls/" lang="ar" hreflang="ar" dir="rtl">العربية</a>
+        <a class="btn btn-primary btn-sm" href="/en/contact/">Talk to Us</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Home</a></li><li><a href="/en/blog/">Insights</a></li><li aria-current="page">Odoo</li></ol></nav>
+      <p class="eyebrow">Odoo</p>
+      <h1>Bank reconciliation is a control, not a chore</h1>
+      <p class="lead">Done often and reviewed by someone else, the bank reconciliation is the cheapest error and fraud detection a company has. Done late by the person who pays, it is decoration.</p>
+      <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-26"><span class="lat">26 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">Short answer</p><p class="answer-text">A bank reconciliation is a control because it proves that every movement on the bank statement is recorded in the ledger and every recorded payment actually went through the bank. To work as a control it is done at least monthly, with reconciling items explained and aged, no unexplained difference carried forward, and review by someone who makes no payments.</p><p class="takeaways-title">Key takeaways</p><ul class="check-list"><li>Reconcile every account at least monthly, and active accounts weekly.</li><li>Every reconciling item needs an explanation, an owner and an age.</li><li>An unexplained difference is a finding, not a balancing figure.</li><li>The reviewer must not be the person who creates or releases payments.</li></ul></aside>
+      <p>In many companies the bank reconciliation is the last task of the close, done quickly by whoever has time, with a small difference posted to a suspense account so that the numbers agree. That is the reconciliation as a chore. Treated as a control, the same exercise is the most direct evidence a company has that its cash records are complete and real.</p>
+<h2>Why is bank reconciliation a control?</h2>
+<p>The bank statement is evidence produced by a third party. Comparing it with the ledger tests two things at once: that every movement on the statement is recorded, which catches unrecorded payments, charges and receipts; and that every payment and receipt in the ledger actually went through the bank, which catches entries that never happened. Few other controls give independent evidence so cheaply.</p>
+<h2>How often should you reconcile?</h2>
+<p>At least monthly, for every bank account, including dormant accounts and accounts in foreign currency. For operating accounts with frequent movements, weekly is better, and where statements arrive in Odoo every day, daily matching is realistic. The reason is practical: an error found within a week is easy to trace, because the people involved remember the transaction. One found three months later is an investigation.</p>
+<h2>What counts as a reconciling item?</h2>
+<p>A reconciling item is a legitimate timing difference between the bank and the books, with a known cause and an expected clearing date:</p>
+<ul class="check-list"><li>Outstanding payments: cheques issued or transfers recorded but not yet cleared by the bank.</li><li>Deposits in transit: receipts recorded in the books but not yet credited on the statement.</li><li>Bank charges, interest and fees on the statement that have not yet been recorded.</li><li>Errors by the bank or in the ledger that have been identified and are being corrected.</li></ul>
+<p>Each item should have a description, an owner and an age. Items older than a period set in the close procedure, for example thirty days, are escalated: a cheque that has not cleared for months may be lost, cancelled or misused, and a deposit that never arrives is a receivable, not cash.</p>
+<h2>What do you do with an unexplained difference?</h2>
+<p>Nothing that makes it disappear. An unexplained difference means the reconciliation is not finished, however small the amount. Posting it to a suspense or rounding account hides the very thing the control exists to find, and a small difference can be the visible part of a larger pattern. The difference stays open, is investigated, and is reported to the reviewer with what has been done so far.</p>
+<blockquote class="pull"><p>A reconciliation that always balances on the last day, with a small adjustment, has not been reconciled. It has been closed.</p></blockquote>
+<h2>How does Odoo help?</h2>
+<p>Odoo imports bank statements from files or, depending on the edition and the bank, through a direct bank feed, and presents each statement line for matching against open invoices, bills and payments. Reconciliation models automate the routine: a rule can match lines to open invoices by reference or partner, or propose a counterpart entry for recurring items such as bank charges, and it can either suggest the match or apply it automatically. Automation belongs only on items that are genuinely routine, and the rules themselves need review, because a badly written model reconciles the wrong things silently.</p>
+<p>Lock dates matter here too. Once a period is reconciled and reviewed, locking it prevents back-dated entries from changing a balance that has already been agreed to the bank. When MFT runs an Odoo implementation, the statement import, the reconciliation models and the lock-date procedure are configured and tested with the finance team before the first close.</p>
+<h2>Who should review it?</h2>
+<p>Someone who does not create or release payments, and who is senior enough to ask questions. In a small company that is usually the owner or general manager. The review is evidenced: the reviewer agrees the closing balance to the statement, reads the list of reconciling items and their ages, asks about anything old or unusual, and signs and dates the reconciliation. Without that step, the reconciliation tells the company only what the preparer chose to show.</p>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/en/request-quote/">Talk to MFT about this</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">Questions people ask</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>How often should bank accounts be reconciled?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>At least monthly for every account, including dormant and foreign currency accounts. Active operating accounts benefit from weekly or even daily matching, because recent differences are much easier to trace.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>What are reconciliation models in Odoo?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>They are rules that help match bank statement lines, for example to open invoices by reference or partner, or that propose a counterpart entry for recurring items such as bank charges. They can suggest a match for review or apply it automatically, so they should be configured and reviewed with care.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>Who should review the bank reconciliation?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Someone who does not create or release payments, often the owner, general manager or finance manager. The reviewer agrees the balances, questions old or unusual reconciling items, and signs and dates the reconciliation.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">About the author</p>
+        <h2>Ahmed Ashraf Mostafa</h2>
+        <p class="author-role">Founder and CEO, Modern Financial Technology</p>
+        <p>Licensed auditor and the founder of MFT. Ahmed built the firm from a financial audit practice into an Odoo implementation and Virtual CFO business serving Egypt and Saudi Arabia, and still leads client engagements. He writes about what the ledger actually shows.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">Related articles</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-27"><span class="lat">27 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/odoo-accounting-implementation-steps/">The phases of an Odoo accounting implementation, and the mistakes that cost the most</a></h2>
+    <p>Installing Odoo takes an afternoon. An implementation an auditor will accept takes phases, and each one ends in a reconciliation.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-30"><span class="lat">30 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/odoo-inventory-valuation-fifo-avco/">FIFO or average cost in Odoo: choosing a valuation method you can live with</a></h2>
+    <p>The costing method decides the gross margin the board sees every month. It is easy to choose during setup and expensive to change later.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-03"><span class="lat">3 October 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/month-end-close-checklist-odoo/">A month-end close checklist for Odoo that a reviewer can sign</a></h2>
+    <p>Most of the tools are already in Odoo. What is usually missing is the order, the evidence and the sign-off.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/en/blog/">All articles</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">See also</h2>
+    <ul class="see-also-list"><li><a href="/en/intelligence/">Services</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/egypt/">Egypt</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">Talk to a CPA, not a sales rep.</h2>
+      <p>A 30-minute call to understand your entity, your systems and what a decision-ready close would look like. Free, and you leave with one concrete next step.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/en/contact/">Book a call</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Services</h2>
+        <ul><li><a href="/en/services/odoo-erp/">Odoo ERP Implementation</a></li><li><a href="/en/services/internal-audit/">Internal Audit</a></li><li><a href="/en/services/virtual-cfo/">Virtual CFO</a></li><li><a href="/en/services/financial-consulting/">Financial Consulting</a></li><li><a href="/en/services/business-analysis/">Business Analysis</a></li><li><a href="/en/services/training/">User Training</a></li><li><a href="/en/services/technical-support/">Technical Support</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Industries</h2>
+        <ul><li><a href="/en/industries/#manufacturing">Manufacturing</a></li><li><a href="/en/industries/#trading">Trading &amp; Distribution</a></li><li><a href="/en/industries/#food-beverage">Food &amp; Beverage</a></li><li><a href="/en/industries/#healthcare">Healthcare</a></li><li><a href="/en/industries/#construction">Construction</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Where we work</h2>
+        <ul><li><a href="/en/egypt/">Egypt: Odoo, audit and Virtual CFO</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia: ZATCA-ready Odoo and audit</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Company</h2>
+        <ul><li><a href="/en/about/">About MFT</a></li><li><a href="/en/intelligence/">MFT Intelligence AI Agents</a></li><li><a href="/en/request-quote/">Request a quote</a></li><li><a href="/en/blog/">Insights (blog)</a></li><li><a href="/en/contact/">Contact</a></li><li><a href="/en/privacy/">Privacy</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">seg-audit platform</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Contact</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">Offices</h2>
+        <ul><li>Egypt: <span class="muted">Korba, Heliopolis, Cairo</span></li><li>Saudi Arabia</li><li>United States</li></ul>
+        <h2 class="footer-title">Follow</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Modern Financial Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=muvx31be" defer></script>
+<script src="/assets/js/main.js?v=muvx31be" defer></script>
+</body>
+</html>

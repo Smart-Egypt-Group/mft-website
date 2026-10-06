@@ -101,6 +101,66 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/agents-draft-people-approve/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-e-receipt-b2c/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/zakat-vs-corporate-income-tax-saudi/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/month-end-close-checklist-odoo/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/what-is-internal-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/what-is-internal-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/what-is-internal-audit/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/segregation-of-duties-odoo/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/three-way-match-purchase-controls/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/bank-reconciliation-controls/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/virtual-cfo-vs-full-time-cfo/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/thirteen-week-cash-flow-forecast/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/ar/egypt/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/egypt/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/egypt/"/>
@@ -224,6 +284,66 @@
     <loc>https://www.seg-audit.com/en/blog/agents-draft-people-approve/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/agents-draft-people-approve/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/agents-draft-people-approve/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/egypt-e-receipt-b2c/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-e-receipt-b2c/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/zakat-vs-corporate-income-tax-saudi/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/zakat-vs-corporate-income-tax-saudi/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/month-end-close-checklist-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/month-end-close-checklist-odoo/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/what-is-internal-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/what-is-internal-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/what-is-internal-audit/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/segregation-of-duties-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/segregation-of-duties-odoo/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/three-way-match-purchase-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/three-way-match-purchase-controls/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/bank-reconciliation-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/bank-reconciliation-controls/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/virtual-cfo-vs-full-time-cfo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/virtual-cfo-vs-full-time-cfo/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/thirteen-week-cash-flow-forecast/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/thirteen-week-cash-flow-forecast/"/>
   </url>
   <url>
     <loc>https://www.seg-audit.com/en/egypt/</loc>

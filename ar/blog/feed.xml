@@ -6,7 +6,103 @@
     <atom:link href="https://www.seg-audit.com/ar/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>كتابات عملية من MFT عن المراجعة الداخلية والأهمية النسبية والامتثال لهيئة الزكاة والضريبة والجمارك السعودية والفوترة الإلكترونية المصرية وتشغيل Odoo كنظام مالي.</description>
     <language>ar</language>
-    <lastBuildDate>Wed, 16 Sep 2026 09:58:08 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 00:05:00 GMT</lastBuildDate>
+    <item>
+      <title>قائمة إقفال شهري في Odoo يستطيع المراجع أن يوقّع عليها</title>
+      <link>https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/</guid>
+      <pubDate>Sat, 03 Oct 2026 09:00:00 GMT</pubDate>
+      <description>قائمة عملية للإقفال الشهري في Odoo: التسويات البنكية، وأعمار العملاء والموردين، والمستحقات، وتقييم المخزون، والاستهلاك، والضريبة، والمراجعة، وتواريخ القفل.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>FIFO أم متوسط التكلفة في Odoo: اختيار طريقة تقييم تستطيع التعايش معها</title>
+      <link>https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/</guid>
+      <pubDate>Wed, 30 Sep 2026 09:00:00 GMT</pubDate>
+      <description>FIFO أم متوسط التكلفة في Odoo: أثر كل منهما على تكلفة المبيعات والهامش، وأهمية التقييم الآلي المستمر، والتكاليف الإضافية، ومخاطر تغيير الطريقة خلال السنة.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>كيف تبني توقعات تدفق نقدي لمدة 13 أسبوعًا من دفترك</title>
+      <link>https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/</guid>
+      <pubDate>Wed, 30 Sep 2026 09:00:00 GMT</pubDate>
+      <description>كيف تبني توقعات تدفق نقدي لمدة 13 أسبوعًا من الدفتر بالطريقة المباشرة: المقبوضات والمدفوعات، والتحديث الأسبوعي المتدحرج، ومراجعة الانحرافات مقابل الفعلي.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>مدير مالي افتراضي أم مدير مالي متفرغ: كيف تعرف أيهما تحتاج</title>
+      <link>https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/</guid>
+      <pubDate>Mon, 28 Sep 2026 09:00:00 GMT</pubDate>
+      <description>متى يكون المدير المالي الافتراضي هو الخيار الصحيح ومتى تعيّن مديرًا ماليًا متفرغًا: النطاق والإيقاع والمخرجات المتوقعة، والعلامات التحذيرية في كلا النموذجين.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>مراحل تنفيذ المحاسبة على Odoo، والأخطاء الأعلى كلفة</title>
+      <link>https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/</guid>
+      <pubDate>Sun, 27 Sep 2026 09:00:00 GMT</pubDate>
+      <description>مراحل تنفيذ المحاسبة على Odoo بشكل سليم، من دليل الحسابات والضرائب إلى الأرصدة الافتتاحية والتشغيل المتوازي والتشغيل الفعلي، والأخطاء الأعلى كلفة.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>التسوية البنكية ضابط رقابي، لا عبء روتيني</title>
+      <link>https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/</guid>
+      <pubDate>Sat, 26 Sep 2026 09:00:00 GMT</pubDate>
+      <description>التسوية البنكية كضابط رقابة داخلية: كم مرة تُجرى، وكيف تُعالج البنود المعلّقة والفروق غير المفسَّرة، ونماذج التسوية في Odoo، ومن يراجع التسوية ويوقّعها.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>الزكاة أم ضريبة الدخل في السعودية: من يدفع ماذا، وما الذي يجب أن يُظهره دفتر الأستاذ</title>
+      <link>https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/</guid>
+      <pubDate>Thu, 24 Sep 2026 09:00:00 GMT</pubDate>
+      <description>الفرق بين الزكاة وضريبة دخل الشركات في السعودية: من يخضع لكل منهما حسب الملكية، وما الذي يقيسه كل نظام، وما الذي يجب أن يدعمه دفتر الأستاذ طوال السنة.</description>
+      <category>الامتثال</category>
+    </item>
+    <item>
+      <title>المطابقة الثلاثية: ضابط المشتريات الذي يمنعك من الدفع مقابل ما لم يصل</title>
+      <link>https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/</guid>
+      <pubDate>Thu, 24 Sep 2026 09:00:00 GMT</pubDate>
+      <description>كيف تعمل المطابقة الثلاثية بين أمر الشراء واستلام البضاعة وفاتورة المورد، وكيف تُحدَّد حدود التسامح، وكيف يعالج Odoo التوريد الجزئي والمرتجعات وفروق السعر.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>الفصل بين المهام في Odoo: من لا ينبغي أن يحمل المفتاحين معًا</title>
+      <link>https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/</guid>
+      <pubDate>Tue, 22 Sep 2026 09:00:00 GMT</pubDate>
+      <description>شرح الفصل بين المهام: الأزواج المتعارضة المعروفة، وكيف تُفرض بمجموعات الصلاحيات والاعتمادات في Odoo، والضوابط التعويضية حين يكون فريق المالية صغيرًا جدًا.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>منظومة الإيصال الإلكتروني في مصر: ما الذي يتغير للتجزئة، وما الذي تحتاجه نقاط البيع في Odoo</title>
+      <link>https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/</guid>
+      <pubDate>Mon, 21 Sep 2026 09:00:00 GMT</pubDate>
+      <description>ما منظومة الإيصال الإلكتروني المصرية للبيع للمستهلكين، وكيف تختلف عن الفاتورة الإلكترونية بين الشركات، وما الذي يحتاجه إعداد نقاط البيع وOdoo قبل التشغيل.</description>
+      <category>الامتثال</category>
+    </item>
+    <item>
+      <title>ما المراجعة الداخلية، وماذا تحصل عليه الشركة المتوسطة منها فعلًا؟</title>
+      <link>https://www.seg-audit.com/ar/blog/what-is-internal-audit/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/what-is-internal-audit/</guid>
+      <pubDate>Sun, 20 Sep 2026 09:00:00 GMT</pubDate>
+      <description>ما المراجعة الداخلية، وكيف تختلف عن المراجعة الخارجية، وكيف يصوغها معهد المراجعين الداخليين IIA، وما الذي تتوقعه منها الشركة الصغيرة أو المتوسطة فعلًا.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>إعداد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo، بلا جدول بيانات</title>
+      <link>https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/</guid>
+      <pubDate>Fri, 18 Sep 2026 09:00:00 GMT</pubDate>
+      <description>كيف تعد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo: ربط الضرائب بشبكات التقرير، وضريبة المدخلات والمخرجات، ومطابقته مع دفتر الأستاذ والفواتير الإلكترونية.</description>
+      <category>الامتثال</category>
+    </item>
     <item>
       <title>الأهمية النسبية منهج، لا رقم مدوّر</title>
       <link>https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/</link>

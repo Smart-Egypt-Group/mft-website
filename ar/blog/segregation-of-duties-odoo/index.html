@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>الفصل بين المهام في Odoo: من لا ينبغي أن يحمل المفتاحين معًا | MFT</title>
+  <meta name="description" content="شرح الفصل بين المهام: الأزواج المتعارضة المعروفة، وكيف تُفرض بمجموعات الصلاحيات والاعتمادات في Odoo، والضوابط التعويضية حين يكون فريق المالية صغيرًا جدًا.">
+  <link rel="canonical" href="https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/segregation-of-duties-odoo/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="الفصل بين المهام في Odoo: من لا ينبغي أن يحمل المفتاحين معًا | MFT">
+  <meta property="og:description" content="شرح الفصل بين المهام: الأزواج المتعارضة المعروفة، وكيف تُفرض بمجموعات الصلاحيات والاعتمادات في Odoo، والضوابط التعويضية حين يكون فريق المالية صغيرًا جدًا.">
+  <meta property="og:url" content="https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-ar.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="المقالات | Modern Financial Technology" href="https://www.seg-audit.com/ar/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/cairo-arabic-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css?v=muvx31be">
+  <script src="/assets/js/pre.js?v=muvx31be"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/","name":"الفصل بين المهام في Odoo: من لا ينبغي أن يحمل المفتاحين معًا | MFT","description":"شرح الفصل بين المهام: الأزواج المتعارضة المعروفة، وكيف تُفرض بمجموعات الصلاحيات والاعتمادات في Odoo، والضوابط التعويضية حين يكون فريق المالية صغيرًا جدًا.","inLanguage":"ar","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://www.seg-audit.com/ar/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/ar/blog/"},{"@type":"ListItem","position":3,"name":"segregation-of-duties-odoo","item":"https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"الفصل بين المهام في Odoo: من لا ينبغي أن يحمل المفتاحين معًا","description":"شرح الفصل بين المهام: الأزواج المتعارضة المعروفة، وكيف تُفرض بمجموعات الصلاحيات والاعتمادات في Odoo، والضوابط التعويضية حين يكون فريق المالية صغيرًا جدًا.","inLanguage":"ar","datePublished":"2026-09-22","dateModified":"2026-09-22","wordCount":571,"articleSection":"المراجعة الداخلية","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/"},"author":{"@type":"Person","name":"أحمد أشرف مصطفى","jobTitle":"المؤسس والرئيس التنفيذي، Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-ar.png","abstract":"الفصل بين المهام يعني ألا يتحكم شخص واحد في كل مراحل المعاملة: اعتمادها، وتسجيلها، وحيازة الأصل، وتسوية النتيجة. وفي Odoo يُفرض بإسناد المستخدمين إلى مجموعات صلاحيات تفصل المهام المتعارضة وبإضافة خطوات اعتماد. وحين يكون الفريق أصغر من ذلك، تعوّض عنه مراجعة مستقلة للتغييرات والتسويات.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما مثال الفصل بين المهام؟","acceptedAnswer":{"@type":"Answer","text":"المثال الشائع أن من يُنشئ موردًا أو يغيّر بياناته البنكية ليس هو من يعتمد المدفوعات لذلك المورد أو يُصدرها. ومثال آخر أن من يستلم نقدية العملاء لا يُجري تسوية الحساب البنكي."}},{"@type":"Question","name":"هل يستطيع Odoo فرض الفصل بين المهام؟","acceptedAnswer":{"@type":"Answer","text":"نعم، أساسًا عبر مجموعات الصلاحيات لكل تطبيق، وخطوات الاعتماد مثل اعتماد أوامر الشراء فوق مبلغ محدد، وتواريخ الإقفال على الفترات المُقفلة. وتختلف المجموعات وأدوات الاعتماد المتاحة حسب الإصدار والنسخة، فينبغي فحص التصميم على تثبيتك أنت."}},{"@type":"Question","name":"ما الضوابط التعويضية؟","acceptedAnswer":{"@type":"Answer","text":"هي فحوص يجريها شخص مستقل عن المعاملة، كأن يراجع المالك التسويات البنكية أو التغييرات على الموردين، لتكشف ما كان الفصل بين المهام سيمنعه. وتُستخدم حين يكون الفريق أصغر من أن تُفصل فيه المهام المتعارضة."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/ar/" aria-label="Modern Financial Technology: الرئيسية">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">القائمة</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="القائمة">
+      <ul><li><a href="/ar/services/">الخدمات</a></li><li><a href="/ar/industries/">القطاعات</a></li><li><a href="/ar/intelligence/">وكلاء <span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/about/">عن الشركة</a></li><li><a href="/ar/blog/" aria-current="page">المقالات</a></li><li><a href="/ar/contact/">تواصل معنا</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/en/blog/segregation-of-duties-odoo/" lang="en" hreflang="en" dir="ltr">English</a>
+        <a class="btn btn-primary btn-sm" href="/ar/contact/">تحدث معنا</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">الرئيسية</a></li><li><a href="/ar/blog/">المقالات</a></li><li aria-current="page">المراجعة الداخلية</li></ol></nav>
+      <p class="eyebrow">المراجعة الداخلية</p>
+      <h1>الفصل بين المهام في <span class="lat">Odoo</span>: من لا ينبغي أن يحمل المفتاحين معًا</h1>
+      <p class="lead">الأزواج المتعارضة في كل عملية مالية، وكيف تفصل بينها بمجموعات الصلاحيات والاعتمادات في <span class="lat">Odoo</span>، وماذا تفعل حين يكون الفريق أصغر من أن يُقسَّم.</p>
+      <p class="post-meta"><span class="topic-tag">المراجعة الداخلية</span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-22">22 سبتمبر 2026</time><span><span class="lat">3</span> دقائق قراءة</span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">الإجابة المختصرة</p><p class="answer-text">الفصل بين المهام يعني ألا يتحكم شخص واحد في كل مراحل المعاملة: اعتمادها، وتسجيلها، وحيازة الأصل، وتسوية النتيجة. وفي <span class="lat">Odoo</span> يُفرض بإسناد المستخدمين إلى مجموعات صلاحيات تفصل المهام المتعارضة وبإضافة خطوات اعتماد. وحين يكون الفريق أصغر من ذلك، تعوّض عنه مراجعة مستقلة للتغييرات والتسويات.</p><p class="takeaways-title">أهم النقاط</p><ul class="check-list"><li>افصل بين أربع وظائف: الاعتماد، والتسجيل، وحيازة الأصول، والتسوية.</li><li>ارسم التعارضات حسب العملية قبل إسناد مجموعات الصلاحيات في <span class="lat">Odoo</span>، لا بعده.</li><li>الاعتمادات وتواريخ الإقفال تضيف رقابة حيث لا يمكن تقسيم الأدوار.</li><li>الفرق الصغيرة تعوّض بمراجعة مستقلة موثّقة للتغييرات والتسويات.</li></ul></aside>
+      <p>في مراجعاتنا، نادرًا ما تكون نقاط الضعف الرقابية الأهم معقدة. إنها تعود إلى شخص واحد يستطيع أن يفعل أمرين كان ينبغي أن يقوم بهما شخصان: أن يضيف موردًا ويدفع له، أو أن يستلم النقدية ويسجّل التحصيل. الفصل بين المهام من أقدم الضوابط الداخلية، وهو في نظام تخطيط الموارد من أسهلها نقضًا بتغيير واحد في إعدادات المستخدم.</p>
+<h2>ما الفصل بين المهام؟</h2>
+<p>المبدأ ألا يتحكم شخص واحد في كل مراحل المعاملة. تقسّم أُطر الرقابة المعاملة إلى أربع وظائف: اعتمادها، وتسجيلها، وحيازة الأصل المعني، وتسوية السجلات بالواقع. وحين يجمع شخص واحد وظيفتين منها يستطيع أن يُحدث الخطأ وأن يخفيه معًا. والغاية ليست الشك في أي فرد، بل تصميم يجعل الخطأ، أو التحريف المتعمد، يمر حتمًا على يد ثانية.</p>
+<h2>ما أزواج المهام المتعارضة؟</h2>
+<ul class="check-list"><li>إنشاء مورد أو تعديله، بما في ذلك حسابه البنكي، واعتماد المدفوعات للموردين أو إصدارها.</li><li>إصدار أمر الشراء واستلام البضاعة مقابله، أو اعتماد فاتورة المورد للأمر نفسه.</li><li>إنشاء العملاء وتحديد حدود الائتمان، واعتماد البيع الآجل أو إصدار إشعارات الدائن.</li><li>استلام النقدية أو مدفوعات العملاء، وترحيل التحصيلات أو تسوية الحساب البنكي.</li><li>ترحيل القيود اليومية اليدوية، واعتمادها أو تغيير تواريخ الإقفال التي تحمي الفترات المُقفلة.</li><li>إدارة صلاحيات المستخدمين في النظام، ومعالجة المعاملات المالية فيه.</li><li>تسوية كميات المخزون، وجرد المخزون نفسه أو تقييمه.</li></ul>
+<h2>كيف تطبّقه في <span class="lat">Odoo</span>؟</h2>
+<p>يتحكم <span class="lat">Odoo</span> فيما يستطيع المستخدم فعله عبر مجموعات صلاحيات تُسند لكل تطبيق. في المحاسبة تتدرج المستويات من صلاحية الفوترة فقط حتى صلاحيات المحاسبة الكاملة والمدير؛ ولكل من المشتريات والمبيعات والمخزون مستوى مستخدم ومستوى مدير. وتختلف أسماء المجموعات وما تتيحه كل منها حسب الإصدار والنسخة، ولهذا نتأكد من الإصدار قبل تصميم المصفوفة. أما التسلسل العملي فواحد في كل تنفيذ.</p>
+<ul class="check-list"><li>ابدأ من العملية لا من النظام: اكتب من يفعل ماذا في المشتريات والمبيعات والخزينة والمخزون والإقفال، وحدد الأزواج المتعارضة.</li><li>حوّل النتيجة إلى مصفوفة أدوار، ثم إلى مجموعات صلاحيات في <span class="lat">Odoo</span>، وامنح كل مستخدم أدنى مستوى يتيح له أداء عمله.</li><li>أضف خطوات اعتماد حيث يجب أن يفحص دور دورًا آخر: تطبيق المشتريات يتيح اعتمادًا على مرحلتين لأوامر الشراء فوق مبلغ تحدده، ويمكن إضافة اعتمادات أخرى على المدفوعات أو القيود بأدوات الاعتماد في <span class="lat">Odoo</span>، حسب النسخة.</li><li>احمِ الفترات المُقفلة بتواريخ الإقفال، وقيّد من يستطيع تغييرها.</li><li>اسحب صلاحيات المدير ممن يعالجون المعاملات، واحتفظ بحساب مدير منفصل نادر الاستخدام.</li><li>راجع قائمة المستخدمين وإسناد المجموعات كل ربع سنة على الأقل؛ فالصلاحيات تنحرف كلما غطّى أحدهم عن زميل في إجازة.</li></ul>
+<p>هذا جزء من طريقة <span class="lat">MFT</span> في تصميم تنفيذ <span class="lat">Odoo</span>: يوقّع مسؤول المالية على مصفوفة الصلاحيات قبل إنشاء المستخدمين، فيبدأ النظام والفصل مبني فيه، بدل أن يُضاف لاحقًا بعد أول مراجعة.</p>
+<h2>ماذا لو كان الفريق أصغر من أن تُقسَّم المهام؟</h2>
+<p>فريق مالية من شخصين لا يستطيع الفصل بين سبعة أزواج من المهام. وهذا لا يُسقط المبدأ، بل يعني ضوابط تعويضية: فحوصًا يجريها شخص خارج المعاملة، عادة المالك أو المدير العام، تكشف ما كان الفصل سيمنعه.</p>
+<ul class="check-list"><li>يعتمد المالك كل مورد جديد وكل تغيير في البيانات البنكية للموردين، من تقرير بالتغييرات على سجلات الموردين.</li><li>تصل كشوف الحساب البنكية إلى المالك مباشرة، ويراجع التسوية الشهرية ويوقّعها.</li><li>قائمة شهرية بالقيود اليدوية وإشعارات الدائن وتسويات المخزون يراجعها شخص لم يرحّلها.</li><li>المدفوعات فوق مبلغ محدد تحتاج معتمِدًا ثانيًا، حتى لو كان من خارج المالية.</li></ul>
+<blockquote class="pull"><p>الفصل بين المهام ليس أن تثق بالناس أقل. إنه ألا تطلب من أحد أن يكون الضابط الوحيد.</p></blockquote>
+<h2>كيف تعرف أنه يعمل؟</h2>
+<p>اختبره. صدّر المستخدمين ومجموعاتهم من <span class="lat">Odoo</span> وقارنهم بالمصفوفة المعتمدة. اختر تغييرات على الموردين وتحقق ممن أجراها ومن اعتمدها. ابحث عن أي شخص رحّل قيدًا واعتمده بنفسه. مراجعة الصلاحيات ضمن المراجعة الداخلية قصيرة حين يكون التصميم سليمًا، وهي الطريقة الوحيدة لمعرفة هل صمد التصميم أمام تغييرات الموظفين خلال العام الماضي.</p>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/ar/contact/">تحدّث مع <span class="lat">MFT</span> عن هذا</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">أسئلة شائعة</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>ما مثال الفصل بين المهام؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>المثال الشائع أن من يُنشئ موردًا أو يغيّر بياناته البنكية ليس هو من يعتمد المدفوعات لذلك المورد أو يُصدرها. ومثال آخر أن من يستلم نقدية العملاء لا يُجري تسوية الحساب البنكي.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>هل يستطيع <span class="lat">Odoo</span> فرض الفصل بين المهام؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>نعم، أساسًا عبر مجموعات الصلاحيات لكل تطبيق، وخطوات الاعتماد مثل اعتماد أوامر الشراء فوق مبلغ محدد، وتواريخ الإقفال على الفترات المُقفلة. وتختلف المجموعات وأدوات الاعتماد المتاحة حسب الإصدار والنسخة، فينبغي فحص التصميم على تثبيتك أنت.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>ما الضوابط التعويضية؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>هي فحوص يجريها شخص مستقل عن المعاملة، كأن يراجع المالك التسويات البنكية أو التغييرات على الموردين، لتكشف ما كان الفصل بين المهام سيمنعه. وتُستخدم حين يكون الفريق أصغر من أن تُفصل فيه المهام المتعارضة.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">عن الكاتب</p>
+        <h2>أحمد أشرف مصطفى</h2>
+        <p class="author-role">المؤسس والرئيس التنفيذي، <span class="lat">Modern Financial Technology</span></p>
+        <p>مراجع مرخّص ومؤسس <span class="lat">MFT</span>. بنى الشركة من ممارسة للتدقيق المالي إلى أعمال تنفيذ <span class="lat">Odoo</span> والمدير المالي الافتراضي تخدم مصر والسعودية، وما زال يقود تعاقدات العملاء بنفسه. يكتب عمّا يُظهره دفتر الأستاذ فعلًا.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">مقالات ذات صلة</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">المراجعة الداخلية</span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-16">16 سبتمبر 2026</time><span>دقيقتا قراءة</span></p>
+    <h2><a href="/ar/blog/materiality-isa-320-threshold/">الأهمية النسبية منهج، لا رقم مدوّر</a></h2>
+    <p>كيف يحوّل معيار <span class="lat">ISA 320</span> سؤال «ما الذي يهم» إلى حد يطبّقه فريقك كل يوم، ولماذا الرقم الثابت المدوّر إجابة خاطئة لكل الشركات في وقت واحد.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">المراجعة الداخلية</span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-16">16 سبتمبر 2026</time><span>دقيقة قراءة</span></p>
+    <h2><a href="/ar/blog/continuous-audit-eleven-months/">الأشهر الأحد عشر التي لا تراها مراجعتك السنوية</a></h2>
+    <p>العينة مرة في السنة خيار تصميمي من عصر الورق. ما الذي تجده المراجعة المستمرة، وكيف تغيّر علاقتك بمراجعك الخارجي.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">المراجعة الداخلية</span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-20">20 سبتمبر 2026</time><span><span class="lat">4</span> دقائق قراءة</span></p>
+    <h2><a href="/ar/blog/what-is-internal-audit/">ما المراجعة الداخلية، وماذا تحصل عليه الشركة المتوسطة منها فعلًا؟</a></h2>
+    <p>المراجعة الداخلية ليست مراجعة خارجية مصغّرة. إنها تجيب عن سؤال مختلف، لقارئ مختلف، وفق جدول زمني مختلف.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/ar/blog/">كل المقالات</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">اقرأ أيضًا</h2>
+    <ul class="see-also-list"><li><a href="/ar/services/internal-audit/">الخدمات</a></li><li><a href="/ar/intelligence/"><span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/egypt/">مصر</a></li><li><a href="/ar/saudi-arabia/">السعودية</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">تحدث مع محاسب معتمد، لا مع مندوب مبيعات.</h2>
+      <p>مكالمة <span class="lat">30</span> دقيقة لفهم كيانك وأنظمتك وما يجب أن يبدو عليه الإقفال الجاهز للقرار. مجانًا، وتخرج منها بخطوة عملية واحدة محددة.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/ar/contact/">احجز مكالمة</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>شركة تكنولوجيا مالية ومراجعة بقيادة محاسبين معتمدين. <span class="lat">Odoo ERP</span> والمراجعة الداخلية والمدير المالي الافتراضي من فريق واحد وبأرقام واحدة.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">الخدمات</h2>
+        <ul><li><a href="/ar/services/odoo-erp/">تنفيذ <span class="lat">Odoo ERP</span></a></li><li><a href="/ar/services/internal-audit/">المراجعة الداخلية</a></li><li><a href="/ar/services/virtual-cfo/">المدير المالي الافتراضي</a></li><li><a href="/ar/services/financial-consulting/">الاستشارات المالية</a></li><li><a href="/ar/services/business-analysis/">تحليل الأعمال</a></li><li><a href="/ar/services/training/">تدريب المستخدمين</a></li><li><a href="/ar/services/technical-support/">الدعم الفني</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">القطاعات</h2>
+        <ul><li><a href="/ar/industries/#manufacturing">التصنيع</a></li><li><a href="/ar/industries/#trading">التجارة والتوزيع</a></li><li><a href="/ar/industries/#food-beverage">الأغذية والمشروبات</a></li><li><a href="/ar/industries/#healthcare">الرعاية الصحية</a></li><li><a href="/ar/industries/#construction">المقاولات</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">أين نعمل</h2>
+        <ul><li><a href="/ar/egypt/">مصر: <span class="lat">Odoo</span> والمراجعة والمدير المالي الافتراضي</a></li><li><a href="/ar/saudi-arabia/">السعودية: <span class="lat">Odoo</span> ومراجعة متوافقة مع <span class="lat">ZATCA</span></a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">الشركة</h2>
+        <ul><li><a href="/ar/about/">عن <span class="lat">MFT</span></a></li><li><a href="/ar/intelligence/">وكلاء <span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/request-quote/">اطلب عرض سعر</a></li><li><a href="/ar/blog/">المقالات</a></li><li><a href="/ar/contact/">تواصل معنا</a></li><li><a href="/ar/privacy/">الخصوصية</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">منصة <span class="lat">seg-audit</span></a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">التواصل</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">المكاتب</h2>
+        <ul><li>مصر: <span class="muted">الكوربة، مصر الجديدة، القاهرة</span></li><li>السعودية</li><li>الولايات المتحدة</li></ul>
+        <h2 class="footer-title">تابعنا</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span class="lat">Modern Financial Technology</span>. جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=muvx31be" defer></script>
+<script src="/assets/js/main.js?v=muvx31be" defer></script>
+</body>
+</html>
