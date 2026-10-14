@@ -10,6 +10,7 @@ function head(ctx, page) {
     .join('\n  ');
   const title = plain(page.title || c.meta.siteName);
   const desc = plain(page.description || c.meta.description);
+  const ogImage = page.ogImage ? `${config.siteUrl}${page.ogImage.url}` : `${config.siteUrl}/assets/img/og-${ctx.lang}.png`;
   const analytics = config.analytics.plausibleDomain
     ? `<script defer data-domain="${esc(config.analytics.plausibleDomain)}" src="https://plausible.io/js/script.js"></script>`
     : '';
@@ -20,14 +21,23 @@ function head(ctx, page) {
   <link rel="canonical" href="${canonical}">
   ${alternates}
   <link rel="alternate" hreflang="x-default" href="${config.siteUrl}/${config.defaultLang}/${ctx.altPaths[config.defaultLang]}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="${page.ogType || 'website'}">
   <meta property="og:site_name" content="${esc(c.meta.siteName)}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(desc)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:locale" content="${c.ogLocale}">
-  <meta property="og:image" content="${config.siteUrl}/assets/img/og-${ctx.lang}.png">
+  <meta property="og:image" content="${ogImage}">
+  ${page.ogImage ? `<meta property="og:image:width" content="${page.ogImage.width}">
+  <meta property="og:image:height" content="${page.ogImage.height}">
+  <meta property="og:image:alt" content="${esc(page.ogImage.alt)}">` : ''}
+  ${page.published ? `<meta property="article:published_time" content="${esc(page.published)}">
+  <meta property="article:modified_time" content="${esc(page.modified)}">` : ''}
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${esc(title)}">
+  <meta name="twitter:description" content="${esc(desc)}">
+  <meta name="twitter:image" content="${ogImage}">
+  ${page.ogImage ? `<meta name="twitter:image:alt" content="${esc(page.ogImage.alt)}">` : ''}
   <meta name="theme-color" content="#0D1B3E">
   <link rel="alternate" type="application/rss+xml" title="${esc(plain(c.blog ? c.blog.title : c.meta.siteName))}" href="${config.siteUrl}/${ctx.lang}/blog/feed.xml">
   <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
