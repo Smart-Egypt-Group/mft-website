@@ -4,9 +4,19 @@ const { pageHeader, seeAlso, faqSchema, faqBlock } = require('./services');
 
 const WORDS_PER_MIN = { en: 220, ar: 180 };
 
+// In-text links inside body copy: [[href|label]], href as in url() ('blog/slug/', 'intelligence/').
+const LINK = /\[\[([^|\]]+)\|([^\]]+)\]\]/g;
+const unlink = (s) => String(s == null ? '' : s).replace(LINK, '$2');
+const rich = (ctx, s) => t(s).replace(LINK, (m, href, label) => `<a href="${esc(url(ctx, href))}">${label}</a>`);
+
+// Plain text of one body block (for word count and llms-full.txt).
+function blockText(b) {
+  if (b.table) return [...(b.table.head || []), ...b.table.rows.flat()].join(' ');
+  return b.p || b.h2 || b.h3 || b.quote || (b.ul || b.ol || []).join(' ');
+}
 function wordCount(post) {
-  const text = post.body.map((b) => b.p || b.h2 || b.quote || (b.ul || []).join(' ')).join(' ');
-  return plain(text).split(/\s+/).filter(Boolean).length;
+  const text = post.body.map(blockText).join(' ');
+  return plain(unlink(text)).split(/\s+/).filter(Boolean).length;
 }
 function readingTime(ctx, post) { return Math.max(1, Math.round(wordCount(post) / WORDS_PER_MIN[ctx.lang])); }
 function fmtDate(ctx, iso) {
@@ -56,14 +66,30 @@ ${ctaBand(ctx)}`;
   return { title: B.title, description: B.description, body, bodyClass: 'page-blog', jsonld };
 }
 
-function renderBody(blocks) {
+function renderBody(ctx, blocks) {
   return blocks.map((b) => {
     if (b.h2) return `<h2>${t(b.h2)}</h2>`;
-    if (b.p) return `<p>${t(b.p)}</p>`;
-    if (b.ul) return `<ul class="check-list">${b.ul.map((li) => `<li>${t(li)}</li>`).join('')}</ul>`;
+    if (b.h3) return `<h3>${t(b.h3)}</h3>`;
+    if (b.p) return `<p>${rich(ctx, b.p)}</p>`;
+    if (b.ul) return `<ul class="check-list">${b.ul.map((li) => `<li>${rich(ctx, li)}</li>`).join('')}</ul>`;
+    if (b.ol) return `<ol class="steps-list">${b.ol.map((li) => `<li>${rich(ctx, li)}</li>`).join('')}</ol>`;
     if (b.quote) return `<blockquote class="pull"><p>${t(b.quote)}</p></blockquote>`;
+    if (b.table) {
+      const T = b.table;
+      return `<div class="table-wrap" role="region" aria-label="${esc(plain(T.caption))}" tabindex="0"><table class="data-table">
+  <caption>${t(T.caption)}</caption>
+  <thead><tr>${T.head.map((h) => `<th scope="col">${t(h)}</th>`).join('')}</tr></thead>
+  <tbody>${T.rows.map((r) => `<tr>${r.map((cell, i) => (i === 0 ? `<th scope="row">${rich(ctx, cell)}</th>` : `<td>${rich(ctx, cell)}</td>`)).join('')}</tr>`).join('')}</tbody>
+</table></div>`;
+    }
     return '';
   }).join('\n');
+}
+
+function sourcesBlock(ctx, post) {
+  if (!post.sources || !post.sources.length) return '';
+  return `<section class="sources" aria-labelledby="sources-title"><h2 id="sources-title">${t(ctx.c.blog.labels.sources)}</h2><ol>${post.sources
+    .map((s) => `<li><a href="${esc(s.url)}" rel="noopener" target="_blank">${t(s.label)}</a></li>`).join('')}</ol></section>`;
 }
 
 function article(ctx, post) {
@@ -78,12 +104,14 @@ function article(ctx, post) {
       <h1>${t(post.title)}</h1>
       <p class="lead">${t(post.dek)}</p>
       ${postMeta(ctx, post)}
+      ${post.reviewer ? `<p class="post-meta reviewed-by"><span>${t(B.labels.reviewedBy)} ${t(B.reviewers[post.reviewer].name)}</span><span>${t(B.labels.lastReviewed)} <time datetime="${esc(post.updated || post.date)}">${ctx.lang === 'ar' ? esc(fmtDate(ctx, post.updated || post.date)) : `<span class="lat">${esc(fmtDate(ctx, post.updated || post.date))}</span>`}</time></span></p>` : ''}
     </div>
   </header>
   <section class="section">
     <div class="container narrow prose article-body">
       ${post.answer ? `<aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">${t(B.labels.answer)}</p><p class="answer-text">${t(post.answer)}</p>${post.takeaways && post.takeaways.length ? `<p class="takeaways-title">${t(B.labels.takeaways)}</p><ul class="check-list">${post.takeaways.map((k) => `<li>${t(k)}</li>`).join('')}</ul>` : ''}</aside>` : ''}
-      ${renderBody(post.body)}
+      ${renderBody(ctx, post.body)}
+      ${sourcesBlock(ctx, post)}
       <p class="cta-row article-cta">${btn(ctx, { label: B.labels.cta, href: post.topic === 'odoo' || post.topic === 'compliance' ? 'request-quote/' : 'contact/' }, 'btn btn-primary')}</p>
     </div>
   </section>
@@ -108,7 +136,7 @@ function article(ctx, post) {
   </div>
 </section>
 ${seeAlso(ctx, [
-    { label: ctx.c.services.page.eyebrow, href: post.topic === 'compliance' ? 'services/odoo-erp/' : post.topic === 'audit' ? 'services/internal-audit/' : 'intelligence/' },
+    { label: ctx.c.services.page.eyebrow, href: post.topic === 'compliance' ? 'services/odoo-erp/' : post.topic === 'audit' ? 'services/internal-audit/' : post.topic === 'odoo' ? 'services/odoo-erp/' : 'intelligence/' },
     { label: ctx.c.intelligence.page.eyebrow, href: 'intelligence/' },
     ...ctx.c.locations.items.map((x) => ({ label: x.name, href: `${x.slug}/` }))
   ])}
@@ -128,10 +156,26 @@ ${ctaBand(ctx)}`;
     author: { '@type': 'Person', name: plain(a.name), jobTitle: plain(a.role), url: a.url, worksFor: { '@id': `${ctx.config.siteUrl}/#organization` } },
     publisher: { '@type': 'Organization', '@id': `${ctx.config.siteUrl}/#organization`, name: ctx.c.meta.siteName, logo: { '@type': 'ImageObject', url: `${ctx.config.siteUrl}/assets/logo/mft-lockup-navy.png` } },
     image: `${ctx.config.siteUrl}/assets/img/og-${ctx.lang}.png`,
-    ...(post.answer ? { abstract: plain(post.answer), speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.answer-text', 'h1'] } } : {})
+    ...(post.answer ? { abstract: plain(post.answer), speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.answer-text', 'h1'] } } : {}),
+    ...(post.keywords ? { keywords: post.keywords.map(plain).join(', ') } : {}),
+    ...(post.about ? { about: post.about.map((name) => ({ '@type': 'Thing', name: plain(name) })) } : {}),
+    ...(post.sources ? { citation: post.sources.map((x) => ({ '@type': 'CreativeWork', name: plain(x.label), url: x.url })) } : {})
   }];
+  if (post.reviewer) {
+    const r = B.reviewers[post.reviewer];
+    jsonld.push({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': pageUrl,
+      url: pageUrl,
+      name: plain(post.title),
+      inLanguage: ctx.lang,
+      lastReviewed: post.updated || post.date,
+      reviewedBy: { '@type': 'Organization', name: plain(r.name), description: plain(r.role), parentOrganization: { '@id': `${ctx.config.siteUrl}/#organization` } }
+    });
+  }
   if (post.faq && post.faq.length) jsonld.push(faqSchema(post.faq));
-  return { title: `${plain(post.title)} | ${ctx.c.meta.shortName}`, description: post.description, body, bodyClass: 'page-article', jsonld };
+  return { title: `${plain(post.metaTitle || post.title)} | ${ctx.c.meta.shortName}`, description: post.description, body, bodyClass: 'page-article', jsonld };
 }
 
 // RSS 2.0 feed per language.
@@ -175,4 +219,4 @@ function latestBlock(ctx, n = 3) {
 </section>`;
 }
 
-module.exports = { index, article, feed, latestBlock };
+module.exports = { index, article, feed, latestBlock, blockText, unlink };

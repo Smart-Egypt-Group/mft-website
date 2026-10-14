@@ -9,8 +9,11 @@ module.exports = {
     title: 'ملاحظات من دفتر الأستاذ.',
     intro: 'مقالات قصيرة عملية من محاسبي {lat}MFT{/lat} عن المراجعة، والامتثال في مصر والسعودية، و{lat}Odoo{/lat}، مكتوبة للملّاك وفرق المالية، لا للمستشارين الآخرين.'
   },
-  labels: { readingTime: 'دقائق قراءة', readingTimeOne: 'دقيقة قراءة', readingTimeTwo: 'دقيقتا قراءة', by: 'بقلم', published: 'نُشر', updated: 'حُدّث', topic: 'الموضوع', related: 'مقالات ذات صلة', all: 'كل المقالات', author: 'عن الكاتب', latest: 'أحدث المقالات', rss: 'خلاصة {lat}RSS{/lat}', answer: 'الإجابة المختصرة', takeaways: 'أهم النقاط', faq: 'أسئلة شائعة', cta: 'تحدّث مع {lat}MFT{/lat} عن هذا' },
-  topics: { audit: 'المراجعة الداخلية', compliance: 'الامتثال', odoo: '{lat}Odoo{/lat}', intelligence: '{lat}MFT Intelligence{/lat}' },
+  labels: { readingTime: 'دقائق قراءة', readingTimeOne: 'دقيقة قراءة', readingTimeTwo: 'دقيقتا قراءة', by: 'بقلم', published: 'نُشر', updated: 'حُدّث', topic: 'الموضوع', related: 'مقالات ذات صلة', all: 'كل المقالات', author: 'عن الكاتب', latest: 'أحدث المقالات', rss: 'خلاصة {lat}RSS{/lat}', answer: 'الإجابة المختصرة', takeaways: 'أهم النقاط', faq: 'أسئلة شائعة', cta: 'تحدّث مع {lat}MFT{/lat} عن هذا', sources: 'المصادر', reviewedBy: 'راجعه', lastReviewed: 'آخر مراجعة' },
+  topics: { audit: 'المراجعة الداخلية', compliance: 'الامتثال', odoo: '{lat}Odoo{/lat}', intelligence: '{lat}MFT Intelligence{/lat}', ai: 'الذكاء الاصطناعي في المحاسبة' },
+  reviewers: {
+    practice: { name: 'فريق المراجعة و{lat}Odoo{/lat} في {lat}MFT{/lat}', role: 'مراجعون مرخّصون وقادة تنفيذ {lat}Odoo{/lat}، {lat}Modern Financial Technology{/lat}' }
+  },
   authors: {
     ahmed: {
       name: 'أحمد أشرف مصطفى',

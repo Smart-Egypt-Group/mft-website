@@ -101,7 +101,7 @@ for (const file of files) {
   const h1s = (html.match(/<h1[\s>]/g) || []).length;
   if (h1s !== 1) problems.push(`${h1s} <h1>`);
   for (const img of html.match(/<img[^>]*>/g) || []) if (!/\salt="/.test(img)) problems.push('img without alt');
-  if (/\{\/?(lat|accent)\}/.test(html)) problems.push('leaked content token');
+  if (/\{\/?(lat|accent)\}|\[\[[^\]]*\|/.test(html)) problems.push('leaked content token');
   if (/\bundefined\b|\[object Object\]/.test(html)) problems.push('"undefined" or [object Object] in output');
   // form controls need a <label for>
   for (const ctl of html.match(/<(input|select|textarea)[^>]*>/g) || []) {
@@ -142,8 +142,12 @@ if (!htmlIssues) ok('lang/dir, single h1, alt text, labels, tokens, links, asset
 
 /* ---------- 3. Content is final ---------- */
 console.log('\nContent:');
+// Every content source: base files, blog batches and the one-file-per-article series in ai-articles/.
+const CONTENT_FILES = ['en', 'ar', 'blog.en', 'blog.ar']
+  .concat(fs.readdirSync(path.join(ROOT, 'src/content')).filter((f) => /^blog-posts-.*\.js$/.test(f)).map((f) => f.replace(/\.js$/, '')))
+  .concat(fs.existsSync(path.join(ROOT, 'src/content/ai-articles')) ? fs.readdirSync(path.join(ROOT, 'src/content/ai-articles')).filter((f) => f.endsWith('.js')).map((f) => `ai-articles/${f.replace(/\.js$/, '')}`) : []);
 let todo = 0;
-for (const lang of ['en', 'ar', 'blog.en', 'blog.ar']) {
+for (const lang of CONTENT_FILES) {
   const src = fs.readFileSync(path.join(ROOT, `src/content/${lang}.js`), 'utf8');
   const hits = src.match(/TODO\(|lorem ipsum|placeholder text/gi) || [];
   if (hits.length) { todo += hits.length; fail(`${lang}.js still has ${hits.length} TODO/placeholder marker(s)`); }
@@ -152,7 +156,7 @@ if (!todo) ok('no TODO or placeholder markers in content files');
 // Client confidentiality (Ahmed, 11 Sep 2026): no real financial amount of any client on the
 // site. The only allowed currency figures are the illustrative dashboard KPIs in heroB.dashboard.
 let money = 0;
-for (const lang of ['en', 'ar', 'blog.en', 'blog.ar']) {
+for (const lang of CONTENT_FILES) {
   const src = fs.readFileSync(path.join(ROOT, `src/content/${lang}.js`), 'utf8').replace(/dashboard:\s*\{[\s\S]*?bars:/g, '');
   const hits = src.match(/\b(EGP|SAR|USD|AED)\b|\$\s?\d|\d\s?(million|billion)|جنيه|ريال|مليون|مليار|دولار/g) || [];
   if (hits.length) { money += hits.length; fail(`${lang}.js contains currency amounts: ${[...new Set(hits)].join(', ')}`); }
