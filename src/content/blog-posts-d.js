@@ -5,6 +5,7 @@ module.exports = {
   en: [
     {
       slug: 'odoo-20-upgrade-plan-17-18-19',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing version steps rising to the target release, marked with a flag in cyan.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-10-03',
@@ -55,6 +56,7 @@ module.exports = {
     },
     {
       slug: 'odoo-20-inventory-valuation-changes',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing stock on warehouse racks with one item revalued in cyan and a valuation trend above.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-10-02',
@@ -107,6 +109,7 @@ module.exports = {
   ar: [
     {
       slug: 'odoo-20-upgrade-plan-17-18-19',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر درجات إصدارات تصعد نحو الإصدار المستهدف، وعليه علم باللون السماوي.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-10-03',
@@ -157,6 +160,7 @@ module.exports = {
     },
     {
       slug: 'odoo-20-inventory-valuation-changes',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر مخزون على أرفف مستودع مع صنف واحد أعيد تقييمه باللون السماوي ومنحنى تقييم أعلاها.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-10-02',

@@ -26,6 +26,7 @@ module.exports = {
   posts: [
     {
       slug: 'materiality-isa-320-threshold',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing misstatement bars measured against a materiality threshold, with the one bar that crosses it highlighted in cyan.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-16',
@@ -48,6 +49,7 @@ module.exports = {
     },
     {
       slug: 'zatca-phase-two-odoo-checklist',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing an e-invoice with a QR block and a compliance checklist, one item being cleared in cyan.' },
       topic: 'compliance',
       author: 'ahmed',
       date: '2026-09-16',
@@ -66,6 +68,7 @@ module.exports = {
     },
     {
       slug: 'egypt-eta-einvoicing-odoo-mistakes',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing an e-invoice whose fields are being validated, one field flagged in cyan, with an electronic seal below.' },
       topic: 'compliance',
       author: 'ahmed',
       date: '2026-09-16',
@@ -85,6 +88,7 @@ module.exports = {
     },
     {
       slug: 'continuous-audit-eleven-months',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing monthly activity tested along one continuous line through the year, against a single year-end point.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-16',
@@ -104,6 +108,7 @@ module.exports = {
     },
     {
       slug: 'agents-draft-people-approve',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing a stack of dashed draft documents and one approved document outlined and sealed in cyan.' },
       topic: 'intelligence',
       author: 'ahmed',
       date: '2026-09-16',

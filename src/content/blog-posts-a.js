@@ -4,6 +4,7 @@ module.exports = {
   en: [
     {
       slug: 'egypt-vat-return-odoo',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing a tax return form with output and input boxes and the net position highlighted in cyan.' },
       topic: 'compliance',
       author: 'ahmed',
       date: '2026-09-18',
@@ -56,6 +57,7 @@ module.exports = {
     },
     {
       slug: 'egypt-e-receipt-b2c',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing a till receipt with item lines, its total highlighted in cyan and a QR block below.' },
       topic: 'compliance',
       author: 'ahmed',
       date: '2026-09-21',
@@ -106,6 +108,7 @@ module.exports = {
     },
     {
       slug: 'zakat-vs-corporate-income-tax-saudi',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing a balance weighing two bases, one pan in navy and one in cyan.' },
       topic: 'compliance',
       author: 'ahmed',
       date: '2026-09-24',
@@ -157,6 +160,7 @@ module.exports = {
     },
     {
       slug: 'odoo-accounting-implementation-steps',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing an implementation stepper with completed steps ticked and the current step in cyan.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-09-27',
@@ -210,6 +214,7 @@ module.exports = {
     },
     {
       slug: 'odoo-inventory-valuation-fifo-avco',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing stacked inventory cost layers, with one layer sliding out in cyan.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-09-30',
@@ -260,6 +265,7 @@ module.exports = {
     },
     {
       slug: 'month-end-close-checklist-odoo',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing a month calendar with closed days ticked and the close day in cyan.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-10-03',
@@ -315,6 +321,7 @@ module.exports = {
   ar: [
     {
       slug: 'egypt-vat-return-odoo',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر نموذج إقرار ضريبي بخانات ضريبة المخرجات والمدخلات، مع إبراز صافي الضريبة باللون السماوي.' },
       topic: 'compliance',
       author: 'ahmed',
       date: '2026-09-18',
@@ -367,6 +374,7 @@ module.exports = {
     },
     {
       slug: 'egypt-e-receipt-b2c',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر إيصال بيع بسطور الأصناف، مع إبراز الإجمالي باللون السماوي ورمز استجابة سريعة أسفله.' },
       topic: 'compliance',
       author: 'ahmed',
       date: '2026-09-21',
@@ -417,6 +425,7 @@ module.exports = {
     },
     {
       slug: 'zakat-vs-corporate-income-tax-saudi',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر ميزان يوازن بين وعاءين، كفة بالكحلي وأخرى باللون السماوي.' },
       topic: 'compliance',
       author: 'ahmed',
       date: '2026-09-24',
@@ -468,6 +477,7 @@ module.exports = {
     },
     {
       slug: 'odoo-accounting-implementation-steps',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر مراحل تنفيذ متتابعة، المكتمل منها عليه علامة صح والمرحلة الحالية باللون السماوي.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-09-27',
@@ -521,6 +531,7 @@ module.exports = {
     },
     {
       slug: 'odoo-inventory-valuation-fifo-avco',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر طبقات تكلفة مخزون متراصة، مع طبقة واحدة تخرج باللون السماوي.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-09-30',
@@ -571,6 +582,7 @@ module.exports = {
     },
     {
       slug: 'month-end-close-checklist-odoo',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر تقويم شهري عليه الأيام المقفلة بعلامة صح ويوم الإقفال باللون السماوي.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-10-03',
