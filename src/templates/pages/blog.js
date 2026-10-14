@@ -48,7 +48,6 @@ function index(ctx) {
   const body = `${pageHeader(ctx, B.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: B.page.eyebrow }])}
 <section class="section">
   <div class="container narrow">
-    <p class="small muted feed-link"><a href="/${ctx.lang}/blog/feed.xml" type="application/rss+xml">${t(B.labels.rss)}</a></p>
     <ol class="post-list">${posts.map((p) => postCard(ctx, p)).join('')}</ol>
   </div>
 </section>
