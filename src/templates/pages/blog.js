@@ -86,6 +86,20 @@ function renderBody(ctx, blocks) {
   }).join('\n');
 }
 
+// Article artwork (scripts/article-images.js): 16:9 hero as WebP (800/1600) with a JPEG fallback,
+// and a 1200x630 JPEG for og:image / twitter:image. One file set per slug serves both languages.
+const imgBase = (post) => `/assets/img/blog/${post.slug}`;
+function heroFigure(post) {
+  if (!post.image) return '';
+  const b = imgBase(post);
+  return `<figure class="article-hero">
+      <picture>
+        <source type="image/webp" srcset="${b}-800.webp 800w, ${b}-1600.webp 1600w" sizes="(max-width: 860px) calc(100vw - 32px), 820px">
+        <img src="${b}-1600.jpg" width="1600" height="900" alt="${esc(plain(post.image.alt))}" fetchpriority="high" decoding="async">
+      </picture>
+    </figure>`;
+}
+
 function sourcesBlock(ctx, post) {
   if (!post.sources || !post.sources.length) return '';
   return `<section class="sources" aria-labelledby="sources-title"><h2 id="sources-title">${t(ctx.c.blog.labels.sources)}</h2><ol>${post.sources
@@ -105,6 +119,7 @@ function article(ctx, post) {
       <p class="lead">${t(post.dek)}</p>
       ${postMeta(ctx, post)}
       ${post.reviewer ? `<p class="post-meta reviewed-by"><span>${t(B.labels.reviewedBy)} ${t(B.reviewers[post.reviewer].name)}</span><span>${t(B.labels.lastReviewed)} <time datetime="${esc(post.updated || post.date)}">${ctx.lang === 'ar' ? esc(fmtDate(ctx, post.updated || post.date)) : `<span class="lat">${esc(fmtDate(ctx, post.updated || post.date))}</span>`}</time></span></p>` : ''}
+      ${heroFigure(post)}
     </div>
   </header>
   <section class="section">
@@ -155,7 +170,12 @@ ${ctaBand(ctx)}`;
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
     author: { '@type': 'Person', name: plain(a.name), jobTitle: plain(a.role), url: a.url, worksFor: { '@id': `${ctx.config.siteUrl}/#organization` } },
     publisher: { '@type': 'Organization', '@id': `${ctx.config.siteUrl}/#organization`, name: ctx.c.meta.siteName, logo: { '@type': 'ImageObject', url: `${ctx.config.siteUrl}/assets/logo/mft-lockup-navy.png` } },
-    image: `${ctx.config.siteUrl}/assets/img/og-${ctx.lang}.png`,
+    image: post.image
+      ? [
+          { '@type': 'ImageObject', url: `${ctx.config.siteUrl}${imgBase(post)}-og.jpg`, width: 1200, height: 630, caption: plain(post.image.alt) },
+          { '@type': 'ImageObject', url: `${ctx.config.siteUrl}${imgBase(post)}-1600.jpg`, width: 1600, height: 900, caption: plain(post.image.alt) }
+        ]
+      : `${ctx.config.siteUrl}/assets/img/og-${ctx.lang}.png`,
     ...(post.answer ? { abstract: plain(post.answer), speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.answer-text', 'h1'] } } : {}),
     ...(post.keywords ? { keywords: post.keywords.map(plain).join(', ') } : {}),
     ...(post.about ? { about: post.about.map((name) => ({ '@type': 'Thing', name: plain(name) })) } : {}),
@@ -175,7 +195,8 @@ ${ctaBand(ctx)}`;
     });
   }
   if (post.faq && post.faq.length) jsonld.push(faqSchema(post.faq));
-  return { title: `${plain(post.metaTitle || post.title)} | ${ctx.c.meta.shortName}`, description: post.description, body, bodyClass: 'page-article', jsonld };
+  return { title: `${plain(post.metaTitle || post.title)} | ${ctx.c.meta.shortName}`, description: post.description,
+    ...(post.image ? { ogImage: { url: `${imgBase(post)}-og.jpg`, width: 1200, height: 630, alt: plain(post.image.alt) }, ogType: 'article', published: post.date, modified: post.updated || post.date } : {}), body, bodyClass: 'page-article', jsonld };
 }
 
 // RSS 2.0 feed per language.

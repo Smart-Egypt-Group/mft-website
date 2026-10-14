@@ -681,6 +681,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .sources li { font-size: var(--fs-small); color: var(--ink-3); margin-bottom: 6px; }
 .sources a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
 .article .page-header .reviewed-by { margin-top: 6px; font-weight: 500; }
+.article-hero { margin: 28px 0 0; }
+.article-hero img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 4px; background: var(--navy); }
 .pull { margin: 32px 0; padding: 4px 0 4px 24px; border-inline-start: 3px solid var(--cyan); }
 [dir="rtl"] .pull { padding: 4px 24px 4px 0; }
 .pull p { font-size: 1.375rem; font-weight: 700; line-height: 1.4; color: var(--navy); margin: 0; }

@@ -116,6 +116,9 @@ for (const file of files) {
     const candidates = [path.join(DIST, target), path.join(DIST, target, 'index.html')];
     if (!candidates.some((c) => fs.existsSync(c))) problems.push(`broken link ${target}`);
   }
+  for (const m of html.matchAll(/srcset="([^"]+)"/g)) {
+    for (const cand of m[1].split(',').map((x) => x.trim().split(/\s+/)[0])) if (cand.startsWith('/assets/') && !fs.existsSync(path.join(DIST, cand))) problems.push(`missing srcset asset ${cand}`);
+  }
   for (const m of html.matchAll(/(?:src|href)="(\/assets\/[^"?]+)/g)) {
     if (!fs.existsSync(path.join(DIST, m[1]))) problems.push(`missing asset ${m[1]}`);
   }
