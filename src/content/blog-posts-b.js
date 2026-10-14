@@ -5,6 +5,7 @@ module.exports = {
   en: [
     {
       slug: 'what-is-internal-audit',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing a process flow under a magnifying lens, the step in focus highlighted in cyan.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-20',
@@ -56,6 +57,7 @@ module.exports = {
     },
     {
       slug: 'segregation-of-duties-odoo',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing a role and permission matrix with one conflicting pair of permissions ringed in cyan.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-22',
@@ -114,6 +116,7 @@ module.exports = {
     },
     {
       slug: 'three-way-match-purchase-controls',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing a purchase order, a goods receipt and a vendor bill converging on one match in cyan.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-24',
@@ -169,6 +172,7 @@ module.exports = {
     },
     {
       slug: 'bank-reconciliation-controls',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing bank statement lines matched to ledger lines, with one unmatched item outlined in cyan.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-09-26',
@@ -214,6 +218,7 @@ module.exports = {
     },
     {
       slug: 'virtual-cfo-vs-full-time-cfo',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing a finance dashboard of four tiles, the live forecast tile highlighted in cyan.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-28',
@@ -275,6 +280,7 @@ module.exports = {
     },
     {
       slug: 'thirteen-week-cash-flow-forecast',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing weekly cash balances against a minimum cash line, the week that touches it in cyan.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-30',
@@ -324,6 +330,7 @@ module.exports = {
   ar: [
     {
       slug: 'what-is-internal-audit',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر مخطط إجراءات تحت عدسة مكبرة، مع إبراز الخطوة محل الفحص باللون السماوي.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-20',
@@ -375,6 +382,7 @@ module.exports = {
     },
     {
       slug: 'segregation-of-duties-odoo',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر مصفوفة أدوار وصلاحيات، مع صلاحيتين متعارضتين محاطتين باللون السماوي.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-22',
@@ -433,6 +441,7 @@ module.exports = {
     },
     {
       slug: 'three-way-match-purchase-controls',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر أمر شراء وإذن استلام وفاتورة مورد تلتقي عند مطابقة واحدة باللون السماوي.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-24',
@@ -488,6 +497,7 @@ module.exports = {
     },
     {
       slug: 'bank-reconciliation-controls',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر بنود كشف الحساب البنكي مطابقة لبنود الدفتر، مع بند واحد غير مطابق بإطار سماوي.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-09-26',
@@ -533,6 +543,7 @@ module.exports = {
     },
     {
       slug: 'virtual-cfo-vs-full-time-cfo',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر لوحة مؤشرات مالية من أربع بطاقات، مع إبراز بطاقة التوقعات باللون السماوي.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-28',
@@ -594,6 +605,7 @@ module.exports = {
     },
     {
       slug: 'thirteen-week-cash-flow-forecast',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر أرصدة نقدية أسبوعية مقابل خط الحد الأدنى للنقد، مع إبراز الأسبوع الذي يلامسه باللون السماوي.' },
       topic: 'audit',
       author: 'ahmed',
       date: '2026-09-30',

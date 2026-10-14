@@ -5,6 +5,7 @@ module.exports = {
   en: [
     {
       slug: 'odoo-20-whats-new-for-finance-teams',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing a grid of app tiles with new modules marked, one tile lit in cyan.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-10-06',
@@ -62,6 +63,7 @@ module.exports = {
     },
     {
       slug: 'odoo-20-ai-agents-finance-controls',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing an agent proposing an entry that passes a locked control gate in cyan before it is recorded.' },
       topic: 'intelligence',
       author: 'ahmed',
       date: '2026-10-05',
@@ -112,6 +114,7 @@ module.exports = {
     },
     {
       slug: 'odoo-20-bank-reconciliation-and-bill-payments',
+      image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing vendor bills batched into one payment in cyan that matches a bank statement line.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-10-04',
@@ -160,6 +163,7 @@ module.exports = {
   ar: [
     {
       slug: 'odoo-20-whats-new-for-finance-teams',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر شبكة تطبيقات عليها علامات للوحدات الجديدة، مع إضاءة وحدة واحدة باللون السماوي.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-10-06',
@@ -217,6 +221,7 @@ module.exports = {
     },
     {
       slug: 'odoo-20-ai-agents-finance-controls',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر وكيل ذكي يقترح قيدًا يمر عبر بوابة رقابة مقفلة باللون السماوي قبل تسجيله.' },
       topic: 'intelligence',
       author: 'ahmed',
       date: '2026-10-05',
@@ -267,6 +272,7 @@ module.exports = {
     },
     {
       slug: 'odoo-20-bank-reconciliation-and-bill-payments',
+      image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر فواتير موردين مجمعة في دفعة واحدة باللون السماوي تطابق بندًا في كشف الحساب البنكي.' },
       topic: 'odoo',
       author: 'ahmed',
       date: '2026-10-04',
