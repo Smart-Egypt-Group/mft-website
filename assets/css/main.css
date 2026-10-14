@@ -646,8 +646,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 @media (max-width: 899px) { .post-list.columns { columns: 1; } }
 .post-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; font-size: var(--fs-small); color: var(--ink-3); font-weight: 600; }
 .topic-tag { color: var(--cyan-text); font-weight: 700; }
-.feed-link { margin-bottom: 8px; }
-.feed-link a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 3px; }
 .article .page-header .post-meta { margin-top: 18px; }
 .article-body p { font-size: 1.125rem; line-height: 1.75; }
 [dir="rtl"] .article-body p { line-height: 1.95; }
@@ -816,6 +814,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* Touch targets (WCAG 2.2 SC 2.5.8, 24×24 minimum): list, breadcrumb and footer links were 16–20px tall on phones. */
 @media (max-width: 899px), (pointer: coarse) {
-  li > a, .breadcrumb a, .feed-link a { display: inline-block; min-height: 24px; padding-block: 3px; }
+  li > a, .breadcrumb a { display: inline-block; min-height: 24px; padding-block: 3px; }
   .breadcrumb ol { row-gap: 4px; }
 }
