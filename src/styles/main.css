@@ -661,6 +661,26 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .answer-box .check-list { margin: 0; }
 .answer-box .check-list li { margin-bottom: 6px; }
 .article-cta { margin-top: 36px; }
+.article-body h3 { font-size: 1.1875rem; margin: 28px 0 10px; color: var(--ink); }
+.article-body .steps-list { margin: 0 0 24px; padding-inline-start: 1.5em; }
+.article-body .steps-list li { font-size: 1.0625rem; color: var(--ink-2); margin-bottom: 12px; padding-inline-start: 4px; }
+.article-body .steps-list li::marker { color: var(--navy); font-weight: 700; }
+.article-body li a, .article-body td a, .article-body th a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+.table-wrap { overflow-x: auto; margin: 8px 0 32px; border-top: 2px solid var(--navy); }
+.table-wrap:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 1rem; font-variant-numeric: tabular-nums; }
+.data-table caption { caption-side: bottom; text-align: start; font-size: var(--fs-small); color: var(--ink-3); padding-top: 10px; }
+.data-table th, .data-table td { text-align: start; vertical-align: top; padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); line-height: 1.55; }
+[dir="rtl"] .data-table th, [dir="rtl"] .data-table td { padding: 12px 0 12px 14px; }
+.data-table thead th { color: var(--ink); font-weight: 700; font-size: var(--fs-small); }
+.data-table tbody th { color: var(--ink); font-weight: 600; }
+@media (max-width: 599px) { .data-table { min-width: 560px; } }
+.sources { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); }
+.article-body .sources h2 { font-size: 1rem; margin: 0 0 10px; }
+.sources ol { padding-inline-start: 1.4em; margin: 0; }
+.sources li { font-size: var(--fs-small); color: var(--ink-3); margin-bottom: 6px; }
+.sources a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.article .page-header .reviewed-by { margin-top: 6px; font-weight: 500; }
 .pull { margin: 32px 0; padding: 4px 0 4px 24px; border-inline-start: 3px solid var(--cyan); }
 [dir="rtl"] .pull { padding: 4px 24px 4px 0; }
 .pull p { font-size: 1.375rem; font-weight: 700; line-height: 1.4; color: var(--navy); margin: 0; }

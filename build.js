@@ -49,7 +49,7 @@ const blog = require('./src/templates/pages/blog');
 function loadBlog(lang) {
   const b = require(`./src/content/blog.${lang}.js`);
   const opt = (f) => (fs.existsSync(path.join(ROOT, 'src', 'content', f)) ? require(`./src/content/${f}`) : null);
-  for (const f of ['blog-posts-a.js', 'blog-posts-b.js', 'blog-posts-c.js', 'blog-posts-d.js']) { const m = opt(f); if (m) b.posts = b.posts.concat(m[lang]); }
+  for (const f of ['blog-posts-a.js', 'blog-posts-b.js', 'blog-posts-c.js', 'blog-posts-d.js', 'blog-posts-ai.js']) { const m = opt(f); if (m) b.posts = b.posts.concat(m[lang]); }
   const aeo = opt('blog-aeo-existing.js');
   if (aeo) b.posts = b.posts.map((p) => (aeo[lang][p.slug] ? { ...aeo[lang][p.slug], ...p } : p));
   const seen = new Set();
@@ -215,7 +215,7 @@ function build() {
 
   // llms-full.txt: every article's short answer, takeaways and FAQ in plain text, both languages,
   // so answer engines can quote MFT accurately without parsing HTML.
-  const stripLat = (x) => String(x).replace(/\{\/?lat\}/g, '');
+  const stripLat = (x) => blog.unlink(String(x).replace(/\{\/?lat\}/g, ''));
   const full = [`# ${en.meta.siteName} (MFT): full insights`, '', `> ${en.meta.description}`, ''];
   for (const lang of config.languages) {
     const B = contents[lang].blog;
@@ -226,12 +226,16 @@ function build() {
       if (p.takeaways) full.push(...p.takeaways.map((k) => `- ${stripLat(k)}`), '');
       for (const blk of p.body) {
         if (blk.h2) full.push(`#### ${stripLat(blk.h2)}`);
+        else if (blk.h3) full.push(`##### ${stripLat(blk.h3)}`);
+        else if (blk.ol) full.push(...blk.ol.map((li, i) => `${i + 1}. ${stripLat(li)}`));
+        else if (blk.table) full.push(`| ${blk.table.head.map(stripLat).join(' | ')} |`, ...blk.table.rows.map((r) => `| ${r.map(stripLat).join(' | ')} |`));
         else if (blk.p) full.push(stripLat(blk.p));
         else if (blk.quote) full.push(`> ${stripLat(blk.quote)}`);
         else if (blk.ul) full.push(...blk.ul.map((li) => `- ${stripLat(li)}`));
         full.push('');
       }
       if (p.faq) for (const f of p.faq) full.push(`Q: ${stripLat(f.q)}`, `A: ${stripLat(f.a)}`, '');
+      if (p.sources) full.push('Sources:', ...p.sources.map((x) => `- ${stripLat(x.label)}: ${x.url}`), '');
     }
   }
   write('llms-full.txt', full.join('\n'));

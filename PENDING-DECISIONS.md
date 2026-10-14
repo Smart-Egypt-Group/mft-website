@@ -17,6 +17,8 @@ Verified live on 10 Sep 2026 with Ahmed's approval: a test lead sent through the
 
 ## Decided and implemented (no action)
 
+- 14 Oct 2026: AI education series, 12 AR/EN articles (24 pages) in `src/content/ai-articles/` (one file per article, loaded by `blog-posts-ai.js`), new topic `ai`. Blog template gained `h3`, `ol`, `table`, in-text links `[[href|label]]`, `sources` (rendered + Article `citation`), `metaTitle`, `keywords`, `about`, and `reviewer` (visible line + WebPage `reviewedBy`/`lastReviewed`). Odoo 20 claims checked against odoo.com/odoo-20-release-notes directly this time. **Open before merge:** confirm the reviewer label "MFT audit and Odoo practice" (or name a person); decide whether AI agents are Enterprise-only (existing post `odoo-20-ai-agents-finance-controls` says yes and mentions a vendor-renegotiation agent; neither was found in the official notes this session).
+
 - 6 Oct 2026: lead form moved to the self-hosted Odoo at `erp.seg-audit.com` (PR #1) and deployed to production (gh-pages 796d391 from main 6867620) on Ahmed's instruction, with the risk stated: the endpoint was not reachable from the build sandbox, and `no-cors` means a rejected lead still shows success. **Open:** send one test lead from the live contact page and confirm it lands in CRM on erp.seg-audit.com.
 
 - 6 Oct 2026: Insights grew from 5 to 17 AR/EN articles (PR #2); every article carries a short answer, key takeaways and an FAQ (FAQPage schema) for AEO; robots.txt names AI answer-engine crawlers and `llms-full.txt` carries every article for GEO; mobile tap targets raised to 24px+. Odoo 20 articles follow, written only from the Odoo 20 release notes as reported by Odoo partners (odoo.com itself was unreachable from the sandbox).
