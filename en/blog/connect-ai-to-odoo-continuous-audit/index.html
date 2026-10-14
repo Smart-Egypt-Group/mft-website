@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connect AI to Odoo for Continuous Auditing | MFT</title>
+  <meta name="description" content="How to connect AI to Odoo for continuous auditing: API or MCP access, read-only users, data residency, evidence that traces to records, and named approvers.">
+  <link rel="canonical" href="https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="Connect AI to Odoo for Continuous Auditing | MFT">
+  <meta property="og:description" content="How to connect AI to Odoo for continuous auditing: API or MCP access, read-only users, data residency, evidence that traces to records, and named approvers.">
+  <meta property="og:url" content="https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-en.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="Insights | Modern Financial Technology" href="https://www.seg-audit.com/en/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="/assets/css/main.css?v=mv83pu20">
+  <script src="/assets/js/pre.js?v=mv83pu20"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/","name":"Connect AI to Odoo for Continuous Auditing | MFT","description":"How to connect AI to Odoo for continuous auditing: API or MCP access, read-only users, data residency, evidence that traces to records, and named approvers.","inLanguage":"en","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.seg-audit.com/en/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/en/blog/"},{"@type":"ListItem","position":3,"name":"connect-ai-to-odoo-continuous-audit","item":"https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Connecting AI to Odoo for continuous auditing: access, evidence and approvals","description":"How to connect AI to Odoo for continuous auditing: API or MCP access, read-only users, data residency, evidence that traces to records, and named approvers.","inLanguage":"en","datePublished":"2026-10-14","dateModified":"2026-10-14","wordCount":1598,"articleSection":"Odoo","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/"},"author":{"@type":"Person","name":"Ahmed Ashraf Mostafa","jobTitle":"Founder and CEO, Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-en.png","abstract":"To connect AI to Odoo for continuous auditing, give the analysis layer its own dedicated user with read access only, through the external API or the MCP connection listed in Odoo’s 20 release notes. Keep client data on the client’s system, make every finding cite the record ids it read, and route any proposed correction to a named approver.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]},"keywords":"connect AI to Odoo, continuous auditing Odoo, Odoo MCP, Odoo API audit access, AI continuous audit ERP","about":[{"@type":"Thing","name":"Continuous auditing"},{"@type":"Thing","name":"Odoo"},{"@type":"Thing","name":"Artificial intelligence"},{"@type":"Thing","name":"Model Context Protocol"},{"@type":"Thing","name":"Audit evidence"}],"citation":[{"@type":"CreativeWork","name":"Odoo, \"Odoo 20 Release Notes\" (official release notes, September 2026)","url":"https://www.odoo.com/odoo-20-release-notes"},{"@type":"CreativeWork","name":"ACFE, \"Occupational Fraud 2024: A Report to the Nations\" (report, 2024)","url":"https://www.acfe.com/en-us/-/media/files/acfe/pdfs/rttn/2024/2024-report-to-the-nations.pdf"},{"@type":"CreativeWork","name":"IAASB, \"Project update: ISA 500 Audit Evidence\" (exposure drafts on ISA 500, ISA 330 and ISA 520, August 2026)","url":"https://www.iaasb.org/publications/project-update-isa-500-audit-evidence"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/","url":"https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/","name":"Connecting AI to Odoo for continuous auditing: access, evidence and approvals","inLanguage":"en","lastReviewed":"2026-10-14","reviewedBy":{"@type":"Organization","name":"MFT audit and Odoo practice","description":"Licensed auditors and Odoo implementation leads, Modern Financial Technology","parentOrganization":{"@id":"https://www.seg-audit.com/#organization"}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can AI connect directly to Odoo?","acceptedAnswer":{"@type":"Answer","text":"Yes. Recent Odoo versions offer an external API (XML-RPC and JSON-RPC) used with a dedicated API user and key, and Odoo’s 20 release notes add connecting to the database via MCP (Model Context Protocol). Confirm in your own database which user and rights each connection runs under before enabling it."}},{"@type":"Question","name":"Should an audit AI have write access to Odoo?","acceptedAnswer":{"@type":"Answer","text":"No. The connection used for continuous auditing should read only, so the tool that tests the books cannot change them. If an AI system proposes corrections, they should arrive as drafts approved by a named person, with corrections made by reversal rather than deletion."}},{"@type":"Question","name":"Does connecting AI to Odoo move my data outside the company?","acceptedAnswer":{"@type":"Answer","text":"It depends on the provider. Some copy the ledger to their own storage; others read through the API at query time. Ask where data is processed, by which model provider, how long prompts and logs are kept, and who can see them, and have your legal adviser check the contract."}},{"@type":"Question","name":"Can AI findings be used as audit evidence?","acceptedAnswer":{"@type":"Answer","text":"Only when they trace to records. A finding that lists the record ids retrieved, the rule applied and the time of the query can be reopened and verified, which is what ISA 500 and ISA 230 expect. An unsupported AI statement is not evidence, however confident it sounds."}},{"@type":"Question","name":"What should continuous auditing test first in Odoo?","acceptedAnswer":{"@type":"Answer","text":"Start with tests that are cheap to verify and costly to miss: duplicate and near-duplicate payments, near-duplicate vendors, approvals outside the approval matrix, cut-off errors, inventory valuation drift, and manual journal entries posted late at month end in round amounts. Run them on a closed period first to calibrate."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/en/" aria-label="Modern Financial Technology: Home">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Menu">
+      <ul><li><a href="/en/services/">Services</a></li><li><a href="/en/industries/">Industries</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/" aria-current="page">Insights</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/ar/blog/connect-ai-to-odoo-continuous-audit/" lang="ar" hreflang="ar" dir="rtl">العربية</a>
+        <a class="btn btn-primary btn-sm" href="/en/contact/">Talk to Us</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Home</a></li><li><a href="/en/blog/">Insights</a></li><li aria-current="page">Odoo</li></ol></nav>
+      <p class="eyebrow">Odoo</p>
+      <h1>Connecting AI to Odoo for continuous auditing: access, evidence and approvals</h1>
+      <p class="lead">The data an auditor needs is already in Odoo every day. The design question is how AI reaches it without becoming a new risk.</p>
+      <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-14"><span class="lat">14 October 2026</span></time><span><span class="lat">7</span> min read</span></p>
+      <p class="post-meta reviewed-by"><span>Reviewed by MFT audit and Odoo practice</span><span>last reviewed <time datetime="2026-10-14"><span class="lat">14 October 2026</span></time></span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">Short answer</p><p class="answer-text">To connect AI to Odoo for continuous auditing, give the analysis layer its own dedicated user with read access only, through the external API or the MCP connection listed in Odoo’s 20 release notes. Keep client data on the client’s system, make every finding cite the record ids it read, and route any proposed correction to a named approver.</p><p class="takeaways-title">Key takeaways</p><ul class="check-list"><li>The audit connection gets its own user, its own key and read access only.</li><li>Ask where data is processed and stored before asking what the model can do.</li><li>A finding without the record ids behind it is an opinion, not evidence.</li><li>Corrections are drafted by the system and approved by a named person, never posted by the connection.</li></ul></aside>
+      <p>Picture a familiar year-end conversation: the auditor finds a vendor paid twice in the second quarter, the board asks why nobody noticed, and the honest answer is that the payment sat in Odoo for nine months while everyone waited for the annual audit. We wrote about that gap in <a href="/en/blog/continuous-audit-eleven-months/">why an annual audit misses eleven months</a>. The fix is not more auditors. It is a connection that reads the books every day and raises the question while the money can still be recovered.</p>
+<p>Connecting AI to an ERP is easy to demonstrate and easy to get wrong: the connection is a new user that sees everything the auditor sees, often run by a third party, often processing data outside the company. This article sets out the design decisions in the order an auditor would check them.</p>
+<h2>What does connecting AI to Odoo for continuous auditing mean?</h2>
+<p>Connecting AI to Odoo for continuous auditing means giving an analysis layer governed, logged and read-only access to the ledger, so that tests run on the full population on a schedule and every result points back to the records it came from. Two words in that definition carry the weight. Governed means someone owns the connection, its rights and its output. Points back means a finding can be reopened in Odoo by anyone who doubts it.</p>
+<p>It fits the monitoring component of COSO’s Internal Control, Integrated Framework (2013): Principle 16 calls for ongoing and separate evaluations, and a daily test run is an ongoing evaluation. For how this differs from the annual cycle, see <a href="/en/blog/continuous-auditing-ai-vs-traditional-audit/">continuous auditing with AI vs traditional auditing</a>.</p>
+<h2>Which connection route should you use: API, MCP or in-database agents?</h2>
+<p>Three routes lead into the data and one goes around it, each with its own control profile.</p>
+<div class="table-wrap" role="region" aria-label="Routes for connecting AI to Odoo and the control each one needs" tabindex="0"><table class="data-table">
+  <caption>Routes for connecting AI to Odoo and the control each one needs</caption>
+  <thead><tr><th scope="col">Route</th><th scope="col">How it reaches the data</th><th scope="col">Best suited to</th><th scope="col">Main control</th></tr></thead>
+  <tbody><tr><th scope="row">External API (XML-RPC / JSON-RPC)</th><td>A dedicated API user and key query the database; long available in recent Odoo versions, confirm in your 20 database</td><td>Scheduled full-population tests run by an outside platform</td><td>Dedicated user, read-only rights, key rotation, access log review</td></tr><tr><th scope="row">MCP connection</th><td>Odoo’s 20 release notes list connecting to the database via Model Context Protocol, so AI tools can query it</td><td>Interactive questions from an AI assistant during an engagement</td><td>Confirm in your database which user and rights it runs under before enabling</td></tr><tr><th scope="row">Odoo’s own AI agents</th><td>Agents run inside the database, triggered by automated or scheduled actions</td><td>Operational checks owned by the finance team</td><td>Agent owner, draft state for output, IAP credit budget</td></tr><tr><th scope="row">Exports and spreadsheets</th><td>Someone extracts data and sends a file</td><td>One-off analysis</td><td>Completeness check against the trial balance; no ongoing coverage</td></tr></tbody>
+</table></div>
+<p>For continuous auditing the external API is usually the backbone, because it is independent of the people being audited and can run on a fixed schedule. MCP is useful for an auditor asking follow-up questions, but treat it as a new access path with its own approval, not as a feature to switch on. The finance-side view of these features is in our <a href="/en/blog/odoo-20-ai-features-accounting/">feature map of Odoo 20 AI for accounting</a>.</p>
+<h2>Why should the audit connection read only?</h2>
+<p>Because the auditor must not be able to change what the auditor tests. If the connection can write, a finding and its fix can come from the same identity, which breaks the segregation of duties the audit is meant to test. ISA 315 (Revised 2019) asks auditors to understand the IT environment and general IT controls; an audit connection with write rights is exactly the kind of access that understanding should flag.</p>
+<ol class="steps-list"><li>Create a dedicated user for the connection. Never reuse a person’s login or an administrator account.</li><li>Grant read access only to the models the tests need: journal entries, invoices and bills, payments, partners, products and stock valuation.</li><li>In Odoo 20, record rules are removed and the domain is set directly on the access right, so review that domain as part of the setup.</li><li>Issue an API key for that user alone and record who holds it and when it will be rotated.</li><li>Review the user’s chatter monthly: Odoo 20 logs user group changes there, so any widening of rights leaves a trail.</li><li>Test the restriction: attempt a write with the key and file the refusal as evidence that read-only holds.</li></ol>
+<p>Read-only applies to the connection, not to everything AI does. MFT’s seg-audit platform reads the books straight from the ERP, read-only. Our <a href="/en/intelligence/auditor/">Auditor agent</a> does more: it drafts correcting entries and adjustments, but drafting is not posting, and nothing reaches the ledger without approval. For segregation of duties when an agent is in the chain, see <a href="/en/blog/ai-segregation-of-duties-internal-controls/">AI, segregation of duties and internal controls</a>.</p>
+<h2>Where does the data go, and who keeps it?</h2>
+<p>Data residency is the question owners ask last and should ask first. A connection that copies the whole ledger to an outside store creates a second set of books, outside your controls and possibly outside your country. Ask every provider, including us, the same questions:</p>
+<ul class="check-list"><li>Is client data stored by the provider, or read at query time and discarded?</li><li>In which country is it processed, and by which AI model provider?</li><li>How long are prompts, answers and logs kept, and can they be deleted on request?</li><li>Who at the provider can see the data, and is that access logged?</li><li>Does the provider’s contract match your data-protection obligations, as confirmed by your legal adviser?</li></ul>
+<p>Our own answer is that client data stays on the client’s system and our agents read through the API at query time. Odoo’s native AI has its own retention rule: according to the release notes, stored conversations are kept up to 30 days after the last message. Know both rules before anything goes live.</p>
+<h2>Which tests should run continuously?</h2>
+<p>Start with tests whose exceptions are cheap to verify and expensive to miss. These are the patterns that recur in our continuous-audit work:</p>
+<ul class="check-list"><li>Duplicate and near-duplicate payments: same vendor, similar amount and reference, close dates.</li><li>Near-duplicate vendors: similar names, shared bank accounts or tax numbers.</li><li>Approvals outside the approval matrix: bills or orders approved above the approver’s limit.</li><li>Cut-off errors: receipts and bills recorded in different periods around month end.</li><li>Inventory valuation drift between the stock valuation and the general ledger.</li><li>Manual journal entries posted late at month end in round amounts, which ISA 240 already requires auditors to test.</li></ul>
+<p>Each test reads the whole population, not a sample, which is the subject of <a href="/en/blog/full-population-testing-ai-vs-sampling/">moving from sampling to full-population testing</a>. The ACFE’s 2024 Report to the Nations found the median fraud lasted 12 months before detection, and that proactive data monitoring and analysis was among the controls associated with roughly half the losses and duration. A daily test proves nothing alone; it shortens how long a problem stays hidden.</p>
+<h2>How does an AI finding become audit evidence?</h2>
+<p>Only by pointing at the records. ISA 500 asks whether evidence is sufficient and appropriate, and ISA 230 asks that documentation let an experienced auditor understand what was done. An AI sentence meets neither. A finding that lists the record ids it retrieved, the rule that flagged them and the time of the query meets both, because anyone can reopen those records in Odoo.</p>
+<blockquote class="pull"><p>If a finding cannot name the records it read, it is not a finding. It is a rumour with a confidence score.</p></blockquote>
+<p>That is the rule MFT Intelligence runs on, which we call &quot;evidence or silence&quot;: every finding must cite the record ids the agent actually retrieved, and a finding that cites nothing, or quotes a number not in the cited records, is rejected and shown struck through, never as fact. The details are in our article on <a href="/en/blog/ai-audit-trail-zero-hallucination/">AI provenance and the zero-hallucination principle</a>. The standards are moving too: in August 2026 the IAASB issued exposure drafts revising ISA 500, ISA 330 and ISA 520 to address greater use of technology, with comments due 15 December 2026. They are not final, so build on the current standards.</p>
+<h2>Who approves what the AI proposes?</h2>
+<p>A named, registered person, never the connection and never the person who asked for the run. Our rule set, described in <a href="/en/blog/agents-draft-people-approve/">agents draft, people approve</a>, is:</p>
+<ul class="check-list"><li>The agent drafts the correcting entry or adjustment; nothing is posted automatically.</li><li>Approval is tiered by the client’s <a href="/en/blog/materiality-isa-320-threshold/">ISA 320 materiality threshold</a>: above it, a second approver signs.</li><li>Corrections are made by reversal, never by deletion, so the original stays visible.</li><li>In seg-audit, a finding cannot be closed without a named, registered approver, and repeats are linked to earlier findings.</li></ul>
+<p>Live Odoo write-back of approved corrections is delivered per client, only after that client’s connector is configured. Until then, approved corrections are entered by the client’s own team, which keeps the posting under their controls.</p>
+<h2>Where should you start?</h2>
+<ol class="steps-list"><li>Write down the purpose of the connection, its owner and the tests it will run.</li><li>Create the dedicated read-only user and key, and test that a write is refused.</li><li>Get written answers to the five residency questions above.</li><li>Run three tests on a closed quarter first, such as duplicate payments, near-duplicate vendors and late round-amount journal entries, and calibrate false positives.</li><li>Agree who reviews exceptions, in what time frame, and who approves corrections.</li><li>Review the connection’s log, rights and findings monthly, as you would any privileged user.</li></ol>
+<p>This is the work behind our <a href="/en/services/internal-audit/">internal audit service</a>: seg-audit reads the books read-only, scores every transaction by risk instead of sampling a few percent, and keeps each finding on record with evidence and severity. If your Odoo 20 rollout is still ahead, combine this with the <a href="/en/blog/odoo-20-ai-accounting-step-by-step/">step-by-step guide to AI accounting on Odoo 20</a>.</p>
+      <section class="sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources</h2><ol><li><a href="https://www.odoo.com/odoo-20-release-notes" rel="noopener" target="_blank">Odoo, &quot;Odoo 20 Release Notes&quot; (official release notes, September 2026)</a></li><li><a href="https://www.acfe.com/en-us/-/media/files/acfe/pdfs/rttn/2024/2024-report-to-the-nations.pdf" rel="noopener" target="_blank">ACFE, &quot;Occupational Fraud 2024: A Report to the Nations&quot; (report, 2024)</a></li><li><a href="https://www.iaasb.org/publications/project-update-isa-500-audit-evidence" rel="noopener" target="_blank">IAASB, &quot;Project update: ISA 500 Audit Evidence&quot; (exposure drafts on ISA 500, ISA 330 and ISA 520, August 2026)</a></li></ol></section>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/en/request-quote/">Talk to MFT about this</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">Questions people ask</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>Can AI connect directly to Odoo?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Yes. Recent Odoo versions offer an external API (XML-RPC and JSON-RPC) used with a dedicated API user and key, and Odoo’s 20 release notes add connecting to the database via MCP (Model Context Protocol). Confirm in your own database which user and rights each connection runs under before enabling it.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>Should an audit AI have write access to Odoo?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>No. The connection used for continuous auditing should read only, so the tool that tests the books cannot change them. If an AI system proposes corrections, they should arrive as drafts approved by a named person, with corrections made by reversal rather than deletion.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>Does connecting AI to Odoo move my data outside the company?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>It depends on the provider. Some copy the ledger to their own storage; others read through the API at query time. Ask where data is processed, by which model provider, how long prompts and logs are kept, and who can see them, and have your legal adviser check the contract.</p></details><details class="faq-item reveal" style="--i:3"><summary><h3>Can AI findings be used as audit evidence?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Only when they trace to records. A finding that lists the record ids retrieved, the rule applied and the time of the query can be reopened and verified, which is what ISA 500 and ISA 230 expect. An unsupported AI statement is not evidence, however confident it sounds.</p></details><details class="faq-item reveal" style="--i:4"><summary><h3>What should continuous auditing test first in Odoo?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Start with tests that are cheap to verify and costly to miss: duplicate and near-duplicate payments, near-duplicate vendors, approvals outside the approval matrix, cut-off errors, inventory valuation drift, and manual journal entries posted late at month end in round amounts. Run them on a closed period first to calibrate.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">About the author</p>
+        <h2>Ahmed Ashraf Mostafa</h2>
+        <p class="author-role">Founder and CEO, Modern Financial Technology</p>
+        <p>Licensed auditor and the founder of MFT. Ahmed built the firm from a financial audit practice into an Odoo implementation and Virtual CFO business serving Egypt and Saudi Arabia, and still leads client engagements. He writes about what the ledger actually shows.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">Related articles</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-27"><span class="lat">27 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/odoo-accounting-implementation-steps/">The phases of an Odoo accounting implementation, and the mistakes that cost the most</a></h2>
+    <p>Installing Odoo takes an afternoon. An implementation an auditor will accept takes phases, and each one ends in a reconciliation.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-30"><span class="lat">30 September 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/odoo-inventory-valuation-fifo-avco/">FIFO or average cost in Odoo: choosing a valuation method you can live with</a></h2>
+    <p>The costing method decides the gross margin the board sees every month. It is easy to choose during setup and expensive to change later.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Odoo</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-03"><span class="lat">3 October 2026</span></time><span><span class="lat">3</span> min read</span></p>
+    <h2><a href="/en/blog/month-end-close-checklist-odoo/">A month-end close checklist for Odoo that a reviewer can sign</a></h2>
+    <p>Most of the tools are already in Odoo. What is usually missing is the order, the evidence and the sign-off.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/en/blog/">All articles</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">See also</h2>
+    <ul class="see-also-list"><li><a href="/en/services/odoo-erp/">Services</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/egypt/">Egypt</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">Talk to a CPA, not a sales rep.</h2>
+      <p>A 30-minute call to understand your entity, your systems and what a decision-ready close would look like. Free, and you leave with one concrete next step.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/en/contact/">Book a call</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Services</h2>
+        <ul><li><a href="/en/services/odoo-erp/">Odoo ERP Implementation</a></li><li><a href="/en/services/internal-audit/">Internal Audit</a></li><li><a href="/en/services/virtual-cfo/">Virtual CFO</a></li><li><a href="/en/services/financial-consulting/">Financial Consulting</a></li><li><a href="/en/services/business-analysis/">Business Analysis</a></li><li><a href="/en/services/training/">User Training</a></li><li><a href="/en/services/technical-support/">Technical Support</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Industries</h2>
+        <ul><li><a href="/en/industries/#manufacturing">Manufacturing</a></li><li><a href="/en/industries/#trading">Trading &amp; Distribution</a></li><li><a href="/en/industries/#food-beverage">Food &amp; Beverage</a></li><li><a href="/en/industries/#healthcare">Healthcare</a></li><li><a href="/en/industries/#construction">Construction</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Where we work</h2>
+        <ul><li><a href="/en/egypt/">Egypt: Odoo, audit and Virtual CFO</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia: ZATCA-ready Odoo and audit</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Company</h2>
+        <ul><li><a href="/en/about/">About MFT</a></li><li><a href="/en/intelligence/">MFT Intelligence AI Agents</a></li><li><a href="/en/request-quote/">Request a quote</a></li><li><a href="/en/blog/">Insights (blog)</a></li><li><a href="/en/contact/">Contact</a></li><li><a href="/en/privacy/">Privacy</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">seg-audit platform</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Contact</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">Offices</h2>
+        <ul><li>Egypt: <span class="muted">Korba, Heliopolis, Cairo</span></li><li>Saudi Arabia</li><li>United States</li></ul>
+        <h2 class="footer-title">Follow</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Modern Financial Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=mv83pu20" defer></script>
+<script src="/assets/js/main.js?v=mv83pu20" defer></script>
+</body>
+</html>

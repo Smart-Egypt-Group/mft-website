@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>اعتمادات المشتريات في Odoo 20 وأتمتتها | MFT</title>
+  <meta name="description" content="كيف تؤتمت اعتمادات المشتريات في Odoo 20 بمصفوفة اعتماد وحد لاعتماد أمر الشراء وتطبيق الموافقات وقواعد الأتمتة، مع قصر وكلاء الذكاء الاصطناعي على إعداد المسودات.">
+  <link rel="canonical" href="https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-purchase-approvals-automation/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="اعتمادات المشتريات في Odoo 20 وأتمتتها | MFT">
+  <meta property="og:description" content="كيف تؤتمت اعتمادات المشتريات في Odoo 20 بمصفوفة اعتماد وحد لاعتماد أمر الشراء وتطبيق الموافقات وقواعد الأتمتة، مع قصر وكلاء الذكاء الاصطناعي على إعداد المسودات.">
+  <meta property="og:url" content="https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-ar.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="المقالات | Modern Financial Technology" href="https://www.seg-audit.com/ar/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/cairo-arabic-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css?v=mv83pu20">
+  <script src="/assets/js/pre.js?v=mv83pu20"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/","name":"اعتمادات المشتريات في Odoo 20 وأتمتتها | MFT","description":"كيف تؤتمت اعتمادات المشتريات في Odoo 20 بمصفوفة اعتماد وحد لاعتماد أمر الشراء وتطبيق الموافقات وقواعد الأتمتة، مع قصر وكلاء الذكاء الاصطناعي على إعداد المسودات.","inLanguage":"ar","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://www.seg-audit.com/ar/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/ar/blog/"},{"@type":"ListItem","position":3,"name":"odoo-20-purchase-approvals-automation","item":"https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"اعتمادات المشتريات في Odoo 20: أتمتة المصفوفة دون التفريط في الرقابة","description":"كيف تؤتمت اعتمادات المشتريات في Odoo 20 بمصفوفة اعتماد وحد لاعتماد أمر الشراء وتطبيق الموافقات وقواعد الأتمتة، مع قصر وكلاء الذكاء الاصطناعي على إعداد المسودات.","inLanguage":"ar","datePublished":"2026-10-14","dateModified":"2026-10-14","wordCount":1442,"articleSection":"Odoo","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/"},"author":{"@type":"Person","name":"أحمد أشرف مصطفى","jobTitle":"المؤسس والرئيس التنفيذي، Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-ar.png","abstract":"لأتمتة اعتمادات المشتريات في Odoo 20 اكتب مصفوفة الاعتماد أولًا، ثم اربط كل سطر فيها بآلية: إعداد اعتماد أمر الشراء لحدود القيمة، وتطبيق الموافقات للفئات وتعدد المعتمِدين، وقواعد الأتمتة مع خطط الأنشطة لتغييرات بيانات الموردين. واجعل وكلاء الذكاء الاصطناعي يعدّون المسودات فقط، واختبر شهريًا تجزئة الأوامر والالتفاف على الاعتماد.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]},"keywords":"اعتماد أوامر الشراء في أودو, مصفوفة الصلاحيات والاعتماد للمشتريات, أتمتة المشتريات في Odoo 20, تطبيق الموافقات في أودو, الذكاء الاصطناعي في المشتريات","about":[{"@type":"Thing","name":"Odoo"},{"@type":"Thing","name":"اعتماد أوامر الشراء"},{"@type":"Thing","name":"مصفوفة الاعتماد"},{"@type":"Thing","name":"أتمتة العمليات"},{"@type":"Thing","name":"الذكاء الاصطناعي"}],"citation":[{"@type":"CreativeWork","name":"أودو، ملاحظات إصدار Odoo 20 (\"Odoo 20 Release Notes\", September 2026)","url":"https://www.odoo.com/odoo-20-release-notes"},{"@type":"CreativeWork","name":"جمعية فاحصي الاحتيال المعتمدين، تقرير الاحتيال المهني 2026 (\"Occupational Fraud 2026: A Report to the Nations\", press release, 19 May 2026)","url":"https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=report-to-the-"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/","url":"https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/","name":"اعتمادات المشتريات في Odoo 20: أتمتة المصفوفة دون التفريط في الرقابة","inLanguage":"ar","lastReviewed":"2026-10-14","reviewedBy":{"@type":"Organization","name":"فريق المراجعة وOdoo في MFT","description":"مراجعون مرخّصون وقادة تنفيذ Odoo، Modern Financial Technology","parentOrganization":{"@id":"https://www.seg-audit.com/#organization"}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل في Odoo 20 اعتماد لأوامر الشراء؟","acceptedAnswer":{"@type":"Answer","text":"في إصدارات Odoo الحديثة تتضمن إعدادات المشتريات خيارًا يجعل الأوامر التي تتجاوز مبلغًا محددًا تحتاج إلى اعتماد مدير قبل التأكيد. ولا تذكر ملاحظات إصدار Odoo 20 تغييرًا فيه، فالمتوقع أن يعمل كما كان، لكن تأكد من الإعداد وأثره في قاعدة بياناتك قبل التشغيل الفعلي."}},{"@type":"Question","name":"هل يدعم أودو اعتماد المشتريات على أكثر من مستوى؟","acceptedAnswer":{"@type":"Answer","text":"إعداد اعتماد الأوامر المدمج له مبلغ واحد ومستوى واحد. ولتعدد المستويات أو المعتمِدين توفر إصدارات Odoo الحديثة تطبيق الموافقات في نسخة Enterprise بفئات موافقة، وقواعد أتمتة تطلق خطط أنشطة. وحيث يجب منع الخطوة لا التذكير بها، اختبر السلوك أو استخدم تخصيصًا صغيرًا موثقًا."}},{"@type":"Question","name":"هل يوجد وكيل ذكاء اصطناعي للمشتريات في Odoo 20؟","acceptedAnswer":{"@type":"Answer","text":"تصف ملاحظات إصدار Odoo 20 وكلاء عامين يستطيعون إنشاء السجلات وتحديثها والعمل من الإجراءات الآلية والمجدولة، دون وكيل مخصص للمشتريات. ويمكنك إعداد وكيل يجهّز مسودات سجلات الشراء، بشرط أن تبقى المخرجات مسودة وأن يعتمدها شخص من خارج مجموعة الوكيل."}},{"@type":"Question","name":"كيف تمنع تجزئة أوامر الشراء في أودو؟","acceptedAnswer":{"@type":"Answer","text":"حد الاعتماد وحده لا يمنعها، لأن كل أمر مجزأ يقع تحت الحد. اجمع الأوامر المؤكدة لكل مورد خلال نافذة زمنية قصيرة، وعلّم المجموعات التي يتجاوز مجموعها مستوى الاعتماد. ونفّذ الاختبار شهريًا على المجتمع الكامل، وراجع المجموعات المعلَّمة مع المعتمِد الذي كان يجب أن يراها."}},{"@type":"Question","name":"هل ميزات الذكاء الاصطناعي في Odoo 20 بتكلفة إضافية؟","acceptedAnswer":{"@type":"Answer","text":"نعم. بحسب ملاحظات إصدار Odoo 20، تحتاج كل ميزات الذكاء الاصطناعي رصيدًا يُشترى عبر IAP، ويُحتسب لكل طلب، ولا يدخل في أي خطة. والوكلاء الذين يعملون بجدول زمني يستهلكون الرصيد في كل تشغيل، فسمِّ مالكًا للرصيد وراجع الاستهلاك لكل وكيل شهريًا."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/ar/" aria-label="Modern Financial Technology: الرئيسية">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">القائمة</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="القائمة">
+      <ul><li><a href="/ar/services/">الخدمات</a></li><li><a href="/ar/industries/">القطاعات</a></li><li><a href="/ar/intelligence/">وكلاء <span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/about/">عن الشركة</a></li><li><a href="/ar/blog/" aria-current="page">المقالات</a></li><li><a href="/ar/contact/">تواصل معنا</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/en/blog/odoo-20-purchase-approvals-automation/" lang="en" hreflang="en" dir="ltr">English</a>
+        <a class="btn btn-primary btn-sm" href="/ar/contact/">تحدث معنا</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">الرئيسية</a></li><li><a href="/ar/blog/">المقالات</a></li><li aria-current="page"><span class="lat">Odoo</span></li></ol></nav>
+      <p class="eyebrow"><span class="lat">Odoo</span></p>
+      <h1>اعتمادات المشتريات في <span class="lat">Odoo 20</span>: أتمتة المصفوفة دون التفريط في الرقابة</h1>
+      <p class="lead">حدود اعتماد أوامر الشراء وتطبيق الموافقات وقواعد الأتمتة وصياغة المسودات بالذكاء الاصطناعي في <span class="lat">Odoo 20</span>، مربوطة بمصفوفة اعتماد تصمد أمام المراجعة.</p>
+      <p class="post-meta"><span class="topic-tag"><span class="lat">Odoo</span></span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-10-14">14 أكتوبر 2026</time><span><span class="lat">8</span> دقائق قراءة</span></p>
+      <p class="post-meta reviewed-by"><span>راجعه فريق المراجعة و<span class="lat">Odoo</span> في <span class="lat">MFT</span></span><span>آخر مراجعة <time datetime="2026-10-14">14 أكتوبر 2026</time></span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">الإجابة المختصرة</p><p class="answer-text">لأتمتة اعتمادات المشتريات في <span class="lat">Odoo 20</span> اكتب مصفوفة الاعتماد أولًا، ثم اربط كل سطر فيها بآلية: إعداد اعتماد أمر الشراء لحدود القيمة، وتطبيق الموافقات للفئات وتعدد المعتمِدين، وقواعد الأتمتة مع خطط الأنشطة لتغييرات بيانات الموردين. واجعل وكلاء الذكاء الاصطناعي يعدّون المسودات فقط، واختبر شهريًا تجزئة الأوامر والالتفاف على الاعتماد.</p><p class="takeaways-title">أهم النقاط</p><ul class="check-list"><li>صمّم مصفوفة الاعتماد على الورق، بمستويات مشتقة من الأهمية النسبية، قبل تغيير أي إعداد.</li><li>استخدم آلية مانعة حيث يكون النقد معرضًا للخطر، ونشاطًا للمتابعة حيث تكون البيانات هي المعرضة.</li><li>يغيّر <span class="lat">Odoo 20</span> شاشات المقارنة والتواريخ ومطابقة الفواتير في المشتريات، لا إعدادات الاعتماد.</li><li>وكيل الذكاء الاصطناعي يعدّ سجلات الشراء، ومستخدمه لا يدخل أبدًا في مجموعة المعتمِدين.</li></ul></aside>
+      <p>الاعتماد الذي يفشل أكثر من غيره في المشتريات ليس الاعتماد الغائب، بل الاعتماد الموضوع على المستند الخطأ. يُضبط اعتماد المدير على أوامر الشراء فوق حد معيّن، فيتحول الحد بهدوء إلى هدف: أمران تحت الحد بدل أمر واحد فوقه، وفاتورة مورد تُسجَّل بلا أمر شراء أصلًا، وحساب بنكي لمورد يغيّره الشخص نفسه الذي يُصدر المدفوعات. والاعتمادات التي تتم خارج مصفوفة الاعتماد ملاحظة متكررة في أعمال المراجعة المستمرة لدينا، وقلّما يكون سببها إعدادًا معطّلًا.</p>
+<p>يضيف <span class="lat">Odoo 20</span> وكلاء ذكاء اصطناعي يعملون من الإجراءات الآلية، ومجموعة تحسينات في المشتريات والدائنين. لا هذا ولا ذاك يحل محل مصفوفة الاعتماد. وفيما يلي طريقة بناء المصفوفة داخل <span class="lat">Odoo 20</span> بحيث توجّه الأتمتة العمل إلى المعتمِد، ويعدّ الذكاء الاصطناعي المسودة، ويبقى دليل من اعتمد ماذا صالحًا أمام المراجع.</p>
+<h2>ما أتمتة اعتمادات المشتريات في <span class="lat">Odoo 20</span>؟</h2>
+<p>أتمتة اعتمادات المشتريات هي مجموعة القواعد داخل نظام <span class="lat">ERP</span> التي توجّه كل طلب شراء وأمر شراء وفاتورة مورد وتغيير في بيانات المورد إلى معتمِد مفوَّض بحسب القيمة والفئة والمخاطر، وتوقف الخطوة التالية حتى يُسجَّل الاعتماد، وتحتفظ بهذا التسجيل دليلًا. الأتمتة توجّه وتمنع، والقرار لشخص. ولها ثلاث طبقات:</p>
+<ul class="check-list"><li>القاعدة: من يعتمد ماذا، وحتى أي مستوى، ومستقلًا عن من. وهي قرار سياسة تملكه الإدارة المالية.</li><li>الآلية: الإعداد أو التطبيق أو قاعدة الأتمتة في <span class="lat">Odoo</span> التي تطبّق القاعدة على المستند.</li><li>الدليل: سطر في سجل المحادثة (<span class="lat">chatter</span>)، أو سجل موافقة، أو نشاط منجَز، أو توقيع، يثبت أن شخصًا مسمّى طبّق القاعدة في تاريخ محدد.</li></ul>
+<p>وأغلب الإخفاقات تأتي من بناء الطبقة الثانية قبل الأولى.</p>
+<h2>كيف تبني مصفوفة الاعتماد قبل أي إعداد؟</h2>
+<p>ابدأ من الأحداث لا من الشاشات. دورة الشراء فيها ستة أحداث قد تحتاج إلى اعتماد: نشوء الحاجة، والالتزام بأمر الشراء، والاستلام، وفاتورة المورد، وتغيير البيانات الأساسية للمورد، والدفع. ولكل حدث حدّد المحفز والمعتمِد والشخص الذي يجب أن يكون المعتمِد مستقلًا عنه. واشتق مستويات القيمة من الأهمية النسبية للتخطيط، كما شرحنا في <a href="/ar/blog/materiality-isa-320-threshold/">تحديد حد الأهمية النسبية وفق <span class="lat">ISA 320</span></a>، لا من أرقام مستديرة اختيرت يوم التشغيل.</p>
+<div class="table-wrap" role="region" aria-label="مصفوفة اعتماد المشتريات: الحدث والمحفز والمعتمِد والآلية في Odoo" tabindex="0"><table class="data-table">
+  <caption>مصفوفة اعتماد المشتريات: الحدث والمحفز والمعتمِد والآلية في <span class="lat">Odoo</span></caption>
+  <thead><tr><th scope="col">الحدث</th><th scope="col">محفز الاعتماد</th><th scope="col">المعتمِد (مستقل عن)</th><th scope="col">الآلية في <span class="lat">Odoo</span> (تأكد منها في قاعدة <span class="lat">20</span> لديك)</th><th scope="col">الدليل المحفوظ</th></tr></thead>
+  <tbody><tr><th scope="row">طلب شراء غير اعتيادي</th><td>إنفاق خارج قواعد إعادة الطلب</td><td>صاحب الموازنة (لا طالب الشراء)</td><td>فئة في تطبيق الموافقات (<span class="lat">Enterprise</span>)</td><td>سجل الموافقة</td></tr><tr><th scope="row">أمر شراء، المستوى الأول</th><td>إجمالي الأمر فوق المستوى الأول</td><td>مدير المشتريات (لا المشتري)</td><td>إعداد اعتماد أمر الشراء</td><td>الاعتماد في سجل محادثة الأمر</td></tr><tr><th scope="row">أمر شراء، المستوى الثاني</th><td>فوق المستوى الثاني، أو إنفاق رأسمالي، أو مورد جديد</td><td>المدير المالي (معتمِد ثانٍ)</td><td>تطبيق الموافقات، أو قاعدة أتمتة تطلق خطة أنشطة</td><td>سجل موافقة أو نشاط منجَز</td></tr><tr><th scope="row">إنشاء مورد أو تغيير حسابه البنكي</th><td>كل تغيير</td><td>مراجع مالي (لا المشتريات ولا المدفوعات)</td><td>قاعدة أتمتة تطلق خطة أنشطة للمراجعة</td><td>نشاط منجَز، سجل محادثة المورد</td></tr><tr><th scope="row">فاتورة المورد</th><td>بلا أمر شراء، أو خارج حد التسامح</td><td>مسؤول الدائنين (لا المشتري)</td><td>الفوترة على الكميات المستلمة، ومطابقة أمر الشراء، وتنبيهات التكرار</td><td>ملخص المطابقة، والتنبيه المعالَج</td></tr><tr><th scope="row">الدفع</th><td>كل دفعة</td><td>معتمِد الخزينة (لا موظف الدائنين)</td><td>قصر صلاحية الدفع على مجموعة مسمّاة</td><td>سجل الدفع وتأكيد البنك</td></tr></tbody>
+</table></div>
+<p>وقاعدتان تجعلان المصفوفة متماسكة. الأولى أن المعتمِد مستقل عن العمل الذي يعتمده، وهو موضوع <a href="/ar/blog/segregation-of-duties-odoo/">الفصل بين المهام في <span class="lat">Odoo</span></a>، ومع دخول الوكلاء إلى النظام موضوع <a href="/ar/blog/ai-segregation-of-duties-internal-controls/">موقع وكلاء الذكاء الاصطناعي من الفصل بين المهام</a>. والثانية أن لكل سطر دليله: الاعتماد الذي لا يستطيع أحد إظهاره لم يحدث في نظر المراجع.</p>
+<h2>أي آلية في <span class="lat">Odoo</span> تحمل أي اعتماد؟</h2>
+<p>الآليات التالية قديمة في <span class="lat">Odoo</span>، ولكل منها وظيفة مختلفة. تأكد من سلوك كل منها في قاعدة بيانات <span class="lat">Odoo 20</span> ونسختك قبل الاعتماد عليها.</p>
+<h3>إعداد اعتماد أمر الشراء</h3>
+<p>في إصدارات <span class="lat">Odoo</span> الحديثة تتضمن إعدادات المشتريات خيار اعتماد الأوامر: الأمر الذي يتجاوز مبلغًا تحدده يحتاج إلى اعتماد مدير قبل التأكيد. ميزته أنه على المستند نفسه، فهو دليل جيد. وحدوده واضحة: مبلغ واحد لكل الفئات، ومستوى واحد، ولا شيء فيه يمنع تجزئة الأمر أو تسجيل فاتورة بلا أمر.</p>
+<h3>تطبيق الموافقات</h3>
+<p>في إصدارات <span class="lat">Odoo</span> الحديثة يتيح تطبيق الموافقات (<span class="lat">Approvals</span>) في نسخة <span class="lat">Enterprise</span> تعريف فئات موافقة لكل منها معتمِدوها، مثل المشتريات الرأسمالية أو أول أمر مع مورد جديد. يناسب الطلبات السابقة لأمر الشراء والحالات التي تحتاج أكثر من معتمِد. ولا تتضمن ملاحظات إصدار <span class="lat">Odoo 20</span> قسمًا عن هذا التطبيق، فتوقّع أن يعمل كما كان، واختبره مع ذلك.</p>
+<h3>قواعد الأتمتة وخطط الأنشطة والتوقيع</h3>
+<p>بحسب ملاحظات إصدار <span class="lat">Odoo 20</span>، صار بإمكان قواعد الأتمتة إطلاق خطط الأنشطة، ويدعم تطبيق التوقيع (<span class="lat">Sign</span>) طلبات توقيع آلية بموقّعين ثابتين أو بحسب الدور، تُرسل من الأنشطة أو خطط الأنشطة، مع دعم الكتابة العربية. مثال عملي: تغيير الحساب البنكي لمورد يطلق خطة فيها مراجعة مالية، واتصال تحقق بالمورد على رقم معروف مسبقًا، وتأكيد موقّع. لكن النشاط وحده لا يوقف الخطوة التالية؛ فحيث يجب المنع استخدم آلية مانعة أو تخصيصًا صغيرًا موثقًا.</p>
+<p>وقاعدة القرار التي نطبقها: آلية مانعة حيث النقد معرّض، ونشاط حيث البيانات معرّضة، وتوقيع حيث يلزم إقرار خارجي أو قانوني.</p>
+<h2>ماذا يغيّر <span class="lat">Odoo 20</span> في المشتريات والدائنين؟</h2>
+<p>لا تذكر ملاحظات إصدار <span class="lat">Odoo 20</span> أي تغيير في إعدادات اعتماد المشتريات. تغييرات قسم المشتريات تخص المقارنة والتواريخ والتكلفة، وبعضها يحسّن ما يراه المعتمِد:</p>
+<ul class="check-list"><li>شاشة لمقارنة العروض البديلة، تصلح دليلًا على النظر في بدائل للأوامر فوق المستوى الأعلى.</li><li>تاريخ وصول متوقع قابل للتعديل يحتفظ بالتاريخ الأصلي للمورد لحساب نسب الالتزام بالمواعيد، وإعادة حساب موعد الوصول عند فوات الموعد النهائي.</li><li>معدل جودة للمورد مبني على فحوصات الجودة.</li><li>أقسام وملاحظات في اتفاقيات الشراء والأوامر الإطارية، وإجماليات لأقسام أمر الشراء، و<span class="lat">Incoterm</span> افتراضي لكل مورد.</li></ul>
+<p>وفي الدائنين تضيف ملاحظات الإصدار تحسينات لمطابقة أوامر الشراء (إكمال تلقائي، وملخص للمطابقة، وإلغاء المطابقة)، وقواعد مطابقة بحد تسامح في السداد، وتنبيهات تكرار حمراء وصفراء، ومعالج دفع يكشف المدفوعات المعلّقة. اعتبر إلغاء المطابقة نقطة رقابية: اقصره على أشخاص محددين وراجع استخدامه شهريًا. وتغييران في الصلاحيات يهمّان هنا: أُلغيت قواعد السجلات وصار النطاق يُحدد على صلاحية الوصول نفسها، وصارت تغييرات مجموعات المستخدم تُسجَّل في سجل محادثته؛ فراجع كل مجموعة معتمِدين بعد الترقية. الصورة الأوسع في <a href="/ar/blog/odoo-20-whats-new-for-finance-teams/"><span class="lat">Odoo 20</span> لفرق المالية</a>، ومنطق المطابقة في <a href="/ar/blog/three-way-match-purchase-controls/">المطابقة الثلاثية</a>.</p>
+<h2>أين يقع الذكاء الاصطناعي من اعتمادات المشتريات؟</h2>
+<p>الذكاء الاصطناعي يعدّ المسودة، والاعتماد يبقى بشريًا. بحسب ملاحظات إصدار <span class="lat">Odoo 20</span>، يمكن إطلاق الوكلاء من الإجراءات الآلية والمجدولة، ويستطيعون إنشاء السجلات (ومنها الإنشاء من ملف تعليمات مرفوع مثل <span class="lat">PDF</span>) وتحديثها، وطلب الإذن عبر أزرار، والاستئذان قبل تجاوز حد استدعاء الأدوات. وتقترح ميزة التنبؤ ببنود الفاتورة المنتج والحساب والضريبة والتوزيع التحليلي من تاريخ الفواتير ووصف البند. وكل ميزات الذكاء الاصطناعي تحتاج رصيد <span class="lat">IAP</span> يُحتسب لكل طلب؛ وتأكد من ميزات الوكلاء المشمولة في نسختك وخطتك. ولا تصف ملاحظات الإصدار وكيلًا مخصصًا للمشتريات.</p>
+<ul class="check-list"><li>إعداد طلب عرض سعر من ملف عرض المورد: يبقى مسودة، ويراجعه المشتري، وتنطبق عليه المصفوفة كأي أمر آخر.</li><li>وكيل مجدول يعدّ أسبوعيًا قائمة بالأوامر القريبة من حد مستوى ما لكل مورد: لا قيمة لها إلا إذا أحال كل سطر إلى الأوامر التي قرأها.</li><li>التنبؤ ببنود الفاتورة: تابع كم مرة يغيّر المراجع الحساب المقترح، وأبقِ المراجعة إلزامية حتى يستقر هذا المعدل عند مستوى منخفض.</li></ul>
+<p>ومستخدم الوكيل لا يدخل أبدًا في مجموعة المعتمِدين، وهو المبدأ الذي يقوم عليه <a href="/ar/blog/agents-draft-people-approve/">الوكلاء يعدّون المسودة والبشر يعتمدون</a>. ولكل بنود الذكاء الاصطناعي ونموذج الرصيد راجع <a href="/ar/blog/odoo-20-ai-features-accounting/">خريطة ميزات الذكاء الاصطناعي في <span class="lat">Odoo 20</span> للمحاسبة</a>.</p>
+<h2>كيف تختبر أن الاعتماد لا يُلتف عليه؟</h2>
+<p>وجد تقرير <span class="lat">ACFE</span> لعام <span class="lat">2026</span> عن الاحتيال المهني أن أكثر من نصف الحالات اقترن بغياب الضوابط الرقابية أو تجاوز الضوابط القائمة. ومصفوفة المشتريات يُلتف عليها بطرق متوقعة، وكل طريقة تترك أثرًا في الدفاتر. نفّذ هذه الاختبارات على المجتمع الكامل للفترة لا على عينة، كما في <a href="/ar/blog/full-population-testing-ai-vs-sampling/">الانتقال من العينة إلى فحص المجتمع الكامل</a>:</p>
+<ol class="steps-list"><li>تجزئة الأوامر: اجمع الأوامر المؤكدة لكل مورد خلال نافذة قصيرة، <span class="lat">7</span> أيام مثلًا، وعلّم المجموعات التي يتجاوز مجموعها مستوى الاعتماد بينما كل أمر فيها دونه.</li><li>فواتير بلا أوامر شراء لموردين أو أصناف تمر عادة عبر المشتريات.</li><li>أوامر أُنشئت أو أُكدت بعد تاريخ الفاتورة التي تدعمها.</li><li>تطابق المعتمِد مع طالب الشراء أو المشتري على الأمر نفسه.</li><li>تغيير حساب بنكي لمورد تبعته دفعة قبل إنجاز نشاط المراجعة.</li><li>فواتير أُلغيت مطابقتها ثم أعيدت، وتنبيهات تكرار حمراء تُجووزت دون سبب مسجّل.</li></ol>
+<p>مثال تطبيقي على الاختبار الأول: إذا كان المستوى الأول <span class="lat">T</span>، فثلاثة أوامر لمورد واحد خلال خمسة أيام، كل منها عند <span class="lat">90%</span> من <span class="lat">T</span>، تمر من الإعداد فرادى، ومجموعها <span class="lat">270%</span> من <span class="lat">T</span>. الإعداد عمل كما صُمم، والمصفوفة لم تعمل.</p>
+<blockquote class="pull"><p>حد الاعتماد الذي لا يُختبر ضد التجزئة يتحول إلى قائمة أسعار للتهرب من الاعتماد.</p></blockquote>
+<h2>من أين تبدأ يوم الأحد؟</h2>
+<ol class="steps-list"><li>صدّر المستخدمين ومجموعاتهم، واكتب من يستطيع تأكيد الأوامر، واعتماد الفواتير، وتغيير بيانات الموردين، وإصدار المدفوعات.</li><li>اكتب المصفوفة في صفحة واحدة بمستويات مشتقة من الأهمية النسبية، واجعل الإدارة المالية توقّعها.</li><li>اربط كل سطر بآلية، وصنّفه مانعًا أو تذكيرًا.</li><li>اضبطها في قاعدة اختبار، ونفّذ اختبارات الالتفاف على بيانات الربع الماضي.</li><li>بعدها فقط أضف صياغة المسودات بالذكاء الاصطناعي، مع مالك مسمّى لرصيد <span class="lat">IAP</span>، ومعتمِدين من خارج مجموعة الوكيل.</li></ol>
+<p>هذا التسلسل جزء من الخطة الأوسع في <a href="/ar/blog/odoo-20-ai-accounting-step-by-step/">تطبيق المحاسبة بالذكاء الاصطناعي على <span class="lat">Odoo 20</span> خطوة بخطوة</a>، ويمكن أن تعمل الاختبارات باستمرار بعد <a href="/ar/blog/connect-ai-to-odoo-continuous-audit/">ربط الذكاء الاصطناعي بـ<span class="lat">Odoo</span> للمراجعة المستمرة</a>. وفي <a href="/ar/services/odoo-erp/">مشروعات تطبيق <span class="lat">Odoo ERP</span></a> التي ننفذها تُوقَّع المصفوفة قبل إنشاء المستخدمين. ومنصتنا للمراجعة المستمرة <span class="lat">seg-audit</span> تقرأ الدفاتر قراءة فقط وتقيّم كل معاملة بحسب المخاطر، والاعتمادات خارج المصفوفة من الأنماط التي تُظهرها. ووكيل المشتريات قيد التحقق الداخلي ضمن <a href="/ar/intelligence/"><span class="lat">MFT Intelligence</span></a>، وهو مثل كل وكلائنا يعدّ المسودة ويعتمد شخص مسمّى.</p>
+      <section class="sources" aria-labelledby="sources-title"><h2 id="sources-title">المصادر</h2><ol><li><a href="https://www.odoo.com/odoo-20-release-notes" rel="noopener" target="_blank">أودو، ملاحظات إصدار <span class="lat">Odoo 20</span> (<span class="lat">&quot;Odoo 20 Release Notes&quot;, September 2026</span>)</a></li><li><a href="https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=report-to-the-" rel="noopener" target="_blank">جمعية فاحصي الاحتيال المعتمدين، تقرير الاحتيال المهني <span class="lat">2026</span> (<span class="lat">&quot;Occupational Fraud 2026: A Report to the Nations&quot;, press release, 19 May 2026</span>)</a></li></ol></section>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/ar/request-quote/">تحدّث مع <span class="lat">MFT</span> عن هذا</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">أسئلة شائعة</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>هل في <span class="lat">Odoo 20</span> اعتماد لأوامر الشراء؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>في إصدارات <span class="lat">Odoo</span> الحديثة تتضمن إعدادات المشتريات خيارًا يجعل الأوامر التي تتجاوز مبلغًا محددًا تحتاج إلى اعتماد مدير قبل التأكيد. ولا تذكر ملاحظات إصدار <span class="lat">Odoo 20</span> تغييرًا فيه، فالمتوقع أن يعمل كما كان، لكن تأكد من الإعداد وأثره في قاعدة بياناتك قبل التشغيل الفعلي.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>هل يدعم أودو اعتماد المشتريات على أكثر من مستوى؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>إعداد اعتماد الأوامر المدمج له مبلغ واحد ومستوى واحد. ولتعدد المستويات أو المعتمِدين توفر إصدارات <span class="lat">Odoo</span> الحديثة تطبيق الموافقات في نسخة <span class="lat">Enterprise</span> بفئات موافقة، وقواعد أتمتة تطلق خطط أنشطة. وحيث يجب منع الخطوة لا التذكير بها، اختبر السلوك أو استخدم تخصيصًا صغيرًا موثقًا.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>هل يوجد وكيل ذكاء اصطناعي للمشتريات في <span class="lat">Odoo 20</span>؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>تصف ملاحظات إصدار <span class="lat">Odoo 20</span> وكلاء عامين يستطيعون إنشاء السجلات وتحديثها والعمل من الإجراءات الآلية والمجدولة، دون وكيل مخصص للمشتريات. ويمكنك إعداد وكيل يجهّز مسودات سجلات الشراء، بشرط أن تبقى المخرجات مسودة وأن يعتمدها شخص من خارج مجموعة الوكيل.</p></details><details class="faq-item reveal" style="--i:3"><summary><h3>كيف تمنع تجزئة أوامر الشراء في أودو؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>حد الاعتماد وحده لا يمنعها، لأن كل أمر مجزأ يقع تحت الحد. اجمع الأوامر المؤكدة لكل مورد خلال نافذة زمنية قصيرة، وعلّم المجموعات التي يتجاوز مجموعها مستوى الاعتماد. ونفّذ الاختبار شهريًا على المجتمع الكامل، وراجع المجموعات المعلَّمة مع المعتمِد الذي كان يجب أن يراها.</p></details><details class="faq-item reveal" style="--i:4"><summary><h3>هل ميزات الذكاء الاصطناعي في <span class="lat">Odoo 20</span> بتكلفة إضافية؟</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>نعم. بحسب ملاحظات إصدار <span class="lat">Odoo 20</span>، تحتاج كل ميزات الذكاء الاصطناعي رصيدًا يُشترى عبر <span class="lat">IAP</span>، ويُحتسب لكل طلب، ولا يدخل في أي خطة. والوكلاء الذين يعملون بجدول زمني يستهلكون الرصيد في كل تشغيل، فسمِّ مالكًا للرصيد وراجع الاستهلاك لكل وكيل شهريًا.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">عن الكاتب</p>
+        <h2>أحمد أشرف مصطفى</h2>
+        <p class="author-role">المؤسس والرئيس التنفيذي، <span class="lat">Modern Financial Technology</span></p>
+        <p>مراجع مرخّص ومؤسس <span class="lat">MFT</span>. بنى الشركة من ممارسة للتدقيق المالي إلى أعمال تنفيذ <span class="lat">Odoo</span> والمدير المالي الافتراضي تخدم مصر والسعودية، وما زال يقود تعاقدات العملاء بنفسه. يكتب عمّا يُظهره دفتر الأستاذ فعلًا.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">مقالات ذات صلة</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag"><span class="lat">Odoo</span></span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-27">27 سبتمبر 2026</time><span><span class="lat">3</span> دقائق قراءة</span></p>
+    <h2><a href="/ar/blog/odoo-accounting-implementation-steps/">مراحل تنفيذ المحاسبة على <span class="lat">Odoo</span>، والأخطاء الأعلى كلفة</a></h2>
+    <p>تثبيت <span class="lat">Odoo</span> يستغرق ظهيرة واحدة. أما تنفيذ يقبله المراجع فيمر بمراحل، تنتهي كل منها بمطابقة.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag"><span class="lat">Odoo</span></span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-09-30">30 سبتمبر 2026</time><span><span class="lat">3</span> دقائق قراءة</span></p>
+    <h2><a href="/ar/blog/odoo-inventory-valuation-fifo-avco/"><span class="lat">FIFO</span> أم متوسط التكلفة في <span class="lat">Odoo</span>: اختيار طريقة تقييم تستطيع التعايش معها</a></h2>
+    <p>طريقة التكلفة تحدد مجمل الربح الذي يراه مجلس الإدارة كل شهر. اختيارها سهل أثناء الإعداد، وتغييرها لاحقًا مكلف.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag"><span class="lat">Odoo</span></span><span>بقلم أحمد أشرف مصطفى</span><time datetime="2026-10-03">3 أكتوبر 2026</time><span><span class="lat">3</span> دقائق قراءة</span></p>
+    <h2><a href="/ar/blog/month-end-close-checklist-odoo/">قائمة إقفال شهري في <span class="lat">Odoo</span> يستطيع المراجع أن يوقّع عليها</a></h2>
+    <p>أغلب الأدوات موجودة في <span class="lat">Odoo</span> بالفعل. ما ينقص عادة هو الترتيب والأدلة والتوقيع.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/ar/blog/">كل المقالات</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">اقرأ أيضًا</h2>
+    <ul class="see-also-list"><li><a href="/ar/services/odoo-erp/">الخدمات</a></li><li><a href="/ar/intelligence/"><span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/egypt/">مصر</a></li><li><a href="/ar/saudi-arabia/">السعودية</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">تحدث مع محاسب معتمد، لا مع مندوب مبيعات.</h2>
+      <p>مكالمة <span class="lat">30</span> دقيقة لفهم كيانك وأنظمتك وما يجب أن يبدو عليه الإقفال الجاهز للقرار. مجانًا، وتخرج منها بخطوة عملية واحدة محددة.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/ar/contact/">احجز مكالمة</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>شركة تكنولوجيا مالية ومراجعة بقيادة محاسبين معتمدين. <span class="lat">Odoo ERP</span> والمراجعة الداخلية والمدير المالي الافتراضي من فريق واحد وبأرقام واحدة.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">الخدمات</h2>
+        <ul><li><a href="/ar/services/odoo-erp/">تنفيذ <span class="lat">Odoo ERP</span></a></li><li><a href="/ar/services/internal-audit/">المراجعة الداخلية</a></li><li><a href="/ar/services/virtual-cfo/">المدير المالي الافتراضي</a></li><li><a href="/ar/services/financial-consulting/">الاستشارات المالية</a></li><li><a href="/ar/services/business-analysis/">تحليل الأعمال</a></li><li><a href="/ar/services/training/">تدريب المستخدمين</a></li><li><a href="/ar/services/technical-support/">الدعم الفني</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">القطاعات</h2>
+        <ul><li><a href="/ar/industries/#manufacturing">التصنيع</a></li><li><a href="/ar/industries/#trading">التجارة والتوزيع</a></li><li><a href="/ar/industries/#food-beverage">الأغذية والمشروبات</a></li><li><a href="/ar/industries/#healthcare">الرعاية الصحية</a></li><li><a href="/ar/industries/#construction">المقاولات</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">أين نعمل</h2>
+        <ul><li><a href="/ar/egypt/">مصر: <span class="lat">Odoo</span> والمراجعة والمدير المالي الافتراضي</a></li><li><a href="/ar/saudi-arabia/">السعودية: <span class="lat">Odoo</span> ومراجعة متوافقة مع <span class="lat">ZATCA</span></a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">الشركة</h2>
+        <ul><li><a href="/ar/about/">عن <span class="lat">MFT</span></a></li><li><a href="/ar/intelligence/">وكلاء <span class="lat">MFT Intelligence</span></a></li><li><a href="/ar/request-quote/">اطلب عرض سعر</a></li><li><a href="/ar/blog/">المقالات</a></li><li><a href="/ar/contact/">تواصل معنا</a></li><li><a href="/ar/privacy/">الخصوصية</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">منصة <span class="lat">seg-audit</span></a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">التواصل</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">المكاتب</h2>
+        <ul><li>مصر: <span class="muted">الكوربة، مصر الجديدة، القاهرة</span></li><li>السعودية</li><li>الولايات المتحدة</li></ul>
+        <h2 class="footer-title">تابعنا</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span class="lat">Modern Financial Technology</span>. جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=mv83pu20" defer></script>
+<script src="/assets/js/main.js?v=mv83pu20" defer></script>
+</body>
+</html>

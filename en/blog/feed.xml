@@ -6,7 +6,103 @@
     <atom:link href="https://www.seg-audit.com/en/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical writing from MFT on internal audit, materiality, Saudi ZATCA and Egyptian e-invoicing compliance, and running Odoo as a finance system.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2026 00:25:05 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 12:43:56 GMT</lastBuildDate>
+    <item>
+      <title>AI in accounting: a practical 2026 guide for finance teams</title>
+      <link>https://www.seg-audit.com/en/blog/ai-in-accounting-guide-2026/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/ai-in-accounting-guide-2026/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>AI in accounting explained for 2026: what it does in entries, reconciliation, close and audit, the controls it needs, and where a finance team should start.</description>
+      <category>AI in accounting</category>
+    </item>
+    <item>
+      <title>AI for journal entries and bank reconciliation: automate it safely</title>
+      <link>https://www.seg-audit.com/en/blog/ai-journal-entries-bank-reconciliation/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/ai-journal-entries-bank-reconciliation/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>How AI automates journal entries and bank reconciliation: matching logic, Odoo 20 changes, which entries to automate, and the controls that keep them auditable.</description>
+      <category>AI in accounting</category>
+    </item>
+    <item>
+      <title>AI financial fraud detection: red flags, models and limits</title>
+      <link>https://www.seg-audit.com/en/blog/ai-financial-fraud-detection/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/ai-financial-fraud-detection/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>How AI financial fraud detection works in accounting: the red flags models score, the controls behind them, and why a flag is a lead to test, not proof.</description>
+      <category>AI in accounting</category>
+    </item>
+    <item>
+      <title>AI in the month-end close and financial reporting: what to automate</title>
+      <link>https://www.seg-audit.com/en/blog/ai-month-end-close-financial-reporting/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/ai-month-end-close-financial-reporting/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>How to use AI in the month-end close and financial reporting: which tasks to automate, which to review, and the approval rules that keep numbers defensible.</description>
+      <category>AI in accounting</category>
+    </item>
+    <item>
+      <title>Continuous auditing with AI vs traditional audit: side by side</title>
+      <link>https://www.seg-audit.com/en/blog/continuous-auditing-ai-vs-traditional-audit/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/continuous-auditing-ai-vs-traditional-audit/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>Continuous auditing with AI compared with the traditional audit: timing, coverage, evidence, roles and risks, with a practical way for finance teams to start.</description>
+      <category>Internal audit</category>
+    </item>
+    <item>
+      <title>Full-population testing with AI vs audit sampling: a practical guide</title>
+      <link>https://www.seg-audit.com/en/blog/full-population-testing-ai-vs-sampling/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/full-population-testing-ai-vs-sampling/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>Full-population testing with AI versus audit sampling under ISA 530: what changes, what risks remain, and a worked procedure for testing every vendor bill.</description>
+      <category>Internal audit</category>
+    </item>
+    <item>
+      <title>AI and segregation of duties: internal controls when agents are users</title>
+      <link>https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>How AI changes segregation of duties and internal controls: treat each agent as a user, map its conflicts, and test SoD across every transaction, not a sample.</description>
+      <category>Internal audit</category>
+    </item>
+    <item>
+      <title>AI audit trail and zero hallucination: the evidence-or-silence rule</title>
+      <link>https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>How to build an AI audit trail auditors can rely on: provenance to record ids, the evidence-or-silence rule, and a re-performance test for each AI finding.</description>
+      <category>Internal audit</category>
+    </item>
+    <item>
+      <title>Odoo 20 AI features for accounting: a feature-by-feature map</title>
+      <link>https://www.seg-audit.com/en/blog/odoo-20-ai-features-accounting/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/odoo-20-ai-features-accounting/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>Odoo 20 AI features for accounting, mapped one by one: what each does, which consume IAP credits, and which controls change once AI starts drafting entries.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>Connecting AI to Odoo for continuous auditing: access, evidence and approvals</title>
+      <link>https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>How to connect AI to Odoo for continuous auditing: API or MCP access, read-only users, data residency, evidence that traces to records, and named approvers.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>Odoo 20 purchase approvals: automate the matrix, keep the control</title>
+      <link>https://www.seg-audit.com/en/blog/odoo-20-purchase-approvals-automation/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/odoo-20-purchase-approvals-automation/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>Automate Odoo 20 purchase approvals with an approval matrix, PO approval threshold, Approvals app and automation rules, and keep AI agents to drafting.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>AI accounting on Odoo 20, step by step: a 90-day rollout with gates</title>
+      <link>https://www.seg-audit.com/en/blog/odoo-20-ai-accounting-step-by-step/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/en/blog/odoo-20-ai-accounting-step-by-step/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>A step-by-step plan for AI accounting on Odoo 20: three 30-day phases, measurable gates, named approvers and retained evidence before agents draft entries.</description>
+      <category>Odoo</category>
+    </item>
     <item>
       <title>Odoo 20 for finance teams: what changes, what to ignore, what to test</title>
       <link>https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/</link>

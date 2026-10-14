@@ -6,7 +6,103 @@
     <atom:link href="https://www.seg-audit.com/ar/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>كتابات عملية من MFT عن المراجعة الداخلية والأهمية النسبية والامتثال لهيئة الزكاة والضريبة والجمارك السعودية والفوترة الإلكترونية المصرية وتشغيل Odoo كنظام مالي.</description>
     <language>ar</language>
-    <lastBuildDate>Tue, 06 Oct 2026 00:25:05 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 12:43:56 GMT</lastBuildDate>
+    <item>
+      <title>الذكاء الاصطناعي في المحاسبة: دليل عملي لفرق المالية في 2026</title>
+      <link>https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>الذكاء الاصطناعي في المحاسبة 2026: دوره في القيود والتسوية البنكية والإقفال والمراجعة، والضوابط الرقابية اللازمة، ومن أين يبدأ الفريق المالي.</description>
+      <category>الذكاء الاصطناعي في المحاسبة</category>
+    </item>
+    <item>
+      <title>أتمتة قيود اليومية والتسوية البنكية بالذكاء الاصطناعي دون فقدان الرقابة</title>
+      <link>https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>كيف يؤتمت الذكاء الاصطناعي قيود اليومية والتسوية البنكية: منطق المطابقة، وتغييرات Odoo 20، وما يصلح للأتمتة، والضوابط التي تحفظ مسار التدقيق.</description>
+      <category>الذكاء الاصطناعي في المحاسبة</category>
+    </item>
+    <item>
+      <title>كشف الاحتيال المالي بالذكاء الاصطناعي: المؤشرات والنماذج والحدود</title>
+      <link>https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>كيف يعمل كشف الاحتيال المالي بالذكاء الاصطناعي في المحاسبة: المؤشرات التي تفحصها النماذج، والضوابط التي تقف خلفها، ولماذا التنبيه بداية فحص لا دليل إدانة.</description>
+      <category>الذكاء الاصطناعي في المحاسبة</category>
+    </item>
+    <item>
+      <title>الذكاء الاصطناعي في الإقفال الشهري والتقارير المالية: ماذا تؤتمت؟</title>
+      <link>https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>كيف تستخدم الذكاء الاصطناعي في الإقفال الشهري والتقارير المالية: ما المهام التي تؤتمتها، وما الذي يبقى للمراجعة، وقواعد الاعتماد التي تحمي الأرقام.</description>
+      <category>الذكاء الاصطناعي في المحاسبة</category>
+    </item>
+    <item>
+      <title>المراجعة المستمرة بالذكاء الاصطناعي والمراجعة التقليدية: مقارنة جنبًا إلى جنب</title>
+      <link>https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>مقارنة عملية بين المراجعة المستمرة بالذكاء الاصطناعي والمراجعة التقليدية: التوقيت والتغطية والأدلة والأدوار والمخاطر، وخطة بداية واقعية للإدارة المالية.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>من العينة إلى اختبار المجتمع الكامل بالذكاء الاصطناعي: دليل عملي للمراجعين</title>
+      <link>https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>اختبار المجتمع الكامل بالذكاء الاصطناعي مقابل العينة وفق ISA 530: ما الذي يتغير، وما المخاطر الباقية، وإجراء عملي لاختبار كل فواتير المورّدين.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>الذكاء الاصطناعي والفصل بين المهام: الوكيل مستخدم داخل الضوابط الرقابية</title>
+      <link>https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>كيف يغيّر الذكاء الاصطناعي الفصل بين المهام والضوابط الرقابية: عامل كل وكيل كمستخدم، وارسم تعارضاته، واختبر الفصل على كل المعاملات لا على عينة منها.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>مسار التدقيق في الذكاء الاصطناعي وصفر هلوسة: قاعدة الدليل أو الصمت</title>
+      <link>https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>كيف تبني مسار تدقيق للذكاء الاصطناعي يعتمد عليه المراجع: ربط كل مخرج بمعرّفات السجلات، وقاعدة الدليل أو الصمت، واختبار إعادة أداء لكل ملاحظة.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>ميزات الذكاء الاصطناعي في Odoo 20 للمحاسبة: خريطة ميزة بميزة</title>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>خريطة لميزات الذكاء الاصطناعي في Odoo 20 للمحاسبة: ماذا تفعل كل ميزة، وأيها يستهلك رصيد IAP، وما الضوابط التي تتغير حين يبدأ الذكاء الاصطناعي بإعداد القيود.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>ربط الذكاء الاصطناعي بـOdoo للمراجعة المستمرة: الوصول والدليل والاعتماد</title>
+      <link>https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>كيف تربط الذكاء الاصطناعي بـ Odoo للمراجعة المستمرة: وصول عبر API أو MCP، ومستخدم للقراءة فقط، وموضع البيانات، ودليل يرجع إلى السجلات، ومعتمِد مسمّى.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>اعتمادات المشتريات في Odoo 20: أتمتة المصفوفة دون التفريط في الرقابة</title>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>كيف تؤتمت اعتمادات المشتريات في Odoo 20 بمصفوفة اعتماد وحد لاعتماد أمر الشراء وتطبيق الموافقات وقواعد الأتمتة، مع قصر وكلاء الذكاء الاصطناعي على إعداد المسودات.</description>
+      <category>Odoo</category>
+    </item>
+    <item>
+      <title>المحاسبة بالذكاء الاصطناعي على Odoo 20 خطوة بخطوة: خطة 90 يومًا ببوابات</title>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/</guid>
+      <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
+      <description>خطة عملية لتطبيق المحاسبة بالذكاء الاصطناعي على Odoo 20 في ثلاث مراحل من 30 يومًا، ببوابات قابلة للقياس ومعتمِدين مسمّين ودليل محفوظ قبل أن يعدّ الوكلاء القيود.</description>
+      <category>Odoo</category>
+    </item>
     <item>
       <title>Odoo 20 لفرق المالية: ما الذي يتغير، وما الذي يمكن تجاهله، وما الذي يجب اختباره</title>
       <link>https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/</link>

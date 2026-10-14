@@ -186,6 +186,66 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-in-accounting-guide-2026/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-journal-entries-bank-reconciliation/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-financial-fraud-detection/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-month-end-close-financial-reporting/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/continuous-auditing-ai-vs-traditional-audit/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/full-population-testing-ai-vs-sampling/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-features-accounting/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-purchase-approvals-automation/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-accounting-step-by-step/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/ar/egypt/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/egypt/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/egypt/"/>
@@ -394,6 +454,66 @@
     <loc>https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/ai-in-accounting-guide-2026/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-in-accounting-guide-2026/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/ai-journal-entries-bank-reconciliation/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-journal-entries-bank-reconciliation/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/ai-financial-fraud-detection/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-financial-fraud-detection/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/ai-month-end-close-financial-reporting/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-month-end-close-financial-reporting/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/continuous-auditing-ai-vs-traditional-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/continuous-auditing-ai-vs-traditional-audit/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/full-population-testing-ai-vs-sampling/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/full-population-testing-ai-vs-sampling/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-ai-features-accounting/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-features-accounting/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-purchase-approvals-automation/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-purchase-approvals-automation/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-ai-accounting-step-by-step/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-accounting-step-by-step/"/>
   </url>
   <url>
     <loc>https://www.seg-audit.com/en/egypt/</loc>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI audit trail and zero hallucination in finance | MFT</title>
+  <meta name="description" content="How to build an AI audit trail auditors can rely on: provenance to record ids, the evidence-or-silence rule, and a re-performance test for each AI finding.">
+  <link rel="canonical" href="https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="AI audit trail and zero hallucination in finance | MFT">
+  <meta property="og:description" content="How to build an AI audit trail auditors can rely on: provenance to record ids, the evidence-or-silence rule, and a re-performance test for each AI finding.">
+  <meta property="og:url" content="https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-en.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="Insights | Modern Financial Technology" href="https://www.seg-audit.com/en/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="/assets/css/main.css?v=mv83pu20">
+  <script src="/assets/js/pre.js?v=mv83pu20"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/","name":"AI audit trail and zero hallucination in finance | MFT","description":"How to build an AI audit trail auditors can rely on: provenance to record ids, the evidence-or-silence rule, and a re-performance test for each AI finding.","inLanguage":"en","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.seg-audit.com/en/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/en/blog/"},{"@type":"ListItem","position":3,"name":"ai-audit-trail-zero-hallucination","item":"https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI audit trail and zero hallucination: the evidence-or-silence rule","description":"How to build an AI audit trail auditors can rely on: provenance to record ids, the evidence-or-silence rule, and a re-performance test for each AI finding.","inLanguage":"en","datePublished":"2026-10-14","dateModified":"2026-10-14","wordCount":1533,"articleSection":"Internal audit","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/"},"author":{"@type":"Person","name":"Ahmed Ashraf Mostafa","jobTitle":"Founder and CEO, Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-en.png","abstract":"An AI audit trail links every AI output to the specific records it retrieved, the instruction and run that produced it, and the person who reviewed it. Zero hallucination is enforced, not hoped for: under the evidence-or-silence rule, a finding that cites no record, or a number absent from its cited records, is rejected.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]},"keywords":"AI audit trail, AI hallucination in accounting, AI provenance audit evidence, zero hallucination AI, evidence or silence, ISA 500 audit evidence AI","about":[{"@type":"Thing","name":"Audit trail"},{"@type":"Thing","name":"Audit evidence"},{"@type":"Thing","name":"Artificial intelligence"},{"@type":"Thing","name":"AI hallucination"},{"@type":"Thing","name":"Odoo"}],"citation":[{"@type":"CreativeWork","name":"Odoo, \"Odoo 20 Release Notes\" (24 September 2026)","url":"https://www.odoo.com/odoo-20-release-notes"},{"@type":"CreativeWork","name":"IAASB, \"Project update: ISA 500, Audit Evidence\" (exposure drafts, August 2026)","url":"https://www.iaasb.org/publications/project-update-isa-500-audit-evidence"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/","url":"https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/","name":"AI audit trail and zero hallucination: the evidence-or-silence rule","inLanguage":"en","lastReviewed":"2026-10-14","reviewedBy":{"@type":"Organization","name":"MFT audit and Odoo practice","description":"Licensed auditors and Odoo implementation leads, Modern Financial Technology","parentOrganization":{"@id":"https://www.seg-audit.com/#organization"}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is AI hallucination in accounting?","acceptedAnswer":{"@type":"Answer","text":"It is when an AI model produces a figure, name, date or statement that reads as correct but does not exist in the underlying records. In accounting it is dangerous because it looks like the result of a calculation. The control is to require every output to cite the records it came from and reject anything unsupported."}},{"@type":"Question","name":"Can AI output be used as audit evidence?","acceptedAnswer":{"@type":"Answer","text":"Only through the records it points to. ISA 500 asks for sufficient appropriate evidence, and ISA 230 asks for documentation another auditor can follow. An AI finding that cites record ids can be re-performed against those records and the source documents; an AI answer with no citations is an assertion that still needs evidence."}},{"@type":"Question","name":"What should an AI audit trail include?","acceptedAnswer":{"@type":"Answer","text":"At minimum: the instruction version, the ids of the records retrieved, the provider and model where available, the output as delivered including rejected findings, the named reviewer and decision, any resulting draft or posted entry, and a retention step that keeps the evidence beyond the life of the chat."}},{"@type":"Question","name":"How long does Odoo 20 keep AI conversations?","acceptedAnswer":{"@type":"Answer","text":"According to Odoo’s 20 release notes, stored AI conversations are kept up to 30 days after the last message. That is shorter than any audit cycle, so any AI output relied on for a report, a finding or an entry should be captured in the record or in working papers before then."}},{"@type":"Question","name":"Does zero hallucination mean the AI never makes mistakes?","acceptedAnswer":{"@type":"Answer","text":"No. No model can guarantee that. Zero hallucination here means a process rule: output that cites no record, or contains a number not found in its cited records, is rejected and shown struck through, so unsupported claims never reach a report as facts. A named reviewer still checks what passes."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/en/" aria-label="Modern Financial Technology: Home">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Menu">
+      <ul><li><a href="/en/services/">Services</a></li><li><a href="/en/industries/">Industries</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/" aria-current="page">Insights</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/ar/blog/ai-audit-trail-zero-hallucination/" lang="ar" hreflang="ar" dir="rtl">العربية</a>
+        <a class="btn btn-primary btn-sm" href="/en/contact/">Talk to Us</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Home</a></li><li><a href="/en/blog/">Insights</a></li><li aria-current="page">Internal audit</li></ol></nav>
+      <p class="eyebrow">Internal audit</p>
+      <h1>AI audit trail and zero hallucination: the evidence-or-silence rule</h1>
+      <p class="lead">An AI answer with no record behind it is an assertion, not evidence. How provenance, a validation gate and a named reviewer make AI output auditable.</p>
+      <p class="post-meta"><span class="topic-tag">Internal audit</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-14"><span class="lat">14 October 2026</span></time><span><span class="lat">7</span> min read</span></p>
+      <p class="post-meta reviewed-by"><span>Reviewed by MFT audit and Odoo practice</span><span>last reviewed <time datetime="2026-10-14"><span class="lat">14 October 2026</span></time></span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">Short answer</p><p class="answer-text">An AI audit trail links every AI output to the specific records it retrieved, the instruction and run that produced it, and the person who reviewed it. Zero hallucination is enforced, not hoped for: under the evidence-or-silence rule, a finding that cites no record, or a number absent from its cited records, is rejected.</p><p class="takeaways-title">Key takeaways</p><ul class="check-list"><li>Provenance means every AI output can be traced to record ids, an instruction version and a named reviewer.</li><li>Zero hallucination is a property of the process: unsupported output is struck through, never shown as fact.</li><li>Re-perform AI findings from the cited records; re-asking the question is not re-performance.</li><li>Odoo 20 keeps AI conversations up to 30 days, so evidence must be moved into the record or working papers.</li></ul></aside>
+      <p>A finance manager asks the AI assistant how many customer invoices are more than ninety days overdue and gets a clean, confident answer. It goes into the board pack. Three weeks later the external auditor asks a plain question: which invoices? If the answer is &quot;the AI said so&quot;, the figure is not evidence. It is an assertion with no owner.</p>
+<p>This is the problem of provenance, and it decides whether AI output can be used in accounting and audit at all. This article sets out the rule we apply, evidence or silence, and the trail that makes it testable. It is part of our <a href="/en/blog/ai-in-accounting-guide-2026/">series on AI in accounting</a>.</p>
+<h2>What is AI provenance in accounting and audit?</h2>
+<p>AI provenance is the recorded chain from an AI output back to the exact records it read, the instruction and run that produced it, and the person who accepted or rejected it, so that a reviewer can re-perform the work. An audit trail does the same for transactions: who created, changed, approved and posted what, and when. AI provenance extends that trail to a new kind of preparer. Without it, an AI finding cannot be traced to source, and an AI-drafted entry has a record of what was posted but not of why.</p>
+<h2>Why is an AI answer not audit evidence on its own?</h2>
+<p>ISA 500 requires sufficient appropriate audit evidence, and appropriateness depends on relevance and reliability. ISA 230 requires documentation that lets an experienced auditor with no prior connection to the engagement understand the work done and the evidence obtained. A fluent paragraph from a language model meets neither test unless it points to records that can be inspected. The standards are moving with the technology: in August 2026 the IAASB issued exposure drafts revising ISA 500, ISA 330 and ISA 520 to address the increased use of technology, with comments due 15 December 2026. They are not final, but the direction is clear.</p>
+<p>Hallucination is the specific risk. A model can produce a number, a vendor name or a date that reads correctly and exists nowhere in the books. In finance this is worse than an obvious error, because it looks like the output of a calculation.</p>
+<h2>What does &quot;evidence or silence&quot; mean?</h2>
+<p>It is the operating rule of MFT Intelligence: every finding must cite the record ids the agent actually retrieved, and a finding that cites nothing, or contains a number that is not in the cited records, is rejected. Rejected findings are shown struck through, never presented as facts. The agent either shows its evidence or says nothing.</p>
+<p>Note what the rule does not claim. It does not claim the model never errs. It moves zero hallucination from a property of the model, which nobody can guarantee, to a property of the process, which can be tested: unsupported output cannot pass as a finding.</p>
+<blockquote class="pull"><p>If the agent cannot point to the record, the finding does not exist.</p></blockquote>
+<h3>How the check works, step by step</h3>
+<ol class="steps-list"><li>The agent retrieves records through the API, and the id of every record returned is logged.</li><li>The agent drafts a finding and lists the record ids it relies on.</li><li>A validation step checks that every cited id was actually retrieved in that run.</li><li>It then checks that every number, date and name in the finding appears in the cited records.</li><li>Any finding that fails is struck through and kept, so the reviewer sees what was rejected and why.</li><li>A named reviewer accepts, edits or rejects the surviving findings, and the decision is recorded.</li></ol>
+<h3>A worked example</h3>
+<p>An agent reports that two bills from the same vendor carry the same reference, were posted four days apart and were both paid. It cites the two bill records and the two payment records. The validator confirms all four ids were retrieved and that the reference, dates and payment status appear in them, so the finding stands for review. In the same run the agent adds that the vendor was created by the user who approved both payments, but cites no vendor record or user log. That sentence is struck through. It may be true; it is not yet evidence, so the reviewer pulls the vendor change history before saying it.</p>
+<h2>What should an AI audit trail record?</h2>
+<div class="table-wrap" role="region" aria-label="Minimum AI audit trail for finance use" tabindex="0"><table class="data-table">
+  <caption>Minimum AI audit trail for finance use</caption>
+  <thead><tr><th scope="col">Element</th><th scope="col">Why it matters</th><th scope="col">Practical note</th></tr></thead>
+  <tbody><tr><th scope="row">Instruction version</th><td>The same question under a different instruction gives a different answer</td><td>Odoo 20 default prompts accept context and dynamic values; version them like a policy</td></tr><tr><th scope="row">Records retrieved</th><td>The basis for re-performance</td><td>Log record ids, not only a summary of the query</td></tr><tr><th scope="row">Provider and model</th><td>Explains differences between runs</td><td>Odoo 20 selects the model automatically once you choose a provider; confirm what your database records</td></tr><tr><th scope="row">Output as delivered</th><td>Shows what the user actually saw</td><td>Keep the original, including struck-through findings</td></tr><tr><th scope="row">Reviewer and decision</th><td>Accountability sits with a person</td><td>A named, registered approver; the requester does not approve their own run</td></tr><tr><th scope="row">Resulting entry</th><td>Links the finding to the books</td><td>Draft, approval, posting; corrections by reversal, never deletion</td></tr><tr><th scope="row">Retention</th><td>Evidence must outlive the chat</td><td>Stored conversations are kept up to 30 days after the last message; copy what you need into the record or working papers</td></tr></tbody>
+</table></div>
+<h2>Where does Odoo 20 help, and where are the gaps?</h2>
+<p>According to Odoo’s 20 release notes, several AI features point the right way. AI-powered financial insights answer questions about the company’s finances based solely on accounting data in your database, and can review suspected reconciliation errors and return findings and recommendations. Agents show live progress, can reprocess sources manually, ask before exceeding their tool call limit and request permission through buttons. Outside AI, cash journal entries are hashed on reconciliation, user group changes are logged in the user’s chatter, and bank statement attachments are available in Accounting and Documents, which keeps the source document close to the entry.</p>
+<p>The gaps are about evidence, not capability. Conversations are kept up to 30 days, shorter than any audit cycle. Automatic model selection means a re-run may not use the same model, so re-performance should re-check the cited records rather than re-ask the question. And an answer based on accounting data is only as good as that data: if bills are miscoded, the insight repeats the error with confidence. Confirm in your own database which AI features your edition and plan include and what each run logs. More on agent behaviour in <a href="/en/blog/odoo-20-ai-agents-finance-controls/">Odoo 20 AI agents under finance controls</a>.</p>
+<h2>How should an auditor test an AI-generated finding?</h2>
+<ol class="steps-list"><li>Re-perform from the cited records: open each record id and confirm the facts in the finding.</li><li>Trace to source documents: the bill, the bank statement line and the approval, not only the ledger.</li><li>Test completeness: confirm the run covered the whole population for the period, not a filtered view. This is what makes <a href="/en/blog/full-population-testing-ai-vs-sampling/">full-population testing with AI</a> defensible.</li><li>Review rejected findings too: a pattern of struck-through claims tells you something about the instruction or the data.</li><li>Document under ISA 230: what was run, on which records, who reviewed it and what was concluded.</li></ol>
+<p>A finding that survives these steps is a lead with evidence. It is still not a conclusion about fraud or misstatement; that judgment stays with the auditor, as we stress in <a href="/en/blog/ai-financial-fraud-detection/">AI-based fraud detection</a>.</p>
+<h2>What about corrections drafted by AI?</h2>
+<p>Provenance matters most when AI moves from finding to fixing. Our rule set: agents draft correcting entries and adjustments; a named, registered person approves; above the client’s <a href="/en/blog/materiality-isa-320-threshold/">ISA 320 materiality threshold</a> a second approver is required; corrections are made by reversal, never deletion; nothing is auto-posted. The trail then reads end to end: records retrieved, finding, draft entry, approver, posted reversal. Who may approve what is a segregation question, covered in <a href="/en/blog/ai-segregation-of-duties-internal-controls/">AI and segregation of duties</a>, and the principle is set out in <a href="/en/blog/agents-draft-people-approve/">agents draft, people approve</a>.</p>
+<h2>Where to start on Monday</h2>
+<ol class="steps-list"><li>Pick one AI output your team already uses, such as an overdue receivables answer, and ask for the record ids behind it. If they cannot be produced, stop using it in reports.</li><li>Write a one-page AI evidence standard: what each run must log, who reviews it, how long evidence is kept.</li><li>Move any AI output used in a report or entry into the record or a working paper within the 30-day window.</li><li>Version the instructions of every agent that touches finance, and review changes before they go live.</li><li>Add a re-performance check on a few AI findings to each month-end close review.</li></ol>
+<p>This is the discipline behind seg-audit, MFT’s continuous audit platform. It reads the books straight from the ERP, read-only, scores every transaction by risk, and works to one rule: &quot;No number without evidence&quot;. Findings stay on record with evidence and severity, repeats are linked to earlier findings, a finding cannot be closed without a named, registered approver, and the evidence trail is usable by external auditors. The <a href="/en/intelligence/auditor/">Auditor agent</a> applies evidence or silence today as a managed service and is being integrated into seg-audit’s report pipeline, where its output will enter a two-stage human approval chain as a draft; that integration is in final review, not yet live. For the case for continuous evidence, read <a href="/en/blog/continuous-audit-eleven-months/">what the annual audit misses in eleven months</a>, or talk to our <a href="/en/services/internal-audit/">internal audit team</a>.</p>
+      <section class="sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources</h2><ol><li><a href="https://www.odoo.com/odoo-20-release-notes" rel="noopener" target="_blank">Odoo, &quot;Odoo 20 Release Notes&quot; (24 September 2026)</a></li><li><a href="https://www.iaasb.org/publications/project-update-isa-500-audit-evidence" rel="noopener" target="_blank">IAASB, &quot;Project update: ISA 500, Audit Evidence&quot; (exposure drafts, August 2026)</a></li></ol></section>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/en/contact/">Talk to MFT about this</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">Questions people ask</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>What is AI hallucination in accounting?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>It is when an AI model produces a figure, name, date or statement that reads as correct but does not exist in the underlying records. In accounting it is dangerous because it looks like the result of a calculation. The control is to require every output to cite the records it came from and reject anything unsupported.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>Can AI output be used as audit evidence?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Only through the records it points to. ISA 500 asks for sufficient appropriate evidence, and ISA 230 asks for documentation another auditor can follow. An AI finding that cites record ids can be re-performed against those records and the source documents; an AI answer with no citations is an assertion that still needs evidence.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>What should an AI audit trail include?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>At minimum: the instruction version, the ids of the records retrieved, the provider and model where available, the output as delivered including rejected findings, the named reviewer and decision, any resulting draft or posted entry, and a retention step that keeps the evidence beyond the life of the chat.</p></details><details class="faq-item reveal" style="--i:3"><summary><h3>How long does Odoo 20 keep AI conversations?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>According to Odoo’s 20 release notes, stored AI conversations are kept up to 30 days after the last message. That is shorter than any audit cycle, so any AI output relied on for a report, a finding or an entry should be captured in the record or in working papers before then.</p></details><details class="faq-item reveal" style="--i:4"><summary><h3>Does zero hallucination mean the AI never makes mistakes?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>No. No model can guarantee that. Zero hallucination here means a process rule: output that cites no record, or contains a number not found in its cited records, is rejected and shown struck through, so unsupported claims never reach a report as facts. A named reviewer still checks what passes.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">About the author</p>
+        <h2>Ahmed Ashraf Mostafa</h2>
+        <p class="author-role">Founder and CEO, Modern Financial Technology</p>
+        <p>Licensed auditor and the founder of MFT. Ahmed built the firm from a financial audit practice into an Odoo implementation and Virtual CFO business serving Egypt and Saudi Arabia, and still leads client engagements. He writes about what the ledger actually shows.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">Related articles</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Internal audit</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-16"><span class="lat">16 September 2026</span></time><span><span class="lat">2</span> min read</span></p>
+    <h2><a href="/en/blog/materiality-isa-320-threshold/">Materiality is a method, not a round number</a></h2>
+    <p>How ISA 320 turns “what matters” into a threshold your team can apply every day, and why a fixed round figure is the wrong answer for every company at once.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Internal audit</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-16"><span class="lat">16 September 2026</span></time><span><span class="lat">1</span> min read</span></p>
+    <h2><a href="/en/blog/continuous-audit-eleven-months/">The eleven months your annual audit does not see</a></h2>
+    <p>Sampling once a year is a design choice from a paper era. What continuous review finds, and how it changes the relationship with your external auditor.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Internal audit</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-20"><span class="lat">20 September 2026</span></time><span><span class="lat">4</span> min read</span></p>
+    <h2><a href="/en/blog/what-is-internal-audit/">What is internal audit, and what does a mid-sized company actually get from it?</a></h2>
+    <p>Internal audit is not a smaller external audit. It answers a different question, for a different reader, on a different timetable.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/en/blog/">All articles</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">See also</h2>
+    <ul class="see-also-list"><li><a href="/en/services/internal-audit/">Services</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/egypt/">Egypt</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">Talk to a CPA, not a sales rep.</h2>
+      <p>A 30-minute call to understand your entity, your systems and what a decision-ready close would look like. Free, and you leave with one concrete next step.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/en/contact/">Book a call</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Services</h2>
+        <ul><li><a href="/en/services/odoo-erp/">Odoo ERP Implementation</a></li><li><a href="/en/services/internal-audit/">Internal Audit</a></li><li><a href="/en/services/virtual-cfo/">Virtual CFO</a></li><li><a href="/en/services/financial-consulting/">Financial Consulting</a></li><li><a href="/en/services/business-analysis/">Business Analysis</a></li><li><a href="/en/services/training/">User Training</a></li><li><a href="/en/services/technical-support/">Technical Support</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Industries</h2>
+        <ul><li><a href="/en/industries/#manufacturing">Manufacturing</a></li><li><a href="/en/industries/#trading">Trading &amp; Distribution</a></li><li><a href="/en/industries/#food-beverage">Food &amp; Beverage</a></li><li><a href="/en/industries/#healthcare">Healthcare</a></li><li><a href="/en/industries/#construction">Construction</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Where we work</h2>
+        <ul><li><a href="/en/egypt/">Egypt: Odoo, audit and Virtual CFO</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia: ZATCA-ready Odoo and audit</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Company</h2>
+        <ul><li><a href="/en/about/">About MFT</a></li><li><a href="/en/intelligence/">MFT Intelligence AI Agents</a></li><li><a href="/en/request-quote/">Request a quote</a></li><li><a href="/en/blog/">Insights (blog)</a></li><li><a href="/en/contact/">Contact</a></li><li><a href="/en/privacy/">Privacy</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">seg-audit platform</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Contact</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">Offices</h2>
+        <ul><li>Egypt: <span class="muted">Korba, Heliopolis, Cairo</span></li><li>Saudi Arabia</li><li>United States</li></ul>
+        <h2 class="footer-title">Follow</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Modern Financial Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=mv83pu20" defer></script>
+<script src="/assets/js/main.js?v=mv83pu20" defer></script>
+</body>
+</html>

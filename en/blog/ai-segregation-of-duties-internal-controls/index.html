@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI and segregation of duties: internal controls | MFT</title>
+  <meta name="description" content="How AI changes segregation of duties and internal controls: treat each agent as a user, map its conflicts, and test SoD across every transaction, not a sample.">
+  <link rel="canonical" href="https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/">
+  <link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/">
+  <link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/">
+  <link rel="alternate" hreflang="x-default" href="https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Modern Financial Technology">
+  <meta property="og:title" content="AI and segregation of duties: internal controls | MFT">
+  <meta property="og:description" content="How AI changes segregation of duties and internal controls: treat each agent as a user, map its conflicts, and test SoD across every transaction, not a sample.">
+  <meta property="og:url" content="https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://www.seg-audit.com/assets/img/og-en.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0D1B3E">
+  <link rel="alternate" type="application/rss+xml" title="Insights | Modern Financial Technology" href="https://www.seg-audit.com/en/blog/feed.xml">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="/assets/css/main.css?v=mv83pu20">
+  <script src="/assets/js/pre.js?v=mv83pu20"></script>
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["ProfessionalService","LocalBusiness","Organization"],"name":"Modern Financial Technology","alternateName":"MFT","url":"https://www.seg-audit.com","logo":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png","email":"info@seg-audit.com","telephone":"+201062399941","areaServed":[{"@type":"Country","name":"Egypt","identifier":"EG"},{"@type":"Country","name":"Saudi Arabia","identifier":"SA"},{"@type":"Country","name":"United States","identifier":"US"}],"knowsLanguage":["ar","en"],"address":{"@type":"PostalAddress","streetAddress":"Dr. Sayed Abdel Wahed Street, Korba, Heliopolis","addressLocality":"Cairo","addressRegion":"Cairo Governorate","addressCountry":"EG"},"geo":{"@type":"GeoCoordinates","latitude":30.0879,"longitude":31.3241},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+201062399941","email":"info@seg-audit.com","availableLanguage":["ar","en"],"areaServed":["EG","SA","US"]}],"sameAs":["https://www.linkedin.com/company/92779112","https://www.facebook.com/Fintech2030","https://www.instagram.com/egypt.smart"],"knowsAbout":["Odoo ERP implementation","Internal audit","Virtual CFO","ISA 320 materiality","ZATCA e-invoicing","Egyptian e-invoicing (ETA)","AI agents for finance"],"@id":"https://www.seg-audit.com/#organization"},{"@type":"WebSite","@id":"https://www.seg-audit.com/#website","url":"https://www.seg-audit.com","name":"Modern Financial Technology","inLanguage":["ar","en"],"publisher":{"@id":"https://www.seg-audit.com/#organization"}},{"@type":"WebPage","url":"https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/","name":"AI and segregation of duties: internal controls | MFT","description":"How AI changes segregation of duties and internal controls: treat each agent as a user, map its conflicts, and test SoD across every transaction, not a sample.","inLanguage":"en","isPartOf":{"@id":"https://www.seg-audit.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.seg-audit.com/en/"},{"@type":"ListItem","position":2,"name":"blog","item":"https://www.seg-audit.com/en/blog/"},{"@type":"ListItem","position":3,"name":"ai-segregation-of-duties-internal-controls","item":"https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI and segregation of duties: internal controls when agents are users","description":"How AI changes segregation of duties and internal controls: treat each agent as a user, map its conflicts, and test SoD across every transaction, not a sample.","inLanguage":"en","datePublished":"2026-10-14","dateModified":"2026-10-14","wordCount":1592,"articleSection":"Internal audit","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/"},"author":{"@type":"Person","name":"Ahmed Ashraf Mostafa","jobTitle":"Founder and CEO, Modern Financial Technology","url":"https://www.linkedin.com/company/92779112","worksFor":{"@id":"https://www.seg-audit.com/#organization"}},"publisher":{"@type":"Organization","@id":"https://www.seg-audit.com/#organization","name":"Modern Financial Technology","logo":{"@type":"ImageObject","url":"https://www.seg-audit.com/assets/logo/mft-lockup-navy.png"}},"image":"https://www.seg-audit.com/assets/img/og-en.png","abstract":"AI changes segregation of duties because an AI agent that can create or update accounting records is, for control purposes, a user. It must sit in the SoD matrix with a role, an owner and minimum rights. Keep its output in draft for a named person to approve, and use AI to test conflicts across every transaction.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".answer-text","h1"]},"keywords":"AI segregation of duties, AI internal controls, AI agents segregation of duties, SoD matrix AI agents, Odoo 20 access rights, continuous controls monitoring","about":[{"@type":"Thing","name":"Segregation of duties"},{"@type":"Thing","name":"Internal control"},{"@type":"Thing","name":"AI agents"},{"@type":"Thing","name":"Odoo"},{"@type":"Thing","name":"COSO Internal Control, Integrated Framework"}],"citation":[{"@type":"CreativeWork","name":"Odoo, \"Odoo 20 Release Notes\" (24 September 2026)","url":"https://www.odoo.com/odoo-20-release-notes"},{"@type":"CreativeWork","name":"ACFE, \"Occupational Fraud 2026: A Report to the Nations\" (press release, 19 May 2026)","url":"https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=report-to-the-"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/","url":"https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/","name":"AI and segregation of duties: internal controls when agents are users","inLanguage":"en","lastReviewed":"2026-10-14","reviewedBy":{"@type":"Organization","name":"MFT audit and Odoo practice","description":"Licensed auditors and Odoo implementation leads, Modern Financial Technology","parentOrganization":{"@id":"https://www.seg-audit.com/#organization"}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can an AI agent approve transactions in an ERP?","acceptedAnswer":{"@type":"Answer","text":"It should not. Approval carries accountability, and an agent cannot be held accountable. Let the agent prepare the approval file, such as the supporting records and the exceptions it found, and leave the decision to a named, registered person. Above your materiality threshold, add a second approver who did not request the agent’s work."}},{"@type":"Question","name":"Who should configure AI agents in the finance system?","acceptedAnswer":{"@type":"Answer","text":"Someone who does not approve what the agent produces. Writing an agent’s instructions shapes every draft it creates, so it is a recording function. Separate it from approval, put configuration changes under change management, and review the configuration history at least quarterly alongside user access rights."}},{"@type":"Question","name":"How does AI help test segregation of duties?","acceptedAnswer":{"@type":"Answer","text":"It reads every transaction instead of a sample and checks who actually acted: the same user creating and posting a journal entry, changing a vendor’s bank details and releasing a payment, or approving outside the approval matrix. Each hit is a lead for review, documented with record ids, not a confirmed violation."}},{"@type":"Question","name":"Does Odoo 20 change access rights for segregation of duties?","acceptedAnswer":{"@type":"Answer","text":"According to Odoo’s 20 release notes, record rules are removed and the domain is set directly on the access right, and user group changes are logged in the user’s chatter. After upgrading, re-test every restriction your segregation design relied on and use the change log as review evidence."}},{"@type":"Question","name":"Is a segregation of duties conflict found by AI proof of fraud?","acceptedAnswer":{"@type":"Answer","text":"No. A conflict shows that one user could, or did, perform two functions that should be separate. That is a control weakness. Whether anyone misused it is a separate question answered by examining the underlying transactions and documents, with the person involved given a chance to explain."}}]}</script>
+</head>
+<body class="page-article">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/en/" aria-label="Modern Financial Technology: Home">
+      <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="682" decoding="async" fetchpriority="high">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Menu">
+      <ul><li><a href="/en/services/">Services</a></li><li><a href="/en/industries/">Industries</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/" aria-current="page">Insights</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="/ar/blog/ai-segregation-of-duties-internal-controls/" lang="ar" hreflang="ar" dir="rtl">العربية</a>
+        <a class="btn btn-primary btn-sm" href="/en/contact/">Talk to Us</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<article class="article">
+  <header class="page-header">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Home</a></li><li><a href="/en/blog/">Insights</a></li><li aria-current="page">Internal audit</li></ol></nav>
+      <p class="eyebrow">Internal audit</p>
+      <h1>AI and segregation of duties: internal controls when agents are users</h1>
+      <p class="lead">An AI agent that can write to the ledger is a new user in your control design. Here is how to place it in the SoD matrix and use AI to test it.</p>
+      <p class="post-meta"><span class="topic-tag">Internal audit</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-10-14"><span class="lat">14 October 2026</span></time><span><span class="lat">7</span> min read</span></p>
+      <p class="post-meta reviewed-by"><span>Reviewed by MFT audit and Odoo practice</span><span>last reviewed <time datetime="2026-10-14"><span class="lat">14 October 2026</span></time></span></p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose article-body">
+      <aside class="answer-box" aria-labelledby="answer-title"><p class="eyebrow" id="answer-title">Short answer</p><p class="answer-text">AI changes segregation of duties because an AI agent that can create or update accounting records is, for control purposes, a user. It must sit in the SoD matrix with a role, an owner and minimum rights. Keep its output in draft for a named person to approve, and use AI to test conflicts across every transaction.</p><p class="takeaways-title">Key takeaways</p><ul class="check-list"><li>An agent that can create or update records performs the recording function and belongs in the SoD matrix.</li><li>Agents may draft, propose and monitor; authorization and custody stay with named people.</li><li>AI adds configuration conflicts: the person who writes an agent’s instructions should not approve its drafts.</li><li>Used as a detective control, AI checks who actually did what on every transaction, not who could have.</li></ul></aside>
+      <p>Run a user access review on an ERP where AI has been on for a few months and a new kind of line appears. It is not a person, it has no job description, it was set up by IT or the implementation partner, and it can create and update records in Accounting. Nobody put it in the segregation of duties matrix, because the matrix was written for people.</p>
+<p>The basics of conflicting duties in Odoo are in our <a href="/en/blog/segregation-of-duties-odoo/">guide to segregation of duties in Odoo</a>. This article asks what changes when some hands in a process are agents, and how the same technology can test segregation on every transaction. It is part of our series on <a href="/en/blog/ai-in-accounting-guide-2026/">AI in accounting in 2026</a>.</p>
+<h2>What is segregation of duties when AI is part of the process?</h2>
+<p>Segregation of duties is the design rule that no single user, human or automated, can authorize, record, hold custody of and reconcile the same transaction. The four functions have not changed; the list of users has. COSO’s Internal Control, Integrated Framework (2013) has a place for this: Principle 10 covers control activities such as segregation, and Principle 11 covers general controls over technology, which is where the configuration of an AI agent belongs. ISA 315 (Revised 2019) requires the external auditor to understand the IT environment and general IT controls, so an agent with write access will be in scope at your next audit whether you mapped it or not.</p>
+<h2>Is an AI agent a &quot;user&quot; for segregation of duties?</h2>
+<p>For control purposes, yes: the test is whether the actor can change the books. According to Odoo’s 20 release notes, AI agents can create records (including from an uploaded instruction file such as a PDF), update records, and be triggered by automated actions and scheduled actions. Anything that can create or update an accounting record performs the recording function and must sit in the matrix with a role, an owner and limits.</p>
+<p>Before designing anything, confirm in your own Odoo 20 database under whose access rights an agent’s actions run and how its changes are attributed in the record history; that decides whether a conflict sits with the agent, the person who triggered it, or both. Also confirm which AI features your edition and plan include. Every AI request consumes IAP credits, billed per request and not included in any plan.</p>
+<h3>Decision rule: which of the four functions may an agent hold?</h3>
+<div class="table-wrap" role="region" aria-label="Where an AI agent may sit among the four functions" tabindex="0"><table class="data-table">
+  <caption>Where an AI agent may sit among the four functions</caption>
+  <thead><tr><th scope="col">Function</th><th scope="col">May an AI agent hold it?</th><th scope="col">Condition</th></tr></thead>
+  <tbody><tr><th scope="row">Authorize</th><td>No</td><td>Approval is a judgment that carries accountability, so it stays with a named, registered person. An agent may prepare the approval file.</td></tr><tr><th scope="row">Record</th><td>Draft only</td><td>The agent drafts entries or records; a person who did not configure the agent reviews and posts them.</td></tr><tr><th scope="row">Custody</th><td>No</td><td>No agent should initiate payments. If you pay bills from Odoo through payment initiation (PISP), keep the release with a person.</td></tr><tr><th scope="row">Reconcile</th><td>Propose only</td><td>The agent proposes matches and flags suspected errors; a person validates the reconciliation.</td></tr><tr><th scope="row">Monitor</th><td>Yes</td><td>Reading the full population for exceptions is where AI adds most and conflicts least, provided findings go to someone independent.</td></tr></tbody>
+</table></div>
+<h2>Which conflicts does AI introduce that a classic SoD matrix misses?</h2>
+<p>AI adds conflicting pairs that sit in configuration, not in transactions, so a classic matrix misses them:</p>
+<ul class="check-list"><li>Agent configurer and approver. Whoever writes an agent’s instructions and skills shapes every entry it drafts. In Odoo 20, &quot;topics&quot; are renamed &quot;skills&quot; and default prompts accept context and dynamic values, so a one-line change can alter a month of drafts. That person should not approve them.</li><li>Requester and approver of the same run. The person who asks an agent to prepare a correcting entry should not be the one who approves it.</li><li>Trigger owner and process owner. Agents can be fired by automated and scheduled actions, and Studio automation rules can now trigger activity plans. Changing a trigger is changing a control, so it needs change management.</li><li>Button clicker and authority holder. Odoo 20 agents ask questions, request permission and make suggestions answered by buttons, and they ask before exceeding their tool call limit. Each click is an approval, so define who may click.</li><li>Connection owner and data owner. The release notes describe connecting to the database via MCP. An external connection is a user with rights; it belongs in the matrix and in your <a href="/en/blog/connect-ai-to-odoo-continuous-audit/">design for connecting AI to Odoo</a>.</li></ul>
+<h2>How do you design internal controls for AI agents in Odoo?</h2>
+<p>Treat each agent like a new team member who works fast, never tires and has no judgment. Our procedure:</p>
+<ol class="steps-list"><li>Inventory every agent, every automated or scheduled action that calls AI, and every API or MCP connection. Record its owner, its trigger and the models it can create or update.</li><li>Map each one to the four functions and add it to the SoD matrix as its own row, next to the people.</li><li>Set its access rights to the minimum. Odoo’s 20 release notes say record rules are removed and the domain is set directly on the access right, so any restriction you relied on before an upgrade must be re-checked, not assumed.</li><li>Keep agent output in draft. A named person who did not configure the agent posts it. Confirm in your database that the agent’s rights do not allow posting or confirming.</li><li>Tier approvals by materiality: above your <a href="/en/blog/materiality-isa-320-threshold/">ISA 320 materiality threshold</a>, require a second approver.</li><li>Correct by reversal, never by deletion, and protect closed periods with lock dates (long-standing in recent Odoo versions; confirm in your 20 database who can change them).</li><li>Retain evidence outside the chat. Stored AI conversations are kept up to 30 days after the last message, so anything you need as audit evidence must be captured in the record or a working paper before then.</li><li>Review agent rights and configuration every quarter, using the user group change log that Odoo 20 keeps in each user’s chatter.</li></ol>
+<p>The governance of the agents themselves is covered in <a href="/en/blog/odoo-20-ai-agents-finance-controls/">Odoo 20 AI agents under finance controls</a>, and the principle behind step 4 is set out in <a href="/en/blog/agents-draft-people-approve/">agents draft, people approve</a>.</p>
+<blockquote class="pull"><p>An agent that can write to the ledger is a user. Give it a role, an owner, and a person who signs for its work.</p></blockquote>
+<h2>How can AI test segregation of duties instead of threatening it?</h2>
+<p>A manual access review checks who could act. A data test checks who did act, on every transaction. The difference matters: the ACFE’s Occupational Fraud 2026 report found that more than half of cases involved a lack of internal controls or an override of existing ones, and that proactive data monitoring is associated with lower losses and faster detection.</p>
+<div class="table-wrap" role="region" aria-label="SoD control matrix: preventive design and AI-run detective tests" tabindex="0"><table class="data-table">
+  <caption>SoD control matrix: preventive design and AI-run detective tests</caption>
+  <thead><tr><th scope="col">Risk</th><th scope="col">Preventive control</th><th scope="col">Detective test on the full population</th><th scope="col">Evidence to retain</th></tr></thead>
+  <tbody><tr><th scope="row">Fictitious vendor paid</th><td>Vendor maintenance and payment release in different roles</td><td>Same user changed a vendor’s bank details and released a payment to that vendor</td><td>Vendor change log, payment record, user ids</td></tr><tr><th scope="row">Self-approved journal entry</th><td>Posting and approval in different roles</td><td>Same user created and posted a manual entry, especially late in the month and in round amounts</td><td>Entry history with creator and poster</td></tr><tr><th scope="row">Approval bypass</th><td>Purchase Order Approval above a set amount (recent Odoo versions; confirm in 20)</td><td>Orders confirmed outside the approval matrix, or split to fall just below the threshold</td><td>Order approval history, version of the approval matrix</td></tr><tr><th scope="row">Duplicate payment</th><td>Duplicate detection warnings on bills</td><td>Duplicate and near-duplicate payments, near-duplicate vendors</td><td>Bill ids, payment ids, warning status</td></tr><tr><th scope="row">Agent drift</th><td>Draft-only rights; approval by someone other than the configurer</td><td>Drafts approved by the person who configured or triggered the agent</td><td>Agent configuration history, approver id</td></tr></tbody>
+</table></div>
+<p>Running these tests on every record is the subject of <a href="/en/blog/full-population-testing-ai-vs-sampling/">full-population testing with AI</a>. A hit is a lead, not a finding: two conflicting roles held by one user is a design weakness, and whether it was exploited is a question for evidence, as explained in <a href="/en/blog/ai-financial-fraud-detection/">AI-based fraud detection</a>.</p>
+<h2>What if the team is too small to separate duties?</h2>
+<p>A two-person team cannot split seven conflicting pairs, and agents do not change that, because an agent cannot carry accountability. The answer is still compensating controls, now cheaper to run. An owner or general manager outside the transaction reviews a short monthly exception list produced by AI: users who both created and approved, vendor bank changes followed by payments, manual entries after the close. The review is quick because the list is short, and documented because the list is a record. That is COSO Principle 16 (ongoing and separate evaluations) in a form a small team can sustain.</p>
+<h2>Where to start on Monday</h2>
+<ol class="steps-list"><li>List every AI agent, automation and external connection in your ERP, with one named owner for each.</li><li>Add them as rows in your SoD matrix and mark the function each one performs.</li><li>Remove posting, confirming and payment rights from agents; keep them on draft.</li><li>Run one detective test on the last quarter: users who both created and approved the same journal entry or vendor payment.</li><li>Agree who reviews the exceptions, and how evidence is kept beyond the 30-day conversation window.</li></ol>
+<p>This is how we built MFT Intelligence, twelve finance agents written by MFT’s accountants: agents draft correcting entries and adjustments, a named, registered person approves, a second approver is required above the client’s ISA 320 materiality threshold, corrections are made by reversal, and nothing is auto-posted. The <a href="/en/intelligence/auditor/">Auditor agent</a> is available now as a managed service, and our <a href="/en/services/internal-audit/">internal audit team</a> can bring your agents into a segregation of duties review alongside your people. See also <a href="/en/blog/ai-audit-trail-zero-hallucination/">the AI audit trail</a> and <a href="/en/blog/continuous-auditing-ai-vs-traditional-audit/">continuous auditing with AI</a>.</p>
+      <section class="sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources</h2><ol><li><a href="https://www.odoo.com/odoo-20-release-notes" rel="noopener" target="_blank">Odoo, &quot;Odoo 20 Release Notes&quot; (24 September 2026)</a></li><li><a href="https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=report-to-the-" rel="noopener" target="_blank">ACFE, &quot;Occupational Fraud 2026: A Report to the Nations&quot; (press release, 19 May 2026)</a></li></ol></section>
+      <p class="cta-row article-cta"><a class="btn btn-primary" href="/en/contact/">Talk to MFT about this</a></p>
+    </div>
+  </section>
+  <section class="section section-mist faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">Questions people ask</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal" style="--i:0" open><summary><h3>Can an AI agent approve transactions in an ERP?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>It should not. Approval carries accountability, and an agent cannot be held accountable. Let the agent prepare the approval file, such as the supporting records and the exceptions it found, and leave the decision to a named, registered person. Above your materiality threshold, add a second approver who did not request the agent’s work.</p></details><details class="faq-item reveal" style="--i:1"><summary><h3>Who should configure AI agents in the finance system?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>Someone who does not approve what the agent produces. Writing an agent’s instructions shapes every draft it creates, so it is a recording function. Separate it from approval, put configuration changes under change management, and review the configuration history at least quarterly alongside user access rights.</p></details><details class="faq-item reveal" style="--i:2"><summary><h3>How does AI help test segregation of duties?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>It reads every transaction instead of a sample and checks who actually acted: the same user creating and posting a journal entry, changing a vendor’s bank details and releasing a payment, or approving outside the approval matrix. Each hit is a lead for review, documented with record ids, not a confirmed violation.</p></details><details class="faq-item reveal" style="--i:3"><summary><h3>Does Odoo 20 change access rights for segregation of duties?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>According to Odoo’s 20 release notes, record rules are removed and the domain is set directly on the access right, and user group changes are logged in the user’s chatter. After upgrading, re-test every restriction your segregation design relied on and use the change log as review evidence.</p></details><details class="faq-item reveal" style="--i:4"><summary><h3>Is a segregation of duties conflict found by AI proof of fraud?</h3><span class="faq-icon" aria-hidden="true"></span></summary><p>No. A conflict shows that one user could, or did, perform two functions that should be separate. That is a control weakness. Whether anyone misused it is a separate question answered by examining the underlying transactions and documents, with the person involved given a chance to explain.</p></details>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="author-title">
+    <div class="container narrow">
+      <div class="author-box">
+        <p class="eyebrow" id="author-title">About the author</p>
+        <h2>Ahmed Ashraf Mostafa</h2>
+        <p class="author-role">Founder and CEO, Modern Financial Technology</p>
+        <p>Licensed auditor and the founder of MFT. Ahmed built the firm from a financial audit practice into an Odoo implementation and Virtual CFO business serving Egypt and Saudi Arabia, and still leads client engagements. He writes about what the ledger actually shows.</p>
+        <p><a class="btn btn-link" href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+</article>
+<section class="section related-posts" aria-labelledby="related-posts-title">
+  <div class="container narrow">
+    <h2 id="related-posts-title" class="footer-title">Related articles</h2>
+    <ol class="post-list compact"><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Internal audit</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-16"><span class="lat">16 September 2026</span></time><span><span class="lat">2</span> min read</span></p>
+    <h2><a href="/en/blog/materiality-isa-320-threshold/">Materiality is a method, not a round number</a></h2>
+    <p>How ISA 320 turns “what matters” into a threshold your team can apply every day, and why a fixed round figure is the wrong answer for every company at once.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Internal audit</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-16"><span class="lat">16 September 2026</span></time><span><span class="lat">1</span> min read</span></p>
+    <h2><a href="/en/blog/continuous-audit-eleven-months/">The eleven months your annual audit does not see</a></h2>
+    <p>Sampling once a year is a design choice from a paper era. What continuous review finds, and how it changes the relationship with your external auditor.</p>
+  </li><li class="post-card">
+    <p class="post-meta"><span class="topic-tag">Internal audit</span><span>By Ahmed Ashraf Mostafa</span><time datetime="2026-09-20"><span class="lat">20 September 2026</span></time><span><span class="lat">4</span> min read</span></p>
+    <h2><a href="/en/blog/what-is-internal-audit/">What is internal audit, and what does a mid-sized company actually get from it?</a></h2>
+    <p>Internal audit is not a smaller external audit. It answers a different question, for a different reader, on a different timetable.</p>
+  </li></ol>
+    <p class="section-foot"><a class="btn btn-link" href="/en/blog/">All articles</a></p>
+  </div>
+</section>
+<nav class="section see-also" aria-labelledby="see-also-title">
+  <div class="container">
+    <h2 id="see-also-title" class="footer-title">See also</h2>
+    <ul class="see-also-list"><li><a href="/en/services/internal-audit/">Services</a></li><li><a href="/en/intelligence/">MFT Intelligence</a></li><li><a href="/en/egypt/">Egypt</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia</a></li></ul>
+  </div>
+</nav>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id="cta-band-title">Talk to a CPA, not a sales rep.</h2>
+      <p>A 30-minute call to understand your entity, your systems and what a decision-ready close would look like. Free, and you leave with one concrete next step.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/en/contact/">Book a call</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/mft-lockup-white.png" alt="Modern Financial Technology" width="2000" height="683" loading="lazy" decoding="async">
+        <p>A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Services</h2>
+        <ul><li><a href="/en/services/odoo-erp/">Odoo ERP Implementation</a></li><li><a href="/en/services/internal-audit/">Internal Audit</a></li><li><a href="/en/services/virtual-cfo/">Virtual CFO</a></li><li><a href="/en/services/financial-consulting/">Financial Consulting</a></li><li><a href="/en/services/business-analysis/">Business Analysis</a></li><li><a href="/en/services/training/">User Training</a></li><li><a href="/en/services/technical-support/">Technical Support</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Industries</h2>
+        <ul><li><a href="/en/industries/#manufacturing">Manufacturing</a></li><li><a href="/en/industries/#trading">Trading &amp; Distribution</a></li><li><a href="/en/industries/#food-beverage">Food &amp; Beverage</a></li><li><a href="/en/industries/#healthcare">Healthcare</a></li><li><a href="/en/industries/#construction">Construction</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Where we work</h2>
+        <ul><li><a href="/en/egypt/">Egypt: Odoo, audit and Virtual CFO</a></li><li><a href="/en/saudi-arabia/">Saudi Arabia: ZATCA-ready Odoo and audit</a></li></ul>
+      </div><div class="footer-col">
+        <h2 class="footer-title">Company</h2>
+        <ul><li><a href="/en/about/">About MFT</a></li><li><a href="/en/intelligence/">MFT Intelligence AI Agents</a></li><li><a href="/en/request-quote/">Request a quote</a></li><li><a href="/en/blog/">Insights (blog)</a></li><li><a href="/en/contact/">Contact</a></li><li><a href="/en/privacy/">Privacy</a></li><li><a href="https://app.seg-audit.com" rel="noopener" target="_blank">seg-audit platform</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title">Contact</h2>
+        <ul>
+          <li><a href="mailto:info@seg-audit.com" class="lat">info@seg-audit.com</a></li>
+          <li><a href="tel:+201062399941" class="lat">+20 106 239 9941</a></li><li><a href="tel:+201040057520" class="lat">+20 104 005 7520</a></li>
+        </ul>
+        <h2 class="footer-title">Offices</h2>
+        <ul><li>Egypt: <span class="muted">Korba, Heliopolis, Cairo</span></li><li>Saudi Arabia</li><li>United States</li></ul>
+        <h2 class="footer-title">Follow</h2><ul><li><a href="https://www.linkedin.com/company/92779112" rel="noopener" target="_blank" class="lat">LinkedIn</a></li><li><a href="https://www.facebook.com/Fintech2030" rel="noopener" target="_blank" class="lat">Facebook</a></li><li><a href="https://www.instagram.com/egypt.smart" rel="noopener" target="_blank" class="lat">Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Modern Financial Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/js/motion.js?v=mv83pu20" defer></script>
+<script src="/assets/js/main.js?v=mv83pu20" defer></script>
+</body>
+</html>
