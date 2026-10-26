@@ -98,6 +98,7 @@ module.exports = {
           { label: 'Insights (blog)', href: 'blog/' },
           { label: 'Contact', href: 'contact/' },
           { label: 'Privacy', href: 'privacy/' },
+          { label: 'Trust & security', href: 'trust/' },
           { label: 'seg-audit platform', href: 'https://app.seg-audit.com', external: true }
         ]
       }
@@ -769,6 +770,113 @@ module.exports = {
       officesLabel: 'Offices',
       address: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis, Cairo'
     }
+  },
+
+  // Trust centre: every item is enforced in the seg-audit code or measured in a documented
+  // internal review. Sources: connector/guards.py, analysis/integrity.py, crypto/vault.py,
+  // the hash-chained audit ledger, TRUST_MATRIX.md (Aug 2026), docs/security/01-security-posture.md.
+  // What is not done yet is listed under notYet; nothing moves to the guarantees until it is done.
+  trustCenter: {
+    title: 'Trust & security | seg-audit by MFT',
+    description: 'What the seg-audit platform guarantees and how each guarantee is enforced in code: read-only access, no guessed numbers, a ledger that cannot be edited silently, full client isolation. Plus what we do not claim yet.',
+    page: {
+      eyebrow: 'Trust & security',
+      title: 'What we guarantee, how it is enforced, and what we do not claim yet.',
+      intro: 'Every guarantee on this page is built into the seg-audit platform and guarded by an automated test, not a line in a policy. At the end of the page: what we have not done yet, written just as plainly.'
+    },
+    groups: [
+      {
+        eyebrow: 'Access to your system',
+        title: 'We read, we never write. The limit is enforced before any request leaves our servers.',
+        items: [
+          {
+            title: 'Read-only, enforced in code',
+            body: 'Every request to Odoo passes an allowlist before it leaves the platform. Only read methods are allowed; any attempt to create, edit or delete is refused inside the platform and never reaches your system.',
+            proof: 'Guarded by a test that attempts a write and confirms it is refused before the network.'
+          },
+          {
+            title: 'We do not open your documents',
+            body: 'When a check needs to know whether a product or lot has a document, we read the attachment’s name, type and date only. Reading attachment content is refused in every check, and so is an "all fields" read on attachments.'
+          },
+          {
+            title: 'Your system key never passes through your browser',
+            body: 'The connection key is kept in an isolated secrets vault and used on our servers only while your report is prepared. If the vault cannot be reached, the request stops rather than continuing without it.'
+          }
+        ]
+      },
+      {
+        eyebrow: 'Numbers and AI',
+        title: 'Software computes, AI explains, an accountant approves.',
+        items: [
+          {
+            title: 'Every number comes from your data, or reads "not available"',
+            body: 'Deterministic software computes every figure from your data before the AI sees anything. The AI writes the narrative only, in a template that leaves it no room to add a number of its own.',
+            proof: 'An integrity gate checks every number in the narrative: if it cannot find its source in the computed data, the report is flagged for review.'
+          },
+          {
+            title: 'Your ledger rows never reach the AI model',
+            body: 'Raw transactions are aggregated on the platform’s server; what reaches the model is computed figures, capped in size for each report type. Which model providers may process client data is set by a written policy the code enforces.'
+          },
+          {
+            title: 'A draft until a named accountant approves it',
+            body: 'Every report is a watermarked draft until a registered reviewer approves it by name. Reports support decisions; they are not a formal audit opinion, and every report says so.'
+          }
+        ]
+      },
+      {
+        eyebrow: 'Record integrity',
+        title: 'What appears in your report cannot be changed silently.',
+        items: [
+          {
+            title: 'A chained log that exposes edits and deletions',
+            body: 'Everything in your organisation’s account is recorded in a log mathematically linked to the entry before it, one chain per organisation. Any edit or deletion, even straight in the database, shows up and is located.',
+            proof: 'Tried in production: a row edited with a direct database command was detected.'
+          },
+          {
+            title: 'Approval is bound to the approved version',
+            body: 'A report’s approval is bound to a fingerprint of its content. Regenerate the report and the approval drops automatically, so no signature ever covers content its signer did not see.'
+          }
+        ]
+      },
+      {
+        eyebrow: 'Isolation and operations',
+        title: 'Each client’s data in its own space, and a platform with no more privilege than it needs.',
+        items: [
+          {
+            title: 'Full isolation between organisations',
+            body: 'Ask for another organisation’s data and the answer is "not found", not "forbidden", so you cannot even tell it exists. Isolation is tested automatically with every update.'
+          },
+          {
+            title: 'Least privilege',
+            body: 'Platform services run under non-administrative accounts with every extra system privilege removed, verified on the running servers.'
+          },
+          {
+            title: 'Backups we have actually restored',
+            body: 'We restored a full copy of the platform databases onto a clean server and confirmed it works, rather than only taking backups.'
+          },
+          {
+            title: `More than ${N(F.testsFloor)} automated tests before every update`,
+            body: `No update reaches clients until all of them pass. The platform runs ${N(F.checks)} checks across ${F.reports} reports today; these figures are read straight from the platform code (${F.measuredOn}).`
+          }
+        ]
+      }
+    ],
+    notYet: {
+      title: 'What we do not claim yet',
+      intro: 'We list it here because a professional buyer will ask, and because trust starts with not overstating.',
+      items: [
+        'The platform has not yet had an independent penetration test by an outside firm.',
+        'We do not hold a SOC 2 or ISO 27001 certification.',
+        'The data processing agreement (DPA) and the sub-processor list are being drafted with legal counsel and will be published here once in force.'
+      ]
+    },
+    report: {
+      title: 'Found a vulnerability?',
+      body: 'Email {email} and please do not disclose it publicly. We reply within 72 business hours.'
+    },
+    securityEmail: 'security@seg-audit.com',
+    platformLink: 'seg-audit platform',
+    updated: `Last updated: ${F.measuredOn}`
   },
 
   privacy: {
