@@ -6,6 +6,11 @@
 // Remaining decisions (domain, pricing packages, vector logo) live in
 // PENDING-DECISIONS.md — nothing else in this file is a placeholder.
 
+// Platform figures are generated from the seg-audit code (scripts/platform-facts.js); never type them here.
+const F = require('./platform-facts');
+const N = (x) => x.toLocaleString('en-US');
+const SIGNUP = 'https://app.seg-audit.com/en/signup';
+
 module.exports = {
   lang: 'en',
   dir: 'ltr',
@@ -152,11 +157,11 @@ module.exports = {
     heroRisk: {
       // The hero hooks on the first line: a live "scanning" strip, then a question about real money, not audit jargon.
       eyebrow: 'Financial Clarity, Delivered',
-      live: 'Live check: entries, vendors, payments',
+      live: `Live check of your books: ${N(F.checks)} checks across ${F.reports} reports`,
       headline: 'How many duplicate payments left your company this year {accent}without anyone noticing?{/accent}',
       subhead: 'We read your books straight from your ERP, read-only, and show you every finding ranked by severity, with its evidence.',
       assurance: ['Read-only', 'Your data stays on your system', 'No number without evidence'],
-      cta: { label: 'Check your books for free', href: 'contact/' },
+      cta: { label: 'Check your books for free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
       risk: {
         title: 'Illustrative sample of a check result. You will see this same screen on your data.',
@@ -204,11 +209,11 @@ module.exports = {
           body: 'Platform services run under non-administrative accounts with no extra system privileges, verified on the running servers rather than on paper.'
         },
         {
-          title: '692 automated tests before every update, none skipped',
-          body: 'Test code is close to two thirds the size of the platform itself, and some of those tests guard the governance rules: one of them stopped a rule-breaking change before it reached any client.'
+          title: `More than ${N(F.testsFloor)} automated tests before every update, none skipped`,
+          body: `Test code is ${Math.floor(F.testRatio * 100)}% the size of the platform itself, and some of those tests guard the governance rules: one of them stopped a rule-breaking change before it reached any client.`
         }
       ],
-      note: 'Figures measured in a documented internal review of seg-audit (August 2026).'
+      note: `Test and check counts are read from the platform code (${F.measuredOn}); the other guarantees were measured in a documented internal review of seg-audit (August 2026). Details on the trust page.`
     },
 
     positioning: {
@@ -246,13 +251,13 @@ module.exports = {
       steps: [
         {
           when: 'Day 0',
-          title: 'Send your data',
-          body: 'Share your last closed month as a trial balance, an Odoo export or a spreadsheet. No preparation, no commitment.'
+          title: 'Connect or send your data',
+          body: 'Connect Odoo to the seg-audit platform read-only, or share your last closed month as a trial balance or a spreadsheet. No preparation, no commitment.'
         },
         {
           when: 'Within 24 hours',
           title: 'First report in 24 hours',
-          body: 'You receive a cash-flow and profitability snapshot with the three questions your board should be asking. Free, one per company.'
+          body: 'The platform reads your system read-only first, then you pick the area that matters to you: payments and vendors, tax, inventory, the financial statements, cash flow, or another. Free, one per company.'
         },
         {
           when: 'Week 1',
@@ -342,8 +347,8 @@ module.exports = {
     cta: {
       title: 'Start with one report. Free.',
       body:
-        'Send us your last closed month and within 24 hours you get a cash-flow and profitability snapshot with the three questions your board should be asking. One free report per company, defined scope, no commitment.',
-      button: { label: 'Get Your First Report Free', href: 'contact/' },
+        'Connect Odoo to the seg-audit platform read-only: it reads your books, then you choose your report in any area. Not on Odoo? Send us your last closed month and get the report within 24 hours. One free report per company, no commitment.',
+      button: { label: 'Get Your First Report Free', href: SIGNUP },
       alt: 'Or call us directly:'
     }
   },
@@ -458,7 +463,7 @@ module.exports = {
         faq: [
           { q: 'How many hours a month do we get?', a: 'It is scoped by deliverables, not hours: the monthly pack, the forecast and the review meeting are fixed; ad-hoc questions are answered within the engagement.' },
           { q: 'Do we need Odoo?', a: 'No. A monthly trial balance and sub-ledger export from any system is enough to start; Odoo makes it faster.' },
-          { q: 'Is the first report really free?', a: 'Yes. Send your last closed month and you receive a cash-flow and profitability snapshot within 24 hours, no commitment.' },
+          { q: 'Is the first report really free?', a: 'Yes. One report per company, in any area you choose, after the platform reads your system read-only. No credit card, no commitment.' },
           { q: 'I am a CFO. What do I get after the first report?', a: 'The service does not end at a PDF. Every month you receive a new pack compared with the one before, you sit with your MFT accountant in a decision review, and audit findings stay on record from one month to the next instead of starting from zero each time.' },
           { q: 'I own a small company. What happens after the free report?', a: 'A 30-minute diagnosis call with a licensed accountant that ends with one concrete next step, then, if you want it, a monthly pack with a defined scope. Nothing to install and no change to your system.' },
         ]
@@ -692,7 +697,7 @@ module.exports = {
         'ISO-aligned internal-control framework',
         '500+ reports delivered across Egypt, Saudi Arabia and the US',
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
-        'seg-audit: MFT’s own audit, control and cash-flow reporting platform, passing 692 automated tests before every update'
+        `seg-audit: MFT’s own continuous-audit platform, ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
       ]
     },
     team: {
@@ -947,7 +952,7 @@ module.exports = {
         faq: [
           { q: 'Is this a dashboard or a person?', a: 'Both. The agent does the analysis from your data; a licensed MFT accountant reviews it, signs it and presents it. You are never handed raw AI output.' },
           { q: 'Do we need Odoo?', a: 'It works best on Odoo, but a monthly trial balance and sub-ledger export from any system is enough to start.' },
-          { q: 'How fast is the first pack?', a: 'Send your last closed month and you receive a first cash-flow and profitability snapshot within 24 hours, free. The full monthly pack starts from your next close.' },
+          { q: 'How fast is the first pack?', a: 'With Odoo connected read-only, you request the free report from the platform yourself once it has read your system, in any area you choose; without a connection you get it within 24 hours of sending your last closed month. The full monthly pack starts from your next close.' },
           { q: 'Can it prepare investor or bank reporting?', a: 'Yes. Bank, investor and board formats are part of the Professional and Complete engagements.' }
         ],
         related: { label: 'Virtual CFO service', href: 'services/virtual-cfo/' }
@@ -1012,7 +1017,7 @@ module.exports = {
 
   homeFaq: [
     { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the seg-audit platform and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
-    { q: 'Is the first report really free?', a: 'Yes. Send your last closed month and you receive a cash-flow and profitability snapshot within 24 hours, one per company, with no commitment.' },
+    { q: 'Is the first report really free?', a: 'Yes. One report per company, in any area you choose, after the platform reads your system read-only. No credit card, no commitment.' },
     { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
   ],
   industriesFaq: [
