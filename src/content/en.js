@@ -573,6 +573,7 @@ module.exports = {
         tagline: 'An AI tool is only as good as the way it is used.',
         body: [
           'We set up your company’s Claude Team workspace: members and roles, single sign-on (SSO), spend controls, projects and knowledge bases for each team, and connections to work tools such as Google Workspace, Microsoft 365 and Slack.',
+          'Your company subscribes to Claude directly and in its own name, so ownership, billing and data stay with you. You add the MFT team as an admin in the workspace during setup, then we hand administration back to you in full.',
           'Then we train each role to use it in their actual work, from finance and audit to sales, HR and management, with a written usage policy that sets what company data may go in. It is the same approach we build the seg-audit platform on: AI prepares, a person approves.'
         ],
         deliverables: [
@@ -587,6 +588,7 @@ module.exports = {
         definition: 'Claude for teams with MFT is a service that sets up Claude Team for your company (members, permissions, single sign-on, projects, connections to work tools) and trains each team to use it under a written data policy. MFT is independent and not part of Anthropic.',
         faq: [
           { q: 'Is MFT part of Anthropic?', a: 'No. MFT is independent and provides the setup and training; Claude subscriptions, their prices and terms are set by Anthropic.' },
+          { q: 'How does the subscription work?', a: 'Your company subscribes directly with Claude and pays its subscription there; before that we help you choose the plan and the number and type of seats. MFT’s setup and training is invoiced separately.' },
           { q: 'How many members does it cover?', a: 'The Team plan runs from 2 to 150 members; larger organisations use the Enterprise plan. We help you choose the plan and seat types for how each team works.' },
           { q: 'What about company data?', a: 'We write a policy with you on what may go in, set permissions and sharing at workspace level, and review Anthropic’s commercial terms on data with you before switching it on.' },
         ]
