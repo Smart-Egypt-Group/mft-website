@@ -6,6 +6,11 @@
 // Remaining decisions (domain, pricing packages, vector logo) live in
 // PENDING-DECISIONS.md — nothing else in this file is a placeholder.
 
+// Platform figures are generated from the seg-audit code (scripts/platform-facts.js); never type them here.
+const F = require('./platform-facts');
+const N = (x) => x.toLocaleString('en-US');
+const SIGNUP = 'https://app.seg-audit.com/en/signup';
+
 module.exports = {
   lang: 'en',
   dir: 'ltr',
@@ -93,6 +98,8 @@ module.exports = {
           { label: 'Insights (blog)', href: 'blog/' },
           { label: 'Contact', href: 'contact/' },
           { label: 'Privacy', href: 'privacy/' },
+          { label: 'Trust & security', href: 'trust/' },
+          { label: 'Partners', href: 'partners/' },
           { label: 'seg-audit platform', href: 'https://app.seg-audit.com', external: true }
         ]
       }
@@ -152,11 +159,11 @@ module.exports = {
     heroRisk: {
       // The hero hooks on the first line: a live "scanning" strip, then a question about real money, not audit jargon.
       eyebrow: 'Financial Clarity, Delivered',
-      live: 'Live check: entries, vendors, payments',
+      live: `Live check of your books: ${N(F.checks)} checks across ${F.reports} reports`,
       headline: 'How many duplicate payments left your company this year {accent}without anyone noticing?{/accent}',
       subhead: 'We read your books straight from your ERP, read-only, and show you every finding ranked by severity, with its evidence.',
       assurance: ['Read-only', 'Your data stays on your system', 'No number without evidence'],
-      cta: { label: 'Check your books for free', href: 'contact/' },
+      cta: { label: 'Check your books for free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
       risk: {
         title: 'Illustrative sample of a check result. You will see this same screen on your data.',
@@ -204,11 +211,11 @@ module.exports = {
           body: 'Platform services run under non-administrative accounts with no extra system privileges, verified on the running servers rather than on paper.'
         },
         {
-          title: '692 automated tests before every update, none skipped',
-          body: 'Test code is close to two thirds the size of the platform itself, and some of those tests guard the governance rules: one of them stopped a rule-breaking change before it reached any client.'
+          title: `More than ${N(F.testsFloor)} automated tests before every update, none skipped`,
+          body: `Test code is ${Math.floor(F.testRatio * 100)}% the size of the platform itself, and some of those tests guard the governance rules: one of them stopped a rule-breaking change before it reached any client.`
         }
       ],
-      note: 'Figures measured in a documented internal review of seg-audit (August 2026).'
+      note: `Test and check counts are read from the platform code (${F.measuredOn}); the other guarantees were measured in a documented internal review of seg-audit (August 2026). Details on the trust page.`
     },
 
     positioning: {
@@ -236,7 +243,7 @@ module.exports = {
       eyebrow: 'Services',
       title: 'From the first journal entry to the board pack.',
       intro:
-        'Seven services, one accountable team. Start with a single report, or hand us the whole finance function.',
+        'Eight services, one accountable team. Start with a single report, or hand us the whole finance function.',
       cta: 'Explore all services'
     },
 
@@ -246,13 +253,13 @@ module.exports = {
       steps: [
         {
           when: 'Day 0',
-          title: 'Send your data',
-          body: 'Share your last closed month as a trial balance, an Odoo export or a spreadsheet. No preparation, no commitment.'
+          title: 'Connect or send your data',
+          body: 'Connect Odoo to the seg-audit platform read-only, or share your last closed month as a trial balance or a spreadsheet. No preparation, no commitment.'
         },
         {
           when: 'Within 24 hours',
           title: 'First report in 24 hours',
-          body: 'You receive a cash-flow and profitability snapshot with the three questions your board should be asking. Free, one per company.'
+          body: 'The platform reads your system read-only first, then you pick the area that matters to you: payments and vendors, tax, inventory, the financial statements, cash flow, or another. Free, one per company.'
         },
         {
           when: 'Week 1',
@@ -342,8 +349,8 @@ module.exports = {
     cta: {
       title: 'Start with one report. Free.',
       body:
-        'Send us your last closed month and within 24 hours you get a cash-flow and profitability snapshot with the three questions your board should be asking. One free report per company, defined scope, no commitment.',
-      button: { label: 'Get Your First Report Free', href: 'contact/' },
+        'Connect Odoo to the seg-audit platform read-only: it reads your books, then you choose your report in any area. Not on Odoo? Send us your last closed month and get the report within 24 hours. One free report per company, no commitment.',
+      button: { label: 'Get Your First Report Free', href: SIGNUP },
       alt: 'Or call us directly:'
     }
   },
@@ -368,7 +375,7 @@ module.exports = {
       'Odoo ERP implementation, internal audit, Virtual CFO, financial consulting, business analysis, training and technical support from one CPA-led team in Egypt, Saudi Arabia and the US.',
     page: {
       eyebrow: 'Services',
-      title: 'Seven services. One accountable team.',
+      title: 'Eight services. One accountable team.',
       intro:
         'Every engagement is led by a licensed accountant who also knows the system your numbers live in. Pick one service, or hand us the whole finance function.'
     },
@@ -458,7 +465,7 @@ module.exports = {
         faq: [
           { q: 'How many hours a month do we get?', a: 'It is scoped by deliverables, not hours: the monthly pack, the forecast and the review meeting are fixed; ad-hoc questions are answered within the engagement.' },
           { q: 'Do we need Odoo?', a: 'No. A monthly trial balance and sub-ledger export from any system is enough to start; Odoo makes it faster.' },
-          { q: 'Is the first report really free?', a: 'Yes. Send your last closed month and you receive a cash-flow and profitability snapshot within 24 hours, no commitment.' },
+          { q: 'Is the first report really free?', a: 'Yes. One report per company, in any area you choose, after the platform reads your system read-only. No credit card, no commitment.' },
           { q: 'I am a CFO. What do I get after the first report?', a: 'The service does not end at a PDF. Every month you receive a new pack compared with the one before, you sit with your MFT accountant in a decision review, and audit findings stay on record from one month to the next instead of starting from zero each time.' },
           { q: 'I own a small company. What happens after the free report?', a: 'A 30-minute diagnosis call with a licensed accountant that ends with one concrete next step, then, if you want it, a monthly pack with a defined scope. Nothing to install and no change to your system.' },
         ]
@@ -558,6 +565,33 @@ module.exports = {
           { q: 'Do you handle upgrades?', a: 'Yes. Version upgrades with regression testing and a monthly health check are included.' },
           { q: 'Which integrations?', a: 'Banks, e-invoicing portals (ETA, ZATCA), WhatsApp and third-party tools via API.' },
         ],
+      },
+      {
+        slug: 'claude-team',
+        name: 'Claude for teams: implementation and training',
+        short: 'Set up Claude Team for your company, configure access and connect it to your work tools, then train each team to use it in their own work.',
+        tagline: 'An AI tool is only as good as the way it is used.',
+        body: [
+          'We set up your company’s Claude Team workspace: members and roles, single sign-on (SSO), spend controls, projects and knowledge bases for each team, and connections to work tools such as Google Workspace, Microsoft 365 and Slack.',
+          'Your company subscribes to Claude directly and in its own name, so ownership, billing and data stay with you. You add the MFT team as an admin in the workspace during setup, then we hand administration back to you in full.',
+          'Then we train each role to use it in their actual work, from finance and audit to sales, HR and management, with a written usage policy that sets what company data may go in. It is the same approach we build the seg-audit platform on: AI prepares, a person approves.'
+        ],
+        deliverables: [
+          'Workspace, members, roles and single sign-on set up',
+          'Projects and knowledge bases for each team, built on your documents',
+          'Claude connected to the work tools your plan includes',
+          'A written usage policy with data and sharing controls',
+          'Role-based training workshops, in Arabic or English, recorded',
+          'A library of ready prompts for each team’s tasks'
+        ],
+        forWho: 'Companies that want to use AI in daily work with clear controls instead of scattered personal accounts: 2 to 150 members on the Team plan, and the Enterprise plan beyond that.',
+        definition: 'Claude for teams with MFT is a service that sets up Claude Team for your company (members, permissions, single sign-on, projects, connections to work tools) and trains each team to use it under a written data policy. MFT is independent and not part of Anthropic.',
+        faq: [
+          { q: 'Is MFT part of Anthropic?', a: 'No. MFT is independent and provides the setup and training; Claude subscriptions, their prices and terms are set by Anthropic.' },
+          { q: 'How does the subscription work?', a: 'Your company subscribes directly with Claude and pays its subscription there; before that we help you choose the plan and the number and type of seats. MFT’s setup and training is invoiced separately.' },
+          { q: 'How many members does it cover?', a: 'The Team plan runs from 2 to 150 members; larger organisations use the Enterprise plan. We help you choose the plan and seat types for how each team works.' },
+          { q: 'What about company data?', a: 'We write a policy with you on what may go in, set permissions and sharing at workspace level, and review Anthropic’s commercial terms on data with you before switching it on.' },
+        ]
       }
     ]
   },
@@ -692,7 +726,7 @@ module.exports = {
         'ISO-aligned internal-control framework',
         '500+ reports delivered across Egypt, Saudi Arabia and the US',
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
-        'seg-audit: MFT’s own audit, control and cash-flow reporting platform, passing 692 automated tests before every update'
+        `seg-audit: MFT’s own continuous-audit platform, ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
       ]
     },
     team: {
@@ -764,6 +798,188 @@ module.exports = {
       officesLabel: 'Offices',
       address: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis, Cairo'
     }
+  },
+
+  // Trust centre: every item is enforced in the seg-audit code or measured in a documented
+  // internal review. Sources: connector/guards.py, analysis/integrity.py, crypto/vault.py,
+  // the hash-chained audit ledger, TRUST_MATRIX.md (Aug 2026), docs/security/01-security-posture.md.
+  // What is not done yet is listed under notYet; nothing moves to the guarantees until it is done.
+  // Partners: the programme for Odoo implementation partners and accounting firms. Controls
+  // per activity come from seg-audit (analysis/odoo_best_practice.py → FAMILY_RULES, ISIC mapping).
+  // Ready-made module packages and their Odoo App Store listing are not built yet: marked "soon".
+  // Commission and resale margin are not decided: "set in the partner agreement", no figures.
+  partners: {
+    title: 'MFT partners | Odoo partners and accounting firms',
+    description: 'The MFT partner programme for Odoo implementation partners and accounting firms in Egypt and Saudi Arabia: continuous audit for your clients on the seg-audit platform, with internal controls for each activity.',
+    page: {
+      eyebrow: 'Partners',
+      title: 'Your clients run Odoo. Continuous audit, under your name.',
+      intro: 'A programme for Odoo implementation partners and accounting firms: give your clients a continuous review of their books on the seg-audit platform, with Arabic reports approved by a named MFT reviewer and internal controls designed for each client’s activity.'
+    },
+    types: {
+      eyebrow: 'Who it is for',
+      title: 'Three kinds of partner.',
+      items: [
+        { title: 'Odoo implementation partners', body: 'Add continuous audit to implementation and upgrade projects, so your client knows the ledger is right after go-live, not only on hand-over day.' },
+        { title: 'Accounting and audit firms', body: 'Offer your Odoo clients a monthly review of their books before close, with an Arabic report that ties every finding to its source.' },
+        { title: 'Independent advisers and fractional CFOs', body: 'Read every client’s books with the same method, from one account, instead of a manual review that differs from company to company.' }
+      ]
+    },
+    gets: {
+      eyebrow: 'What partners get',
+      title: 'What is available today.',
+      items: [
+        { title: 'One account, many companies', body: 'The Enterprise plan covers up to 25 companies and 100 reports a month on one account, so you run your clients from one place.' },
+        { title: `${N(F.checks)} checks across ${F.reports} reports`, body: 'Duplicate payments, near-duplicate vendors, approvals and segregation of duties, cut-off, inventory valuation, tax and e-invoicing (ETA and ZATCA), and the financial statements.' },
+        { title: 'A free report for each of your client companies', body: 'Every company starts with one free report in any area, so your client sees the value on their own books before any commitment.' },
+        { title: 'A read-only connector module', body: 'The seg_audit_connector module is open source (LGPL-3) and runs on Odoo 17, 18 and 19: a dedicated read-only user, and a button that revokes access at once.' },
+        { title: 'A named reviewer on every report', body: 'Every report stays a draft until an MFT reviewer approves it by name. Reports support decisions; they are not a formal audit opinion.' },
+        { title: 'Partner terms', body: 'Commission or resale margin, deal registration and training are set in the partner agreement after the first call.' }
+      ]
+    },
+    packages: {
+      eyebrow: 'Activity packages',
+      title: 'Each activity has its own controls in Odoo.',
+      intro: 'The platform classifies the client’s activity (ISIC) and then checks the controls that activity needs in its Odoo setup, on top of the general checks.',
+      items: [
+        { title: 'Trading and distribution', sectors: 'Wholesale and distribution', controls: ['Inventory valued automatically with every move', 'Three-way match: purchase order, receipt and bill', 'Freight and customs costs loaded onto inventory'] },
+        { title: 'Retail and point of sale', sectors: 'Shops, restaurants and points of sale', controls: ['Inventory valued automatically with every move', 'Three-way match: purchase order, receipt and bill', 'Point-of-sale sessions closed the same day'] },
+        { title: 'Manufacturing', sectors: 'Manufacturing, including food and beverage', controls: ['Inventory valued automatically with every move', 'Active bills of materials for manufactured products', 'Work orders on manufacturing orders', 'A separate work-in-progress account'] },
+        { title: 'Services and projects', sectors: 'Contracting, healthcare and professional services', controls: ['Timesheets on projects', 'Analytic distribution tying income and expenses to each project’s cost'] }
+      ],
+      status: 'seg-audit checks the controls above today on any Odoo system. Ready-made module packages for each activity are being built and will be listed on the Odoo App Store soon; until then they are set up within the implementation project.'
+    },
+    independence: {
+      title: 'If you are the client’s external auditor',
+      body: 'To protect your independence: referral only, with no commission tied to the client’s findings, and the client contracts with MFT directly. Every partner agreement applies this limit.'
+    },
+    form: {
+      heading: 'Apply to partner',
+      type: 'Partner type',
+      typeOptions: [
+        { value: 'odoo-partner', label: 'Odoo implementation partner' },
+        { value: 'accounting-firm', label: 'Accounting or audit firm' },
+        { value: 'consultant', label: 'Independent adviser or fractional CFO' },
+        { value: 'other', label: 'Other' }
+      ],
+      clients: 'Your clients on Odoo',
+      clientOptions: [
+        { value: '<5', label: 'Fewer than 5' },
+        { value: '5-10', label: '5 to 10' },
+        { value: '10-25', label: '10 to 25' },
+        { value: '25+', label: 'More than 25' }
+      ],
+      message: 'Tell us briefly about your clients and their activities',
+      submit: 'Send application',
+      success: 'Your application arrived. We will contact you to book the call.',
+      aside: {
+        title: 'What happens next',
+        steps: ['We review your application and contact you by email or WhatsApp.', 'A 30-minute call to pick the first clients and agree the terms.', 'Your clients start with their free reports, and you read the results with us.']
+      }
+    }
+  },
+
+  trustCenter: {
+    title: 'Trust & security | seg-audit by MFT',
+    description: 'What the seg-audit platform guarantees and how each guarantee is enforced in code: read-only access, no guessed numbers, a ledger that cannot be edited silently, full client isolation. Plus what we do not claim yet.',
+    page: {
+      eyebrow: 'Trust & security',
+      title: 'What we guarantee, how it is enforced, and what we do not claim yet.',
+      intro: 'Every guarantee on this page is built into the seg-audit platform and guarded by an automated test, not a line in a policy. At the end of the page: what we have not done yet, written just as plainly.'
+    },
+    groups: [
+      {
+        eyebrow: 'Access to your system',
+        title: 'We read, we never write. The limit is enforced before any request leaves our servers.',
+        items: [
+          {
+            title: 'Read-only, enforced in code',
+            body: 'Every request to Odoo passes an allowlist before it leaves the platform. Only read methods are allowed; any attempt to create, edit or delete is refused inside the platform and never reaches your system.',
+            proof: 'Guarded by a test that attempts a write and confirms it is refused before the network.'
+          },
+          {
+            title: 'We do not open your documents',
+            body: 'When a check needs to know whether a product or lot has a document, we read the attachment’s name, type and date only. Reading attachment content is refused in every check, and so is an "all fields" read on attachments.'
+          },
+          {
+            title: 'Your system key never passes through your browser',
+            body: 'The connection key is kept in an isolated secrets vault and used on our servers only while your report is prepared. If the vault cannot be reached, the request stops rather than continuing without it.'
+          }
+        ]
+      },
+      {
+        eyebrow: 'Numbers and AI',
+        title: 'Software computes, AI explains, an accountant approves.',
+        items: [
+          {
+            title: 'Every number comes from your data, or reads "not available"',
+            body: 'Deterministic software computes every figure from your data before the AI sees anything. The AI writes the narrative only, in a template that leaves it no room to add a number of its own.',
+            proof: 'An integrity gate checks every number in the narrative: if it cannot find its source in the computed data, the report is flagged for review.'
+          },
+          {
+            title: 'Your ledger rows never reach the AI model',
+            body: 'Raw transactions are aggregated on the platform’s server; what reaches the model is computed figures, capped in size for each report type. Which model providers may process client data is set by a written policy the code enforces.'
+          },
+          {
+            title: 'A draft until a named accountant approves it',
+            body: 'Every report is a watermarked draft until a registered reviewer approves it by name. Reports support decisions; they are not a formal audit opinion, and every report says so.'
+          }
+        ]
+      },
+      {
+        eyebrow: 'Record integrity',
+        title: 'What appears in your report cannot be changed silently.',
+        items: [
+          {
+            title: 'A chained log that exposes edits and deletions',
+            body: 'Everything in your organisation’s account is recorded in a log mathematically linked to the entry before it, one chain per organisation. Any edit or deletion, even straight in the database, shows up and is located.',
+            proof: 'Tried in production: a row edited with a direct database command was detected.'
+          },
+          {
+            title: 'Approval is bound to the approved version',
+            body: 'A report’s approval is bound to a fingerprint of its content. Regenerate the report and the approval drops automatically, so no signature ever covers content its signer did not see.'
+          }
+        ]
+      },
+      {
+        eyebrow: 'Isolation and operations',
+        title: 'Each client’s data in its own space, and a platform with no more privilege than it needs.',
+        items: [
+          {
+            title: 'Full isolation between organisations',
+            body: 'Ask for another organisation’s data and the answer is "not found", not "forbidden", so you cannot even tell it exists. Isolation is tested automatically with every update.'
+          },
+          {
+            title: 'Least privilege',
+            body: 'Platform services run under non-administrative accounts with every extra system privilege removed, verified on the running servers.'
+          },
+          {
+            title: 'Backups we have actually restored',
+            body: 'We restored a full copy of the platform databases onto a clean server and confirmed it works, rather than only taking backups.'
+          },
+          {
+            title: `More than ${N(F.testsFloor)} automated tests before every update`,
+            body: `No update reaches clients until all of them pass. The platform runs ${N(F.checks)} checks across ${F.reports} reports today; these figures are read straight from the platform code (${F.measuredOn}).`
+          }
+        ]
+      }
+    ],
+    notYet: {
+      title: 'What we do not claim yet',
+      intro: 'We list it here because a professional buyer will ask, and because trust starts with not overstating.',
+      items: [
+        'The platform has not yet had an independent penetration test by an outside firm.',
+        'We do not hold a SOC 2 or ISO 27001 certification.',
+        'The data processing agreement (DPA) and the sub-processor list are being drafted with legal counsel and will be published here once in force.'
+      ]
+    },
+    report: {
+      title: 'Found a vulnerability?',
+      body: 'Email {email} and please do not disclose it publicly. We reply within 72 business hours.'
+    },
+    securityEmail: 'security@seg-audit.com',
+    platformLink: 'seg-audit platform',
+    updated: `Last updated: ${F.measuredOn}`
   },
 
   privacy: {
@@ -947,7 +1163,7 @@ module.exports = {
         faq: [
           { q: 'Is this a dashboard or a person?', a: 'Both. The agent does the analysis from your data; a licensed MFT accountant reviews it, signs it and presents it. You are never handed raw AI output.' },
           { q: 'Do we need Odoo?', a: 'It works best on Odoo, but a monthly trial balance and sub-ledger export from any system is enough to start.' },
-          { q: 'How fast is the first pack?', a: 'Send your last closed month and you receive a first cash-flow and profitability snapshot within 24 hours, free. The full monthly pack starts from your next close.' },
+          { q: 'How fast is the first pack?', a: 'With Odoo connected read-only, you request the free report from the platform yourself once it has read your system, in any area you choose; without a connection you get it within 24 hours of sending your last closed month. The full monthly pack starts from your next close.' },
           { q: 'Can it prepare investor or bank reporting?', a: 'Yes. Bank, investor and board formats are part of the Professional and Complete engagements.' }
         ],
         related: { label: 'Virtual CFO service', href: 'services/virtual-cfo/' }
@@ -1012,7 +1228,7 @@ module.exports = {
 
   homeFaq: [
     { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the seg-audit platform and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
-    { q: 'Is the first report really free?', a: 'Yes. Send your last closed month and you receive a cash-flow and profitability snapshot within 24 hours, one per company, with no commitment.' },
+    { q: 'Is the first report really free?', a: 'Yes. One report per company, in any area you choose, after the platform reads your system read-only. No credit card, no commitment.' },
     { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
   ],
   industriesFaq: [

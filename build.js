@@ -40,6 +40,8 @@ const about = require('./src/templates/pages/about');
 const contact = require('./src/templates/pages/contact');
 const notFound = require('./src/templates/pages/notfound');
 const privacy = require('./src/templates/pages/privacy');
+const trust = require('./src/templates/pages/trust');
+const partners = require('./src/templates/pages/partners');
 const intelligence = require('./src/templates/pages/intelligence');
 const agentPage = require('./src/templates/pages/agent');
 const quote = require('./src/templates/pages/quote');
@@ -93,6 +95,8 @@ function pageList(c) {
     { path: 'about/', render: (ctx) => about(ctx) },
     { path: 'contact/', render: (ctx) => contact(ctx) },
     { path: 'privacy/', render: (ctx) => privacy(ctx) },
+    { path: 'trust/', render: (ctx) => trust(ctx) },
+    { path: 'partners/', render: (ctx) => partners(ctx) },
     { path: '404.html', render: (ctx) => notFound(ctx), file: true, noindex: true },
     // Review-only preview of the alternative hero. Excluded from sitemap, disallowed in robots.
     { path: '_preview/hero-b/', render: (ctx) => home(ctx, { heroVariant: 'B' }), noindex: true },
