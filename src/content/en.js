@@ -99,6 +99,7 @@ module.exports = {
           { label: 'Contact', href: 'contact/' },
           { label: 'Privacy', href: 'privacy/' },
           { label: 'Trust & security', href: 'trust/' },
+          { label: 'Partners', href: 'partners/' },
           { label: 'seg-audit platform', href: 'https://app.seg-audit.com', external: true }
         ]
       }
@@ -776,6 +777,81 @@ module.exports = {
   // internal review. Sources: connector/guards.py, analysis/integrity.py, crypto/vault.py,
   // the hash-chained audit ledger, TRUST_MATRIX.md (Aug 2026), docs/security/01-security-posture.md.
   // What is not done yet is listed under notYet; nothing moves to the guarantees until it is done.
+  // Partners: the programme for Odoo implementation partners and accounting firms. Controls
+  // per activity come from seg-audit (analysis/odoo_best_practice.py → FAMILY_RULES, ISIC mapping).
+  // Ready-made module packages and their Odoo App Store listing are not built yet: marked "soon".
+  // Commission and resale margin are not decided: "set in the partner agreement", no figures.
+  partners: {
+    title: 'MFT partners | Odoo partners and accounting firms',
+    description: 'The MFT partner programme for Odoo implementation partners and accounting firms in Egypt and Saudi Arabia: continuous audit for your clients on the seg-audit platform, with internal controls for each activity.',
+    page: {
+      eyebrow: 'Partners',
+      title: 'Your clients run Odoo. Continuous audit, under your name.',
+      intro: 'A programme for Odoo implementation partners and accounting firms: give your clients a continuous review of their books on the seg-audit platform, with Arabic reports approved by a named MFT reviewer and internal controls designed for each client’s activity.'
+    },
+    types: {
+      eyebrow: 'Who it is for',
+      title: 'Three kinds of partner.',
+      items: [
+        { title: 'Odoo implementation partners', body: 'Add continuous audit to implementation and upgrade projects, so your client knows the ledger is right after go-live, not only on hand-over day.' },
+        { title: 'Accounting and audit firms', body: 'Offer your Odoo clients a monthly review of their books before close, with an Arabic report that ties every finding to its source.' },
+        { title: 'Independent advisers and fractional CFOs', body: 'Read every client’s books with the same method, from one account, instead of a manual review that differs from company to company.' }
+      ]
+    },
+    gets: {
+      eyebrow: 'What partners get',
+      title: 'What is available today.',
+      items: [
+        { title: 'One account, many companies', body: 'The Enterprise plan covers up to 25 companies and 100 reports a month on one account, so you run your clients from one place.' },
+        { title: `${N(F.checks)} checks across ${F.reports} reports`, body: 'Duplicate payments, near-duplicate vendors, approvals and segregation of duties, cut-off, inventory valuation, tax and e-invoicing (ETA and ZATCA), and the financial statements.' },
+        { title: 'A free report for each of your client companies', body: 'Every company starts with one free report in any area, so your client sees the value on their own books before any commitment.' },
+        { title: 'A read-only connector module', body: 'The seg_audit_connector module is open source (LGPL-3) and runs on Odoo 17, 18 and 19: a dedicated read-only user, and a button that revokes access at once.' },
+        { title: 'A named reviewer on every report', body: 'Every report stays a draft until an MFT reviewer approves it by name. Reports support decisions; they are not a formal audit opinion.' },
+        { title: 'Partner terms', body: 'Commission or resale margin, deal registration and training are set in the partner agreement after the first call.' }
+      ]
+    },
+    packages: {
+      eyebrow: 'Activity packages',
+      title: 'Each activity has its own controls in Odoo.',
+      intro: 'The platform classifies the client’s activity (ISIC) and then checks the controls that activity needs in its Odoo setup, on top of the general checks.',
+      items: [
+        { title: 'Trading and distribution', sectors: 'Wholesale and distribution', controls: ['Inventory valued automatically with every move', 'Three-way match: purchase order, receipt and bill', 'Freight and customs costs loaded onto inventory'] },
+        { title: 'Retail and point of sale', sectors: 'Shops, restaurants and points of sale', controls: ['Inventory valued automatically with every move', 'Three-way match: purchase order, receipt and bill', 'Point-of-sale sessions closed the same day'] },
+        { title: 'Manufacturing', sectors: 'Manufacturing, including food and beverage', controls: ['Inventory valued automatically with every move', 'Active bills of materials for manufactured products', 'Work orders on manufacturing orders', 'A separate work-in-progress account'] },
+        { title: 'Services and projects', sectors: 'Contracting, healthcare and professional services', controls: ['Timesheets on projects', 'Analytic distribution tying income and expenses to each project’s cost'] }
+      ],
+      status: 'seg-audit checks the controls above today on any Odoo system. Ready-made module packages for each activity are being built and will be listed on the Odoo App Store soon; until then they are set up within the implementation project.'
+    },
+    independence: {
+      title: 'If you are the client’s external auditor',
+      body: 'To protect your independence: referral only, with no commission tied to the client’s findings, and the client contracts with MFT directly. Every partner agreement applies this limit.'
+    },
+    form: {
+      heading: 'Apply to partner',
+      type: 'Partner type',
+      typeOptions: [
+        { value: 'odoo-partner', label: 'Odoo implementation partner' },
+        { value: 'accounting-firm', label: 'Accounting or audit firm' },
+        { value: 'consultant', label: 'Independent adviser or fractional CFO' },
+        { value: 'other', label: 'Other' }
+      ],
+      clients: 'Your clients on Odoo',
+      clientOptions: [
+        { value: '<5', label: 'Fewer than 5' },
+        { value: '5-10', label: '5 to 10' },
+        { value: '10-25', label: '10 to 25' },
+        { value: '25+', label: 'More than 25' }
+      ],
+      message: 'Tell us briefly about your clients and their activities',
+      submit: 'Send application',
+      success: 'Your application arrived. We will contact you to book the call.',
+      aside: {
+        title: 'What happens next',
+        steps: ['We review your application and contact you by email or WhatsApp.', 'A 30-minute call to pick the first clients and agree the terms.', 'Your clients start with their free reports, and you read the results with us.']
+      }
+    }
+  },
+
   trustCenter: {
     title: 'Trust & security | seg-audit by MFT',
     description: 'What the seg-audit platform guarantees and how each guarantee is enforced in code: read-only access, no guessed numbers, a ledger that cannot be edited silently, full client isolation. Plus what we do not claim yet.',

@@ -32,6 +32,7 @@ const SERVICE_LABELS = {
   'business-analysis': 'Business Analysis',
   training: 'User Training',
   'technical-support': 'Technical Support',
+  partners: 'Partner programme',
   unsure: 'Not sure yet'
 };
 
@@ -51,7 +52,7 @@ function describe(lead) {
   return {
     service,
     title: `${service || 'Website'} — ${lead.company || lead.name}`,
-    description: [lead.message, '', `Service: ${service}`, `Country: ${lead.country}`, `Language: ${lead.lang}`, `Page: ${lead.page}`].join('\n')
+    description: [lead.message, '', ...['partner_type', 'odoo_clients'].filter((k) => lead[k]).map((k) => `${k}: ${lead[k]}`), `Service: ${service}`, `Country: ${lead.country}`, `Language: ${lead.lang}`, `Page: ${lead.page}`].join('\n')
   };
 }
 
