@@ -243,7 +243,7 @@ module.exports = {
       eyebrow: 'Services',
       title: 'From the first journal entry to the board pack.',
       intro:
-        'Seven services, one accountable team. Start with a single report, or hand us the whole finance function.',
+        'Eight services, one accountable team. Start with a single report, or hand us the whole finance function.',
       cta: 'Explore all services'
     },
 
@@ -375,7 +375,7 @@ module.exports = {
       'Odoo ERP implementation, internal audit, Virtual CFO, financial consulting, business analysis, training and technical support from one CPA-led team in Egypt, Saudi Arabia and the US.',
     page: {
       eyebrow: 'Services',
-      title: 'Seven services. One accountable team.',
+      title: 'Eight services. One accountable team.',
       intro:
         'Every engagement is led by a licensed accountant who also knows the system your numbers live in. Pick one service, or hand us the whole finance function.'
     },
@@ -565,6 +565,31 @@ module.exports = {
           { q: 'Do you handle upgrades?', a: 'Yes. Version upgrades with regression testing and a monthly health check are included.' },
           { q: 'Which integrations?', a: 'Banks, e-invoicing portals (ETA, ZATCA), WhatsApp and third-party tools via API.' },
         ],
+      },
+      {
+        slug: 'claude-team',
+        name: 'Claude for teams: implementation and training',
+        short: 'Set up Claude Team for your company, configure access and connect it to your work tools, then train each team to use it in their own work.',
+        tagline: 'An AI tool is only as good as the way it is used.',
+        body: [
+          'We set up your company’s Claude Team workspace: members and roles, single sign-on (SSO), spend controls, projects and knowledge bases for each team, and connections to work tools such as Google Workspace, Microsoft 365 and Slack.',
+          'Then we train each role to use it in their actual work, from finance and audit to sales, HR and management, with a written usage policy that sets what company data may go in. It is the same approach we build the seg-audit platform on: AI prepares, a person approves.'
+        ],
+        deliverables: [
+          'Workspace, members, roles and single sign-on set up',
+          'Projects and knowledge bases for each team, built on your documents',
+          'Claude connected to the work tools your plan includes',
+          'A written usage policy with data and sharing controls',
+          'Role-based training workshops, in Arabic or English, recorded',
+          'A library of ready prompts for each team’s tasks'
+        ],
+        forWho: 'Companies that want to use AI in daily work with clear controls instead of scattered personal accounts: 2 to 150 members on the Team plan, and the Enterprise plan beyond that.',
+        definition: 'Claude for teams with MFT is a service that sets up Claude Team for your company (members, permissions, single sign-on, projects, connections to work tools) and trains each team to use it under a written data policy. MFT is independent and not part of Anthropic.',
+        faq: [
+          { q: 'Is MFT part of Anthropic?', a: 'No. MFT is independent and provides the setup and training; Claude subscriptions, their prices and terms are set by Anthropic.' },
+          { q: 'How many members does it cover?', a: 'The Team plan runs from 2 to 150 members; larger organisations use the Enterprise plan. We help you choose the plan and seat types for how each team works.' },
+          { q: 'What about company data?', a: 'We write a policy with you on what may go in, set permissions and sharing at workspace level, and review Anthropic’s commercial terms on data with you before switching it on.' },
+        ]
       }
     ]
   },

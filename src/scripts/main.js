@@ -63,7 +63,8 @@
     'odoo-erp': 'Odoo ERP Implementation', 'internal-audit': 'Internal Audit', 'virtual-cfo': 'Virtual CFO',
     'financial-consulting': 'Financial Consulting', 'business-analysis': 'Business Analysis',
     'training': 'User Training', 'technical-support': 'Technical Support', 'unsure': 'Not sure yet',
-    'partners': 'Partner programme'
+    'partners': 'Partner programme',
+    'claude-team': 'Claude Team implementation & training'
   };
   var submitBtn = form.querySelector('button[type="submit"]');
 

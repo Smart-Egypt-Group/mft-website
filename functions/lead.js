@@ -33,6 +33,7 @@ const SERVICE_LABELS = {
   training: 'User Training',
   'technical-support': 'Technical Support',
   partners: 'Partner programme',
+  'claude-team': 'Claude Team implementation & training',
   unsure: 'Not sure yet'
 };
 
