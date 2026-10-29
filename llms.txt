@@ -10,6 +10,7 @@
 - [Business Analysis](https://www.seg-audit.com/en/services/business-analysis/): Business analysis by MFT documents how orders, stock, production and cash actually move through your company and specifies what a system must do about it, before anything is configured.
 - [User Training](https://www.seg-audit.com/en/services/training/): User training by MFT is role-based Odoo and finance training delivered on your own configuration and data, in Arabic or English, with recorded sessions and bilingual guides.
 - [Technical Support](https://www.seg-audit.com/en/services/technical-support/): Technical support by MFT is an Odoo administration and maintenance agreement with agreed response times: user issues, report changes, access rights, upgrades and integrations, handled by people who know your chart of accounts.
+- [Claude for teams: implementation and training](https://www.seg-audit.com/en/services/claude-team/): Claude for teams with MFT is a service that sets up Claude Team for your company (members, permissions, single sign-on, projects, connections to work tools) and trains each team to use it under a written data policy. MFT is independent and not part of Anthropic.
 
 ## MFT Intelligence AI agents
 - MFT Intelligence is a managed AI-agent service from Modern Financial Technology: MFT runs specialised audit, CFO and finance-operations agents on a client’s ERP data and delivers reviewed findings, draft entries and reports under a governance policy enforced in code.

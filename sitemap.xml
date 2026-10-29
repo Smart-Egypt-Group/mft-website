@@ -46,6 +46,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/technical-support/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/services/claude-team/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/claude-team/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/claude-team/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/ar/industries/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/industries/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/industries/"/>
@@ -271,6 +276,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/privacy/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/trust/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/trust/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/trust/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/partners/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/partners/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/partners/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/"/>
@@ -314,6 +329,11 @@
     <loc>https://www.seg-audit.com/en/services/technical-support/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/technical-support/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/technical-support/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/services/claude-team/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/claude-team/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/claude-team/"/>
   </url>
   <url>
     <loc>https://www.seg-audit.com/en/industries/</loc>
@@ -539,5 +559,15 @@
     <loc>https://www.seg-audit.com/en/privacy/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/privacy/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/trust/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/trust/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/trust/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/partners/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/partners/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/partners/"/>
   </url>
 </urlset>

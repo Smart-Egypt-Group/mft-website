@@ -62,7 +62,9 @@
   var SERVICE_LABELS = {
     'odoo-erp': 'Odoo ERP Implementation', 'internal-audit': 'Internal Audit', 'virtual-cfo': 'Virtual CFO',
     'financial-consulting': 'Financial Consulting', 'business-analysis': 'Business Analysis',
-    'training': 'User Training', 'technical-support': 'Technical Support', 'unsure': 'Not sure yet'
+    'training': 'User Training', 'technical-support': 'Technical Support', 'unsure': 'Not sure yet',
+    'partners': 'Partner programme',
+    'claude-team': 'Claude Team implementation & training'
   };
   var submitBtn = form.querySelector('button[type="submit"]');
 
@@ -159,7 +161,7 @@
       params.set('email_from', data.email);
       params.set('phone', data.phone || '');
       var extra = [];
-      ['agents', 'erp', 'entities', 'volume', 'cadence'].forEach(function (k) { if (data[k]) extra.push(k.charAt(0).toUpperCase() + k.slice(1) + ': ' + data[k]); });
+      ['agents', 'erp', 'entities', 'volume', 'cadence', 'partner_type', 'odoo_clients'].forEach(function (k) { if (data[k]) extra.push(k.charAt(0).toUpperCase() + k.slice(1) + ': ' + data[k]); });
       params.set('description', [data.message, ''].concat(extra, ['Service: ' + service, 'Country: ' + data.country, 'Language: ' + data.lang, 'Page: ' + data.page]).join('\n'));
       // Odoo sends no CORS header: the response is opaque, so a resolved fetch means the
       // request was delivered; a network failure rejects and shows the error message.
