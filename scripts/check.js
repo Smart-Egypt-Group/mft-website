@@ -62,7 +62,7 @@ const PAIRS = [
   ['on-navy-4', 'navy', 4.5, 'hero B trust line (reference: white at 50%)'],
   ['line-strong', 'white', 3, 'input borders (non-text 3:1)'],
   // Guard rails — these MUST stay out of text use. Documented, not asserted:
-  // cyan on white ≈ 2.4:1, gold on white ≈ 2.4:1.
+  // cyan on white ≈ 2.4:1.
 ];
 console.log('Contrast (WCAG AA):');
 for (const [fg, bg, min, where] of PAIRS) {
@@ -71,11 +71,10 @@ for (const [fg, bg, min, where] of PAIRS) {
   r >= min ? ok(line) : fail(line);
 }
 const cyanOnWhite = ratio(token('cyan'), token('white'));
-const goldOnWhite = ratio(token('gold'), token('white'));
-console.log(`  · reference: brand cyan on white = ${cyanOnWhite.toFixed(2)}:1, gold on white = ${goldOnWhite.toFixed(2)}:1 → never used for text on light backgrounds`);
-// Make sure no rule sets text colour to raw cyan/gold on a light surface.
-if (/color:\s*var\(--gold\)/.test(CSS)) fail('CSS sets a text colour to --gold');
-else ok('gold is never used as a text colour');
+console.log(`  · reference: brand cyan on white = ${cyanOnWhite.toFixed(2)}:1: never used for text on light backgrounds`);
+// Brand rule (CEO): no gold anywhere in the palette.
+if (/--gold\b|#C9A227/i.test(CSS)) fail('CSS uses gold (brand: navy, cyan, white only)');
+else ok('no gold in the CSS');
 // Brand rule (palette.json): mark-cyan #1BB7CD is never a button fill.
 if (/\.btn[\w-]*\s*\{[^}]*background:\s*var\(--cyan\)/.test(CSS)) fail('a button uses --cyan as its fill (brand: accent only)');
 else ok('no button is filled with mark-cyan');

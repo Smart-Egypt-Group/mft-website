@@ -31,7 +31,7 @@
   --navy: #0D1B3E;
   --accent: #0F7C91;        /* interaction colour: buttons, links, focus — 4.87:1 with white either way */
   --accent-hover: #0C6A7C;
-  --cyan: #1BB7CD;          /* logo mark + decorative fills on navy only — 2.4:1 on white, NOT for text on light, never a button */
+  --cyan: #1BB7CD;          /* logo mark, decorative fills and the eyebrow rule — 2.4:1 on white, NOT for text on light, never a button */
   --cyan-text: var(--accent); /* accent text on white/mist — 4.87:1 (WCAG AA) */
   /* severity (risk panel on navy) — numbers ≥ 5.6:1, labels ≥ 8.5:1 on navy */
   --sev-critical: #F26A6A;
@@ -40,7 +40,6 @@
   --sev-high-text: #F7C877;
   --sev-medium: #EAB308;
   --sev-medium-text: #F3D778;
-  --gold: #C9A227;          /* one decorative rule per page, never text */
   --white: #FFFFFF;
   --mist: #F5F7FA;
   /* text */
@@ -248,11 +247,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 @media (max-width: 899px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 599px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
 
-/* Page header (inner pages) — carries the single gold rule of the page */
+/* Page header (inner pages) — carries the single cyan rule of the page (brand: no gold) */
 .page-header { padding: clamp(40px, 6vw, 72px) 0 clamp(28px, 4vw, 40px); border-bottom: 1px solid var(--line); }
 .page-header .section-head { margin-bottom: 0; }
 .page-header .eyebrow::after, .hero-a .eyebrow::after {
-  content: ''; display: block; width: 64px; height: 3px; margin-top: 14px; background: var(--gold);
+  content: ''; display: block; width: 64px; height: 3px; margin-top: 14px; background: var(--cyan);
 }
 .breadcrumb { margin-bottom: 20px; font-size: var(--fs-small); color: var(--ink-3); }
 .breadcrumb ol { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -280,7 +279,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 [dir="rtl"] .hero-b-left .hero-inner { margin-inline-start: auto; }
 .hero-b-left .subhead { margin-top: 24px; max-width: 480px; color: var(--on-navy-2); }
 .trust-line { margin-top: 28px; font-size: var(--fs-small); font-weight: 600; color: var(--on-navy-4); }
-.hero-b .eyebrow::after { content: ''; display: block; width: 64px; height: 3px; margin-top: 14px; background: var(--gold); }
+.hero-b .eyebrow::after { content: ''; display: block; width: 64px; height: 3px; margin-top: 14px; background: var(--cyan); }
 .hero-trust { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--navy-line); }
 .hero-trust .badge { color: var(--on-navy-2); }
 .hero-trust .dot { background: var(--cyan); }
@@ -495,7 +494,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* Placeholder marker (dev builds only) */
 .ph-tag {
   display: inline-block; margin-bottom: 16px; padding: 4px 10px;
-  border: 1px dashed var(--gold); border-radius: 4px; background: #FFF4D6; color: #5A4600;
+  border: 1px dashed var(--cyan); border-radius: 4px; background: #FFF4D6; color: #5A4600;
   font-size: var(--fs-small); font-weight: 700;
 }
 .section-navy .ph-tag, .cta-band .ph-tag { background: rgba(255, 244, 214, 0.95); }
