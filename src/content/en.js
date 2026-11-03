@@ -727,7 +727,7 @@ module.exports = {
         'ISO-aligned internal-control framework',
         '500+ reports delivered across Egypt, Saudi Arabia and the US',
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
-        `seg-audit: MFT’s own continuous-audit platform, ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
+        `SEG Audit: the continuous-audit module of MFT’s SEG (Standard Enterprise Governance) platform, ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
       ]
     },
     team: {
@@ -823,7 +823,7 @@ module.exports = {
     page: { eyebrow: 'Founding Members' },
     hero: {
       headline: 'SEG Audit {accent}Founding Members{/accent}: only {total} seats at a founder price for life',
-      subhead: 'We are opening SEG Audit, the continuous audit platform from MFT, to {total} companies as Founding Members, at a founder price that stays with you for life. When the seats are taken, the programme closes.',
+      subhead: 'We are opening SEG Audit, the continuous audit module of the SEG (Standard Enterprise Governance) platform from MFT, to {total} companies as Founding Members, at a founder price that stays with you for life. When the seats are taken, the programme closes.',
       cta: 'Claim your seat',
       secondary: 'How to join',
       assurance: ['Read-only access to your system', 'Evidence behind every finding', 'Reports in Arabic and English'],
@@ -1317,7 +1317,7 @@ module.exports = {
   },
 
   homeFaq: [
-    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the seg-audit platform and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
+    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its SEG Audit continuous-audit module and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
     { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. No credit card, no commitment.' },
     { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
   ],

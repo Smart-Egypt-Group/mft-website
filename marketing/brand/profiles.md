@@ -4,6 +4,8 @@ Every field below is checked against the platform's character limit (counted in 
 
 **The free offer (CEO, 3 Nov 2026)** is always worded **«فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق»** / "A free check of your company’s trial balance that flags its risk points in minutes" (short EN where space is tight: "Free trial-balance check: risk points in minutes"). Never "free report".
 
+**Naming (CEO, 3 Nov 2026):** company **Modern Financial Technology (MFT)** → platform **SEG — Standard Enterprise Governance** → product **SEG Audit** (the continuous audit module). Long texts (About / Overview / Description) name the platform in full at least once; short bios keep «SEG Audit».
+
 **Standard everywhere**
 - Display name: **Modern Financial Technology (MFT)**
 - Handle: **@modernfintech** (fallback **@mftfintech** where taken; see the availability column in [CHECKLIST.md](CHECKLIST.md))
@@ -32,7 +34,7 @@ Every field below is checked against the platform's character limit (counted in 
 > **المنصة التي تراجع نفسها.**
 > Modern Financial Technology (MFT) شركة تكنولوجيا مالية ومراجعة بقيادة محاسبين معتمدين.
 >
-> منصتنا SEG Audit تراجع دفاتر شركتك باستمرار، لا مرة في السنة: تقرأ من نظامك بصلاحية قراءة فقط، وتعرض كل ملاحظة مرتبة حسب خطورتها، ومعها دليلها. ونراجع أنفسنا قبل أن نراجعك: أكثر من 7,900 اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.
+> منصتنا SEG — Standard Enterprise Governance، ووحدة المراجعة المستمرة فيها SEG Audit تراجع دفاتر شركتك باستمرار، لا مرة في السنة: تقرأ من نظامك بصلاحية قراءة فقط، وتعرض كل ملاحظة مرتبة حسب خطورتها، ومعها دليلها. ونراجع أنفسنا قبل أن نراجعك: أكثر من 7,900 اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.
 >
 > ومع المنصة: تنفيذ Odoo ERP، والمراجعة الداخلية، والمدير المالي الافتراضي، في مصر والسعودية والولايات المتحدة.
 >
@@ -41,7 +43,7 @@ Every field below is checked against the platform's character limit (counted in 
 > المنصة: app.seg-audit.com · الموقع: www.seg-audit.com
 >
 > **The platform that reviews itself.**
-> MFT is a fintech and audit firm led by certified accountants. SEG Audit, our continuous audit platform, reads your books read-only, ranks every finding by severity and shows its evidence. We review ourselves first: 7,900+ automated tests before every update and a log nothing can change silently. We also implement Odoo ERP and run internal audit and virtual CFO services in Egypt, Saudi Arabia and the United States.
+> MFT is a fintech and audit firm led by certified accountants. Our platform is SEG — Standard Enterprise Governance; SEG Audit, its continuous audit module, reads your books read-only, ranks every finding by severity and shows its evidence. We review ourselves first: 7,900+ automated tests before every update and a log nothing can change silently. We also implement Odoo ERP and run internal audit and virtual CFO services in Egypt, Saudi Arabia and the United States.
 >
 > Start with a free check of your company’s trial balance that flags its risk points in minutes: indicators computed from your trial balance only (suspense accounts, abnormal balances, imbalance, heavy manual entries, backdated entries).
 

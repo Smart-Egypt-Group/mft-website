@@ -5,7 +5,8 @@ One identity on every profile, post and page. This kit is the reference; the sit
 | | |
 |---|---|
 | Company | **Modern Financial Technology** (short: **MFT**) |
-| Platform | **SEG Audit**, the continuous audit platform from MFT (`app.seg-audit.com`) |
+| Platform | **SEG — Standard Enterprise Governance** (short: **SEG**), MFT's platform |
+| Product | **SEG Audit**, the continuous audit module inside SEG (`app.seg-audit.com`) |
 | Website | **www.seg-audit.com** |
 | Positioning | **المنصة التي تراجع نفسها** · **The platform that reviews itself** |
 
@@ -22,8 +23,8 @@ One identity on every profile, post and page. This kit is the reference; the sit
 Every claim above is published on the site (trust centre, platform figures in `src/content/platform-facts.js`). The test count is regenerated from the seg-audit code; update the text when it changes.
 
 **One-sentence company description:**
-- AR: MFT شركة تكنولوجيا مالية ومراجعة بقيادة محاسبين معتمدين: منصة SEG Audit للمراجعة المستمرة، وتنفيذ Odoo ERP، والمراجعة الداخلية، والمدير المالي الافتراضي، في مصر والسعودية والولايات المتحدة.
-- EN: MFT is a fintech and audit firm led by certified accountants: the SEG Audit continuous audit platform, Odoo ERP implementation, internal audit and virtual CFO services, in Egypt, Saudi Arabia and the United States.
+- AR: MFT شركة تكنولوجيا مالية ومراجعة بقيادة محاسبين معتمدين: منصة SEG — Standard Enterprise Governance ووحدتها SEG Audit للمراجعة المستمرة، وتنفيذ Odoo ERP، والمراجعة الداخلية، والمدير المالي الافتراضي، في مصر والسعودية والولايات المتحدة.
+- EN: MFT is a fintech and audit firm led by certified accountants: the SEG — Standard Enterprise Governance platform and its SEG Audit continuous audit module, Odoo ERP implementation, internal audit and virtual CFO services, in Egypt, Saudi Arabia and the United States.
 
 **The free offer (lead magnet):**
 - AR: فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق
@@ -98,6 +99,7 @@ Rules:
 | Item | Standard |
 |---|---|
 | Display name | **Modern Financial Technology (MFT)**: use the full form everywhere it fits |
+| Platform / product | **SEG — Standard Enterprise Governance** in full at least once in every long text (About, Overview, Description); **SEG Audit** for the product, and alone in short bios |
 | Handle | **@modernfintech** everywhere (Instagram already uses it). Fallback where taken: **@mftfintech** |
 | Website field | **https://www.seg-audit.com** |
 | Platform link (in bios, pinned posts) | **app.seg-audit.com** |

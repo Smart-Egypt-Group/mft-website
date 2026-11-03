@@ -36,7 +36,7 @@
 > **SEG Audit من MFT، بالتعاون مع {اسم المكتب}**
 > **المنصة التي تراجع نفسها.**
 >
-> SEG Audit تقرأ دفاتر شركتك من Odoo بصلاحية قراءة فقط، وتعرض كل ملاحظة مرتبة حسب خطورتها ومعها مصدرها في دفاترك. ولا يخرج تقرير إلا باعتماد مراجع من MFT باسمه.
+> SEG Audit، وحدة المراجعة المستمرة في منصة SEG — Standard Enterprise Governance، تقرأ دفاتر شركتك من Odoo بصلاحية قراءة فقط، وتعرض كل ملاحظة مرتبة حسب خطورتها ومعها مصدرها في دفاترك. ولا يخرج تقرير إلا باعتماد مراجع من MFT باسمه.
 >
 > **ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.** ارفع ميزان آخر شهر مقفل؛ و{اسم المكتب} يقرأ النتائج معك.
 >
@@ -48,7 +48,7 @@
 
 **EN:**
 > **SEG Audit by MFT, with {Firm}.** The platform that reviews itself.
-> SEG Audit reads your books from Odoo with read-only access and ranks every finding by severity, with its source in your books. No report leaves without sign-off by a named MFT reviewer.
+> SEG Audit, the continuous audit module of the SEG — Standard Enterprise Governance platform, reads your books from Odoo with read-only access and ranks every finding by severity, with its source in your books. No report leaves without sign-off by a named MFT reviewer.
 > **Start with a free check of your company’s trial balance that flags its risk points in minutes.** Upload last closed month’s trial balance; {Firm} reads the results with you.
 > 361 checks · read-only, revoke in one click · a decision-support report, not an audit opinion.
 > Start: {partner link} · Trust: www.seg-audit.com/en/trust/
