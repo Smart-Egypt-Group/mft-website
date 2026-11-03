@@ -14,8 +14,8 @@
 //     (it is the seat the viewer can take). The "now live" set uses a ledger with one cyan line.
 //   · copy has three levels only (eyebrow, hero, support) plus one CTA pill to app.seg-audit.com
 //
-// Variants: seats-ar / seats-en ("33 of 50 left"), live-ar / live-en ("now live"), member-ar /
-// member-en (for the existing founding customers to share), neutral-seats / neutral-live (no words,
+// Variants: seats-ar / seats-en ("33 of 50 left"), live-ar / live-en ("now live"), neutral-seats /
+// neutral-live (no words,
 // one file for both languages). Seat counts come from src/site.config.js → founding, so a rerun after
 // changing `filled` regenerates every number.
 //
@@ -49,8 +49,6 @@ const COPY = {
   'seats-en': { dir: 'ltr', eyebrow: 'SEG AUDIT · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left — Founding Members`, support: `${FM.filled} companies have already joined. Claim yours before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' },
   'live-ar': { dir: 'rtl', eyebrow: 'SEG Audit من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'كل ملاحظة في دفاترك، مرتبة حسب خطورتها، ومعها دليلها.', cta: 'ابدأ الآن  ·  app.seg-audit.com', motif: 'live' },
   'live-en': { dir: 'ltr', eyebrow: 'SEG AUDIT BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'Every finding in your books, ranked by severity, with its evidence.', cta: 'Start now  ·  app.seg-audit.com', motif: 'live' },
-  'member-ar': { dir: 'rtl', eyebrow: 'SEG Audit', heroText: 'عضو مؤسِّس', title: `من أول ${FM.filled} شركة انضمت إلى SEG Audit`, support: 'نراجع دفاترنا باستمرار، لا مرة في السنة.', cta: 'app.seg-audit.com', motif: 'member' },
-  'member-en': { dir: 'ltr', eyebrow: 'SEG AUDIT', heroText: 'Founding Member', title: `One of the first ${FM.filled} companies on SEG Audit`, support: 'We review our books continuously, not once a year.', cta: 'app.seg-audit.com', motif: 'member' },
   'neutral-seats': { motif: 'seats' },
   'neutral-live': { motif: 'live' }
 };
@@ -68,9 +66,6 @@ const FORMATS = [
   { dir: 'ads', name: 'meta-feed-4x5', w: 1080, h: 1350, kind: 'stack', variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en'] },
   { dir: 'ads', name: 'meta-feed-1x1', w: 1080, h: 1080, kind: 'stack', variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en'] },
   { dir: 'ads', name: 'tiktok-9x16', w: 1080, h: 1920, kind: 'stack', safe: { t: 250, b: 520, s: 96, e: 170 }, variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en'] },
-  { dir: 'member', name: 'founding-member-square', w: 1080, h: 1080, kind: 'stack', variants: ['member-ar', 'member-en'] },
-  { dir: 'member', name: 'founding-member-story', w: 1080, h: 1920, kind: 'stack', safe: { t: 250, b: 480, s: 96, e: 150 }, variants: ['member-ar', 'member-en'] },
-  { dir: 'member', name: 'founding-member-linkedin', w: 1200, h: 630, kind: 'land', variants: ['member-ar', 'member-en'] },
   // Profile covers: long-lived, so they carry the "now live" message, never a seat count.
   // YouTube: 2560×1440 canvas, everything that matters inside the 1546×423 all-devices safe area.
   { dir: 'covers', name: 'youtube-banner', w: 2560, h: 1440, kind: 'strip', safe: { x: 507, y: 508, w: 1546, h: 423 }, variants: ['live-ar', 'live-en', 'neutral-live'] },
@@ -181,14 +176,14 @@ function scene(F, variant) {
   // ---- page motif ----
   let page = '', target;
   const P = G.page;
-  if (C.motif === 'seats' || C.motif === 'member') {
+  if (C.motif === 'seats') {
     const landscape = G.axis === 'x';
     const S = seatLayout(P, landscape);
-    const next = C.motif === 'member' ? null : FM.filled;
+    const next = FM.filled;
     target = next != null ? S.seats[next] : S.seats[FM.filled - 1];
     S.seats.forEach((p, i) => {
       if (i === next) return;
-      if (i < FM.filled) page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r)}" fill="${C.motif === 'member' ? (i === FM.filled - 1 ? CYAN : NAVY) : NAVY}"${C.motif === 'member' && i === FM.filled - 1 ? ' filter="url(#glow)"' : ''}/>`;
+      if (i < FM.filled) page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r)}" fill="${NAVY}"/>`;
       else page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r - 1.25 * u)}" fill="none" stroke="${NAVY}" stroke-opacity=".55" stroke-width="${f(2.5 * u)}"/>`;
     });
     if (next != null) {

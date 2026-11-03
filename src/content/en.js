@@ -853,17 +853,6 @@ module.exports = {
         { title: 'Get your first report', body: 'Findings ranked by severity, each with its source in your books.' }
       ]
     },
-    members: {
-      eyebrow: 'For the {filled} current members',
-      title: 'If you are one of the first {filled} companies, you are already a Founding Member.',
-      body: 'No new sign-up needed. Your seat is reserved and founding terms apply from today. Here is what we offer and what we ask:',
-      items: [
-        'An onboarding session with the MFT team to make sure every report runs on your data.',
-        'Share your experience: a short testimonial or a case study, with your consent, named or anonymous.',
-        'Refer a company you know: {left} seats remain, and your referral goes straight to our team.'
-      ],
-      cta: 'Contact the members team'
-    },
     faq: [
       { q: 'Why only {total} seats?', a: 'Every Founding Member works directly with the MFT team on setup and follow-up, and that does not stretch beyond {total} companies in the first phase.' },
       { q: 'What happens once the {total} seats are filled?', a: 'The programme closes. The platform stays open for sign-up, without founding terms.' },

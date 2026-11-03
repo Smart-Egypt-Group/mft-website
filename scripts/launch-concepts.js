@@ -73,7 +73,7 @@ const T = {
   },
   en: {
     hook: { l1: 'Who reviews your books', s1: 'Who reviews your', s2: 'books the other', pre: 'the other', post: 'days?', cap: 'One annual audit. A year has 365 days.' },
-    self: { eb: 'SEG AUDIT · TRUST', head: 'The platform that audits itself.', sub: `Before it reviews your books: ${TESTS}+ automated tests before every update, and a log nothing can change silently.` },
+    self: { eb: 'SEG AUDIT · TRUST', head: 'The platform that reviews itself.', sub: `Before it reviews your books: ${TESTS}+ automated tests before every update, and a log nothing can change silently.` },
     ba: { before: 'Before', after: 'After', head: 'From books no one sees to a report you see in full.' },
     ns: { eb: 'SEG AUDIT · ZERO GUESSWORK', head: 'A number with no source never reaches your report.', sub: 'Every number in a SEG Audit report links to its source in your books.', tag: 'No source', note: 'Illustrative example' },
     hemi: { eb: 'SEG AUDIT · FOUNDING MEMBERS', title: `${LEFT} of ${FM.total} left · ${FM.filled} companies joined`, t1: `${LEFT} of ${FM.total} left`, t2: `${FM.filled} companies joined`, sub: 'Claim your seat before the count closes.', cap: 'seats left', pill: 'Claim your seat  ·  app.seg-audit.com' },
@@ -115,7 +115,7 @@ function navyField(d, x, y, w, h, cx, cy, o = {}) {
   const id = 'bg' + (++gid), R = Math.max(w, h) * (o.r || 0.8);
   d.defs += `<radialGradient id="${id}" gradientUnits="userSpaceOnUse" cx="${f(cx)}" cy="${f(cy)}" r="${f(R)}"><stop offset="0" stop-color="${o.dark ? '#0E2150' : '#16326E'}"/><stop offset=".5" stop-color="${o.dark ? '#0A1534' : NAVY}"/><stop offset="1" stop-color="#050B20"/></radialGradient>`;
   d.svg += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#${id})"/>`;
-  d.svg += `<rect x="${x}" y="${y}" width="${w}" height="${h}" filter="url(#grain)" opacity=".05" style="mix-blend-mode:overlay"/>`;
+  if (o.grain !== false) d.svg += `<rect x="${x}" y="${y}" width="${w}" height="${h}" filter="url(#grain)" opacity=".05" style="mix-blend-mode:overlay"/>`;
 }
 const light = (d, cx, cy, r, o = 0.3) => { d.svg += `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r)}" fill="${CYAN}" opacity="${o * 0.8}" filter="url(#b100)"/><circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r * 0.6)}" fill="${W}" opacity="${o}" filter="url(#b100)"/>`; };
 const rect = (x, y, w, h, fill, o = {}) => `<rect x="${f(x)}" y="${f(y)}" width="${f(w)}" height="${f(h)}" rx="${f(o.r ?? 0)}" fill="${fill}"${o.op != null ? ` opacity="${o.op}"` : ''}${o.stroke ? ` stroke="${o.stroke}" stroke-width="${f(o.sw || 2)}"${o.so != null ? ` stroke-opacity="${o.so}"` : ''}${o.dash ? ` stroke-dasharray="${o.dash}"` : ''}` : ''}${o.filter ? ` filter="url(#${o.filter})"` : ''}${o.tr ? ` transform="${o.tr}"` : ''}/>`;
@@ -617,8 +617,9 @@ function pdfOfJpegs(pages, wPt, hPt) {
   return Buffer.concat(parts);
 }
 
-(async () => {
-  const only = process.argv[2] || '';
+// Opens Chrome once and returns render(design, formats) → base64 per format. Shared with
+// scripts/brand-profiles.js.
+async function openRenderer() {
   const browser = await chromium.launch({ channel: 'chrome' });
   const page = await browser.newPage();
   await page.goto('about:blank');
@@ -698,6 +699,12 @@ function pdfOfJpegs(pages, wPt, hPt) {
     const enc = { webp: ['image/webp', 0.9], jpg: ['image/jpeg', 0.92], png: ['image/png'] };
     return formats.map((k) => c.toDataURL(...enc[k]).split(',')[1]);
   }, { svg: svgOf(d), ops: d.ops, w: d.w, h: d.h, formats, mark: MARK });
+  return { render, close: () => browser.close() };
+}
+
+async function main() {
+  const only = process.argv[2] || '';
+  const { render, close } = await openRenderer();
 
   const written = [];
   const save = async (dir, base, d, formats = ['webp', 'jpg']) => {
@@ -757,7 +764,7 @@ function pdfOfJpegs(pages, wPt, hPt) {
       await save('video', `video-${v}_${lang}_storyboard_${W2}x${H2}`, d, ['webp', 'jpg']);
     }
   }
-  await browser.close();
+  await close();
 
   if (!only) {
     const groups = [...new Set(written.map((x) => x.dir))];
@@ -768,4 +775,7 @@ ${groups.map((gname) => `<h2>${gname}</h2><div class="g">${written.filter((x) =>
     fs.writeFileSync(path.join(OUT, 'index.html'), html);
     console.log(`${written.length} files`);
   }
-})();
+}
+
+if (require.main === module) main();
+module.exports = { openRenderer, design, navyField, light, spiral, rect, circ, bar, tick, cyanCheck, text, runs, pill, mark, st, en, PHI, NAVY, CYAN, W, DIM, DIM2 };

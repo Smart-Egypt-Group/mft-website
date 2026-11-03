@@ -20,12 +20,11 @@ Targets are set by the campaign owner. Week 1 is the baseline week: record, do n
 
 | KPI | Definition |
 |---|---|
-| Activated members | Of 17, members with at least one report run on their own data this month |
-| Onboarding sessions done | Of 17 |
+| Activated members | Of founding members to date, members with at least one report run on their own data this month |
+| Onboarding sessions done | Of founding members to date |
 | At-risk members | No login / no report in 14 days, or an open complaint |
 | Testimonials / case studies | Requested → consented → published |
 | Referrals | Referrals received → contacted → seats filled from referrals |
-| Expansion | Expansion conversations held → proposals → won (no amounts in public reports) |
 
 ### Content operations
 

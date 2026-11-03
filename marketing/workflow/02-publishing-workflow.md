@@ -18,7 +18,7 @@ Draft → Review → Approve → Schedule → Publish → Log
 ## Review checklist (stage 2)
 
 **Facts and claims**
-- [ ] Every number is 50, 17, 33 or a platform figure already on the site. No savings, no percentages, no client amounts.
+- [ ] Every number is 50, the confirmed seat count, or a platform figure already on the site. No savings, no percentages, no client amounts.
 - [ ] Seat count matches today's `founding.filled`.
 - [ ] No customer, logo or identifiable story without written consent on file.
 - [ ] No word that implies fraud or a confirmed misstatement ("exceptions", "findings", "evidence" instead).

@@ -11,7 +11,7 @@ The team works in Cairo time (EET, UTC+2) on a Sunday to Thursday week, the work
 | **Designer** | Generator runs, new variants, platform resizes | Layout within the brand system |
 | **Ads manager** | Meta Ads + TikTok Ads, daily checks, rule-based pause/scale | Moves inside the weekly envelope per [03-paid-ads.md](03-paid-ads.md) |
 | **Community / sales response** | Comments, DMs, WhatsApp replies within SLA, hand-off of leads | Reply wording from the approved FAQ |
-| **Customer success** (track B) | The 17 founding members: onboarding, check-ins, testimonials, referrals | Session scheduling, escalation to product |
+| **Customer success** (track B) | Each new founding member: onboarding, check-ins, testimonials, referrals | Session scheduling, escalation to product |
 
 One person can hold several roles. The approver must not be the drafter for the same item (segregation of duties).
 
@@ -37,20 +37,19 @@ Response SLA: comments and DMs within **2 working hours**; sign-ups contacted wi
 |---|---|---|---|
 | **Sunday** | Both | **Weekly planning** (45 min): last week's report, this week's calendar, angles, budget envelope | Calendar locked; budget envelope approved by the campaign owner |
 | **Monday** | A | **Creative refresh**: new variants for any ad flagged as fatigued; rerun the generator if the seat count moved | New assets in Review |
-| **Tuesday** | B | **Founding members review**: status of all 17 (active, onboarded, at risk), testimonials and referrals pipeline | Track B table updated |
+| **Tuesday** | B | **Founding members review**: status of every founding member (active, onboarded, at risk), testimonials and referrals pipeline | Track B table updated |
 | **Wednesday** | A | **Ads deep-dive**: audience and creative breakdown, scale/kill decisions above the daily rules | Ad change log |
 | **Thursday** | Both | **Weekly report** ([templates/weekly-report.md](templates/weekly-report.md)) sent to the campaign owner by 15:00 | Report + next week's asks |
 
-## Track B: the 17 founding members, first four weeks
+## Track B: each new founding member, first four weeks after sign-up
 
 | Week | Touchpoint | Channel | Goal |
 |---|---|---|---|
-| 1 | Personal welcome: «أنت عضو مؤسِّس» + the member badge (`designs/member/`) | WhatsApp 1:1 from the founder, then email | Recognition; open the conversation |
+| 1 | Personal welcome: «أهلًا بكم بين الأعضاء المؤسِّسين» | WhatsApp 1:1 from the founder, then email | Recognition; open the conversation |
 | 1–2 | Onboarding session (30–45 min): every report running on their data | Call / screen-share | Activation |
 | 2 | Check-in: «ما أول ملاحظة فاجأتك؟» | WhatsApp | Value moment; testimonial raw material |
 | 3 | Testimonial or case study ask, with consent form (named / anonymous / no) | Call, then written consent by email | Proof for track A |
-| 3–4 | Referral ask: «المقاعد المتبقية 33. من تعرف؟» | WhatsApp | Warm leads for track A |
-| 4 | Expansion conversation where there is a real need (Virtual CFO, internal audit, Odoo) | Call | Revenue; only when the need is evidenced |
+| 3–4 | Referral ask: «المقاعد المتبقية [العدد]. من تعرف؟» | WhatsApp | Warm leads for track A |
 
 Track B status per member lives in the CRM (Odoo, erp.seg-audit.com) with one activity per touchpoint. Never post anything that identifies a member without written consent.
 

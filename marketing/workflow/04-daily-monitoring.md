@@ -66,7 +66,7 @@ Two passes a day (09:15 and 21:00 Cairo). Morning pass is the full list; the eve
 - [ ] Rejected creatives or policy notices
 - [ ] Apply rules; log changes
 
-## Track B (the 17)
+## Track B (founding members)
 
 - [ ] Today's touchpoints from the track B plan done; CRM activity logged per member
 - [ ] Any member with a support issue: owner assigned, answer within 1 working day

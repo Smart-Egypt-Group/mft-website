@@ -33,7 +33,7 @@ Naming: `SEG-FM | <platform> | <objective> | <audience> | <lang> | <yyyy-mm>`; a
 |---|---|---|---|---|
 | **FM-Prospecting** | Leads (Instant Form) in phase 1; Sales/Leads optimised for `CompleteRegistration` in phase 2 | (1) Egypt: finance and accounting job interests + business owners, 28–60; (2) KSA: same; (3) Odoo / ERP interest stack (both countries) | `ads/meta-feed-4x5_seats-ar`, `ads/meta-feed-1x1_seats-ar`, `social/story_seats-ar` (Stories/Reels), `live-ar` set as the second angle; EN only in a separate ad set for KSA expat finance roles | 60% |
 | **FM-Retargeting** | Same objective | Website + app visitors 30 days, page/profile engagers 60 days, video viewers 50%+ | `seats-ar` with the scarcity line; testimonial creative when one is approved | 25% |
-| **FM-Lookalike** (phase 2, after 100+ sign-ups or the 17 + leads list) | Same | 1–3% lookalike of sign-ups and the customer list (hashed, with consent per the privacy policy) | Best two creatives from prospecting | 15% (until then, add to prospecting) |
+| **FM-Lookalike** (phase 2, after 100+ sign-ups) | Same | 1–3% lookalike of sign-ups (hashed, with consent per the privacy policy) | Best two creatives from prospecting | 15% (until then, add to prospecting) |
 
 Placements: Advantage+ placements, with the 4:5 asset for feeds and the 9:16 asset for Stories/Reels supplied explicitly.
 

@@ -45,18 +45,17 @@ Response: __% of comments/DMs answered within 2h · __% of sign-ups contacted wi
 
 Top 3 creatives (asset name, results, cost per result) · Bottom 3 (and the rule that paused them).
 
-## 5. Track B: the 17 founding members
+## 5. Track B: founding members (signed up)
 
 | KPI | Count | Names live in CRM only (not in this report) |
 |---|---|---|
-| Welcomed (founding member message sent) | /17 | |
-| Onboarding sessions done | /17 | |
-| Activated (report on own data this month) | /17 | |
+| Welcomed (founding member message sent) | /__ | |
+| Onboarding sessions done | /__ | |
+| Activated (report on own data this month) | /__ | |
 | At risk | | Owner + next step: |
 | Testimonials: asked → consented → published | → → | |
 | Case studies: asked → consented → published | → → | |
 | Referrals: received → contacted → seats | → → | |
-| Expansion: conversations → proposals → won | → → | |
 
 ## 6. Content operations
 

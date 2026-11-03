@@ -65,15 +65,6 @@ module.exports = function founding(ctx) {
   </div>
 </section>`;
 
-  const members = `<section class="section section-mist" aria-labelledby="fm-members">
-  <div class="container narrow prose">
-    <p class="eyebrow">${t(P.members.eyebrow)}</p>
-    <h2 id="fm-members">${s(P.members.title)}</h2>
-    <p>${s(P.members.body)}</p>
-    <ul>${P.members.items.map((x) => `<li>${s(x)}</li>`).join('')}</ul>
-    <p><a class="btn btn-navy" href="${url(ctx, 'contact/')}">${t(P.members.cta)}</a></p>
-  </div>
-</section>`;
 
   const final = `<section class="section section-navy final-cta" aria-labelledby="fm-final">
   <div class="container narrow">
@@ -86,7 +77,6 @@ module.exports = function founding(ctx) {
   const body = `${hero}
 ${gets}
 ${how}
-${members}
 ${faqBlock(ctx, ctx.c.ui.faqTitle, P.faq.map((f) => ({ q: seats(ctx, f.q), a: seats(ctx, f.a) })))}
 ${final}
 ${seeAlso(ctx, [

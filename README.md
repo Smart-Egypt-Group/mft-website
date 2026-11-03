@@ -83,7 +83,7 @@ The pricing section is written but hidden (`site.config.js → showPricingSlot: 
 
 ## Founding Members launch (SEG Audit)
 
-`founding-members/` (AR/EN) is the launch page: seat meter, benefits, how to join, a section for the 17 existing members, FAQ (FAQPage schema). A launch bar above the header and a band under the home hero link to it. All seat numbers come from `src/site.config.js → founding` (`total`, `filled`) through `{left}/{filled}/{total}` tokens in the copy; set `enabled: false` to remove the page, bar and band in one switch. Every launch CTA goes to the app sign-up with `utm_source=website&utm_medium=owned`. Campaign artwork and the og:image come from `scripts/launch-images.js`; the marketing operating system, workflows and week-1 drafts live in [`marketing/`](marketing/README.md).
+`founding-members/` (AR/EN) is the launch page: seat meter, benefits, how to join, FAQ (FAQPage schema). A launch bar above the header and a band under the home hero link to it. All seat numbers come from `src/site.config.js → founding` (`total`, `filled`) through `{left}/{filled}/{total}` tokens in the copy; set `enabled: false` to remove the page, bar and band in one switch. Every launch CTA goes to the app sign-up with `utm_source=website&utm_medium=owned`. Campaign artwork and the og:image come from `scripts/launch-images.js`; the marketing operating system, workflows and week-1 drafts live in [`marketing/`](marketing/README.md).
 
 ## SEO / GEO
 
