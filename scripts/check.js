@@ -168,6 +168,14 @@ if (!money) ok('no client financial amounts in content (dashboard sample exclude
 const cfg = fs.readFileSync(path.join(ROOT, 'src/site.config.js'), 'utf8');
 if (/PENDING-DOMAIN/.test(cfg)) console.log('  ! siteUrl still PENDING (decision with Ahmed) — set it before production deploy');
 else ok('siteUrl set');
+const siteCfg = require(path.join(ROOT, 'src/site.config.js'));
+const noSocial = Object.entries(siteCfg.contact.social || {}).filter(([, v]) => !v).map(([k]) => k);
+if (noSocial.length) console.log(`  ! social profile URL not set (not rendered): ${noSocial.join(', ')}`);
+const fm = siteCfg.founding;
+if (fm && fm.enabled) {
+  if (!(fm.filled >= 0 && fm.filled < fm.total)) fail(`founding seats invalid: ${fm.filled} of ${fm.total}`);
+  for (const l of siteCfg.languages) if (!fs.existsSync(path.join(DIST, 'assets/img/launch', `founding-og-${l}.jpg`))) fail(`founding og:image missing for ${l} (run scripts/launch-images.js)`);
+}
 
 /* ---------- 4. CSS sanity ---------- */
 console.log('\nCSS:');

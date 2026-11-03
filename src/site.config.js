@@ -49,12 +49,30 @@ module.exports = {
       { key: 'sa', line: '', lineAr: '' },
       { key: 'us', line: '', lineAr: '' }
     ],
-    // Public profiles linked from the official site footer.
+    // Public profiles, rendered in the footer and in Organization.sameAs. An empty value is not
+    // rendered (and `npm run check` warns), so a profile only appears once its URL is confirmed.
+    // Checked 3 Nov 2026: the Facebook page title is "Modern Financial Technology"; Instagram
+    // @modernfintech is "Modern Financial Technology (MFT)". YouTube and TikTok are PENDING (Ahmed):
+    // the URLs could not be confirmed as MFT's own (youtube.com/@modernfintech is "ModernFinTech4k").
     social: {
       linkedin: 'https://www.linkedin.com/company/92779112',
       facebook: 'https://www.facebook.com/Fintech2030',
-      instagram: 'https://www.instagram.com/egypt.smart'
+      instagram: 'https://www.instagram.com/modernfintech/',
+      youtube: '',
+      tiktok: ''
     }
+  },
+
+  // Founding Members launch (SEG Audit). Seats are counted by hand from paying customers; change
+  // `filled` here and every page, the header bar and the launch copy follow. `asOf` is shown
+  // nowhere and only records when the count was last confirmed.
+  founding: {
+    enabled: true,
+    total: 50,
+    filled: 17,
+    asOf: '2026-11-03',
+    // Every launch CTA lands on the app sign-up. UTM content is added per placement in the template.
+    signup: { ar: 'https://app.seg-audit.com/ar/signup', en: 'https://app.seg-audit.com/en/signup' }
   },
 
   // PENDING (Ahmed): package structure/prices. Section is fully written in

@@ -99,6 +99,7 @@ module.exports = {
           { label: 'Contact', href: 'contact/' },
           { label: 'Privacy', href: 'privacy/' },
           { label: 'Trust & security', href: 'trust/' },
+          { label: 'Founding Members', href: 'founding-members/' },
           { label: 'Partners', href: 'partners/' },
           { label: 'seg-audit platform', href: 'https://app.seg-audit.com', external: true }
         ]
@@ -808,6 +809,73 @@ module.exports = {
   // per activity come from seg-audit (analysis/odoo_best_practice.py → FAMILY_RULES, ISIC mapping).
   // Ready-made module packages and their Odoo App Store listing are not built yet: marked "soon".
   // Commission and resale margin are not decided: "set in the partner agreement", no figures.
+  // Founding Members (SEG Audit launch, November 2026). Seat numbers come from site.config → founding:
+  // {left} remaining, {filled} joined, {total} seats. Never type the numbers here.
+  // PENDING (Ahmed): the "Founding terms" benefit and the "after 50" FAQ are commercial commitments;
+  // approve or remove before merge.
+  founding: {
+    title: 'SEG Audit Founding Members | {left} of {total} seats left',
+    description: 'The SEG Audit Founding Members programme: {total} seats only, {filled} companies already in, {left} left. Sign up at app.seg-audit.com.',
+    ogAlt: '{left} of {total} seats left: SEG Audit Founding Members',
+    bar: 'SEG Audit Founding Members: {left} of {total} seats left. Learn more',
+    page: { eyebrow: 'Founding Members' },
+    hero: {
+      headline: '{left} of {total} seats left: SEG Audit {accent}Founding Members{/accent}',
+      subhead: 'We are opening SEG Audit, the continuous audit platform from MFT, to {total} companies as Founding Members. {filled} have already joined; {left} seats remain.',
+      cta: 'Claim your seat',
+      secondary: 'How to join',
+      assurance: ['Read-only access to your system', 'Evidence behind every finding', 'Reports in Arabic and English'],
+      meterCaption: 'seats left of {total}',
+      legend: { filled: '{filled} companies joined', next: 'Next seat', open: 'Open seat' }
+    },
+    homeBand: {
+      title: 'Founding Members: {left} of {total} seats left',
+      body: '{filled} companies joined SEG Audit before launch. Founding seats are capped at {total} and will not reopen.',
+      more: 'Programme details'
+    },
+    gets: {
+      eyebrow: 'What a Founding Member gets',
+      title: 'A front-row seat, not an ordinary subscription.',
+      intro: 'Founding Members are the first to work on the platform with its team, and the first to be heard on it.',
+      items: [
+        { title: 'Onboarding with the MFT team', body: 'We connect your system read-only and set up your first report with you in one session, not a manual you read alone.' },
+        { title: 'A direct line to the product team', body: 'Your feedback goes straight to the people building the platform, and you have a say in what we build next.' },
+        { title: 'Founding terms, kept', body: 'Founding terms stay with you for as long as your subscription runs, and are not offered once the {total} seats are filled.' },
+        { title: 'The Founding Member title', body: 'Your company listed among the Founding Members, only with your written consent.' }
+      ]
+    },
+    how: {
+      eyebrow: 'How to join',
+      title: 'Three steps to a first report on your own books.',
+      steps: [
+        { title: 'Sign up', body: 'Create your company account at app.seg-audit.com. Sign-up reserves your seat in order.' },
+        { title: 'Connect your books', body: 'Connect Odoo read-only, or send your last closed month as a trial balance or spreadsheet.' },
+        { title: 'Get your first report', body: 'Findings ranked by severity, each with its source in your books.' }
+      ]
+    },
+    members: {
+      eyebrow: 'For the {filled} current members',
+      title: 'If you are one of the first {filled} companies, you are already a Founding Member.',
+      body: 'No new sign-up needed. Your seat is reserved and founding terms apply from today. Here is what we offer and what we ask:',
+      items: [
+        'An onboarding session with the MFT team to make sure every report runs on your data.',
+        'Share your experience: a short testimonial or a case study, with your consent, named or anonymous.',
+        'Refer a company you know: {left} seats remain, and your referral goes straight to our team.'
+      ],
+      cta: 'Contact the members team'
+    },
+    faq: [
+      { q: 'Why only {total} seats?', a: 'Every Founding Member works directly with the MFT team on setup and follow-up, and that does not stretch beyond {total} companies in the first phase.' },
+      { q: 'What happens once the {total} seats are filled?', a: 'The programme closes. The platform stays open for sign-up, without founding terms.' },
+      { q: 'Can the platform change my data?', a: 'No. It reads only. The Odoo connection is read-only and the platform writes nothing to your system.' },
+      { q: 'We are not on Odoo. Can we join?', a: 'Yes. Send your last closed month as a trial balance or spreadsheet and we work from that with you.' }
+    ],
+    final: {
+      title: '{left} of {total} seats left.',
+      body: '{filled} companies joined before you. Claim your seat before the count closes.'
+    }
+  },
+
   partners: {
     title: 'MFT partners | Odoo partners and accounting firms',
     description: 'The MFT partner programme for Odoo implementation partners and accounting firms in Egypt and Saudi Arabia: continuous audit for your clients on the seg-audit platform, with internal controls for each activity.',

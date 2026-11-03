@@ -7,6 +7,15 @@ All site copy is final. Only the two items below are open. Each is marked in exa
 | 1 | **Production domain** — buy `mftfintech.com` or fix the certificate on `mft-eg.com` | `src/site.config.js → siteUrl` (one line, boxed comment) | `https://PENDING-DOMAIN.example`. `npm run check` prints a warning until it is set. Drives canonical, hreflang, sitemap, robots, OG. |
 | 2 | **Pricing packages** — fixed packages vs. indicative ranges, and the prices | `src/site.config.js → showPricingSlot` (flip to `true`), prices into `home.pricing.tiers` in both content files | Section fully written (Starter / Growth / Enterprise, no prices) and **hidden**. |
 
+## Open: SEG Audit Founding Members launch (PR launch/founding-members, 3 Nov 2026)
+
+| # | Decision | Where it lands |
+|---|---|---|
+| 3 | **Founding terms**: the benefit "founding terms kept for as long as the subscription runs" and the FAQ "the programme closes after 50, no founding terms after" are commercial commitments. Approve or remove | `src/content/{ar,en}.js → founding.gets.items[2]` and `founding.faq[1]`; same lines in `marketing/content/week-1/` (flagged inline) |
+| 4 | **YouTube and TikTok URLs**: not confirmed as MFT's own (youtube.com/@modernfintech is titled "ModernFinTech4k"). Empty values are not rendered | `src/site.config.js → contact.social.youtube / tiktok` |
+| 5 | **Seat definition**: what counts as "filled" (paid / contract signed) | `site.config.js → founding.filled` is changed only on that event |
+| 6 | **Product name in copy**: launch copy uses "SEG Audit"; older site copy uses "seg-audit". Unify or keep both | content files |
+
 ## Resolved: lead form → Odoo CRM
 
 Verified live on 10 Sep 2026 with Ahmed's approval: a test lead sent through the public website-form route created **crm.lead #898** on fin-tech.odoo.com ("Virtual CFO — MFT Website — test 10 Sep 2026") with contact name, email, phone and the full description (service, country, language, page). Odoo's existing CRM automations fired on it: a welcome email from OdooBot and two "Follow up the call" activities. No API user was needed, so the VPS user-creation bug no longer blocks the site.

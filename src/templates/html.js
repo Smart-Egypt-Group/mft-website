@@ -63,4 +63,13 @@ const phTag = (ctx) =>
 
 const pad2 = (n) => String(n).padStart(2, '0');
 
-module.exports = { esc, t, plain, url, attrs, link, btn, eyebrow, sectionHead, phTag, pad2 };
+// Founding Members seat count: {left}, {filled}, {total} in launch copy come from site.config → founding.
+const seats = (ctx, s) => {
+  const F = ctx.config.founding;
+  return String(s).replace(/\{left\}/g, F.total - F.filled).replace(/\{filled\}/g, F.filled).replace(/\{total\}/g, F.total);
+};
+// Launch CTA → app sign-up, tagged so the app can attribute it (see marketing/README.md → UTM).
+const signupUrl = (ctx, content) =>
+  `${ctx.config.founding.signup[ctx.lang]}?utm_source=website&utm_medium=owned&utm_campaign=founding-members-2026&utm_content=${encodeURIComponent(content)}`;
+
+module.exports = { esc, t, plain, url, attrs, link, btn, eyebrow, sectionHead, phTag, pad2, seats, signupUrl };
