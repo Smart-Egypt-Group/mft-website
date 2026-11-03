@@ -1,16 +1,17 @@
-// Founding Members: the SEG Audit launch page. Scarcity (seats left of the total) and social proof
-// (companies already in) come from site.config → founding; copy from content/<lang>.js → founding.
+// Founding Members: the SEG Audit launch page. Scarcity is the fixed cap (50 seats at a founder price
+// for life). A live counter (seats filled / left) exists but stays off until site.config → founding
+// .showCount is true; copy from content/<lang>.js → founding (counter copy in founding.counter).
 // Every primary CTA goes to the app sign-up with a UTM tag per placement.
-const { t, esc, plain, url, seats, signupUrl } = require('../html');
+const { t, esc, plain, url, seats, fm, signupUrl } = require('../html');
 const { faqBlock, faqSchema, seeAlso } = require('./services');
 
-// 50 seats as a grid: filled seats, the next seat (highlighted), open seats. Decorative; the
-// numbers are stated in text right next to it.
+// 50 seats as a grid: the visitor's seat highlighted, the rest open; with the counter on, filled seats
+// first. Decorative; the numbers are stated in text right next to it.
 function seatGrid(ctx) {
-  const F = ctx.config.founding;
+  const F = ctx.config.founding, filled = F.showCount ? F.filled : 0;
   let cells = '';
   for (let i = 0; i < F.total; i++) {
-    const cls = i < F.filled ? 'seat seat-filled' : i === F.filled ? 'seat seat-next' : 'seat';
+    const cls = i < filled ? 'seat seat-filled' : i === filled ? 'seat seat-next' : 'seat';
     cells += `<li class="${cls}"></li>`;
   }
   return `<ol class="seat-grid" aria-hidden="true">${cells}</ol>`;
@@ -27,8 +28,8 @@ module.exports = function founding(ctx) {
     <div>
       <nav class="breadcrumb breadcrumb-light" aria-label="Breadcrumb"><ol><li><a href="${url(ctx, '')}">${t(ctx.c.ui.breadcrumbHome)}</a></li><li aria-current="page">${t(P.page.eyebrow)}</li></ol></nav>
       <p class="eyebrow">${t(P.page.eyebrow)}</p>
-      <h1 id="fm-title">${s(P.hero.headline)}</h1>
-      <p class="lead">${s(P.hero.subhead)}</p>
+      <h1 id="fm-title">${t(fm(ctx, 'hero.headline'))}</h1>
+      <p class="lead">${t(fm(ctx, 'hero.subhead'))}</p>
       <div class="cta-row">
         ${cta('hero')}
         <a class="btn btn-link btn-link-light" href="#fm-how">${t(P.hero.secondary)}</a>
@@ -36,11 +37,11 @@ module.exports = function founding(ctx) {
       <ul class="hero-assurance">${P.hero.assurance.map((x) => `<li>${t(x)}</li>`).join('')}</ul>
     </div>
     <div class="seat-panel">
-      <p class="seat-count"><span class="seat-left lat">${F.total - F.filled}</span><span class="seat-total lat">/${F.total}</span></p>
-      <p class="seat-caption">${s(P.hero.meterCaption)}</p>
+      <p class="seat-count"><span class="seat-left lat">${F.showCount ? F.total - F.filled : F.total}</span>${F.showCount ? `<span class="seat-total lat">/${F.total}</span>` : ''}</p>
+      <p class="seat-caption">${t(fm(ctx, 'hero.meterCaption'))}</p>
       ${seatGrid(ctx)}
       <ul class="seat-legend">
-        <li><span class="seat seat-filled" aria-hidden="true"></span>${s(P.hero.legend.filled)}</li>
+        ${F.showCount ? `<li><span class="seat seat-filled" aria-hidden="true"></span>${t(fm(ctx, 'hero.legend.filled'))}</li>` : ''}
         <li><span class="seat seat-next" aria-hidden="true"></span>${s(P.hero.legend.next)}</li>
         <li><span class="seat" aria-hidden="true"></span>${s(P.hero.legend.open)}</li>
       </ul>
@@ -78,8 +79,8 @@ module.exports = function founding(ctx) {
 
   const final = `<section class="section section-navy final-cta" aria-labelledby="fm-final">
   <div class="container narrow">
-    <h2 id="fm-final">${s(P.final.title)}</h2>
-    <p class="lead">${s(P.final.body)}</p>
+    <h2 id="fm-final">${t(fm(ctx, 'final.title'))}</h2>
+    <p class="lead">${t(fm(ctx, 'final.body'))}</p>
     <div class="cta-row">${cta('final')}</div>
   </div>
 </section>`;
@@ -96,11 +97,11 @@ ${seeAlso(ctx, [
   { label: ctx.c.contact.page.eyebrow, href: 'contact/' }
 ])}`;
   return {
-    title: seats(ctx, P.title),
-    description: seats(ctx, P.description),
+    title: fm(ctx, 'title'),
+    description: fm(ctx, 'description'),
     body,
     bodyClass: 'page-founding',
-    ogImage: { url: `/assets/img/launch/founding-og-${ctx.lang}.jpg`, width: 1200, height: 630, alt: plain(seats(ctx, P.ogAlt)) },
+    ogImage: { url: `/assets/img/launch/founding-og-${ctx.lang}.jpg`, width: 1200, height: 630, alt: plain(fm(ctx, 'ogAlt')) },
     jsonld: [faqSchema(P.faq.map((f) => ({ q: seats(ctx, f.q), a: seats(ctx, f.a) })))].filter(Boolean)
   };
 };

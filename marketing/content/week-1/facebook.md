@@ -16,7 +16,7 @@
 >
 > منصة تراجع دفاتر شركتك باستمرار، لا مرة في السنة: تقرأ من نظامك بصلاحية قراءة فقط، وتعرض كل ملاحظة مرتبة حسب خطورتها، ومعها دليلها.
 >
-> نفتحها لـ50 شركة فقط بصفة أعضاء مؤسِّسين. انضمت 17 شركة، وباقي 33 مقعدًا.
+> نفتحها لـ50 شركة فقط بصفة أعضاء مؤسِّسين. 50 مقعدًا فقط، بسعر مؤسِّس مدى الحياة.
 >
 > احجز مقعدك: app.seg-audit.com/ar/signup?utm_source=facebook&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d1-fb-a-1
 
@@ -24,9 +24,9 @@
 
 **التصميم:** `designs/social/instagram-square_seats-ar_1080x1080.jpg` · **ستوري:** `story_seats-ar_1080x1920.jpg`
 
-> باقي 33 من 50 — الأعضاء المؤسِّسون.
+> برنامج الأعضاء المؤسِّسون — 50 مقعد فقط بسعر مؤسِّس مدى الحياة.
 >
-> 17 شركة انضمت قبل الإطلاق. العضو المؤسِّس يعمل مع فريقنا مباشرة في الإعداد، وله قناة مفتوحة مع من يبني المنصة.
+> 50 مقعدًا فقط، بسعر مؤسِّس مدى الحياة. العضو المؤسِّس يعمل مع فريقنا مباشرة في الإعداد، وله قناة مفتوحة مع من يبني المنصة.
 >
 > التفاصيل كلها هنا: www.seg-audit.com/ar/founding-members/?utm_source=facebook&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d2-fb-a-1
 
@@ -61,7 +61,7 @@
 > ٢. ارفع ميزان المراجعة، أو اربط Odoo بصلاحية قراءة
 > ٣. استلم فحص الميزان المجاني: نقاط الخطر في دقائق
 >
-> باقي 33 مقعدًا من 50.
+> 50 مقعدًا فقط، بسعر مؤسِّس مدى الحياة.
 > app.seg-audit.com/ar/signup?utm_source=facebook&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d5-fb-a-1
 
 ## ي6 · `w1-d6-fb-a-1` · 20:00 (فيديو المؤسس، نفس فيديو TikTok ي6 بصيغة 9:16 أو 1:1)
@@ -73,6 +73,6 @@
 **التصميم:** `designs/social/instagram-square_seats-ar_1080x1080.jpg` (أعد توليده إن تغيّر العدد خلال الأسبوع)
 
 > أسبوع الإطلاق في سطرين: SEG Audit متاح الآن، والمقاعد التأسيسية تُحجز.
-> باقي [العدد الحالي] من 50.
+> 50 مقعدًا فقط، بسعر مؤسِّس مدى الحياة.
 >
 > app.seg-audit.com/ar/signup?utm_source=facebook&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d7-fb-a-1

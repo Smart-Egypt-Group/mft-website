@@ -12,7 +12,7 @@ Targets are set by the campaign owner. Week 1 is the baseline week: record, do n
 | Attention | Engagement rate (reactions + comments + shares + saves) / impressions; video 2-second and average watch time | Native analytics | Compare per format, not across platforms |
 | Interest | Link clicks; founding page visits; app sign-up page visits by `utm_source` | Platform + app analytics | Founding page visits need analytics on the site (none installed today; see "gaps") |
 | Lead | Sign-ups started; Meta / TikTok form leads; DMs asking about the offer | App, Ads, inboxes | Counted once per company |
-| **Seat** | **Founding seats filled this week / to date (of 33)** | Campaign owner / CRM | The north-star number |
+| **Seat** | **Founding seats filled this week / to date (of 50)** (internal only; not published while the counter is off) | Campaign owner / CRM | The north-star number |
 | Efficiency | Cost per lead, cost per sign-up, **cost per seat filled**, per platform and per creative | Ads + CRM | Cost per seat needs lead → seat matching in CRM |
 | Speed | Median time from sign-up to first contact; % contacted within 24h | CRM | Target: 100% within 24h |
 

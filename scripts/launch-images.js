@@ -9,15 +9,17 @@
 //     portrait formats, so the copy always sits on navy and the page always carries the motif
 //   · a seam of light runs along the split; raw transactions drift across the navy field into a
 //     white light on the seam, on the golden line
-//   · the campaign motif is the 50-seat grid: filled seats in navy, open seats as navy rings, and the
+//   · the campaign motif is the 50-seat grid: open seats as navy rings (filled seats in navy only when
+//     the real counter is on), and the
 //     NEXT seat in glowing cyan, reached by the cyan exception line straight out of the seam light
 //     (it is the seat the viewer can take). The "now live" set uses a ledger with one cyan line.
 //   · copy has three levels only (eyebrow, hero, support) plus one CTA pill to app.seg-audit.com
 //
-// Variants: seats-ar / seats-en ("33 of 50 left"), live-ar / live-en ("now live"), neutral-seats /
+// Variants: seats-ar / seats-en ("only 50 seats, founder price for life"; "X of 50 left" only with the real counter), live-ar / live-en ("now live"), neutral-seats /
 // neutral-live (no words,
 // one file for both languages). Seat counts come from src/site.config.js → founding, so a rerun after
-// changing `filled` regenerates every number.
+// the counter (showCount) is off, so the seat designs carry «برنامج الأعضاء المؤسِّسون — 50 مقعد
+// فقط بسعر مؤسِّس مدى الحياة» and no count.
 //
 // Needs Playwright + Google Chrome:  PLAYWRIGHT_PATH=<path to playwright> node scripts/launch-images.js [name-filter]
 const fs = require('fs');
@@ -36,7 +38,9 @@ const MARK_WHITE = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-whit
 const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 const { founding: FM } = require('../src/site.config.js');
-const LEFT = FM.total - FM.filled;
+// No public counter unless site.config → founding.showCount (then FILLED seats are drawn and counted).
+const FILLED = FM.showCount ? FM.filled : 0, LEFT = FM.total - FILLED;
+// The approved line «برنامج الأعضاء المؤسِّسون — 50 مقعد فقط بسعر مؤسِّس مدى الحياة» is set as eyebrow + title.
 
 const NAVY = '#0D1B3E', CYAN = '#1BB7CD', W = '#FFFFFF';
 const PHI = (1 + Math.sqrt(5)) / 2;
@@ -45,8 +49,12 @@ const f = (n) => +n.toFixed(1);
 
 // ---- Copy (three levels + CTA). The AR seats headline is the approved campaign line, verbatim. ----
 const COPY = {
-  'seats-ar': { dir: 'rtl', eyebrow: 'SEG Audit · الأعضاء المؤسِّسون', hero: [String(LEFT), `/${FM.total}`], title: `باقي ${LEFT} من ${FM.total} — الأعضاء المؤسِّسون`, support: `انضمت ${FM.filled} شركة بالفعل. احجز مقعدك قبل اكتمال العدد.`, cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' },
-  'seats-en': { dir: 'ltr', eyebrow: 'SEG AUDIT · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left — Founding Members`, support: `${FM.filled} companies have already joined. Claim yours before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' },
+  'seats-ar': FM.showCount
+    ? { dir: 'rtl', eyebrow: 'SEG Audit · الأعضاء المؤسِّسون', hero: [String(LEFT), `/${FM.total}`], title: `باقي ${LEFT} من ${FM.total} — الأعضاء المؤسِّسون`, support: `انضمت ${FILLED} شركة بالفعل. احجز مقعدك قبل اكتمال العدد.`, cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' }
+    : { dir: 'rtl', eyebrow: 'SEG Audit · برنامج الأعضاء المؤسِّسون', hero: [String(FM.total), ''], title: `${FM.total} مقعد فقط بسعر مؤسِّس مدى الحياة`, support: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' },
+  'seats-en': FM.showCount
+    ? { dir: 'ltr', eyebrow: 'SEG AUDIT · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left — Founding Members`, support: `${FILLED} companies have already joined. Claim yours before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' }
+    : { dir: 'ltr', eyebrow: 'SEG AUDIT · FOUNDING MEMBERS PROGRAMME', hero: [String(FM.total), ''], title: `Only ${FM.total} seats, founder price for life`, support: 'Start with a free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' },
   'live-ar': { dir: 'rtl', eyebrow: 'SEG Audit من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com', motif: 'live' },
   'live-en': { dir: 'ltr', eyebrow: 'SEG AUDIT BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'A free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Check your trial balance free  ·  app.seg-audit.com', motif: 'live' },
   'neutral-seats': { motif: 'seats' },
@@ -179,11 +187,11 @@ function scene(F, variant) {
   if (C.motif === 'seats') {
     const landscape = G.axis === 'x';
     const S = seatLayout(P, landscape);
-    const next = FM.filled;
-    target = next != null ? S.seats[next] : S.seats[FM.filled - 1];
+    const next = FILLED; // the visitor's seat: the first open one
+    target = S.seats[next];
     S.seats.forEach((p, i) => {
       if (i === next) return;
-      if (i < FM.filled) page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r)}" fill="${NAVY}"/>`;
+      if (i < FILLED) page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r)}" fill="${NAVY}"/>`;
       else page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r - 1.25 * u)}" fill="none" stroke="${NAVY}" stroke-opacity=".55" stroke-width="${f(2.5 * u)}"/>`;
     });
     if (next != null) {
@@ -318,7 +326,7 @@ function typePlan(F, C) {
         // the seat count: big cyan number + muted "/50", always LTR digits
         g.direction = 'ltr'; g.textAlign = 'left';
         set(800, it.px); const nW = g.measureText(C.hero[0]).width;
-        set(800, it.px * 0.42); const dW = g.measureText(C.hero[1]).width;
+        set(800, it.px * 0.42); const dW = C.hero[1] ? g.measureText(C.hero[1]).width : 0;
         const gapX = it.px * 0.06, full = nW + gapX + dW, x0 = rtl ? X - full : X;
         g.shadowColor = 'rgba(27,183,205,.55)'; g.shadowBlur = 40 * u;
         set(800, it.px); g.fillStyle = '#1BB7CD'; g.fillText(C.hero[0], x0, y + it.px * 0.76);
@@ -368,7 +376,7 @@ function typePlan(F, C) {
     const groups = [...new Set(written.map((x) => x.dir))];
     const html = `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG Audit launch designs</title>
 <style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.5 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 12px;text-transform:capitalize}p{margin:0 0 16px;color:#3B4262}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto;background:#0D1B3E}figcaption{font-size:12px;margin-top:8px;word-break:break-all}</style>
-<h1>SEG Audit launch: Founding Members</h1><p>Generated by scripts/launch-images.js. Seats: ${FM.filled} filled, ${LEFT} left of ${FM.total}. Every file exists as .webp and .jpg.</p>
+<h1>SEG Audit launch: Founding Members</h1><p>Generated by scripts/launch-images.js. ${FM.total} founding seats${FM.showCount ? ` (${FILLED} filled)` : ', no public counter'}. Every file exists as .webp and .jpg.</p>
 ${groups.map((gname) => `<h2>${gname}</h2><div class="g">${written.filter((x) => x.dir === gname).map((x) => `<figure><img loading="lazy" src="${gname}/${x.base}.webp" alt="${x.name} ${x.variant}"><figcaption>${gname}/${x.base}.jpg · ${x.w}×${x.h}</figcaption></figure>`).join('')}</div>`).join('\n')}`;
     fs.writeFileSync(path.join(OUT, 'index.html'), html);
     console.log(`${written.length} designs × 2 formats`);

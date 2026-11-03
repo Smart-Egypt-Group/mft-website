@@ -18,8 +18,7 @@ Draft → Review → Approve → Schedule → Publish → Log
 ## Review checklist (stage 2)
 
 **Facts and claims**
-- [ ] Every number is 50, the confirmed seat count, or a platform figure already on the site. No savings, no percentages, no client amounts.
-- [ ] Seat count matches today's `founding.filled`.
+- [ ] Every number is the cap of 50 or a platform figure already on the site. No «انضمت X شركة», no «باقي X», no countdown. No savings, no percentages, no client amounts.
 - [ ] Any free offer is worded exactly «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق» (EN: "A free check of your company’s trial balance that flags its risk points in minutes"), never "free report".
 - [ ] No customer, logo or identifiable story without written consent on file.
 - [ ] No word that implies fraud or a confirmed misstatement ("exceptions", "findings", "evidence" instead).

@@ -71,7 +71,7 @@ Placements: Advantage+ placements, with the 4:5 asset for feeds and the 9:16 ass
 
 - Daily spend of the account > 1.3 × (B / 7) → find the cause, cap the campaign budgets.
 - Landing page or sign-up broken → pause everything that links there until fixed.
-- Seat count changed → replace seat creatives with the regenerated ones (new ads; pause the old).
+- Counter switched on (see 01-operating-system.md) → replace seat creatives with the regenerated ones (new ads; pause the old).
 - All 50 seats filled → pause every Founding Members campaign the same day.
 
 Every change goes into `templates/ad-change-log.csv` with date, platform, object, old → new, rule applied, and who made it.

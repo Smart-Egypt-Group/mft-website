@@ -1,6 +1,6 @@
 // Page shell: <head>, header, footer. Every page template returns { title,
 // description, body } and this wraps it.
-const { esc, t, plain, url, link, btn, seats } = require('./html');
+const { esc, t, plain, url, link, btn, fm } = require('./html');
 
 function head(ctx, page) {
   const { c, config } = ctx;
@@ -110,7 +110,7 @@ function header(ctx) {
   // Founding Members bar: one line above the header on every page except the launch page itself.
   const F = ctx.config.founding;
   const bar = F && F.enabled && c.founding && ctx.path !== 'founding-members/'
-    ? `<p class="launch-bar"><a href="/${ctx.lang}/founding-members/"><span class="live-dot" aria-hidden="true"></span><span>${t(seats(ctx, c.founding.bar))}</span></a></p>`
+    ? `<p class="launch-bar"><a href="/${ctx.lang}/founding-members/"><span class="live-dot" aria-hidden="true"></span><span>${t(fm(ctx, 'bar'))}</span></a></p>`
     : '';
   return `<a class="skip-link" href="#main">${t(c.ui.skip)}</a>
 ${bar}

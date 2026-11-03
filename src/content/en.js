@@ -814,24 +814,46 @@ module.exports = {
   // PENDING (Ahmed): the "Founding terms" benefit and the "after 50" FAQ are commercial commitments;
   // approve or remove before merge.
   founding: {
-    title: 'SEG Audit Founding Members | {left} of {total} seats left',
-    description: 'The SEG Audit Founding Members programme: {total} seats only, {filled} companies already in, {left} left. Sign up at app.seg-audit.com.',
-    ogAlt: '{left} of {total} seats left: SEG Audit Founding Members',
-    bar: 'SEG Audit Founding Members: {left} of {total} seats left. Learn more',
+    // Real scarcity, no counter (launch lead, 3 Nov 2026): only 50 seats at a founder price for life.
+    // Counter copy lives in founding.counter below and shows only when site.config → founding.showCount is true.
+    title: 'SEG Audit Founding Members | Only {total} seats at a founder price for life',
+    description: 'The SEG Audit Founding Members programme: only {total} seats, at a founder price for life. Start with a free check of your company’s trial balance at app.seg-audit.com.',
+    ogAlt: 'Founding Members programme: only {total} seats at a founder price for life',
+    bar: 'SEG Audit Founding Members: only {total} seats at a founder price for life. Learn more',
     page: { eyebrow: 'Founding Members' },
     hero: {
-      headline: '{left} of {total} seats left: SEG Audit {accent}Founding Members{/accent}',
-      subhead: 'We are opening SEG Audit, the continuous audit platform from MFT, to {total} companies as Founding Members. {filled} have already joined; {left} seats remain.',
+      headline: 'SEG Audit {accent}Founding Members{/accent}: only {total} seats at a founder price for life',
+      subhead: 'We are opening SEG Audit, the continuous audit platform from MFT, to {total} companies as Founding Members, at a founder price that stays with you for life. When the seats are taken, the programme closes.',
       cta: 'Claim your seat',
       secondary: 'How to join',
       assurance: ['Read-only access to your system', 'Evidence behind every finding', 'Reports in Arabic and English'],
-      meterCaption: 'seats left of {total}',
-      legend: { filled: '{filled} companies joined', next: 'Next seat', open: 'Open seat' }
+      meterCaption: 'seats only, at a founder price for life',
+      legend: { next: 'Your seat', open: 'Founding seat' }
     },
     homeBand: {
-      title: 'Founding Members: {left} of {total} seats left',
-      body: '{filled} companies joined SEG Audit before launch. Founding seats are capped at {total} and will not reopen.',
+      title: 'Founding Members: only {total} seats at a founder price for life',
+      body: 'Founding seats on SEG Audit are capped at {total} and will not reopen. Start with a free check of your company’s trial balance that flags its risk points in minutes.',
       more: 'Programme details'
+    },
+    final: {
+      title: 'Only {total} seats, at a founder price for life.',
+      body: 'Start with a free trial-balance check, and claim your seat before the count closes.'
+    },
+    // The real counter, later: replaces the matching copy above only when showCount is true and
+    // founding.filled holds a confirmed subscription count. Tokens: {filled}, {left}, {total}.
+    counter: {
+      title: 'SEG Audit Founding Members | {left} of {total} seats left',
+      description: 'The SEG Audit Founding Members programme: {total} seats at a founder price for life; {filled} companies in, {left} left.',
+      ogAlt: '{left} of {total} seats left: SEG Audit Founding Members',
+      bar: 'SEG Audit Founding Members: {left} of {total} seats left. Learn more',
+      'hero.headline': '{left} of {total} seats left: SEG Audit {accent}Founding Members{/accent}',
+      'hero.subhead': '{filled} companies have joined the Founding Members; {left} seats remain at a founder price for life.',
+      'hero.meterCaption': 'seats left of {total}',
+      'hero.legend.filled': '{filled} companies joined',
+      'homeBand.title': 'Founding Members: {left} of {total} seats left',
+      'homeBand.body': '{filled} companies have joined SEG Audit. Founding seats are capped at {total}, at a founder price for life, and will not reopen.',
+      'final.title': '{left} of {total} seats left.',
+      'final.body': '{filled} companies joined before you. Claim your seat before the count closes.'
     },
     // The lead magnet (CEO, 3 Nov 2026): trial-balance indicators only, not a full audit report.
     check: {
@@ -854,7 +876,7 @@ module.exports = {
       items: [
         { title: 'Onboarding with the MFT team', body: 'We connect your system read-only and walk through your first trial-balance check with you in one session, not a manual you read alone.' },
         { title: 'A direct line to the product team', body: 'Your feedback goes straight to the people building the platform, and you have a say in what we build next.' },
-        { title: 'Founding terms, kept', body: 'Founding terms stay with you for as long as your subscription runs, and are not offered once the {total} seats are filled.' },
+        { title: 'A founder price for life', body: 'Your founding price stays with you for as long as your subscription runs, and is not offered once the {total} seats are filled.' },
         { title: 'The Founding Member title', body: 'Your company listed among the Founding Members, only with your written consent.' }
       ]
     },
@@ -869,14 +891,11 @@ module.exports = {
     },
     faq: [
       { q: 'Why only {total} seats?', a: 'Every Founding Member works directly with the MFT team on setup and follow-up, and that does not stretch beyond {total} companies in the first phase.' },
-      { q: 'What happens once the {total} seats are filled?', a: 'The programme closes. The platform stays open for sign-up, without founding terms.' },
+      { q: 'What happens once the {total} seats are filled?', a: 'The programme closes. The platform stays open for sign-up, without the founder price.' },
+      { q: 'What does “a founder price for life” mean?', a: 'The price you join at as a Founding Member stays with you for as long as your subscription runs, and is not offered once the seats are taken.' },
       { q: 'Can the platform change my data?', a: 'No. It reads only. The Odoo connection is read-only and the platform writes nothing to your system.' },
       { q: 'We are not on Odoo. Can we join?', a: 'Yes. Send your last closed month as a trial balance or spreadsheet and we work from that with you.' }
     ],
-    final: {
-      title: '{left} of {total} seats left.',
-      body: '{filled} companies joined before you. Claim your seat before the count closes.'
-    }
   },
 
   partners: {

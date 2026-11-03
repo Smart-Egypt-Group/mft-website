@@ -4,7 +4,7 @@ Two passes a day (09:15 and 21:00 Cairo). Morning pass is the full list; the eve
 
 ## Every morning, before the platforms
 
-- [ ] Seat count today: ___ of 50 filled (from the campaign owner). Matches the site launch bar and `site.config.js`?
+- [ ] Seats filled today (internal tally, never published while the counter is off): ___ of 50
 - [ ] app.seg-audit.com/ar/signup and /en/signup open and the form submits (one test per week, label the test account "delete me")
 - [ ] www.seg-audit.com/ar/founding-members/ loads; launch bar visible
 - [ ] New sign-ups in the last 24h: ___ → all in CRM with source + UTM?

@@ -16,9 +16,9 @@ Edit: CapCut or Premiere. Each frame is a still; motion comes from the moves lis
 | 0:03–0:06 | `frame-2` | «مراجعة سنوية واحدة. والسنة 365 يومًا.» + calendar, one week lit | The five white dots light one by one, then hold | «المراجعة السنوية بتاخد أيام. والسنة كلها ٣٦٥ يوم.» |
 | 0:06–0:10 | `frame-3` | «SEG Audit بيقرا دفاترك كل يوم.» | A cyan wave runs through the dots day by day (animate `wave` from 0 to 365, or cross-fade frame-2 → frame-3) | «SEG Audit بيقرا دفاترك كل يوم، بصلاحية قراءة بس.» |
 | 0:10–0:13 | `frame-4` | «وكل ملاحظة معاها دليلها.» + white report, one cyan row | A white light sweeps down the scan line; the cyan row lights last | «وكل ملاحظة بتطلعلك معاها مصدرها في دفاترك.» |
-| 0:13–0:15 | `frame-5` | Hemicycle: 33 · «باقي 33 من 50 · 17 شركة انضمّت» + link pill | The next seat pulses cyan | «فاضل تلاتة وتلاتين مقعد. الرابط في البايو.» |
+| 0:13–0:15 | `frame-5` | Hemicycle: 50 · «برنامج الأعضاء المؤسِّسون — 50 مقعد فقط بسعر مؤسِّس مدى الحياة» + link pill | The visitor's seat pulses cyan | «خمسين مقعد بس، بسعر مؤسس مدى الحياة. الرابط في البايو.» |
 
-**Caption:** مين بيراجع دفاترك باقي 360 يوم؟ SEG Audit بيراجع كل يوم. باقي 33 من 50 مقعدًا تأسيسيًا. #SEGAudit #محاسبة #ريادة_أعمال
+**Caption:** مين بيراجع دفاترك باقي 360 يوم؟ SEG Audit بيراجع كل يوم. 50 مقعدًا فقط، بسعر مؤسِّس مدى الحياة. #SEGAudit #محاسبة #ريادة_أعمال
 
 ## Video 2 · «قبل / بعد» · 12 s
 
@@ -27,7 +27,7 @@ Edit: CapCut or Premiere. Each frame is a still; motion comes from the moves lis
 | 0:00–0:03 | `frame-1` | «دفاترك شكلها كده؟» over the tilted, overlapping ledger | Slow 3% drift + slight shake on the rows; text hard-cut in at 0:00 | (none; ticking sound only) |
 | 0:03–0:06 | `frame-2` | «SEG Audit بيراجع…» | The scan line wipes top → bottom; above it the rows snap into the white report | «SEG Audit بيراجع الدفاتر كلها، مش عيّنة.» |
 | 0:06–0:09 | `frame-3` | «ملاحظة حرجة واحدة. ومعها مصدرها.» | The cyan row lights; the source chip pulses once | «ملاحظة حرجة واحدة، ومعاها مصدرها.» |
-| 0:09–0:12 | `frame-4` | Hemicycle end card | Next seat pulses | «باقي تلاتة وتلاتين مقعد للأعضاء المؤسسين.» |
+| 0:09–0:12 | `frame-4` | Hemicycle end card | Next seat pulses | «خمسين مقعد بس للأعضاء المؤسسين، بسعر مؤسس مدى الحياة.» |
 
 ## Founder POV clip · 30–40 s
 
@@ -43,7 +43,7 @@ Overlay: `marketing/designs/concepts/founder-pov/founder-pov_{ar,en}_overlay_108
 
 ## Before publishing (all videos)
 
-- [ ] Seat numbers on every frame match `founding.filled` today (rerun `scripts/launch-concepts.js` if not)
+- [ ] No seat count on any frame (the public counter is off); «50 مقعد فقط بسعر مؤسِّس مدى الحياة» only
 - [ ] Captions checked against the voice-over word for word
 - [ ] First frame is the hook, not the logo
 - [ ] Watched once on a phone with the sound off

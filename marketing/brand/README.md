@@ -91,7 +91,7 @@ Rules:
 | «ملاحظة»، «دليل»، «مصدر» | «احتيال»، «فضيحة»، or any word that convicts |
 | Short sentences; one idea each | Exclamation storms, «ثوري», "game-changing" |
 | Arabic first, clear Modern Standard Arabic; Egyptian dialect only in short video and hooks | Mix languages mid-sentence (keep Latin product names as Latin) |
-| Name numbers only when they are published (`platform-facts.js`, seat count) | Invent statistics or name a client without written consent |
+| Name numbers only when they are published (`platform-facts.js`, the cap of 50 seats) | Invent statistics or name a client without written consent |
 
 ## 7. Names, handles and links (standard)
 

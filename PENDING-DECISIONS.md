@@ -9,14 +9,14 @@ All site copy is final. Only the two items below are open. Each is marked in exa
 
 ## Open: SEG Audit Founding Members launch (PR launch/founding-members, 3 Nov 2026)
 
-**Blocker, CEO correction (3 Nov 2026):** existing MFT Odoo customers are **not** SEG Audit platform users. The original brief counted them as the 17 filled seats. Every "17 joined / 33 left" figure (site copy via `founding.filled`, designs, drafts) is therefore unconfirmed. Confirm the real number of founding sign-ups and set `founding.filled` before anything with a seat count is published. If it is 0, the social-proof lines must be removed, not shown as zero.
+**Resolved, launch lead (3 Nov 2026):** the 17 / 33 figures (existing Odoo customers, not platform users) are withdrawn everywhere. Scarcity is the fixed cap with no counter: «برنامج الأعضاء المؤسِّسون — 50 مقعد فقط بسعر مؤسِّس مدى الحياة». The counter is built but off (`site.config.js → founding.showCount: false`); see `marketing/workflow/01-operating-system.md → Switching on the real counter`.
 
 
 | # | Decision | Where it lands |
 |---|---|---|
-| 3 | **Founding terms**: the benefit "founding terms kept for as long as the subscription runs" and the FAQ "the programme closes after 50, no founding terms after" are commercial commitments. Approve or remove | `src/content/{ar,en}.js → founding.gets.items[2]` and `founding.faq[1]`; same lines in `marketing/content/week-1/` (flagged inline) |
+| 3 | **Founder price for life**: decided by the launch lead. Confirm the exact terms behind "for life" (it is written as "for as long as the subscription runs"; not offered once the 50 seats are taken) and that billing in the app honours it | `src/content/{ar,en}.js → founding.gets.items[2]`, `founding.faq` |
 | 4 | **YouTube and TikTok URLs**: not confirmed as MFT's own (youtube.com/@modernfintech is titled "ModernFinTech4k"). Empty values are not rendered | `src/site.config.js → contact.social.youtube / tiktok` |
-| 5 | **Seat definition**: what counts as "filled" (paid / contract signed) | `site.config.js → founding.filled` is changed only on that event |
+| 5 | **Seat definition** (needed only before switching the counter on): what counts as "filled" (paid subscription) | `site.config.js → founding.filled`, `showCount` |
 | 8 | **Free check scope (CEO, 3 Nov 2026)**: the offer is «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق». Two of the five indicators (heavy manual entries, backdated entries) need entry-level data (a journal or an Odoo connection); a trial-balance file alone holds balances only. Confirm how the app computes them for an uploaded trial balance, and that the check really returns in minutes, before the copy goes live | site `founding.check`, home how/CTA/FAQ, `designs/concepts/tb-check/`, carousel, drafts |
 | 7 | **Social handles**: standard @modernfintech (fallback @mftfintech); availability on X, TikTok and YouTube unconfirmed; Facebook/LinkedIn vanity URL changes alter existing links | `marketing/brand/CHECKLIST.md`, then `site.config.js → contact.social` |
 | 6 | **Product name in copy**: launch copy uses "SEG Audit"; older site copy uses "seg-audit". Unify or keep both | content files |

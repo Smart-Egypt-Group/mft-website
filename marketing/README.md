@@ -7,18 +7,18 @@ Everything the marketing team needs to run the **Founding Members** launch day b
 | | |
 |---|---|
 | Product | **SEG Audit**, the continuous audit platform from MFT (app.seg-audit.com) |
-| Offer | **Founding Members**: 50 seats in total; `founding.filled` seats taken. **PENDING:** the 17 / 33 figures were based on existing Odoo customers, who are not SEG Audit users (CEO correction, 3 Nov 2026). Confirm the real count before any of this copy is published |
+| Offer | **Founding Members programme**: only 50 seats, at a founder price for life. **No public counter**: the earlier 17 / 33 figures were withdrawn (launch lead, 3 Nov 2026) |
 | Lead magnet (CEO) | **«فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق»**: trial-balance indicators only (suspense accounts, abnormal balances, imbalance, heavy manual entries, backdated entries). Never called a free report or an audit report |
-| Launch angle | Scarcity: «باقي 33 من 50». Social proof: «17 شركة انضمت بالفعل» |
+| Launch angle | Real scarcity without a counter: «برنامج الأعضاء المؤسِّسون — 50 مقعد فقط بسعر مؤسِّس مدى الحياة» |
 | Every CTA | `https://app.seg-audit.com/ar/signup` (or `/en/signup`) with UTM tags, see [UTM scheme](workflow/05-kpis-and-reporting.md#utm-scheme) |
 | Website | `/ar/founding-members/` and `/en/founding-members/`, a launch bar on every page, a band on the home page |
-| Seat count source | `src/site.config.js → founding.filled`. Change it there, rebuild the site, rerun `scripts/launch-images.js`. Never type the number by hand in a design |
+| Counter | Off (`src/site.config.js → founding.showCount: false`). It can be switched on only with a confirmed count of paid founding subscriptions; see [01-operating-system.md](workflow/01-operating-system.md#switching-on-the-real-counter) |
 
 ### Two tracks
 
 | Track | Audience | Goal | Main channels | North-star metric |
 |---|---|---|---|---|
-| **A. Acquisition** | Prospects: finance managers, CFOs, owners, chief accountants, Odoo users in Egypt and KSA | Fill the 33 seats | LinkedIn, Facebook, Instagram, X, YouTube, TikTok, Meta Ads, TikTok Ads | Founding sign-ups (seat claimed) |
+| **A. Acquisition** | Prospects: finance managers, CFOs, owners, chief accountants, Odoo users in Egypt and KSA | Fill the 50 founding seats | LinkedIn, Facebook, Instagram, X, YouTube, TikTok, Meta Ads, TikTok Ads | Founding sign-ups (seat claimed) |
 | **B. Retention & Growth** | Every company that signs up and takes a founding seat | Activate, keep, collect proof, get referrals | WhatsApp 1:1, email, onboarding calls, LinkedIn (with consent) | Active founding members, testimonials collected, referrals |
 
 Track B feeds track A: every testimonial, case study and referral from a founding member becomes proof for the seats still open. Existing MFT Odoo customers are **not** SEG Audit users and are not addressed as founding members.
@@ -61,9 +61,9 @@ For the creative concepts: `node scripts/launch-concepts.js` (same requirements)
 
 ## Rules that never bend
 
-1. **No invented numbers.** Only 50, the confirmed seat count, and the platform figures already on the site (`src/content/platform-facts.js`). No savings claims, no "X% fewer errors", no client amounts.
+1. **No invented numbers.** Only the cap of 50 and the platform figures already on the site (`src/content/platform-facts.js`). No savings claims, no "X% fewer errors", no client amounts.
 2. **No customer named without written consent.** Founding members are a count, not a logo wall, until each one says yes in writing.
-3. **The seat count is one number in one place.** When a seat is filled, `founding.filled` changes first, then the site, the designs and the copy follow on the same day.
+3. **No member count in public.** No «انضمت X شركة», no «باقي X», no countdown, until the real counter is switched on with confirmed subscriptions.
 4. **Nothing is "fraud" or "a misstatement".** We talk about findings and exceptions with evidence, never accusations.
 5. **Every link carries UTM tags.** An untagged link is a post that cannot be measured.
 6. **The free offer has one description**: «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق» / "A free check of your company’s trial balance that flags its risk points in minutes". Never «تقرير مجاني», never "audit report".

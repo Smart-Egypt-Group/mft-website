@@ -1,4 +1,4 @@
-const { t, esc, url, btn, sectionHead, phTag, pad2, seats, signupUrl } = require('../html');
+const { t, esc, url, btn, sectionHead, phTag, pad2, fm, signupUrl } = require('../html');
 const { faqBlock, faqSchema, seeAlso, reviewSchema } = require('./services');
 const { latestBlock } = require('./blog');
 const { heroA, heroB, heroC } = require('../partials/hero');
@@ -101,13 +101,13 @@ module.exports = function home(ctx, opts = {}) {
   const founding = FM && FM.enabled && c.founding
     ? `<section class="founding-band" aria-labelledby="fm-band-title">
   <div class="container founding-band-inner">
-    <p class="founding-band-count" aria-hidden="true"><span class="lat">${FM.total - FM.filled}</span><span class="lat">/${FM.total}</span></p>
+    <p class="founding-band-count" aria-hidden="true"><span class="lat">${FM.showCount ? FM.total - FM.filled : FM.total}</span>${FM.showCount ? `<span class="lat">/${FM.total}</span>` : ''}</p>
     <div>
-      <h2 id="fm-band-title">${t(seats(ctx, c.founding.homeBand.title))}</h2>
-      <p>${t(seats(ctx, c.founding.homeBand.body))}</p>
+      <h2 id="fm-band-title">${t(fm(ctx, 'homeBand.title'))}</h2>
+      <p>${t(fm(ctx, 'homeBand.body'))}</p>
     </div>
     <div class="founding-band-actions">
-      <a class="btn btn-primary" href="${esc(signupUrl(ctx, 'home-band'))}">${t(seats(ctx, c.founding.hero.cta))}</a>
+      <a class="btn btn-primary" href="${esc(signupUrl(ctx, 'home-band'))}">${t(fm(ctx, 'hero.cta'))}</a>
       <a class="btn btn-link" href="${url(ctx, 'founding-members/')}">${t(c.founding.homeBand.more)}</a>
     </div>
   </div>

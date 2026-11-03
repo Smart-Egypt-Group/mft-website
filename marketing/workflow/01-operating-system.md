@@ -6,7 +6,7 @@ The team works in Cairo time (EET, UTC+2) on a Sunday to Thursday week, the work
 
 | Role | Owns | Decides |
 |---|---|---|
-| **Campaign owner** (Ahmed or delegate) | Offer, seat count, budget ceiling, final approval of anything new (new claim, new ad angle, new spend) | Go / no-go, budget changes above the weekly envelope |
+| **Campaign owner** (Ahmed or delegate) | Offer, seats filled (internal), budget ceiling, final approval of anything new (new claim, new ad angle, new spend) | Go / no-go, budget changes above the weekly envelope |
 | **Content lead** | Drafts, calendar, captions, comments policy | Copy within approved angles |
 | **Designer** | Generator runs, new variants, platform resizes | Layout within the brand system |
 | **Ads manager** | Meta Ads + TikTok Ads, daily checks, rule-based pause/scale | Moves inside the weekly envelope per [03-paid-ads.md](03-paid-ads.md) |
@@ -19,7 +19,7 @@ One person can hold several roles. The approver must not be the drafter for the 
 
 | Time (Cairo) | Track | Block | Output |
 |---|---|---|---|
-| 09:00–09:15 | Both | **Stand-up** (15 min): yesterday's numbers, today's posts, seat count, blockers | Seat count confirmed in `site.config.js` if it changed |
+| 09:00–09:15 | Both | **Stand-up** (15 min): yesterday's numbers, today's posts, seats filled (internal), blockers | Internal seat tally updated |
 | 09:15–09:45 | A | **Monitoring pass 1**: [04-daily-monitoring.md](04-daily-monitoring.md) for every platform and both ad accounts | Monitoring row filled; any rule-based ad action logged |
 | 09:45–11:00 | A | **Publish slot 1** (LinkedIn, X, Facebook) at the scheduled times; first-hour engagement: reply to every comment | Content log updated (step 6 of the publishing workflow) |
 | 11:00–12:30 | B | **Founding members block**: today's touchpoints from the track B plan (welcome, onboarding call, check-in, testimonial ask, referral ask) | CRM activity per member; consent captured in writing where asked |
@@ -36,7 +36,7 @@ Response SLA: comments and DMs within **2 working hours**; sign-ups contacted wi
 | Day | Track | Ritual | Output |
 |---|---|---|---|
 | **Sunday** | Both | **Weekly planning** (45 min): last week's report, this week's calendar, angles, budget envelope | Calendar locked; budget envelope approved by the campaign owner |
-| **Monday** | A | **Creative refresh**: new variants for any ad flagged as fatigued; rerun the generator if the seat count moved | New assets in Review |
+| **Monday** | A | **Creative refresh**: new variants for any ad flagged as fatigued; rerun the generators if the copy changed | New assets in Review |
 | **Tuesday** | B | **Founding members review**: status of every founding member (active, onboarded, at risk), testimonials and referrals pipeline | Track B table updated |
 | **Wednesday** | A | **Ads deep-dive**: audience and creative breakdown, scale/kill decisions above the daily rules | Ad change log |
 | **Thursday** | Both | **Weekly report** ([templates/weekly-report.md](templates/weekly-report.md)) sent to the campaign owner by 15:00 | Report + next week's asks |
@@ -53,12 +53,14 @@ Response SLA: comments and DMs within **2 working hours**; sign-ups contacted wi
 
 Track B status per member lives in the CRM (Odoo, erp.seg-audit.com) with one activity per touchpoint. Never post anything that identifies a member without written consent.
 
-## The seat-count rule
+## Switching on the real counter
 
-When a founding seat is filled (paid or contract signed, as defined by the campaign owner):
+Today there is **no public counter** (launch lead, 3 Nov 2026): every channel says «برنامج الأعضاء المؤسِّسون — 50 مقعد فقط بسعر مؤسِّس مدى الحياة» and nothing about how many have joined. Seats filled are tracked internally (weekly report) from day one.
 
-1. Campaign owner confirms in the stand-up.
-2. `src/site.config.js → founding.filled` +1, PR, deploy (the site, the launch bar and the page all follow).
-3. Rerun `scripts/launch-images.js`; swap the seat creatives in the ad accounts (new ads, do not edit live ones, so learning history stays clean).
-4. Any scheduled post that names the old number is edited before it goes out.
+Switch the counter on only when the campaign owner decides to, with **paid founding subscriptions confirmed in CRM**:
+
+1. Set `src/site.config.js → founding.filled` to the confirmed count, `asOf` to the date, `showCount: true`. `npm run check` refuses the counter without both.
+2. PR + deploy: the page, header bar, home band, seat meter and titles switch to the counter copy (`content/<lang>.js → founding.counter`).
+3. Rerun `scripts/launch-images.js` and `scripts/launch-concepts.js`; the seat designs then light the filled seats and show «باقي X من 50». Replace the seat ads with new ads (do not edit live ones).
+4. From then on, every seat filled = `filled` +1 the same day, and scheduled posts that name a number are updated before they go out.
 5. At 10 seats left, switch the angle to «آخر 10 مقاعد»; at 0, close the programme on every channel the same day.
