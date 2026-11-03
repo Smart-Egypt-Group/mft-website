@@ -66,6 +66,14 @@ Two passes a day (09:15 and 21:00 Cairo). Morning pass is the full list; the eve
 - [ ] Rejected creatives or policy notices
 - [ ] Apply rules; log changes
 
+## Sales (see [06-sales-operating-rhythm.md](06-sales-operating-rhythm.md))
+
+- [ ] Platform → Odoo reconciliation done by 09:00 (new sign-ups, audit-log events, quota use); `x_pql_score` updated
+- [ ] ◐ Every new PQL contacted within 1 working hour; every demo/contact request within 4
+- [ ] Partner deal registrations answered within 1 working day
+- [ ] No opportunity at stage ≥ 3 without a dated next activity
+- [ ] Unsubscribes and complaints on nurture emails checked; any message over 0.5% unsubscribes paused for review
+
 ## Track B (founding members)
 
 - [ ] Today's touchpoints from the track B plan done; CRM activity logged per member

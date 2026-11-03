@@ -57,6 +57,38 @@ Top 3 creatives (asset name, results, cost per result) · Bottom 3 (and the rule
 | Case studies: asked → consented → published | → → | |
 | Referrals: received → contacted → seats | → → | |
 
+## 5b. Sales (marketing/sales/)
+
+| Funnel | This week | To date | Source |
+|---|---|---|---|
+| Sign-ups (platform) | | | Admin overview / daily reconciliation |
+| Activated (first report on own data within 14 days) | | | Audit log `report.generated` |
+| PQL (score ≥ 60) → contacted within 1 working hour | → | | Odoo tag `PQL` |
+| PQL → paid | | | Odoo |
+| Opportunities created, by motion (`x_motion`: plg / partner / abm / founder / outbound / inbound / event) | | | Odoo CRM |
+| Pipeline ACV, by stage (3–7) | | | Odoo CRM |
+| Won (paid) and ACV, by motion | | | Odoo CRM + invoices |
+| Forecast: Commit / Best case / Pipeline | | | Deal review |
+
+| Partners | Count |
+|---|---|
+| Applications → agreements signed → certified | → → |
+| Active partners (≥ 1 open deal or paid company) | |
+| Registered deals: new / accepted / expired | / / |
+| Paid companies via partners (to date) | |
+
+| ABM | Count |
+|---|---|
+| T1 accounts with ≥ 3 roles engaged | /15 |
+| First meetings T1 / T2 | / |
+
+| Economics (monthly, first report of the month) | Actual | Reference |
+|---|---|---|
+| CAC blended / per motion | | ≤ $2,500 |
+| ARPA (net of reseller discounts; launch discount shown separately) | | $6,000 |
+| Payback (months) | | ~6 |
+| NRR / GRR (cohorts ≥ 12 months only) | | ≥ 115% |
+
 ## 6. Content operations
 
 Planned __ · published __ · on time __% · median review cycle __ h · items returned at review __ (main reasons: __).

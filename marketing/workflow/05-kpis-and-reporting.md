@@ -26,6 +26,10 @@ Targets are set by the campaign owner. Week 1 is the baseline week: record, do n
 | Testimonials / case studies | Requested → consented → published |
 | Referrals | Referrals received → contacted → seats filled from referrals |
 
+### Sales (B2B playbook)
+
+Definitions, targets and the economics model live in [`../sales/00-economics.md`](../sales/00-economics.md); the activation and PQL definitions in [`../sales/02-plg-pql.md`](../sales/02-plg-pql.md). Weekly: sign-ups → activated → PQL → paid, opportunities and pipeline by motion (`x_motion` in Odoo), partner and ABM counts, forecast. Monthly: CAC per motion (analytic accounts `S&M/*`), ARPA, payback; NRR/GRR once cohorts reach 12 months. Section 5b of the weekly report.
+
 ### Content operations
 
 | KPI | Definition |
@@ -43,8 +47,8 @@ Base links:
 
 | Parameter | Values | Rule |
 |---|---|---|
-| `utm_source` | `linkedin`, `facebook`, `instagram`, `x`, `youtube`, `tiktok`, `whatsapp`, `email`, `website`, `partner` | The platform where the click happens, lowercase |
-| `utm_medium` | `organic`, `paid`, `social-bio`, `owned`, `email`, `sales`, `referral` | `social-bio` = link in bio; `owned` = our website; `sales` = 1:1 WhatsApp from the team; `referral` = a founding member's own link |
+| `utm_source` | `linkedin`, `facebook`, `instagram`, `x`, `youtube`, `tiktok`, `whatsapp`, `email`, `website`, `partner`, `phone` | The platform where the click happens, lowercase |
+| `utm_medium` | `organic`, `paid`, `social-bio`, `owned`, `email`, `sales`, `referral` | `social-bio` = link in bio; `owned` = our website; `sales` = 1:1 messages from the team (WhatsApp, LinkedIn, outbound touches: `utm_content=ob-<sequence>-t<n>`); `referral` = a founding member's or a partner's own link (`utm_content=<partner-code>`); `email` = nurture sequences (`utm_content=n1-e2`) |
 | `utm_campaign` | `founding-members-2026` | One value for the whole launch; never change it mid-flight |
 | `utm_content` | The item ID: `w1-d1-li-a-1`, or for ads the asset name: `seats-ar-4x5` | Lets the report tie a seat back to one post or creative |
 | `utm_term` | Paid only: audience short name: `eg-finance`, `sa-finance`, `odoo-stack`, `rt-30d`, `lal-1` | |

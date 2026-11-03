@@ -13,6 +13,8 @@ The team works in Cairo time (EET, UTC+2) on a Sunday to Thursday week, the work
 | **Community / sales response** | Comments, DMs, WhatsApp replies within SLA, hand-off of leads | Reply wording from the approved FAQ |
 | **Customer success** (track B) | Each new founding member: onboarding, check-ins, testimonials, referrals | Session scheduling, escalation to product |
 
+Sales roles (account executive, SDR, partner manager, RevOps, founder) and the sales blocks of the same day are in [06-sales-operating-rhythm.md](06-sales-operating-rhythm.md).
+
 One person can hold several roles. The approver must not be the drafter for the same item (segregation of duties).
 
 ## Daily cadence
@@ -49,7 +51,7 @@ Response SLA: comments and DMs within **2 working hours**; sign-ups contacted wi
 | 1–2 | Onboarding session (30–45 min): every report running on their data | Call / screen-share | Activation |
 | 2 | Check-in: «ما أول ملاحظة فاجأتك؟» | WhatsApp | Value moment; testimonial raw material |
 | 3 | Testimonial or case study ask, with consent form (named / anonymous / no) | Call, then written consent by email | Proof for track A |
-| 3–4 | Referral ask: «المقاعد المتبقية [العدد]. من تعرف؟» | WhatsApp | Warm leads for track A |
+| 3–4 | Referral ask: «المقاعد التأسيسية 50 فقط، بسعر مؤسِّس مدى الحياة. من تعرف يستفيد؟» (no remaining-seat number while the counter is off) | WhatsApp | Warm leads for track A |
 
 Track B status per member lives in the CRM (Odoo, erp.seg-audit.com) with one activity per touchpoint. Never post anything that identifies a member without written consent.
 

@@ -21,6 +21,8 @@ Everything the marketing team needs to run the **Founding Members** launch day b
 | **A. Acquisition** | Prospects: finance managers, CFOs, owners, chief accountants, Odoo users in Egypt and KSA | Fill the 50 founding seats | LinkedIn, Facebook, Instagram, X, YouTube, TikTok, Meta Ads, TikTok Ads | Founding sign-ups (seat claimed) |
 | **B. Retention & Growth** | Every company that signs up and takes a founding seat | Activate, keep, collect proof, get referrals | WhatsApp 1:1, email, onboarding calls, LinkedIn (with consent) | Active founding members, testimonials collected, referrals |
 
+**Sales playbook:** [sales/README.md](sales/README.md). Every motion is tied to one of the CEO's reference numbers (CAC ≤ $2,500, ARPA $6,000, NRR ≥ 115%, payback ~6 months); nothing is spent, published or promised to a partner without the CEO's approval.
+
 Track B feeds track A: every testimonial, case study and referral from a founding member becomes proof for the seats still open. Existing MFT Odoo customers are **not** SEG Audit users and are not addressed as founding members.
 
 ## Folder map
@@ -34,10 +36,15 @@ marketing/
     03-paid-ads.md                  funding, campaign structure, budget split, pause-loser / scale-winner rules
     04-daily-monitoring.md          the daily checklist per platform
     05-kpis-and-reporting.md        weekly KPIs, UTM scheme, weekly report template
+    06-sales-operating-rhythm.md    the sales day, week, month and quarter, merged with the marketing cadence
     templates/
       content-log.csv               one row per published item (the log in step 6)
       weekly-report.md              copy this every Thursday
       ad-change-log.csv             every budget or status change in Ads Manager
+  sales/                            the B2B sales playbook (PLG → PQL, partner/reseller programme, ABM, founder-led
+                                    and LinkedIn selling, outbound + nurture + retargeting, Odoo 19 CRM stages and
+                                    scoring with import CSVs, MEDDPICC, demo/webinar/case studies, unit-economics model);
+                                    start at sales/README.md
   brand/                            the brand identity kit, profile assets per platform, profile text, implementation checklist
   content/
     week-1/                         Arabic launch drafts per platform, both tracks (track B: track-b-new-members.md)
