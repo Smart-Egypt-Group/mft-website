@@ -47,8 +47,8 @@ const f = (n) => +n.toFixed(1);
 const COPY = {
   'seats-ar': { dir: 'rtl', eyebrow: 'SEG Audit · الأعضاء المؤسِّسون', hero: [String(LEFT), `/${FM.total}`], title: `باقي ${LEFT} من ${FM.total} — الأعضاء المؤسِّسون`, support: `انضمت ${FM.filled} شركة بالفعل. احجز مقعدك قبل اكتمال العدد.`, cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' },
   'seats-en': { dir: 'ltr', eyebrow: 'SEG AUDIT · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left — Founding Members`, support: `${FM.filled} companies have already joined. Claim yours before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' },
-  'live-ar': { dir: 'rtl', eyebrow: 'SEG Audit من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'كل ملاحظة في دفاترك، مرتبة حسب خطورتها، ومعها دليلها.', cta: 'ابدأ الآن  ·  app.seg-audit.com', motif: 'live' },
-  'live-en': { dir: 'ltr', eyebrow: 'SEG AUDIT BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'Every finding in your books, ranked by severity, with its evidence.', cta: 'Start now  ·  app.seg-audit.com', motif: 'live' },
+  'live-ar': { dir: 'rtl', eyebrow: 'SEG Audit من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com', motif: 'live' },
+  'live-en': { dir: 'ltr', eyebrow: 'SEG AUDIT BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'A free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Check your trial balance free  ·  app.seg-audit.com', motif: 'live' },
   'neutral-seats': { motif: 'seats' },
   'neutral-live': { motif: 'live' }
 };

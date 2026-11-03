@@ -25,6 +25,11 @@ Every claim above is published on the site (trust centre, platform figures in `s
 - AR: MFT شركة تكنولوجيا مالية ومراجعة بقيادة محاسبين معتمدين: منصة SEG Audit للمراجعة المستمرة، وتنفيذ Odoo ERP، والمراجعة الداخلية، والمدير المالي الافتراضي، في مصر والسعودية والولايات المتحدة.
 - EN: MFT is a fintech and audit firm led by certified accountants: the SEG Audit continuous audit platform, Odoo ERP implementation, internal audit and virtual CFO services, in Egypt, Saudi Arabia and the United States.
 
+**The free offer (lead magnet):**
+- AR: فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق
+- EN: A free check of your company’s trial balance that flags its risk points in minutes (short: Free trial-balance check: risk points in minutes)
+- What it is: indicators computed from the trial balance only (suspense accounts, abnormal balances, imbalance, heavy manual entries, backdated entries). **Not a full audit report**; never call it a "free report".
+
 ## 2. Logo and mark
 
 | Asset | File | Use |

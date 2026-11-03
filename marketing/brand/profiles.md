@@ -2,6 +2,8 @@
 
 Every field below is checked against the platform's character limit (counted in the PR). One profile per platform: **Arabic is the primary language**; the English text goes where the platform offers a second field, or replaces the Arabic for an English-first audience if the campaign owner decides so.
 
+**The free offer (CEO, 3 Nov 2026)** is always worded **«فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق»** / "A free check of your company’s trial balance that flags its risk points in minutes" (short EN where space is tight: "Free trial-balance check: risk points in minutes"). Never "free report".
+
 **Standard everywhere**
 - Display name: **Modern Financial Technology (MFT)**
 - Handle: **@modernfintech** (fallback **@mftfintech** where taken; see the availability column in [CHECKLIST.md](CHECKLIST.md))
@@ -34,10 +36,14 @@ Every field below is checked against the platform's character limit (counted in 
 >
 > ومع المنصة: تنفيذ Odoo ERP، والمراجعة الداخلية، والمدير المالي الافتراضي، في مصر والسعودية والولايات المتحدة.
 >
+> ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق: مؤشرات محسوبة من ميزان المراجعة فقط (حسابات معلّقة، أرصدة شاذة، عدم اتزان، قيود يدوية كثيفة، تواريخ رجعية).
+>
 > المنصة: app.seg-audit.com · الموقع: www.seg-audit.com
 >
 > **The platform that reviews itself.**
 > MFT is a fintech and audit firm led by certified accountants. SEG Audit, our continuous audit platform, reads your books read-only, ranks every finding by severity and shows its evidence. We review ourselves first: 7,900+ automated tests before every update and a log nothing can change silently. We also implement Odoo ERP and run internal audit and virtual CFO services in Egypt, Saudi Arabia and the United States.
+>
+> Start with a free check of your company’s trial balance that flags its risk points in minutes: indicators computed from your trial balance only (suspense accounts, abnormal balances, imbalance, heavy manual entries, backdated entries).
 
 ## LinkedIn (founder's personal profile, optional but recommended)
 
@@ -56,8 +62,8 @@ The founder edits his own headline and about; this is a suggestion only.
 | Page name | Modern Financial Technology (MFT) (today: "Modern Financial Technology"; adding "(MFT)" is optional, and Facebook reviews name changes) |
 | Username | facebook.com/**modernfintech** (today: /Fintech2030; old links may stop working, so check before changing) |
 | Category | Financial Service · Accountant · Software Company (up to 3) |
-| Intro / Bio (101) | AR: المنصة التي تراجع نفسها. SEG Audit من MFT: مراجعة مستمرة لدفاترك، ولكل ملاحظة دليلها. |
-| | EN: The platform that reviews itself. SEG Audit by MFT: continuous audit, evidence behind every finding. |
+| Intro / Bio (101) | AR: المنصة التي تراجع نفسها. فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. |
+| | EN: The platform that reviews itself. Free trial-balance check: your risk points in minutes. |
 | Website | https://www.seg-audit.com |
 | Email / phone | info@seg-audit.com · +20 106 239 9941 |
 | WhatsApp | Connect +20 106 239 9941; action button **Send WhatsApp message** |
@@ -70,8 +76,8 @@ The founder edits his own headline and about; this is a suggestion only.
 |---|---|
 | Name (searchable, 64) | Modern Financial Technology (MFT) |
 | Username | @modernfintech ✓ (already set) |
-| Bio (150), AR | المنصة التي تراجع نفسها.<br>SEG Audit: مراجعة مستمرة لدفاترك، ولكل ملاحظة دليلها.<br>Odoo ERP · المراجعة · المدير المالي الافتراضي |
-| Bio (150), EN | The platform that reviews itself.<br>SEG Audit: continuous audit of your books, evidence behind every finding.<br>Odoo ERP · Audit · Virtual CFO |
+| Bio (150), AR | المنصة التي تراجع نفسها.<br>SEG Audit: مراجعة مستمرة لدفاترك، ولكل ملاحظة دليلها.<br>فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق ↓ |
+| Bio (150), EN | The platform that reviews itself.<br>SEG Audit: continuous audit, evidence behind every finding.<br>Free trial-balance check: risk points in minutes ↓ |
 | Links (up to 5) | 1. https://www.seg-audit.com (title: الموقع) · 2. https://app.seg-audit.com/ar/signup?utm_source=instagram&utm_medium=social-bio&utm_campaign=founding-members-2026&utm_content=bio (title: SEG Audit) |
 | Category | Financial Service |
 | Contact options | Email info@seg-audit.com · phone/WhatsApp +20 106 239 9941 |
@@ -96,8 +102,8 @@ The founder edits his own headline and about; this is a suggestion only.
 |---|---|
 | Name (30) | Modern Financial Technology |
 | Username | @**modernfintech** (availability unconfirmed), fallback @mftfintech |
-| Bio (80) | AR: المنصة التي تراجع نفسها. مراجعة مستمرة لدفاترك ↓ |
-| | EN: The platform that reviews itself. Continuous audit of your books ↓ |
+| Bio (80) | AR: المنصة التي تراجع نفسها. فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق ↓ |
+| | EN: The platform that reviews itself. Free trial-balance check in minutes ↓ |
 | Website | https://www.seg-audit.com (the bio link needs a Business account; TikTok's eligibility rules apply) |
 | Category (Business account) | Professional Services |
 
@@ -107,8 +113,8 @@ The founder edits his own headline and about; this is a suggestion only.
 |---|---|
 | Name (50) | Modern Financial Technology (MFT) |
 | Handle (15) | @**modernfintech** (13 chars; availability unconfirmed), fallback @mftfintech |
-| Bio (160), AR | المنصة التي تراجع نفسها. SEG Audit من MFT: مراجعة مستمرة لدفاترك، ولكل ملاحظة دليلها. Odoo ERP والمراجعة والمدير المالي الافتراضي. app.seg-audit.com |
-| Bio (160), EN | The platform that reviews itself. SEG Audit by MFT: continuous audit of your books, evidence behind every finding. Odoo ERP · Audit · Virtual CFO. |
+| Bio (160), AR | المنصة التي تراجع نفسها. SEG Audit من MFT: فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. Odoo ERP والمراجعة والمدير المالي الافتراضي. |
+| Bio (160), EN | The platform that reviews itself. SEG Audit by MFT: a free check of your company’s trial balance that flags its risk points in minutes. |
 | Location | Cairo, Egypt |
 | Website | https://www.seg-audit.com |
 | Header / avatar | `covers/x-header_1500x500.png` · `avatars/avatar_x_400x400.png` |
@@ -120,7 +126,7 @@ The founder edits his own headline and about; this is a suggestion only.
 |---|---|
 | Business name | Modern Financial Technology (MFT) |
 | Category | Financial Service |
-| About (139) | المنصة التي تراجع نفسها · The platform that reviews itself |
+| About (139) | المنصة التي تراجع نفسها · فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق |
 | Description (512) | AR one-sentence company description from [README.md](README.md#1-positioning), then the EN one |
 | Email · website | info@seg-audit.com · https://www.seg-audit.com |
 | Address | Dr. Sayed Abdel Wahed Street, Korba, Heliopolis, Cairo |

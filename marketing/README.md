@@ -8,6 +8,7 @@ Everything the marketing team needs to run the **Founding Members** launch day b
 |---|---|
 | Product | **SEG Audit**, the continuous audit platform from MFT (app.seg-audit.com) |
 | Offer | **Founding Members**: 50 seats in total; `founding.filled` seats taken. **PENDING:** the 17 / 33 figures were based on existing Odoo customers, who are not SEG Audit users (CEO correction, 3 Nov 2026). Confirm the real count before any of this copy is published |
+| Lead magnet (CEO) | **«فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق»**: trial-balance indicators only (suspense accounts, abnormal balances, imbalance, heavy manual entries, backdated entries). Never called a free report or an audit report |
 | Launch angle | Scarcity: «باقي 33 من 50». Social proof: «17 شركة انضمت بالفعل» |
 | Every CTA | `https://app.seg-audit.com/ar/signup` (or `/en/signup`) with UTM tags, see [UTM scheme](workflow/05-kpis-and-reporting.md#utm-scheme) |
 | Website | `/ar/founding-members/` and `/en/founding-members/`, a launch bar on every page, a band on the home page |
@@ -65,4 +66,5 @@ For the creative concepts: `node scripts/launch-concepts.js` (same requirements)
 3. **The seat count is one number in one place.** When a seat is filled, `founding.filled` changes first, then the site, the designs and the copy follow on the same day.
 4. **Nothing is "fraud" or "a misstatement".** We talk about findings and exceptions with evidence, never accusations.
 5. **Every link carries UTM tags.** An untagged link is a post that cannot be measured.
-6. **One approver per item**, named in the content log, before anything is scheduled.
+6. **The free offer has one description**: «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق» / "A free check of your company’s trial balance that flags its risk points in minutes". Never «تقرير مجاني», never "audit report".
+7. **One approver per item**, named in the content log, before anything is scheduled.

@@ -48,6 +48,16 @@ module.exports = function founding(ctx) {
   </div>
 </section>`;
 
+  const check = `<section class="section section-mist" aria-labelledby="fm-check">
+  <div class="container">
+    <div class="section-head"><p class="eyebrow">${t(P.check.eyebrow)}</p><h2 id="fm-check">${t(P.check.title)}</h2><p class="lead">${t(P.check.intro)}</p></div>
+    <ol class="grid grid-3 pillars check-list">${P.check.items
+      .map((x, i) => `<li class="card"><span class="num lat" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span><h3>${t(x.title)}</h3><p>${t(x.body)}</p></li>`)
+      .join('')}</ol>
+    <p class="section-foot"><a class="btn btn-primary btn-lg" href="${esc(signupUrl(ctx, 'tb-check'))}">${t(P.check.cta)}</a></p>
+  </div>
+</section>`;
+
   const gets = `<section class="section" aria-labelledby="fm-gets">
   <div class="container">
     <div class="section-head"><p class="eyebrow">${t(P.gets.eyebrow)}</p><h2 id="fm-gets">${s(P.gets.title)}</h2><p class="lead">${s(P.gets.intro)}</p></div>
@@ -75,6 +85,7 @@ module.exports = function founding(ctx) {
 </section>`;
 
   const body = `${hero}
+${check}
 ${gets}
 ${how}
 ${faqBlock(ctx, ctx.c.ui.faqTitle, P.faq.map((f) => ({ q: seats(ctx, f.q), a: seats(ctx, f.a) })))}

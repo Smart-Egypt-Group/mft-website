@@ -39,7 +39,7 @@
 > فاتورة المورّد نفسها مدفوعة مرتين. مورّد واحد باسمين. قيد بعد إقفال الفترة.
 > SEG Audit يرصد هذا النوع من الملاحظات، ويُريك مصدر كل واحدة في دفاترك.
 >
-> جرّب على دفاترك: app.seg-audit.com/ar/signup?utm_source=facebook&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d3-fb-a-1
+> ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق: app.seg-audit.com/ar/signup?utm_source=facebook&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d3-fb-a-1
 
 **سؤال للتفاعل (أول تعليق من الصفحة):** ما أكثر خطأ محاسبي يتكرر في شركتك ويُكتشف متأخرًا؟
 
@@ -58,8 +58,8 @@
 
 > ثلاث خطوات للانضمام:
 > ١. سجّل على app.seg-audit.com
-> ٢. اربط Odoo بصلاحية قراءة، أو أرسل آخر شهر مُقفَل
-> ٣. استلم أول تقرير
+> ٢. ارفع ميزان المراجعة، أو اربط Odoo بصلاحية قراءة
+> ٣. استلم فحص الميزان المجاني: نقاط الخطر في دقائق
 >
 > باقي 33 مقعدًا من 50.
 > app.seg-audit.com/ar/signup?utm_source=facebook&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d5-fb-a-1

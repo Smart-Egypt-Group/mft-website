@@ -15,9 +15,11 @@
 //                   with the one exception in cyan
 //   no-source       zero guesswork: a number with no source is struck through and never reaches
 //                   the report
+//   tb-check        the lead magnet: «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق», a trial
+//                   balance with its five risk indicators marked 01–05 (not a full audit report)
 //   hemicycle       scarcity + proof: 50 seats as a hemicycle, 17 lit, the next one cyan,
 //                   «باقي 33 من 50 · 17 شركة انضمّت»
-//   carousel        «5 أخطاء في دفاترك مش هتلاحظها», 7 slides 4:5, plus a PDF for LinkedIn
+//   carousel        «5 أخطاء في دفاترك مش هتلاحظها»: the five trial-balance indicators, 7 slides 4:5 + PDF
 //   video-*         storyboard frames 1080×1920 for two short videos (3-second hook first) and a
 //                   storyboard sheet per video
 //   founder-pov     a transparent overlay for the founder's own footage + a mock frame
@@ -51,43 +53,52 @@ function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 10139
 // ---------------------------------------------------------------- copy
 const T = {
   ar: {
+    cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com',
+    tb: { eb: 'SEG Audit · الفحص المجاني', head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', sub: 'مؤشرات من ميزان المراجعة فقط. ليس تقرير مراجعة كاملًا.', cols: ['الحساب', 'مدين', 'دائن'], total: 'الإجمالي',
+      acc: ['النقدية', 'حساب معلّق', 'العملاء', 'الموردون', 'الإيرادات', 'تكلفة المبيعات', 'المصروفات'],
+      legend: ['حسابات معلّقة', 'أرصدة شاذة', 'عدم اتزان', 'قيود يدوية كثيفة', 'تواريخ رجعية'] },
     hook: { l1: 'مين بيراجع دفاترك', s1: 'مين بيراجع', s2: 'دفاترك باقي', pre: 'باقي', post: 'يوم؟', cap: 'مراجعة سنوية واحدة. والسنة 365 يومًا.' },
     self: { eb: 'SEG Audit · الثقة', head: 'المنصة التي تراجع نفسها.', sub: `قبل أن تراجع دفاترك: أكثر من ${TESTS} اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.` },
     ba: { before: 'قبل', after: 'بعد', head: 'من دفاتر لا يراها أحد، إلى تقرير تراه كاملًا.' },
     ns: { eb: 'SEG Audit · صفر تخمين', head: 'رقم بلا مصدر؟ لا يدخل تقريرك.', sub: 'كل رقم في تقارير SEG Audit مرتبط بمصدره في دفاترك.', tag: 'بلا مصدر', note: 'مثال توضيحي' },
     hemi: { eb: 'SEG Audit · الأعضاء المؤسِّسون', title: `باقي ${LEFT} من ${FM.total} · ${FM.filled} شركة انضمّت`, t1: `باقي ${LEFT} من ${FM.total}`, t2: `${FM.filled} شركة انضمّت`, sub: 'احجز مقعدك قبل اكتمال العدد.', cap: 'مقعدًا متبقيًا', pill: 'احجز مقعدك  ·  app.seg-audit.com' },
     car: {
-      cover: { l1: 'أخطاء في دفاترك', l2: 'مش هتلاحظها', sub: 'إلا لو حد بيراجعها كل يوم.', swipe: 'اسحب  ←' },
+      cover: { l1: 'أخطاء في دفاترك', l2: 'مش هتلاحظها', sub: 'وكلها باينة في ميزان المراجعة.', swipe: 'اسحب  ←' },
+      // the five trial-balance indicators of the free check (CEO, 3 Nov 2026)
       items: [
-        { t: 'نفس الفاتورة اتدفعت مرتين', d: 'مرجعين مختلفين، ونفس المبلغ ونفس المورد.' },
-        { t: 'مورد واحد باسمين', d: 'كودين مختلفين، ورقم ضريبي واحد.' },
-        { t: 'قيد بعد إقفال الفترة', d: 'الفترة مقفولة في التقرير، ومفتوحة في الدفاتر.' },
-        { t: 'فاتورة مورد من غير أمر شراء', d: 'الصرف حصل، والموافقة مش موجودة.' },
-        { t: 'نفس الشخص بيعمل الدفعة ويعتمدها', d: 'الصلاحية موجودة، والفصل بين المهام لأ.' }
+        { t: 'حسابات معلّقة', d: 'رصيد قاعد في حساب وسيط بقاله شهور ومحدش سوّاه.' },
+        { t: 'أرصدة شاذة', d: 'حساب رصيده عكس طبيعته: نقدية برصيد دائن.' },
+        { t: 'ميزان مش متزن', d: 'إجمالي المدين مش بيساوي إجمالي الدائن.' },
+        { t: 'قيود يدوية كثيفة', d: 'قيود يدوية كتير على حسابات حساسة.' },
+        { t: 'تواريخ رجعية', d: 'قيود اتسجلت النهارده بتاريخ قديم.' }
       ],
-      foot: 'SEG Audit يرصدها، ومعها دليلها.',
-      end: { head: 'SEG Audit بيراجع دفاترك كل يوم.', line: `باقي ${LEFT} من ${FM.total} · ${FM.filled} شركة انضمّت`, pill: 'احجز مقعدك  ·  app.seg-audit.com' }
+      foot: 'فحص الميزان المجاني بيكشفها في دقائق.',
+      end: { head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', line: 'مؤشرات من ميزان المراجعة فقط. ليس تقرير مراجعة كاملًا.', pill: 'افحص ميزانك مجانًا  ·  app.seg-audit.com' }
     },
     vid: { a2: 'مراجعة سنوية واحدة. والسنة 365 يومًا.', a3: 'SEG Audit بيقرا دفاترك كل يوم.', a4: 'وكل ملاحظة معاها دليلها.', b1: 'دفاترك شكلها كده؟', b2: 'SEG Audit بيراجع…', b3: 'ملاحظة حرجة واحدة. ومعها مصدرها.' },
     pov: { hook: 'ليه 50 شركة بس؟', name: 'أحمد أشرف', role: 'المؤسس والرئيس التنفيذي، MFT', pill: `باقي ${LEFT} من ${FM.total}`, ph: 'لقطة المؤسس هنا (POV)' }
   },
   en: {
+    cta: 'Check your trial balance free  ·  app.seg-audit.com',
+    tb: { eb: 'SEG AUDIT · THE FREE CHECK', head: 'A free check of your company’s trial balance that flags its risk points in minutes', sub: 'Trial-balance indicators only. Not a full audit report.', cols: ['Account', 'Debit', 'Credit'], total: 'Total',
+      acc: ['Cash', 'Suspense', 'Receivables', 'Payables', 'Revenue', 'Cost of sales', 'Expenses'],
+      legend: ['Suspense accounts', 'Abnormal balances', 'Imbalance', 'Heavy manual entries', 'Backdated entries'] },
     hook: { l1: 'Who reviews your books', s1: 'Who reviews your', s2: 'books the other', pre: 'the other', post: 'days?', cap: 'One annual audit. A year has 365 days.' },
     self: { eb: 'SEG AUDIT · TRUST', head: 'The platform that reviews itself.', sub: `Before it reviews your books: ${TESTS}+ automated tests before every update, and a log nothing can change silently.` },
     ba: { before: 'Before', after: 'After', head: 'From books no one sees to a report you see in full.' },
     ns: { eb: 'SEG AUDIT · ZERO GUESSWORK', head: 'A number with no source never reaches your report.', sub: 'Every number in a SEG Audit report links to its source in your books.', tag: 'No source', note: 'Illustrative example' },
     hemi: { eb: 'SEG AUDIT · FOUNDING MEMBERS', title: `${LEFT} of ${FM.total} left · ${FM.filled} companies joined`, t1: `${LEFT} of ${FM.total} left`, t2: `${FM.filled} companies joined`, sub: 'Claim your seat before the count closes.', cap: 'seats left', pill: 'Claim your seat  ·  app.seg-audit.com' },
     car: {
-      cover: { l1: 'mistakes in your books', l2: "you won't notice", sub: 'Unless someone reviews them every day.', swipe: 'Swipe  →' },
+      cover: { l1: 'mistakes in your books', l2: "you won't notice", sub: 'And every one shows in your trial balance.', swipe: 'Swipe  →' },
       items: [
-        { t: 'The same invoice, paid twice', d: 'Two references, the same amount, the same supplier.' },
-        { t: 'One supplier, two names', d: 'Two supplier codes, one tax ID.' },
-        { t: 'An entry after period close', d: 'Closed in the report, still open in the books.' },
-        { t: 'A supplier invoice with no PO', d: 'The payment went out; the approval never existed.' },
-        { t: 'One person creates and approves', d: 'The access is there; the segregation of duties is not.' }
+        { t: 'Suspense accounts left open', d: 'A balance parked in a clearing account for months.' },
+        { t: 'Abnormal balances', d: 'An account against its nature: cash with a credit balance.' },
+        { t: 'A trial balance that doesn’t balance', d: 'Total debits don’t equal total credits.' },
+        { t: 'Heavy manual entries', d: 'Too many manual entries on sensitive accounts.' },
+        { t: 'Backdated entries', d: 'Entries recorded today with an old date.' }
       ],
-      foot: 'SEG Audit flags it, with its evidence.',
-      end: { head: 'SEG Audit reviews your books every day.', line: `${LEFT} of ${FM.total} left · ${FM.filled} companies joined`, pill: 'Claim your seat  ·  app.seg-audit.com' }
+      foot: 'The free trial-balance check flags it in minutes.',
+      end: { head: 'A free check of your company’s trial balance that flags its risk points in minutes', line: 'Trial-balance indicators only. Not a full audit report.', pill: 'Check your trial balance free  ·  app.seg-audit.com' }
     },
     vid: { a2: 'One annual audit. A year has 365 days.', a3: 'SEG Audit reads your books every day.', a4: 'And every finding comes with its evidence.', b1: 'Do your books look like this?', b2: 'SEG Audit is reviewing…', b3: 'One critical finding. With its source.' },
     pov: { hook: 'Why only 50 companies?', name: 'Ahmed Ashraf', role: 'Founder & CEO, MFT', pill: `${LEFT} of ${FM.total} left`, ph: 'Founder footage here (POV)' }
@@ -304,7 +315,7 @@ function hook360(w, h, lang, o = {}) {
   if (!o.frame) {
     const by = k === 'story' ? 1640 : h - 90 * u;
     mark(d, S.m, by + 14 * u, 32 * u, true);
-    pill(d, { t: CTA, x: w - S.m, y: by - 34 * u, h: 64 * u, px: 26 * u, al: 'right', padX: 30 * u });
+    pill(d, { t: T[lang].cta, x: w - S.m, y: by - 34 * u, h: 64 * u, px: 24 * u, al: 'right', padX: 28 * u, maxW: w - 2 * S.m - 200 * u });
   }
   return d;
 }
@@ -451,7 +462,91 @@ function hemi(w, h, lang, o = {}) {
   return d;
 }
 
-// ---- carousel (1080×1350): cover, five mistakes, end slide
+
+// ---- the free check: a trial balance with its five risk indicators marked 01–05
+// Illustrative figures; debits 1,241,050 against credits 1,249,400 make the imbalance (03).
+const TB_ROWS = [ // [account index, debit, credit, marker]
+  [0, '', '12,400', 2], [1, '86,250', '', 1], [2, '395,600', '', 0], [3, '', '412,300', 0], [4, '', '824,700', 4], [5, '640,300', '', 0], [6, '118,900', '', 5]
+];
+function tbTable(d, x, y, w, rowH, lang, s) {
+  const C = T[lang].tb, A = lang === 'ar';
+  const X = (f0) => (A ? x + w - f0 * w : x + f0 * w); // position along the row from the reading start
+  const name = A ? { x: X(0.1), al: 'right' } : { x: X(0.1), al: 'left' };
+  const dr = A ? x + 0.55 * w : x + 0.7 * w, cr = A ? x + 0.28 * w : x + 0.97 * w;
+  const px = 22 * s, head = 46 * s;
+  d.svg += rect(x - 8 * s, y - 8 * s, w + 16 * s, head + rowH * (TB_ROWS.length + 1) + 30 * s, W, { r: 14 * s });
+  d.svg += rect(x, y, w, head, NAVY, { r: 8 * s });
+  text(d, { t: C.cols[0], ...name, y: y + head * 0.66, px: px * 0.85, wt: 700 });
+  text(d, { t: C.cols[1], x: dr, y: y + head * 0.66, px: px * 0.85, wt: 700, al: 'right' });
+  text(d, { t: C.cols[2], x: cr, y: y + head * 0.66, px: px * 0.85, wt: 700, al: 'right' });
+  const marker = (n, cx, cy) => { d.svg += `<g filter="url(#glow)">${circ(cx, cy, 17 * s, CYAN)}</g>`; text(d, { t: String(n).padStart(2, '0'), x: cx, y: cy + 6.5 * s, px: 17 * s, wt: 800, c: NAVY, al: 'center', dir: 'ltr' }); };
+  const mx = A ? x + w - 0.045 * w : x + 0.045 * w;
+  TB_ROWS.forEach(([ai, dv, cv, mk], i) => {
+    const cy = y + head + rowH * (i + 0.5);
+    if (mk) d.svg += rect(x, cy - rowH * 0.44, w, rowH * 0.88, CYAN, { r: 8 * s, op: 0.1 });
+    if (i) d.svg += rect(x, cy - rowH * 0.5, w, 1.2 * s, NAVY, { op: 0.1 });
+    text(d, { t: C.acc[ai], ...name, y: cy + px * 0.36, px, wt: 600, c: NAVY });
+    if (dv) text(d, { t: dv, x: dr, y: cy + px * 0.36, px, wt: 700, c: NAVY, al: 'right', dir: 'ltr' });
+    if (cv) {
+      if (mk === 2) d.svg += rect(cr - 0.2 * w, cy - rowH * 0.34, 0.21 * w, rowH * 0.68, 'none', { r: 6 * s, stroke: CYAN, sw: 2.5 * s });
+      text(d, { t: cv, x: cr, y: cy + px * 0.36, px, wt: 700, c: NAVY, al: 'right', dir: 'ltr' });
+    }
+    if (mk) marker(mk, mx, cy);
+  });
+  const ty = y + head + rowH * TB_ROWS.length + 6 * s, tcy = ty + rowH * 0.5;
+  d.svg += rect(x, ty, w, 2.5 * s, NAVY) + rect(x, tcy - rowH * 0.42, w, rowH * 0.84, CYAN, { r: 8 * s, op: 0.1 });
+  text(d, { t: C.total, ...name, y: tcy + px * 0.36, px, wt: 800, c: NAVY });
+  text(d, { t: '1,241,050', x: dr, y: tcy + px * 0.36, px, wt: 800, c: NAVY, al: 'right', dir: 'ltr' });
+  text(d, { t: '1,249,400', x: cr, y: tcy + px * 0.36, px, wt: 800, c: NAVY, al: 'right', dir: 'ltr' });
+  text(d, { t: '≠', x: A ? x + 0.345 * w : x + 0.775 * w, y: tcy + px * 0.4, px: px * 1.4, wt: 800, c: '#0E7C8C', al: 'center', dir: 'ltr' });
+  marker(3, mx, tcy);
+  return ty + rowH;
+}
+// The legend: 01–05 with the indicator names, in columns
+function tbLegend(d, x, y, w, lang, s, cols = 3) {
+  const C = T[lang].tb, A = lang === 'ar', cw = w / cols, lh = 44 * s;
+  C.legend.forEach((nm, i) => {
+    const c = i % cols, r = Math.floor(i / cols), cy = y + r * lh;
+    const ax = A ? x + w - c * cw : x + c * cw;
+    text(d, { t: String(i + 1).padStart(2, '0'), x: ax, y: cy, px: 22 * s, wt: 800, c: CYAN, al: A ? 'right' : 'left', dir: 'ltr' });
+    text(d, { t: nm, x: A ? ax - 40 * s : ax + 40 * s, y: cy, px: 22 * s, wt: 600, c: W, al: A ? 'right' : 'left', maxW: cw - 50 * s, fit: true });
+  });
+}
+function tbCheck(w, h, lang) {
+  const k = kindOf(w, h), u = k === 'link' ? h / 630 : w / 1080, d = design(w, h, u), C = T[lang].tb, A = lang === 'ar';
+  if (k === 'link') {
+    const sx = 440;
+    navyField(d, 0, 0, w, h, w * 0.7, h * 0.5);
+    light(d, 820, 300, 300, 0.2);
+    const a = st(lang, 56, sx - 30);
+    text(d, { t: C.eb, ...a, y: 92, px: 15, c: CYAN, ls: 2, maxW: sx - 86, fit: true });
+    text(d, { t: C.head, ...a, y: 150, px: 33, maxW: sx - 86, wrap: true, lh: 1.3 });
+    text(d, { t: C.sub, ...a, y: 360, px: 17, wt: 500, c: DIM, maxW: sx - 86, wrap: true, lh: 1.5 });
+    pill(d, { t: T[lang].cta, x: a.x, y: 430, h: 48, px: 17, al: a.al, padX: 20, maxW: sx - 86 });
+    tbTable(d, sx + 40, 50, w - sx - 90, 40, lang, 0.85);
+    tbLegend(d, sx + 40, 520, w - sx - 90, lang, 0.78, 3);
+    mark(d, 56, h - 36, 24, true);
+    return d;
+  }
+  const L = k === 'story' ? { eb: 300, hd: 400, hpx: 70, sb: 680, tb: 790, rh: 52, s: 1.15, lg: 1335, pl: 1450 }
+    : k === 'portrait' ? { eb: 115, hd: 200, hpx: 56, sb: 420, tb: 495, rh: 46, s: 1, lg: 970, pl: 1150 }
+    : { eb: 88, hd: 160, hpx: 50, sb: 330, tb: 385, rh: 42, s: 0.95, lg: 830, pl: 950 };
+  const m = 90 * u;
+  if (!A) { const extra = L.hpx * 1.25; L.sb += extra; L.tb += extra * 0.6; L.lg += extra * 0.6; } // the English line wraps once more
+  navyField(d, 0, 0, w, h, w * 0.5, h * 0.35);
+  light(d, w / 2, (L.tb + 180) * u, 420 * u, 0.2);
+  const a = st(lang, m, w - m - (k === 'story' ? 60 : 0));
+  text(d, { t: C.eb, ...a, y: L.eb * u, px: 24 * u, c: CYAN, ls: 3 * u });
+  text(d, { t: C.head, ...a, y: L.hd * u, px: L.hpx * u, maxW: w - 2 * m - (k === 'story' ? 60 : 0), wrap: true, lh: 1.25 });
+  text(d, { t: C.sub, ...a, y: L.sb * u, px: 26 * u, wt: 500, c: DIM, maxW: w - 2 * m, wrap: true, lh: 1.5 });
+  tbTable(d, m, L.tb * u, w - 2 * m - (k === 'story' ? 60 : 0), L.rh * u, lang, L.s * u);
+  tbLegend(d, m, L.lg * u, w - 2 * m - (k === 'story' ? 60 : 0), lang, u, 3);
+  pill(d, { t: T[lang].cta, ...en(lang, m, w - m), y: L.pl * u, h: 64 * u, px: 24 * u, padX: 28 * u, maxW: w - 2 * m - 220 * u });
+  mark(d, A ? w - m - 110 * u : m, (L.pl + 46) * u, 28 * u, true);
+  return d;
+}
+
+// ---- carousel (1080×1350): cover, five trial-balance indicators, end slide
 function carouselSlide(i, lang) {
   const w = 1080, h = 1350, u = 1, d = design(w, h, u), C = T[lang].car, A = lang === 'ar', m = 90;
   const a = st(lang, m, w - m), b = en(lang, m, w - m);
@@ -469,12 +564,11 @@ function carouselSlide(i, lang) {
     return d;
   }
   if (i === 6) {
-    light(d, w / 2, 560, 380, 0.3);
-    hemicycle(d, w / 2, 620, 165, 270, lang);
-    text(d, { t: String(LEFT), x: w / 2, y: 606, px: 140, wt: 900, c: CYAN, glow: CYAN, al: 'center', dir: 'ltr' });
-    text(d, { t: C.end.head, x: w / 2, y: 810, px: 72, al: 'center', maxW: w - 2 * m, wrap: true, lh: 1.2 });
-    text(d, { t: C.end.line, x: w / 2, y: 1035, px: 40, c: CYAN, al: 'center', maxW: w - 2 * m, fit: true });
-    pill(d, { t: C.end.pill, x: w / 2, y: 1090, h: 70, px: 28, al: 'center', padX: 34 });
+    light(d, w / 2, 420, 380, 0.25);
+    tbTable(d, m + 40, 175, w - 2 * m - 80, 40, lang, 0.85);
+    text(d, { t: C.end.head, x: w / 2, y: 760, px: 60, al: 'center', maxW: w - 2 * m, wrap: true, lh: 1.25 });
+    text(d, { t: C.end.line, x: w / 2, y: 1015, px: 32, wt: 600, c: CYAN, al: 'center', maxW: w - 2 * m, fit: true });
+    pill(d, { t: C.end.pill, x: w / 2, y: 1070, h: 70, px: 28, al: 'center', padX: 34, maxW: w - 2 * m });
     mark(d, m, 1290, 28, true);
     return d;
   }
@@ -487,53 +581,53 @@ function carouselSlide(i, lang) {
   d.svg += `<g filter="url(#glowW)" opacity=".5">${rect(cx, cy, cw, ch, W, { r: 18 })}</g>` + rect(cx, cy, cw, ch, W, { r: 18 });
   const M = (v) => (A ? cx + cw - (v - cx) : v);
   const doc = (x, y, s, o = {}) => rect(x, y, s * 0.78, s, o.fill || W, { r: 6, stroke: o.stroke || NAVY, sw: 2.5, so: o.so ?? 0.85, dash: o.dash }) + (o.empty ? '' : bar(x + s * 0.14, y + s * 0.3, s * 0.5, 5, NAVY, 0.6) + bar(x + s * 0.14, y + s * 0.48, s * 0.36, 5, NAVY, 0.6) + bar(x + s * 0.14, y + s * 0.66, s * 0.44, 5, NAVY, 0.6));
-  if (i === 1) { // two identical rows, bracketed in cyan
-    [0, 1].forEach((k) => {
-      const y = cy + 110 + k * 120;
-      d.svg += doc(Math.min(M(cx + 50), M(cx + 50 + 47)), y - 30, 60) + bar(Math.min(M(cx + 140), M(cx + 140 + 330)), y, 330, 10, NAVY, 0.85);
-      text(d, { t: '18,400', x: A ? cx + 190 : cx + cw - 190, y: y + 14, px: 40, wt: 800, c: NAVY, al: A ? 'left' : 'right', dir: 'ltr' });
-      text(d, { t: k ? 'REF 2291-B' : 'REF 2291', x: M(cx + 140) + (A ? -0 : 0), y: y + 46, px: 18, wt: 600, c: '#5A6483', al: A ? 'right' : 'left', dir: 'ltr' });
-    });
-    const bx = A ? cx + 120 : cx + cw - 120;
-    d.svg += `<g filter="url(#glow)"><path d="M${bx} ${cy + 80} h${A ? -24 : 24} v180 h${A ? 24 : -24}" fill="none" stroke="${CYAN}" stroke-width="5" stroke-linejoin="round"/></g>`;
-    pill(d, { t: '×2', x: A ? cx + 30 : cx + cw - 30, y: cy + 150, h: 48, px: 24, al: A ? 'left' : 'right', padX: 16 });
+  const Cb = T[lang].tb, num = (t, x, y, px, c = NAVY, wt = 800) => text(d, { t, x, y, px, wt, c, al: A ? 'left' : 'right', dir: 'ltr' });
+  const nameAt = A ? { x: cx + cw - 60, al: 'right' } : { x: cx + 60, al: 'left' };
+  const amtX = A ? cx + 60 : cx + cw - 60;
+  if (i === 1) { // suspense: the same balance month after month
+    text(d, { t: Cb.acc[1], ...nameAt, y: cy + 90, px: 36, wt: 700, c: NAVY });
+    num('86,250', amtX, cy + 90, 40);
+    const x0 = cx + 80, x1 = cx + cw - 80, ly = cy + 230;
+    d.svg += `<g filter="url(#glow)">${rect(x0, ly - 2.5, x1 - x0, 5, CYAN, { r: 2.5 })}</g>`;
+    ['05', '06', '07', '08', '09', '10'].forEach((mo, k) => { const x = A ? x1 - k * (x1 - x0) / 5 : x0 + k * (x1 - x0) / 5; d.svg += circ(x, ly, 12, k === 5 ? CYAN : NAVY, { op: k === 5 ? 1 : 0.85 }); text(d, { t: mo, x, y: ly + 56, px: 24, wt: 700, c: '#5A6483', al: 'center', dir: 'ltr' }); });
   }
-  if (i === 2) { // two supplier cards, one tax ID
-    [0, 1].forEach((k) => {
-      const x = cx + 70 + k * 320, y = cy + 70;
-      d.svg += rect(x, y, 260, 120, 'none', { r: 12, stroke: NAVY, sw: 2.5, so: 0.8 }) + circ(x + 50, y + 60, 28, NAVY, { op: 0.85 }) + bar(x + 95, y + 48, 130 - k * 30, 9, NAVY, 0.85) + bar(x + 95, y + 76, 80, 7, NAVY, 0.5);
-      d.svg += `<g filter="url(#glow)"><path d="M${x + 130} ${y + 120} C ${x + 130} ${y + 175}, ${cx + cw - 230} ${cy + 200}, ${cx + cw - 230} ${cy + 230}" fill="none" stroke="${CYAN}" stroke-width="4"/></g>`;
-    });
-    d.svg += `<g filter="url(#glow)">${rect(cx + cw - 400, cy + 230, 340, 76, CYAN, { r: 38 })}</g>`;
-    text(d, { t: '312-456-789', x: cx + cw - 230, y: cy + 280, px: 32, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
+  if (i === 2) { // abnormal balance: cash sitting on the credit side
+    const dr = A ? cx + cw * 0.5 : cx + cw * 0.62, cr = A ? cx + cw * 0.22 : cx + cw * 0.92;
+    text(d, { t: Cb.cols[1], x: dr, y: cy + 80, px: 26, wt: 700, c: '#5A6483', al: 'right' });
+    text(d, { t: Cb.cols[2], x: cr, y: cy + 80, px: 26, wt: 700, c: '#5A6483', al: 'right' });
+    text(d, { t: Cb.acc[0], ...nameAt, y: cy + 200, px: 38, wt: 700, c: NAVY });
+    d.svg += rect(dr - 200, cy + 150, 200, 70, 'none', { r: 10, stroke: NAVY, sw: 2.5, so: 0.5, dash: '10 8' });
+    d.svg += `<g filter="url(#glow)">${rect(cr - 215, cy + 145, 230, 80, CYAN, { r: 12, op: 0.25 })}</g>` + rect(cr - 215, cy + 145, 230, 80, 'none', { r: 12, stroke: CYAN, sw: 3.5 });
+    text(d, { t: '12,400', x: cr - 12, y: cy + 200, px: 40, wt: 800, c: NAVY, al: 'right', dir: 'ltr' });
+    d.svg += `<path d="M${dr - 100} ${cy + 250} C ${dr - 100} ${cy + 310}, ${cr - 100} ${cy + 310}, ${cr - 100} ${cy + 240}" fill="none" stroke="${CYAN}" stroke-width="4" stroke-dasharray="8 8"/>`;
   }
-  if (i === 3) { // a timeline: the period is locked, an entry lands after it
-    const y = cy + 200, x0 = cx + 60, x1 = cx + cw - 60;
-    d.svg += rect(x0, y - 2, x1 - x0, 4, NAVY, { op: 0.4 });
-    for (let t = 0; t < 9; t++) { const x = x0 + t * (x1 - x0) / 8; d.svg += circ(x, y, 10, NAVY, { op: t < 6 ? 0.85 : 0.2 }); }
-    const lx = x0 + 5.5 * (x1 - x0) / 8;
-    d.svg += rect(lx - 3, cy + 60, 6, 220, NAVY) + rect(lx - 26, cy + 60, 52, 40, NAVY, { r: 6 }) + `<path d="M${lx - 14} ${cy + 62} v-12 a14 14 0 0 1 28 0 v12" fill="none" stroke="${NAVY}" stroke-width="5"/>`;
-    const ex = x0 + 6.5 * (x1 - x0) / 8;
-    d.svg += `<g filter="url(#glow)">${circ(ex, y, 18, CYAN)}</g>` + circ(ex, y, 32, 'none', { stroke: CYAN, sw: 3 });
-    text(d, { t: '31/10', x: lx, y: cy + 320, px: 26, wt: 700, c: NAVY, al: 'center', dir: 'ltr' });
-    text(d, { t: '02/11', x: ex, y: y - 50, px: 26, wt: 800, c: '#0E7C8C', al: 'center', dir: 'ltr' });
+  if (i === 3) { // imbalance: the totals do not match
+    text(d, { t: Cb.cols[1], x: cx + cw * (A ? 0.72 : 0.28), y: cy + 100, px: 28, wt: 700, c: '#5A6483', al: 'center' });
+    text(d, { t: Cb.cols[2], x: cx + cw * (A ? 0.28 : 0.72), y: cy + 100, px: 28, wt: 700, c: '#5A6483', al: 'center' });
+    text(d, { t: A ? '1,249,400' : '1,241,050', x: cx + cw * 0.28, y: cy + 210, px: 58, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
+    text(d, { t: A ? '1,241,050' : '1,249,400', x: cx + cw * 0.72, y: cy + 210, px: 58, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
+    text(d, { t: '≠', x: cx + cw / 2, y: cy + 215, px: 90, wt: 800, c: CYAN, glow: CYAN, al: 'center', dir: 'ltr' });
+    d.svg += rect(cx + 70, cy + 260, cw - 140, 4, NAVY, { op: 0.8 }) + rect(cx + 70, cy + 272, cw - 140, 4, NAVY, { op: 0.8 });
   }
-  if (i === 4) { // the three-way match with the PO missing
-    const xs = [cx + 110, cx + 380, cx + 650].map((x) => (A ? cx + cw - (x - cx) - 110 : x));
-    d.svg += doc(xs[0], cy + 90, 170, { stroke: CYAN, so: 1, dash: '10 8', empty: true });
-    text(d, { t: '?', x: xs[0] + 66, y: cy + 210, px: 90, wt: 900, c: CYAN, al: 'center', glow: CYAN, dir: 'ltr' });
-    d.svg += doc(xs[1], cy + 90, 170) + doc(xs[2], cy + 90, 170);
-    [[0, 1], [1, 2]].forEach(([p, q]) => { const a1 = Math.min(xs[p], xs[q]) + 140, a2 = Math.max(xs[p], xs[q]) - 10; d.svg += `<path d="M${a1} ${cy + 175} H${a2}" stroke="${NAVY}" stroke-width="3" stroke-opacity=".5" stroke-dasharray="6 6"/>`; });
-    ['PO', 'GRN', 'INV'].forEach((l, k) => text(d, { t: l, x: xs[k] + 66, y: cy + 310, px: 24, wt: 800, c: k ? NAVY : '#0E7C8C', al: 'center', dir: 'ltr' }));
+  if (i === 4) { // heavy manual entries: the manual share grows
+    const n = 10, bw = 46, gap = (cw - 140 - n * bw) / (n - 1), base = cy + 300;
+    for (let k = 0; k < n; k++) {
+      const x = A ? cx + cw - 70 - bw - k * (bw + gap) : cx + 70 + k * (bw + gap);
+      const tot = 120 + (k % 3) * 25 + k * 6, man = tot * (0.12 + k * 0.075);
+      d.svg += rect(x, base - tot, bw, tot - man, NAVY, { r: 4, op: 0.85 });
+      d.svg += k >= 7 ? `<g filter="url(#glow)">${rect(x, base - man, bw, man, CYAN, { r: 4 })}</g>` : rect(x, base - man, bw, man, CYAN, { r: 4, op: 0.75 });
+    }
+    d.svg += rect(cx + 60, base + 6, cw - 120, 3, NAVY, { op: 0.4 });
   }
-  if (i === 5) { // one person on both sides of the control
-    const px0 = cx + cw / 2, py = cy + 190;
-    [[cx + 160, '+'], [cx + cw - 160, '✓']].forEach(([x, sym]) => {
-      d.svg += rect(x - 80, cy + 90, 160, 200, 'none', { r: 16, stroke: NAVY, sw: 3, so: 0.85 });
-      text(d, { t: sym, x, y: cy + 225, px: 96, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
-      d.svg += `<g filter="url(#glow)"><path d="M${px0} ${py} L${x + (x < px0 ? 80 : -80)} ${py}" stroke="${CYAN}" stroke-width="4"/></g>`;
-    });
-    d.svg += `<g filter="url(#glow)">${circ(px0, py, 52, CYAN)}</g>` + circ(px0, py - 14, 17, W) + `<path d="M${px0 - 28} ${py + 32} a28 24 0 0 1 56 0" fill="${W}"/>`;
+  if (i === 5) { // backdated: recorded on 05/11, dated 28/10
+    const x0 = cx + 70, x1 = cx + cw - 70, ly = cy + 250, days = ['26', '27', '28', '29', '30', '31', '01', '02', '03', '04', '05'];
+    const X = (k) => (A ? x1 - k * (x1 - x0) / 10 : x0 + k * (x1 - x0) / 10);
+    d.svg += rect(x0, ly - 2, x1 - x0, 4, NAVY, { op: 0.35 });
+    days.forEach((dd, k) => { d.svg += circ(X(k), ly, k === 2 || k === 10 ? 14 : 8, k === 2 ? CYAN : NAVY, { op: k === 2 ? 1 : 0.7 }); text(d, { t: dd, x: X(k), y: ly + 50, px: 22, wt: 700, c: k === 2 ? '#0E7C8C' : '#5A6483', al: 'center', dir: 'ltr' }); });
+    d.svg += `<g filter="url(#glow)"><path d="M${X(10)} ${ly - 24} C ${X(10)} ${ly - 170}, ${X(2)} ${ly - 170}, ${X(2)} ${ly - 30}" fill="none" stroke="${CYAN}" stroke-width="5"/></g>`;
+    d.svg += `<path d="M${X(2) - 14} ${ly - 52} L${X(2)} ${ly - 28} L${X(2) + 14} ${ly - 52}" fill="none" stroke="${CYAN}" stroke-width="5" stroke-linejoin="round"/>`;
+    text(d, { t: '05/11', x: X(10), y: cy + 70, px: 26, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
+    text(d, { t: '28/10', x: X(2), y: cy + 70, px: 26, wt: 800, c: '#0E7C8C', al: 'center', dir: 'ltr' });
   }
   text(d, { t: C.foot, ...a, y: 1255, px: 30, c: CYAN });
   mark(d, A ? m : w - m - 110, 1290, 28, true);
@@ -679,7 +773,9 @@ async function openRenderer() {
         }
       }
       if (o.type === 'pill') {
-        font({ wt: 800, t: o.t }, o.px); g.direction = AR.test(o.t) ? 'rtl' : 'ltr'; g.textAlign = 'left';
+        let ppx = o.px; font({ wt: 800, t: o.t }, ppx); g.direction = AR.test(o.t) ? 'rtl' : 'ltr'; g.textAlign = 'left';
+        if (o.maxW) while (g.measureText(o.t).width + 2 * o.padX > o.maxW && ppx > 8) font({ wt: 800, t: o.t }, --ppx);
+        o.px = ppx;
         const wd = g.measureText(o.t).width, pw = wd + 2 * o.padX, x = leftOf(o.al, o.x, pw);
         if (o.bg === '#1BB7CD') { g.shadowColor = 'rgba(27,183,205,.5)'; g.shadowBlur = o.h * 0.4; }
         g.fillStyle = o.bg; g.beginPath(); g.roundRect(x, o.y, pw, o.h, o.h / 2); g.fill(); g.shadowBlur = 0;
@@ -723,7 +819,8 @@ async function main() {
     ['self-audit', selfAudit, ['square', 'story', 'link']],
     ['before-after', beforeAfter, ['story', 'square', 'portrait', 'link']],
     ['no-source', noSource, ['square', 'story', 'link']],
-    ['hemicycle', hemi, ['square', 'story', 'portrait', 'link']]
+    ['hemicycle', hemi, ['square', 'story', 'portrait', 'link']],
+    ['tb-check', tbCheck, ['square', 'story', 'portrait', 'link']]
   ];
   for (const [name, fn, kinds] of sets) for (const k of kinds) for (const lang of ['ar', 'en']) {
     const [w, h] = SIZES[k];

@@ -46,7 +46,8 @@
 
 ## ي5 · `w1-d5-x-a-1` · 10:15
 
-> سجّل · اربط دفاترك بصلاحية قراءة · استلم أول تقرير.
+> سجّل · ارفع ميزانك · نقاط الخطر في دقائق.
+> فحص مجاني لميزان شركتك، لا تقرير مراجعة كامل.
 > ثلاث خطوات، وباقي 33 مقعدًا تأسيسيًا.
 > app.seg-audit.com/ar/signup?utm_source=x&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d5-x-a-1
 > #SEGAudit
