@@ -286,6 +286,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/partners/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/founding-members/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/founding-members/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/founding-members/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/"/>
@@ -569,5 +574,10 @@
     <loc>https://www.seg-audit.com/en/partners/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/partners/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/partners/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/founding-members/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/founding-members/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/founding-members/"/>
   </url>
 </urlset>
