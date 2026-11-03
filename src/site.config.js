@@ -63,18 +63,18 @@ module.exports = {
     }
   },
 
-  // Founding Members launch (SEG Audit): 50 seats at a founder price for life. NO public counter
-  // (launch lead, 3 Nov 2026): the 17/33 figures were not platform subscriptions and are withdrawn.
-  // To show a real counter later, once there are paid founding subscriptions: set `filled` to the
-  // confirmed count, `asOf` to the date, and `showCount: true`. The page, header bar, home band,
-  // seat meter and titles then switch to the counter copy in content/<lang>.js → founding.counter,
+  // Founding Members launch (SEG Audit): 50 seats at a founder price for life. Public counter ON
+  // (CEO, 3 Nov 2026): 17 confirmed founding members on the SEG platform as of 2026-11-03.
+  // To update: set `filled` to the confirmed count and `asOf` to the date; `showCount: false` hides it.
+  // With the counter on, the page, header bar, home band, seat meter and titles switch to the
+  // counter copy in content/<lang>.js → founding.counter,
   // and the generators (launch-images.js, launch-concepts.js) draw the filled seats.
   founding: {
     enabled: true,
     total: 50,
-    showCount: false,
-    filled: null,
-    asOf: null,
+    showCount: true,
+    filled: 17,
+    asOf: '2026-11-03',
     // Every launch CTA lands on the app sign-up. UTM content is added per placement in the template.
     signup: { ar: 'https://app.seg-audit.com/ar/signup', en: 'https://app.seg-audit.com/en/signup' }
   },
