@@ -49,12 +49,34 @@ module.exports = {
       { key: 'sa', line: '', lineAr: '' },
       { key: 'us', line: '', lineAr: '' }
     ],
-    // Public profiles linked from the official site footer.
+    // Public profiles, rendered in the footer and in Organization.sameAs. An empty value is not
+    // rendered (and `npm run check` warns), so a profile only appears once its URL is confirmed.
+    // Checked 3 Nov 2026: the Facebook page title is "Modern Financial Technology"; Instagram
+    // @modernfintech is "Modern Financial Technology (MFT)". YouTube and TikTok are PENDING (Ahmed):
+    // the URLs could not be confirmed as MFT's own (youtube.com/@modernfintech is "ModernFinTech4k").
     social: {
       linkedin: 'https://www.linkedin.com/company/92779112',
       facebook: 'https://www.facebook.com/Fintech2030',
-      instagram: 'https://www.instagram.com/egypt.smart'
+      instagram: 'https://www.instagram.com/modernfintech/',
+      youtube: '',
+      tiktok: ''
     }
+  },
+
+  // Founding Members launch (SEG Audit): 50 seats at a founder price for life. NO public counter
+  // (launch lead, 3 Nov 2026): the 17/33 figures were not platform subscriptions and are withdrawn.
+  // To show a real counter later, once there are paid founding subscriptions: set `filled` to the
+  // confirmed count, `asOf` to the date, and `showCount: true`. The page, header bar, home band,
+  // seat meter and titles then switch to the counter copy in content/<lang>.js → founding.counter,
+  // and the generators (launch-images.js, launch-concepts.js) draw the filled seats.
+  founding: {
+    enabled: true,
+    total: 50,
+    showCount: false,
+    filled: null,
+    asOf: null,
+    // Every launch CTA lands on the app sign-up. UTM content is added per placement in the template.
+    signup: { ar: 'https://app.seg-audit.com/ar/signup', en: 'https://app.seg-audit.com/en/signup' }
   },
 
   // PENDING (Ahmed): package structure/prices. Section is fully written in

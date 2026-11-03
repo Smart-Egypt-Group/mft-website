@@ -1,0 +1,2 @@
+id,date,time_cairo,platform,track,format,asset_file,copy_ref,link_with_utm,drafted_by,reviewed_by,approved_by,approved_on,live_url,impressions_24h,engagements_24h,clicks_24h,impressions_7d,engagements_7d,clicks_7d,leads,notes
+w1-d1-li-a-1,2026-11-08,10:00,linkedin,A,image,social/linkedin-facebook-link_seats-ar_1200x630.jpg,content/week-1/linkedin.md#d1,https://app.seg-audit.com/ar/signup?utm_source=linkedin&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d1-li-a-1,,,,,,,,,,,,,example row: delete when the first real row is added

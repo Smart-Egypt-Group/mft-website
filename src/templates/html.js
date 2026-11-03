@@ -63,4 +63,21 @@ const phTag = (ctx) =>
 
 const pad2 = (n) => String(n).padStart(2, '0');
 
-module.exports = { esc, t, plain, url, attrs, link, btn, eyebrow, sectionHead, phTag, pad2 };
+// Founding Members: {total}, and only with the counter on {filled} and {left}, come from
+// site.config → founding.
+const seats = (ctx, s) => {
+  const F = ctx.config.founding, filled = F.showCount ? F.filled : 0;
+  return String(s).replace(/\{left\}/g, F.total - filled).replace(/\{filled\}/g, filled).replace(/\{total\}/g, F.total);
+};
+// Founding copy by key ('hero.headline'): the counter version from content → founding.counter when
+// site.config → founding.showCount is on, the count-free version otherwise. Tokens resolved.
+const fm = (ctx, key) => {
+  const P = ctx.c.founding, C = P.counter || {};
+  const v = ctx.config.founding.showCount && C[key] != null ? C[key] : key.split('.').reduce((o, k) => o && o[k], P);
+  return seats(ctx, v);
+};
+// Launch CTA → app sign-up, tagged so the app can attribute it (see marketing/README.md → UTM).
+const signupUrl = (ctx, content) =>
+  `${ctx.config.founding.signup[ctx.lang]}?utm_source=website&utm_medium=owned&utm_campaign=founding-members-2026&utm_content=${encodeURIComponent(content)}`;
+
+module.exports = { esc, t, plain, url, attrs, link, btn, eyebrow, sectionHead, phTag, pad2, seats, fm, signupUrl };

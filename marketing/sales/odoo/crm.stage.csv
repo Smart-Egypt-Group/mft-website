@@ -1,0 +1,9 @@
+name,sequence,is_won,fold,requirements
+جديد · New,10,False,False,"Lead converted to opportunity. Fit checked: Odoo user, role, country."
+فحص منجز · TB check done,20,False,False,"First report on the company's own data (platform event report.generated)."
+PQL / مؤهَّل · Qualified,30,False,False,"PQL score >= 60 (marketing/sales/02-plg-pql.md), or a qualified meeting from a partner, ABM or the founder."
+اكتشاف · Discovery,40,False,False,"Discovery call done. Pain and champion known. MEDDPICC >= 6/16."
+تقييم · Evaluation,50,False,False,"Demo or read-out on the prospect's data. Decision criteria known. Economic buyer identified. MEDDPICC >= 9/16."
+عرض سعر · Proposal,60,False,False,"Economic buyer met. Quotation sent from Odoo. MEDDPICC >= 11/16."
+تعاقد · Commit,70,False,False,"Paper process known. Mutual action plan with dates agreed. MEDDPICC >= 13/16."
+مدفوع · Won,80,True,False,"First invoice collected (seat definition pending CEO decision #5)."

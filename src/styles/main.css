@@ -800,6 +800,50 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .js-motion .live-dot, .js-motion .scan-fill, .js-motion .scan-running, .js-motion .scan-done, .js-motion .risk-findings li { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
 
+/* ---------- Founding Members (SEG Audit launch) ----------
+   Seat grid = the campaign's one visual: filled seats navy-on-light / white-on-navy, the next seat
+   in mark-cyan (decorative fill on navy, allowed), open seats as outlines. Numbers are always in text too. */
+.launch-bar { margin: 0; background: var(--white); border-bottom: 1px solid var(--line); text-align: center; font-size: var(--fs-small); font-weight: 700; }
+.launch-bar a { display: inline-flex; align-items: center; gap: 10px; min-height: 36px; padding: 6px var(--gutter); color: var(--navy); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: text-decoration-color .2s; }
+.launch-bar a:hover { text-decoration-color: currentColor; }
+
+.founding-band { background: var(--navy); color: var(--on-navy); border-top: 1px solid var(--navy-line); padding-block: clamp(28px, 4vw, 40px); }
+.founding-band-inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: clamp(20px, 4vw, 48px); align-items: center; }
+.seat-count, .founding-band-count { direction: ltr; }
+[dir="rtl"] .seat-count, [dir="rtl"] .founding-band-count { text-align: right; }
+.founding-band-count { margin: 0; font-size: var(--fs-display); font-weight: 800; line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.founding-band-count span:first-child { color: var(--cyan); }
+.founding-band-count span:last-child { color: var(--on-navy-3); font-size: .55em; }
+.founding-band h2 { font-size: var(--fs-body); }
+.founding-band p { margin: 6px 0 0; color: var(--on-navy-2); }
+.founding-band-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.founding-band .btn-link { color: var(--cyan); }
+@media (max-width: 899px) { .founding-band-inner { grid-template-columns: 1fr; gap: 16px; } }
+
+.founding-hero { background: var(--navy); color: var(--on-navy); padding-block: clamp(40px, 7vw, 96px); }
+.founding-hero-inner { display: grid; grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
+.founding-hero .eyebrow { color: var(--cyan); }
+.founding-hero .accent { color: var(--cyan); }
+.founding-hero .lead { margin-top: 20px; color: var(--on-navy-2); }
+.founding-hero :focus-visible { outline-color: var(--white); }
+.breadcrumb-light, .breadcrumb-light a { color: var(--on-navy-3); }
+.breadcrumb-light li + li::before { color: var(--on-navy-4); }
+.seat-panel { padding: 28px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--navy-line); border-radius: 10px; }
+.seat-count { margin: 0; font-size: clamp(3.5rem, 2.5rem + 4vw, 6rem); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.seat-left { color: var(--cyan); }
+.seat-total { color: var(--on-navy-3); font-size: .42em; margin-inline-start: 6px; }
+.seat-caption { margin: 8px 0 20px; font-size: var(--fs-small); font-weight: 700; color: var(--on-navy-2); }
+.seat-grid { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; direction: ltr; }
+.seat { display: block; aspect-ratio: 1; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.38); }
+.seat-filled { background: var(--white); border-color: var(--white); }
+.seat-next { background: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 0 4px rgba(27, 183, 205, 0.22); }
+.seat-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 20px 0 0; padding: 0; list-style: none; font-size: var(--fs-small); font-weight: 600; color: var(--on-navy-2); }
+.seat-legend li { display: inline-flex; align-items: center; gap: 8px; }
+.seat-legend .seat { width: 12px; height: 12px; }
+.page-founding .steps .step h3 { margin-top: 4px; }
+@media (max-width: 899px) { .founding-hero-inner { grid-template-columns: 1fr; } .seat-panel { max-width: 520px; } }
+.js-motion .seat-next { animation: live 1.8s ease-out infinite; }
+
 /* ---------- Motion / print ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

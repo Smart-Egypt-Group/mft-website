@@ -1,6 +1,6 @@
 // Page shell: <head>, header, footer. Every page template returns { title,
 // description, body } and this wraps it.
-const { esc, t, plain, url, link, btn } = require('./html');
+const { esc, t, plain, url, link, btn, fm } = require('./html');
 
 function head(ctx, page) {
   const { c, config } = ctx;
@@ -107,7 +107,13 @@ function header(ctx) {
     })
     .join('');
   const alt = c.switchLang;
+  // Founding Members bar: one line above the header on every page except the launch page itself.
+  const F = ctx.config.founding;
+  const bar = F && F.enabled && c.founding && ctx.path !== 'founding-members/'
+    ? `<p class="launch-bar"><a href="/${ctx.lang}/founding-members/"><span class="live-dot" aria-hidden="true"></span><span>${t(fm(ctx, 'bar'))}</span></a></p>`
+    : '';
   return `<a class="skip-link" href="#main">${t(c.ui.skip)}</a>
+${bar}
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/${ctx.lang}/" aria-label="${esc(c.meta.siteName)}: ${esc(c.ui.home)}">
@@ -151,7 +157,7 @@ function footer(ctx) {
       return `<li>${t(c.footer.offices[o.key])}${line ? `: <span class="muted">${t(line)}</span>` : ''}</li>`;
     })
     .join('');
-  const socialNames = { linkedin: 'LinkedIn', facebook: 'Facebook', instagram: 'Instagram', x: 'X' };
+  const socialNames = { linkedin: 'LinkedIn', facebook: 'Facebook', instagram: 'Instagram', youtube: 'YouTube', tiktok: 'TikTok', x: 'X' };
   const social = Object.entries(config.contact.social || {})
     .filter(([, href]) => href)
     .map(([k, href]) => `<li><a href="${esc(href)}" rel="noopener" target="_blank" class="lat">${esc(socialNames[k] || k)}</a></li>`)

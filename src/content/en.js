@@ -99,6 +99,7 @@ module.exports = {
           { label: 'Contact', href: 'contact/' },
           { label: 'Privacy', href: 'privacy/' },
           { label: 'Trust & security', href: 'trust/' },
+          { label: 'Founding Members', href: 'founding-members/' },
           { label: 'Partners', href: 'partners/' },
           { label: 'seg-audit platform', href: 'https://app.seg-audit.com', external: true }
         ]
@@ -118,7 +119,7 @@ module.exports = {
       headline: 'Decisions built on {accent}numbers{/accent}.\nNot on guesses.',
       subhead:
         'MFT turns your data into clear financial reports on profitability, cash flow and internal controls, backed by a licensed audit team, Odoo ERP experts, and the seg-audit platform.',
-      cta: { label: 'Get Your First Report Free', href: 'contact/' },
+      cta: { label: 'Check your trial balance free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
       trust: [
         'CPA-Led Team',
@@ -133,7 +134,7 @@ module.exports = {
       headline: 'Making decisions on numbers, or on guesses?',
       subhead:
         'MFT turns your data into clear financial reports on profitability, cash flow and internal controls, backed by a licensed audit team, Odoo ERP experts, and the seg-audit platform.',
-      cta: { label: 'Book Your Free Financial Report', href: 'contact/' },
+      cta: { label: 'Check your trial balance free', href: SIGNUP },
       trust: 'Trusted by finance teams across Egypt, Saudi Arabia, and the US',
       dashboard: {
         title: 'Monthly P&L Snapshot',
@@ -163,7 +164,7 @@ module.exports = {
       headline: 'How many duplicate payments left your company this year {accent}without anyone noticing?{/accent}',
       subhead: 'We read your books straight from your ERP, read-only, and show you every finding ranked by severity, with its evidence.',
       assurance: ['Read-only', 'Your data stays on your system', 'No number without evidence'],
-      cta: { label: 'Check your books for free', href: SIGNUP },
+      cta: { label: 'Check your trial balance free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
       risk: {
         title: 'Illustrative sample of a check result. You will see this same screen on your data.',
@@ -249,7 +250,7 @@ module.exports = {
 
     how: {
       eyebrow: 'How we work',
-      title: 'From first message to first report in 24 hours. Not quarters.',
+      title: 'The risk points in your trial balance in minutes. Not quarters.',
       steps: [
         {
           when: 'Day 0',
@@ -257,9 +258,9 @@ module.exports = {
           body: 'Connect Odoo to the seg-audit platform read-only, or share your last closed month as a trial balance or a spreadsheet. No preparation, no commitment.'
         },
         {
-          when: 'Within 24 hours',
-          title: 'First report in 24 hours',
-          body: 'The platform reads your system read-only first, then you pick the area that matters to you: payments and vendors, tax, inventory, the financial statements, cash flow, or another. Free, one per company.'
+          when: 'Within minutes',
+          title: 'The free trial-balance check',
+          body: 'A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report.'
         },
         {
           when: 'Week 1',
@@ -347,10 +348,10 @@ module.exports = {
     },
 
     cta: {
-      title: 'Start with one report. Free.',
+      title: 'Start with a free trial-balance check.',
       body:
-        'Connect Odoo to the seg-audit platform read-only: it reads your books, then you choose your report in any area. Not on Odoo? Send us your last closed month and get the report within 24 hours. One free report per company, no commitment.',
-      button: { label: 'Get Your First Report Free', href: SIGNUP },
+        'A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. Upload your trial balance or connect Odoo read-only, with no commitment.',
+      button: { label: 'Check your trial balance free', href: SIGNUP },
       alt: 'Or call us directly:'
     }
   },
@@ -465,9 +466,9 @@ module.exports = {
         faq: [
           { q: 'How many hours a month do we get?', a: 'It is scoped by deliverables, not hours: the monthly pack, the forecast and the review meeting are fixed; ad-hoc questions are answered within the engagement.' },
           { q: 'Do we need Odoo?', a: 'No. A monthly trial balance and sub-ledger export from any system is enough to start; Odoo makes it faster.' },
-          { q: 'Is the first report really free?', a: 'Yes. One report per company, in any area you choose, after the platform reads your system read-only. No credit card, no commitment.' },
-          { q: 'I am a CFO. What do I get after the first report?', a: 'The service does not end at a PDF. Every month you receive a new pack compared with the one before, you sit with your MFT accountant in a decision review, and audit findings stay on record from one month to the next instead of starting from zero each time.' },
-          { q: 'I own a small company. What happens after the free report?', a: 'A 30-minute diagnosis call with a licensed accountant that ends with one concrete next step, then, if you want it, a monthly pack with a defined scope. Nothing to install and no change to your system.' },
+          { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. No credit card, no commitment.' },
+          { q: 'I am a CFO. What do I get after the trial-balance check?', a: 'The service does not end at a PDF. Every month you receive a new pack compared with the one before, you sit with your MFT accountant in a decision review, and audit findings stay on record from one month to the next instead of starting from zero each time.' },
+          { q: 'I own a small company. What happens after the free trial-balance check?', a: 'A 30-minute diagnosis call with a licensed accountant that ends with one concrete next step, then, if you want it, a monthly pack with a defined scope. Nothing to install and no change to your system.' },
         ]
       },
       {
@@ -726,7 +727,7 @@ module.exports = {
         'ISO-aligned internal-control framework',
         '500+ reports delivered across Egypt, Saudi Arabia and the US',
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
-        `seg-audit: MFT’s own continuous-audit platform, ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
+        `SEG Audit: the continuous-audit module of MFT’s SEG (Standard Enterprise Governance) platform, ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
       ]
     },
     team: {
@@ -759,7 +760,7 @@ module.exports = {
         'You do not need to prepare anything. Send your question or your last closed month, and a licensed accountant, not a sales rep, replies within one business day with a first diagnosis and one concrete next step. Full confidentiality.'
     },
     form: {
-      heading: 'Request your first report',
+      heading: 'Request your free trial-balance check',
       name: 'Full name',
       company: 'Company',
       email: 'Work email',
@@ -808,6 +809,95 @@ module.exports = {
   // per activity come from seg-audit (analysis/odoo_best_practice.py → FAMILY_RULES, ISIC mapping).
   // Ready-made module packages and their Odoo App Store listing are not built yet: marked "soon".
   // Commission and resale margin are not decided: "set in the partner agreement", no figures.
+  // Founding Members (SEG Audit launch, November 2026). Seat numbers come from site.config → founding:
+  // {left} remaining, {filled} joined, {total} seats. Never type the numbers here.
+  // PENDING (Ahmed): the "Founding terms" benefit and the "after 50" FAQ are commercial commitments;
+  // approve or remove before merge.
+  founding: {
+    // Real scarcity, no counter (launch lead, 3 Nov 2026): only 50 seats at a founder price for life.
+    // Counter copy lives in founding.counter below and shows only when site.config → founding.showCount is true.
+    title: 'SEG Audit Founding Members | Only {total} seats at a founder price for life',
+    description: 'The SEG Audit Founding Members programme: only {total} seats, at a founder price for life. Start with a free check of your company’s trial balance at app.seg-audit.com.',
+    ogAlt: 'Founding Members programme: only {total} seats at a founder price for life',
+    bar: 'SEG Audit Founding Members: only {total} seats at a founder price for life. Learn more',
+    page: { eyebrow: 'Founding Members' },
+    hero: {
+      headline: 'SEG Audit {accent}Founding Members{/accent}: only {total} seats at a founder price for life',
+      subhead: 'We are opening SEG Audit, the continuous audit module of the SEG (Standard Enterprise Governance) platform from MFT, to {total} companies as Founding Members, at a founder price that stays with you for life. When the seats are taken, the programme closes.',
+      cta: 'Claim your seat',
+      secondary: 'How to join',
+      assurance: ['Read-only access to your system', 'Evidence behind every finding', 'Reports in Arabic and English'],
+      meterCaption: 'seats only, at a founder price for life',
+      legend: { next: 'Your seat', open: 'Founding seat' }
+    },
+    homeBand: {
+      title: 'Founding Members: only {total} seats at a founder price for life',
+      body: 'Founding seats on SEG Audit are capped at {total} and will not reopen. Start with a free check of your company’s trial balance that flags its risk points in minutes.',
+      more: 'Programme details'
+    },
+    final: {
+      title: 'Only {total} seats, at a founder price for life.',
+      body: 'Start with a free trial-balance check, and claim your seat before the count closes.'
+    },
+    // The real counter, later: replaces the matching copy above only when showCount is true and
+    // founding.filled holds a confirmed subscription count. Tokens: {filled}, {left}, {total}.
+    counter: {
+      title: 'SEG Audit Founding Members | {left} of {total} seats left',
+      description: 'The SEG Audit Founding Members programme: {total} seats at a founder price for life; {filled} companies in, {left} left.',
+      ogAlt: '{left} of {total} seats left: SEG Audit Founding Members',
+      bar: 'SEG Audit Founding Members: {left} of {total} seats left. Learn more',
+      'hero.headline': '{left} of {total} seats left: SEG Audit {accent}Founding Members{/accent}',
+      'hero.subhead': '{filled} companies have joined the Founding Members; {left} seats remain at a founder price for life.',
+      'hero.meterCaption': 'seats left of {total}',
+      'hero.legend.filled': '{filled} companies joined',
+      'homeBand.title': 'Founding Members: {left} of {total} seats left',
+      'homeBand.body': '{filled} companies have joined SEG Audit. Founding seats are capped at {total}, at a founder price for life, and will not reopen.',
+      'final.title': '{left} of {total} seats left.',
+      'final.body': '{filled} companies joined before you. Claim your seat before the count closes.'
+    },
+    // The lead magnet (CEO, 3 Nov 2026): trial-balance indicators only, not a full audit report.
+    check: {
+      eyebrow: 'The free check',
+      title: 'A free check of your company’s trial balance that flags its risk points in minutes',
+      intro: 'Not a full audit report: indicators computed directly from the balances in your trial balance, not estimates.',
+      items: [
+        { title: 'Suspense accounts', body: 'Balances left in clearing or suspense accounts.' },
+        { title: 'Abnormal balances', body: 'An account with a balance against its nature, such as cash in credit.' },
+        { title: 'Imbalance', body: 'Total debits do not equal total credits.' },
+        { title: 'Heavy manual entries', body: 'A high share of manual entries on sensitive accounts.' },
+        { title: 'Backdated entries', body: 'Entries dated earlier than the day they were recorded.' }
+      ],
+      cta: 'Check your trial balance free'
+    },
+    gets: {
+      eyebrow: 'What a Founding Member gets',
+      title: 'A front-row seat, not an ordinary subscription.',
+      intro: 'Founding Members are the first to work on the platform with its team, and the first to be heard on it.',
+      items: [
+        { title: 'Onboarding with the MFT team', body: 'We connect your system read-only and walk through your first trial-balance check with you in one session, not a manual you read alone.' },
+        { title: 'A direct line to the product team', body: 'Your feedback goes straight to the people building the platform, and you have a say in what we build next.' },
+        { title: 'A founder price for life', body: 'Your founding price stays with you for as long as your subscription runs, and is not offered once the {total} seats are filled.' },
+        { title: 'The Founding Member title', body: 'Your company listed among the Founding Members, only with your written consent.' }
+      ]
+    },
+    how: {
+      eyebrow: 'How to join',
+      title: 'Three steps to the risk points in your trial balance, in minutes.',
+      steps: [
+        { title: 'Sign up', body: 'Create your company account at app.seg-audit.com. Sign-up reserves your seat in order.' },
+        { title: 'Upload your trial balance', body: 'Upload the trial balance of your last closed month, or connect Odoo read-only.' },
+        { title: 'Get your trial-balance check', body: 'Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report.' }
+      ]
+    },
+    faq: [
+      { q: 'Why only {total} seats?', a: 'Every Founding Member works directly with the MFT team on setup and follow-up, and that does not stretch beyond {total} companies in the first phase.' },
+      { q: 'What happens once the {total} seats are filled?', a: 'The programme closes. The platform stays open for sign-up, without the founder price.' },
+      { q: 'What does “a founder price for life” mean?', a: 'The price you join at as a Founding Member stays with you for as long as your subscription runs, and is not offered once the seats are taken.' },
+      { q: 'Can the platform change my data?', a: 'No. It reads only. The Odoo connection is read-only and the platform writes nothing to your system.' },
+      { q: 'We are not on Odoo. Can we join?', a: 'Yes. Send your last closed month as a trial balance or spreadsheet and we work from that with you.' }
+    ],
+  },
+
   partners: {
     title: 'MFT partners | Odoo partners and accounting firms',
     description: 'The MFT partner programme for Odoo implementation partners and accounting firms in Egypt and Saudi Arabia: continuous audit for your clients on the seg-audit platform, with internal controls for each activity.',
@@ -831,7 +921,7 @@ module.exports = {
       items: [
         { title: 'One account, many companies', body: 'The Enterprise plan covers up to 25 companies and 100 reports a month on one account, so you run your clients from one place.' },
         { title: `${N(F.checks)} checks across ${F.reports} reports`, body: 'Duplicate payments, near-duplicate vendors, approvals and segregation of duties, cut-off, inventory valuation, tax and e-invoicing (ETA and ZATCA), and the financial statements.' },
-        { title: 'A free report for each of your client companies', body: 'Every company starts with one free report in any area, so your client sees the value on their own books before any commitment.' },
+        { title: 'A free trial-balance check for each client company', body: 'Every company starts with a free check of its trial balance that flags its risk points in minutes, so your client sees the value on their own numbers before any commitment.' },
         { title: 'A read-only connector module', body: 'The seg_audit_connector module is open source (LGPL-3) and runs on Odoo 17, 18 and 19: a dedicated read-only user, and a button that revokes access at once.' },
         { title: 'A named reviewer on every report', body: 'Every report stays a draft until an MFT reviewer approves it by name. Reports support decisions; they are not a formal audit opinion.' },
         { title: 'Partner terms', body: 'Commission or resale margin, deal registration and training are set in the partner agreement after the first call.' }
@@ -997,11 +1087,11 @@ module.exports = {
       },
       {
         title: 'Why we collect it',
-        body: 'To reply to your request, prepare your first report and, if you become a client, to run the engagement. Your details are recorded in MFT’s customer system and are not sold, rented or shared with third parties for their own purposes.'
+        body: 'To reply to your request, run your free trial-balance check and, if you become a client, to run the engagement. Your details are recorded in MFT’s customer system and are not sold, rented or shared with third parties for their own purposes.'
       },
       {
         title: 'Financial data you send us',
-        body: 'Any ledger, trial balance or report you share for a first report is treated as confidential client data: read-only access, restricted to the engagement team, and deleted on request once the engagement ends.'
+        body: 'Any ledger, trial balance or report you share for the trial-balance check is treated as confidential client data: read-only access, restricted to the engagement team, and deleted on request once the engagement ends.'
       },
       {
         title: 'Your rights',
@@ -1163,7 +1253,7 @@ module.exports = {
         faq: [
           { q: 'Is this a dashboard or a person?', a: 'Both. The agent does the analysis from your data; a licensed MFT accountant reviews it, signs it and presents it. You are never handed raw AI output.' },
           { q: 'Do we need Odoo?', a: 'It works best on Odoo, but a monthly trial balance and sub-ledger export from any system is enough to start.' },
-          { q: 'How fast is the first pack?', a: 'With Odoo connected read-only, you request the free report from the platform yourself once it has read your system, in any area you choose; without a connection you get it within 24 hours of sending your last closed month. The full monthly pack starts from your next close.' },
+          { q: 'How fast is the trial-balance check?', a: 'Minutes: upload your trial balance or connect Odoo read-only and the risk points in your trial balance appear. The full monthly pack starts from your next close.' },
           { q: 'Can it prepare investor or bank reporting?', a: 'Yes. Bank, investor and board formats are part of the Professional and Complete engagements.' }
         ],
         related: { label: 'Virtual CFO service', href: 'services/virtual-cfo/' }
@@ -1227,8 +1317,8 @@ module.exports = {
   },
 
   homeFaq: [
-    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the seg-audit platform and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
-    { q: 'Is the first report really free?', a: 'Yes. One report per company, in any area you choose, after the platform reads your system read-only. No credit card, no commitment.' },
+    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its SEG Audit continuous-audit module and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
+    { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. No credit card, no commitment.' },
     { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
   ],
   industriesFaq: [
@@ -1243,8 +1333,8 @@ module.exports = {
   ],
   contactFaq: [
     { q: 'How fast do you reply?', a: 'Within one business day, by email or WhatsApp. Most clients started with a single WhatsApp message.' },
-    { q: 'What should I send for the free first report?', a: 'Your last closed month: a trial balance, an Odoo export or a spreadsheet. No preparation is needed.' },
-    { q: 'Is my data confidential?', a: 'Yes. Files shared for a first report are treated as confidential client data, restricted to the engagement team and deleted on request. Nothing is published about any client without written consent.' }
+    { q: 'What do I send for the free trial-balance check?', a: 'The trial balance of your last closed month, or connect Odoo read-only. No preparation is needed.' },
+    { q: 'Is my data confidential?', a: 'Yes. Files shared for the trial-balance check are treated as confidential client data, restricted to the engagement team and deleted on request. Nothing is published about any client without written consent.' }
   ],
 
   locations: {
@@ -1273,7 +1363,7 @@ module.exports = {
           { title: 'Virtual CFO', body: 'A monthly management pack and a review call with an MFT accountant, from your first closed month.', href: 'services/virtual-cfo/' },
           { title: 'MFT Intelligence agents', body: 'The Auditor and Virtual CFO agents, delivered as a managed service with human sign-off.', href: 'intelligence/' }
         ],
-        how: ['Discovery call at our Cairo office or remotely', 'First free report within 24 hours of receiving your last closed month', 'On-site fieldwork across Egypt when the engagement needs it', 'Reports in Arabic or English, written for owners and boards'],
+        how: ['Discovery call at our Cairo office or remotely', 'A free check of your company’s trial balance that flags its risk points in minutes', 'On-site fieldwork across Egypt when the engagement needs it', 'Reports in Arabic or English, written for owners and boards'],
         faq: [
           { q: 'Do you handle ETA e-invoicing inside Odoo?', a: 'Yes. Submission, validation and the B2C receipt mandate are configured in the standard implementation, not as a change request.' },
           { q: 'Can you work with my external auditor?', a: 'Yes. Findings are classified against ISA and delivered with an evidence trail your external auditor can use directly.' },
@@ -1303,7 +1393,7 @@ module.exports = {
           { title: 'Virtual CFO', body: 'Monthly management packs and cash forecasts in Arabic or English, with a review call each month.', href: 'services/virtual-cfo/' },
           { title: 'Cross-border structuring', body: 'Egypt and Saudi groups: treaty position, transfer of profits and consolidated reporting.', href: 'services/financial-consulting/' }
         ],
-        how: ['Discovery call in Arabic or English; on-site visits arranged for fieldwork', 'First free report within 24 hours of receiving your last closed month', 'Client data read from your own Odoo at query time and never copied out of the Kingdom', 'Reports written for owners, boards and Saudi auditors'],
+        how: ['Discovery call in Arabic or English; on-site visits arranged for fieldwork', 'A free check of your company’s trial balance that flags its risk points in minutes', 'Client data read from your own Odoo at query time and never copied out of the Kingdom', 'Reports written for owners, boards and Saudi auditors'],
         faq: [
           { q: 'Is your Odoo implementation ZATCA phase-two compliant?', a: 'Yes. Integration, clearance and reporting are part of the standard implementation, and the configuration is tested against the ZATCA sandbox before go-live.' },
           { q: 'Where does my data live?', a: 'On your own Odoo or ERP in the Kingdom. MFT and the MFT Intelligence agents read it at query time and do not copy it, in line with the Personal Data Protection Law.' },

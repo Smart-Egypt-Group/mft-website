@@ -168,6 +168,16 @@ if (!money) ok('no client financial amounts in content (dashboard sample exclude
 const cfg = fs.readFileSync(path.join(ROOT, 'src/site.config.js'), 'utf8');
 if (/PENDING-DOMAIN/.test(cfg)) console.log('  ! siteUrl still PENDING (decision with Ahmed) — set it before production deploy');
 else ok('siteUrl set');
+const siteCfg = require(path.join(ROOT, 'src/site.config.js'));
+const noSocial = Object.entries(siteCfg.contact.social || {}).filter(([, v]) => !v).map(([k]) => k);
+if (noSocial.length) console.log(`  ! social profile URL not set (not rendered): ${noSocial.join(', ')}`);
+const fm = siteCfg.founding;
+if (fm && fm.enabled) {
+  // The public counter needs a confirmed subscription count and a date; without it the site shows no count.
+  if (fm.showCount && !(Number.isInteger(fm.filled) && fm.filled >= 0 && fm.filled < fm.total && fm.asOf)) fail(`founding counter on without a confirmed count: filled=${fm.filled}, asOf=${fm.asOf}`);
+  if (!fm.showCount) ok('founding: no public counter (showCount off)');
+  for (const l of siteCfg.languages) if (!fs.existsSync(path.join(DIST, 'assets/img/launch', `founding-og-${l}.jpg`))) fail(`founding og:image missing for ${l} (run scripts/launch-images.js)`);
+}
 
 /* ---------- 4. CSS sanity ---------- */
 console.log('\nCSS:');
