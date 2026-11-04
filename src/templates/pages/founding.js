@@ -55,7 +55,7 @@ module.exports = function founding(ctx) {
     <ol class="grid grid-3 pillars check-list">${P.check.items
       .map((x, i) => `<li class="card"><span class="num lat" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span><h3>${t(x.title)}</h3><p>${t(x.body)}</p></li>`)
       .join('')}</ol>
-    <p class="section-foot"><a class="btn btn-primary btn-lg" href="${esc(signupUrl(ctx, 'tb-check'))}">${t(P.check.cta)}</a></p>
+    <p class="section-foot"><a class="btn btn-primary btn-lg" href="${esc(signupUrl(ctx, 'tb-check'))}" data-track="lead">${t(P.check.cta)}</a></p>
   </div>
 </section>`;
 

@@ -14,6 +14,10 @@ function head(ctx, page) {
   const analytics = config.analytics.plausibleDomain
     ? `<script defer data-domain="${esc(config.analytics.plausibleDomain)}" src="https://plausible.io/js/script.js"></script>`
     : '';
+  const A = config.analytics;
+  const pixels = A.metaPixelId || A.tiktokPixelId
+    ? `<script src="/assets/js/pixel.js?v=${ctx.buildId}" async data-meta-pixel="${esc(A.metaPixelId)}" data-tiktok-pixel="${esc(A.tiktokPixelId)}" data-hosts="${esc(A.pixelHosts.join(' '))}"></script>`
+    : '';
   return `<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(title)}</title>
@@ -49,6 +53,7 @@ function head(ctx, page) {
   <link rel="stylesheet" href="/assets/css/main.css?v=${ctx.buildId}">
   ${page.motion === false ? '' : `<script src="/assets/js/pre.js?v=${ctx.buildId}"></script>`}
   ${analytics}
+  ${pixels}
   <script type="application/ld+json">${JSON.stringify(siteGraph(ctx, page))}</script>
   ${(page.jsonld || []).map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n  ')}`;
 }
@@ -208,6 +213,7 @@ function layout(ctx, page) {
   ${head(ctx, page)}
 </head>
 <body class="${esc(page.bodyClass || '')}">
+${ctx.config.analytics.metaPixelId ? `<noscript><img height="1" width="1" hidden alt="" src="https://www.facebook.com/tr?id=${esc(ctx.config.analytics.metaPixelId)}&amp;ev=PageView&amp;noscript=1"></noscript>` : ''}
 ${header(ctx)}
 <main id="main" tabindex="-1">
 ${page.body}

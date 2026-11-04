@@ -90,8 +90,14 @@ module.exports = {
   },
 
   // Analytics — leave empty until a decision is made. Injected only if set.
+  // Ad pixels (CEO, 4 Nov 2026): loaded by assets/js/pixel.js on the production hosts only, so
+  // local and preview builds never send events. Disclosed in the privacy notice (content/<lang>.js
+  // → privacy); update that notice before adding another pixel.
   analytics: {
     gtmId: '',        // e.g. 'GTM-XXXXXXX'
-    plausibleDomain: ''
+    plausibleDomain: '',
+    metaPixelId: '501774495051160', // Meta Pixel (web): PageView on every page, Lead on the free-check CTA
+    tiktokPixelId: '',              // TikTok Pixel: PLACEHOLDER, paste the ID here when it is ready (same events)
+    pixelHosts: ['www.seg-audit.com', 'seg-audit.com']
   }
 };

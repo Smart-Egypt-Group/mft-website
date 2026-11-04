@@ -1124,12 +1124,16 @@ module.exports = {
     page: {
       eyebrow: 'Privacy',
       title: 'What we collect, and why.',
-      intro: 'This website is a marketing site. It collects only what you type into the contact form.'
+      intro: 'This website is a marketing site. We collect what you type into the contact form, and we use the Meta Pixel to measure our ads.'
     },
     sections: [
       {
         title: 'What we collect',
-        body: 'When you submit the contact form we receive the name, company, email, phone number, country, service of interest and message you enter, plus the page you sent it from and the language you used. The site sets no tracking cookies and uses no third-party analytics.'
+        body: 'When you submit the contact form we receive the name, company, email, phone number, country, service of interest and message you enter, plus the page you sent it from and the language you used.'
+      },
+      {
+        title: 'Cookies and the Meta Pixel',
+        body: 'This site uses the Meta Pixel from Meta to measure the results of our ads on Facebook and Instagram, and to show our ads to people who visited the site. On every page it sends Meta the page address, browser and device information and your IP address, records clicks on the free-check button, and sets a cookie named _fbp that lasts up to 90 days. We do not send Meta what you type into forms. Meta processes this data under its own privacy policy. You can prevent it by blocking third-party cookies in your browser, or in the ad settings of your Facebook or Instagram account. If we add another tool, we update this notice before it goes live.'
       },
       {
         title: 'Why we collect it',
@@ -1148,7 +1152,7 @@ module.exports = {
         body: 'The seg-audit platform (app.seg-audit.com) has its own terms and privacy policy, which apply when you create an account there.'
       }
     ],
-    updated: 'Last updated: September 2026'
+    updated: 'Last updated: November 2026'
   },
 
   intelligence: {
