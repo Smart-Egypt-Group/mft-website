@@ -33,12 +33,24 @@ const box = (type, ...parts) => { const body = Buffer.concat(parts); return Buff
 const full = (type, version, flags, ...parts) => box(type, u8(version), u8(flags >> 16), u16(flags & 0xffff), ...parts);
 const MATRIX = Buffer.concat([0x00010000, 0, 0, 0, 0x00010000, 0, 0, 0, 0x40000000].map(u32));
 
-function mp4(samples, avcC) {
-  const n = samples.length, duration = n * DELTA, movieDur = Math.round((duration / TIMESCALE) * 1000);
-  const moov = (mdatOffset) => box('moov',
-    full('mvhd', 0, 0, u32(0), u32(0), u32(1000), u32(movieDur), u32(0x00010000), u16(0x0100), Buffer.alloc(10), MATRIX, Buffer.alloc(24), u32(2)),
+// MPEG-4 descriptor: tag, then the length in the 4-byte 0x80-continued form.
+const desc = (tag, ...parts) => { const body = Buffer.concat(parts), n = body.length;
+  return Buffer.concat([u8(tag), Buffer.from([0x80 | ((n >> 21) & 127), 0x80 | ((n >> 14) & 127), 0x80 | ((n >> 7) & 127), n & 127]), body]); };
+
+// samples: [{ key, data }] H.264 (avcC format) at FPS; options: { width, height, fps }.
+// audio (optional): { samples: [Buffer] AAC-LC raw frames of 1024 samples, asc: AudioSpecificConfig, sampleRate, channels }.
+function mp4(samples, avcC, audio = null, options = {}) {
+  const width = options.width || W, height = options.height || H, delta = TIMESCALE / (options.fps || FPS);
+  const n = samples.length, duration = n * delta, movieDur = Math.round((duration / TIMESCALE) * 1000);
+  const vData = Buffer.concat(samples.map((s) => s.data));
+  const aData = audio ? Buffer.concat(audio.samples) : Buffer.alloc(0);
+  const aDur = audio ? audio.samples.length * 1024 : 0;
+  const tkhd = (id, dur, isAudio) => full('tkhd', 0, 3, u32(0), u32(0), u32(id), u32(0), u32(dur), Buffer.alloc(8), u16(0), u16(isAudio ? 1 : 0), u16(isAudio ? 0x0100 : 0), u16(0), MATRIX,
+    u32(isAudio ? 0 : width << 16), u32(isAudio ? 0 : height << 16));
+  const moov = (vOff, aOff) => box('moov',
+    full('mvhd', 0, 0, u32(0), u32(0), u32(1000), u32(movieDur), u32(0x00010000), u16(0x0100), Buffer.alloc(10), MATRIX, Buffer.alloc(24), u32(audio ? 3 : 2)),
     box('trak',
-      full('tkhd', 0, 3, u32(0), u32(0), u32(1), u32(0), u32(movieDur), Buffer.alloc(8), u16(0), u16(0), u16(0), u16(0), MATRIX, u32(W << 16), u32(H << 16)),
+      tkhd(1, movieDur, false),
       box('mdia',
         full('mdhd', 0, 0, u32(0), u32(0), u32(TIMESCALE), u32(duration), u16(0x55c4), u16(0)),
         full('hdlr', 0, 0, u32(0), str('vide'), Buffer.alloc(12), str('VideoHandler\0')),
@@ -47,17 +59,35 @@ function mp4(samples, avcC) {
           box('dinf', full('dref', 0, 0, u32(1), full('url ', 0, 1))),
           box('stbl',
             full('stsd', 0, 0, u32(1), box('avc1',
-              Buffer.alloc(6), u16(1), Buffer.alloc(16), u16(W), u16(H), u32(0x00480000), u32(0x00480000), u32(0), u16(1),
+              Buffer.alloc(6), u16(1), Buffer.alloc(16), u16(width), u16(height), u32(0x00480000), u32(0x00480000), u32(0), u16(1),
               Buffer.alloc(32), u16(0x0018), u16(0xffff), box('avcC', avcC))),
-            full('stts', 0, 0, u32(1), u32(n), u32(DELTA)),
+            full('stts', 0, 0, u32(1), u32(n), u32(delta)),
             full('stss', 0, 0, u32(samples.filter((s) => s.key).length), ...samples.map((s, i) => (s.key ? u32(i + 1) : null)).filter(Boolean)),
             full('stsc', 0, 0, u32(1), u32(1), u32(n), u32(1)),
             full('stsz', 0, 0, u32(0), u32(n), ...samples.map((s) => u32(s.data.length))),
-            full('stco', 0, 0, u32(1), u32(mdatOffset)))))));
+            full('stco', 0, 0, u32(1), u32(vOff)))))),
+    ...(audio ? [box('trak',
+      tkhd(2, Math.round((aDur / audio.sampleRate) * 1000), true),
+      box('mdia',
+        full('mdhd', 0, 0, u32(0), u32(0), u32(audio.sampleRate), u32(aDur), u16(0x55c4), u16(0)),
+        full('hdlr', 0, 0, u32(0), str('soun'), Buffer.alloc(12), str('SoundHandler\0')),
+        box('minf',
+          full('smhd', 0, 0, u16(0), u16(0)),
+          box('dinf', full('dref', 0, 0, u32(1), full('url ', 0, 1))),
+          box('stbl',
+            full('stsd', 0, 0, u32(1), box('mp4a',
+              Buffer.alloc(6), u16(1), Buffer.alloc(8), u16(audio.channels), u16(16), u16(0), u16(0), u32(audio.sampleRate << 16),
+              full('esds', 0, 0, desc(0x03, u16(2), u8(0),
+                desc(0x04, u8(0x40), u8(0x15), Buffer.from([0, 0x18, 0]), u32(192000), u32(128000), desc(0x05, audio.asc)),
+                desc(0x06, u8(2)))))),
+            full('stts', 0, 0, u32(1), u32(audio.samples.length), u32(1024)),
+            full('stsc', 0, 0, u32(1), u32(1), u32(audio.samples.length), u32(1)),
+            full('stsz', 0, 0, u32(0), u32(audio.samples.length), ...audio.samples.map((b) => u32(b.length))),
+            full('stco', 0, 0, u32(1), u32(aOff))))))] : []));
   const ftyp = box('ftyp', str('isom'), u32(512), str('isomiso2avc1mp41'));
-  const size = ftyp.length + moov(0).length; // moov first (fast start); its size does not depend on the offset
-  const data = Buffer.concat(samples.map((s) => s.data));
-  return Buffer.concat([ftyp, moov(size + 8), u32(8 + data.length), str('mdat'), data]);
+  const size = ftyp.length + moov(0, 0).length; // moov first (fast start); its size does not depend on the offsets
+  const vOff = size + 8, aOff = vOff + vData.length;
+  return Buffer.concat([ftyp, moov(vOff, aOff), u32(8 + vData.length + aData.length), str('mdat'), vData, aData]);
 }
 
 // ---------------------------------------------------------------- render + encode in Chrome

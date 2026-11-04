@@ -47,6 +47,7 @@ scripts/launch-concepts.js SEG Audit creative concepts, carousels (+PDF), video 
 scripts/guerrilla-ads.js   SEG Audit guerrilla pack: graffiti, palm, sticky note, square + story (marketing/designs/guerrilla/)
 scripts/tiktok-videos.js   8 s TikTok MP4s from the 9:16 ad designs, H.264 via Chrome WebCodecs (marketing/designs/ads/video/)
 scripts/psych-ads.js       SEG Audit persuasion pack: one principle per design, square + story + link (marketing/designs/psych/)
+scripts/reels-videos.js    Reels/Shorts MP4s (H.264 + silent AAC) from the video storyboards (marketing/designs/video/, src/assets/social/video/)
 scripts/og-image.js     regenerates the 1200×630 share images (needs Playwright + Chrome)
 scripts/logo-assets.js  re-derives logos + favicons from the official 5906 px PNG pack (same requirement)
 build.js / serve.js     build pipeline / dev server
