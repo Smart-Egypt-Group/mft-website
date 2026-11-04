@@ -1,27 +1,28 @@
 #!/usr/bin/env node
-// Standard Enterprise Governance (SEG) · golden-ratio Meta feed pack (CEO brief, 5 Nov 2026).
-// Seven persuasion angles, each composed on φ = 1.618 in code, rendered at Meta feed 1:1 (1080×1080)
-// and 4:5 (1080×1350) as JPG + WebP into marketing/designs/golden/<slug>/. The JPGs are copied to
-// src/assets/social/golden/ so the site serves them by direct URL for ad selection.
+// Standard Enterprise Governance (SEG) · Meta campaign creatives v2, "outside the box", composed on
+// φ = 1.618 (CEO brief, 5 Nov 2026). Four concepts, one set for both ad sets (Egypt and Saudi Arabia),
+// so the copy is plain Arabic both markets read, and no currency sign is shown.
 //
-// How φ is applied (every value below is computed, not eyeballed; README.md has the full note):
-//   type scale   T[k] = (W / φ⁸) · φᵏ  →  23 · 37 · 60 · 97 · 158 · 255 px. Every text size is one step.
-//   spacing      the same scale: 14 (T0/φ) · 23 · 37 · 60. Outer margin m = T2 = W/φ⁶.
-//   leading      headlines 2/φ = 1.236, body φ = 1.618.
-//   grid         golden-section lines x = W/φ², W/φ and y = H/φ², H/φ (the four power points).
-//                The headline's last line sits on y = H/φ²; the CTA's left edge sits on x = W/φ.
-//   spiral       a golden rectangle W × W/φ, aligned to the bottom edge, subdivided 12 times into
-//                squares (each 1/φ of the last). Its pole ("eye") is computed as the limit of the
-//                subdivision, and each design's hero (number, seat field, first evidence) is centred on it.
-//   splits       panels, cards and the seat field use 1 : φ divisions; circle sizes and chip sizes step by φ.
-// After rendering, the script measures every anchored element in the browser and writes the deviation
-// from its golden target to metrics.json and README.md; it fails if any text size is off the scale or
-// any text box overflows.
+//   1-crack      loss aversion: a ledger page splits open. The crack widens by exactly φ every step,
+//                from a hair-line at one wrong entry to a chasm at the closing.
+//   2-hourglass  scarcity: an hourglass whose sand is seats. 33 still on top, 17 already fallen.
+//   3-hawk-eye   authority: a macro raptor eye, the hero, with the evidence chain in its gaze.
+//   4-lineup     the shock concept: every journal entry under interrogation, in a police lineup.
 //
-// Brand: navy #0D1B3E, cyan #1BB7CD, white, and a muted alarm red #C0392B used only for small risk
-// marks. No gold. Arabic RTL. Data rule (CEO): every ledger figure is test data marked «مثال توضيحي».
-// The seat numbers come from src/site.config.js → founding (the published offer); the test count from
-// src/content/platform-facts.js.
+// φ in code (README.md has the per-design note and the measured deviations):
+//   type scale  T[k] = (W/φ⁸)·φᵏ → 23 · 37 · 60 · 97 · 158 · 255 · 412 px; every text size is a step.
+//   spacing     14 · 23 · 37 · 60 (same scale); outer margin m = T2 = W/φ⁶.
+//   leading     headlines 2/φ = 1.236, body φ = 1.618.
+//   grid        golden-section lines x = W/φ², W/φ and y = H/φ², H/φ.
+//   spiral      golden rectangle W × W/φ on the bottom edge, subdivided until it converges; its pole
+//               ("eye") anchors the hero of designs 1 to 3.
+// After rendering, every element carrying data-a="key=value;…" is measured in the browser and its
+// deviation from the golden target is written to metrics.json and README.md. The run fails if a text
+// size is off the scale, text overflows its box, or the headline touches the eyebrow.
+//
+// Brand: navy #0D1B3E, cyan #1BB7CD, white, muted alarm red #C0392B for small risk marks only.
+// No gold. Arabic RTL. Data rule: every ledger figure and code is test data marked «مثال توضيحي».
+// Seat numbers: src/site.config.js → founding. Test count: src/content/platform-facts.js.
 //
 //   PLAYWRIGHT_PATH=<path to playwright> node scripts/golden-ads.js [filter]
 const fs = require('fs');
@@ -35,366 +36,419 @@ const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/golden');
 const HOST = path.join(ROOT, 'src/assets/social/golden');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const MARK = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-white.png');
+const MARK_W = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-white.png');
+const MARK_N = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-navy.png');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const { founding: FM } = require('../src/site.config.js');
 const FACTS = require('../src/content/platform-facts.js');
 
-const NAVY = '#0D1B3E', CYAN = '#1BB7CD', W = '#FFFFFF', RED = '#C0392B';
+const NAVY = '#0D1B3E', DEEP = '#081230', CYAN = '#1BB7CD', CYAN_INK = '#1497AA', W = '#FFFFFF', RED = '#C0392B', PAPER = '#F3F5F9';
 const PHI = (1 + Math.sqrt(5)) / 2;
 const FORMATS = { '1x1': [1080, 1080], '4x5': [1080, 1350] };
 const ar = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '٬').replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
 const FILLED = FM.showCount ? FM.filled : 0, TOTAL = FM.total, LEFT = TOTAL - FILLED;
 const DEMO = 'مثال توضيحي · داتا اختبارية';
 const r1 = (v) => Math.round(v * 10) / 10;
+const rng = (seed) => { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); };
 
 // ---------------------------------------------------------------- the golden geometry
 function geometry(Wd, Hd) {
   const u = Wd / PHI ** 8;
-  const T = [0, 1, 2, 3, 4, 5].map((k) => Math.round(u * PHI ** k)); // 23 37 60 97 158 255
+  const T = [0, 1, 2, 3, 4, 5, 6].map((k) => Math.round(u * PHI ** k)); // 23 37 60 97 158 255 412
   const S = { xs: Math.round(T[0] / PHI), s: T[0], m: T[1], l: T[2] };   // 14 23 37 60
   const m = T[2];
   const X1 = Wd / PHI ** 2, X2 = Wd / PHI, Y1 = Hd / PHI ** 2, Y2 = Hd / PHI;
-  // Spiral: golden rectangle W × W/φ on the bottom edge, flipped vertically so its pole is in the
-  // upper half of the rectangle. fx picks the pole's side (false: left of centre, true: right).
   const Hr = Wd / PHI, ry = Hd - Hr;
   const spiral = (fx) => {
     let [x, y, w, h] = [0, 0, Wd, Hr];
     const sq = [];
     for (let k = 0; k < 14; k++) {
       const t = k % 4;
-      if (t === 0) { sq.push([x + w - h, y, h, 0, [x + w - h, y + h]]); w -= h; }
-      else if (t === 1) { sq.push([x, y, w, 1, [x + w, y + w]]); y += w; h -= w; }
-      else if (t === 2) { sq.push([x, y, h, 2, [x + h, y]]); x += h; w -= h; }
-      else { sq.push([x, y + h - w, w, 3, [x, y + h - w]]); h -= w; }
+      if (t === 0) { sq.push([x + w - h, y, h, [x + w - h, y + h]]); w -= h; }
+      else if (t === 1) { sq.push([x, y, w, [x + w, y + w]]); y += w; h -= w; }
+      else if (t === 2) { sq.push([x, y, h, [x + h, y]]); x += h; w -= h; }
+      else { sq.push([x, y + h - w, w, [x, y + h - w]]); h -= w; }
     }
     const map = (px, py) => [fx ? Wd - px : px, ry + (Hr - py)];
-    const squares = sq.map(([sx, sy, s]) => { const [ax, ay] = map(sx, sy), [bx, by] = map(sx + s, sy + s);
-      return { x: Math.min(ax, bx), y: Math.min(ay, by), s }; });
-    // Quarter arcs, θ falling by 90° per square (see the derivation in README.md).
+    const squares = sq.map(([sx, sy, s]) => { const [ax, ay] = map(sx, sy), [bx, by] = map(sx + s, sy + s); return { x: Math.min(ax, bx), y: Math.min(ay, by), s }; });
     const pts = [];
-    sq.forEach(([, , s, , c], k) => { for (let i = 0; i <= 24; i++) {
-      const th = (-90 * k - (90 * i) / 24) * Math.PI / 180; pts.push(map(c[0] + s * Math.cos(th), c[1] + s * Math.sin(th))); } });
-    const eye = map(x + w / 2, y + h / 2);
-    return { squares, eye, d: 'M' + pts.map(([a, b]) => `${r1(a)} ${r1(b)}`).join(' L') };
+    sq.forEach(([, , s, c], k) => { for (let i = 0; i <= 24; i++) { const th = (-90 * k - (90 * i) / 24) * Math.PI / 180; pts.push(map(c[0] + s * Math.cos(th), c[1] + s * Math.sin(th))); } });
+    return { squares, eye: map(x + w / 2, y + h / 2), d: 'M' + pts.map(([a, b]) => `${r1(a)} ${r1(b)}`).join(' L') };
   };
-  // Vertical zones. Headline ends on Y1. Footer row (CTA + logo) is T2 high on the bottom margin,
-  // the bait line sits one T0 gap above it, and the visual zone fills the space between.
   const footTop = Hd - m - T[2];
   const subTop = footTop - S.s - Math.round(T[1] * PHI);
   const vz = { top: Y1 + S.s, bottom: subTop - S.s };
   return { W: Wd, H: Hd, u, T, S, m, X1, X2, Y1, Y2, spiral, footTop, subTop, vz };
 }
 
-// ---------------------------------------------------------------- shared shell
-function shell(G, { head, visual, spiralFx = false, showSpiral = true, css = '', eyebrowNote = '' }) {
+// ---------------------------------------------------------------- shared frame
+// scene: full-bleed HTML/SVG behind the frame. paper: light theme (design 1).
+function shell(G, { scene, head, headCss = '', css = '', eyebrowNote = '', paper = false, spiralFx = null, guidesExtra = '' }) {
   const { W: Wd, H: Hd, T, S, m, X1, X2, Y1, Y2 } = G;
-  const sp = G.spiral(spiralFx);
+  const sp = spiralFx === null ? null : G.spiral(spiralFx);
+  const ink = paper ? NAVY : W, accent = paper ? CYAN_INK : CYAN;
   const guides = `<svg class="guides" viewBox="0 0 ${Wd} ${Hd}" width="${Wd}" height="${Hd}">
       <rect x="${m}" y="${m}" width="${Wd - 2 * m}" height="${Hd - 2 * m}" fill="none" stroke="#FF4FD8" stroke-width="2" stroke-dasharray="6 6"/>
-      ${[X1, X2].map((x) => `<line x1="${x}" y1="0" x2="${x}" y2="${Hd}" stroke="#FFE14F" stroke-width="2"/>`).join('')}
-      ${[Y1, Y2].map((y) => `<line x1="0" y1="${y}" x2="${Wd}" y2="${y}" stroke="#FFE14F" stroke-width="2"/>`).join('')}
-      ${sp.squares.slice(0, 9).map((q) => `<rect x="${r1(q.x)}" y="${r1(q.y)}" width="${r1(q.s)}" height="${r1(q.s)}" fill="none" stroke="#7CFFB2" stroke-width="1.5"/>`).join('')}
-      <path d="${sp.d}" fill="none" stroke="#7CFFB2" stroke-width="3"/>
-      <circle cx="${r1(sp.eye[0])}" cy="${r1(sp.eye[1])}" r="14" fill="none" stroke="#FF4FD8" stroke-width="3"/>
-      <line x1="${sp.eye[0] - 30}" y1="${sp.eye[1]}" x2="${sp.eye[0] + 30}" y2="${sp.eye[1]}" stroke="#FF4FD8" stroke-width="2"/>
-      <line x1="${sp.eye[0]}" y1="${sp.eye[1] - 30}" x2="${sp.eye[0]}" y2="${sp.eye[1] + 30}" stroke="#FF4FD8" stroke-width="2"/></svg>`;
-  const lineDecor = showSpiral ? `<svg class="spiral" viewBox="0 0 ${Wd} ${Hd}" width="${Wd}" height="${Hd}"><path d="${sp.d}" fill="none" stroke="${CYAN}" stroke-width="1.5"/></svg>` : '';
+      ${[X1, X2].map((x) => `<line x1="${x}" y1="0" x2="${x}" y2="${Hd}" stroke="#FFC400" stroke-width="2"/>`).join('')}
+      ${[Y1, Y2].map((y) => `<line x1="0" y1="${y}" x2="${Wd}" y2="${y}" stroke="#FFC400" stroke-width="2"/>`).join('')}
+      ${sp ? `${sp.squares.slice(0, 9).map((q) => `<rect x="${r1(q.x)}" y="${r1(q.y)}" width="${r1(q.s)}" height="${r1(q.s)}" fill="none" stroke="#2BD47D" stroke-width="1.5"/>`).join('')}
+      <path d="${sp.d}" fill="none" stroke="#2BD47D" stroke-width="3"/>
+      <circle cx="${r1(sp.eye[0])}" cy="${r1(sp.eye[1])}" r="14" fill="none" stroke="#FF4FD8" stroke-width="3"/>` : ''}${guidesExtra}</svg>`;
   return `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><style>
 @font-face{font-family:Cairo;src:url(data:font/woff2;base64,${CAIRO});font-weight:400 900}
 @font-face{font-family:Inter;src:url(data:font/woff2;base64,${INTER});font-weight:400 900}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:${Wd}px;height:${Hd}px;overflow:hidden}
-body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:${W};
-  background:radial-gradient(circle at ${r1(sp.eye[0])}px ${r1(sp.eye[1])}px, #1A2D5E 0%, ${NAVY} ${r1(Wd / PHI)}px, #081230 100%)}
+body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:${ink};background:${paper ? PAPER : NAVY}}
 .abs{position:absolute}
 .lat{font-family:Inter,sans-serif;direction:ltr;unicode-bidi:isolate}
-.spiral{position:absolute;inset:0;opacity:.16}
 .guides{position:absolute;inset:0;display:none;z-index:9}
 body.show-guides .guides{display:block}
-.eyebrow{top:${m}px;right:${m}px;left:${m}px;height:${Math.round(T[1] * PHI)}px;display:flex;align-items:center;gap:${S.s}px;font-size:${T[1]}px;font-weight:800;color:${CYAN};white-space:nowrap}
+.eyebrow{top:${m}px;right:${m}px;left:${m}px;height:${Math.round(T[1] * PHI)}px;display:flex;align-items:center;gap:${S.s}px;font-size:${T[1]}px;font-weight:800;color:${accent};white-space:nowrap;z-index:5}
 .eyebrow .lat{font-weight:800}
-.eyebrow small{font-size:${T[0]}px;color:rgba(255,255,255,.62);font-weight:700}
-h1{right:${m}px;left:${m}px;bottom:${Hd - Y1}px;font-weight:900;line-height:${r1(2 / PHI * 1000) / 1000};font-size:${T[3]}px}
-h1 em{font-style:normal;color:${CYAN}}
-.sub{right:${m}px;left:${m}px;top:${G.subTop}px;height:${Math.round(T[1] * PHI)}px;font-size:${T[1]}px;line-height:${r1(PHI * 1000) / 1000};font-weight:700;color:rgba(255,255,255,.86);white-space:nowrap}
-.sub b{color:${W};font-weight:900}
-.foot{top:${G.footTop}px;height:${T[2]}px;left:${m}px;right:${m}px}
+.eyebrow small{font-size:${T[0]}px;color:${paper ? 'rgba(13,27,62,.6)' : 'rgba(255,255,255,.62)'};font-weight:700}
+h1{right:${m}px;left:${m}px;bottom:${Hd - Y1}px;font-weight:900;line-height:${2 / PHI};font-size:${T[3]}px;z-index:5}
+h1 em{font-style:normal;color:${accent}}
+h1 .s{display:block;font-size:${T[1]}px;line-height:${PHI};font-weight:800;color:${paper ? 'rgba(13,27,62,.75)' : 'rgba(255,255,255,.85)'}}
+${headCss}
+.sub{right:${m}px;left:${m}px;top:${G.subTop}px;height:${Math.round(T[1] * PHI)}px;font-size:${T[1]}px;line-height:${PHI};font-weight:700;white-space:nowrap;z-index:5;color:${paper ? 'rgba(13,27,62,.85)' : 'rgba(255,255,255,.88)'}}
+.sub b{font-weight:900;color:${ink}}
+.foot{top:${G.footTop}px;height:${T[2]}px;left:${m}px;right:${m}px;z-index:5}
 .cta{position:absolute;top:0;right:0;height:${T[2]}px;width:${Wd - m - X2}px;border-radius:${T[2]}px;background:${CYAN};color:${NAVY};
-  display:flex;align-items:center;justify-content:center;gap:${S.xs}px;font-size:${T[0]}px;font-weight:800;white-space:nowrap}
+  display:flex;align-items:center;justify-content:center;gap:${S.xs}px;font-size:${T[0]}px;font-weight:800;white-space:nowrap;box-shadow:0 ${S.xs}px ${S.m}px rgba(27,183,205,.3)}
 .cta .lat{font-weight:800}
 .mark{position:absolute;top:0;left:0;height:${T[2]}px;display:flex;align-items:center;gap:${S.xs}px;direction:ltr}
 .mark img{height:${T[1]}px}
 .mark span{font:800 ${T[0]}px Inter,sans-serif;letter-spacing:.15em}
-.tag{display:inline-flex;align-items:center;gap:${S.xs}px;height:${T[1]}px;padding:0 ${S.s}px;border-radius:${T[1]}px;border:1.5px solid rgba(27,183,205,.7);
-  color:${CYAN};font-size:${T[0]}px;font-weight:800;white-space:nowrap;background:rgba(13,27,62,.7)}
-.tag::before{content:'';width:${S.xs}px;height:${S.xs}px;border-radius:50%;background:${CYAN}}
-.dot{display:inline-block;border-radius:50%;background:${RED};box-shadow:0 0 0 ${S.xs / 2}px rgba(192,57,43,.25)}
+.tag{display:inline-flex;align-items:center;gap:${S.xs}px;height:${T[1]}px;padding:0 ${S.s}px;border-radius:${T[1]}px;border:1.5px solid ${paper ? 'rgba(13,27,62,.35)' : 'rgba(27,183,205,.7)'};
+  color:${accent};font-size:${T[0]}px;font-weight:800;white-space:nowrap;background:${paper ? 'rgba(255,255,255,.85)' : 'rgba(13,27,62,.75)'};z-index:5}
+.tag::before{content:'';width:${S.xs}px;height:${S.xs}px;border-radius:50%;background:${accent}}
+.dot{display:inline-block;flex:0 0 auto;width:${S.xs}px;height:${S.xs}px;border-radius:50%;background:${RED};box-shadow:0 0 0 ${S.xs / 2}px rgba(192,57,43,.22)}
+.fade{left:0;right:0;bottom:0;height:${T[5]}px;background:linear-gradient(180deg,transparent,${paper ? PAPER : DEEP} 61.8%);z-index:4}
 ${css}
-</style><body data-vz-top="${G.vz.top}" data-vz-bottom="${G.vz.bottom}">${lineDecor}
+</style><body data-vz-top="${G.vz.top}" data-vz-bottom="${G.vz.bottom}">
+${scene(sp)}
+<div class="abs fade"></div>
 <div class="abs eyebrow" data-g="eyebrow"><span class="lat">Standard Enterprise Governance (SEG)</span>${eyebrowNote ? `<small>${eyebrowNote}</small>` : ''}</div>
 <h1 class="abs" data-g="headline">${head}</h1>
-${visual(sp)}
 <p class="abs sub" data-g="sub">فحص مجاني لميزان شركتك… <b>في دقائق</b></p>
-<div class="abs foot"><div class="cta" data-g="cta"><span>افحص مجانًا</span><span>·</span><span class="lat">seg-audit.com</span></div>
-  <div class="mark" data-g="logo"><img src="${MARK}" alt=""><span>MFT</span></div></div>
+<div class="abs foot"><div class="cta" data-g="cta" data-a="left=${r1(X2)}"><span>افحص مجانًا</span><span>·</span><span class="lat">seg-audit.com</span></div>
+  <div class="mark"><img src="${paper ? MARK_N : MARK_W}" alt=""><span>MFT</span></div></div>
 ${guides}</body></html>`;
 }
-
-// Places an element so its centre is on (x, y).
 const centred = (x, y) => `left:${r1(x)}px;top:${r1(y)}px;transform:translate(-50%,-50%)`;
 
-// ---------------------------------------------------------------- 1) the hidden error grows
-// Circles grow by φ from a red origin dot on the spiral's eye: 23 → 97 → 158 → 255 px (T0, T3, T4, T5).
-function hidden(G) {
-  const { T, S } = G;
-  return shell(G, {
-    eyebrowNote: 'الخطأ المستخبي',
-    spiralFx: true,
-    head: 'الخطأ المستخبي<br><em>بيكبر كل يوم.</em>',
-    visual: (sp) => {
-      const [ex, ey] = sp.eye;
-      const steps = [[T[0], 2400, 'اليوم'], [T[3], 18000, 'بعد شهر'], [T[4], 135000, 'بعد ٦ شهور'], [T[5], 980000, 'عند الإقفال']];
-      let x = ex, out = '';
-      steps.forEach(([d, amt, when], i) => {
-        if (i > 0) x -= steps[i - 1][0] / 2 + S.s + d / 2;
-        const fs = i === 0 ? T[0] : T[i - 1];
-        out += i === 0
-          ? `<span class="abs dot" data-g="hero" style="${centred(x, ey)};width:${d}px;height:${d}px"></span>
-             <span class="abs lbl" style="left:${r1(x)}px;top:${r1(ey + d / 2 + S.s)}px;transform:translateX(-50%)">${when}<br><b>${ar(amt)}</b></span>`
-          : `<div class="abs vzc disc d${i}" style="${centred(x, ey)};width:${d}px;height:${d}px"><b style="font-size:${fs}px">${ar(amt)}</b></div>
-             <span class="abs lbl" style="left:${r1(x)}px;top:${r1(ey + d / 2 + S.s)}px;transform:translateX(-50%)">${when}</span>`;
-      });
-      return out + `<span class="abs tag" style="right:${G.m}px;top:${G.vz.top}px">${DEMO} · ج.م</span>`;
-    },
-    css: `.disc{border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(27,183,205,.6);
-        background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.2), rgba(27,183,205,.1) 61.8%, rgba(27,183,205,.04))}
-      .disc b{font-weight:900;white-space:nowrap}
-      .d3{border-color:#fff;box-shadow:0 0 0 ${G.S.xs}px rgba(255,255,255,.06),0 0 ${G.T[2]}px rgba(27,183,205,.35)}
-      .lbl{font-size:${T[0]}px;font-weight:800;color:rgba(255,255,255,.75);white-space:nowrap;text-align:center;line-height:1.236}
-      .lbl b{color:#fff}`
-  });
-}
-
-// ---------------------------------------------------------------- 2) five things you can't see
-// The visual zone splits at x = W/φ²: the list card fills the φ part, the hidden "٢" sits on the eye.
-function five(G) {
-  const { T, S, m, X1, vz } = G;
-  const rows = [['حسابات معلّقة بقالها شهور', 1], ['أرصدة عكس طبيعتها', 1], ['قيود يدوية على حسابات حساسة', 1], ['ميزان مش متزن', 0], ['قيود بتاريخ رجعي', 0]];
-  return shell(G, {
-    eyebrowNote: 'فحص الميزان',
-    head: '<em>٥</em> حاجات في دفاترك<br>مش شايفها.',
-    visual: (sp) => `<div class="abs card vzc" style="right:${m}px;left:${r1(X1)}px;top:${vz.top}px;height:${r1(vz.bottom - vz.top)}px">
-        ${rows.map(([t, on], i) => `<div class="r${on ? '' : ' hid'}"><span class="n">${ar(i + 1)}</span><span class="t">${t}</span>${on ? `<span class="dot" style="width:${S.xs}px;height:${S.xs}px"></span>` : ''}</div>`).join('')}</div>
-      <div class="abs hero vzc" data-g="hero" style="${centred(sp.eye[0], sp.eye[1])}"><b>٢</b><span>مستخبيين</span></div>`,
-    css: `.card{background:#fff;color:${NAVY};border-radius:${S.s}px;padding:${S.xs}px ${S.m}px;display:flex;flex-direction:column;justify-content:space-around;box-shadow:0 ${S.m}px ${T[2]}px rgba(0,0,0,.35)}
-      .r{display:flex;align-items:center;gap:${S.s}px;font-weight:800;font-size:${T[0]}px;white-space:nowrap}
-      .r+.r{border-top:2px solid #E6E9F0;padding-top:${S.xs / 2}px}
-      .n{flex:0 0 auto;width:${T[1]}px;height:${T[1]}px;border-radius:50%;background:${NAVY};color:#fff;display:flex;align-items:center;justify-content:center}
-      .t{flex:1}
-      .hid .t,.hid .n{filter:blur(${S.xs / 2}px)}
-      .hero{display:flex;flex-direction:column;align-items:center;line-height:1}
-      .hero b{font-size:${T[5]}px;font-weight:900;color:${CYAN};line-height:1}
-      .hero span{font-size:${T[0]}px;font-weight:800;color:rgba(255,255,255,.8);margin-top:${S.xs}px}`
-  });
-}
-
-// ---------------------------------------------------------------- 3) shocking specificity
-// One exact number at T4 (158 px). Its centre line runs through the spiral's eye.
-function shock(G) {
-  const { T, S, m } = G;
-  return shell(G, {
-    eyebrowNote: 'رصيد شاذ',
-    showSpiral: true,
-    head: 'خزينتك <em>بالسالب؟</em><br>ده مش رقم طبيعي.',
-    visual: (sp) => `<div class="abs acct-h vzc" style="right:${m}px;left:${m}px;bottom:${r1(G.H - sp.eye[1] + T[4] * 0.62)}px"><span>حساب: الخزينة الرئيسية · ٣١ أكتوبر</span><span class="tag">${DEMO}</span></div>
-      <div class="abs num vzc" data-g="hero" style="left:50%;top:${r1(sp.eye[1])}px;transform:translate(-50%,-50%)"><span class="minus">−</span><span>${ar(18747106)}</span><span class="cur">ج.م</span></div>
-      <div class="abs flag vzc" style="right:${m}px;left:${m}px;top:${r1(sp.eye[1] + T[4] * 0.62)}px"><span class="dot" style="width:${S.xs}px;height:${S.xs}px"></span><span>رصيد دائن على حساب نقدية</span></div>`,
-    css: `.acct-h{display:flex;justify-content:space-between;align-items:center;font-size:${T[0]}px;font-weight:800;color:rgba(255,255,255,.8)}
-      .num{display:flex;align-items:baseline;gap:${S.xs}px;direction:ltr;white-space:nowrap;font-size:${T[4]}px;font-weight:900;line-height:1}
-      .minus{color:${RED}}
-      .cur{font-size:${T[1]}px;font-weight:800;color:rgba(255,255,255,.7)}
-      .flag{display:flex;align-items:center;justify-content:center;gap:${S.xs}px;font-size:${T[1]}px;font-weight:800}`
-  });
-}
-
-// ---------------------------------------------------------------- 4) scarcity 33 / 50
-// The 50 seats are laid out by the golden angle (137.508° = 360°/φ²), Vogel's sunflower model,
-// with the pole on the spiral's eye. Seat k sits at r = c·√k.
-function scarcity(G) {
-  const { T, S, m, vz } = G;
-  const GA = 2 * Math.PI / PHI ** 2;
-  return shell(G, {
-    eyebrowNote: 'الأعضاء المؤسِّسون',
-    head: 'المقاعد المؤسِّسة<br><em>بتخلص.</em>',
-    visual: (sp) => {
-      const [ex, ey] = sp.eye;
-      const R = Math.min((vz.bottom - vz.top) / 2, ex - m) - S.s;
-      const c = R / Math.sqrt(TOTAL - 0.5), d = Math.round(c * 0.9);
-      const seats = Array.from({ length: TOTAL }, (_, k) => {
-        const r = c * Math.sqrt(k + 0.5), a = k * GA;
-        const cls = k < FILLED ? 'f' : k === FILLED ? 'me' : '';
-        return `<i class="abs ${cls}" style="${centred(ex + r * Math.cos(a), ey + r * Math.sin(a))};width:${d}px;height:${d}px"${k === 0 ? ' data-g="hero"' : ''}></i>`;
-      }).join('');
-      const right = G.W - m, left = ex + R + S.l;
-      return `${seats}<div class="abs side vzc" style="right:${m}px;width:${r1(right - left)}px;top:${r1(ey)}px;transform:translateY(-50%)">
-          <b>${ar(LEFT)}</b><span class="l1">مقعد باقي من ${ar(TOTAL)}</span>
-          <span class="legs"><span class="leg"><i class="f"></i>انضمّت ${ar(FILLED)} شركة</span><span class="leg"><i class="me"></i>مقعدك</span><span class="leg"><i></i>متاح</span></span></div>`;
-    },
-    css: `i{display:block;border-radius:50%;border:2px solid rgba(255,255,255,.42)}
-      i.f{background:#fff;border-color:#fff}
-      i.me{background:${CYAN};border-color:${CYAN};box-shadow:0 0 0 ${S.xs / 2}px rgba(27,183,205,.25),0 0 ${S.m}px rgba(27,183,205,.7)}
-      .side{display:flex;flex-direction:column;align-items:flex-start;gap:${S.xs}px}
-      .side b{font-size:${T[4]}px;font-weight:900;color:${CYAN};line-height:1}
-      .side .l1{font-size:${T[1]}px;font-weight:800;white-space:nowrap}
-      .legs{display:flex;flex-wrap:wrap;gap:${S.xs}px ${S.s}px;margin-top:${S.xs}px}
-      .leg{display:flex;align-items:center;gap:${S.xs}px;font-size:${T[0]}px;font-weight:700;color:rgba(255,255,255,.8);white-space:nowrap}
-      .leg i{width:${T[0]}px;height:${T[0]}px;position:static}`
-  });
-}
-
-// ---------------------------------------------------------------- 5) authority: it audits itself
-// A golden rectangle (h × hφ) in the visual zone, subdivided into its squares. Each square checks
-// the next one: the self-similar shape is the claim. The test count sits in the largest square.
-function authority(G) {
-  const { T, S, m, vz } = G;
-  const h = vz.bottom - vz.top, w = Math.min(h * PHI, G.W - 2 * m), hh = w / PHI;
-  const x0 = G.W - m - w, y0 = vz.top + (h - hh) / 2;
-  let [x, y, ww, h2] = [x0, y0, w, hh];
-  const sq = [];
-  for (let k = 0; k < 6; k++) { // cut order right, bottom, left, top: the spiral turns toward the reading start
-    const t = k % 4;
-    if (t === 0) { sq.push([x + ww - h2, y, h2]); ww -= h2; }
-    else if (t === 1) { sq.push([x, y + h2 - ww, ww]); h2 -= ww; }
-    else if (t === 2) { sq.push([x, y, h2]); x += h2; ww -= h2; }
-    else { sq.push([x, y, ww]); y += ww; h2 -= ww; }
+// ---------------------------------------------------------------- 1) the crack (loss aversion)
+// The crack starts as a hair-line at one wrong entry on the spiral's eye and runs to the left edge.
+// Its width is w(x) = T0 · φ^((x0 − x)/Δ): it multiplies by φ every Δ px, so it passes exactly through
+// the scale widths T0 → T1 → T2 → T3 → T4 → T5. The time markers sit where it reaches T2, T3, T4.
+function crack(G) {
+  const { W: Wd, H: Hd, T, S, m } = G;
+  const sp = G.spiral(true), [x0, ey] = sp.eye;
+  const steps = 5, dx = (x0 + S.l) / steps; // T0 at the origin, T5 just past the left edge
+  const width = (x) => T[0] * PHI ** ((x0 - x) / dx) * (x0 - x < dx ? (x0 - x) / dx : 1) + 1.5;
+  const R = rng(11);
+  let yc = ey;
+  const top = [], bot = [], branches = [];
+  for (let x = x0; x >= -S.l; x -= 5) {
+    const w = width(x);
+    yc += (R() - 0.5) * Math.min(6, w * 0.06);
+    yc += (ey - yc) * 0.04;
+    top.push([x, yc - (w / 2) * (0.78 + R() * 0.44)]);
+    bot.push([x, yc + (w / 2) * (0.78 + R() * 0.44)]);
+    if (R() < 0.035 && w > T[1]) {
+      const up = R() < 0.5, len = w * (0.5 + R() * 0.9);
+      let bx = x, by = up ? yc - w / 2 : yc + w / 2; const pts = [[bx, by]];
+      for (let i = 0; i < 6; i++) { bx += (R() - 0.65) * len / 4; by += (up ? -1 : 1) * len / 6; pts.push([bx, by]); }
+      branches.push(pts);
+    }
   }
-  const labels = ['', 'الفحوص', 'التقارير', 'الكود', '', ''];
+  const poly = [...top, ...bot.reverse()].map(([a, b]) => `${r1(a)},${r1(b)}`).join(' ');
+  const marks = [[2, 'بعد أسبوع', 6500], [3, 'بعد شهر', 18000], [4, 'بعد ٦ أشهر', 135000]].map(([k, when, amt]) => {
+    const x = x0 - k * dx;
+    return `<div class="abs mk" data-a="cx=${r1(x)}" style="left:${r1(x)}px;top:${r1(ey + width(x) / 2 + S.l)}px;transform:translateX(-50%)"><b>${when}</b><span>${ar(amt)}</span></div>
+      <svg class="abs" style="left:0;top:0;overflow:visible" width="1" height="1"><line x1="${r1(x)}" y1="${r1(ey + width(x) / 2 + S.xs)}" x2="${r1(x)}" y2="${r1(ey + width(x) / 2 + S.l - S.xs)}" stroke="${NAVY}" stroke-width="1.5" stroke-dasharray="3 4" opacity=".55"/></svg>`;
+  }).join('');
+  // ledger texture: rule every T1, columns on the golden lines
+  const rows = []; const accts = ['مصروفات متنوعة', 'الموردين', 'الصندوق', 'البنك', 'العملاء', 'مصروف صيانة', 'إيرادات', 'المخزون'];
+  for (let y = Math.ceil((G.vz.top + T[1]) / T[1]) * T[1]; y < G.subTop - T[1]; y += T[1]) {
+    if (y > ey - T[5] * 0.62 && y < ey + T[5] * 1.1) continue;
+    const i = Math.round(y / T[1]);
+    rows.push(`<div class="abs row" style="top:${r1(y - T[1] + 8)}px"><span style="right:${m}px">${accts[i % accts.length]}</span><span class="lat" style="left:${r1(G.X2 - 120)}px">${(((i * 7919) % 90000) + 1000).toLocaleString('en')}.00</span><span class="lat" style="left:${r1(G.X1 - 160)}px">JE/2026/10/${String(300 + i * 7).padStart(4, '0')}</span></div>`);
+  }
   return shell(G, {
-    eyebrowNote: 'الثقة',
-    showSpiral: false,
-    head: 'المنصة اللي<br><em>بتراجع نفسها.</em>',
-    visual: () => sq.map(([sx, sy, s], i) => `<div class="abs vzc sq s${i}" style="left:${r1(sx)}px;top:${r1(sy)}px;width:${r1(s)}px;height:${r1(s)}px"${i === 0 ? ' data-g="hero"' : ''}>${
-      i === 0 ? `<b>+${ar(FACTS.testsFloor)}</b><span>اختبار آلي قبل كل تحديث</span><small>من كود المنصة · ${ar(26)} أكتوبر ${ar(2026)}</small>`
-      : i < 4 ? `<svg viewBox="0 0 24 24" width="${T[3 - i]}" height="${T[3 - i]}"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="${CYAN}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>${labels[i] ? `<span style="font-size:${T[0]}px">${labels[i]}</span>` : ''}`
-      : ''}</div>`).join('') ,
-    css: `.sq{border:1.5px solid rgba(27,183,205,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:${S.xs / 2}px;text-align:center;background:rgba(27,183,205,.04)}
-      .s0{background:rgba(27,183,205,.09);border-color:rgba(27,183,205,.8)}
-      .s0 b{font-size:${T[3]}px;font-weight:900;line-height:1}
-      .s0 span{font-size:${T[0]}px;font-weight:800;color:${CYAN}}
-      .s0 small{font-size:${T[0]}px;font-weight:600;color:rgba(255,255,255,.6)}
-      .sq span{font-weight:800;color:rgba(255,255,255,.85)}`
+    paper: true, spiralFx: true, eyebrowNote: 'الخطأ المستخبي',
+    head: 'قيد واحد غلط…<br><em>شرخ في الإقفال.</em>',
+    scene: () => `<svg class="abs" style="left:0;top:0" width="${Wd}" height="${Hd}">
+        <defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .05  0 0 0 0 .1  0 0 0 0 .24  0 0 0 .09 0"/></filter>
+          <filter id="glow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+          <radialGradient id="vig" cx="50%" cy="45%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="${NAVY}" stop-opacity=".16"/></radialGradient>
+          <linearGradient id="deep" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="${NAVY}"/><stop offset="1" stop-color="${DEEP}"/></linearGradient></defs>
+        ${Array.from({ length: Math.ceil(Hd / T[1]) }, (_, i) => `<line x1="0" y1="${i * T[1]}" x2="${Wd}" y2="${i * T[1]}" stroke="#D3DAE6" stroke-width="1"/>`).join('')}
+        <line x1="${Wd - m + S.xs}" y1="0" x2="${Wd - m + S.xs}" y2="${Hd}" stroke="${CYAN}" stroke-width="2" opacity=".45"/>
+        <polygon points="${poly}" fill="#9AA6BD" transform="translate(0 4)" opacity=".55"/>
+        <polygon points="${poly}" fill="url(#deep)"/>
+        <polygon points="${poly}" fill="none" stroke="${CYAN}" stroke-width="3" opacity=".65" filter="url(#glow)"/>
+        ${branches.map((p) => `<polyline points="${p.map(([a, b]) => `${r1(a)},${r1(b)}`).join(' ')}" fill="none" stroke="${DEEP}" stroke-width="2" stroke-linecap="round" opacity=".8"/>`).join('')}
+        <rect width="100%" height="100%" filter="url(#grain)"/><rect width="100%" height="100%" fill="url(#vig)"/></svg>
+      ${rows.join('')}
+      <span class="abs dot origin" data-g="hero" data-a="cx=${r1(x0)};cy=${r1(ey)}" style="${centred(x0, ey)}"></span>
+      <div class="abs o-lbl" style="left:${r1(x0 + S.s)}px;top:${r1(ey - T[2] - S.s)}px"><b>اليوم</b><span>${ar(2400)}</span></div>
+      ${marks}
+      <div class="abs end" style="left:${m}px;top:${r1(ey)}px;transform:translateY(-50%)"><span>عند الإقفال</span><b>${ar(980000)}</b></div>
+      <span class="abs tag" style="left:${m}px;top:${r1(G.vz.top)}px">${DEMO}</span>`,
+    css: `.row{left:0;right:0;height:${T[1]}px;font-size:${T[0]}px;color:rgba(13,27,62,.28);font-weight:700}
+      .row span{position:absolute;white-space:nowrap}
+      .origin{width:${T[0]}px;height:${T[0]}px;z-index:3}
+      .o-lbl{display:flex;flex-direction:column;font-size:${T[0]}px;line-height:1.236;font-weight:800;color:${NAVY};white-space:nowrap}
+      .o-lbl span{color:${RED}}
+      .mk{display:flex;flex-direction:column;align-items:center;font-size:${T[0]}px;line-height:1.236;font-weight:800;white-space:nowrap;color:${NAVY}}
+      .mk span{color:rgba(13,27,62,.65)}
+      .end{display:flex;flex-direction:column;align-items:flex-start;padding:0 ${S.s}px;color:#fff;line-height:1.236;z-index:3}
+      .end span{font-size:${T[0]}px;font-weight:800;color:${CYAN}}
+      .end b{font-size:${T[2]}px;font-weight:900;white-space:nowrap}`
   });
 }
 
-// ---------------------------------------------------------------- 6) anchoring
-// The visual zone splits at x = W/φ²: the anchor (the cost of a closing surprise) gets the φ part,
-// the free check the 1 part, with its price at T4 so the smaller panel wins the eye.
-function anchoring(G) {
-  const { T, S, m, X1, vz } = G;
-  const top = vz.top, hgt = vz.bottom - vz.top;
-  return shell(G, {
-    eyebrowNote: 'قبل الإقفال',
-    showSpiral: false,
-    head: 'الإقفال بيكلّف…<br><em>والفحص ببلاش.</em>',
-    visual: () => `<div class="abs pa vzc" style="right:${m}px;left:${r1(X1 + S.xs)}px;top:${top}px;height:${r1(hgt)}px">
-        <span class="k">تكلفة مفاجأة في الإقفال</span><b><span class="dot" style="width:${S.xs}px;height:${S.xs}px"></span>+${ar(250000)} <small>ج.م</small></b><span class="k2">تسويات · غرامات · وقت مراجعة</span><span class="tag">${DEMO}</span></div>
-      <div class="abs pb vzc" data-g="hero" style="left:${m}px;right:${r1(G.W - X1 + S.xs)}px;top:${top}px;height:${r1(hgt)}px">
-        <span class="k">الفحص المجاني</span><b>صفر <small>ج.م</small></b><span class="k2">في دقائق</span></div>`,
-    css: `.pa,.pb{border-radius:${S.s}px;display:flex;flex-direction:column;justify-content:center;gap:${S.xs}px;padding:0 ${S.m}px}
-      .pa{border:1.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
-      .pa b{font-size:${T[3]}px;font-weight:900;line-height:1.236;color:rgba(255,255,255,.88);white-space:nowrap;display:flex;align-items:center;gap:${S.xs}px}
-      .pa b small{font-size:${T[1]}px;font-weight:800}
-      .pa .tag{align-self:flex-start}
-      .pb{background:${CYAN};color:${NAVY};align-items:center;text-align:center;box-shadow:0 ${S.s}px ${T[2]}px rgba(27,183,205,.3)}
-      .pb b{font-size:${T[4]}px;font-weight:900;line-height:1.236;display:flex;flex-direction:column;align-items:center}
-      .pb b small{font-size:${T[1]}px;line-height:1}
-      .k{font-size:${T[0]}px;font-weight:800;white-space:nowrap}
-      .k2{font-size:${T[0]}px;font-weight:700;opacity:.75;white-space:nowrap}`
-  });
-}
-
-// ---------------------------------------------------------------- 7) every number with its evidence
-// The figure sits on the spiral's eye; its evidence chain steps away from it, each link 1/φ of the
-// one before (chip widths 412 → 255 → 158 px; connector lengths 60 → 37 → 23).
-function evidence(G) {
+// ---------------------------------------------------------------- 2) the hourglass of seats (scarcity)
+// The neck sits on the spiral's eye. The glass is a golden rectangle (height h, width h/φ) and the
+// neck divides its height at the golden section: top bulb h/φ, bottom bulb h/φ².
+function hourglass(G) {
   const { T, S, m, vz } = G;
+  const sp = G.spiral(true), [nx, ny] = sp.eye;
+  const hTop = ny - (G.m + Math.round(T[1] * PHI) + S.l), hBot = vz.bottom - ny;
+  const h = Math.min(hTop * PHI, hBot * PHI ** 2), w = h / PHI;
+  const top = ny - h / PHI, bot = ny + h / PHI ** 2, neck = T[0];
+  const hw = (y) => { // half-width of the glass at y
+    if (y <= ny) { const p = (ny - y) / (ny - top); return neck / 2 + (w / 2 - neck / 2) * Math.sin(Math.min(1, p * 1.35) * Math.PI / 2) ** 0.8; }
+    const q = (y - ny) / (bot - ny); return neck / 2 + (w / 2 - neck / 2) * Math.sin(Math.min(1, q * 1.35) * Math.PI / 2) ** 0.8;
+  };
+  const edge = (side) => { const pts = []; for (let y = top; y <= bot + 0.1; y += 4) pts.push([nx + side * hw(y), y]); return pts; };
+  const L = edge(-1), Rr = edge(1);
+  const glass = 'M' + L.map(([a, b]) => `${r1(a)} ${r1(b)}`).join(' L') + ' L' + Rr.reverse().map(([a, b]) => `${r1(a)} ${r1(b)}`).join(' L') + 'Z';
+  // seats: s = T1, gap = S.xs/2. Top bulb: settled toward the neck, 32 + 1 falling. Bottom: a pile of 17.
+  const s = T[1], g = 6, seats = [];
+  const fill = (n, y0, dir, cls) => {
+    let y = y0, left = n;
+    while (left > 0) {
+      const room = 2 * hw(y + (dir > 0 ? -s / 2 : s / 2)) - S.s;
+      let k = Math.max(1, Math.min(left, Math.floor((room + g) / (s + g))));
+      const rowW = k * s + (k - 1) * g;
+      for (let i = 0; i < k; i++) seats.push([nx - rowW / 2 + i * (s + g) + s / 2, y, cls]);
+      left -= k; y += dir * (s + g);
+    }
+  };
+  fill(LEFT - 1, ny - neck - s, -1, 'av');               // top bulb, rows going up from the neck
+  fill(FILLED, bot - S.s - s / 2, -1, 'tk');             // bottom bulb, a pile from the floor up
+  const chair = (x, y, cls) => `<g transform="translate(${r1(x - s / 2)} ${r1(y - s / 2)}) scale(${s / 24})" class="${cls}"><path d="M5 3.5h14a2 2 0 0 1 2 2V13H3V5.5a2 2 0 0 1 2-2Z"/><path d="M2 13h20v3.5H2z"/><path d="M4.5 16.5V21M19.5 16.5V21" stroke-width="2.4" stroke-linecap="round" fill="none"/></g>`;
+  const fall = [nx, ny + s * 0.2];
   return shell(G, {
-    eyebrowNote: 'كل رقم بدليله',
-    spiralFx: true,
-    head: 'كل رقم في التقرير…<br><em>ومعاه دليله.</em>',
-    visual: (sp) => {
-      const [ex, ey] = sp.eye;
-      const chips = [['القيد', 'JE/2026/10/0412'], ['فاتورة المورّد', 'BILL/2026/0389'], ['المرفق', 'bill-0389.pdf']];
-      const gap = (vz.bottom - vz.top - 3 * T[2]) / 4;
-      const right = ex - T[4] * 1.4;
-      return `<div class="abs fig vzc" data-g="hero" style="${centred(ex, ey)}"><span class="k">مصروف صيانة · أكتوبر</span><b>${ar(48500)}</b><span class="k">ج.م</span></div>
-        ${chips.map(([k, v], i) => { const cy = vz.top + gap * (i + 1) + T[2] * i + T[2] / 2;
-          return `<div class="abs chip vzc" style="right:${r1(G.W - right)}px;top:${r1(cy - T[2] / 2)}px;height:${T[2]}px"><span class="ok">✓</span><span>${k}</span><span class="lat v">${v}</span></div>
-          <svg class="abs" style="left:0;top:0;overflow:visible" width="1" height="1"><path d="M${r1(right + S.xs)} ${r1(cy)} C${r1(right + S.l)} ${r1(cy)} ${r1(ex - T[4] * .9)} ${r1(ey)} ${r1(ex - T[4] * .62)} ${r1(ey)}" fill="none" stroke="${CYAN}" stroke-width="1.5" opacity=".6"/></svg>`; }).join('')}
-        <span class="abs tag" style="left:${m}px;top:${r1(vz.bottom - T[1])}px">${DEMO}</span>`;
-    },
-    css: `.fig{display:flex;flex-direction:column;align-items:center;line-height:1;gap:${S.xs}px}
-      .fig b{font-size:${T[4]}px;font-weight:900;line-height:1}
-      .fig .k{font-size:${T[0]}px;font-weight:800;color:${CYAN}}
+    spiralFx: true, eyebrowNote: 'الأعضاء المؤسِّسون',
+    head: `<span class="pre">باقي</span><b class="big" data-a="cy=${r1(ny)}">${ar(LEFT)}</b><span class="s">مقعدًا مؤسِّسًا من ${ar(TOTAL)}</span>`,
+    headCss: `h1{right:auto;left:${m}px;bottom:auto;top:${r1(top)}px;width:${r1(nx - m)}px;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1}
+      h1 .pre{font-size:${T[3]}px;line-height:1.236}
+      h1 .big{font-size:${T[6]}px;line-height:1;color:${CYAN};font-weight:900;margin:-${S.m}px 0 0}
+      h1 .s{margin-top:${S.xs}px}`,
+    scene: () => `<div class="abs bg"></div><svg class="abs" style="left:0;top:0;z-index:2" width="${G.W}" height="${G.H}">
+        <defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".3" stop-color="#fff" stop-opacity=".03"/><stop offset=".8" stop-color="#fff" stop-opacity=".02"/><stop offset="1" stop-color="#fff" stop-opacity=".12"/></linearGradient>
+          <filter id="b8"><feGaussianBlur stdDeviation="8"/></filter><filter id="b2"><feGaussianBlur stdDeviation="2"/></filter>
+          <radialGradient id="halo"><stop offset="0" stop-color="${CYAN}" stop-opacity=".55"/><stop offset="1" stop-color="${CYAN}" stop-opacity="0"/></radialGradient></defs>
+        <circle cx="${r1(nx)}" cy="${r1(ny)}" r="${r1(w / PHI)}" fill="url(#halo)" opacity=".35"/>
+        <path d="${glass}" fill="url(#gl)" stroke="rgba(255,255,255,.55)" stroke-width="2.5"/>
+        <path d="M${r1(nx - w / 2 + S.s)} ${r1(top + S.l)} Q ${r1(nx - w / 2 + S.s)} ${r1(ny - h / PHI ** 3)} ${r1(nx - neck)} ${r1(ny - S.s)}" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".28" filter="url(#b2)"/>
+        <rect x="${r1(nx - w / 2 - S.s)}" y="${r1(top - S.s)}" width="${r1(w + 2 * S.s)}" height="${S.s}" rx="${S.xs / 2}" fill="#1A2D5E" stroke="${CYAN}" stroke-width="1.5"/>
+        <rect x="${r1(nx - w / 2 - S.s)}" y="${r1(bot)}" width="${r1(w + 2 * S.s)}" height="${S.s}" rx="${S.xs / 2}" fill="#1A2D5E" stroke="${CYAN}" stroke-width="1.5"/>
+        ${seats.map(([x, y, c]) => chair(x, y, c)).join('')}
+        <circle cx="${r1(fall[0])}" cy="${r1(fall[1])}" r="${s}" fill="${CYAN}" opacity=".5" filter="url(#b8)"/>
+        ${chair(fall[0], fall[1], 'fall')}
+      </svg>
+      <span class="abs" data-g="hero" data-a="cx=${r1(nx)};cy=${r1(ny)}" style="${centred(nx, ny)};width:${neck}px;height:${neck}px"></span>
+      <div class="abs legend" style="left:${m}px;top:${r1(bot - T[1])}px"><span><i class="tk"></i>انضمّت ${ar(FILLED)} شركة</span><span><i class="av"></i>متاح ${ar(LEFT)}</span></div>`,
+    css: `.bg{inset:0;background:radial-gradient(circle at ${r1(nx)}px ${r1(ny)}px,#1C3068 0%,${NAVY} ${r1(G.W / PHI)}px,${DEEP} 100%)}
+      g.av path{fill:none;stroke:${CYAN};stroke-width:1.8} g.av path:last-child{stroke:${CYAN}}
+      g.tk path{fill:#fff;stroke:#fff;stroke-width:1} g.tk path:last-child{stroke:#fff}
+      g.fall path{fill:${CYAN};stroke:${CYAN};stroke-width:1.4} g.fall path:last-child{stroke:${CYAN}}
+      .legend{display:flex;justify-content:center;gap:${S.s}px;font-size:${T[0]}px;font-weight:700;color:rgba(255,255,255,.8);white-space:nowrap}
+      .legend span{display:flex;align-items:center;gap:${S.xs}px}
+      .legend i{width:${S.xs}px;height:${S.xs}px;border-radius:3px;display:block}
+      .legend i.tk{background:#fff} .legend i.av{border:2px solid ${CYAN}}`
+  });
+}
+
+// ---------------------------------------------------------------- 3) the hawk's eye (authority)
+// A macro raptor eye: the pupil on the spiral's eye, iris radius T5 (255 px), pupil radius T5/φ,
+// highlight T5/φ³. Feathers flow along the spiral's tangent. The evidence chain sits in its gaze.
+function hawk(G) {
+  const { W: Wd, H: Hd, T, S, m, vz } = G;
+  const sp = G.spiral(false), [ex, ey] = sp.eye;
+  const R = T[5], pr = R / PHI, R2 = rng(5);
+  // feathers: short curved strokes whose direction follows a log-spiral field around the eye
+  const feathers = [];
+  for (let i = 0; i < 1300; i++) {
+    const x = R2() * Wd, y = R2() * Hd, dx = x - ex, dy = y - ey, d = Math.hypot(dx, dy);
+    if (d < R * 1.12) continue;
+    const a = Math.atan2(dy, dx) + Math.PI / 2 + 0.3; // tangent + golden-spiral pitch (atan(2·ln φ/π) ≈ 0.3 rad)
+    const len = 20 + R2() * 40 * Math.min(1.6, d / R), c = Math.cos(a), s2 = Math.sin(a);
+    const shade = ['#13244F', '#172A59', '#1C3068', '#0E1C42'][Math.floor(R2() * 4)];
+    feathers.push(`<path d="M${r1(x)} ${r1(y)} q${r1(c * len * .5 - s2 * 6)} ${r1(s2 * len * .5 + c * 6)} ${r1(c * len)} ${r1(s2 * len)}" stroke="${shade}" stroke-width="${r1(3 + R2() * 5)}" stroke-linecap="round" fill="none" opacity="${r1(0.55 + R2() * 0.45)}"/>`);
+  }
+  const fibres = Array.from({ length: 220 }, (_, i) => {
+    const a = (i / 220) * 2 * Math.PI + R2() * 0.02, r0 = pr * (1.02 + R2() * 0.08), r1_ = R * (0.86 + R2() * 0.12);
+    const col = R2() < 0.5 ? '#8EEAF4' : '#0A5563';
+    return `<line x1="${r1(ex + r0 * Math.cos(a))}" y1="${r1(ey + r0 * Math.sin(a))}" x2="${r1(ex + r1_ * Math.cos(a + 0.05))}" y2="${r1(ey + r1_ * Math.sin(a + 0.05))}" stroke="${col}" stroke-width="${r1(1 + R2() * 2)}" opacity="${r1(0.15 + R2() * 0.35)}"/>`;
+  }).join('');
+  // reflection in the cornea: a small document with a check
+  const docW = R / PHI ** 2, docH = docW * PHI, dx0 = ex + pr * 0.2, dy0 = ey - pr * 0.55;
+  const colLeft = ex + R + S.s, colW = Wd - m - colLeft;
+  const chain = [['القيد', 'JE/2026/10/0412'], ['فاتورة المورّد', 'BILL/2026/0389'], ['المرفق', 'bill-0389.pdf']];
+  const cy0 = vz.top + S.l;
+  return shell(G, {
+    spiralFx: false, eyebrowNote: 'الثقة',
+    head: 'كل رقم <em>بدليله.</em><span class="s">المنصة التي تراجع نفسها</span>',
+    scene: () => `<svg class="abs" style="left:0;top:0" width="${Wd}" height="${Hd}">
+        <defs>
+          <radialGradient id="bgp" cx="${r1(ex / Wd * 100)}%" cy="${r1(ey / Hd * 100)}%" r="80%"><stop offset="0" stop-color="#1F3570"/><stop offset=".382" stop-color="${NAVY}"/><stop offset="1" stop-color="${DEEP}"/></radialGradient>
+          <radialGradient id="iris" cx="${r1(ex)}" cy="${r1(ey)}" r="${R}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#B8F3F9"/><stop offset=".45" stop-color="#5BD6E6"/><stop offset=".75" stop-color="${CYAN}"/><stop offset=".93" stop-color="#0C6D7C"/><stop offset="1" stop-color="#062F38"/></radialGradient>
+          <radialGradient id="sock" cx="${r1(ex)}" cy="${r1(ey)}" r="${r1(R * 1.3)}" gradientUnits="userSpaceOnUse"><stop offset=".8" stop-color="#030816"/><stop offset="1" stop-color="#030816" stop-opacity="0"/></radialGradient>
+          <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter><filter id="soft12"><feGaussianBlur stdDeviation="12"/></filter>
+          <clipPath id="eyeclip"><circle cx="${r1(ex)}" cy="${r1(ey)}" r="${R}"/></clipPath>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#bgp)"/>
+        ${feathers.join('')}
+        <circle cx="${r1(ex)}" cy="${r1(ey)}" r="${r1(R * 1.3)}" fill="url(#sock)"/>
+        <circle cx="${r1(ex)}" cy="${r1(ey)}" r="${R}" fill="url(#iris)"/>
+        <g clip-path="url(#eyeclip)">${fibres}
+          <circle cx="${r1(ex)}" cy="${r1(ey)}" r="${r1(pr)}" fill="#02050D"/>
+          <circle cx="${r1(ex)}" cy="${r1(ey)}" r="${r1(pr * 1.06)}" fill="none" stroke="#0A5563" stroke-width="6" opacity=".6"/>
+          <g transform="translate(${r1(dx0)} ${r1(dy0)}) skewX(-8)" opacity=".85">
+            <rect width="${r1(docW)}" height="${r1(docH)}" rx="4" fill="#E8F7FA"/>
+            ${[0, 1, 2, 3].map((i) => `<rect x="${r1(docW * .14)}" y="${r1(docH * (.16 + i * .13))}" width="${r1(docW * (i === 3 ? .4 : .72))}" height="4" rx="2" fill="#7A8BAA"/>`).join('')}
+            <circle cx="${r1(docW * .7)}" cy="${r1(docH * .8)}" r="${r1(docW * .17)}" fill="${CYAN}"/>
+            <path d="M${r1(docW * .62)} ${r1(docH * .8)} l${r1(docW * .06)} ${r1(docW * .06)} l${r1(docW * .1)} -${r1(docW * .11)}" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <ellipse cx="${r1(ex - R * .38)}" cy="${r1(ey - R * .42)}" rx="${r1(R / PHI ** 3)}" ry="${r1(R / PHI ** 4)}" transform="rotate(-35 ${r1(ex - R * .38)} ${r1(ey - R * .42)})" fill="#fff" opacity=".9" filter="url(#soft)"/>
+          <circle cx="${r1(ex + R * .45)}" cy="${r1(ey + R * .35)}" r="${r1(R / PHI ** 5)}" fill="#fff" opacity=".55" filter="url(#soft)"/>
+          <path d="M${r1(ex - R * 1.2)} ${r1(ey - R * .38)} Q ${r1(ex)} ${r1(ey - R * .95)} ${r1(ex + R * 1.2)} ${r1(ey - R * .55)} L ${r1(ex + R * 1.2)} ${r1(ey - R * 1.3)} L ${r1(ex - R * 1.2)} ${r1(ey - R * 1.3)} Z" fill="#050B1E" opacity=".72" filter="url(#soft12)"/>
+        </g>
+        <path d="M${r1(ex - R * 1.32)} ${r1(ey - R * .22)} Q ${r1(ex - R * .2)} ${r1(ey - R * 1.32)} ${r1(ex + R * 1.25)} ${r1(ey - R * .62)} Q ${r1(ex + R * .3)} ${r1(ey - R * 1.05)} ${r1(ex - R * 1.32)} ${r1(ey - R * .22)}Z" fill="#0A1533"/>
+        <path d="M${r1(ex - R * 1.32)} ${r1(ey - R * .22)} Q ${r1(ex - R * .2)} ${r1(ey - R * 1.32)} ${r1(ex + R * 1.25)} ${r1(ey - R * .62)}" fill="none" stroke="${CYAN}" stroke-width="2" opacity=".35"/>
+        ${chain.map((_, i) => { const y = cy0 + T[3] + i * (T[2] + S.s) + T[2] / 2; return `<path d="M${r1(ex + pr * .9)} ${r1(ey - pr * .2 + i * pr * .2)} C ${r1(ex + R * 1.1)} ${r1(ey)} ${r1(colLeft - S.l)} ${r1(y)} ${r1(colLeft - S.xs)} ${r1(y)}" fill="none" stroke="${CYAN}" stroke-width="1.5" stroke-dasharray="2 6" opacity=".7"/>`; }).join('')}
+      </svg>
+      <span class="abs" data-g="hero" data-a="cx=${r1(ex)};cy=${r1(ey)}" style="${centred(ex, ey)};width:${r1(pr * 2)}px;height:${r1(pr * 2)}px;border-radius:50%"></span>
+      <div class="abs proof" style="left:${r1(colLeft)}px;width:${r1(colW)}px;top:${r1(cy0)}px"><b>+${ar(FACTS.testsFloor)}</b><span>اختبار آلي قبل كل تحديث للمنصة</span></div>
+      ${chain.map(([k, v], i) => `<div class="abs chip" style="right:${m}px;top:${r1(cy0 + T[3] + i * (T[2] + S.s))}px;height:${T[2]}px"><span class="ok">✓</span><span>${k}</span><span class="lat v">${v}</span></div>`).join('')}
+      <span class="abs tag" style="right:${m}px;top:${r1(cy0 + T[3] + 3 * (T[2] + S.s))}px">${DEMO}</span>`,
+    css: `.proof{display:flex;flex-direction:column;align-items:flex-start;line-height:1.236;color:#fff}
+      .proof b{font-size:${T[2]}px;font-weight:900;color:${CYAN}}
+      .proof span{font-size:${T[0]}px;font-weight:700;color:rgba(255,255,255,.75);white-space:nowrap}
       .chip{display:flex;align-items:center;gap:${S.xs}px;padding:0 ${S.s}px;border-radius:${T[2]}px;background:rgba(255,255,255,.95);color:${NAVY};font-size:${T[0]}px;font-weight:800;white-space:nowrap}
       .chip .ok{color:#fff;background:${CYAN};width:${T[1]}px;height:${T[1]}px;border-radius:50%;display:flex;align-items:center;justify-content:center}
       .chip .v{font-weight:700;color:#3B4262}`
   });
 }
 
+// ---------------------------------------------------------------- 4) the lineup (every entry under interrogation)
+// Police lineup: three journal entries against a height chart. The suspect is a golden rectangle
+// (h × h/φ) centred on x = W/φ under the lamp; the other entry is 1/φ of its size. Chart rules every T1.
+function lineup(G) {
+  const { W: Wd, H: Hd, T, S, m, X2, vz } = G;
+  const ch = vz.bottom - vz.top, cw = ch / PHI, cx = X2, floor = vz.bottom;
+  const sh = ch / PHI, sw = sh / PHI;
+  const side = [[Math.min(cx + cw / 2 + S.m + sw / 2, Wd - m - sw / 2), 'JE/0405']];
+  const qs = ['مين أنشأه؟', 'مين اعتمده؟', 'فين المستند؟', 'ليه في آخر دقيقة؟'];
+  const chart = [];
+  for (let y = floor, n = 0; y > 0; y -= T[1], n++) chart.push(`<line x1="0" y1="${r1(y)}" x2="${Wd}" y2="${r1(y)}" stroke="#fff" stroke-width="${n % 5 ? 1 : 2}" opacity="${n % 5 ? .07 : .16}"/>${n % 5 || y < vz.top + T[1] ? '' : `<text x="${Wd - m + S.xs}" y="${r1(y - 6)}" fill="#fff" opacity=".3" font-family="Inter" font-weight="700" font-size="${T[0]}" text-anchor="middle">${n * 10}</text>`}`);
+  const qLeft = m, qRight = cx - cw / 2 - S.m;
+  return shell(G, {
+    eyebrowNote: 'كل قيد بدليله',
+    head: 'كل قيد…<br><em>تحت الاستجواب.</em>',
+    scene: () => `<div class="abs bg"></div><svg class="abs" style="left:0;top:0" width="${Wd}" height="${Hd}">
+        <defs><linearGradient id="cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9FBFE" stop-opacity="0"/><stop offset=".38" stop-color="#E9FBFE" stop-opacity=".1"/><stop offset="1" stop-color="#E9FBFE" stop-opacity=".22"/></linearGradient>
+          <radialGradient id="pool"><stop offset="0" stop-color="#E9FBFE" stop-opacity=".35"/><stop offset="1" stop-color="#E9FBFE" stop-opacity="0"/></radialGradient></defs>
+        ${chart.join('')}
+        <polygon points="${r1(cx - S.l)},0 ${r1(cx + S.l)},0 ${r1(cx + cw * .9)},${r1(floor)} ${r1(cx - cw * .9)},${r1(floor)}" fill="url(#cone)"/>
+        <ellipse cx="${r1(cx)}" cy="${r1(floor)}" rx="${r1(cw)}" ry="${r1(S.m)}" fill="url(#pool)"/>
+        <rect x="0" y="${r1(floor)}" width="${Wd}" height="${r1(Hd - floor)}" fill="${DEEP}" opacity=".7"/>
+      </svg>
+      ${side.map(([x, code]) => `<div class="abs card dim" style="left:${r1(x - sw / 2)}px;top:${r1(floor - sh)}px;width:${r1(sw)}px;height:${r1(sh)}px">${[.7, .5, .8, .4, .6].map((wd) => `<i style="width:${wd * 100}%"></i>`).join('')}<span class="plac lat">${code}</span></div>`).join('')}
+      <div class="abs card lit" data-g="hero" data-a="cx=${r1(cx)};ratio=${r1(PHI * 1000) / 1000}" style="left:${r1(cx - cw / 2)}px;top:${r1(floor - ch)}px;width:${r1(cw)}px;height:${r1(ch)}px">
+        <span class="k">قيد يومية</span><span class="lat code">JE/2026/10/0412</span>
+        <span class="k2">مصروفات متنوعة</span><b>${ar(48500)}</b>
+        <span class="k2">٣١ أكتوبر · ١١:٥٨ م</span>
+        <span class="flag"><span class="dot"></span>بلا مرفق</span>
+        <span class="flag"><span class="dot"></span>المنشئ = المعتمِد</span></div>
+      <div class="abs qs" style="left:${qLeft}px;width:${r1(qRight - qLeft)}px;top:${r1(vz.top)}px;height:${r1(ch)}px">${qs.map((q, i) => `<span style="opacity:${r1(1 - i * 0.12)}">${q}</span>`).join('')}</div>
+      <span class="abs tag" style="left:${m}px;top:${r1(vz.top)}px">${DEMO}</span>`,
+    css: `.bg{inset:0;background:radial-gradient(ellipse at ${r1(cx)}px ${r1(floor)}px,#1B2F66 0%,${NAVY} 38.2%,#050B1E 100%)}
+      .card{border-radius:${S.xs / 2}px;display:flex;flex-direction:column;justify-content:center}
+      .dim{background:#B9C3D6;opacity:.32;padding:${S.s}px;gap:${S.xs}px;justify-content:flex-start;filter:blur(.6px)}
+      .dim i{display:block;height:${S.xs / 2}px;border-radius:4px;background:${NAVY};opacity:.6}
+      .plac{position:absolute;left:${S.xs}px;right:${S.xs}px;bottom:${S.s}px;height:${T[1]}px;background:${NAVY};color:#fff;font-size:${T[0]}px;font-weight:800;display:flex;align-items:center;justify-content:center}
+      .lit{background:#FBFCFE;color:${NAVY};padding:${S.s}px ${S.xs}px;gap:${S.xs / 2}px;box-shadow:0 0 ${T[2]}px rgba(233,251,254,.25),0 ${S.m}px ${T[2]}px rgba(0,0,0,.5)}
+      .lit .k{font-size:${T[0]}px;font-weight:900;color:${CYAN_INK}}
+      .lit .code{font-size:${T[0]}px;font-weight:800;background:${NAVY};color:#fff;align-self:flex-start;padding:0 ${S.xs}px;border-radius:4px}
+      .lit .k2{font-size:${T[0]}px;font-weight:700;color:rgba(13,27,62,.7)}
+      .lit b{font-size:${T[2]}px;font-weight:900;line-height:1.236}
+      .flag{display:flex;align-items:center;gap:${S.xs}px;font-size:${T[0]}px;font-weight:800;color:${NAVY};white-space:nowrap}
+      .qs{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:${S.s}px}
+      .qs span{font-size:${T[1]}px;font-weight:800;color:#fff;white-space:nowrap;border-inline-start:3px solid ${CYAN};padding-inline-start:${S.xs}px;line-height:1.236}`
+  });
+}
+
 // ---------------------------------------------------------------- catalogue
 const DESIGNS = [
-  { slug: '1-hidden-error', fn: hidden, angle: 'الخطأ المستخبي (Loss aversion)',
-    phi: 'دائرة الخطأ تكبر بعامل φ: ٢٣ ← ٩٧ ← ١٥٨ ← ٢٥٥ px (درجات T0 وT3 وT4 وT5)، والمسافة بينها T0. نقطة البداية الحمراء على عين الحلزون (يمين، لأن الزمن يمشي مع القراءة من اليمين)، والدوائر تكبر يسارًا. المبالغ مثال توضيحي.' },
-  { slug: '2-five-things', fn: five, angle: '٥ حاجات (Curiosity gap)',
-    phi: 'منطقة البصري مقسومة عند x = W/φ²: الكارت (٥ بنود، ٣ ظاهرة و٢ مموّهة) في الجزء φ، والرقم «٢» بحجم T5 على عين الحلزون في الجزء ١.' },
-  { slug: '3-shocking-specificity', fn: shock, angle: 'التحديد الصادم',
-    phi: 'رقم واحد دقيق بحجم T4 (١٥٨ px)، وخط منتصفه يمر بعين الحلزون. السطر فوقه والسطر تحته على بُعد 0.62·T4 من المنتصف. علامة السالب والنقطة فقط بالأحمر.' },
-  { slug: '4-scarcity', fn: scarcity, angle: `الندرة ${LEFT}/${TOTAL}`,
-    phi: `الـ${TOTAL} مقعد مرصوصة بالزاوية الذهبية (360°/φ² = 137.508°، نموذج عباد الشمس لـVogel) وقطبها على عين الحلزون: المقعد k على نصف قطر c·√k. المقاعد الممتلئة (${FILLED}) بيضاء، ومقعدك سماوي. الأرقام من site.config.js → founding (العرض المعلن، حتى ${FM.asOf})، لا بيانات دفاتر.` },
-  { slug: '5-authority', fn: authority, angle: 'السلطة «يراجع نفسه»',
-    phi: 'مستطيل ذهبي (h × hφ) مقسوم لمربعاته، وكل مربع يتحقق من اللي بعده: الشكل المتشابه ذاتيًا هو الفكرة نفسها. عدد الاختبارات في أكبر مربع، وأيقونات ✓ تصغر T3 ← T2 ← T1 ثم ينكمش الحلزون. الرقم من platform-facts.js (كود المنصة، ' + FACTS.measuredOn + ').' },
-  { slug: '6-anchoring', fn: anchoring, angle: 'التثبيت (Anchoring)',
-    phi: 'اللوحتان مقسومتان عند x = W/φ²: المرساة (تكلفة مفاجأة الإقفال، مثال توضيحي) تاخد الجزء φ بحجم T3، والفحص المجاني يأخذ الجزء ١ لكن سعره «٠» بحجم T4 وخلفية سماوية، فالجزء الأصغر يكسب العين.' },
-  { slug: '7-every-number-evidence', fn: evidence, angle: 'كل رقم بدليله',
-    phi: 'الرقم على عين الحلزون بحجم T4، وسلسلة الدليل (القيد ← فاتورة المورّد ← المرفق) يسار منه بمسافات متساوية في منطقة البصري، والوصلات تتجه كلها للعين. الأكواد والمبلغ مثال توضيحي.' }
+  { slug: '1-crack', fn: crack, angle: 'الخطأ المستخبي اللي بيكبر (Loss aversion)',
+    idea: 'صفحة دفتر يومية بتتشق. قيد واحد غلط النهارده شعرة، ويوم الإقفال شرخ بيقسم الصفحة.',
+    phi: 'عرض الشرخ w(x) = T0·φ^((x0−x)/Δ): بيتضرب في φ كل Δ px بالظبط، فبيعدّي على عروض السُّلَّم ٢٣ ← ٣٧ ← ٦٠ ← ٩٧ ← ١٥٨ ← ٢٥٥. نقطة البداية الحمرا على عين الحلزون، وعلامات الزمن (أسبوع، شهر، ٦ أشهر) عند العروض T2 وT3 وT4. سطور الدفتر كل T1، والأعمدة على خطوط القسمة.' },
+  { slug: '2-hourglass', fn: hourglass, angle: `الندرة «باقي ${LEFT} من ${TOTAL}»`,
+    idea: `ساعة رملية رملها كراسي: ${LEFT} لسه فوق، و${FILLED} وقعوا تحت، وكرسي سماوي بيعدّي من الرقبة دلوقتي.`,
+    phi: 'الساعة مستطيل ذهبي (h × h/φ). الرقبة على عين الحلزون، وبتقسم الارتفاع عند القسمة الذهبية: الانتفاخ العلوي h/φ والسفلي h/φ². الكرسي T1، والرقم «٣٣» بأكبر درجة T6 (٤١٢ px)، وخط منتصفه على مستوى العين تقريبًا (القياس في الجدول).' },
+  { slug: '3-hawk-eye', fn: hawk, angle: '«كل رقم بدليله» / «المنصة التي تراجع نفسها»',
+    idea: 'عين صقر ماكرو هي البطل: في قرنيتها انعكاس مستند عليه ✓، ونظرتها ممتدة لسلسلة الدليل (القيد ← فاتورة المورّد ← المرفق).',
+    phi: 'البؤبؤ على عين الحلزون. نصف قطر القزحية T5 (٢٥٥)، والبؤبؤ T5/φ، ولمعة الضوء T5/φ³ وT5/φ⁵، والمستند المنعكس مستطيل ذهبي عرضه T5/φ². الريش متجه على مماس حلزون لوغاريتمي بخطوة الحلزون الذهبي (atan(2·ln φ/π) ≈ 0.3 rad).' },
+  { slug: '4-lineup', fn: lineup, angle: 'الصادم: «كل قيد تحت الاستجواب»',
+    idea: 'طابور تعرّف في قسم شرطة: قيود يومية قدام لوحة الأطوال، والمتهم تحت اللمبة: بلا مرفق، والمنشئ هو المعتمِد، وآخر دقيقة في الشهر.',
+    phi: 'القيد المتهم مستطيل ذهبي (h × h/φ) مركزه على الخط x = W/φ تحت مخروط الضوء، والقيد اللي جنبه 1/φ من حجمه، والأسئلة في المساحة اللي قبل خط القسمة. خطوط لوحة الأطوال كل T1. مفيش حلزون هنا: التركيب مبني على القسمة والمستطيلات.' }
 ];
 
 // ---------------------------------------------------------------- measure
 const MEASURE = `(() => {
-  const r = (el) => { const b = el.getBoundingClientRect(); return { x: b.left, y: b.top, w: b.width, h: b.height, cx: b.left + b.width / 2, cy: b.top + b.height / 2, bottom: b.bottom, right: b.right }; };
-  const out = {}; for (const el of document.querySelectorAll('[data-g]')) out[el.dataset.g] = r(el);
-  const sizes = new Set(), overflow = [];
+  const box = (el) => el.getBoundingClientRect();
+  const sizes = new Set(), overflow = [], anchors = [];
   for (const el of document.querySelectorAll('body *')) {
     if (el.closest('svg')) continue;
     const txt = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
     if (txt) sizes.add(Math.round(parseFloat(getComputedStyle(el).fontSize)));
-    if (el.scrollWidth > el.clientWidth + 1 && getComputedStyle(el).overflow !== 'visible') overflow.push(el.className || el.tagName);
-    const b = el.getBoundingClientRect();
-    if (txt && (b.left < -1 || b.right > innerWidth + 1 || b.bottom > innerHeight + 1)) overflow.push('offcanvas:' + (el.className || el.tagName));
+    const b = box(el);
+    if (txt && (b.left < -1 || b.right > innerWidth + 1 || b.bottom > innerHeight + 1 || b.top < -1)) overflow.push('offcanvas:' + (el.className || el.tagName));
   }
-  // text that leaves its own box
-  for (const el of document.querySelectorAll('h1,.sub,.cta,.eyebrow,.chip,.r,.k,.k2,.l1,.tag,.lbl,.num,.flag,.acct-h')) {
-    const range = document.createRange(); range.selectNodeContents(el); const t = range.getBoundingClientRect(), b = el.getBoundingClientRect();
+  for (const el of document.querySelectorAll('h1,.sub,.cta,.eyebrow,.chip,.tag,.qs span,.flag,.proof span,.mk,.end,.legend,.lit span,.lit b')) {
+    const r = document.createRange(); r.selectNodeContents(el); const t = r.getBoundingClientRect(), b = box(el);
     if (t.width > b.width + 2) overflow.push('text>' + (el.className || el.tagName));
   }
-  const eb = document.querySelector('.eyebrow').getBoundingClientRect(), hl = document.querySelector('h1');
-  const hr = document.createRange(); hr.selectNodeContents(hl); if (hr.getBoundingClientRect().top < eb.bottom + 14) overflow.push('headline hits eyebrow');
-  const vt = +document.body.dataset.vzTop, vb = +document.body.dataset.vzBottom;
-  for (const el of document.querySelectorAll('.vzc')) { const b = el.getBoundingClientRect(); if (b.top < vt - 1 || b.bottom > vb + 1) overflow.push('outside visual zone: ' + el.className); }
-  return { els: out, sizes: [...sizes].sort((a, b) => a - b), overflow };
+  const eb = box(document.querySelector('.eyebrow')), hr = document.createRange(); hr.selectNodeContents(document.querySelector('h1 .pre') || document.querySelector('h1'));
+  if (hr.getBoundingClientRect().top < eb.bottom + 14) overflow.push('headline hits eyebrow');
+  for (const el of document.querySelectorAll('[data-a]')) {
+    const b = box(el), v = { cx: b.left + b.width / 2, cy: b.top + b.height / 2, left: b.left, right: b.right, top: b.top, bottom: b.bottom, ratio: b.height / b.width };
+    for (const kv of el.dataset.a.split(';')) { const [k, t] = kv.split('='); anchors.push({ el: el.dataset.g || el.className.split(' ').slice(-1)[0] || el.tagName, key: k, target: +t, got: Math.round(v[k] * 1000) / 1000 }); }
+  }
+  const h1 = box(document.querySelector('h1'));
+  return { sizes: [...sizes].sort((a, b) => a - b), overflow, anchors, h1bottom: h1.bottom };
 })()`;
 
 // ---------------------------------------------------------------- render
 async function main() {
   const only = process.argv[2] || '';
+  if (!only) { // v2 replaces the v1 pack
+    for (const d of fs.existsSync(OUT) ? fs.readdirSync(OUT) : []) { const p = path.join(OUT, d); if (fs.statSync(p).isDirectory()) fs.rmSync(p, { recursive: true }); }
+    if (fs.existsSync(HOST)) fs.rmSync(HOST, { recursive: true });
+  }
   fs.mkdirSync(HOST, { recursive: true });
   const browser = await chromium.launch({ channel: 'chrome', args: ['--disable-gpu'] });
   const enc = await browser.newPage();
   const written = [], metrics = {}, problems = [];
-  const toFiles = async (png, file) => {
+  const toFiles = async (png) => {
     const [webp, jpg] = await enc.evaluate(async (src) => {
       const i = new Image(); i.src = 'data:image/png;base64,' + src; await i.decode();
       const c = document.createElement('canvas'); c.width = i.width; c.height = i.height; c.getContext('2d').drawImage(i, 0, 0);
@@ -409,89 +463,65 @@ async function main() {
     const p = await browser.newPage({ viewport: { width: w, height: h } });
     await p.setContent(d.fn(G), { waitUntil: 'load' });
     await p.evaluate(() => document.fonts.ready);
-    await p.waitForTimeout(150);
+    await p.waitForTimeout(200);
     const meas = await p.evaluate(MEASURE);
     const png = (await p.screenshot({ type: 'png' })).toString('base64');
     await p.evaluate(() => document.body.classList.add('show-guides'));
     const gpng = (await p.screenshot({ type: 'png' })).toString('base64');
     await p.close();
-
     const dir = path.join(OUT, d.slug);
     fs.mkdirSync(dir, { recursive: true });
-    const f = await toFiles(png, base), g = await toFiles(gpng, base);
+    const f = await toFiles(png), g = await toFiles(gpng);
     fs.writeFileSync(path.join(dir, `${base}.webp`), f.webp);
     fs.writeFileSync(path.join(dir, `${base}.jpg`), f.jpg);
     fs.writeFileSync(path.join(dir, `${base}_guides.webp`), g.webp);
     fs.copyFileSync(path.join(dir, `${base}.jpg`), path.join(HOST, `${base}.jpg`));
-
-    // Deviations from the golden targets, in px.
-    const sp = G.spiral(['1-hidden-error', '7-every-number-evidence'].includes(d.slug));
-    const e = meas.els, dev = {};
-    if (e.headline) dev.headline_bottom_vs_H_over_phi2 = r1(e.headline.bottom - G.Y1);
-    if (e.cta) dev.cta_left_vs_W_over_phi = r1(e.cta.x - G.X2);
-    if (e.hero && !['5-authority', '6-anchoring'].includes(d.slug)) {
-      dev.hero_centre_vs_spiral_eye = d.slug === '3-shocking-specificity' ? r1(Math.abs(e.hero.cy - sp.eye[1]))
-        : d.slug === '4-scarcity' ? r1(Math.hypot(e.hero.cx - sp.eye[0], e.hero.cy - sp.eye[1]))
-        : r1(Math.hypot(e.hero.cx - sp.eye[0], e.hero.cy - sp.eye[1]));
-    }
-    if (d.slug === '6-anchoring' && e.hero) dev.panel_split_vs_W_over_phi2 = r1(e.hero.right + G.S.xs - G.X1);
-    dev.margin_right = r1(w - e.eyebrow.right); dev.margin_bottom = r1(h - e.cta.bottom);
-    const offScale = meas.sizes.filter((s) => !G.T.includes(s));
-    if (offScale.length) problems.push(`${base}: font sizes off the φ scale: ${offScale.join(', ')}`);
-    if (meas.overflow.length) problems.push(`${base}: overflow: ${[...new Set(meas.overflow)].join(', ')}`);
-    metrics[base] = { format: fmt, size: [w, h], scale: G.T, spacing: G.S, golden_lines: { X1: r1(G.X1), X2: r1(G.X2), Y1: r1(G.Y1), Y2: r1(G.Y2) },
-      spiral_eye: sp.eye.map(r1), font_sizes_used: meas.sizes, deviation_px: dev };
+    const anchors = meas.anchors.map((a) => ({ ...a, dev: r1(a.got - a.target) }));
+    if (!['2-hourglass'].includes(d.slug)) anchors.push({ el: 'headline', key: 'bottom', target: r1(G.Y1), got: r1(meas.h1bottom), dev: r1(meas.h1bottom - G.Y1) });
+    const off = meas.sizes.filter((s) => !G.T.includes(s));
+    if (off.length) problems.push(`${base}: font sizes off the φ scale: ${off.join(', ')}`);
+    if (meas.overflow.length) problems.push(`${base}: ${[...new Set(meas.overflow)].join(', ')}`);
+    metrics[base] = { format: fmt, size: [w, h], scale: G.T, golden_lines: { X1: r1(G.X1), X2: r1(G.X2), Y1: r1(G.Y1), Y2: r1(G.Y2) }, font_sizes_used: meas.sizes, anchors };
     written.push({ d, base, w, h, fmt });
-    console.log('wrote', `${d.slug}/${base}`, JSON.stringify(dev));
+    console.log('wrote', base, anchors.map((a) => `${a.el}.${a.key}:${a.dev}`).join(' '));
   }
   await browser.close();
   if (problems.length) { console.error('\nPROBLEMS:\n' + problems.join('\n')); process.exitCode = 1; }
   if (only) return;
-
   fs.writeFileSync(path.join(OUT, 'metrics.json'), JSON.stringify(metrics, null, 2) + '\n');
   const G1 = geometry(1080, 1080), G4 = geometry(1080, 1350);
   const url = (b) => `https://www.seg-audit.com/assets/social/golden/${b}.jpg`;
 
-  // ---- gallery
-  const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG golden-ratio pack</title>
-<style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.618 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 4px}.p{margin:0 0 12px;color:#3B4262;max-width:80ch}
+  const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG golden campaign v2</title>
+<style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.618 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 4px}.p{margin:0 0 8px;color:#3B4262;max-width:80ch}
 .g{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;align-items:start}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto}
-figcaption{font-size:12px;margin-top:8px;word-break:break-all;direction:ltr;text-align:left}figcaption a{color:#0F7C91}.k{display:inline-block;font-size:12px;font-weight:700;color:#0F7C91}code{direction:ltr;unicode-bidi:isolate}</style>
-<h1>Standard Enterprise Governance (SEG): حزمة النسبة الذهبية φ</h1>
-<p class="p">٧ زوايا إقناع × مقاسي Meta feed (1:1 و4:5)، مولَّدة بالكود عبر <code>scripts/golden-ads.js</code>. بجانب كل إعلان نسخة «guides» توضّح خطوط القسمة الذهبية (أصفر)، ومربعات الحلزون وعينه (أخضر وبنفسجي)، والهامش. كل الأرقام داتا اختبارية معلَّمة «مثال توضيحي»، ما عدا أرقام برنامج الأعضاء المؤسِّسين وعدد الاختبارات. القياسات الفعلية في <code>metrics.json</code>.</p>
-${DESIGNS.map((d) => `<h2>${d.slug} <span class="k">${d.angle}</span></h2><p class="p">${d.phi}</p><div class="g">${written.filter((x) => x.d === d).map((x) => `<figure><img loading="lazy" src="${d.slug}/${x.base}.webp" alt="${x.base}"><figcaption>${x.fmt} · ${x.w}×${x.h} · <a href="${url(x.base)}">JPG</a></figcaption></figure><figure><img loading="lazy" src="${d.slug}/${x.base}_guides.webp" alt="${x.base} guides"><figcaption>${x.fmt} · guides</figcaption></figure>`).join('')}</div>`).join('\n')}`;
+figcaption{font-size:12px;margin-top:8px;direction:ltr;text-align:left}figcaption a{color:#0F7C91}.k{font-size:12px;font-weight:700;color:#0F7C91}code{direction:ltr;unicode-bidi:isolate}</style>
+<h1>Standard Enterprise Governance (SEG): إبداعات حملة Meta، النسبة الذهبية φ (v2)</h1>
+<p class="p">٤ مفاهيم × مقاسي Meta feed (1:1 و4:5)، نفس الطقم لمجموعتَي مصر والسعودية. مولَّدة بالكود عبر <code>scripts/golden-ads.js</code>. بجانب كل إعلان نسخة guides: خطوط القسمة بالأصفر، والحلزون بالأخضر، والعين والهامش بالبنفسجي. القياسات في <code>metrics.json</code>.</p>
+${DESIGNS.map((d) => `<h2>${d.slug} <span class="k">${d.angle}</span></h2><p class="p"><b>الفكرة:</b> ${d.idea}</p><p class="p"><b>φ:</b> ${d.phi}</p><div class="g">${written.filter((x) => x.d === d).map((x) => `<figure><img loading="lazy" src="${d.slug}/${x.base}.webp" alt="${x.base}"><figcaption>${x.fmt} · ${x.w}×${x.h} · <a href="${url(x.base)}">JPG</a></figcaption></figure><figure><img loading="lazy" src="${d.slug}/${x.base}_guides.webp" alt="${x.base} guides"><figcaption>${x.fmt} · guides</figcaption></figure>`).join('')}</div>`).join('\n')}`;
   fs.writeFileSync(path.join(OUT, 'index.html'), html);
 
-  // ---- README (written from the same numbers the renderer used)
   const md = [];
-  md.push('# Standard Enterprise Governance (SEG): حزمة النسبة الذهبية φ', '');
-  md.push('بريف الـCEO (5 نوفمبر 2026). يولّدها [`scripts/golden-ads.js`](../../../scripts/golden-ads.js)، والمعرض في [`index.html`](index.html) (كل إعلان بجانبه نسخة guides). القياسات الفعلية لكل ملف في [`metrics.json`](metrics.json). هذا الملف يُكتب من السكربت نفسه.', '');
-  md.push('**المقاسات:** Meta feed مربع 1:1 (1080×1080) و4:5 (1080×1350)، JPG (للرفع) وWebP (للمعرض). ملفات الـJPG منشورة على `https://www.seg-audit.com/assets/social/golden/<file>.jpg`.', '');
-  md.push('**البراند:** navy `#0D1B3E` وcyan `#1BB7CD` وأبيض، وأحمر إنذار خافت `#C0392B` لعلامات الخطر الصغيرة فقط. بلا ذهبي. عربي RTL. الاسم البارز «Standard Enterprise Governance (SEG)» في أعلى كل إعلان، والطُعم «فحص مجاني لميزان شركتك… في دقائق»، وCTA صغير «ابدأ الفحص المجاني · seg-audit.com»، وعلامة MFT.', '');
-  md.push('**قاعدة البيانات:** كل رقم دفاتر داتا اختبارية معلَّمة «مثال توضيحي · داتا اختبارية». الاستثناءان: أرقام برنامج الأعضاء المؤسِّسين (من `site.config.js → founding`)، وعدد الاختبارات (من `platform-facts.js`). أعد التوليد بعد أي تغيير فيهما.', '');
-  md.push('## إزاي اتطبّقت φ = 1.618 (على كل التصميمات)', '');
+  md.push('# Standard Enterprise Governance (SEG): إبداعات حملة Meta، النسبة الذهبية φ (v2)', '');
+  md.push('بريف الـCEO (5 نوفمبر 2026): «خارج الصندوق»، ٤ زوايا، نفس الطقم لمجموعتَي مصر والسعودية. يولّدها [`scripts/golden-ads.js`](../../../scripts/golden-ads.js)، والمعرض في [`index.html`](index.html)، والقياسات في [`metrics.json`](metrics.json). هذا الملف يكتبه السكربت. حلّت محل حزمة v1 (٧ زوايا).', '');
+  md.push('**المقاسات:** Meta feed 1:1 (1080×1080) و4:5 (1080×1350)، JPG (للرفع) وWebP (للمعرض) ونسخة `_guides.webp` عليها خطوط φ.', '');
+  md.push('**البراند:** navy `#0D1B3E` وcyan `#1BB7CD` وأبيض، وأحمر إنذار خافت `#C0392B` للعلامات الصغيرة فقط. بلا ذهبي. عربي RTL، بصياغة يقرأها السوقان، وبلا رمز عملة لأن الطقم واحد لمصر والسعودية. في كل إعلان: «Standard Enterprise Governance (SEG)»، و«فحص مجاني لميزان شركتك… في دقائق»، وCTA «افحص مجانًا · seg-audit.com»، وعلامة MFT.', '');
+  md.push('**البيانات:** كل رقم وكود دفاتر داتا اختبارية معلَّمة «مثال توضيحي · داتا اختبارية». الاستثناءان: أرقام المقاعد (`site.config.js → founding`، حتى ' + FM.asOf + ') وعدد الاختبارات (`platform-facts.js`، ' + FACTS.measuredOn + ').', '');
+  md.push('## نظام φ المشترك', '');
   md.push('| العنصر | القاعدة | القيمة على 1080 px |', '|---|---|---|');
-  md.push(`| سُلّم الخط | T[k] = (W/φ⁸)·φᵏ، وكل نص في الإعلان درجة من السُلّم (السكربت يفشل لو لقى حجم برّه السُلّم) | ${G1.T.join(' · ')} px |`);
-  md.push(`| التباعد | نفس السُلّم: T0/φ، T0، T1، T2 | ${[G1.S.xs, G1.S.s, G1.S.m, G1.S.l].join(' · ')} px |`);
-  md.push(`| الهامش | m = T2 = W/φ⁶ | ${G1.m} px |`);
+  md.push(`| سُلَّم الخط | T[k] = (W/φ⁸)·φᵏ، وكل نص درجة منه (السكربت يفشل لو لقى حجم برّه السُّلَّم) | ${G1.T.join(' · ')} |`);
+  md.push(`| التباعد والهامش | ${[G1.S.xs, G1.S.s, G1.S.m, G1.S.l].join(' · ')}؛ الهامش m = T2 = W/φ⁶ | ${G1.m} |`);
   md.push('| المسافة بين السطور | العناوين 2/φ = 1.236، النص φ = 1.618 | |');
-  md.push(`| خطوط القسمة الذهبية | x = W/φ² و W/φ، y = H/φ² و H/φ (نقاط القوة الأربع عند تقاطعها) | x: ${r1(G1.X1)} · ${r1(G1.X2)}؛ y (1:1): ${r1(G1.Y1)} · ${r1(G1.Y2)}؛ y (4:5): ${r1(G4.Y1)} · ${r1(G4.Y2)} |`);
-  md.push('| العنوان | آخر سطر فيه على الخط y = H/φ² | |');
-  md.push(`| الـCTA | طرفه الأيسر على الخط x = W/φ، وعرضه W − m − W/φ، وارتفاعه T2، ونصه T0 | عرض ${r1(1080 - G1.m - G1.X2)} px |`);
-  md.push(`| الحلزون الذهبي | مستطيل ذهبي W × W/φ على الحافة السفلية، مقسوم ١٤ مرة لمربعات (كل مربع 1/φ من اللي قبله)؛ العين = نهاية التقسيم. يظهر خافتًا (16%) في الخلفية، والعنصر البطل متمركز على العين | العين (1:1): (${G1.spiral(false).eye.map(r1).join('، ')}) أو (${G1.spiral(true).eye.map(r1).join('، ')}) · (4:5): (${G4.spiral(false).eye.map(r1).join('، ')}) أو (${G4.spiral(true).eye.map(r1).join('، ')}) |`);
-  md.push('| الإضاءة | مركز التدرّج الشعاعي على عين الحلزون، ونصف قطر الانتقال W/φ | |', '');
-  md.push('## كل تصميم', '');
-  md.push('| التصميم | الزاوية | تطبيق φ |', '|---|---|---|');
-  DESIGNS.forEach((d) => md.push(`| \`${d.slug}/\` | ${d.angle} | ${d.phi} |`));
-  md.push('', '## القياس بعد الرندر (انحراف بالـpx عن الهدف الذهبي)', '');
-  md.push('مقاسة من صندوق العنصر الفعلي في المتصفح بعد تحميل الخطوط. الصفر يعني إن العنصر بالظبط على الخط أو العين.', '');
-  md.push('| الملف | آخر سطر العنوان − H/φ² | طرف الـCTA − W/φ | البطل − عين الحلزون | قسمة اللوحتين − W/φ² | أحجام الخط المستخدمة |', '|---|---|---|---|---|---|');
-  for (const [b, mt] of Object.entries(metrics)) { const v = mt.deviation_px;
-    md.push(`| \`${b}.jpg\` | ${v.headline_bottom_vs_H_over_phi2 ?? '—'} | ${v.cta_left_vs_W_over_phi ?? '—'} | ${v.hero_centre_vs_spiral_eye ?? '—'} | ${v.panel_split_vs_W_over_phi2 ?? '—'} | ${mt.font_sizes_used.join(' · ')} |`); }
-  md.push('', '«البطل − عين الحلزون»: في 3 هو المسافة الرأسية بين خط منتصف الرقم والعين؛ وفي 4 هو مركز أول مقعد (المقعد صفر، على نصف قطر c·√0.5). تصميما 5 و6 لا يستخدمان عين الحلزون الكبير: 5 يبني مستطيله الذهبي الخاص، و6 مقسوم عند W/φ².', '');
-  md.push('## الحلزون: الاشتقاق', '');
-  md.push('المستطيل [x, y, w, h] بنسبة φ. في كل خطوة نقطع مربعًا بضلع الجانب الأقصر بالترتيب يمين، فوق، شمال، تحت، والباقي مستطيل ذهبي أصغر. في كل مربع ربع دائرة مركزها ركن المربع اللي على خط القطع، والزاوية تقل ٩٠° في كل خطوة، فالأقواس متصلة. العين هي مركز المستطيل الباقي بعد ١٤ خطوة (الخطأ أقل من 0.1 px)، وتطلع عند (0.2764·W، 0.7236·W/φ) قبل القلب. السكربت يقلب المستطيل رأسيًا (والعين تطلع في النص العلوي) وأفقيًا حسب التصميم.', '');
-  md.push('## الروابط العامة (JPG)', '');
+  md.push(`| خطوط القسمة | x = W/φ² و W/φ، y = H/φ² و H/φ | x: ${r1(G1.X1)} · ${r1(G1.X2)}؛ y 1:1: ${r1(G1.Y1)} · ${r1(G1.Y2)}؛ y 4:5: ${r1(G4.Y1)} · ${r1(G4.Y2)} |`);
+  md.push('| العنوان | آخر سطر على y = H/φ² (ما عدا الساعة الرملية: الرقم العملاق هو العنوان) | |');
+  md.push(`| الـCTA | طرفه الأيسر على x = W/φ، وارتفاعه T2، ونصه T0 | |`);
+  md.push(`| الحلزون الذهبي | مستطيل W × W/φ على الحافة السفلية، مقسوم لحد ما يتقارب؛ عينه تثبّت البطل في التصميمات ١ إلى ٣ | العين 1:1: (${G1.spiral(false).eye.map(r1).join('، ')}) أو (${G1.spiral(true).eye.map(r1).join('، ')})؛ 4:5: (${G4.spiral(false).eye.map(r1).join('، ')}) أو (${G4.spiral(true).eye.map(r1).join('، ')}) |`, '');
+  md.push('## المفاهيم', '');
+  DESIGNS.forEach((d) => { md.push(`### \`${d.slug}/\` · ${d.angle}`, '', `**الفكرة:** ${d.idea}`, '', `**تطبيق φ:** ${d.phi}`, ''); });
+  md.push('## القياس بعد الرندر', '', 'انحراف كل عنصر مُثبَّت عن هدفه الذهبي، بالـpx (ratio بدون وحدة). مقاس من صندوق العنصر في المتصفح بعد تحميل الخطوط.', '');
+  md.push('| الملف | العنصر | المقياس | الهدف | الفعلي | الانحراف |', '|---|---|---|---|---|---|');
+  for (const [b, mt] of Object.entries(metrics)) for (const a of mt.anchors) md.push(`| \`${b}\` | ${a.el} | ${a.key} | ${a.target} | ${a.got} | ${a.dev} |`);
+  md.push('', '## الروابط العامة (JPG)', '');
   written.forEach((x) => md.push(`- \`${x.base}.jpg\`: ${url(x.base)}`));
   md.push('', '## إعادة التوليد', '', '```bash', 'PLAYWRIGHT_PATH=<path to playwright> node scripts/golden-ads.js [filter]', '```', '');
   fs.writeFileSync(path.join(OUT, 'README.md'), md.join('\n'));
