@@ -197,17 +197,18 @@ function footer(ctx) {
 // Ad pixels are configured (site.config.js → analytics). The banner and the settings link exist only then.
 const pixelsOn = (config) => Boolean(config.analytics.metaPixelId || config.analytics.tiktokPixelId);
 
-// Cookie consent (opt-in): hidden until assets/js/pixel.js finds no stored choice. No ad pixel
-// loads before "Accept"; "Decline" is the same size and weight.
+// Cookie notice + opt-out (CEO, 4 Nov 2026): a small, non-blocking bar shown by assets/js/pixel.js until
+// the visitor chooses. The pixel runs by default; "Opt out of tracking" stops it for that visitor.
 function consentBanner(ctx) {
   if (!pixelsOn(ctx.config)) return '';
   const C = ctx.c.ui.consent;
-  return `<div class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-title" hidden>
+  return `<div class="consent" id="consent" role="region" aria-label="${esc(plain(C.settings))}" hidden>
   <div class="container consent-inner">
-    <p><strong id="consent-title">${t(C.title)}</strong> ${t(C.body)} <a href="${url(ctx, 'privacy/')}">${t(C.more)}</a></p>
+    <p><span data-consent-msg="on">${t(C.body)}</span><span data-consent-msg="off" hidden>${t(C.optedOut)}</span> <a href="${url(ctx, 'privacy/')}">${t(C.more)}</a></p>
     <div class="consent-actions">
-      <button type="button" class="btn btn-sm btn-ghost" data-consent="denied">${t(C.reject)}</button>
-      <button type="button" class="btn btn-sm btn-ghost" data-consent="granted">${t(C.accept)}</button>
+      <button type="button" class="btn btn-sm btn-ghost" data-consent="denied">${t(C.optout)}</button>
+      <button type="button" class="btn btn-sm btn-ghost" data-consent="granted" hidden>${t(C.optin)}</button>
+      <button type="button" class="btn btn-sm btn-ghost" data-consent="ack">${t(C.ok)}</button>
     </div>
   </div>
 </div>`;

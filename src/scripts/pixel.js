@@ -1,11 +1,13 @@
-/* MFT website — cookie consent + ad pixels (CEO, 4 Nov 2026). Opt-in: no ad pixel loads until the
-   visitor chooses "Accept" in the banner (#consent). The choice is kept for 12 months in localStorage
-   (essential, no consent needed); "Cookie settings" ([data-consent-open]) reopens the banner.
+/* MFT website — ad pixels + cookie notice with opt-out (CEO, 4 Nov 2026). The pixels load with the
+   page; a small, non-blocking bar (#consent) tells first-time visitors and offers "Opt out of
+   tracking". Opting out stops the pixels for that visitor and is kept for 12 months in localStorage,
+   so they never load again in that browser; "Tracking settings" ([data-consent-open]) reopens the bar.
+   Stored choice: 'ack' (saw the notice, tracking on) or 'denied' (opted out).
    IDs come from site.config.js → analytics, rendered onto this script tag as data attributes.
    Pixels load only on the production hosts (data-hosts), so local and preview builds send nothing.
-     PageView  every page, after consent (Meta) / page() (TikTok)
+     PageView  every page unless opted out (Meta) / page() (TikTok)
      Lead      click on a [data-track="lead"] CTA: the free trial-balance check (Meta "Lead",
-               TikTok "ClickButton"), after consent
+               TikTok "ClickButton"), unless opted out
    Disclosed in the privacy notice (content/<lang>.js → privacy). */
 (function () {
   'use strict';
@@ -16,14 +18,17 @@
   var metaId = me.getAttribute('data-meta-pixel') || '';
   var tiktokId = me.getAttribute('data-tiktok-pixel') || '';
   var KEY = 'mft-consent', MAX_AGE = 365 * 24 * 3600 * 1000;
-  var loaded = false;
+  var loaded = false, optedOut = false;
 
   /* ---------- Stored choice ---------- */
   function getChoice() {
     try {
       var c = JSON.parse(window.localStorage.getItem(KEY) || 'null');
-      if (c && (c.v === 'granted' || c.v === 'denied') && Date.now() - c.t < MAX_AGE) return c.v;
-    } catch (e) { /* storage blocked: ask again, load nothing */ }
+      if (c && Date.now() - c.t < MAX_AGE) {
+        if (c.v === 'denied') return 'denied';
+        if (c.v === 'ack' || c.v === 'granted') return 'ack'; // 'granted' = the short-lived opt-in version
+      }
+    } catch (e) { /* storage blocked: show the notice again; an opt-out lasts for this page only */ }
     return null;
   }
   function setChoice(v) {
@@ -32,7 +37,9 @@
 
   /* ---------- Pixels (standard base code, as a file instead of inline) ---------- */
   function loadPixels() {
-    if (loaded || !onHost) return;
+    optedOut = false;
+    if (!onHost) return;
+    if (loaded) { if (window.fbq) window.fbq('consent', 'grant'); if (window.ttq && window.ttq.grantConsent) window.ttq.grantConsent(); return; }
     loaded = true;
     if (metaId) {
       !function (f, b, e, v, n, t, s) {
@@ -65,8 +72,9 @@
     }
   }
 
-  /* Withdrawal: stop the pixels on this page and delete their first-party cookies. */
+  /* Opt-out: stop the pixels on this page and delete their first-party cookies. */
   function revoke() {
+    optedOut = true;
     if (window.fbq) window.fbq('consent', 'revoke');
     if (window.ttq && window.ttq.revokeConsent) window.ttq.revokeConsent();
     var host = window.location.hostname, base = host.replace(/^www\./, '');
@@ -78,35 +86,43 @@
     });
   }
 
-  /* ---------- Banner ---------- */
+  /* ---------- Notice bar ---------- */
   function ready(fn) { if (document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  var choice = getChoice();
+  if (choice !== 'denied') loadPixels();
+  else optedOut = true;
   ready(function () {
-    var banner = document.getElementById('consent');
-    var show = function () { if (banner) { banner.hidden = false; var b = banner.querySelector('[data-consent="denied"]'); if (b) b.focus({ preventScroll: true }); } };
-    var choice = getChoice();
-    if (choice === 'granted') loadPixels();
-    else if (!choice) show();
+    var bar = document.getElementById('consent');
+    var sync = function () {
+      if (!bar) return;
+      var off = optedOut;
+      bar.querySelector('[data-consent-msg="on"]').hidden = off;
+      bar.querySelector('[data-consent-msg="off"]').hidden = !off;
+      bar.querySelector('[data-consent="denied"]').hidden = off;
+      bar.querySelector('[data-consent="granted"]').hidden = !off;
+    };
+    var show = function () { if (bar) { sync(); bar.hidden = false; } };
+    if (!choice) show();
 
     document.addEventListener('click', function (e) {
       var pick = e.target.closest && e.target.closest('[data-consent]');
       if (pick) {
         var v = pick.getAttribute('data-consent');
-        var was = getChoice();
-        setChoice(v);
-        if (banner) banner.hidden = true;
-        if (v === 'granted') loadPixels();
-        else if (was === 'granted' || loaded) revoke();
+        if (v === 'denied') { setChoice('denied'); revoke(); sync(); return; } // stays open to show it took effect
+        if (v === 'granted') { setChoice('ack'); loadPixels(); }
+        if (v === 'ack') setChoice(optedOut ? 'denied' : 'ack');
+        if (bar) bar.hidden = true;
         return;
       }
       if (e.target.closest && e.target.closest('[data-consent-open]')) { e.preventDefault(); show(); }
     });
   });
 
-  /* ---------- Lead: the free-check CTA (only once the pixels are loaded, i.e. after consent).
+  /* ---------- Lead: the free-check CTA (only while the pixels run, i.e. not opted out).
      Same-tab clicks wait a moment so the event leaves before the page does. ---------- */
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[data-track="lead"]');
-    if (!a || !loaded) return;
+    if (!a || !loaded || optedOut) return;
     if (window.fbq) window.fbq('track', 'Lead', { content_name: 'free-trial-balance-check' });
     if (window.ttq && tiktokId) window.ttq.track('ClickButton', { content_name: 'free-trial-balance-check' });
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank') return;
