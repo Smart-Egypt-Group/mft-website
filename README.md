@@ -48,6 +48,7 @@ scripts/guerrilla-ads.js   SEG Audit guerrilla pack: graffiti, palm, sticky note
 scripts/tiktok-videos.js   8 s TikTok MP4s from the 9:16 ad designs, H.264 via Chrome WebCodecs (marketing/designs/ads/video/)
 scripts/psych-ads.js       SEG Audit persuasion pack: one principle per design, square + story + link (marketing/designs/psych/)
 scripts/reels-cinematic.js Reels/Shorts, six audit scenarios AR/EN, cinematic motion + synthesised soundtrack (marketing/designs/video/, src/assets/social/video/)
+scripts/golden-ads.js    Meta feed pack composed on the golden ratio φ, 7 angles × 1:1 + 4:5 (marketing/designs/golden/, src/assets/social/golden/)
 scripts/reels-audio.js     the license-free soundtrack: synthesised pad + whoosh/tick/impact/resolve, ducking
 scripts/launch-week-assets.js  Day-3 prep: illustrative report screen (fictional data) + live invite card (marketing/designs/launch-week/)
 scripts/og-image.js     regenerates the 1200×630 share images (needs Playwright + Chrome)
