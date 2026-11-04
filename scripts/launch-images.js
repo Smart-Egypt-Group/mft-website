@@ -50,13 +50,13 @@ const f = (n) => +n.toFixed(1);
 // ---- Copy (three levels + CTA). The AR seats headline is the approved campaign line, verbatim. ----
 const COPY = {
   'seats-ar': FM.showCount
-    ? { dir: 'rtl', eyebrow: 'SEG Audit · الأعضاء المؤسِّسون', hero: [String(LEFT), `/${FM.total}`], title: `باقي ${LEFT} من ${FM.total} — الأعضاء المؤسِّسون`, support: `انضمت ${FILLED} شركة بالفعل. احجز مقعدك قبل اكتمال العدد.`, cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' }
-    : { dir: 'rtl', eyebrow: 'SEG Audit · برنامج الأعضاء المؤسِّسون', hero: [String(FM.total), ''], title: `${FM.total} مقعد فقط بسعر مؤسِّس مدى الحياة`, support: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' },
+    ? { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · الأعضاء المؤسِّسون', hero: [String(LEFT), `/${FM.total}`], title: `باقي ${LEFT} من ${FM.total} — الأعضاء المؤسِّسون`, support: `انضمت ${FILLED} شركة بالفعل. احجز مقعدك قبل اكتمال العدد.`, cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' }
+    : { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', hero: [String(FM.total), ''], title: `${FM.total} مقعد فقط بسعر مؤسِّس مدى الحياة`, support: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' },
   'seats-en': FM.showCount
-    ? { dir: 'ltr', eyebrow: 'SEG AUDIT · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left — Founding Members`, support: `${FILLED} companies have already joined. Claim yours before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' }
-    : { dir: 'ltr', eyebrow: 'SEG AUDIT · FOUNDING MEMBERS PROGRAMME', hero: [String(FM.total), ''], title: `Only ${FM.total} seats, founder price for life`, support: 'Start with a free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' },
-  'live-ar': { dir: 'rtl', eyebrow: 'SEG Audit من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com', motif: 'live' },
-  'live-en': { dir: 'ltr', eyebrow: 'SEG AUDIT BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'A free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Check your trial balance free  ·  app.seg-audit.com', motif: 'live' },
+    ? { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left — Founding Members`, support: `${FILLED} companies have already joined. Claim yours before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' }
+    : { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', hero: [String(FM.total), ''], title: `Only ${FM.total} seats, founder price for life`, support: 'Start with a free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' },
+  'live-ar': { dir: 'rtl', eyebrow: 'Standard Enterprise Governance من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com', motif: 'live' },
+  'live-en': { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'A free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Check your trial balance free  ·  app.seg-audit.com', motif: 'live' },
   'neutral-seats': { motif: 'seats' },
   'neutral-live': { motif: 'live' }
 };
@@ -374,9 +374,9 @@ function typePlan(F, C) {
   // Review sheet: marketing/designs/index.html shows every file at a glance (open it locally).
   if (!only) {
     const groups = [...new Set(written.map((x) => x.dir))];
-    const html = `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG Audit launch designs</title>
+    const html = `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG launch designs</title>
 <style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.5 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 12px;text-transform:capitalize}p{margin:0 0 16px;color:#3B4262}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto;background:#0D1B3E}figcaption{font-size:12px;margin-top:8px;word-break:break-all}</style>
-<h1>SEG Audit launch: Founding Members</h1><p>Generated by scripts/launch-images.js. ${FM.total} founding seats${FM.showCount ? ` (${FILLED} filled)` : ', no public counter'}. Every file exists as .webp and .jpg.</p>
+<h1>Standard Enterprise Governance (SEG) launch: Founding Members</h1><p>Generated by scripts/launch-images.js. ${FM.total} founding seats${FM.showCount ? ` (${FILLED} filled)` : ', no public counter'}. Every file exists as .webp and .jpg.</p>
 ${groups.map((gname) => `<h2>${gname}</h2><div class="g">${written.filter((x) => x.dir === gname).map((x) => `<figure><img loading="lazy" src="${gname}/${x.base}.webp" alt="${x.name} ${x.variant}"><figcaption>${gname}/${x.base}.jpg · ${x.w}×${x.h}</figcaption></figure>`).join('')}</div>`).join('\n')}`;
     fs.writeFileSync(path.join(OUT, 'index.html'), html);
     console.log(`${written.length} designs × 2 formats`);

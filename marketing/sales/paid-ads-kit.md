@@ -113,7 +113,7 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 
 - **الطُعم:** «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق». مؤشرات من الميزان فقط. **لا** «تقرير مجاني» ولا «تقرير مراجعة».
 - **المقاعد:** «50 مقعد. انضمّت 17 شركة. باقي 33.» بسعر مؤسِّس مدى الحياة.
-- **المنصة:** SEG Audit، وحدة المراجعة المستمرة في **SEG (Standard Enterprise Governance)** من MFT.
+- **المنصة (الاسم البارز):** **Standard Enterprise Governance (SEG)** من MFT، أول ذكر كاملًا ثم SEG. **SEG Audit** فقط لوحدة المراجعة تحديدًا (قرار الـCEO، 4 نوفمبر 2026).
 - **الثقة:** قراءة فقط، ولكل ملاحظة دليلها.
 
 **ممنوع:** نسب توفير أو «أسرع بـX%»، وأسماء عملاء، والإيموجي في نصوص TikTok.
@@ -172,7 +172,7 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
   >
   > ارفع ميزان آخر شهر مقفول، وشوف: حسابات معلّقة، وأرصدة شاذة، وعدم اتزان، وقيود يدوية كثيفة، وتواريخ رجعية. مؤشرات من الميزان فقط، مش تقرير مراجعة كامل.
   >
-  > SEG Audit من MFT: قراءة فقط، ولكل ملاحظة دليلها.
+  > Standard Enterprise Governance (SEG) من MFT: قراءة فقط، ولكل ملاحظة دليلها.
 - **العنوان:** افحص ميزان شركتك مجانًا
 - **الوصف:** نقاط الخطر في دقائق
 - **زر الدعوة:** Sign up (التسجيل)
@@ -182,7 +182,7 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 #### `m-eg-seats-ar` · مجموعة eg-finance · المقاعد
 
 - **النص الأساسي:**
-  > 50 مقعد بس للأعضاء المؤسِّسين في SEG Audit. انضمّت 17 شركة، وباقي 33.
+  > 50 مقعد بس للأعضاء المؤسِّسين في Standard Enterprise Governance (SEG). انضمّت 17 شركة، وباقي 33.
   >
   > سعر مؤسِّس يفضل معاك مدى الحياة، والعضو المؤسِّس بيشتغل مع فريق MFT مباشرة في الإعداد. ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.
 - **العنوان:** باقي 33 مقعد من 50
@@ -198,7 +198,7 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
   >
   > ارفع ميزان المراجعة لآخر شهر مقفل، واعرف الحسابات المعلّقة والأرصدة الشاذة والقيود اليدوية والتواريخ الرجعية قبل الإقفال. مؤشرات من الميزان فقط، لا تقرير مراجعة كامل.
   >
-  > SEG Audit من MFT: قراءة فقط من نظامك، ولكل ملاحظة دليلها.
+  > Standard Enterprise Governance (SEG) من MFT: قراءة فقط من نظامك، ولكل ملاحظة دليلها.
 - **العنوان:** افحص ميزان شركتك مجانًا
 - **الوصف:** نقاط الخطر في دقائق
 - **زر الدعوة:** Sign up (التسجيل)
@@ -208,7 +208,7 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 #### `m-sa-seats-ar` · مجموعة sa-finance · المقاعد
 
 - **النص الأساسي:**
-  > 50 مقعدًا فقط للأعضاء المؤسِّسين في SEG Audit. انضمّت 17 شركة، وبقي 33.
+  > 50 مقعدًا فقط للأعضاء المؤسِّسين في Standard Enterprise Governance (SEG). انضمّت 17 شركة، وبقي 33.
   >
   > سعر مؤسِّس يبقى لك مدى الحياة، وفريق MFT يعمل معك مباشرة في الإعداد. ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.
 - **العنوان:** باقي 33 مقعدًا من 50
@@ -226,7 +226,7 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
   >
   > Upload last month’s closed trial balance and see suspense balances, abnormal balances, imbalance, heavy manual entries and back-dated entries. Indicators from the trial balance only, not a full audit report.
   >
-  > SEG Audit by MFT: read-only, every finding with its evidence.
+  > Standard Enterprise Governance (SEG) by MFT: read-only, every finding with its evidence.
 - **Headline:** Check your trial balance free
 - **Description:** Risk points in minutes
 - **CTA:** Sign up
@@ -238,11 +238,11 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 - **النص الأساسي:**
   > شركتك أو عملاءك على Odoo؟
   >
-  > فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. وبعده SEG Audit يقرأ دفاتر Odoo باستمرار، بصلاحية قراءة فقط: 361 فحصًا في 22 تقريرًا، ولكل ملاحظة دليلها.
+  > فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. وبعده Standard Enterprise Governance (SEG) يقرأ دفاتر Odoo باستمرار، بصلاحية قراءة فقط: 361 فحصًا في 22 تقريرًا، ولكل ملاحظة دليلها.
   >
   > مكاتب المحاسبة: حساب واحد لحد 25 شركة.
 - **العنوان:** افحص ميزان Odoo مجانًا
-- **الوصف:** SEG Audit من MFT
+- **الوصف:** SEG من MFT
 - **زر الدعوة:** Learn more (معرفة المزيد)
 - **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-odoo-bait-ar#fm-check`
 - **التصميم:** نفس ملفات `live-ar` أعلاه
@@ -252,7 +252,7 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 - **النص الأساسي:**
   > مراجعة مستمرة لدفاتر Odoo، من غير ما تستنى آخر السنة.
   >
-  > 50 مقعد بس للأعضاء المؤسِّسين في SEG Audit: انضمّت 17 شركة، وباقي 33. سعر مؤسِّس مدى الحياة. ابدأ بفحص مجاني لميزانك.
+  > 50 مقعد بس للأعضاء المؤسِّسين في SEG: انضمّت 17 شركة، وباقي 33. سعر مؤسِّس مدى الحياة. ابدأ بفحص مجاني لميزانك.
 - **العنوان:** باقي 33 مقعد من 50
 - **الوصف:** لشركات Odoo ومكاتبها
 - **زر الدعوة:** Sign up (التسجيل)

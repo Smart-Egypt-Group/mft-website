@@ -1,4 +1,4 @@
-# SEG Audit: حزمة علم نفس الإقناع
+# Standard Enterprise Governance (SEG): حزمة علم نفس الإقناع
 
 بريف الـCEO (4 نوفمبر 2026). يولّدها [`scripts/psych-ads.js`](../../../scripts/psych-ads.js)، والمعرض في [`index.html`](index.html).
 

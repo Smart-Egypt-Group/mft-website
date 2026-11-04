@@ -1,4 +1,4 @@
-# أسبوع الإطلاق: 7 أيام (SEG Audit · الأعضاء المؤسِّسون + برنامج الشركاء)
+# أسبوع الإطلاق: 7 أيام (Standard Enterprise Governance · الأعضاء المؤسِّسون + برنامج الشركاء)
 
 > **الحالة:** اليوم 1 منشور (4 نوفمبر). الأيام 2–7 مسودات جاهزة للمراجعة (المرحلة 1 من [سير النشر](02-publishing-workflow.md)).
 > **يحلّ محل:** زوايا [`content/week-1/00-calendar.md`](../content/week-1/00-calendar.md). أوقات النشر وقائمة يوم 0 والردود الجاهزة هناك تبقى سارية، **ما عدا** قاعدة «بلا عدّاد»: العدّاد الحقيقي مُفعَّل منذ 3 نوفمبر 2026 (قرار الـCEO).
@@ -20,7 +20,7 @@
 
 | العنصر | الصياغة |
 |---|---|
-| المنصة | **SEG — Standard Enterprise Governance** من MFT. وحدة المراجعة المستمرة فيها: **SEG Audit** |
+| المنصة (الاسم البارز) | **Standard Enterprise Governance (SEG)** من MFT. أول ذكر بالاسم الكامل، ثم **SEG**. **SEG Audit** فقط حين نقصد وحدة المراجعة تحديدًا (قرار الـCEO، 4 نوفمبر 2026) |
 | الوعد | **المنصة التي تراجع نفسها**: أكثر من 7,900 اختبار آلي قبل كل تحديث، و361 فحصًا في 22 تقريرًا (من كود المنصة، قياس 26 أكتوبر 2026) |
 | الطُعم | **فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق**: مؤشرات من ميزان المراجعة فقط. **ليس تقرير مراجعة كاملًا**، ولا يُسمّى «تقريرًا مجانيًا» |
 | الندرة | **50 مقعدًا. انضمّت 17 شركة. باقي 33.** (حتى 3 نوفمبر 2026) |
@@ -38,7 +38,7 @@
 
 الروابط الكاملة مكتوبة تحت كل منشور. في Instagram الرابط لا يعمل داخل التعليق، فيُحدَّث رابط البايو صباح كل يوم إلى رابط ذلك اليوم.
 
-**الوسوم:** 3 كحد أقصى: `#SEGAudit` `#المراجعة_المستمرة` `#Odoo`. وفي اليوم 5 (الشركاء) يُستبدل `#Odoo` بـ`#شركاء_Odoo`.
+**الوسوم:** 3 كحد أقصى: `#StandardEnterpriseGovernance` `#المراجعة_المستمرة` `#Odoo`. وفي اليوم 5 (الشركاء) يُستبدل `#Odoo` بـ`#شركاء_Odoo`.
 
 **التصاميم:** المسارات نسبية إلى `marketing/designs/`. معارض المعاينة: [`guerrilla/index.html`](../designs/guerrilla/index.html)، [`concepts/index.html`](../designs/concepts/index.html)، [`index.html`](../designs/index.html).
 
@@ -89,7 +89,7 @@
 >
 > https://app.seg-audit.com/ar/signup?utm_source=linkedin&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d1-li-a-1
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 **عنوان المستند:** 5 أخطاء في دفاترك مش هتلاحظها
 
@@ -108,7 +108,7 @@
 >
 > فحص مجاني لميزان شركتك في دقائق · الرابط في البايو
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 **رابط البايو:** `https://app.seg-audit.com/ar/signup?utm_source=instagram&utm_medium=social-bio&utm_campaign=founding-members-2026&utm_content=w1-d1-ig-a-1`
 
@@ -131,12 +131,12 @@
 >
 > المراجعة السنوية بتشوف عيّنة من 12 شهر في أسابيع قليلة. والقيود بتتسجّل كل يوم: دفعة بتتصرف مرتين، مورّد متسجّل باسمين، قيد بتاريخ رجعي بعد الإقفال.
 >
-> SEG Audit بيقرأ دفاترك من Odoo باستمرار، بصلاحية قراءة فقط، ويطلّعلك كل ملاحظة ومعاها دليلها، مرتبة حسب خطورتها.
+> Standard Enterprise Governance (SEG) بيقرأ دفاترك من Odoo باستمرار، بصلاحية قراءة فقط، ويطلّعلك كل ملاحظة ومعاها دليلها، مرتبة حسب خطورتها.
 >
 > ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق:
 > https://app.seg-audit.com/ar/signup?utm_source=linkedin&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d2-li-a-1
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 ### Facebook · `w1-d2-fb-a-1` · 11:00
 
@@ -154,7 +154,7 @@
 >
 > فحص مجاني لميزان شركتك في دقائق · الرابط في البايو
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 **رابط البايو:** `https://app.seg-audit.com/ar/signup?utm_source=instagram&utm_medium=social-bio&utm_campaign=founding-members-2026&utm_content=w1-d2-ig-a-1`
 
@@ -162,7 +162,7 @@
 
 ## اليوم 3 · الجمعة 6 نوفمبر · وقفة الشجاعة: عرض توضيحي على شركة نموذجية (ذروة الأسبوع)
 
-**الفكرة:** «شوف SEG بيكشف إيه في دفاتر شركة نموذجية في دقائق — داتا عرض توضيحي.» نشغّل SEG Audit على **dataset اختباري** لشركة نموذجية (اسم وهمي، أرقام وهمية)، ونعرض **أنواع المخاطر** التي يكشفها. القيمة في نوع ما يظهر، لا في أرقام شركة بعينها.
+**الفكرة:** «شوف SEG بيكشف إيه في دفاتر شركة نموذجية في دقائق — داتا عرض توضيحي.» نشغّل SEG على **dataset اختباري** لشركة نموذجية (اسم وهمي، أرقام وهمية)، ونعرض **أنواع المخاطر** التي يكشفها. القيمة في نوع ما يظهر، لا في أرقام شركة بعينها.
 
 > ### ⚠️ شرط قبل النشر (حاجز)
 > - [ ] **الداتا اختبارية بالكامل:** حساب تجريبي، وشركة نموذجية باسم وهمي واضح، مثل «شركة النموذج للتوزيع (اسم وهمي)». **لا بيانات MFT ولا بيانات أي عميل.**
@@ -181,7 +181,7 @@
 > شوف SEG بيكشف إيه في دفاتر شركة نموذجية في دقائق.
 > (عرض توضيحي على داتا اختبارية: الشركة والأرقام وهمية.)
 >
-> شغّلنا SEG Audit على دفاتر شركة توزيع نموذجية، وده نوع اللي ظهر:
+> شغّلنا SEG على دفاتر شركة توزيع نموذجية، وده نوع اللي ظهر:
 > • **حساب وسيط** فيه رصيد معلّق بقاله شهور ومحدش سوّاه.
 > • **رصيد عكس طبيعته:** نقدية برصيد دائن.
 > • **قيود يدوية كثيفة** على حسابات حساسة، بعضها بعد الإقفال.
@@ -190,12 +190,12 @@
 >
 > كل ملاحظة جت ومعاها دليلها من الدفاتر، ومرتبة حسب خطورتها.
 >
-> SEG هي Standard Enterprise Governance من MFT، وSEG Audit وحدة المراجعة المستمرة فيها: قراءة فقط من نظامك، ولا يخرج تقرير قبل أن يعتمده مراجع باسمه. وقبل كل تحديث للمنصة نفسها تمر أكثر من 7,900 اختبار آلي. المنصة التي تراجع نفسها.
+> Standard Enterprise Governance (SEG) من MFT، ووحدة المراجعة المستمرة فيها SEG Audit: قراءة فقط من نظامك، ولا يخرج تقرير قبل أن يعتمده مراجع باسمه. وقبل كل تحديث للمنصة نفسها تمر أكثر من 7,900 اختبار آلي. المنصة التي تراجع نفسها.
 >
 > جرّب على ميزانك أنت: فحص مجاني يكشف نقاط الخطر في دقائق.
 > https://app.seg-audit.com/ar/signup?utm_source=linkedin&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d3-li-a-1
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 ### LinkedIn · حساب المؤسس · `w1-d3-li-a-2` · 11:30 (عطلة)
 
@@ -203,7 +203,7 @@
 
 > أسهل حاجة إننا نقول «المنصة بتكشف الأخطاء». الأصعب إننا نوريك.
 >
-> فجهّزنا شركة نموذجية، بداتا اختبارية بالكامل، وشغّلنا عليها SEG Audit. في دقائق ظهر نفس النوع اللي بشوفه في الحقيقة كل سنة: حساب وسيط منسي، ومورّد باسمين، وقيود بتاريخ رجعي بعد الإقفال.
+> فجهّزنا شركة نموذجية، بداتا اختبارية بالكامل، وشغّلنا عليها SEG. في دقائق ظهر نفس النوع اللي بشوفه في الحقيقة كل سنة: حساب وسيط منسي، ومورّد باسمين، وقيود بتاريخ رجعي بعد الإقفال.
 >
 > مش أرقام شركة بعينها. ده عرض توضيحي، علشان تعرف تدوّر على إيه في دفاترك.
 >
@@ -229,7 +229,7 @@
 >
 > جرّبه على ميزانك · الرابط في البايو
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 **رابط البايو:** `https://app.seg-audit.com/ar/signup?utm_source=instagram&utm_medium=social-bio&utm_campaign=founding-members-2026&utm_content=w1-d3-ig-a-1`
 **ستوري (13:00):** before-after مع ملصق نصي «عرض توضيحي · داتا اختبارية»، وملصق رابط بنفس الرابط.
@@ -265,7 +265,7 @@
 > افحص ميزان شركتك مجانًا:
 > https://app.seg-audit.com/ar/signup?utm_source=linkedin&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d4-li-a-1
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 ### Facebook · `w1-d4-fb-a-1` · 11:00
 
@@ -283,7 +283,7 @@
 >
 > فحص مجاني لميزان شركتك في دقائق · الرابط في البايو
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 **رابط البايو:** `https://app.seg-audit.com/ar/signup?utm_source=instagram&utm_medium=social-bio&utm_campaign=founding-members-2026&utm_content=w1-d4-ig-a-1`
 
@@ -307,7 +307,7 @@
 
 > عملاؤك على Odoo. والمراجعة المستمرة باسمك.
 >
-> اليوم نفتح برنامج شركاء SEG Audit لمكاتب المحاسبة والمراجعة وشركاء تنفيذ Odoo في مصر والسعودية:
+> اليوم نفتح برنامج شركاء Standard Enterprise Governance (SEG) لمكاتب المحاسبة والمراجعة وشركاء تنفيذ Odoo في مصر والسعودية:
 > • **حساب واحد لحد 25 شركة** على باقة المؤسسات: تبدّل بين عملائك من مكان واحد.
 > • **361 فحصًا في 22 تقريرًا** على كل شركة، بدل مراجعة يدوية تختلف من عميل للتاني.
 > • **فحص مجاني لميزان كل عميل** يكشف نقاط الخطر في دقائق، قبل أي التزام.
@@ -319,7 +319,7 @@
 > انضم كشريك:
 > https://www.seg-audit.com/ar/partners/?utm_source=linkedin&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d5-li-a-1
 >
-> #SEGAudit #المراجعة_المستمرة #شركاء_Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #شركاء_Odoo
 
 ### LinkedIn · حساب المؤسس · `w1-d5-li-a-2` · 10:30
 
@@ -339,7 +339,7 @@
 
 > عندك مكتب محاسبة أو مراجعة، وعملاءك على Odoo؟ 👋
 >
-> برنامج شركاء SEG Audit اتفتح النهارده: راجع عملاءك أسرع، من حساب واحد لحد 25 شركة، وبتقارير عربية باسم مكتبك.
+> برنامج شركاء SEG اتفتح النهارده: راجع عملاءك أسرع، من حساب واحد لحد 25 شركة، وبتقارير عربية باسم مكتبك.
 >
 > انضم كشريك:
 > https://www.seg-audit.com/ar/partners/?utm_source=facebook&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d5-fb-a-1
@@ -347,11 +347,11 @@
 ### Instagram · `w1-d5-ig-a-1` · 20:00
 
 > مين بيراجعك؟
-> لو إنت المكتب اللي بيراجع عملاءه… خلّي SEG Audit يجهّزلك الملاحظات ودليلها.
+> لو إنت المكتب اللي بيراجع عملاءه… خلّي SEG يجهّزلك الملاحظات ودليلها.
 >
 > برنامج الشركاء · الرابط في البايو
 >
-> #SEGAudit #المراجعة_المستمرة #شركاء_Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #شركاء_Odoo
 
 **رابط البايو:** `https://www.seg-audit.com/ar/partners/?utm_source=instagram&utm_medium=social-bio&utm_campaign=founding-members-2026&utm_content=w1-d5-ig-a-1`
 
@@ -397,11 +397,11 @@
 ### Instagram · `w1-d6-ig-a-1` · 20:00
 
 > باقي 33 من 50.
-> انضمّت 17 شركة للأعضاء المؤسِّسين في SEG Audit.
+> انضمّت 17 شركة للأعضاء المؤسِّسين في Standard Enterprise Governance (SEG).
 >
 > احجز مقعدك · الرابط في البايو
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 **رابط البايو:** `https://www.seg-audit.com/ar/founding-members/?utm_source=instagram&utm_medium=social-bio&utm_campaign=founding-members-2026&utm_content=w1-d6-ig-a-1`
 
@@ -444,7 +444,7 @@
 >
 > سجّل من هنا علشان يوصلك التذكير: [رابط التسجيل]
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 ### LinkedIn · حساب المؤسس · `w1-d7-li-a-2` · 10:30
 
@@ -469,7 +469,7 @@
 > بث مباشر الليلة · 7 مساءً بتوقيت القاهرة.
 > فعّل التذكير من الستوري.
 >
-> #SEGAudit #المراجعة_المستمرة #Odoo
+> #StandardEnterpriseGovernance #المراجعة_المستمرة #Odoo
 
 **رابط البايو:** `[رابط التسجيل]`، بـ`utm_source=instagram&utm_medium=social-bio&utm_campaign=founding-members-2026&utm_content=w1-d7-ig-a-1` إن أمكن.
 

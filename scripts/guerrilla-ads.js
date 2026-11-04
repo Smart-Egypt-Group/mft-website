@@ -275,9 +275,9 @@ async function main() {
 
   if (!only) {
     const names = { graffiti: 'جرافيتي على حيطة', palm: 'مكتوب على راحة اليد', sticky: 'ورقة لاصقة على شاشة' };
-    const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG Audit guerrilla pack</title>
+    const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG guerrilla pack</title>
 <style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.6 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 12px}p{margin:0 0 16px;color:#3B4262}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;align-items:start}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto}figcaption{font-size:12px;margin-top:8px;word-break:break-all;direction:ltr;text-align:left}</style>
-<h1>SEG Audit: حزمة جذب الانتباه</h1><p>تصاميم مولَّدة بالكود (stylized) عبر scripts/guerrilla-ads.js: navy وcyan وأبيض، بلا ذهبي، بلا أي شخص حقيقي. كل جملة بمقاسين: مربع 1080×1080 وستوري 1080×1920، بصيغتي JPG وWebP.</p>
+<h1>Standard Enterprise Governance (SEG): حزمة جذب الانتباه</h1><p>تصاميم مولَّدة بالكود (stylized) عبر scripts/guerrilla-ads.js: navy وcyan وأبيض، بلا ذهبي، بلا أي شخص حقيقي. كل جملة بمقاسين: مربع 1080×1080 وستوري 1080×1920، بصيغتي JPG وWebP.</p>
 ${Object.keys(names).map((s) => `<h2>${names[s]}</h2><div class="g">${written.filter((x) => x.style === s).map((x) => `<figure><img loading="lazy" src="${s}/${x.base}.webp" alt="${x.base}"><figcaption>${s}/${x.base}.jpg · ${x.w}×${x.h}</figcaption></figure>`).join('')}</div>`).join('\n')}`;
     fs.writeFileSync(path.join(OUT, 'index.html'), html);
     console.log(`${written.length} designs × 2 formats`);

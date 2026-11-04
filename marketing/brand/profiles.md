@@ -4,7 +4,7 @@ Every field below is checked against the platform's character limit (counted in 
 
 **The free offer (CEO, 3 Nov 2026)** is always worded **«فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق»** / "A free check of your company’s trial balance that flags its risk points in minutes" (short EN where space is tight: "Free trial-balance check: risk points in minutes"). Never "free report".
 
-**Naming (CEO, 3 Nov 2026):** company **Modern Financial Technology (MFT)** → platform **SEG — Standard Enterprise Governance** → product **SEG Audit** (the continuous audit module). Long texts (About / Overview / Description) name the platform in full at least once; short bios keep «SEG Audit».
+**Naming (CEO, 3 Nov 2026; prominence updated 4 Nov 2026):** company **Modern Financial Technology (MFT)** → platform **Standard Enterprise Governance (SEG)**, the prominent name in ads, designs, content and the site → product **SEG Audit**, used only when we mean the audit module itself (the continuous audit module). Long texts (About / Overview / Description) name the platform in full at least once; short bios keep «SEG Audit».
 
 **Standard everywhere**
 - Display name: **Modern Financial Technology (MFT)**
@@ -22,8 +22,8 @@ Every field below is checked against the platform's character limit (counted in 
 |---|---|
 | Name | Modern Financial Technology (MFT) |
 | Public URL | linkedin.com/company/**modernfintech** (today: /company/92779112) |
-| Tagline (120) | AR: المنصة التي تراجع نفسها \| SEG Audit للمراجعة المستمرة · Odoo ERP · المراجعة الداخلية · المدير المالي الافتراضي |
-| | EN: The platform that reviews itself \| SEG Audit continuous audit · Odoo ERP · Internal audit · Virtual CFO |
+| Tagline (120) | AR: Standard Enterprise Governance: المنصة التي تراجع نفسها \| مراجعة مستمرة · Odoo ERP · المراجعة الداخلية · المدير المالي الافتراضي |
+| | EN: Standard Enterprise Governance: the platform that reviews itself \| Continuous audit · Odoo ERP · Internal audit · Virtual CFO |
 | Website | https://www.seg-audit.com |
 | Industry | Accounting |
 | Specialties | Continuous audit, Internal audit, Odoo ERP implementation, Virtual CFO, ZATCA e-invoicing, Egyptian e-invoicing (ETA), Financial consulting |
@@ -34,7 +34,7 @@ Every field below is checked against the platform's character limit (counted in 
 > **المنصة التي تراجع نفسها.**
 > Modern Financial Technology (MFT) شركة تكنولوجيا مالية ومراجعة بقيادة محاسبين معتمدين.
 >
-> منصتنا SEG — Standard Enterprise Governance، ووحدة المراجعة المستمرة فيها SEG Audit تراجع دفاتر شركتك باستمرار، لا مرة في السنة: تقرأ من نظامك بصلاحية قراءة فقط، وتعرض كل ملاحظة مرتبة حسب خطورتها، ومعها دليلها. ونراجع أنفسنا قبل أن نراجعك: أكثر من 7,900 اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.
+> منصتنا Standard Enterprise Governance (SEG)، ووحدة المراجعة المستمرة فيها SEG Audit تراجع دفاتر شركتك باستمرار، لا مرة في السنة: تقرأ من نظامك بصلاحية قراءة فقط، وتعرض كل ملاحظة مرتبة حسب خطورتها، ومعها دليلها. ونراجع أنفسنا قبل أن نراجعك: أكثر من 7,900 اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.
 >
 > ومع المنصة: تنفيذ Odoo ERP، والمراجعة الداخلية، والمدير المالي الافتراضي، في مصر والسعودية والولايات المتحدة.
 >
@@ -43,7 +43,7 @@ Every field below is checked against the platform's character limit (counted in 
 > المنصة: app.seg-audit.com · الموقع: www.seg-audit.com
 >
 > **The platform that reviews itself.**
-> MFT is a fintech and audit firm led by certified accountants. Our platform is SEG — Standard Enterprise Governance; SEG Audit, its continuous audit module, reads your books read-only, ranks every finding by severity and shows its evidence. We review ourselves first: 7,900+ automated tests before every update and a log nothing can change silently. We also implement Odoo ERP and run internal audit and virtual CFO services in Egypt, Saudi Arabia and the United States.
+> MFT is a fintech and audit firm led by certified accountants. Our platform is Standard Enterprise Governance (SEG); SEG Audit, its continuous audit module, reads your books read-only, ranks every finding by severity and shows its evidence. We review ourselves first: 7,900+ automated tests before every update and a log nothing can change silently. We also implement Odoo ERP and run internal audit and virtual CFO services in Egypt, Saudi Arabia and the United States.
 >
 > Start with a free check of your company’s trial balance that flags its risk points in minutes: indicators computed from your trial balance only (suspense accounts, abnormal balances, imbalance, heavy manual entries, backdated entries).
 
@@ -52,7 +52,7 @@ Every field below is checked against the platform's character limit (counted in 
 | Field | Value |
 |---|---|
 | Banner | `covers/linkedin-personal-banner_1584x396.png` |
-| Headline suggestion | Founder & CEO, Modern Financial Technology (MFT) · SEG Audit: the platform that reviews itself |
+| Headline suggestion | Founder & CEO, Modern Financial Technology (MFT) · Standard Enterprise Governance (SEG): the platform that reviews itself |
 | Featured | Link to https://www.seg-audit.com and the founding page |
 
 The founder edits his own headline and about; this is a suggestion only.
@@ -78,12 +78,12 @@ The founder edits his own headline and about; this is a suggestion only.
 |---|---|
 | Name (searchable, 64) | Modern Financial Technology (MFT) |
 | Username | @modernfintech ✓ (already set) |
-| Bio (150), AR | المنصة التي تراجع نفسها.<br>SEG Audit: مراجعة مستمرة لدفاترك، ولكل ملاحظة دليلها.<br>فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق ↓ |
-| Bio (150), EN | The platform that reviews itself.<br>SEG Audit: continuous audit, evidence behind every finding.<br>Free trial-balance check: risk points in minutes ↓ |
+| Bio (150), AR | Standard Enterprise Governance: المنصة التي تراجع نفسها.<br>مراجعة مستمرة لدفاترك، ولكل ملاحظة دليلها.<br>فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق ↓ |
+| Bio (150), EN | Standard Enterprise Governance: the platform that reviews itself.<br>Continuous audit, evidence behind every finding.<br>Free trial-balance check: risk points in minutes ↓ |
 | Links (up to 5) | 1. https://www.seg-audit.com (title: الموقع) · 2. https://app.seg-audit.com/ar/signup?utm_source=instagram&utm_medium=social-bio&utm_campaign=founding-members-2026&utm_content=bio (title: SEG Audit) |
 | Category | Financial Service |
 | Contact options | Email info@seg-audit.com · phone/WhatsApp +20 106 239 9941 |
-| Highlights | 01 «SEG Audit» · 02 «المؤسِّسون» · 03 «الثقة» · 04 «المقالات» · 05 «تواصل» (covers in `highlights/`) |
+| Highlights | 01 «SEG» · 02 «المؤسِّسون» · 03 «الثقة» · 04 «المقالات» · 05 «تواصل» (covers in `highlights/`) |
 
 ## YouTube
 
@@ -92,11 +92,11 @@ The founder edits his own headline and about; this is a suggestion only.
 | Channel name | Modern Financial Technology (MFT) |
 | Handle | @**modernfintech**: **taken** by a channel titled "ModernFinTech4k" (checked 3 Nov 2026). If it's MFT's, rename it; if not, use **@mftfintech** |
 | Description (1,000) | The LinkedIn overview (AR paragraph first, then EN) |
-| Links | www.seg-audit.com (الموقع) · app.seg-audit.com (SEG Audit) · LinkedIn · Instagram |
+| Links | www.seg-audit.com (الموقع) · app.seg-audit.com (SEG) · LinkedIn · Instagram |
 | Contact email | info@seg-audit.com |
 | Banner | `covers/youtube-channel-banner_2560x1440.png` |
 | Watermark | `watermark/youtube-watermark_150x150.png`, shown for the entire video, bottom-right |
-| Keywords | المراجعة المستمرة, SEG Audit, Odoo, المراجعة الداخلية, المدير المالي الافتراضي, continuous audit, internal audit, virtual CFO |
+| Keywords | Standard Enterprise Governance, SEG, المراجعة المستمرة, SEG Audit, Odoo, المراجعة الداخلية, المدير المالي الافتراضي, continuous audit, internal audit, virtual CFO |
 
 ## TikTok
 
@@ -115,8 +115,8 @@ The founder edits his own headline and about; this is a suggestion only.
 |---|---|
 | Name (50) | Modern Financial Technology (MFT) |
 | Handle (15) | @**modernfintech** (13 chars; availability unconfirmed), fallback @mftfintech |
-| Bio (160), AR | المنصة التي تراجع نفسها. SEG Audit من MFT: فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. Odoo ERP والمراجعة والمدير المالي الافتراضي. |
-| Bio (160), EN | The platform that reviews itself. SEG Audit by MFT: a free check of your company’s trial balance that flags its risk points in minutes. |
+| Bio (160), AR | Standard Enterprise Governance: المنصة التي تراجع نفسها. من MFT: فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. Odoo ERP والمراجعة والمدير المالي الافتراضي. |
+| Bio (160), EN | Standard Enterprise Governance: the platform that reviews itself. By MFT: a free check of your company’s trial balance that flags its risk points in minutes. |
 | Location | Cairo, Egypt |
 | Website | https://www.seg-audit.com |
 | Header / avatar | `covers/x-header_1500x500.png` · `avatars/avatar_x_400x400.png` |

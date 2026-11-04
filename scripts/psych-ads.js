@@ -99,7 +99,7 @@ function loss(kind) {
       <div class="disc" style="--s:${sizes[i]}">${i === 0 ? '<span class="red-dot"></span>' : ''}<span class="amt">${ar(amt)}</span>${i === 3 ? '<span class="badge">!</span>' : ''}</div>
       <span class="when">${when}</span></div>`).join('<div class="arrow"></div>');
   return page(kind, {
-    eyebrow: '<b>SEG Audit</b> · الخطأ الصغير',
+    eyebrow: '<b>Standard Enterprise Governance</b> · الخطأ الصغير',
     head: 'الخطأ اللي مش شايفه<br><em>بيكبر.</em>',
     sub: 'قيد غلط صغير النهارده… مفاجأة كبيرة في الإقفال. اكشفه بدري.',
     tag: `${DEMO} · المبالغ بالجنيه`,
@@ -121,7 +121,7 @@ function loss(kind) {
 function curiosity(kind) {
   const rows = [['حسابات معلّقة بقالها شهور', 1], ['أرصدة عكس طبيعتها', 1], ['قيود يدوية كثيفة على حسابات حساسة', 1], ['ميزان مش متزن', 0], ['قيود بتاريخ رجعي بعد الإقفال', 0]];
   return page(kind, {
-    eyebrow: '<b>SEG Audit</b> · فحص الميزان',
+    eyebrow: '<b>Standard Enterprise Governance</b> · فحص الميزان',
     head: '<em>٥</em> حاجات في دفاترك<br>مش شايفها.',
     sub: '٣ منهم قدامك… والاتنين الباقيين في ميزانك.',
     visual: `<div class="card">${rows.map(([t, shown], i) => `<div class="r${shown ? '' : ' hid'}"><span class="n">${ar(i + 1)}</span><span class="t">${t}</span>${shown ? '<span class="red-dot"></span>' : ''}</div>`).join('')}
@@ -143,7 +143,7 @@ function curiosity(kind) {
 // ---------------------------------------------------------------- 3) shocking specificity
 function shock(kind) {
   return page(kind, {
-    eyebrow: '<b>SEG Audit</b> · رصيد شاذ',
+    eyebrow: '<b>Standard Enterprise Governance</b> · رصيد شاذ',
     head: 'خزينتك <em>بالسالب؟</em>',
     sub: 'النقدية ما ينفعش تبقى سالب. لو حصل، يبقى فيه قيد غلط مستخبي.',
     visual: `<div class="acct">
@@ -167,7 +167,7 @@ function shock(kind) {
 function scarcity(kind) {
   const seats = Array.from({ length: TOTAL }, (_, i) => `<i class="${i < FILLED ? 'f' : i === FILLED ? 'nx' : ''}"></i>`).join('');
   return page(kind, {
-    eyebrow: '<b>SEG Audit</b> · الأعضاء المؤسِّسون',
+    eyebrow: '<b>Standard Enterprise Governance</b> · الأعضاء المؤسِّسون',
     head: `باقي <em>${ar(LEFT)}</em> من ${ar(TOTAL)}.`,
     sub: `انضمّت ${ar(FILLED)} شركة. ${ar(LEFT)} مقعد بس فاضل بسعر مؤسِّس مدى الحياة.`,
     visual: `<div class="seats">${seats}</div><div class="legend"><span><i class="f"></i>انضمّت</span><span><i class="nx"></i>مقعدك</span><span><i></i>متاح</span></div>`,
@@ -186,7 +186,7 @@ function authority(kind) {
   const ticks = Array.from({ length: 36 }, (_, i) => { const a = (i / 36) * 2 * Math.PI, r = 44;
     return `<path d="M${50 + r * Math.cos(a) - 1.6} ${50 + r * Math.sin(a)} l1.3 1.4 l2.4 -2.8" fill="none" stroke="${CYAN}" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round" opacity="${0.35 + 0.65 * ((i % 4) === 0)}"/>`; }).join('');
   return page(kind, {
-    eyebrow: '<b>SEG Audit</b> · الثقة',
+    eyebrow: '<b>Standard Enterprise Governance</b> · الثقة',
     head: 'المنصة التي<br><em>تراجع نفسها.</em>',
     sub: `قبل ما تراجع دفاترك: +${TESTS} اختبار آلي قبل كل تحديث للمنصة، وكل تقرير يعتمده مراجع باسمه.`,
     visual: `<div class="seal"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" fill="rgba(27,183,205,.08)" stroke="rgba(27,183,205,.6)" stroke-width=".6"/><circle cx="50" cy="50" r="31" fill="none" stroke="rgba(255,255,255,.18)" stroke-width=".4" stroke-dasharray="1 1.6"/>${ticks}</svg>
@@ -204,7 +204,7 @@ function authority(kind) {
 function anchoring(kind) {
   const vertical = kind === 'story';
   return page(kind, {
-    eyebrow: '<b>SEG Audit</b> · قبل الإقفال',
+    eyebrow: '<b>Standard Enterprise Governance</b> · قبل الإقفال',
     head: 'مفاجأة الإقفال بتكلّفك…<br><em>الفحص ببلاش.</em>',
     sub: 'اعرف نقاط الخطر في ميزانك قبل ما تبقى قيود تصحيح وأسابيع تسويات.',
     visual: `<div class="cmp">
@@ -354,9 +354,9 @@ body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:#fff;bac
 function eye(kind) {
   const rows = Array.from({ length: 9 }, (_, i) => `<rect x="${-26 + (i % 2) * 4}" y="${-24 + i * 6}" width="${40 - (i % 3) * 8}" height="1.6" rx=".8" fill="rgba(255,255,255,.55)"/>`).join('');
   return page(kind, {
-    eyebrow: '<b>SEG Audit</b> · رقابة مستمرة',
+    eyebrow: '<b>Standard Enterprise Governance</b> · رقابة مستمرة',
     head: 'عين على دفاترك.<br><em>كل يوم.</em>',
-    sub: 'مش مرة في السنة. SEG Audit بيراجع باستمرار، ولكل ملاحظة دليلها.',
+    sub: 'مش مرة في السنة. SEG بيراجع باستمرار، ولكل ملاحظة دليلها.',
     visual: `<div class="eyebox"><svg viewBox="-122 -70 244 132">
         <defs><radialGradient id="iris" cx="0" cy="0" r="34" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#7FE3EF"/><stop offset=".55" stop-color="${CYAN}"/><stop offset="1" stop-color="#0E6F80"/></radialGradient>
           <clipPath id="lid"><path d="M-100 4 C-64 -50 64 -50 100 -6 C64 46 -64 50 -100 4Z"/></clipPath>
@@ -420,9 +420,9 @@ async function main() {
   await browser.close();
 
   if (!only) {
-    const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG Audit persuasion pack</title>
+    const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG persuasion pack</title>
 <style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.6 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 4px}.p{margin:0 0 12px;color:#3B4262;max-width:80ch}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;align-items:start}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto}figcaption{font-size:12px;margin-top:8px;word-break:break-all;direction:ltr;text-align:left}.k{display:inline-block;font-size:12px;font-weight:700;color:#0F7C91;direction:ltr}</style>
-<h1>SEG Audit: حزمة علم نفس الإقناع</h1><p class="p">مولَّدة بالكود عبر scripts/psych-ads.js. navy وcyan وأبيض، وأحمر إنذار #C0392B لعلامات الخطر الصغيرة فقط، بلا ذهبي. كل الأرقام داتا اختبارية معلَّمة «مثال توضيحي»، ما عدا أرقام برنامج الأعضاء المؤسِّسين (العرض المعلن) وعدد الاختبارات (من كود المنصة).</p>
+<h1>Standard Enterprise Governance (SEG): حزمة علم نفس الإقناع</h1><p class="p">مولَّدة بالكود عبر scripts/psych-ads.js. navy وcyan وأبيض، وأحمر إنذار #C0392B لعلامات الخطر الصغيرة فقط، بلا ذهبي. كل الأرقام داتا اختبارية معلَّمة «مثال توضيحي»، ما عدا أرقام برنامج الأعضاء المؤسِّسين (العرض المعلن) وعدد الاختبارات (من كود المنصة).</p>
 ${DESIGNS.map((d) => `<h2>${d.slug} <span class="k">${d.principle}</span></h2><p class="p">${d.note}</p><div class="g">${written.filter((x) => x.d === d).map((x) => `<figure><img loading="lazy" src="${d.slug}/${x.base}.webp" alt="${x.base}"><figcaption>${d.slug}/${x.base}.jpg · ${x.w}×${x.h}</figcaption></figure>`).join('')}</div>`).join('\n')}`;
     fs.writeFileSync(path.join(OUT, 'index.html'), html);
     console.log(`${written.length} designs × 2 formats`);

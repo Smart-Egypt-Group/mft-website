@@ -80,7 +80,7 @@ h1{font-weight:900;font-size:${story ? 76 : 50}px;line-height:1.2} h1 em{font-st
 .f .e::before{content:'';flex:0 0 auto;width:${story ? 18 : 14}px;height:${story ? 18 : 14}px;border-radius:4px;border:2px solid #0F7C91}
 .draft{margin-top:auto;font-size:${story ? 19 : 14}px;color:#5A6483;font-weight:700;text-align:center}`;
   const body = `
-<div class="top"><p class="eyebrow"><b>SEG Audit</b> · شاشة تقرير</p>
+<div class="top"><p class="eyebrow"><b>Standard Enterprise Governance</b> · شاشة تقرير</p>
   <h1>شوف SEG بيكشف إيه<br>في دفاتر شركة <em>نموذجية</em>.</h1>
   <span class="ribbon">${DEMO}</span></div>
 <div class="screen">

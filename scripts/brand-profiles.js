@@ -23,7 +23,7 @@ const MARK_WHITE = 'data:image/png;base64,' + fs.readFileSync(path.join(ROOT, 's
 const MARK_RATIO = 1024 / 1406; // mft-mark-*.png width / height
 
 const LINE = { ar: 'المنصة التي تراجع نفسها', en: 'The platform that reviews itself' };
-const EYEBROW = 'MODERN FINANCIAL TECHNOLOGY · SEG AUDIT';
+const EYEBROW = 'MODERN FINANCIAL TECHNOLOGY · STANDARD ENTERPRISE GOVERNANCE';
 const URL = 'app.seg-audit.com';
 
 // ---- avatar: white mark + "MFT" on navy, everything inside the circle crop (radius 0.5) with room

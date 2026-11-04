@@ -99,7 +99,7 @@ Rules:
 | Item | Standard |
 |---|---|
 | Display name | **Modern Financial Technology (MFT)**: use the full form everywhere it fits |
-| Platform / product | **SEG — Standard Enterprise Governance** in full at least once in every long text (About, Overview, Description); **SEG Audit** for the product, and alone in short bios |
+| Platform / product | **Standard Enterprise Governance (SEG)** is the prominent name everywhere: ads, designs, posts, site, profiles (CEO, 4 Nov 2026). Full name on first mention, then **SEG**. **SEG Audit** only when we mean the audit module itself. Old rule, kept for reference: **SEG Audit** for the product, and alone in short bios |
 | Handle | **@modernfintech** everywhere (Instagram already uses it). Fallback where taken: **@mftfintech** |
 | Website field | **https://www.seg-audit.com** |
 | Platform link (in bios, pinned posts) | **app.seg-audit.com** |

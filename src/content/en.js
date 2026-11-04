@@ -101,7 +101,7 @@ module.exports = {
           { label: 'Trust & security', href: 'trust/' },
           { label: 'Founding Members', href: 'founding-members/' },
           { label: 'Partners', href: 'partners/' },
-          { label: 'seg-audit platform', href: 'https://app.seg-audit.com', external: true }
+          { label: 'SEG platform', href: 'https://app.seg-audit.com', external: true }
         ]
       }
     ],
@@ -118,7 +118,7 @@ module.exports = {
       eyebrow: 'Financial Clarity, Delivered',
       headline: 'Decisions built on {accent}numbers{/accent}.\nNot on guesses.',
       subhead:
-        'MFT turns your data into clear financial reports on profitability, cash flow and internal controls, backed by a licensed audit team, Odoo ERP experts, and the seg-audit platform.',
+        'MFT turns your data into clear financial reports on profitability, cash flow and internal controls, backed by a licensed audit team, Odoo ERP experts, and the SEG platform.',
       cta: { label: 'Check your trial balance free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
       trust: [
@@ -133,7 +133,7 @@ module.exports = {
       eyebrow: 'Financial Clarity, Delivered',
       headline: 'Making decisions on numbers, or on guesses?',
       subhead:
-        'MFT turns your data into clear financial reports on profitability, cash flow and internal controls, backed by a licensed audit team, Odoo ERP experts, and the seg-audit platform.',
+        'MFT turns your data into clear financial reports on profitability, cash flow and internal controls, backed by a licensed audit team, Odoo ERP experts, and the SEG platform.',
       cta: { label: 'Check your trial balance free', href: SIGNUP },
       trust: 'Trusted by finance teams across Egypt, Saudi Arabia, and the US',
       dashboard: {
@@ -161,8 +161,8 @@ module.exports = {
       // The hero hooks on the first line: a live "scanning" strip, then a question about real money, not audit jargon.
       eyebrow: 'Financial Clarity, Delivered',
       live: `Live check of your books: ${N(F.checks)} checks across ${F.reports} reports`,
-      headline: 'How many duplicate payments left your company this year {accent}without anyone noticing?{/accent}',
-      subhead: 'We read your books straight from your ERP, read-only, and show you every finding ranked by severity, with its evidence.',
+      headline: 'Standard Enterprise Governance: {accent}the platform that audits itself{/accent}',
+      subhead: 'How many duplicate payments left your company this year without anyone noticing? SEG reads your books straight from your ERP, read-only, and shows you every finding ranked by severity, with its evidence.',
       assurance: ['Read-only', 'Your data stays on your system', 'No number without evidence'],
       cta: { label: 'Check your trial balance free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
@@ -193,7 +193,7 @@ module.exports = {
     trust: {
       eyebrow: 'Why you can trust the result',
       title: 'Nothing in your report can be tampered with quietly.',
-      intro: 'Five guarantees built into seg-audit and actually tested, not promises on a policy page.',
+      intro: 'Five guarantees built into SEG and actually tested, not promises on a policy page.',
       items: [
         {
           title: 'Nobody can alter your numbers without you knowing',
@@ -216,7 +216,7 @@ module.exports = {
           body: `Test code is ${Math.floor(F.testRatio * 100)}% the size of the platform itself, and some of those tests guard the governance rules: one of them stopped a rule-breaking change before it reached any client.`
         }
       ],
-      note: `Test and check counts are read from the platform code (${F.measuredOn}); the other guarantees were measured in a documented internal review of seg-audit (August 2026). Details on the trust page.`
+      note: `Test and check counts are read from the platform code (${F.measuredOn}); the other guarantees were measured in a documented internal review of SEG (August 2026). Details on the trust page.`
     },
 
     positioning: {
@@ -255,7 +255,7 @@ module.exports = {
         {
           when: 'Day 0',
           title: 'Connect or send your data',
-          body: 'Connect Odoo to the seg-audit platform read-only, or share your last closed month as a trial balance or a spreadsheet. No preparation, no commitment.'
+          body: 'Connect Odoo to the SEG platform read-only, or share your last closed month as a trial balance or a spreadsheet. No preparation, no commitment.'
         },
         {
           when: 'Within minutes',
@@ -305,7 +305,7 @@ module.exports = {
           figure: '23 transactions',
           label: 'missed by manual review, surfaced in six weeks',
           body:
-            'Running seg-audit alongside the external audit of the second quarter, the engine flagged a duplicate payment to one supplier registered under two vendor codes, caught before the close, not after it.',
+            'Running SEG alongside the external audit of the second quarter, the engine flagged a duplicate payment to one supplier registered under two vendor codes, caught before the close, not after it.',
           quote: '“We would have found it eventually. Eventually is expensive.”'
         },
         {
@@ -413,7 +413,7 @@ module.exports = {
           { q: 'How long does an implementation take?', a: 'Typically eight to sixteen weeks from discovery to go-live for a single entity, depending on modules and data migration. We commit to a calendar at the end of discovery.' },
           { q: 'Do you handle Egyptian e-invoicing and Saudi ZATCA?', a: 'Yes. ETA e-invoicing, ZATCA phase two, withholding tax and multi-entity consolidation are part of the standard build.' },
           { q: 'What happens after go-live?', a: 'Ninety days of stabilisation are included, then optional technical support with agreed response times.' },
-          { q: 'We are an Odoo partner serving several clients. Does seg-audit work for us?', a: 'Yes. Each client lives in its own organisation, isolated from every other one, and that isolation has been tested on seven real organisations with zero leaks. Talk to us about a partner arrangement and how many clients you serve.' },
+          { q: 'We are an Odoo partner serving several clients. Does SEG work for us?', a: 'Yes. Each client lives in its own organisation, isolated from every other one, and that isolation has been tested on seven real organisations with zero leaks. Talk to us about a partner arrangement and how many clients you serve.' },
         ]
       },
       {
@@ -422,7 +422,7 @@ module.exports = {
         short: 'Control testing and risk reviews by a CPA-led team, reported for the board.',
         tagline: 'Find the gap before the auditor, the bank or the tax authority does.',
         body: [
-          'An internal audit programme designed around your actual risks: revenue leakage, duplicate payments, near-duplicate vendors, inventory shrinkage, access rights and tax exposure. Fieldwork is done inside your ERP and supported by seg-audit, MFT’s own platform, which scores every transaction by risk instead of sampling five percent and hoping the errors are in it.',
+          'An internal audit programme designed around your actual risks: revenue leakage, duplicate payments, near-duplicate vendors, inventory shrinkage, access rights and tax exposure. Fieldwork is done inside your ERP and supported by Standard Enterprise Governance (SEG), MFT’s own platform, which scores every transaction by risk instead of sampling five percent and hoping the errors are in it.',
           'Annual audits leave eleven months uncovered. Our programmes run monthly or continuously with the same rigour, and every finding is ranked by financial impact and comes with an owner, a fix and a deadline.'
         ],
         deliverables: [
@@ -438,7 +438,7 @@ module.exports = {
         definition: 'Internal audit by MFT is a risk-based programme run by a CPA-led team inside your ERP: controls are tested, findings are ranked by financial impact, and each one carries an owner, a fix and a deadline.',
         faq: [
           { q: 'How is this different from our annual external audit?', a: 'External audit samples and looks back once a year. Our programme runs monthly or continuously, covers the whole population by risk, and is designed to prevent findings rather than report them.' },
-          { q: 'Do you use software or people?', a: 'Both. seg-audit and the MFT Auditor agent do the coverage; licensed auditors decide what matters and sign the report.' },
+          { q: 'Do you use software or people?', a: 'Both. SEG and the MFT Auditor agent do the coverage; licensed auditors decide what matters and sign the report.' },
           { q: 'Can findings be shared with our external auditor or bank?', a: 'Yes. Reports are written for boards and third parties, with ISA-classified findings and an evidence trail.' },
           { q: 'I am an external auditor. Can I rely on what the platform produces?', a: 'Every report and every approval is written to a log that cannot be edited or trimmed without it showing. And an approval is bound to the exact version that was approved: regenerate the report and the old approval lapses instead of silently carrying over to a version nobody has seen.' },
           { q: 'I run internal audit. What happens to a finding after it is detected?', a: 'It is not forgotten. The finding stays on record with its evidence and severity, a repeat in a later period is linked to the earlier one, and it cannot be closed or dismissed without a named, registered approver. Your MFT accountant follows remediation with you to closure as part of the programme.' },
@@ -575,7 +575,7 @@ module.exports = {
         body: [
           'We set up your company’s Claude Team workspace: members and roles, single sign-on (SSO), spend controls, projects and knowledge bases for each team, and connections to work tools such as Google Workspace, Microsoft 365 and Slack.',
           'Your company subscribes to Claude directly and in its own name, so ownership, billing and data stay with you. You add the MFT team as an admin in the workspace during setup, then we hand administration back to you in full.',
-          'Then we train each role to use it in their actual work, from finance and audit to sales, HR and management, with a written usage policy that sets what company data may go in. It is the same approach we build the seg-audit platform on: AI prepares, a person approves.'
+          'Then we train each role to use it in their actual work, from finance and audit to sales, HR and management, with a written usage policy that sets what company data may go in. It is the same approach we build the SEG platform on: AI prepares, a person approves.'
         ],
         deliverables: [
           'Workspace, members, roles and single sign-on set up',
@@ -727,7 +727,7 @@ module.exports = {
         'ISO-aligned internal-control framework',
         '500+ reports delivered across Egypt, Saudi Arabia and the US',
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
-        `SEG Audit: the continuous-audit module of MFT’s SEG (Standard Enterprise Governance) platform, ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
+        `Standard Enterprise Governance (SEG) by MFT, with its continuous-audit module SEG Audit: ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
       ]
     },
     team: {
@@ -809,21 +809,21 @@ module.exports = {
   // per activity come from seg-audit (analysis/odoo_best_practice.py → FAMILY_RULES, ISIC mapping).
   // Ready-made module packages and their Odoo App Store listing are not built yet: marked "soon".
   // Commission and resale margin are not decided: "set in the partner agreement", no figures.
-  // Founding Members (SEG Audit launch, November 2026). Seat numbers come from site.config → founding:
+  // Founding Members (Standard Enterprise Governance (SEG) launch, November 2026). Seat numbers come from site.config → founding:
   // {left} remaining, {filled} joined, {total} seats. Never type the numbers here.
   // PENDING (Ahmed): the "Founding terms" benefit and the "after 50" FAQ are commercial commitments;
   // approve or remove before merge.
   founding: {
     // Real scarcity, no counter (launch lead, 3 Nov 2026): only 50 seats at a founder price for life.
     // Counter copy lives in founding.counter below and shows only when site.config → founding.showCount is true.
-    title: 'SEG Audit Founding Members | Only {total} seats at a founder price for life',
-    description: 'The SEG Audit Founding Members programme: only {total} seats, at a founder price for life. Start with a free check of your company’s trial balance at app.seg-audit.com.',
+    title: 'Standard Enterprise Governance (SEG) Founding Members | Only {total} seats at a founder price for life',
+    description: 'The Standard Enterprise Governance (SEG) Founding Members programme: only {total} seats, at a founder price for life. Start with a free check of your company’s trial balance at app.seg-audit.com.',
     ogAlt: 'Founding Members programme: only {total} seats at a founder price for life',
-    bar: 'SEG Audit Founding Members: only {total} seats at a founder price for life. Learn more',
+    bar: 'SEG Founding Members: only {total} seats at a founder price for life. Learn more',
     page: { eyebrow: 'Founding Members' },
     hero: {
-      headline: 'SEG Audit {accent}Founding Members{/accent}: only {total} seats at a founder price for life',
-      subhead: 'We are opening SEG Audit, the continuous audit module of the SEG (Standard Enterprise Governance) platform from MFT, to {total} companies as Founding Members, at a founder price that stays with you for life. When the seats are taken, the programme closes.',
+      headline: 'SEG {accent}Founding Members{/accent}: only {total} seats at a founder price for life',
+      subhead: 'We are opening Standard Enterprise Governance (SEG) from MFT, with its continuous audit module SEG Audit, to {total} companies as Founding Members, at a founder price that stays with you for life. When the seats are taken, the programme closes.',
       cta: 'Claim your seat',
       secondary: 'How to join',
       assurance: ['Read-only access to your system', 'Evidence behind every finding', 'Reports in Arabic and English'],
@@ -832,7 +832,7 @@ module.exports = {
     },
     homeBand: {
       title: 'Founding Members: only {total} seats at a founder price for life',
-      body: 'Founding seats on SEG Audit are capped at {total} and will not reopen. Start with a free check of your company’s trial balance that flags its risk points in minutes.',
+      body: 'Founding seats on SEG are capped at {total} and will not reopen. Start with a free check of your company’s trial balance that flags its risk points in minutes.',
       more: 'Programme details'
     },
     final: {
@@ -842,16 +842,16 @@ module.exports = {
     // The real counter, later: replaces the matching copy above only when showCount is true and
     // founding.filled holds a confirmed subscription count. Tokens: {filled}, {left}, {total}.
     counter: {
-      title: 'SEG Audit Founding Members | {left} of {total} seats left',
-      description: 'The SEG Audit Founding Members programme: {total} seats at a founder price for life; {filled} companies in, {left} left.',
-      ogAlt: '{left} of {total} seats left: SEG Audit Founding Members',
-      bar: 'SEG Audit Founding Members: {left} of {total} seats left. Learn more',
-      'hero.headline': '{left} of {total} seats left: SEG Audit {accent}Founding Members{/accent}',
+      title: 'Standard Enterprise Governance (SEG) Founding Members | {left} of {total} seats left',
+      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats at a founder price for life; {filled} companies in, {left} left.',
+      ogAlt: '{left} of {total} seats left: Standard Enterprise Governance (SEG) Founding Members',
+      bar: 'SEG Founding Members: {left} of {total} seats left. Learn more',
+      'hero.headline': '{left} of {total} seats left: SEG {accent}Founding Members{/accent}',
       'hero.subhead': '{filled} companies have joined the Founding Members; {left} seats remain at a founder price for life.',
       'hero.meterCaption': 'seats left of {total}',
       'hero.legend.filled': '{filled} companies joined',
       'homeBand.title': 'Founding Members: {left} of {total} seats left',
-      'homeBand.body': '{filled} companies have joined SEG Audit. Founding seats are capped at {total}, at a founder price for life, and will not reopen.',
+      'homeBand.body': '{filled} companies have joined SEG. Founding seats are capped at {total}, at a founder price for life, and will not reopen.',
       'final.title': '{left} of {total} seats left.',
       'final.body': '{filled} companies joined before you. Claim your seat before the count closes.'
     },
@@ -899,12 +899,12 @@ module.exports = {
   },
 
   partners: {
-    title: 'SEG Audit partner programme | Accounting and audit firms, Odoo partners',
-    description: 'The SEG Audit partner programme for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia: review your clients faster from one account for up to 25 companies, with Arabic reports signed off in your firm’s name.',
+    title: 'Standard Enterprise Governance (SEG) partner programme | Accounting and audit firms, Odoo partners',
+    description: 'The Standard Enterprise Governance (SEG) partner programme for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia: review your clients faster from one account for up to 25 companies, with Arabic reports signed off in your firm’s name.',
     page: {
       eyebrow: 'Partners',
       title: 'Your clients run Odoo. Continuous audit, under your name.',
-      intro: 'The partner programme of SEG Audit, the continuous audit module of MFT’s SEG (Standard Enterprise Governance) platform, for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia. Give your clients continuous review of their books: read-only access, every finding with its evidence, and your firm’s sign-off before the final sign-off by an MFT reviewer.',
+      intro: 'The partner programme of Standard Enterprise Governance (SEG) from MFT, with its continuous audit module SEG Audit, for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia. Give your clients continuous review of their books: read-only access, every finding with its evidence, and your firm’s sign-off before the final sign-off by an MFT reviewer.',
       cta: 'Become a partner'
     },
     value: {
@@ -1016,12 +1016,12 @@ module.exports = {
   },
 
   trustCenter: {
-    title: 'Trust & security | seg-audit by MFT',
-    description: 'What the seg-audit platform guarantees and how each guarantee is enforced in code: read-only access, no guessed numbers, a ledger that cannot be edited silently, full client isolation. Plus what we do not claim yet.',
+    title: 'Trust & security | Standard Enterprise Governance (SEG) by MFT',
+    description: 'What the SEG platform guarantees and how each guarantee is enforced in code: read-only access, no guessed numbers, a ledger that cannot be edited silently, full client isolation. Plus what we do not claim yet.',
     page: {
       eyebrow: 'Trust & security',
       title: 'What we guarantee, how it is enforced, and what we do not claim yet.',
-      intro: 'Every guarantee on this page is built into the seg-audit platform and guarded by an automated test, not a line in a policy. At the end of the page: what we have not done yet, written just as plainly.'
+      intro: 'Every guarantee on this page is built into the Standard Enterprise Governance (SEG) platform and guarded by an automated test, not a line in a policy. At the end of the page: what we have not done yet, written just as plainly.'
     },
     groups: [
       {
@@ -1114,7 +1114,7 @@ module.exports = {
       body: 'Email {email} and please do not disclose it publicly. We reply within 72 business hours.'
     },
     securityEmail: 'security@seg-audit.com',
-    platformLink: 'seg-audit platform',
+    platformLink: 'SEG platform',
     updated: `Last updated: ${F.measuredOn}`
   },
 
@@ -1133,9 +1133,9 @@ module.exports = {
       },
       {
         title: 'Cookies and visits',
-        body: 'This site uses cookies and advertising pixels that run when the page opens, and we disclose them here. When you submit a form on the site or create an account on SEG Audit, your acceptance of this privacy notice and the terms includes consent to the cookies and advertising pixels described in this section.',
+        body: 'This site uses cookies and advertising pixels that run when the page opens, and we disclose them here. When you submit a form on the site or create an account on SEG, your acceptance of this privacy notice and the terms includes consent to the cookies and advertising pixels described in this section.',
         items: [
-          { k: 'Essential', v: 'your browser keeps the visit source (utm) for the session, which is passed to the sign-up link on SEG Audit so we know which ad or post brought you. It is not sent to a third party.' },
+          { k: 'Essential', v: 'your browser keeps the visit source (utm) for the session, which is passed to the sign-up link on SEG so we know which ad or post brought you. It is not sent to a third party.' },
           { k: 'Advertising', v: 'the Meta Pixel from Meta Platforms loads when the page opens, for three purposes: advertising, conversion measurement and retargeting (showing our ads to people who visited the site).' },
           { k: 'What is sent to Meta', v: 'the page address and the previous page, the time of the visit, browser and device type, your IP address, clicks on the free-check button, and a cookie identifier. It sets the _fbp cookie (up to 90 days), and _fbc when you arrive from an ad. We do not send what you type into forms.' },
           { k: 'Later', v: 'we may add the TikTok Pixel for the same purposes and under the same rules, after this notice is updated.' },
@@ -1165,7 +1165,7 @@ module.exports = {
       },
       {
         title: 'Other MFT platforms',
-        body: 'The seg-audit platform (app.seg-audit.com) has its own terms and privacy policy, which apply when you create an account there.'
+        body: 'The SEG platform (app.seg-audit.com) has its own terms and privacy policy, which apply when you create an account there.'
       }
     ],
     updated: 'Last updated: November 2026'
@@ -1248,10 +1248,10 @@ module.exports = {
       note: 'Live Odoo write-back is delivered per client after their connector is configured; until then approved drafts are handed to your team as ready-to-post entries.'
     },
     segAudit: {
-      eyebrow: 'Inside seg-audit',
-      title: 'Every seg-audit report will be AI-reviewed before it reaches you.',
-      body: 'The Auditor and Virtual CFO agents are being built into the seg-audit report pipeline itself, not as a paid add-on. Their output enters the platform’s existing two-stage human approval chain as a draft, the requester never approves their own run, and nothing is released without a person’s decision. The integration is in final review and switches on only after the AI-processing disclosure is published in the platform’s terms.',
-      link: { label: 'About the seg-audit platform', href: 'https://app.seg-audit.com' }
+      eyebrow: 'Inside SEG',
+      title: 'Every SEG report will be AI-reviewed before it reaches you.',
+      body: 'The Auditor and Virtual CFO agents are being built into the SEG report pipeline itself, not as a paid add-on. Their output enters the platform’s existing two-stage human approval chain as a draft, the requester never approves their own run, and nothing is released without a person’s decision. The integration is in final review and switches on only after the AI-processing disclosure is published in the platform’s terms.',
+      link: { label: 'About the SEG platform', href: 'https://app.seg-audit.com' }
     },
     faq: {
       title: 'Direct answers',
@@ -1261,7 +1261,7 @@ module.exports = {
         { q: 'Does an agent ever post or pay anything by itself?', a: 'No. Agents only draft. A named, registered person approves every action; above your materiality threshold a second person must approve. Corrections are made by reversal entries, never deletion.' },
         { q: 'Where does my data live?', a: 'On your own Odoo (or other ERP). Agents read it through the API at query time; MFT does not copy your ledger into its systems.' },
         { q: 'How is it priced?', a: 'Per engagement, based on the agents you need, the number of entities and your monthly transaction volume. Request a quote and you receive a scoped proposal from an MFT accountant.' },
-        { q: 'Is this the same as seg-audit?', a: 'seg-audit is MFT’s audit and reporting platform. The same Auditor and CFO agents are being integrated into its report pipeline so every report is AI-reviewed before human review. MFT Intelligence is the standalone service you can engage directly, with or without seg-audit.' }
+        { q: 'Is this the same as SEG?', a: 'Standard Enterprise Governance (SEG) is MFT’s governance and audit platform. The same Auditor and CFO agents are being integrated into its report pipeline so every report is AI-reviewed before human review. MFT Intelligence is the standalone service you can engage directly, with or without seg-audit.' }
       ]
     },
     plans: {
@@ -1377,7 +1377,7 @@ module.exports = {
       { when: 'September 2026', title: 'MFT Intelligence v1.0', body: 'Twelve agent roles built. Auditor and Virtual CFO promoted to sellable; ten in internal validation.' },
       { when: 'September 2026', title: 'AI governance policy, enforced in code', body: 'Provider authorisation table, evidence gate, model policy and a seven-year run log, and changes require a written CEO decision in the same commit.' },
       { when: 'September 2026', title: 'Execute after approval', body: 'Approved drafts carried into Odoo by a restricted user; one or two named approvals by materiality; reversal-only corrections.' },
-      { when: 'September 2026', title: 'seg-audit integration, phase 1', body: 'Auditor and CFO drafts enter the platform’s existing two-stage approval chain. In final review; enabled after the AI disclosure is published.' },
+      { when: 'September 2026', title: 'SEG integration, phase 1', body: 'Auditor and CFO drafts enter the platform’s existing two-stage approval chain. In final review; enabled after the AI disclosure is published.' },
       { when: 'August 2026', title: 'Continuous-audit campaign', body: 'Published anonymised findings from live engagements: transactions missed by manual review surfaced in weeks; a valuation gap caught before year-end close.' }
     ]
   },

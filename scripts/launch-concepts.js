@@ -56,16 +56,16 @@ function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 10139
 const T = {
   ar: {
     cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com',
-    tb: { eb: 'SEG Audit · الفحص المجاني', head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', sub: 'مؤشرات من ميزان المراجعة فقط. ليس تقرير مراجعة كاملًا.', cols: ['الحساب', 'مدين', 'دائن'], total: 'الإجمالي',
+    tb: { eb: 'Standard Enterprise Governance · الفحص المجاني', head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', sub: 'مؤشرات من ميزان المراجعة فقط. ليس تقرير مراجعة كاملًا.', cols: ['الحساب', 'مدين', 'دائن'], total: 'الإجمالي',
       acc: ['النقدية', 'حساب معلّق', 'العملاء', 'الموردون', 'الإيرادات', 'تكلفة المبيعات', 'المصروفات'],
       legend: ['حسابات معلّقة', 'أرصدة شاذة', 'عدم اتزان', 'قيود يدوية كثيفة', 'تواريخ رجعية'] },
     hook: { l1: 'مين بيراجع دفاترك', s1: 'مين بيراجع', s2: 'دفاترك باقي', pre: 'باقي', post: 'يوم؟', cap: 'مراجعة سنوية واحدة. والسنة 365 يومًا.' },
-    self: { eb: 'SEG Audit · الثقة', head: 'المنصة التي تراجع نفسها.', sub: `قبل أن تراجع دفاترك: أكثر من ${TESTS} اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.` },
+    self: { eb: 'Standard Enterprise Governance · الثقة', head: 'المنصة التي تراجع نفسها.', sub: `قبل أن تراجع دفاترك: أكثر من ${TESTS} اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.` },
     ba: { before: 'قبل', after: 'بعد', head: 'من دفاتر لا يراها أحد، إلى تقرير تراه كاملًا.' },
-    ns: { eb: 'SEG Audit · صفر تخمين', head: 'رقم بلا مصدر؟ لا يدخل تقريرك.', sub: 'كل رقم في تقارير SEG Audit مرتبط بمصدره في دفاترك.', tag: 'بلا مصدر', note: 'مثال توضيحي' },
+    ns: { eb: 'Standard Enterprise Governance · صفر تخمين', head: 'رقم بلا مصدر؟ لا يدخل تقريرك.', sub: 'كل رقم في تقارير SEG مرتبط بمصدره في دفاترك.', tag: 'بلا مصدر', note: 'مثال توضيحي' },
     hemi: FM.showCount
-      ? { eb: 'SEG Audit · الأعضاء المؤسِّسون', title: `باقي ${LEFT} من ${FM.total} · ${FILLED} شركة انضمّت`, t1: `باقي ${LEFT} من ${FM.total}`, t2: `${FILLED} شركة انضمّت`, sub: 'احجز مقعدك قبل اكتمال العدد.', pill: 'احجز مقعدك  ·  app.seg-audit.com' }
-      : { eb: 'SEG Audit · برنامج الأعضاء المؤسِّسون', title: `${FM.total} مقعد فقط بسعر مؤسِّس مدى الحياة`, t1: `${FM.total} مقعد فقط`, t2: 'بسعر مؤسِّس مدى الحياة', sub: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', pill: 'احجز مقعدك  ·  app.seg-audit.com' },
+      ? { eb: 'Standard Enterprise Governance · الأعضاء المؤسِّسون', title: `باقي ${LEFT} من ${FM.total} · ${FILLED} شركة انضمّت`, t1: `باقي ${LEFT} من ${FM.total}`, t2: `${FILLED} شركة انضمّت`, sub: 'احجز مقعدك قبل اكتمال العدد.', pill: 'احجز مقعدك  ·  app.seg-audit.com' }
+      : { eb: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', title: `${FM.total} مقعد فقط بسعر مؤسِّس مدى الحياة`, t1: `${FM.total} مقعد فقط`, t2: 'بسعر مؤسِّس مدى الحياة', sub: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', pill: 'احجز مقعدك  ·  app.seg-audit.com' },
     car: {
       cover: { l1: 'أخطاء في دفاترك', l2: 'مش هتلاحظها', sub: 'وكلها باينة في ميزان المراجعة.', swipe: 'اسحب  ←' },
       // the five trial-balance indicators of the free check (CEO, 3 Nov 2026)
@@ -79,21 +79,21 @@ const T = {
       foot: 'فحص الميزان المجاني بيكشفها في دقائق.',
       end: { head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', line: 'مؤشرات من ميزان المراجعة فقط. ليس تقرير مراجعة كاملًا.', pill: 'افحص ميزانك مجانًا  ·  app.seg-audit.com' }
     },
-    vid: { a2: 'مراجعة سنوية واحدة. والسنة 365 يومًا.', a3: 'SEG Audit بيقرا دفاترك كل يوم.', a4: 'وكل ملاحظة معاها دليلها.', b1: 'دفاترك شكلها كده؟', b2: 'SEG Audit بيراجع…', b3: 'ملاحظة حرجة واحدة. ومعها مصدرها.' },
+    vid: { a2: 'مراجعة سنوية واحدة. والسنة 365 يومًا.', a3: 'SEG بيقرا دفاترك كل يوم.', a4: 'وكل ملاحظة معاها دليلها.', b1: 'دفاترك شكلها كده؟', b2: 'SEG بيراجع…', b3: 'ملاحظة حرجة واحدة. ومعها مصدرها.' },
     pov: { hook: 'ليه 50 شركة بس؟', name: 'أحمد أشرف', role: 'المؤسس والرئيس التنفيذي، MFT', pill: FM.showCount ? `باقي ${LEFT} من ${FM.total}` : `${FM.total} مقعدًا فقط بسعر مؤسِّس مدى الحياة`, ph: 'لقطة المؤسس هنا (POV)' }
   },
   en: {
     cta: 'Check your trial balance free  ·  app.seg-audit.com',
-    tb: { eb: 'SEG AUDIT · THE FREE CHECK', head: 'A free check of your company’s trial balance that flags its risk points in minutes', sub: 'Trial-balance indicators only. Not a full audit report.', cols: ['Account', 'Debit', 'Credit'], total: 'Total',
+    tb: { eb: 'STANDARD ENTERPRISE GOVERNANCE · THE FREE CHECK', head: 'A free check of your company’s trial balance that flags its risk points in minutes', sub: 'Trial-balance indicators only. Not a full audit report.', cols: ['Account', 'Debit', 'Credit'], total: 'Total',
       acc: ['Cash', 'Suspense', 'Receivables', 'Payables', 'Revenue', 'Cost of sales', 'Expenses'],
       legend: ['Suspense accounts', 'Abnormal balances', 'Imbalance', 'Heavy manual entries', 'Backdated entries'] },
     hook: { l1: 'Who reviews your books', s1: 'Who reviews your', s2: 'books the other', pre: 'the other', post: 'days?', cap: 'One annual audit. A year has 365 days.' },
-    self: { eb: 'SEG AUDIT · TRUST', head: 'The platform that reviews itself.', sub: `Before it reviews your books: ${TESTS}+ automated tests before every update, and a log nothing can change silently.` },
+    self: { eb: 'STANDARD ENTERPRISE GOVERNANCE · TRUST', head: 'The platform that reviews itself.', sub: `Before it reviews your books: ${TESTS}+ automated tests before every update, and a log nothing can change silently.` },
     ba: { before: 'Before', after: 'After', head: 'From books no one sees to a report you see in full.' },
-    ns: { eb: 'SEG AUDIT · ZERO GUESSWORK', head: 'A number with no source never reaches your report.', sub: 'Every number in a SEG Audit report links to its source in your books.', tag: 'No source', note: 'Illustrative example' },
+    ns: { eb: 'STANDARD ENTERPRISE GOVERNANCE · ZERO GUESSWORK', head: 'A number with no source never reaches your report.', sub: 'Every number in an SEG report links to its source in your books.', tag: 'No source', note: 'Illustrative example' },
     hemi: FM.showCount
-      ? { eb: 'SEG AUDIT · FOUNDING MEMBERS', title: `${LEFT} of ${FM.total} left · ${FILLED} companies joined`, t1: `${LEFT} of ${FM.total} left`, t2: `${FILLED} companies joined`, sub: 'Claim your seat before the count closes.', pill: 'Claim your seat  ·  app.seg-audit.com' }
-      : { eb: 'SEG AUDIT · FOUNDING MEMBERS PROGRAMME', title: `Only ${FM.total} seats, founder price for life`, t1: `Only ${FM.total} seats`, t2: 'Founder price for life', sub: 'Start with a free check of your company’s trial balance.', pill: 'Claim your seat  ·  app.seg-audit.com' },
+      ? { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', title: `${LEFT} of ${FM.total} left · ${FILLED} companies joined`, t1: `${LEFT} of ${FM.total} left`, t2: `${FILLED} companies joined`, sub: 'Claim your seat before the count closes.', pill: 'Claim your seat  ·  app.seg-audit.com' }
+      : { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', title: `Only ${FM.total} seats, founder price for life`, t1: `Only ${FM.total} seats`, t2: 'Founder price for life', sub: 'Start with a free check of your company’s trial balance.', pill: 'Claim your seat  ·  app.seg-audit.com' },
     car: {
       cover: { l1: 'mistakes in your books', l2: "you won't notice", sub: 'And every one shows in your trial balance.', swipe: 'Swipe  →' },
       items: [
@@ -106,7 +106,7 @@ const T = {
       foot: 'The free trial-balance check flags it in minutes.',
       end: { head: 'A free check of your company’s trial balance that flags its risk points in minutes', line: 'Trial-balance indicators only. Not a full audit report.', pill: 'Check your trial balance free  ·  app.seg-audit.com' }
     },
-    vid: { a2: 'One annual audit. A year has 365 days.', a3: 'SEG Audit reads your books every day.', a4: 'And every finding comes with its evidence.', b1: 'Do your books look like this?', b2: 'SEG Audit is reviewing…', b3: 'One critical finding. With its source.' },
+    vid: { a2: 'One annual audit. A year has 365 days.', a3: 'SEG reads your books every day.', a4: 'And every finding comes with its evidence.', b1: 'Do your books look like this?', b2: 'SEG is reviewing…', b3: 'One critical finding. With its source.' },
     pov: { hook: 'Why only 50 companies?', name: 'Ahmed Ashraf', role: 'Founder & CEO, MFT', pill: FM.showCount ? `${LEFT} of ${FM.total} left` : `Only ${FM.total} seats · founder price for life`, ph: 'Founder footage here (POV)' }
   }
 };
@@ -303,7 +303,7 @@ function hook360(w, h, lang, o = {}) {
     : { m: 90, eb: 110, l1: 230, l2: 0, num: 650, numPx: 380, post: 0, cal: [715, 120], cap: 890 };
   light(d, w / 2, S.num - S.numPx * 0.35, 380 * u, 0.24);
   const a = st(lang, S.m, w - S.m), pxL = (k === 'story' ? 128 : k === 'portrait' ? 104 : 96) * u;
-  text(d, { t: 'SEG Audit', ...a, y: S.eb, px: 30 * u, wt: 800, c: CYAN, ls: 3 * u });
+  text(d, { t: 'Standard Enterprise Governance', ...a, y: S.eb, px: 30 * u, wt: 800, c: CYAN, ls: 3 * u });
   if (k === 'story') {
     text(d, { t: C.s1, ...a, y: S.l1, px: pxL, maxW: w - 2 * S.m, fit: true });
     text(d, { t: C.s2, ...a, y: S.l2, px: pxL, maxW: w - 2 * S.m, fit: true });
@@ -557,7 +557,7 @@ function carouselSlide(i, lang) {
   const w = 1080, h = 1350, u = 1, d = design(w, h, u), C = T[lang].car, A = lang === 'ar', m = 90;
   const a = st(lang, m, w - m), b = en(lang, m, w - m);
   navyField(d, 0, 0, w, h, w * 0.5, h * 0.35);
-  text(d, { t: 'SEG Audit', ...a, y: 110, px: 26, c: CYAN, ls: 3 });
+  text(d, { t: 'Standard Enterprise Governance', ...a, y: 110, px: 26, c: CYAN, ls: 3 });
   text(d, { t: `${String(i + 1).padStart(2, '0')}/07`, ...b, y: 110, px: 26, wt: 700, c: DIM2, dir: 'ltr' });
   if (i === 0) {
     light(d, A ? w * 0.7 : w * 0.3, 470, 380, 0.3);
@@ -683,11 +683,11 @@ function videoFrames(lang) {
 }
 const SB = {
   ar: {
-    a: { title: 'فيديو قصير ١: «باقي 360 يوم» · 15 ثانية · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'الخطّاف: السؤال كامل على الشاشة، بلا كلام أول ثانية، ثم بصوت المؤسس'], ['0:03–0:06', 'التقويم: 365 نقطة، أسبوع عمل واحد مضيء'], ['0:06–0:10', 'النقاط تضيء سماويًا يومًا بعد يوم: SEG Audit يقرأ كل يوم'], ['0:10–0:13', 'التقرير الأبيض: الملاحظة السماوية ومعها مصدرها'], ['0:13–0:15', 'الختام: 50 مقعد فقط بسعر مؤسِّس مدى الحياة · الرابط في البايو']] },
+    a: { title: 'فيديو قصير ١: «باقي 360 يوم» · 15 ثانية · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'الخطّاف: السؤال كامل على الشاشة، بلا كلام أول ثانية، ثم بصوت المؤسس'], ['0:03–0:06', 'التقويم: 365 نقطة، أسبوع عمل واحد مضيء'], ['0:06–0:10', 'النقاط تضيء سماويًا يومًا بعد يوم: SEG يقرأ كل يوم'], ['0:10–0:13', 'التقرير الأبيض: الملاحظة السماوية ومعها مصدرها'], ['0:13–0:15', 'الختام: 50 مقعد فقط بسعر مؤسِّس مدى الحياة · الرابط في البايو']] },
     b: { title: 'فيديو قصير ٢: «قبل / بعد» · 12 ثانية', notes: [['0:00–0:03', 'الخطّاف: دفاتر مائلة متداخلة، والسؤال بخط ضخم'], ['0:03–0:06', 'خط المسح يمر من أعلى لأسفل: ما فوقه منظَّم وأبيض'], ['0:06–0:09', 'التقرير كاملًا: ملاحظة حرجة واحدة بالسماوي'], ['0:09–0:12', 'الختام: المقاعد · الرابط']] }
   },
   en: {
-    a: { title: 'Short video 1: "The other 360 days" · 15 s · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'Hook: the full question on screen, silent first second, then the founder’s voice'], ['0:03–0:06', 'The calendar: 365 dots, one working week lit'], ['0:06–0:10', 'Day by day the dots turn cyan: SEG Audit reads every day'], ['0:10–0:13', 'The white report: the cyan finding with its source'], ['0:13–0:15', 'End card: only 50 seats, founder price for life · link in bio']] },
+    a: { title: 'Short video 1: "The other 360 days" · 15 s · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'Hook: the full question on screen, silent first second, then the founder’s voice'], ['0:03–0:06', 'The calendar: 365 dots, one working week lit'], ['0:06–0:10', 'Day by day the dots turn cyan: SEG reads every day'], ['0:10–0:13', 'The white report: the cyan finding with its source'], ['0:13–0:15', 'End card: only 50 seats, founder price for life · link in bio']] },
     b: { title: 'Short video 2: "Before / After" · 12 s', notes: [['0:00–0:03', 'Hook: a tilted, overlapping ledger and the question in huge type'], ['0:03–0:06', 'The scan line sweeps down: above it, ordered and white'], ['0:06–0:09', 'The full report: one critical finding in cyan'], ['0:09–0:12', 'End card: the seats · the link']] }
   }
 };
@@ -871,9 +871,9 @@ async function main() {
 
   if (!only) {
     const groups = [...new Set(written.map((x) => x.dir))];
-    const html = `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG Audit launch concepts</title>
+    const html = `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG launch concepts</title>
 <style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.5 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 12px}p{margin:0 0 16px;color:#3B4262}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0 0/20px 20px}figcaption{font-size:12px;margin-top:8px;word-break:break-all}</style>
-<h1>SEG Audit launch: creative concepts</h1><p>Generated by scripts/launch-concepts.js. See README.md in this folder for the idea behind each concept and where to use it.</p>
+<h1>Standard Enterprise Governance (SEG) launch: creative concepts</h1><p>Generated by scripts/launch-concepts.js. See README.md in this folder for the idea behind each concept and where to use it.</p>
 ${groups.map((gname) => `<h2>${gname}</h2><div class="g">${written.filter((x) => x.dir === gname).map((x) => `<figure><img loading="lazy" src="${gname}/${x.base}.webp" alt="${x.base}"><figcaption>${gname}/${x.base}.${x.ext} · ${x.w}×${x.h}</figcaption></figure>`).join('')}</div>`).join('\n')}`;
     fs.writeFileSync(path.join(OUT, 'index.html'), html);
     console.log(`${written.length} files`);

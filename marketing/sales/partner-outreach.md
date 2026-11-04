@@ -55,7 +55,7 @@ https://www.seg-audit.com/ar/partners/?utm_source=linkedin&utm_medium=sales&utm_
 
 > شكرًا يا أستاذ [الاسم].
 >
-> باختصار: إحنا بنينا SEG Audit، وحدة المراجعة المستمرة في منصة SEG (Standard Enterprise Governance) من MFT. بتقرأ دفاتر الشركة من Odoo بصلاحية قراءة فقط، وتطلّع 361 فحصًا في 22 تقريرًا، وكل ملاحظة ومعاها دليلها.
+> باختصار: إحنا بنينا Standard Enterprise Governance (SEG) من MFT، ومعاها وحدة المراجعة المستمرة SEG Audit. بتقرأ دفاتر الشركة من Odoo بصلاحية قراءة فقط، وتطلّع 361 فحصًا في 22 تقريرًا، وكل ملاحظة ومعاها دليلها.
 >
 > اللي يهم مكتب زي [المكتب]:
 > • تراجع عملاءك أسرع: المنصة بتجهّز الملاحظات، وإنت بتحكم عليها.
@@ -88,7 +88,7 @@ https://www.seg-audit.com/ar/partners/?utm_source=linkedin&utm_medium=sales&utm_
 
 ### t5 · LinkedIn: إغلاق (يوم 14)
 
-> أستاذ [الاسم]، مش هزعجك تاني. لو في أي وقت حبيت تجرّب SEG Audit على عميل واحد من عملائك، الفحص المجاني موجود، وأنا موجود.
+> أستاذ [الاسم]، مش هزعجك تاني. لو في أي وقت حبيت تجرّب SEG على عميل واحد من عملائك، الفحص المجاني موجود، وأنا موجود.
 >
 > https://www.seg-audit.com/ar/partners/?utm_source=linkedin&utm_medium=sales&utm_campaign=founding-members-2026&utm_content=ob-partner-t5
 
@@ -100,7 +100,7 @@ https://www.seg-audit.com/ar/partners/?utm_source=linkedin&utm_medium=sales&utm_
 >
 > عندكم عملاء على Odoo [17/18/19] بعد التشغيل، وغالبًا السؤال اللي بيرجعلكم بعد التسليم: «الأرقام صح؟»
 >
-> SEG Audit بيجاوب على السؤال ده باستمرار:
+> Standard Enterprise Governance (SEG) بيجاوب على السؤال ده باستمرار:
 > • **موديول ربط بقراءة فقط** (`seg_audit_connector`، مفتوح المصدر LGPL-3، على Odoo 17 و18 و19)، وزر يلغي الوصول فورًا.
 > • يفحص الضوابط اللي النشاط محتاجها في إعداد Odoo نفسه: تقييم المخزون الآلي، والمطابقة الثلاثية، وإقفال جلسات نقاط البيع.
 > • خدمة متكررة تضيفها لعقد الدعم، بدل ما العلاقة تخلص يوم التسليم.
@@ -113,7 +113,7 @@ https://www.seg-audit.com/ar/partners/?utm_source=linkedin&utm_medium=sales&utm_
 
 ## 3. بريد المتابعة (بعد المكالمة أو بطلب صريح فقط)
 
-**الموضوع:** SEG Audit لعملاء [المكتب]: الخطوة الجاية
+**الموضوع:** Standard Enterprise Governance (SEG) لعملاء [المكتب]: الخطوة الجاية
 
 > أستاذ [الاسم]،
 >

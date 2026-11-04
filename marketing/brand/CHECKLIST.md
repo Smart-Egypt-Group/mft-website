@@ -60,7 +60,7 @@ Where: profile → **Edit profile** (Business/Creator account).
 - [ ] **Links** = www.seg-audit.com + the tagged app link (profiles.md)
 - [ ] **Category** = Financial Service · **Contact options** = email + phone (profiles.md)
 - [ ] **Highlights**: create from story archive, covers ←
-  - [ ] `highlights/instagram-highlight_01-platform_1080x1920.png` → «SEG Audit»
+  - [ ] `highlights/instagram-highlight_01-platform_1080x1920.png` → «SEG»
   - [ ] `highlights/instagram-highlight_02-seats_1080x1920.png` → «المؤسِّسون»
   - [ ] `highlights/instagram-highlight_03-trust_1080x1920.png` → «الثقة»
   - [ ] `highlights/instagram-highlight_04-insights_1080x1920.png` → «المقالات»
