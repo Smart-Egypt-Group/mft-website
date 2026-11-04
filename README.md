@@ -45,6 +45,7 @@ scripts/check.js        quality gate (contrast, HTML, links, bidi tokens, gradie
 scripts/launch-images.js SEG Audit launch artwork (marketing/designs/) + founding og:image (Playwright + Chrome)
 scripts/launch-concepts.js SEG Audit creative concepts, carousels (+PDF), video frames, founder overlay (marketing/designs/concepts/)
 scripts/guerrilla-ads.js   SEG Audit guerrilla pack: graffiti, palm, sticky note, square + story (marketing/designs/guerrilla/)
+scripts/tiktok-videos.js   8 s TikTok MP4s from the 9:16 ad designs, H.264 via Chrome WebCodecs (marketing/designs/ads/video/)
 scripts/og-image.js     regenerates the 1200×630 share images (needs Playwright + Chrome)
 scripts/logo-assets.js  re-derives logos + favicons from the official 5906 px PNG pack (same requirement)
 build.js / serve.js     build pipeline / dev server

@@ -52,6 +52,36 @@
     setTimeout(function () { countUp(el); }, 350);
   });
 
+  /* ---------- Campaign attribution ----------
+     Ads land here with utm_* in the URL. Carry them, for this tab's session, onto every app
+     sign-up link, so the sign-up is credited to the ad and not to the site's own
+     utm_source=website. The site placement (hero, tb-check…) moves to `cta`. Without incoming
+     UTMs the links keep the site's own tags. */
+  (function () {
+    var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    var params = new URLSearchParams(window.location.search);
+    var utm = null;
+    KEYS.forEach(function (k) {
+      var v = params.get(k);
+      if (v) { utm = utm || {}; utm[k] = v.slice(0, 100); }
+    });
+    try {
+      if (utm) window.sessionStorage.setItem('mft-utm', JSON.stringify(utm));
+      else utm = JSON.parse(window.sessionStorage.getItem('mft-utm') || 'null');
+    } catch (e) { /* storage blocked: use this page's UTMs only */ }
+    if (!utm || !utm.utm_source) return;
+    Array.prototype.forEach.call(document.querySelectorAll('a[href^="https://app.seg-audit.com/"]'), function (a) {
+      var u;
+      try { u = new URL(a.href); } catch (e) { return; }
+      if (!/\/signup\/?$/.test(u.pathname)) return;
+      var placement = u.searchParams.get('utm_content');
+      KEYS.forEach(function (k) { u.searchParams.delete(k); });
+      KEYS.forEach(function (k) { if (utm[k]) u.searchParams.set(k, utm[k]); });
+      if (placement) u.searchParams.set('cta', placement);
+      a.href = u.toString();
+    });
+  })();
+
   /* ---------- Lead form ---------- */
   var form = document.getElementById('lead-form');
   if (!form) return;

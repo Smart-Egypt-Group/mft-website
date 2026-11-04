@@ -16,14 +16,14 @@
 |---|---|---|---|
 | **G1** | **الطُعم شغّال نظيف.** #966 و#967 لم يُدمجا منفردين؛ أُغلقا ودُمجا معًا في **#968** (`COMBINED-966-967`) على `main` في `Smart-Egypt-Group/seg-audit`، commit `8452417`، 3 نوفمبر 21:52 UTC، وCI على `main` أخضر | ✅ الكود مدموج · ☐ **النشر على الإنتاج غير متحقق** (لا workflow نشر ظاهر في المستودع) | ياسر |
 | **G1-b** | **اختبار يدوي على الإنتاج:** سجّل من رابط إعلان (بـUTM)، وارفع ميزان مراجعة تجريبيًا، وتأكد أن المؤشرات الخمسة تظهر في دقائق، وأن التقرير بلا نموذج | ☐ | الـCEO بحساب اختبار، يُحذف بعدها |
-| **G2** | **تمرير UTM من الموقع إلى التسجيل.** الوجهة `www.seg-audit.com`، لكن أزرار الموقع تكتب UTM ثابتًا (`utm_source=website&utm_medium=owned`) فوق UTM الإعلان (تحققت منه على الموقع الحي). بدون الإصلاح **لا يُعرف أي إعلان جاب أي تسجيل** | ☐ **عائق للوجهة المختارة.** الإصلاح سكربت صغير في الموقع يمرّر `utm_*` القادمة إلى روابط `app.seg-audit.com` | فريق الموقع |
+| **G2** | **تمرير UTM من الموقع إلى التسجيل.** الوجهة `www.seg-audit.com`، وأزرار التسجيل في الموقع تحمل الآن `utm_*` الوارد من الإعلان بدل `utm_source=website`. يبقى طوال جلسة التبويب حتى لو تنقّل الزائر بين الصفحات، ومكان الزر يُحفظ في `cta=` (مثل `hero` أو `tb-check`). الكود في `src/scripts/main.js` (Campaign attribution) | ✅ **منشور ومتحقق على الموقع الحي (4 نوفمبر 2026)** | — |
 | **G3** | **التطبيق يحفظ UTM التسجيل** في سجل الحساب، ويرسل Lead لـCRM بالمصدر ([03 §0](../workflow/03-paid-ads.md), البندان 5 و6) | ☐ غير متحقق | ياسر |
 | **G4** | **تتبع التحويل:** Meta Pixel + Conversions API وTikTok Pixel + Events API على `app.seg-audit.com`، بحدث `CompleteRegistration` | ☐ **لم أجد أي بكسل في صفحة التسجيل العامة** (فحص للقراءة فقط). حتى يتم: الحملات على هدف **الزيارات/النقرات** فقط | ياسر |
 | **G5** | الحساب الإعلاني والدفع وتحقق النطاق `seg-audit.com` ([03 §0](../workflow/03-paid-ads.md)، البنود 1–3) | ☐ | الـCEO |
 | **G6** | **الأرقام على التصاميم مطابقة للموقع:** «باقي 33 من 50». راجع `src/site.config.js → founding.filled` يوم الإطلاق | ☐ صباح الإطلاق | الـCEO |
 | **G7** | **سياسة الخصوصية** تذكر بكسلات الإعلانات قبل تفعيلها (G4) | ☐ عند تفعيل G4 | القانوني |
 
-**قاعدة:** G1 وG1-b وG5 وG6 شرط لأي إطلاق. G2 شرط لإطلاق بوجهة `www`. وإن تأخر G2، فالبديل المؤقت: الوجهة مباشرة إلى `https://app.seg-audit.com/ar/signup?…` بنفس UTM، وهو المسار الأصلي في 03. هذا قرار الـCEO.
+**قاعدة:** G1 وG1-b وG5 وG6 شرط لأي إطلاق. G2 مكتمل. ويبقى G3 (حفظ التطبيق لـUTM) شرطًا لقراءة التسجيلات حسب الإعلان.
 
 ---
 
@@ -43,8 +43,8 @@
 | إعلانات **المقاعد** | `https://www.seg-audit.com/ar/founding-members/?…` |
 | الإنجليزي | `/en/founding-members/` |
 
-> **UTM: قراران يختلفان عن نص الطلب، عن قصد:**
-> - **`utm_campaign=founding-members-2026`** لا `founding_members`. هذه القيمة مستخدمة فعلًا منذ 3 نوفمبر في أزرار الموقع ومنشورات اليوم العضوية، والمخطط يمنع تغييرها أثناء الحملة؛ تغييرها يقسم تقرير الإطلاق إلى حملتين. لو أردت `founding_members` فهو استبدال نصي واحد في هذا الملف.
+> **UTM:**
+> - **`utm_campaign=founding-members-2026` موحّد في كل روابط الحزمة** (معتمد من الـCEO). نفس القيمة المستخدمة منذ 3 نوفمبر في أزرار الموقع والمنشورات العضوية، حتى لا ينقسم تقرير الإطلاق.
 > - **`utm_source=meta`** (كما طلبت) بدل `facebook`/`instagram` في المخطط القديم، لأن مواضع Advantage+ تجمع المنصتين. أُضيفت `meta` إلى المخطط في 05.
 
 ---
@@ -132,7 +132,20 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 **ملاحظات على التصاميم:**
 - ملف 9:16 نفسه يُستخدم لمواضع Stories وReels في Meta.
 - زر الدعوة المرسوم على التصاميم يقول `app.seg-audit.com`، والوجهة `www`. لا مشكلة في المراجعة، لكنه اختلاف بصري. إن أردت التطابق، أعيد توليد التصاميم بالنطاق `seg-audit.com`.
-- **TikTok** في مواضعه الأساسية يحتاج **فيديو**. حوّل الصورة لفيديو 6–10 ثوانٍ بأداة **Video templates / Smart video** داخل TikTok Ads Manager، أو ارفع MP4 منها. بدائل جاهزة بالحركة: إطارات `designs/concepts/video/`.
+- **TikTok** في مواضعه الأساسية يحتاج **فيديو**. الفيديوهات جاهزة في `marketing/designs/ads/video/`:
+
+  | النسخة | الملف |
+  |---|---|
+  | bait-ar | `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` |
+  | bait-en | `ads/video/tiktok-9x16_live-en_1080x1920_8s.mp4` |
+  | seats-ar | `ads/video/tiktok-9x16_seats-ar_1080x1920_8s.mp4` |
+  | seats-en | `ads/video/tiktok-9x16_seats-en_1080x1920_8s.mp4` |
+
+  - **المواصفات:** 8 ثوانٍ، 1080×1920، 30 إطارًا/ثانية، H.264، بين 6 و7 ميجابايت.
+  - **الحركة:** تقريب بطيء على التصميم، فالإطار الأول هو التصميم كاملًا ويصلح غلافًا.
+  - **بلا صوت:** تُضاف الموسيقى في TikTok Ads Manager من **Commercial Music Library**.
+  - **تصلح أيضًا** لـReels في Meta، بدل الصورة الثابتة.
+  - **التوليد:** `scripts/tiktok-videos.js`، ويُعاد تشغيله بعد أي تغيير في رقم المقاعد وإعادة توليد التصاميم.
 
 ### Meta: الحدود والمواضع
 
@@ -254,10 +267,10 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 
 | الإعلان | المجموعة | النص | زر الدعوة | الرابط | التصميم |
 |---|---|---|---|---|---|
-| `t-eg-bait-ar` | eg-finance | فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. مؤشرات من الميزان فقط. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-eg-bait-ar#fm-check` | `ads/tiktok-9x16_live-ar_1080x1920.jpg` (يُحوَّل لفيديو) |
-| `t-eg-seats-ar` | eg-finance | 50 مقعد بسعر مؤسِّس مدى الحياة. انضمّت 17 شركة، باقي 33. احجز مقعدك. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-eg-seats-ar` | `ads/tiktok-9x16_seats-ar_1080x1920.jpg` (يُحوَّل لفيديو) |
-| `t-sa-bait-ar` | sa-finance | فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق، قبل الإقفال. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-sa-bait-ar#fm-check` | `ads/tiktok-9x16_live-ar_1080x1920.jpg` (يُحوَّل لفيديو) |
-| `t-sa-seats-ar` | sa-finance | 50 مقعدًا بسعر مؤسِّس مدى الحياة. انضمّت 17 شركة، وبقي 33. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-sa-seats-ar` | `ads/tiktok-9x16_seats-ar_1080x1920.jpg` (يُحوَّل لفيديو) |
+| `t-eg-bait-ar` | eg-finance | فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. مؤشرات من الميزان فقط. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-eg-bait-ar#fm-check` | `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` |
+| `t-eg-seats-ar` | eg-finance | 50 مقعد بسعر مؤسِّس مدى الحياة. انضمّت 17 شركة، باقي 33. احجز مقعدك. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-eg-seats-ar` | `ads/video/tiktok-9x16_seats-ar_1080x1920_8s.mp4` |
+| `t-sa-bait-ar` | sa-finance | فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق، قبل الإقفال. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-sa-bait-ar#fm-check` | `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` |
+| `t-sa-seats-ar` | sa-finance | 50 مقعدًا بسعر مؤسِّس مدى الحياة. انضمّت 17 شركة، وبقي 33. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-sa-seats-ar` | `ads/video/tiktok-9x16_seats-ar_1080x1920_8s.mp4` |
 
 ---
 
@@ -415,10 +428,9 @@ CAC في [00](00-economics.md) **شامل**: الإعلانات + الأدوات
 
 **4. الإعلان `t-eg-bait-ar`:**
 - [ ] **Identity:** Custom identity «Modern Financial Technology» + الشعار.
-- [ ] **Format:** Single video:
-  - **Create video → Video template / Smart video** من `tiktok-9x16_live-ar_1080x1920.jpg`، 6–10 ثوانٍ.
-  - أو ارفع MP4 جاهزًا.
-  - أضف موسيقى من مكتبة TikTok التجارية (Commercial Music Library) فقط.
+- [ ] **Format:** Single video. ارفع `marketing/designs/ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4`، وفي إعلان المقاعد `…_seats-ar_…_8s.mp4`.
+  - اختر الإطار الأول غلافًا (Cover).
+  - أضف موسيقى من **Commercial Music Library** فقط.
 - [ ] **Ad text** من القسم 4، و**CTA:** Sign up، و**URL:** الرابط الكامل بـUTM.
 - [ ] **Automated creative optimization:** مطفأ.
 - [ ] **Preview** على الجوال.
