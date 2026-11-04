@@ -188,9 +188,29 @@ function footer(ctx) {
     </div>
     <div class="footer-bottom">
       <p>${t(c.footer.legal.replace('{year}', String(new Date().getFullYear())))}</p>
+      ${pixelsOn(config) ? `<p><button type="button" class="btn-link btn-link-light consent-open" data-consent-open>${t(c.ui.consent.settings)}</button></p>` : ''}
     </div>
   </div>
 </footer>`;
+}
+
+// Ad pixels are configured (site.config.js → analytics). The banner and the settings link exist only then.
+const pixelsOn = (config) => Boolean(config.analytics.metaPixelId || config.analytics.tiktokPixelId);
+
+// Cookie consent (opt-in): hidden until assets/js/pixel.js finds no stored choice. No ad pixel
+// loads before "Accept"; "Decline" is the same size and weight.
+function consentBanner(ctx) {
+  if (!pixelsOn(ctx.config)) return '';
+  const C = ctx.c.ui.consent;
+  return `<div class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-title" hidden>
+  <div class="container consent-inner">
+    <p><strong id="consent-title">${t(C.title)}</strong> ${t(C.body)} <a href="${url(ctx, 'privacy/')}">${t(C.more)}</a></p>
+    <div class="consent-actions">
+      <button type="button" class="btn btn-sm btn-ghost" data-consent="denied">${t(C.reject)}</button>
+      <button type="button" class="btn btn-sm btn-ghost" data-consent="granted">${t(C.accept)}</button>
+    </div>
+  </div>
+</div>`;
 }
 
 function ctaBand(ctx) {
@@ -213,12 +233,12 @@ function layout(ctx, page) {
   ${head(ctx, page)}
 </head>
 <body class="${esc(page.bodyClass || '')}">
-${ctx.config.analytics.metaPixelId ? `<noscript><img height="1" width="1" hidden alt="" src="https://www.facebook.com/tr?id=${esc(ctx.config.analytics.metaPixelId)}&amp;ev=PageView&amp;noscript=1"></noscript>` : ''}
 ${header(ctx)}
 <main id="main" tabindex="-1">
 ${page.body}
 </main>
 ${footer(ctx)}
+${consentBanner(ctx)}
 ${page.motion === false ? '' : `<script src="/assets/js/vendor/gsap.min.js?v=${ctx.gsapVersion}" defer></script>
 <script src="/assets/js/vendor/ScrollTrigger.min.js?v=${ctx.gsapVersion}" defer></script>
 <script src="/assets/js/motion.js?v=${ctx.buildId}" defer></script>`}

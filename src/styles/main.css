@@ -714,6 +714,18 @@ button, input, select, textarea { font: inherit; color: inherit; }
 @media (max-width: 899px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
 @media (max-width: 599px) { .footer-grid { grid-template-columns: 1fr; } }
 
+/* ---------- Cookie consent (opt-in; shown by assets/js/pixel.js) ---------- */
+.consent { position: fixed; inset-inline: 0; bottom: 0; z-index: 60; background: var(--navy); color: var(--on-navy-2); border-top: 1px solid var(--navy-line); box-shadow: 0 -8px 24px rgba(13, 27, 62, 0.25); }
+.consent[hidden] { display: none; }
+.consent-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; padding-block: 16px; }
+.consent p { margin: 0; font-size: var(--fs-small); max-width: 72ch; }
+.consent strong { color: var(--white); }
+.consent a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+.consent-actions { display: flex; gap: 12px; flex-shrink: 0; }
+.consent-actions .btn { min-width: 96px; }
+.consent-open { padding: 0; border: 0; background: none; cursor: pointer; font: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 599px) { .consent-inner { flex-direction: column; align-items: stretch; } .consent-actions .btn { flex: 1; } }
+
 /* ---------- Contact ---------- */
 .contact-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
 @media (max-width: 899px) { .contact-grid { grid-template-columns: 1fr; } }

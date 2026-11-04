@@ -36,6 +36,7 @@ module.exports = {
     allServices: 'All services',
     allIndustries: 'All industries',
     readMore: 'Read more',
+    consent: { title: 'Cookies', body: 'We use advertising cookies from Meta to measure our ads and show them again, only if you agree. Essential ones work without consent.', accept: 'Accept', reject: 'Decline', more: 'Details in the privacy notice', settings: 'Cookie settings' },
     breadcrumbHome: 'Home',
     placeholderTag: 'Pending decision, hidden in production',
     seeAlso: 'See also',
@@ -1124,7 +1125,7 @@ module.exports = {
     page: {
       eyebrow: 'Privacy',
       title: 'What we collect, and why.',
-      intro: 'This website is a marketing site. We collect what you type into the contact form, and we use the Meta Pixel to measure our ads.'
+      intro: 'This website is a marketing site. We collect what you type into the contact form, and we load advertising pixels (Meta Pixel) only after you consent.'
     },
     sections: [
       {
@@ -1132,8 +1133,25 @@ module.exports = {
         body: 'When you submit the contact form we receive the name, company, email, phone number, country, service of interest and message you enter, plus the page you sent it from and the language you used.'
       },
       {
-        title: 'Cookies and the Meta Pixel',
-        body: 'This site uses the Meta Pixel from Meta to measure the results of our ads on Facebook and Instagram, and to show our ads to people who visited the site. On every page it sends Meta the page address, browser and device information and your IP address, records clicks on the free-check button, and sets a cookie named _fbp that lasts up to 90 days. We do not send Meta what you type into forms. Meta processes this data under its own privacy policy. You can prevent it by blocking third-party cookies in your browser, or in the ad settings of your Facebook or Instagram account. If we add another tool, we update this notice before it goes live.'
+        title: 'Cookies and visits',
+        body: 'We ask you on your first visit, in the consent banner. No advertising pixel loads until you choose “Accept”; the default is not to load.',
+        items: [
+          { k: 'Essential, no consent needed', v: 'your browser keeps your banner choice for up to 12 months, and the visit source (utm) for the session, which is passed to the sign-up link on SEG Audit so we know which ad or post brought you. Neither is sent to a third party.' },
+          { k: 'Advertising, only with your consent', v: 'if you accept, the Meta Pixel from Meta Platforms loads for three purposes: advertising, conversion measurement and retargeting (showing our ads to people who visited the site).' },
+          { k: 'What is sent to Meta', v: 'the page address and the previous page, the time of the visit, browser and device type, your IP address, clicks on the free-check button, and a cookie identifier. It sets the _fbp cookie (up to 90 days), and _fbc when you arrive from an ad. We do not send what you type into forms.' },
+          { k: 'Later', v: 'we may add the TikTok Pixel for the same purposes. It will load only with your consent, and only after this notice is updated.' },
+          { k: 'Declining and withdrawing', v: 'if you decline, no pixel loads. You can change your choice at any time from “Cookie settings” at the bottom of every page or the button below; when you withdraw, we delete _fbp and _fbc from your browser. Data that reached Meta before you withdrew is governed by Meta’s policy, and you manage it in your account’s ad settings.' }
+        ],
+        consentButton: true
+      },
+      {
+        title: 'Who processes data on our behalf',
+        body: 'We use only these parties, each for its purpose:',
+        items: [
+          { k: 'Website hosting', v: 'GitHub Pages by GitHub, Inc., which may log IP addresses for security.' },
+          { k: 'Forms', v: 'the MFT customer system on Odoo (erp.seg-audit.com).' },
+          { k: 'Advertising, with your consent', v: 'Meta Platforms (Meta Pixel), and later TikTok (TikTok Pixel).' }
+        ]
       },
       {
         title: 'Why we collect it',

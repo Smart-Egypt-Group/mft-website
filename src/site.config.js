@@ -90,8 +90,8 @@ module.exports = {
   },
 
   // Analytics — leave empty until a decision is made. Injected only if set.
-  // Ad pixels (CEO, 4 Nov 2026): loaded by assets/js/pixel.js on the production hosts only, so
-  // local and preview builds never send events. Disclosed in the privacy notice (content/<lang>.js
+  // Ad pixels (CEO, 4 Nov 2026): loaded by assets/js/pixel.js only after the visitor accepts the
+  // cookie banner (opt-in), and only on the production hosts, so local and preview builds never send events. Disclosed in the privacy notice (content/<lang>.js
   // → privacy); update that notice before adding another pixel.
   analytics: {
     gtmId: '',        // e.g. 'GTM-XXXXXXX'
