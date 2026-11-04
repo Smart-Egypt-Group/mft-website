@@ -36,7 +36,6 @@ module.exports = {
     allServices: 'All services',
     allIndustries: 'All industries',
     readMore: 'Read more',
-    consent: { body: 'We use cookies and advertising pixels to improve our ads and measure performance.', more: 'Learn more', optout: 'Opt out of tracking', optin: 'Allow tracking', ok: 'OK', optedOut: 'You opted out: no advertising pixel loads for you.', settings: 'Tracking settings' },
     breadcrumbHome: 'Home',
     placeholderTag: 'Pending decision, hidden in production',
     seeAlso: 'See also',
@@ -779,7 +778,7 @@ module.exports = {
       serviceOther: 'Not sure yet',
       message: 'Tell us briefly about your situation',
       messageHint: 'Entity, current system, what you need first.',
-      consent: 'I agree to be contacted by MFT about this request and have read the privacy notice.',
+      consent: 'I agree to be contacted by MFT about this request, and I have read and accept the privacy notice, including its cookies and advertising pixels.',
       submit: 'Send request',
       sending: 'Sending…',
       success: 'Thank you. Your request has been received, and we will reply within one business day.',
@@ -1125,7 +1124,7 @@ module.exports = {
     page: {
       eyebrow: 'Privacy',
       title: 'What we collect, and why.',
-      intro: 'This website is a marketing site. We collect what you type into the contact form, and we use the Meta advertising pixel; you can opt out of tracking at any time.'
+      intro: 'This website is a marketing site. We collect what you type into the contact form, and we use cookies and advertising pixels (Meta Pixel), described below.'
     },
     sections: [
       {
@@ -1134,15 +1133,14 @@ module.exports = {
       },
       {
         title: 'Cookies and visits',
-        body: 'We tell you on your first visit with a small bar at the bottom of the page. The advertising pixel runs by default, and you can stop it at any time with “Opt out of tracking”.',
+        body: 'This site uses cookies and advertising pixels that run when the page opens, and we disclose them here. When you submit a form on the site or create an account on SEG Audit, your acceptance of this privacy notice and the terms includes consent to the cookies and advertising pixels described in this section.',
         items: [
-          { k: 'Essential', v: 'your browser keeps your choice in the bar (“OK” or “Opt out of tracking”) for up to 12 months, and the visit source (utm) for the session, which is passed to the sign-up link on SEG Audit so we know which ad or post brought you. Neither is sent to a third party.' },
-          { k: 'Advertising', v: 'the Meta Pixel from Meta Platforms loads when the page opens, unless you opted out, for three purposes: advertising, conversion measurement and retargeting (showing our ads to people who visited the site).' },
+          { k: 'Essential', v: 'your browser keeps the visit source (utm) for the session, which is passed to the sign-up link on SEG Audit so we know which ad or post brought you. It is not sent to a third party.' },
+          { k: 'Advertising', v: 'the Meta Pixel from Meta Platforms loads when the page opens, for three purposes: advertising, conversion measurement and retargeting (showing our ads to people who visited the site).' },
           { k: 'What is sent to Meta', v: 'the page address and the previous page, the time of the visit, browser and device type, your IP address, clicks on the free-check button, and a cookie identifier. It sets the _fbp cookie (up to 90 days), and _fbc when you arrive from an ad. We do not send what you type into forms.' },
           { k: 'Later', v: 'we may add the TikTok Pixel for the same purposes and under the same rules, after this notice is updated.' },
-          { k: 'Opting out', v: 'choose “Opt out of tracking” in the bar, or “Tracking settings” at the bottom of every page, or the button below, and the pixel stops for you and does not load on your next visits in this browser; we delete _fbp and _fbc from your browser. Data that reached Meta before you opted out is governed by Meta’s policy, and you manage it in your account’s ad settings.' }
-        ],
-        consentButton: true
+          { k: 'Your right to object and withdraw consent', v: 'you may object to this processing or withdraw your consent at any time, under Egypt’s Personal Data Protection Law No. 151 of 2020 and Saudi Arabia’s Personal Data Protection Law, by writing to privacy@seg-audit.com. You can also block third-party cookies in your browser, or manage what reached Meta in your account’s ad settings.' }
+        ]
       },
       {
         title: 'Who processes data on our behalf',
@@ -1150,7 +1148,7 @@ module.exports = {
         items: [
           { k: 'Website hosting', v: 'GitHub Pages by GitHub, Inc., which may log IP addresses for security.' },
           { k: 'Forms', v: 'the MFT customer system on Odoo (erp.seg-audit.com).' },
-          { k: 'Advertising, unless you opt out', v: 'Meta Platforms (Meta Pixel), and later TikTok (TikTok Pixel).' }
+          { k: 'Advertising', v: 'Meta Platforms (Meta Pixel), and later TikTok (TikTok Pixel).' }
         ]
       },
       {

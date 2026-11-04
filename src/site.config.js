@@ -90,9 +90,9 @@ module.exports = {
   },
 
   // Analytics — leave empty until a decision is made. Injected only if set.
-  // Ad pixels (CEO, 4 Nov 2026): loaded by assets/js/pixel.js with the page, with a cookie notice and
-  // an opt-out that stops them for that visitor; only on the production hosts, so local and preview
-  // builds never send events. Disclosed in the privacy notice (content/<lang>.js
+  // Ad pixels (CEO, 4 Nov 2026): loaded by assets/js/pixel.js with the page, on the basis of the privacy
+  // notice (consent is part of accepting it and the terms; no banner, no opt-out UI; objections by email to
+  // privacy@seg-audit.com). Only on the production hosts, so local and preview builds never send events. Disclosed in the privacy notice (content/<lang>.js
   // → privacy); update that notice before adding another pixel.
   analytics: {
     gtmId: '',        // e.g. 'GTM-XXXXXXX'

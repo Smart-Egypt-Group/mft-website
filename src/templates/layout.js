@@ -188,30 +188,9 @@ function footer(ctx) {
     </div>
     <div class="footer-bottom">
       <p>${t(c.footer.legal.replace('{year}', String(new Date().getFullYear())))}</p>
-      ${pixelsOn(config) ? `<p><button type="button" class="btn-link btn-link-light consent-open" data-consent-open>${t(c.ui.consent.settings)}</button></p>` : ''}
     </div>
   </div>
 </footer>`;
-}
-
-// Ad pixels are configured (site.config.js → analytics). The banner and the settings link exist only then.
-const pixelsOn = (config) => Boolean(config.analytics.metaPixelId || config.analytics.tiktokPixelId);
-
-// Cookie notice + opt-out (CEO, 4 Nov 2026): a small, non-blocking bar shown by assets/js/pixel.js until
-// the visitor chooses. The pixel runs by default; "Opt out of tracking" stops it for that visitor.
-function consentBanner(ctx) {
-  if (!pixelsOn(ctx.config)) return '';
-  const C = ctx.c.ui.consent;
-  return `<div class="consent" id="consent" role="region" aria-label="${esc(plain(C.settings))}" hidden>
-  <div class="container consent-inner">
-    <p><span data-consent-msg="on">${t(C.body)}</span><span data-consent-msg="off" hidden>${t(C.optedOut)}</span> <a href="${url(ctx, 'privacy/')}">${t(C.more)}</a></p>
-    <div class="consent-actions">
-      <button type="button" class="btn btn-sm btn-ghost" data-consent="denied">${t(C.optout)}</button>
-      <button type="button" class="btn btn-sm btn-ghost" data-consent="granted" hidden>${t(C.optin)}</button>
-      <button type="button" class="btn btn-sm btn-ghost" data-consent="ack">${t(C.ok)}</button>
-    </div>
-  </div>
-</div>`;
 }
 
 function ctaBand(ctx) {
@@ -239,7 +218,6 @@ ${header(ctx)}
 ${page.body}
 </main>
 ${footer(ctx)}
-${consentBanner(ctx)}
 ${page.motion === false ? '' : `<script src="/assets/js/vendor/gsap.min.js?v=${ctx.gsapVersion}" defer></script>
 <script src="/assets/js/vendor/ScrollTrigger.min.js?v=${ctx.gsapVersion}" defer></script>
 <script src="/assets/js/motion.js?v=${ctx.buildId}" defer></script>`}

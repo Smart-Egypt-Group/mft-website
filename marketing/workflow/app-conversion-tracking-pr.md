@@ -57,7 +57,12 @@ https://app.seg-audit.com/ar/signup?utm_source=meta&utm_medium=paid&utm_campaign
 - **Never send financial data** to Meta or TikTok: no trial-balance figures, accounts, entries, file names, company names or report content. Only the registration event and the identifiers above.
 - **Update the app's privacy policy before this goes live:** Meta Pixel and Conversions API, the `_fbp`/`_fbc` cookies, the purpose (measuring ads), and how to opt out.
 - The read-only promise to Odoo is unaffected; this touches only the sign-up flow.
-- Consent: the CEO chose to run the pixel without a consent banner for now (4 Nov 2026), pending a legal opinion on Egypt Law 151 and the Saudi PDPL. Keep the pixel call in one place so a consent gate can wrap it later.
+- **Consent (CEO decision, 4 Nov 2026):** one consent, not a separate banner. The sign-up's acceptance of the terms and privacy policy covers cookies and advertising pixels:
+  - Change the acceptance line at sign-up so it says so explicitly. Suggested wording: «أوافق على الشروط وسياسة الخصوصية، بما فيها ملفات تعريف الارتباط والبكسلات الإعلانية» / "I accept the terms and privacy policy, including cookies and advertising pixels".
+  - Update the app's terms and privacy text to match.
+  - No cookie banner and no visible opt-out control.
+  - The privacy text keeps the right to object or withdraw consent by email to `privacy@seg-audit.com` (Egypt Law 151/2020, Saudi PDPL).
+  - Keep the pixel call in one place, so a consent gate can wrap it later if a legal opinion requires one.
 
 ### 5. CSP
 
