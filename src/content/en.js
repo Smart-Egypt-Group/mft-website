@@ -899,12 +899,59 @@ module.exports = {
   },
 
   partners: {
-    title: 'MFT partners | Odoo partners and accounting firms',
-    description: 'The MFT partner programme for Odoo implementation partners and accounting firms in Egypt and Saudi Arabia: continuous audit for your clients on the seg-audit platform, with internal controls for each activity.',
+    title: 'SEG Audit partner programme | Accounting and audit firms, Odoo partners',
+    description: 'The SEG Audit partner programme for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia: review your clients faster from one account for up to 25 companies, with Arabic reports signed off in your firm’s name.',
     page: {
       eyebrow: 'Partners',
       title: 'Your clients run Odoo. Continuous audit, under your name.',
-      intro: 'A programme for Odoo implementation partners and accounting firms: give your clients a continuous review of their books on the seg-audit platform, with Arabic reports approved by a named MFT reviewer and internal controls designed for each client’s activity.'
+      intro: 'The partner programme of SEG Audit, the continuous audit module of MFT’s SEG (Standard Enterprise Governance) platform, for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia. Give your clients continuous review of their books: read-only access, every finding with its evidence, and your firm’s sign-off before the final sign-off by an MFT reviewer.',
+      cta: 'Become a partner'
+    },
+    value: {
+      eyebrow: 'Value for your firm',
+      title: 'Review your clients faster. Under your name.',
+      items: [
+        { title: 'The platform prepares, you judge', body: `${N(F.checks)} checks across ${F.reports} reports on each company’s books, with findings ranked by severity and each one tied to its evidence. You read the ten that matter instead of thousands of entries, and the professional judgement stays yours.` },
+        { title: 'All your clients from one account', body: 'The Enterprise plan covers up to 25 companies and 100 reports a month on one account, with the same method for every client.' },
+        { title: 'Signed off in your firm’s name', body: 'Your firm signs the report off internally before the final sign-off by a named MFT reviewer, so it reaches your client under your name.' },
+        { title: 'A recurring monthly service', body: 'You read the approved report with your client before every close. A monthly relationship instead of a yearly visit.' }
+      ]
+    },
+    tracks: {
+      eyebrow: 'Three tracks',
+      title: 'Choose the way of working that fits your firm.',
+      items: [
+        { title: 'Referral', body: 'Introduce a client; we sell, invoice and serve, and you earn a commission on collected revenue.' },
+        { title: 'Reseller', body: 'Sell and invoice yourself at the partner price, and give your clients first-line support.' },
+        { title: 'Practice partner', body: 'Offer continuous audit as a monthly service in your firm’s name, from one account for up to 25 companies, and read the reports with your clients before every close.' }
+      ]
+    },
+    // Partner levels. A null figure shows `pending` on the page; put the number (as text, e.g. '20%')
+    // only after the CEO approves it in writing (marketing/sales/03-partner-program.md §2).
+    levels: {
+      eyebrow: 'Levels',
+      title: 'Three levels that grow with your client base.',
+      caption: 'Levels are reviewed every quarter and counted in active paying companies.',
+      cols: ['Registered', 'Certified', 'Premier'],
+      pending: 'Set in the partner agreement',
+      rows: [
+        { label: 'Requirement', values: ['A signed agreement and an intro session', 'One certified person and 3 active paying companies', 'Two certified people and 10 active paying companies'] },
+        { label: 'Referral commission', values: [null, null, null] },
+        { label: 'Reseller discount', values: [null, null, null] },
+        { label: 'Registered-deal protection', values: [null, null, null] },
+        { label: 'Benefits', values: ['A demo account, training and co-selling on your first deal', 'A listing in the partner directory, with your consent', 'Priority on routed opportunities, and co-marketing'] }
+      ]
+    },
+    enable: {
+      eyebrow: 'Enablement',
+      title: 'From application to first client, step by step.',
+      steps: [
+        { when: 'Day 0', title: 'Partner application', body: 'From the form at the end of this page.' },
+        { when: 'Within 3 days', title: 'A 30-minute call', body: 'Your type of firm, your clients on Odoo, their activities, and the independence rule.' },
+        { when: 'Week 1', title: 'Agreement and demo account', body: 'The partner agreement, a demo account with no client data, and the sales kit in Arabic and English.' },
+        { when: 'Week 2', title: '90-minute training', body: 'A product tour, read-only connection, what we say and what we don’t, and deal registration, then a short test.' },
+        { when: 'Month 1', title: 'Your first three clients', body: 'A free trial-balance check for three of your client companies, and a joint read-out with you and the MFT team.' }
+      ]
     },
     types: {
       eyebrow: 'Who it is for',
@@ -923,8 +970,7 @@ module.exports = {
         { title: `${N(F.checks)} checks across ${F.reports} reports`, body: 'Duplicate payments, near-duplicate vendors, approvals and segregation of duties, cut-off, inventory valuation, tax and e-invoicing (ETA and ZATCA), and the financial statements.' },
         { title: 'A free trial-balance check for each client company', body: 'Every company starts with a free check of its trial balance that flags its risk points in minutes, so your client sees the value on their own numbers before any commitment.' },
         { title: 'A read-only connector module', body: 'The seg_audit_connector module is open source (LGPL-3) and runs on Odoo 17, 18 and 19: a dedicated read-only user, and a button that revokes access at once.' },
-        { title: 'A named reviewer on every report', body: 'Every report stays a draft until an MFT reviewer approves it by name. Reports support decisions; they are not a formal audit opinion.' },
-        { title: 'Partner terms', body: 'Commission or resale margin, deal registration and training are set in the partner agreement after the first call.' }
+        { title: 'A named reviewer on every report', body: 'Every report stays a draft until an MFT reviewer approves it by name. Reports support decisions; they are not a formal audit opinion.' }
       ]
     },
     packages: {
@@ -937,14 +983,14 @@ module.exports = {
         { title: 'Manufacturing', sectors: 'Manufacturing, including food and beverage', controls: ['Inventory valued automatically with every move', 'Active bills of materials for manufactured products', 'Work orders on manufacturing orders', 'A separate work-in-progress account'] },
         { title: 'Services and projects', sectors: 'Contracting, healthcare and professional services', controls: ['Timesheets on projects', 'Analytic distribution tying income and expenses to each project’s cost'] }
       ],
-      status: 'seg-audit checks the controls above today on any Odoo system. Ready-made module packages for each activity are being built and will be listed on the Odoo App Store soon; until then they are set up within the implementation project.'
+      status: 'SEG Audit checks the controls above today on any Odoo system. Ready-made module packages for each activity are being built and will be listed on the Odoo App Store soon; until then they are set up within the implementation project.'
     },
     independence: {
       title: 'If you are the client’s external auditor',
-      body: 'To protect your independence: referral only, with no commission tied to the client’s findings, and the client contracts with MFT directly. Every partner agreement applies this limit.'
+      body: 'To protect your independence: referral only, with no commission on that client, and the client contracts with MFT directly. For clients whose statements you do not audit, you can be a reseller or a practice partner. Every partner agreement applies this limit.'
     },
     form: {
-      heading: 'Apply to partner',
+      heading: 'Become a partner',
       type: 'Partner type',
       typeOptions: [
         { value: 'odoo-partner', label: 'Odoo implementation partner' },
@@ -960,11 +1006,11 @@ module.exports = {
         { value: '25+', label: 'More than 25' }
       ],
       message: 'Tell us briefly about your clients and their activities',
-      submit: 'Send application',
+      submit: 'Become a partner',
       success: 'Your application arrived. We will contact you to book the call.',
       aside: {
         title: 'What happens next',
-        steps: ['We review your application and contact you by email or WhatsApp.', 'A 30-minute call to pick the first clients and agree the terms.', 'Your clients start with their free reports, and you read the results with us.']
+        steps: ['We review your application and contact you by email or WhatsApp.', 'A 30-minute call to pick the first clients and agree the terms.', 'Your clients start with a free check of their trial balance, and you read the results with us.']
       }
     }
   },

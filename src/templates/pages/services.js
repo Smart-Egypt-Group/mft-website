@@ -10,7 +10,8 @@ function pageHeader(ctx, o, crumbs) {
   return `<section class="page-header">
   <div class="container">
     ${trail}
-    ${sectionHead(o, 1)}
+    ${sectionHead(o, 1)}${o.cta ? `
+    <p class="section-foot"><a class="btn btn-primary btn-lg" href="${esc(o.cta.href)}">${t(o.cta.label)}</a></p>` : ''}
   </div>
 </section>`;
 }
