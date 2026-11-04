@@ -4,3 +4,6 @@ dist/
 .env
 .env.*
 .netlify/
+
+# Reels: the MP4s are committed once, in src/assets/social/video/ (published); local render copies stay out of git
+marketing/designs/video/*.mp4
