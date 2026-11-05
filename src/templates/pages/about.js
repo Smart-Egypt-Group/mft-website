@@ -3,21 +3,28 @@ const { ctaBand } = require('../layout');
 const { isLive, liveAttrs, liveText } = require('../live-reports');
 const { pageHeader, faqBlock, faqSchema, seeAlso } = require('./services');
 
-// Founder's certifications (CEO, 5 Nov 2026): the slot is ready, the content is not. Renders
-// nothing while about.founder.certifications is empty; never fill it without the certificate.
+// Founder's certifications (CEO, 5 Nov 2026). Renders nothing while about.founder.certifications
+// is empty; every field comes from the certificate itself, never filled in by guess.
 function founder(ctx, F) {
   const list = (F && F.certifications) || [];
   if (!list.length) return '';
-  const item = (x) => {
-    const meta = [x.issuer, x.year].filter(Boolean).map((v) => t(String(v))).join(ctx.lang === 'ar' ? '، ' : ', ');
-    const name = x.href ? `<a href="${esc(x.href)}" rel="noopener" target="_blank">${t(x.name)}</a>` : t(x.name);
-    return `<li class="badge"><span class="dot" aria-hidden="true"></span><span class="badge-label">${name}${meta ? ` <span class="badge-meta">(${meta})</span>` : ''}</span></li>`;
-  };
+  const L = F.labels || {};
+  const row = (k, v) => (v ? `<div class="deflist-row"><dt>${t(L[k] || k)}</dt><dd>${v}</dd></div>` : '');
+  const card = (x) => `<li class="cert-card">
+      <h3 class="cert-name">${t(x.name)}</h3>
+      <dl class="deflist cert-meta">
+        ${row('holder', t(x.holder || ''))}
+        ${row('issuer', t(x.issuer || ''))}
+        ${row('validity', t(x.validity || ''))}
+        ${row('number', t(x.number || ''))}
+        ${x.href ? row('verify', `<a href="${esc(x.href)}" rel="noopener" target="_blank"><span class="lat" dir="ltr">${esc(x.hrefLabel || x.href)}</span></a>`) : ''}
+      </dl>
+    </li>`;
   return `<section class="section" aria-labelledby="founder-title">
   <div class="container">
     <div class="section-head"><h2 id="founder-title">${t(F.title)}</h2>${F.intro ? `<p class="lead">${t(F.intro)}</p>` : ''}</div>
-    <h3>${t(F.certificationsTitle)}</h3>
-    <ul class="badge-grid founder-certs">${list.map(item).join('')}</ul>
+    <h3 class="cert-heading">${t(F.certificationsTitle)}</h3>
+    <ul class="cert-list">${list.map(card).join('')}</ul>
   </div>
 </section>`;
 }

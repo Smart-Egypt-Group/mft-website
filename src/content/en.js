@@ -752,14 +752,25 @@ module.exports = {
         { title: 'Bilingual by default', body: 'Every deliverable is available in Arabic and English.' }
       ]
     },
-    // PENDING (CEO): the «Digital Transformation certificate» goes here from the certificate itself:
-    // its exact name, the issuing body, the year and a verification link if any. The section does
-    // not render while the list is empty. Shape: { name: '…', issuer: '…', year: '2026', href: 'https://…' }
+    // Founder's certificates: the certificate details as sent by the CEO (5 Nov 2026), verbatim.
+    // Nothing is added that is not on the certificate. The dash between NITC and Ain Shams University
+    // is written as a comma (site rule: no long dashes).
     founder: {
       title: 'Founder',
-      intro: '',
+      intro: 'Ahmed Ashraf, founder and CEO of MFT.',
       certificationsTitle: 'Certifications',
-      certifications: []
+      labels: { holder: 'Name on certificate', issuer: 'Issued by', validity: 'Valid', number: 'Certificate no.', verify: 'Verify the certificate' },
+      certifications: [
+        {
+          name: 'Fundamentals of Digital Transformation Certificate (Cybersecurity · IT · Word · Excel · PowerPoint · Mobile App · Distance Learning)',
+          holder: 'Ahmed Ashraf Mostafa Ahmed',
+          issuer: 'NITC, Ain Shams University: Central Unit for IT Training (CUIT), Supreme Council of Universities (SCU)',
+          validity: 'from 09/2026 to 08/2031',
+          number: '20260915T39PSF, dated 15/09/2026',
+          href: 'https://verify.scu.eg',
+          hrefLabel: 'verify.scu.eg'
+        }
+      ]
     },
     offices: {
       title: 'Where we are',

@@ -749,14 +749,24 @@ module.exports = {
         { title: 'ثنائي اللغة افتراضيًا', body: 'كل مخرج متاح بالعربية والإنجليزية.' }
       ]
     },
-    // PENDING (الـCEO): «شهادة التحول الرقمي» تُضاف هنا من ملف الشهادة نفسه: الاسم كما في الشهادة،
-    // والجهة المانحة، والسنة، ورابط التحقق إن وُجد. القسم لا يظهر ما دامت القائمة فارغة.
-    // الشكل: { name: '…', issuer: '…', year: '2026', href: 'https://…' }
+    // شهادات المؤسِّس: من بيانات الشهادة كما أرسلها الـCEO (5 نوفمبر 2026)، حرفيًا. لا يُضاف شيء
+    // لم يرد في الشهادة. الشرطة بين NITC وAin Shams University كُتبت فاصلة (قاعدة الموقع: لا شرطات طويلة).
     founder: {
       title: 'المؤسِّس',
-      intro: '',
+      intro: '{lat}Ahmed Ashraf{/lat} (أحمد أشرف)، مؤسس {lat}MFT{/lat} ورئيسها التنفيذي.',
       certificationsTitle: 'الشهادات',
-      certifications: []
+      labels: { holder: 'الاسم على الشهادة', issuer: 'الجهة المانحة', validity: 'السريان', number: 'رقم الشهادة', verify: 'التحقق من الشهادة' },
+      certifications: [
+        {
+          name: '{lat}Fundamentals of Digital Transformation Certificate (Cybersecurity · IT · Word · Excel · PowerPoint · Mobile App · Distance Learning){/lat}',
+          holder: '{lat}Ahmed Ashraf Mostafa Ahmed{/lat}',
+          issuer: '{lat}NITC, Ain Shams University{/lat}: الوحدة المركزية لتدريب تكنولوجيا المعلومات ({lat}CUIT{/lat})، المجلس الأعلى للجامعات ({lat}SCU{/lat})',
+          validity: 'من {lat}09/2026{/lat} إلى {lat}08/2031{/lat}',
+          number: '{lat}20260915T39PSF{/lat} بتاريخ {lat}15/09/2026{/lat}',
+          href: 'https://verify.scu.eg',
+          hrefLabel: 'verify.scu.eg'
+        }
+      ]
     },
     offices: {
       title: 'أين نحن',
