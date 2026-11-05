@@ -51,7 +51,7 @@ module.exports = {
       { h2: 'What does AI actually do in a continuous audit?' },
       { p: 'Three layers do different jobs, and confusing them is a frequent design mistake.' },
       { h3: 'Rules: the known patterns' },
-      { p: 'Deterministic tests answer yes or no questions and run first, because they are cheap, explainable and repeatable. The patterns we find most often in continuous-audit work are:' },
+      { p: 'Deterministic tests answer yes or no questions and run first, because they are cheap, explainable and repeatable. Patterns that continuous-audit work commonly finds include:' },
       { ul: [
         'Duplicate and near-duplicate payments to the same vendor.',
         'Near-duplicate vendors: the same supplier set up twice under slightly different names.',
@@ -85,7 +85,7 @@ module.exports = {
         'Silent test failure. Control: a test that returns zero exceptions for three cycles is reviewed, not celebrated.',
         'Loss of independence. Control: the people who own the process do not edit the tests, and every rule change is logged with an approver.',
         'Invented explanations. Control: drafts without record citations are rejected and never presented as facts.',
-        'Usage cost. If you use Odoo’s native AI, Odoo’s 20 release notes say all AI features consume IAP credits billed per request, so budget by volume of runs.'
+        'Usage cost. If you use Odoo’s native AI, Odoo’s 20 release notes say all AI features consume IAP credits, so budget by volume of runs.'
       ] },
       { quote: 'A finding that arrives eleven months late is a history lesson, not a control.' },
       { h2: 'Where should a finance team start on Monday?' },
@@ -155,7 +155,7 @@ module.exports = {
       { h2: 'ماذا يفعل الذكاء الاصطناعي فعلًا في المراجعة المستمرة؟' },
       { p: 'ثلاث طبقات، لكل منها عمل مختلف، والخلط بينها أكثر أخطاء التصميم شيوعًا.' },
       { h3: 'القواعد: الأنماط المعروفة' },
-      { p: 'الاختبارات القطعية تجيب بنعم أو لا، ويجب أن تعمل أولًا لأنها رخيصة وقابلة للتفسير والتكرار. وأكثر الأنماط التي نجدها في أعمال المراجعة المستمرة:' },
+      { p: 'الاختبارات القطعية تجيب بنعم أو لا، ويجب أن تعمل أولًا لأنها رخيصة وقابلة للتفسير والتكرار. ومن الأنماط الشائعة في أعمال المراجعة المستمرة:' },
       { ul: [
         'المدفوعات المكررة وشبه المكررة للمورّد نفسه.',
         'المورّدون شبه المكررين: المورّد ذاته مُسجَّل مرتين بأسماء متقاربة.',

@@ -13,11 +13,11 @@ module.exports = {
   labels: { readingTime: 'min read', readingTimeOne: '{lat}1{/lat} min read', readingTimeTwo: '{lat}2{/lat} min read', by: 'By', published: 'Published', updated: 'Updated', topic: 'Topic', related: 'Related articles', all: 'All articles', author: 'About the author', latest: 'Latest insights', rss: 'RSS feed', answer: 'Short answer', takeaways: 'Key takeaways', faq: 'Questions people ask', cta: 'Talk to MFT about this', sources: 'Sources', reviewedBy: 'Reviewed by', lastReviewed: 'last reviewed' },
   topics: { audit: 'Internal audit', compliance: 'Compliance', odoo: 'Odoo', intelligence: 'MFT Intelligence', ai: 'AI in accounting' },
   reviewers: {
-    practice: { name: 'MFT audit and Odoo practice', role: 'Licensed auditors and Odoo implementation leads, Modern Financial Technology' }
+    practice: { name: 'MFT audit and Odoo practice', role: 'Audit and Odoo implementation team, Modern Financial Technology' }
   },
   authors: {
     ahmed: {
-      name: 'Ahmed Ashraf Mostafa',
+      name: 'Ahmed Ashraf Mostafa Ahmed',
       role: 'Founder and CEO, Modern Financial Technology',
       bio: 'Licensed auditor and the founder of MFT. Ahmed built the firm from a financial audit practice into an Odoo implementation and Virtual CFO business serving Egypt and Saudi Arabia, and still leads client engagements. He writes about what the ledger actually shows.',
       url: 'https://www.linkedin.com/company/92779112'
@@ -57,13 +57,13 @@ module.exports = {
       dek: 'Integration, clearance and reporting are configuration decisions, not a button. The checklist we run before any Saudi Odoo implementation goes live.',
       description: 'The MFT checklist for ZATCA phase two e-invoicing in Odoo: device onboarding, clearance versus reporting, invoice fields, sandbox testing and the data-residency question.',
       body: [
-        { p: 'Phase two of the ZATCA e-invoicing programme moved Saudi companies from generating compliant invoices to integrating with the Authority: standard tax invoices are cleared in real time, simplified invoices are reported within a day, and every document carries a cryptographic stamp and a QR code. Odoo supports this. Whether your implementation does depends on decisions made weeks before go-live.' },
+        { p: 'Phase two of the ZATCA e-invoicing programme, rolled out in waves by revenue, moved Saudi companies from generating compliant invoices to integrating with the Authority: standard tax invoices are cleared in real time, simplified invoices are reported within a day, and every document carries a cryptographic stamp and a QR code. Odoo supports this. Whether your implementation does depends on decisions made weeks before go-live.' },
         { h2: 'The six checks we do not skip' },
         { ul: ['Entity and branch setup: the commercial registration, VAT number and address on every invoice match the ZATCA portal exactly, per branch.', 'Device onboarding: the EGS unit is enrolled with a production CSID, and the renewal date is in someone’s calendar.', 'Clearance versus reporting: B2B standard invoices are configured to clear before they reach the customer; B2C simplified invoices report within the 24-hour window.', 'Invoice content: line-level VAT categories, exemption reasons, and the buyer identification fields that phase two made mandatory.', 'Credit and debit notes: they reference the original invoice and carry the reason; this is where most rejections come from.', 'Sandbox first: every invoice type is tested against the ZATCA sandbox, and the rejection log is reviewed, before the production switch.'] },
         { h2: 'Where the data lives' },
         { p: 'Saudi clients ask this before anything else, and they are right to. The Personal Data Protection Law restricts transferring personal data outside the Kingdom, so the question needs an answer before go-live. Our Odoo implementations keep the ledger on the client’s own instance, and we design to minimise what leaves it: our agents read only the records a run needs, not the whole ledger. During the current phase those runs are processed by a cloud AI model provider, so any AI service that reads the books, ours included, should state where each run is processed, and your legal adviser should review it.' },
         { h2: 'After go-live' },
-        { p: 'Compliance is not a state, it is a monthly check. The Tax and compliance agent in internal validation at MFT reconciles the sales ledger against what was cleared and reported, so a gap shows up before the Authority finds it. Until it is promoted, our accountants run the same reconciliation by hand as part of the monthly review.' }
+        { p: 'Compliance is not a state, it is a monthly check. The Tax and compliance agent in internal validation at MFT flags e-invoices that were rejected or are still pending, so a gap shows up before the Authority finds it. Until it is promoted, our accountants run the same reconciliation by hand as part of the monthly review.' }
       ]
     },
     {
@@ -76,8 +76,8 @@ module.exports = {
       dek: 'Many ETA rejections are not tax problems. They are master-data problems that were visible in Odoo weeks earlier.',
       description: 'The seven Odoo configuration errors MFT sees most often behind Egyptian Tax Authority e-invoice rejections, and how to fix each one at the source.',
       body: [
-        { p: 'When an e-invoice is rejected by the Egyptian Tax Authority, the finance team reads it as a tax issue. In our implementations, the cause is almost always upstream: a product without a GS1 or EGS code, a customer without a valid tax id, an address missing a field the portal requires. The fix is in master data, not in the tax return.' },
-        { h2: 'The seven we see most' },
+        { p: 'When an e-invoice is rejected by the Egyptian Tax Authority, the finance team reads it as a tax issue. The cause is often upstream: a product without a GS1 or EGS code, a customer without a valid tax id, an address missing a field the portal requires. The fix is in master data, not in the tax return.' },
+        { h2: 'Seven common causes' },
         { ul: ['Products without an approved item code, or with a code of the wrong type for the product category.', 'Customers with a national id where a tax registration number is required, or the reverse for individuals.', 'Branch addresses that do not match the branch registered with the Authority, down to the governorate field.', 'Unit of measure codes that are not in the ETA list, usually because a local unit was typed by hand.', 'Discounts applied at document level where the schema expects them per line, or the other way round.', 'Currency and exchange rate fields left empty on foreign-currency invoices.', 'Credit notes issued without a reference to the original document’s UUID.'] },
         { h2: 'Fix it where it starts' },
         { p: 'Each of these is a validation rule that Odoo can enforce at the point of entry: a product cannot be saved without an item code, a customer cannot be set to B2B without a tax number, an invoice cannot be confirmed with an unmapped unit. We configure those rules during implementation. That is what we mean when we say the implementation is led by accountants: the system refuses the error instead of recording it.' },

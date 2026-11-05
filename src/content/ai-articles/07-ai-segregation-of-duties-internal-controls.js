@@ -36,7 +36,7 @@ module.exports = {
 
       { h2: 'Is an AI agent a "user" for segregation of duties?' },
       { p: 'For control purposes, yes: the test is whether the actor can change the books. According to Odoo’s 20 release notes, AI agents can create records (including from an uploaded instruction file such as a PDF), update records, and be triggered by automated actions and scheduled actions. Anything that can create or update an accounting record performs the recording function and must sit in the matrix with a role, an owner and limits.' },
-      { p: 'Before designing anything, confirm in your own Odoo 20 database under whose access rights an agent’s actions run and how its changes are attributed in the record history; that decides whether a conflict sits with the agent, the person who triggered it, or both. Also confirm which AI features your edition and plan include. Every AI request consumes IAP credits, billed per request and not included in any plan.' },
+      { p: 'Before designing anything, confirm in your own Odoo 20 database under whose access rights an agent’s actions run and how its changes are attributed in the record history; that decides whether a conflict sits with the agent, the person who triggered it, or both. Also confirm which AI features your edition and plan include. Every AI request consumes IAP credits.' },
       { h3: 'Decision rule: which of the four functions may an agent hold?' },
       { table: {
         caption: 'Where an AI agent may sit among the four functions',
@@ -111,7 +111,7 @@ module.exports = {
       { q: 'Is a segregation of duties conflict found by AI proof of fraud?', a: 'No. A conflict shows that one user could, or did, perform two functions that should be separate. That is a control weakness. Whether anyone misused it is a separate question answered by examining the underlying transactions and documents, with the person involved given a chance to explain.' }
     ],
     sources: [
-      { label: 'Odoo, "Odoo 20 Release Notes" (24 September 2026)', url: 'https://www.odoo.com/odoo-20-release-notes' },
+      { label: 'Odoo, "Odoo 20 Release Notes" (September 2026)', url: 'https://www.odoo.com/odoo-20-release-notes' },
       { label: 'ACFE, "Occupational Fraud 2026: A Report to the Nations" (press release, 19 May 2026)', url: 'https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=report-to-the-' }
     ]
   },
@@ -151,7 +151,7 @@ module.exports = {
 
       { h2: 'هل يُعد وكيل الذكاء الاصطناعي "مستخدمًا" في الفصل بين المهام؟' },
       { p: 'من منظور الرقابة، نعم. المعيار ليس هل المنفّذ إنسان، بل هل يستطيع تغيير الدفاتر. ووفق ملاحظات إصدار {lat}Odoo 20{/lat}، يستطيع وكلاء الذكاء الاصطناعي إنشاء السجلات (بما في ذلك من ملف تعليمات مرفوع مثل {lat}PDF{/lat})، وتعديلها، والعمل بمشغّلات من الإجراءات الآلية والإجراءات المجدولة. وكل ما يستطيع إنشاء سجل محاسبي أو تعديله يؤدي وظيفة التسجيل، ويجب أن يكون في المصفوفة بدور ومالك وحدود.' },
-      { p: 'قبل أي تصميم، تأكد من أمرين في قاعدة بيانات {lat}Odoo 20{/lat} الخاصة بك: بصلاحيات من تُنفَّذ إجراءات الوكيل، وكيف تُنسب تعديلاته في سجل التغييرات. الإجابة تحدد هل التعارض يقع على الوكيل، أم على من شغّله، أم على الاثنين. وتأكد كذلك من ميزات الذكاء الاصطناعي المتاحة في نسختك وخطتك؛ فكل طلب يستهلك أرصدة {lat}IAP{/lat} تُحتسب لكل طلب ولا تدخل في أي خطة.' },
+      { p: 'قبل أي تصميم، تأكد من أمرين في قاعدة بيانات {lat}Odoo 20{/lat} الخاصة بك: بصلاحيات من تُنفَّذ إجراءات الوكيل، وكيف تُنسب تعديلاته في سجل التغييرات. الإجابة تحدد هل التعارض يقع على الوكيل، أم على من شغّله، أم على الاثنين. وتأكد كذلك من ميزات الذكاء الاصطناعي المتاحة في نسختك وخطتك؛ فميزات الذكاء الاصطناعي تحتاج أرصدة {lat}IAP{/lat}.' },
       { h3: 'قاعدة القرار: أي الوظائف الأربع يجوز أن يتولاها الوكيل؟' },
       { table: {
         caption: 'موقع وكيل الذكاء الاصطناعي من الوظائف الأربع',
@@ -226,7 +226,7 @@ module.exports = {
       { q: 'هل التعارض الذي يكتشفه الذكاء الاصطناعي دليل على احتيال؟', a: 'لا. التعارض يبيّن أن مستخدمًا واحدًا كان يستطيع، أو قام فعلًا، بوظيفتين يجب فصلهما، وهذا ضعف رقابي. أما هل أساء أحد استخدامه فسؤال آخر تجيب عنه فحص المعاملات والمستندات الأصلية، مع إعطاء الشخص المعني فرصة للتوضيح.' }
     ],
     sources: [
-      { label: 'أودو، ملاحظات إصدار {lat}Odoo 20{/lat}: {lat}"Odoo 20 Release Notes"{/lat} ({lat}24{/lat} سبتمبر {lat}2026{/lat})', url: 'https://www.odoo.com/odoo-20-release-notes' },
+      { label: 'أودو، ملاحظات إصدار {lat}Odoo 20{/lat}: {lat}"Odoo 20 Release Notes"{/lat} (سبتمبر {lat}2026{/lat})', url: 'https://www.odoo.com/odoo-20-release-notes' },
       { label: 'جمعية فاحصي الاحتيال المعتمدين، تقرير الاحتيال المهني: {lat}"Occupational Fraud 2026: A Report to the Nations"{/lat} (بيان صحفي، {lat}19{/lat} مايو {lat}2026{/lat})', url: 'https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=report-to-the-' }
     ]
   }

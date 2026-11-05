@@ -55,7 +55,7 @@ module.exports = {
       { h2: 'How does AI change the close calendar?' },
       { p: 'The largest gain does not come from doing close tasks faster on day 1. It comes from moving them out of the close window altogether.' },
       { h3: 'During the month' },
-      { p: 'If bank matching and manual entry scoring run daily, the close starts with a short list of exceptions instead of a month of raw transactions. The same scoring that supports [[blog/ai-financial-fraud-detection/|AI-based fraud detection]] doubles as a close control: a round manual entry posted late on the last evening of the month is a classic finding in MFT’s continuous-audit work, and it is far easier to question on the day it is posted.' },
+      { p: 'If bank matching and manual entry scoring run daily, the close starts with a short list of exceptions instead of a month of raw transactions. The same scoring that supports [[blog/ai-financial-fraud-detection/|AI-based fraud detection]] doubles as a close control: a round manual entry posted late on the last evening of the month is a classic continuous-audit finding, and it is far easier to question on the day it is posted.' },
       { h3: 'The first days of the close' },
       { p: 'AI drafts accruals, reclassifications and valuation adjustments, each with the records it relied on. The accountant’s job shifts from building entries to reviewing them, which is faster only if every draft shows its evidence.' },
       { h3: 'Reporting' },
@@ -88,7 +88,7 @@ module.exports = {
         'Payment statuses renamed: "In Process" becomes "Paid" and "Paid" becomes "Reconciled", which affects saved filters and close reports.',
         'AI-powered financial insights: questions to the AI assistant about receivables, cash flow or reconciliation issues, answered solely from accounting data in your database, including a review of suspected reconciliation errors.'
       ] },
-      { p: 'All AI features in Odoo 20 run on IAP credits billed per request and not included in any plan, so a daily AI routine has a running cost to budget. Lock dates, reconciliation models and Spreadsheet dashboards exist in recent Odoo versions; confirm how they behave in your 20 database before you build the close around them. The full AI map is in [[blog/odoo-20-ai-features-accounting/|Odoo 20 AI features for accounting]].' },
+      { p: 'All AI features in Odoo 20 run on IAP credits, so a daily AI routine has a running cost to budget. Lock dates, reconciliation models and Spreadsheet dashboards exist in recent Odoo versions; confirm how they behave in your 20 database before you build the close around them. The full AI map is in [[blog/odoo-20-ai-features-accounting/|Odoo 20 AI features for accounting]].' },
       { h2: 'What can go wrong when AI enters the close?' },
       { ul: [
         'Automating a broken close: if the chart of accounts or cut-off rules are unclear, AI reproduces the confusion faster.',
@@ -173,7 +173,7 @@ module.exports = {
       { h2: 'كيف يغيّر الذكاء الاصطناعي جدول الإقفال؟' },
       { p: 'المكسب الأكبر لا يأتي من إنجاز مهام الإقفال أسرع في اليوم الأول، بل من إخراجها من نافذة الإقفال أصلًا.' },
       { h3: 'خلال الشهر' },
-      { p: 'إذا عملت مطابقة البنك وتقييم القيود اليدوية يوميًا، يبدأ الإقفال بقائمة قصيرة من الاستثناءات بدل شهر كامل من المعاملات الخام. والتقييم نفسه الذي يخدم [[blog/ai-financial-fraud-detection/|كشف الاحتيال المالي بالذكاء الاصطناعي]] يعمل ضابطًا للإقفال أيضًا: قيد يدوي برقم مقرّب يُرحَّل مساء آخر يوم في الشهر من الملاحظات المتكررة في أعمال المراجعة المستمرة لدى {lat}MFT{/lat}، والسؤال عنه يوم ترحيله أيسر كثيرًا من السؤال عنه بعد شهر.' },
+      { p: 'إذا عملت مطابقة البنك وتقييم القيود اليدوية يوميًا، يبدأ الإقفال بقائمة قصيرة من الاستثناءات بدل شهر كامل من المعاملات الخام. والتقييم نفسه الذي يخدم [[blog/ai-financial-fraud-detection/|كشف الاحتيال المالي بالذكاء الاصطناعي]] يعمل ضابطًا للإقفال أيضًا: قيد يدوي برقم مقرّب يُرحَّل مساء آخر يوم في الشهر من الملاحظات الكلاسيكية في المراجعة المستمرة، والسؤال عنه يوم ترحيله أيسر كثيرًا من السؤال عنه بعد شهر.' },
       { h3: 'الأيام الأولى من الإقفال' },
       { p: 'يُعدّ الذكاء الاصطناعي مسودات الاستحقاقات وإعادة التبويب وتسويات التقييم، ومع كل منها السجلات التي استند إليها. فيتحول عمل المحاسب من بناء القيود إلى مراجعتها، وهذا أسرع فقط إذا أظهرت كل مسودة دليلها.' },
       { h3: 'إعداد التقارير' },
@@ -206,7 +206,7 @@ module.exports = {
         'إعادة تسمية حالات السداد: "{lat}In Process{/lat}" تصبح "{lat}Paid{/lat}"، و"{lat}Paid{/lat}" تصبح "{lat}Reconciled{/lat}"، وهذا يؤثر في الفلاتر المحفوظة وتقارير الإقفال.',
         'تحليلات مالية بالذكاء الاصطناعي: أسئلة للمساعد الذكي عن المدينين أو التدفق النقدي أو مشكلات التسوية، يجيب عنها من البيانات المحاسبية في قاعدة بياناتك وحدها، بما في ذلك مراجعة أخطاء التسوية المشتبه بها.'
       ] },
-      { p: 'كل مزايا الذكاء الاصطناعي في {lat}Odoo 20{/lat} تعمل بأرصدة {lat}IAP{/lat} تُحتسب لكل طلب ولا تدخل في أي باقة، فالروتين اليومي له تكلفة تشغيل يجب أن تدخل الموازنة. أما تواريخ القفل ونماذج التسوية ولوحات {lat}Spreadsheet{/lat} فموجودة في إصدارات {lat}Odoo{/lat} الحديثة، فتحقق من سلوكها في قاعدة بيانات {lat}20{/lat} لديك قبل أن تبني الإقفال عليها. والخريطة الكاملة في [[blog/odoo-20-ai-features-accounting/|مزايا الذكاء الاصطناعي في {lat}Odoo 20{/lat} للمحاسبة]].' },
+      { p: 'كل مزايا الذكاء الاصطناعي في {lat}Odoo 20{/lat} تعمل بأرصدة {lat}IAP{/lat}، فالروتين اليومي له تكلفة تشغيل يجب أن تدخل الموازنة. أما تواريخ القفل ونماذج التسوية ولوحات {lat}Spreadsheet{/lat} فموجودة في إصدارات {lat}Odoo{/lat} الحديثة، فتحقق من سلوكها في قاعدة بيانات {lat}20{/lat} لديك قبل أن تبني الإقفال عليها. والخريطة الكاملة في [[blog/odoo-20-ai-features-accounting/|مزايا الذكاء الاصطناعي في {lat}Odoo 20{/lat} للمحاسبة]].' },
       { h2: 'ما الذي قد يسوء حين يدخل الذكاء الاصطناعي الإقفال؟' },
       { ul: [
         'أتمتة إقفال معيب: إذا كان دليل الحسابات أو قواعد الفصل بين الفترات غير واضحة، يكرر الذكاء الاصطناعي الارتباك بسرعة أكبر.',

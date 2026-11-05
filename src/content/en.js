@@ -135,10 +135,10 @@ module.exports = {
       subhead:
         'MFT turns your data into clear financial reports on profitability, cash flow and internal controls, backed by a licensed audit team, Odoo ERP experts, and the SEG platform.',
       cta: { label: 'Check your trial balance free', href: SIGNUP },
-      trust: 'Trusted by finance teams across Egypt and Saudi Arabia, expanding to the US',
+      trust: 'For finance teams in Egypt and Saudi Arabia, expanding to the US',
       dashboard: {
         title: 'Monthly P&L Snapshot',
-        badge: 'Sample',
+        badge: 'Illustrative example',
         kpis: [
           { label: 'Revenue', value: '$482K' },
           { label: 'Net Margin', value: '18.4%', up: true },
@@ -168,7 +168,7 @@ module.exports = {
       secondary: { label: 'See our services', href: 'services/' },
       risk: {
         title: 'Illustrative sample of a check result. You will see this same screen on your data.',
-        badge: 'Sample',
+        badge: 'Illustrative example',
         scanning: 'Scanning',
         done: 'Check complete',
         findings: [
@@ -455,7 +455,7 @@ module.exports = {
           'Withholding tax review: tax setup, supplier bills without withholding, total withheld for the period',
           'Tax differences between invoice and entry, and manual tax entries',
           'E-invoice item data: item codes, customer addresses and free-text lines',
-          'Zakat base reconciled to the filed return, for Saudi companies',
+          'Zakat base computed from the books and reconciled to the figures you enter from your return, for Saudi companies',
           'Tax-file readiness before inspection: registration numbers, invoice sequence gaps, draft invoices and lock dates',
           'Working papers and reconciliations the return is built on, and a findings report ranked by severity, each finding with its evidence from the books and an owner for the fix',
           'Tax returns filed on your company’s behalf (VAT, withholding tax and zakat) on the Egyptian Tax Authority or ZATCA portal, under your authorisation and after your approval, with proof of submission'
@@ -508,7 +508,7 @@ module.exports = {
         short: 'Monthly reporting, cash forecasting and decisions: a CFO on your calendar, not your payroll.',
         tagline: 'The reports a CFO would build. The questions a CFO would ask.',
         body: [
-          'Every month you receive a management pack you can read in five minutes: profitability by product and customer, cash-flow forecast, working-capital position and the variances that matter. Then we sit with you and decide what to do about them.',
+          'Every month you receive a concise management pack: profitability by product and customer, cash-flow forecast, working-capital position and the variances that matter. Then we sit with you and decide what to do about them.',
           'The service scales from a single monthly review to a full finance-function lead with your team reporting to us. It works best on Odoo, but it does not require it.'
         ],
         deliverables: [
@@ -753,7 +753,7 @@ module.exports = {
       points: [
         { title: 'CEO-led', body: 'The firm is run by its founding auditor, who still leads client engagements.' },
         { title: 'Two disciplines, one desk', body: 'The people who configure the ERP are the people who audit it and read its output.' },
-        { title: 'Bilingual by default', body: 'Every deliverable is available in Arabic and English.' }
+        { title: 'Arabic or English', body: 'Deliverables in Arabic or English, as you choose.' }
       ]
     },
     // Founder's certificates: the certificate details as sent by the CEO (5 Nov 2026), verbatim.
@@ -1584,7 +1584,7 @@ module.exports = {
         ],
         services: [
           { title: 'Odoo ERP with ZATCA phase two', body: 'Integration, clearance and reporting configured as part of the standard build, with zakat and VAT set per entity.', href: 'services/odoo-erp/' },
-          { title: 'Innovative Tax Solutions', body: 'ZATCA clearance and reporting follow-up, VAT and the zakat base reconciled to the books, and the returns filed for you under your authorisation.', href: 'services/tax-solutions/' },
+          { title: 'Innovative Tax Solutions', body: 'ZATCA clearance and reporting follow-up, VAT reconciled to the books, the zakat base computed from them and reconciled to your return, and the returns filed for you under your authorisation.', href: 'services/tax-solutions/' },
           { title: 'Internal audit', body: 'Risk-based programmes with ISA-classified findings, run on site in the Kingdom or remotely.', href: 'services/internal-audit/' },
           { title: 'Virtual CFO', body: 'Monthly management packs and cash forecasts in Arabic or English, with a review call each month.', href: 'services/virtual-cfo/' },
           { title: 'Cross-border structuring', body: 'Egypt and Saudi groups: treaty position, transfer of profits and consolidated reporting.', href: 'services/financial-consulting/' }

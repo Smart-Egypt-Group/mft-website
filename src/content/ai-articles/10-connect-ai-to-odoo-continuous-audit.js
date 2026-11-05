@@ -61,7 +61,7 @@ module.exports = {
       ] },
       { p: 'Our own answer: our agents read only the records a run needs, the full ledger is not copied, and the run log records which model provider processed each run; during the current phase that is a cloud provider. Odoo’s native AI has its own retention rule: according to the release notes, stored conversations are kept up to 30 days after the last message. Know both rules before anything goes live.' },
       { h2: 'Which tests should run continuously?' },
-      { p: 'Start with tests whose exceptions are cheap to verify and expensive to miss. These are the patterns that recur in our continuous-audit work:' },
+      { p: 'Start with tests whose exceptions are cheap to verify and expensive to miss. These are patterns that commonly recur in continuous-audit work:' },
       { ul: [
         'Duplicate and near-duplicate payments: same vendor, similar amount and reference, close dates.',
         'Near-duplicate vendors: similar names, shared bank accounts or tax numbers.',
@@ -169,7 +169,7 @@ module.exports = {
       ] },
       { p: 'وإجابتنا نحن: وكلاؤنا يقرؤون السجلات التي يحتاجها التشغيل فقط، ولا يُنسخ الدفتر كاملًا، ويسجّل سجل التشغيل أي مزوّد نماذج عالج كل تشغيلة؛ وفي المرحلة الحالية هو مزوّد سحابي. وللذكاء الاصطناعي الأصلي في {lat}Odoo{/lat} قاعدة احتفاظ خاصة به: بحسب ملاحظات الإصدار تُحفظ المحادثات حتى {lat}30{/lat} يومًا بعد آخر رسالة. اعرف القاعدتين قبل أي تشغيل.' },
       { h2: 'ما الاختبارات التي تعمل باستمرار؟' },
-      { p: 'ابدأ باختبارات يسهل التحقق من استثناءاتها ويكلّف فواتها كثيرًا. هذه هي الأنماط التي تتكرر في أعمال المراجعة المستمرة لدينا:' },
+      { p: 'ابدأ باختبارات يسهل التحقق من استثناءاتها ويكلّف فواتها كثيرًا. هذه أنماط تتكرر عادةً في أعمال المراجعة المستمرة:' },
       { ul: [
         'الدفعات المكررة وشبه المكررة: المورد نفسه، ومبلغ ومرجع متقاربان، وتواريخ متقاربة.',
         'الموردون شبه المكررين: أسماء متشابهة، أو حساب بنكي أو رقم ضريبي مشترك.',

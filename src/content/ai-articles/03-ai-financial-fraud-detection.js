@@ -33,7 +33,7 @@ module.exports = {
       { p: 'AI financial fraud detection is the use of rules, statistical models and language models to score every transaction in a company’s books for patterns associated with fraud or error, so that people review the riskiest items first instead of a random few. Three parts of that definition matter. It covers every transaction, which is why it belongs with [[blog/full-population-testing-ai-vs-sampling/|full-population testing rather than sampling]]. It produces a score, not a verdict. And it ends with a person, because a model can rank but cannot judge intent.' },
       { p: 'It is also wider than fraud. The pattern behind a fraudulent payment equally fits an honest duplicate, a cut-off error or a misconfigured tax. Most flags turn out to be error, which is useful: both usually live in the same weak control.' },
       { h2: 'Which red flags can AI test across the whole ledger?' },
-      { p: 'These red flags recur in MFT’s continuous-audit work. Each is testable from ERP data and points back to a control, where the lasting fix belongs.' },
+      { p: 'These red flags are common in continuous-audit work. Each is testable from ERP data and points back to a control, where the lasting fix belongs.' },
       { table: {
         caption: 'Red flags, what the model compares, and the first human test',
         head: ['Red flag', 'What the model compares', 'First test by a reviewer', 'Control it points to'],
@@ -142,7 +142,7 @@ module.exports = {
       { p: 'كشف الاحتيال المالي بالذكاء الاصطناعي هو استخدام القواعد والنماذج الإحصائية ونماذج اللغة لتقييم كل معاملة في دفاتر الشركة مقابل أنماط مرتبطة بالاحتيال أو الخطأ، بحيث يبدأ المراجع بالأعلى خطرًا بدل عدد عشوائي من البنود. في هذا التعريف ثلاث نقاط حاسمة: أنه يشمل المجتمع الكامل لا العينة، ولذلك مكانه مع [[blog/full-population-testing-ai-vs-sampling/|الانتقال من العينة إلى فحص المجتمع الكامل]]؛ وأن ناتجه درجة خطر لا حكم؛ وأنه ينتهي عند إنسان، لأن النموذج يرتّب ولا يستطيع الحكم على النية.' },
       { p: 'وهو أوسع من الاحتيال. النمط الذي يدل على دفعة احتيالية يدل بالقدر نفسه على تكرار غير مقصود، أو خطأ في الفصل بين الفترات، أو ضريبة مُعدّة بشكل خاطئ. وعمليًا يتبيّن أن معظم التنبيهات أخطاء، وهذه فائدة لا عيب: خطأ يُكتشف في الأسبوع نفسه أيسر تصحيحًا من احتيال يُكتشف بعد عام، والاثنان يعيشان عادة في الضابط الضعيف نفسه.' },
       { h2: 'ما مؤشرات الاحتيال التي يفحصها الذكاء الاصطناعي في الدفتر كله؟' },
-      { p: 'المؤشرات التالية هي التي تتكرر في أعمال المراجعة المستمرة لدى {lat}MFT{/lat}. كل منها قابل للفحص من بيانات موجودة أصلًا في نظام {lat}ERP{/lat}، وكل منها يعود إلى ضابط رقابي، وهناك يكون العلاج الدائم.' },
+      { p: 'المؤشرات التالية شائعة في أعمال المراجعة المستمرة. كل منها قابل للفحص من بيانات موجودة أصلًا في نظام {lat}ERP{/lat}، وكل منها يعود إلى ضابط رقابي، وهناك يكون العلاج الدائم.' },
       { table: {
         caption: 'المؤشر، وما يقارنه النموذج، وأول اختبار يجريه المراجع',
         head: ['المؤشر', 'ما يقارنه النموذج', 'أول اختبار للمراجع', 'الضابط المرتبط'],
