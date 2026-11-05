@@ -49,7 +49,7 @@ module.exports = {
         'Review the user’s chatter monthly: Odoo 20 logs user group changes there, so any widening of rights leaves a trail.',
         'Test the restriction: attempt a write with the key and file the refusal as evidence that read-only holds.'
       ] },
-      { p: 'Read-only applies to the connection, not to everything AI does. MFT’s seg-audit platform reads the books straight from the ERP, read-only. Our [[intelligence/auditor/|Auditor agent]] does more: it drafts correcting entries and adjustments, but drafting is not posting, and nothing reaches the ledger without approval. For segregation of duties when an agent is in the chain, see [[blog/ai-segregation-of-duties-internal-controls/|AI, segregation of duties and internal controls]].' },
+      { p: 'Read-only applies to the connection, not to everything AI does. MFT’s platform, Standard Enterprise Governance (SEG), reads the books straight from the ERP, read-only. Our [[intelligence/auditor/|Auditor agent]] does more: it drafts correcting entries and adjustments, but drafting is not posting, and nothing reaches the ledger without approval. For segregation of duties when an agent is in the chain, see [[blog/ai-segregation-of-duties-internal-controls/|AI, segregation of duties and internal controls]].' },
       { h2: 'Where does the data go, and who keeps it?' },
       { p: 'Data residency is the question owners ask last and should ask first. A connection that copies the whole ledger to an outside store creates a second set of books, outside your controls and possibly outside your country. Ask every provider, including us, the same questions:' },
       { ul: [
@@ -81,7 +81,7 @@ module.exports = {
         'The agent drafts the correcting entry or adjustment; nothing is posted automatically.',
         'Approval is tiered by the client’s [[blog/materiality-isa-320-threshold/|ISA 320 materiality threshold]]: above it, a second approver signs.',
         'Corrections are made by reversal, never by deletion, so the original stays visible.',
-        'In seg-audit, a finding cannot be closed without a named, registered approver, and repeats are linked to earlier findings.'
+        'In SEG, a finding cannot be closed without a named, registered approver, and repeats are linked to earlier findings.'
       ] },
       { p: 'Live Odoo write-back of approved corrections is delivered per client, only after that client’s connector is configured. Until then, approved corrections are entered by the client’s own team, which keeps the posting under their controls.' },
       { h2: 'Where should you start?' },
@@ -93,7 +93,7 @@ module.exports = {
         'Agree who reviews exceptions, in what time frame, and who approves corrections.',
         'Review the connection’s log, rights and findings monthly, as you would any privileged user.'
       ] },
-      { p: 'This is the work behind our [[services/internal-audit/|internal audit service]]: seg-audit reads the books read-only, scores every transaction by risk instead of sampling a few percent, and keeps each finding on record with evidence and severity. If your Odoo 20 rollout is still ahead, combine this with the [[blog/odoo-20-ai-accounting-step-by-step/|step-by-step guide to AI accounting on Odoo 20]].' }
+      { p: 'This is the work behind our [[services/internal-audit/|internal audit service]]: SEG reads the books read-only, scores every transaction by risk instead of sampling a few percent, and keeps each finding on record with evidence and severity. If your Odoo 20 rollout is still ahead, combine this with the [[blog/odoo-20-ai-accounting-step-by-step/|step-by-step guide to AI accounting on Odoo 20]].' }
     ],
     faq: [
       { q: 'Can AI connect directly to Odoo?', a: 'Yes. Recent Odoo versions offer an external API (XML-RPC and JSON-RPC) used with a dedicated API user and key, and Odoo’s 20 release notes add connecting to the database via MCP (Model Context Protocol). Confirm in your own database which user and rights each connection runs under before enabling it.' },
@@ -157,7 +157,7 @@ module.exports = {
         'راجع سجل المحادثة ({lat}Chatter{/lat}) الخاص بالمستخدم شهريًا، فـ{lat}Odoo 20{/lat} يسجّل فيه تغييرات المجموعات، فيبقى أثر لأي توسيع للصلاحيات.',
         'اختبر القيد: حاول الكتابة بالمفتاح واحفظ الرفض دليلًا على أن القراءة فقط مطبّقة فعلًا.'
       ] },
-      { p: 'والقراءة فقط صفة للاتصال، لا لكل ما يفعله الذكاء الاصطناعي. منصة {lat}seg-audit{/lat} التابعة لـ{lat}MFT{/lat} تقرأ الدفاتر مباشرة من نظام تخطيط الموارد للقراءة فقط. أما [[intelligence/auditor/|وكيل المراجع]] فيذهب أبعد: يُعدّ القيود التصحيحية والتسويات، لكن الإعداد ليس ترحيلًا، ولا يصل شيء إلى الدفتر دون اعتماد. وللفصل بين المهام حين يدخل وكيل في السلسلة اقرأ [[blog/ai-segregation-of-duties-internal-controls/|الذكاء الاصطناعي والفصل بين المهام والضوابط الرقابية]].' },
+      { p: 'والقراءة فقط صفة للاتصال، لا لكل ما يفعله الذكاء الاصطناعي. منصة {lat}Standard Enterprise Governance (SEG){/lat} التابعة لـ{lat}MFT{/lat} تقرأ الدفاتر مباشرة من نظام تخطيط الموارد للقراءة فقط. أما [[intelligence/auditor/|وكيل المراجع]] فيذهب أبعد: يُعدّ القيود التصحيحية والتسويات، لكن الإعداد ليس ترحيلًا، ولا يصل شيء إلى الدفتر دون اعتماد. وللفصل بين المهام حين يدخل وكيل في السلسلة اقرأ [[blog/ai-segregation-of-duties-internal-controls/|الذكاء الاصطناعي والفصل بين المهام والضوابط الرقابية]].' },
       { h2: 'إلى أين تذهب البيانات، ومن يحتفظ بها؟' },
       { p: 'موضع البيانات هو آخر سؤال يطرحه الملاك، وينبغي أن يكون الأول. فالاتصال الذي ينسخ دفتر الأستاذ كاملًا إلى مخزن خارجي يصنع نسخة ثانية من الدفاتر، خارج ضوابطك وربما خارج بلدك. اطرح على كل مزوّد، ونحن منهم، الأسئلة نفسها:' },
       { ul: [
@@ -189,7 +189,7 @@ module.exports = {
         'الوكيل يُعدّ القيد التصحيحي أو التسوية، ولا يُرحَّل شيء آليًا.',
         'الاعتماد متدرج حسب [[blog/materiality-isa-320-threshold/|حد الأهمية النسبية وفق {lat}ISA 320{/lat}]] لدى العميل: فوقه يوقّع معتمِد ثانٍ.',
         'التصحيح يتم بقيد عكسي لا بالحذف، فيبقى الأصل ظاهرًا.',
-        'في {lat}seg-audit{/lat} لا تُغلق ملاحظة دون معتمِد مسمّى ومسجَّل، والملاحظات المتكررة تُربط بما سبقها.'
+        'في {lat}SEG{/lat} لا تُغلق ملاحظة دون معتمِد مسمّى ومسجَّل، والملاحظات المتكررة تُربط بما سبقها.'
       ] },
       { p: 'أما الكتابة المباشرة للتصحيحات المعتمدة في {lat}Odoo{/lat} فتُقدَّم لكل عميل على حدة، وبعد إعداد موصّله فقط. وحتى ذلك الحين يُدخل فريق العميل نفسه التصحيحات المعتمدة، فيبقى الترحيل تحت ضوابطه.' },
       { h2: 'من أين تبدأ؟' },
@@ -201,7 +201,7 @@ module.exports = {
         'اتفق على من يراجع الاستثناءات وفي أي مدة، ومن يعتمد التصحيحات.',
         'راجع سجل الاتصال وصلاحياته وملاحظاته شهريًا، كما تراجع أي مستخدم ذي صلاحيات عالية.'
       ] },
-      { p: 'هذا هو العمل الذي تقوم عليه [[services/internal-audit/|خدمة المراجعة الداخلية]] لدينا: {lat}seg-audit{/lat} تقرأ الدفاتر للقراءة فقط، وتقيّم كل معاملة حسب خطرها بدل فحص نسبة صغيرة منها، وتحفظ كل ملاحظة في السجل مع دليلها ودرجة خطورتها. وإن كان تطبيق {lat}Odoo 20{/lat} ما زال أمامك، فاقرن هذا بـ[[blog/odoo-20-ai-accounting-step-by-step/|الدليل العملي لتطبيق المحاسبة بالذكاء الاصطناعي على {lat}Odoo 20{/lat}]].' }
+      { p: 'هذا هو العمل الذي تقوم عليه [[services/internal-audit/|خدمة المراجعة الداخلية]] لدينا: {lat}SEG{/lat} تقرأ الدفاتر للقراءة فقط، وتقيّم كل معاملة حسب خطرها بدل فحص نسبة صغيرة منها، وتحفظ كل ملاحظة في السجل مع دليلها ودرجة خطورتها. وإن كان تطبيق {lat}Odoo 20{/lat} ما زال أمامك، فاقرن هذا بـ[[blog/odoo-20-ai-accounting-step-by-step/|الدليل العملي لتطبيق المحاسبة بالذكاء الاصطناعي على {lat}Odoo 20{/lat}]].' }
     ],
     faq: [
       { q: 'هل يمكن ربط الذكاء الاصطناعي بـ{lat}Odoo{/lat} مباشرة؟', a: 'نعم. توفر إصدارات {lat}Odoo{/lat} الحديثة واجهة {lat}API{/lat} خارجية ({lat}XML-RPC{/lat} و{lat}JSON-RPC{/lat}) تُستخدم بمستخدم ومفتاح مخصصين، وتضيف ملاحظات إصدار {lat}Odoo 20{/lat} الاتصال بقاعدة البيانات عبر {lat}MCP{/lat}. تحقق في قاعدة بياناتك من المستخدم والصلاحيات التي يعمل بها كل اتصال قبل تفعيله.' },

@@ -112,7 +112,8 @@ module.exports = {
   },
 
   home: {
-    title: 'Modern Financial Technology | Odoo ERP, Internal Audit & Virtual CFO',
+    title: 'Modern Financial Technology (MFT) | Standard Enterprise Governance (SEG), Odoo ERP & Internal Audit',
+    description: 'MFT is a CPA-led firm with its own platform, Standard Enterprise Governance (SEG), and SEG Audit, its continuous audit product. We implement Odoo ERP, run internal audit and act as your Virtual CFO in Egypt, Saudi Arabia and the US.',
     hero: {
       eyebrow: 'Financial Clarity, Delivered',
       headline: 'Decisions built on {accent}numbers{/accent}.\nNot on guesses.',
@@ -159,7 +160,7 @@ module.exports = {
       // The hero hooks on the first line: a live "scanning" strip, then a question about real money, not audit jargon.
       eyebrow: 'Financial Clarity, Delivered',
       live: `Live check of your books: ${N(F.checks)} checks across ${F.reports} reports`,
-      headline: 'Standard Enterprise Governance: {accent}the platform that audits itself{/accent}',
+      headline: 'Standard Enterprise Governance (SEG): {accent}the platform that audits itself{/accent}',
       subhead: 'How many duplicate payments left your company this year without anyone noticing? SEG reads your books straight from your ERP, read-only, and shows you every finding ranked by severity, with its evidence.',
       assurance: ['Read-only', 'We change nothing in your system', 'No number without evidence'],
       cta: { label: 'Check your trial balance free', href: SIGNUP },
@@ -741,7 +742,7 @@ module.exports = {
         'Odoo Certified Partner',
         { live: 'reports', text: 'Reports generated on SEG so far: {n}' },
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
-        `Standard Enterprise Governance (SEG) by MFT, with its continuous-audit module SEG Audit: ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
+        `Standard Enterprise Governance (SEG) by MFT, with its continuous audit product SEG Audit: ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
       ]
     },
     team: {
@@ -844,50 +845,51 @@ module.exports = {
   // Ready-made module packages and their Odoo App Store listing are not built yet: marked "soon".
   // Commission and resale margin are not decided: "set in the partner agreement", no figures.
   // Founding Members (Standard Enterprise Governance (SEG) launch, November 2026). Seat numbers come from site.config → founding:
-  // {left} remaining, {filled} joined, {total} seats. Never type the numbers here.
+  // {left} remaining, {filled} reserved (applications submitted), {total} seats. Never type the numbers here.
   // PENDING (Ahmed): the "Founding terms" benefit and the "after 50" FAQ are commercial commitments;
   // approve or remove before merge.
   founding: {
-    // Real scarcity, no counter (launch lead, 3 Nov 2026): only 50 seats at a founder price for life.
+    // Real scarcity, no counter (launch lead, 3 Nov 2026): only 50 seats. Founder price: 50% off for life.
     // Counter copy lives in founding.counter below and shows only when site.config → founding.showCount is true.
-    title: 'Standard Enterprise Governance (SEG) Founding Members | Only {total} seats at a founder price for life',
-    description: 'The Standard Enterprise Governance (SEG) Founding Members programme: only {total} seats, at a founder price for life. Start with a free check of your company’s trial balance at app.seg-audit.com.',
-    ogAlt: 'Founding Members programme: only {total} seats at a founder price for life',
-    bar: 'SEG Founding Members: only {total} seats at a founder price for life. Learn more',
+    title: 'Standard Enterprise Governance (SEG) Founding Members | Only {total} seats. Founder price: 50% off for life',
+    description: 'The Standard Enterprise Governance (SEG) Founding Members programme: only {total} seats. Founder price: 50% off for life, at every renewal. Start with a free check of your company’s trial balance at app.seg-audit.com.',
+    ogAlt: 'Founding Members programme: only {total} seats. Founder price: 50% off for life',
+    bar: 'SEG Founding Members: only {total} seats. Founder price: 50% off for life. Learn more',
     page: { eyebrow: 'Founding Members' },
     hero: {
-      headline: 'SEG {accent}Founding Members{/accent}: only {total} seats at a founder price for life',
-      subhead: 'We are opening Standard Enterprise Governance (SEG) from MFT, with its continuous audit module SEG Audit, to {total} companies as Founding Members, at a founder price that stays with you for life. When the seats are taken, the programme closes.',
+      headline: 'SEG {accent}Founding Members{/accent}: only {total} seats. Founder price: 50% off for life',
+      subhead: 'We are opening SEG, the governance platform from MFT, with its continuous audit product SEG Audit, to {total} companies as Founding Members. Founder price: 50% off for life, applied at every renewal. When the seats are taken, the programme closes.',
       cta: 'Claim your seat',
       secondary: 'How to join',
       assurance: ['Read-only access to your system', 'Evidence behind every finding', 'Reports in Arabic and English'],
-      meterCaption: 'seats only, at a founder price for life',
+      meterCaption: 'seats only. Founder price: 50% off for life',
       legend: { next: 'Your seat', open: 'Founding seat' }
     },
     homeBand: {
-      title: 'Founding Members: only {total} seats at a founder price for life',
+      title: 'Founding Members: only {total} seats. Founder price: 50% off for life',
       body: 'Founding seats on SEG are capped at {total} and will not reopen. Start with a free check of your company’s trial balance that flags its risk points in minutes.',
       more: 'Programme details'
     },
     final: {
-      title: 'Only {total} seats, at a founder price for life.',
+      title: 'Only {total} seats. Founder price: 50% off for life.',
       body: 'Start with a free trial-balance check, and claim your seat before the count closes.'
     },
     // The real counter, later: replaces the matching copy above only when showCount is true and
-    // founding.filled holds a confirmed subscription count. Tokens: {filled}, {left}, {total}.
+    // The platform computes it: left = 50 − applications submitted (CEO, 5 Nov 2026). So {filled}
+    // reads «reserved», not «joined»: an application is not a confirmed subscription. {total} is the cap (50).
     counter: {
       title: 'Standard Enterprise Governance (SEG) Founding Members | {left} of {total} seats left',
-      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats at a founder price for life; {filled} companies in, {left} left.',
+      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats, founder price: 50% off for life; {filled} reserved, {left} left.',
       ogAlt: '{left} of {total} seats left: Standard Enterprise Governance (SEG) Founding Members',
       bar: 'SEG Founding Members: {left} of {total} seats left. Learn more',
-      'hero.headline': '{left} of {total} seats left: SEG {accent}Founding Members{/accent}',
-      'hero.subhead': '{filled} companies have joined the Founding Members; {left} seats remain at a founder price for life.',
+      'hero.headline': '{left} of {total} seats left: Standard Enterprise Governance (SEG) {accent}Founding Members{/accent}',
+      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} of {total} seats reserved so far; {left} remain. Founder price: 50% off for life.',
       'hero.meterCaption': 'seats left of {total}',
-      'hero.legend.filled': '{filled} companies joined',
+      'hero.legend.filled': 'Reserved: {filled}',
       'homeBand.title': 'Founding Members: {left} of {total} seats left',
-      'homeBand.body': '{filled} companies have joined SEG. Founding seats are capped at {total}, at a founder price for life, and will not reopen.',
+      'homeBand.body': '{filled} of {total} founding seats reserved so far. Founding seats are capped at {total} and will not reopen. Founder price: 50% off for life.',
       'final.title': '{left} of {total} seats left.',
-      'final.body': '{filled} companies joined before you. Claim your seat before the count closes.'
+      'final.body': 'Every application counts against the seats left. Claim your seat before the count closes.'
     },
     // The lead magnet (CEO, 3 Nov 2026): trial-balance indicators only, not a full audit report.
     check: {
@@ -910,7 +912,7 @@ module.exports = {
       items: [
         { title: 'Onboarding with the MFT team', body: 'We connect your system read-only and walk through your first trial-balance check with you in one session, not a manual you read alone.' },
         { title: 'A direct line to the product team', body: 'Your feedback goes straight to the people building the platform, and you have a say in what we build next.' },
-        { title: 'A founder price for life', body: 'Your founding price stays with you for as long as your subscription runs, and is not offered once the {total} seats are filled.' },
+        { title: 'Founder price: 50% off for life', body: '50% off any plan, monthly or annual, at every renewal for as long as your subscription renews. Not offered once the {total} seats are filled.' },
         { title: 'The Founding Member title', body: 'Your company listed among the Founding Members, only with your written consent.' }
       ]
     },
@@ -918,7 +920,7 @@ module.exports = {
       eyebrow: 'How to join',
       title: 'Three steps to the risk points in your trial balance, in minutes.',
       steps: [
-        { title: 'Sign up', body: 'Create your company account at app.seg-audit.com. Sign-up reserves your seat in order.' },
+        { title: 'Sign up', body: 'Create your company account at app.seg-audit.com and start the free check. To reserve a Founding seat, apply through the application form: MFT approves each one by hand.' },
         { title: 'Upload your trial balance', body: 'Upload the trial balance of your last closed month, or connect Odoo read-only.' },
         { title: 'Get your trial-balance check', body: 'Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report.' }
       ]
@@ -926,10 +928,100 @@ module.exports = {
     faq: [
       { q: 'Why only {total} seats?', a: 'Every Founding Member works directly with the MFT team on setup and follow-up, and that does not stretch beyond {total} companies in the first phase.' },
       { q: 'What happens once the {total} seats are filled?', a: 'The programme closes. The platform stays open for sign-up, without the founder price.' },
-      { q: 'What does “a founder price for life” mean?', a: 'The price you join at as a Founding Member stays with you for as long as your subscription runs, and is not offered once the seats are taken.' },
+      { q: 'What does “Founder price: 50% off for life” mean?', a: '50% off any plan you choose, monthly or annual, applied at every renewal for as long as your subscription renews; you can cancel by yourself at any time. It is not offered once the seats are taken.' },
       { q: 'Can the platform change my data?', a: 'No. It reads only. The Odoo connection is read-only and the platform writes nothing to your system.' },
       { q: 'We are not on Odoo. Can we join?', a: 'Yes. Send your last closed month as a trial balance or spreadsheet and we work from that with you.' }
     ],
+    // Founding seat application (page founding-members/apply/). Option values are the contract's
+    // exactly (seg-audit docs/api/founding-applications.md); only the labels change.
+    apply: {
+      title: 'Apply for a Founding seat | Standard Enterprise Governance (SEG)',
+      description: 'Apply to join the Standard Enterprise Governance (SEG) Founding Members from MFT: {total} seats only, every application reviewed by hand by the MFT team.',
+      eyebrow: 'Founding seat application',
+      headline: 'Apply for a seat among the {accent}Founding Members{/accent}',
+      intro: 'Two minutes of your time. The MFT team reviews every application by hand, and approval is what reserves the seat. Once approved, you sign up on the platform with the same e-mail you applied with. An approved seat is held for 14 days; if you have not signed up and connected Odoo by then, the seat goes back to the pool.',
+      counter: {
+        caption: 'seats left of {total}',
+        asOf: 'Last known count',
+        full: 'The founding seats are taken. Apply and we will put you on the waitlist, and contact you if a seat opens.',
+        off: 'Founding seat applications are paused for now. Get in touch and we will tell you if they reopen.',
+        offCta: 'Contact us'
+      },
+      sections: { business: 'Your company', system: 'Your system', fit: 'Audit and role', contact: 'Contact details', commit: 'Participation and commitment' },
+      fields: {
+        companies: 'Companies or entities on one system',
+        branches: 'Branches or locations',
+        employees: 'Employees',
+        je_monthly: 'Journal entries per month',
+        revenue: 'Annual revenue (US$ equivalent)',
+        erp: 'ERP',
+        erp_version: 'Version (optional)',
+        erp_version_hint: 'e.g. 17.0 or 18',
+        hosting: 'Hosting',
+        modules: 'Modules in use',
+        sector: 'Sector',
+        markets: 'Markets',
+        auditor: 'Do you have an auditor?',
+        role: 'Your role',
+        main_pain: 'What is the biggest finance or control problem you want solved?',
+        main_pain_hint: 'A line or two is enough (up to 500 characters).',
+        contact_name: 'Name',
+        company_name: 'Company name',
+        email: 'Work e-mail',
+        email_hint: 'Sign up on the platform later with this same e-mail so the seat reaches your company.',
+        phone: 'Phone (optional)',
+        consent_contact: 'I agree that the MFT team may contact me about this application, under the [[privacy/|privacy notice]].',
+        case_study: 'Open to a case study about our experience',
+        testimonial: 'Open to a written or video testimonial',
+        logo: 'Open to showing our logo among the Founding Members',
+        annual_commitment: 'We commit to an annual subscription',
+        beta_feedback: 'We will give regular feedback on new features',
+        commitHint: 'All optional; they help us order applications. Your name or logo is never published without a separate written approval.',
+        choose: 'Choose',
+        honeypot: 'Leave this field empty'
+      },
+      options: {
+        employees: [['1_10', '1 to 10'], ['11_50', '11 to 50'], ['51_200', '51 to 200'], ['201_1000', '201 to 1,000'], ['1000_plus', 'More than 1,000']],
+        je_monthly: [['under_500', 'Under 500 entries'], ['500_2k', '500 to 2,000'], ['2k_10k', '2,000 to 10,000'], ['10k_50k', '10,000 to 50,000'], ['50k_plus', 'More than 50,000']],
+        revenue: [['under_1m', 'Under 1M'], ['1m_5m', '1M to 5M'], ['5m_25m', '5M to 25M'], ['25m_100m', '25M to 100M'], ['over_100m', 'Over 100M']],
+        erp: [['odoo', 'Odoo'], ['other', 'Another system']],
+        hosting: [['odoo_online', 'Odoo Online'], ['odoo_sh', 'Odoo.sh'], ['on_premise', 'Our own server (on-premise)'], ['other', 'Other']],
+        modules: [['accounting', 'Accounting'], ['sales', 'Sales'], ['purchase', 'Purchase'], ['inventory', 'Inventory'], ['manufacturing', 'Manufacturing'], ['pos', 'Point of Sale'], ['hr_payroll', 'HR and payroll'], ['projects', 'Projects'], ['other', 'Other']],
+        sector: [['manufacturing', 'Manufacturing'], ['trading', 'Trading and distribution'], ['retail', 'Retail'], ['services', 'Services'], ['construction', 'Construction'], ['healthcare', 'Healthcare'], ['hospitality', 'Hospitality'], ['technology', 'Technology'], ['other', 'Other']],
+        markets: [['EG', 'Egypt'], ['SA', 'Saudi Arabia'], ['OTHER', 'Other markets']],
+        auditor: [['none', 'None'], ['internal', 'Internal auditor'], ['external', 'External auditor'], ['both', 'Internal and external']],
+        role: [['owner', 'Owner or partner'], ['cfo', 'CFO'], ['finance_manager', 'Finance manager'], ['accountant', 'Accountant'], ['other', 'Other']]
+      },
+      errors: {
+        required: 'This field is required.',
+        email: 'Enter a valid e-mail address.',
+        number: 'Enter a whole number from {min} to {max}.',
+        pick: 'Choose at least one.',
+        length: 'Write {min} to {max} characters.',
+        phone: 'Digits, spaces and + ( ) - only, 6 to 32 characters.',
+        consent: 'We need your consent to be contacted to send the application.',
+        server: 'Please check the highlighted fields.'
+      },
+      submit: 'Send application',
+      submitWaitlist: 'Join the waitlist',
+      sending: 'Sending…',
+      success: 'Application received, thank you. Check your e-mail and confirm your application from the link we sent (valid for 72 hours); it does not reach the MFT team until it is confirmed. The team then reviews every application by hand and will contact you.',
+      successWaitlist: 'Application received, thank you. Check your e-mail and confirm your application from the link we sent (valid for 72 hours). The seats are taken for now, so once confirmed your application goes on the waitlist, and we will contact you if a seat opens.',
+      captchaFailed: 'The check that you are not a robot did not complete. Please try again.',
+      rateLimited: 'Too many attempts in a short time. Please try again in a little while.',
+      failed: 'The application could not be sent right now. Please try again shortly, or e-mail us at {email}.',
+      aside: {
+        title: 'What happens after you apply',
+        steps: [
+          'You confirm your e-mail from the link you receive; the application does not reach the team before that.',
+          'The MFT team reviews your application by hand.',
+          'Approval reserves one of the {total} seats for you at once, for 14 days.',
+          'You sign up on the platform with the same e-mail and connect Odoo, and the seat becomes your company’s.'
+        ],
+        note: 'One seat per company and per Odoo database.'
+      },
+      cta: 'Apply for a Founding seat'
+    },
   },
 
   partners: {
@@ -938,7 +1030,7 @@ module.exports = {
     page: {
       eyebrow: 'Partners',
       title: 'Your clients run Odoo. Continuous audit, under your name.',
-      intro: 'The partner programme of Standard Enterprise Governance (SEG) from MFT, with its continuous audit module SEG Audit, for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia. Give your clients continuous review of their books: read-only access, every finding with its evidence, and your firm’s sign-off before the final sign-off by an MFT reviewer.',
+      intro: 'The partner programme of Standard Enterprise Governance (SEG) from MFT, with its continuous audit product SEG Audit, for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia. Give your clients continuous review of their books: read-only access, every finding with its evidence, and your firm’s sign-off before the final sign-off by an MFT reviewer.',
       cta: 'Become a partner'
     },
     value: {
@@ -1163,7 +1255,7 @@ module.exports = {
     sections: [
       {
         title: 'What we collect',
-        body: 'When you submit the contact form we receive the name, company, email, phone number, country, service of interest and message you enter, plus the page you sent it from and the language you used.'
+        body: 'When you submit the contact form we receive the name, company, email, phone number, country, service of interest and message you enter, plus the page you sent it from and the language you used. When you apply for a Founding seat we receive the contact details you enter (name, company, work e-mail, optional phone), your answers about the company and its system (size bands, ERP, modules, sector, markets, auditor, your role, the main problem) and the participation choices you tick.'
       },
       {
         title: 'Cookies and visits',
@@ -1171,7 +1263,7 @@ module.exports = {
         items: [
           { k: 'Essential', v: 'your browser keeps the visit source (utm) for the session, which is passed to the sign-up link on SEG so we know which ad or post brought you. It is not sent to a third party.' },
           { k: 'Advertising', v: 'the Meta Pixel from Meta Platforms loads when the page opens, for three purposes: advertising, conversion measurement and retargeting (showing our ads to people who visited the site).' },
-          { k: 'What is sent to Meta', v: 'the page address and the previous page, the time of the visit, browser and device type, your IP address, clicks on the free-check button, and a cookie identifier. It sets the _fbp cookie (up to 90 days), and _fbc when you arrive from an ad. We do not send what you type into forms.' },
+          { k: 'What is sent to Meta', v: 'the page address and the previous page, the time of the visit, browser and device type, your IP address, clicks on the free-check button, the fact that a Founding seat application was sent (not its contents), and a cookie identifier. It sets the _fbp cookie (up to 90 days), and _fbc when you arrive from an ad. We do not send what you type into forms.' },
           { k: 'Later', v: 'we may add the TikTok Pixel for the same purposes and under the same rules, after this notice is updated.' },
           { k: 'Your right to object and withdraw consent', v: 'you may object to this processing or withdraw your consent at any time, under Egypt’s Personal Data Protection Law No. 151 of 2020 and Saudi Arabia’s Personal Data Protection Law, by writing to privacy@seg-audit.com. You can also block third-party cookies in your browser, or manage what reached Meta in your account’s ad settings.' }
         ]
@@ -1182,6 +1274,7 @@ module.exports = {
         items: [
           { k: 'Website hosting', v: 'GitHub Pages by GitHub, Inc., which may log IP addresses for security.' },
           { k: 'Forms', v: 'the MFT customer system on Odoo (erp.seg-audit.com).' },
+          { k: 'Founding seat applications', v: 'the SEG platform operated by MFT (app.seg-audit.com), where the MFT team reviews each application.' },
           { k: 'Advertising', v: 'Meta Platforms (Meta Pixel), and later TikTok (TikTok Pixel).' }
         ]
       },
@@ -1417,7 +1510,7 @@ module.exports = {
   },
 
   homeFaq: [
-    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its SEG Audit continuous-audit module and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
+    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its continuous audit product SEG Audit and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
     { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. No credit card, no commitment.' },
     { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
   ],

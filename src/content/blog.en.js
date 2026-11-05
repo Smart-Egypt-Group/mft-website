@@ -125,7 +125,7 @@ module.exports = {
         { p: 'Every run records which model processed the data and whether it ran in the cloud, the tokens used, the client and the task, and every approval, execution and reversal with the resulting entry id. The log is kept for seven years by default, in line with working-paper conventions. When a client’s auditor asks how a number got there, the answer is a line in a file, not a meeting.' },
         { quote: 'Governance that lives in a document gets waived. Governance that lives in code gets a pull request.' },
         { h2: 'Where this is today' },
-        { p: 'The Auditor and Virtual CFO agents are available as a managed service with MFT accountants reviewing every output. The execution path is built and tested; live write-back to Odoo is configured per client once their connector is in place, and until then approved drafts are handed to the team as ready-to-post entries. The same two agents are being built into the seg-audit report pipeline so every report is AI-reviewed before a person reviews it. That integration switches on only after the AI-processing disclosure is published in the platform’s terms.' }
+        { p: 'The Auditor and Virtual CFO agents are available as a managed service with MFT accountants reviewing every output. The execution path is built and tested; live write-back to Odoo is configured per client once their connector is in place, and until then approved drafts are handed to the team as ready-to-post entries. The same two agents are being built into the SEG report pipeline so every report is AI-reviewed before a person reviews it. That integration switches on only after the AI-processing disclosure is published in the platform’s terms.' }
       ]
     }
   ]

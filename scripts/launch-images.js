@@ -15,11 +15,11 @@
 //     (it is the seat the viewer can take). The "now live" set uses a ledger with one cyan line.
 //   · copy has three levels only (eyebrow, hero, support) plus one CTA pill to app.seg-audit.com
 //
-// Variants: seats-ar / seats-en ("only 50 seats, founder price for life"; "X of 50 left" only with the real counter), live-ar / live-en ("now live"), neutral-seats /
+// Variants: seats-ar / seats-en ("only 50 seats · Founder price: 50% off for life"; "X of 50 left" only with the real counter), live-ar / live-en ("now live"), neutral-seats /
 // neutral-live (no words,
 // one file for both languages). Seat counts come from src/site.config.js → founding, so a rerun after
 // the counter (showCount) is off, so the seat designs carry «برنامج الأعضاء المؤسِّسون — 50 مقعد
-// فقط بسعر مؤسِّس مدى الحياة» and no count.
+// فقط · سعر المؤسِّس: 50% مدى الحياة» and no count.
 //
 // Needs Playwright + Google Chrome:  PLAYWRIGHT_PATH=<path to playwright> node scripts/launch-images.js [name-filter]
 const fs = require('fs');
@@ -40,7 +40,7 @@ const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 const { founding: FM } = require('../src/site.config.js');
 // No public counter unless site.config → founding.showCount (then FILLED seats are drawn and counted).
 const FILLED = FM.showCount ? FM.filled : 0, LEFT = FM.total - FILLED;
-// The approved line «برنامج الأعضاء المؤسِّسون — 50 مقعد فقط بسعر مؤسِّس مدى الحياة» is set as eyebrow + title.
+// The approved line «برنامج الأعضاء المؤسِّسون — 50 مقعد فقط · سعر المؤسِّس: 50% مدى الحياة» is set as eyebrow + title.
 
 const NAVY = '#0D1B3E', CYAN = '#1BB7CD', W = '#FFFFFF';
 const PHI = (1 + Math.sqrt(5)) / 2;
@@ -50,11 +50,11 @@ const f = (n) => +n.toFixed(1);
 // ---- Copy (three levels + CTA). The AR seats headline is the approved campaign line, verbatim. ----
 const COPY = {
   'seats-ar': FM.showCount
-    ? { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · الأعضاء المؤسِّسون', hero: [String(LEFT), `/${FM.total}`], title: `باقي ${LEFT} من ${FM.total} — الأعضاء المؤسِّسون`, support: `انضمت ${FILLED} شركة بالفعل. احجز مقعدك قبل اكتمال العدد.`, cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' }
-    : { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', hero: [String(FM.total), ''], title: `${FM.total} مقعد فقط بسعر مؤسِّس مدى الحياة`, support: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' },
+    ? { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · الأعضاء المؤسِّسون', hero: [String(LEFT), `/${FM.total}`], title: `باقي ${LEFT} من ${FM.total} — الأعضاء المؤسِّسون`, support: `المقاعد المحجوزة ${FILLED} من ${FM.total}. احجز مقعدك قبل اكتمال العدد.`, cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' }
+    : { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', hero: [String(FM.total), ''], title: `${FM.total} مقعد فقط · سعر المؤسِّس: 50% مدى الحياة`, support: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' },
   'seats-en': FM.showCount
-    ? { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left — Founding Members`, support: `${FILLED} companies have already joined. Claim yours before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' }
-    : { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', hero: [String(FM.total), ''], title: `Only ${FM.total} seats, founder price for life`, support: 'Start with a free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' },
+    ? { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left — Founding Members`, support: `${FILLED} of ${FM.total} seats reserved. Claim yours before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' }
+    : { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', hero: [String(FM.total), ''], title: `Only ${FM.total} seats · Founder price: 50% off for life`, support: 'Start with a free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' },
   'live-ar': { dir: 'rtl', eyebrow: 'Standard Enterprise Governance من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com', motif: 'live' },
   'live-en': { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'A free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Check your trial balance free  ·  app.seg-audit.com', motif: 'live' },
   'neutral-seats': { motif: 'seats' },
