@@ -104,7 +104,7 @@ module.exports = {
         'Set the approval tiers and the lock preconditions before the AI output counts.',
         'In the following close, move matching and entry scoring into the month, and keep commentary drafting for last.'
       ] },
-      { p: 'This is the work our [[intelligence/virtual-cfo/|Virtual CFO agent]] does as a managed service: it reads the books through the API at query time, drafts analysis and adjustments that cite the records behind them, and leaves approval to a named person on the client’s side; nothing is auto-posted. For teams that also want an experienced finance lead around the close, our [[services/virtual-cfo/|Virtual CFO service]] pairs that work with people who have closed books and signed reports themselves.' }
+      { p: 'This is the work our [[intelligence/virtual-cfo/|Virtual CFO agent]] does as a managed service: it works today from a ledger export (the live Odoo connector is being wired), drafts analysis and adjustments that cite the records behind them, and leaves approval to a named person on the client’s side; nothing is auto-posted. For teams that also want an experienced finance lead around the close, our [[services/virtual-cfo/|Virtual CFO service]] pairs that work with people who have closed books and signed reports themselves.' }
     ],
     faq: [
       { q: 'Can AI close the books automatically?', a: 'No, and it should not. AI can match transactions, reconcile accounts, test entries and draft accruals, adjustments and commentary, but each change to the books should be a draft that a named person approves, with a second approver above the materiality threshold. The person who signs the financial statements remains accountable for them.' },
@@ -222,7 +222,7 @@ module.exports = {
         'حدد مستويات الاعتماد وشروط القفل قبل أن تُعتمد مخرجات الذكاء الاصطناعي.',
         'في الإقفال التالي انقل المطابقة وتقييم القيود إلى أيام الشهر، واترك مسودة التعليق للنهاية.'
       ] },
-      { p: 'هذا هو العمل الذي يؤديه [[intelligence/virtual-cfo/|وكيل المدير المالي الافتراضي]] كخدمة مُدارة: يقرأ الدفاتر عبر {lat}API{/lat} وقت الاستعلام، ويُعدّ تحليلات وتسويات تستشهد بالسجلات التي تسندها، ويترك الاعتماد لشخص مسمّى لدى العميل، ولا يُرحَّل شيء تلقائيًا. وللفرق التي تريد أيضًا قائدًا ماليًا متمرسًا حول الإقفال، تجمع [[services/virtual-cfo/|خدمة المدير المالي الافتراضي]] هذا العمل مع أشخاص أقفلوا الدفاتر ووقّعوا التقارير بأنفسهم.' }
+      { p: 'هذا هو العمل الذي يؤديه [[intelligence/virtual-cfo/|وكيل المدير المالي الافتراضي]] كخدمة مُدارة: يعمل اليوم من ملف دفتر مُصدَّر (والموصّل الحي بـ{lat}Odoo{/lat} قيد الربط)، ويُعدّ تحليلات وتسويات تستشهد بالسجلات التي تسندها، ويترك الاعتماد لشخص مسمّى لدى العميل، ولا يُرحَّل شيء تلقائيًا. وللفرق التي تريد أيضًا قائدًا ماليًا متمرسًا حول الإقفال، تجمع [[services/virtual-cfo/|خدمة المدير المالي الافتراضي]] هذا العمل مع أشخاص أقفلوا الدفاتر ووقّعوا التقارير بأنفسهم.' }
     ],
     faq: [
       { q: 'هل يستطيع الذكاء الاصطناعي إقفال الدفاتر تلقائيًا؟', a: 'لا، ولا ينبغي له. يستطيع مطابقة المعاملات وتسوية الحسابات واختبار القيود وإعداد مسودات الاستحقاقات والتسويات والتعليق، لكن كل تغيير في الدفاتر يجب أن يكون مسودة يعتمدها شخص مسمّى، مع معتمِد ثانٍ فوق حد الأهمية النسبية. ومن يوقّع القوائم المالية يبقى مسؤولًا عنها.' },

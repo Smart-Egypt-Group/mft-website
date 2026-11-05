@@ -23,7 +23,7 @@ module.exports = {
         'Phase two integrates invoicing with ZATCA: standard invoices are cleared in real time, simplified invoices are reported within a day.',
         'Most rejections come from credit and debit notes that do not reference the original invoice and state the reason.',
         'Test every invoice type in the ZATCA sandbox and review the rejection log before switching to production.',
-        'MFT keeps the ledger on the client’s own Odoo instance and reads it through the API at query time.'
+        'Under the Personal Data Protection Law, ask any AI service where each run is processed before you connect live data.'
       ],
       faq: [
         { q: 'Does Odoo support ZATCA phase two e-invoicing?', a: 'Yes, Odoo supports phase two. Whether a specific implementation is compliant depends on configuration decisions such as entity setup, device onboarding, invoice fields and clearance versus reporting.' },
@@ -95,7 +95,7 @@ module.exports = {
         'المرحلة الثانية تربط الفوترة بالهيئة: الفواتير القياسية تُجاز لحظيًا، والمبسطة يُبلَّغ عنها خلال يوم.',
         'أغلب حالات الرفض تأتي من إشعارات دائن ومدين لا تشير إلى الفاتورة الأصلية ولا تذكر السبب.',
         'اختبر كل نوع فاتورة في البيئة التجريبية للهيئة وراجع سجل الرفض قبل التحويل إلى الإنتاج.',
-        'تُبقي {lat}MFT{/lat} الدفتر على نسخة {lat}Odoo{/lat} الخاصة بالعميل وتقرأه عبر {lat}API{/lat} وقت الاستعلام.'
+        'بموجب نظام حماية البيانات الشخصية، اسأل أي خدمة ذكاء اصطناعي أين تُعالَج كل تشغيلة قبل ربط بيانات حية.'
       ],
       faq: [
         { q: 'هل يدعم {lat}Odoo{/lat} المرحلة الثانية من الفوترة الإلكترونية لدى {lat}ZATCA{/lat}؟', a: 'نعم، {lat}Odoo{/lat} يدعم المرحلة الثانية. أما امتثال تنفيذ بعينه فيتوقف على قرارات الإعداد، كإعداد الكيان وتسجيل الجهاز وحقول الفاتورة والإجازة مقابل الإبلاغ.' },

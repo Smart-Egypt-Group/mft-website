@@ -59,7 +59,7 @@ module.exports = {
         'Who at the provider can see the data, and is that access logged?',
         'Does the provider’s contract match your data-protection obligations, as confirmed by your legal adviser?'
       ] },
-      { p: 'Our own answer is that client data stays on the client’s system and our agents read through the API at query time. Odoo’s native AI has its own retention rule: according to the release notes, stored conversations are kept up to 30 days after the last message. Know both rules before anything goes live.' },
+      { p: 'Our own answer: our agents read only the records a run needs, the full ledger is not copied, and the run log records which model provider processed each run; during the current phase that is a cloud provider. Odoo’s native AI has its own retention rule: according to the release notes, stored conversations are kept up to 30 days after the last message. Know both rules before anything goes live.' },
       { h2: 'Which tests should run continuously?' },
       { p: 'Start with tests whose exceptions are cheap to verify and expensive to miss. These are the patterns that recur in our continuous-audit work:' },
       { ul: [
@@ -81,7 +81,7 @@ module.exports = {
         'The agent drafts the correcting entry or adjustment; nothing is posted automatically.',
         'Approval is tiered by the client’s [[blog/materiality-isa-320-threshold/|ISA 320 materiality threshold]]: above it, a second approver signs.',
         'Corrections are made by reversal, never by deletion, so the original stays visible.',
-        'In SEG, a finding cannot be closed without a named, registered approver, and repeats are linked to earlier findings.'
+        'In SEG, a fix is marked verified only by a named MFT reviewer, dismissing a high or critical finding needs a reviewer, and repeats are linked to earlier findings.'
       ] },
       { p: 'Live Odoo write-back of approved corrections is delivered per client, only after that client’s connector is configured. Until then, approved corrections are entered by the client’s own team, which keeps the posting under their controls.' },
       { h2: 'Where should you start?' },
@@ -93,7 +93,7 @@ module.exports = {
         'Agree who reviews exceptions, in what time frame, and who approves corrections.',
         'Review the connection’s log, rights and findings monthly, as you would any privileged user.'
       ] },
-      { p: 'This is the work behind our [[services/internal-audit/|internal audit service]]: SEG reads the books read-only, scores every transaction by risk instead of sampling a few percent, and keeps each finding on record with evidence and severity. If your Odoo 20 rollout is still ahead, combine this with the [[blog/odoo-20-ai-accounting-step-by-step/|step-by-step guide to AI accounting on Odoo 20]].' }
+      { p: 'This is the work behind our [[services/internal-audit/|internal audit service]]: SEG reads the books read-only, runs its checks on the whole population, not a sample, and rolls the results into a documented risk score, and keeps each finding on record with evidence and severity. If your Odoo 20 rollout is still ahead, combine this with the [[blog/odoo-20-ai-accounting-step-by-step/|step-by-step guide to AI accounting on Odoo 20]].' }
     ],
     faq: [
       { q: 'Can AI connect directly to Odoo?', a: 'Yes. Recent Odoo versions offer an external API (XML-RPC and JSON-RPC) used with a dedicated API user and key, and Odoo’s 20 release notes add connecting to the database via MCP (Model Context Protocol). Confirm in your own database which user and rights each connection runs under before enabling it.' },
@@ -167,7 +167,7 @@ module.exports = {
         'من لدى المزوّد يستطيع رؤية البيانات، وهل هذا الوصول مسجَّل؟',
         'هل يتوافق عقد المزوّد مع التزاماتك في حماية البيانات، بحسب ما يؤكده مستشارك القانوني؟'
       ] },
-      { p: 'وإجابتنا نحن أن بيانات العميل تبقى على نظامه، وأن وكلاءنا يقرؤون عبر {lat}API{/lat} وقت الاستعلام. وللذكاء الاصطناعي الأصلي في {lat}Odoo{/lat} قاعدة احتفاظ خاصة به: بحسب ملاحظات الإصدار تُحفظ المحادثات حتى {lat}30{/lat} يومًا بعد آخر رسالة. اعرف القاعدتين قبل أي تشغيل.' },
+      { p: 'وإجابتنا نحن: وكلاؤنا يقرؤون السجلات التي يحتاجها التشغيل فقط، ولا يُنسخ الدفتر كاملًا، ويسجّل سجل التشغيل أي مزوّد نماذج عالج كل تشغيلة؛ وفي المرحلة الحالية هو مزوّد سحابي. وللذكاء الاصطناعي الأصلي في {lat}Odoo{/lat} قاعدة احتفاظ خاصة به: بحسب ملاحظات الإصدار تُحفظ المحادثات حتى {lat}30{/lat} يومًا بعد آخر رسالة. اعرف القاعدتين قبل أي تشغيل.' },
       { h2: 'ما الاختبارات التي تعمل باستمرار؟' },
       { p: 'ابدأ باختبارات يسهل التحقق من استثناءاتها ويكلّف فواتها كثيرًا. هذه هي الأنماط التي تتكرر في أعمال المراجعة المستمرة لدينا:' },
       { ul: [
@@ -189,7 +189,7 @@ module.exports = {
         'الوكيل يُعدّ القيد التصحيحي أو التسوية، ولا يُرحَّل شيء آليًا.',
         'الاعتماد متدرج حسب [[blog/materiality-isa-320-threshold/|حد الأهمية النسبية وفق {lat}ISA 320{/lat}]] لدى العميل: فوقه يوقّع معتمِد ثانٍ.',
         'التصحيح يتم بقيد عكسي لا بالحذف، فيبقى الأصل ظاهرًا.',
-        'في {lat}SEG{/lat} لا تُغلق ملاحظة دون معتمِد مسمّى ومسجَّل، والملاحظات المتكررة تُربط بما سبقها.'
+        'في {lat}SEG{/lat} لا يُعلَّم إصلاح الملاحظة كمُتحقَّق إلا بمراجع مسمّى من {lat}MFT{/lat}، واستبعاد الملاحظة العالية أو الحرجة يحتاج مراجعًا، والملاحظات المتكررة تُربط بما سبقها.'
       ] },
       { p: 'أما الكتابة المباشرة للتصحيحات المعتمدة في {lat}Odoo{/lat} فتُقدَّم لكل عميل على حدة، وبعد إعداد موصّله فقط. وحتى ذلك الحين يُدخل فريق العميل نفسه التصحيحات المعتمدة، فيبقى الترحيل تحت ضوابطه.' },
       { h2: 'من أين تبدأ؟' },
@@ -201,7 +201,7 @@ module.exports = {
         'اتفق على من يراجع الاستثناءات وفي أي مدة، ومن يعتمد التصحيحات.',
         'راجع سجل الاتصال وصلاحياته وملاحظاته شهريًا، كما تراجع أي مستخدم ذي صلاحيات عالية.'
       ] },
-      { p: 'هذا هو العمل الذي تقوم عليه [[services/internal-audit/|خدمة المراجعة الداخلية]] لدينا: {lat}SEG{/lat} تقرأ الدفاتر للقراءة فقط، وتقيّم كل معاملة حسب خطرها بدل فحص نسبة صغيرة منها، وتحفظ كل ملاحظة في السجل مع دليلها ودرجة خطورتها. وإن كان تطبيق {lat}Odoo 20{/lat} ما زال أمامك، فاقرن هذا بـ[[blog/odoo-20-ai-accounting-step-by-step/|الدليل العملي لتطبيق المحاسبة بالذكاء الاصطناعي على {lat}Odoo 20{/lat}]].' }
+      { p: 'هذا هو العمل الذي تقوم عليه [[services/internal-audit/|خدمة المراجعة الداخلية]] لدينا: {lat}SEG{/lat} تقرأ الدفاتر للقراءة فقط، وتشغّل فحوصها على المجتمع كله لا على عينة وتجمع النتائج في درجة خطر موثّقة، وتحفظ كل ملاحظة في السجل مع دليلها ودرجة خطورتها. وإن كان تطبيق {lat}Odoo 20{/lat} ما زال أمامك، فاقرن هذا بـ[[blog/odoo-20-ai-accounting-step-by-step/|الدليل العملي لتطبيق المحاسبة بالذكاء الاصطناعي على {lat}Odoo 20{/lat}]].' }
     ],
     faq: [
       { q: 'هل يمكن ربط الذكاء الاصطناعي بـ{lat}Odoo{/lat} مباشرة؟', a: 'نعم. توفر إصدارات {lat}Odoo{/lat} الحديثة واجهة {lat}API{/lat} خارجية ({lat}XML-RPC{/lat} و{lat}JSON-RPC{/lat}) تُستخدم بمستخدم ومفتاح مخصصين، وتضيف ملاحظات إصدار {lat}Odoo 20{/lat} الاتصال بقاعدة البيانات عبر {lat}MCP{/lat}. تحقق في قاعدة بياناتك من المستخدم والصلاحيات التي يعمل بها كل اتصال قبل تفعيله.' },
