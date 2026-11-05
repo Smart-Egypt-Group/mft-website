@@ -24,7 +24,7 @@ module.exports = {
     shortName: 'MFT',
     tagline: 'Financial clarity, delivered',
     description:
-      'MFT is a CPA-led firm that implements Odoo ERP, runs internal audit and acts as your Virtual CFO: one team, one set of numbers, in Egypt and Saudi Arabia, expanding to the US.'
+      'MFT is a firm led by a registered chartered accountant that implements Odoo ERP, runs internal audit and acts as your Virtual CFO: one team, one set of numbers, in Egypt and Saudi Arabia, expanding to the US.'
   },
 
   ui: {
@@ -58,7 +58,7 @@ module.exports = {
 
   footer: {
     blurb:
-      'A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.',
+      'A financial technology and auditing firm led by a registered chartered accountant. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.',
     columns: [
       {
         title: 'Services',
@@ -114,7 +114,7 @@ module.exports = {
 
   home: {
     title: 'Modern Financial Technology (MFT) | Standard Enterprise Governance (SEG), Odoo ERP & Internal Audit',
-    description: 'MFT is a CPA-led firm with its own platform, Standard Enterprise Governance (SEG), and SEG Audit, its continuous audit product. We implement Odoo ERP, run internal audit and act as your Virtual CFO in Egypt, Saudi Arabia and the US.',
+    description: 'MFT is a firm led by a registered chartered accountant, with its own platform, Standard Enterprise Governance (SEG), and SEG Audit, its continuous audit product. We implement Odoo ERP, run internal audit and act as your Virtual CFO in Egypt and Saudi Arabia, expanding to the US.',
     hero: {
       eyebrow: 'Financial Clarity, Delivered',
       headline: 'Decisions built on {accent}numbers{/accent}.\nNot on guesses.',
@@ -123,8 +123,8 @@ module.exports = {
       cta: { label: 'Check your trial balance free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
       trust: [
-        'CPA-Led Team',
-        'Odoo Certified Partners',
+        'Led by a registered chartered accountant (reg. 57986)',
+        'Odoo implementation experts led by accountants',
         { live: 'reports', text: 'Reports generated on SEG: {n}' },
         'Egypt and Saudi Arabia, expanding to the US'
       ]
@@ -227,7 +227,7 @@ module.exports = {
       pillars: [
         {
           title: 'Odoo ERP',
-          body: 'Implemented by certified partners who are also the accountants reading the output. Configuration decisions are accounting decisions here.'
+          body: 'Implemented by Odoo implementation experts led by accountants, the same people who read the output. Configuration decisions are accounting decisions here.'
         },
         {
           title: 'Internal Audit',
@@ -288,8 +288,8 @@ module.exports = {
       title: 'Credentials you can verify. Numbers you can audit.',
       facts: [
         { live: 'reports', label: 'Reports generated on SEG so far' },
-        { value: 'CPA', label: 'Licensed, CPA-led audit team' },
-        { value: 'Odoo', label: 'Certified implementation partner' },
+        { value: 'Reg. 57986', label: 'Led by a registered chartered accountant' },
+        { value: 'Odoo', label: 'Implementation experts led by accountants' },
         { value: '2', label: 'Markets: Egypt and Saudi Arabia, expanding to the US' }
       ]
     },
@@ -299,39 +299,10 @@ module.exports = {
       title: 'What the numbers found.',
       intro:
         'Two findings from recent audit engagements. Clients are anonymised and no financial amounts are published, only what was found and when.',
-      cases: [
-        {
-          sector: 'Food & beverage distribution · Cairo',
-          figure: '23 transactions',
-          label: 'missed by manual review, surfaced in six weeks',
-          body:
-            'Running SEG alongside the external audit of the second quarter, the engine flagged a duplicate payment to one supplier registered under two vendor codes, caught before the close, not after it.',
-          quote: '“We would have found it eventually. Eventually is expensive.”'
-        },
-        {
-          sector: 'Construction · Riyadh',
-          figure: '3 weeks before close',
-          label: 'an inventory valuation gap caught before year-end',
-          body:
-            'A costing method never updated after a supplier contract changed. Found before the close, it was a board discussion. After it, it would have been a restatement.',
-          quote: ''
-        }
-      ],
+      // CEO decision (6 Nov 2026): the two case studies and the two named testimonials are removed (no written consent on file). The section and its structured data disappear while these are empty.
+      cases: [],
       testimonialsTitle: 'What clients say',
-      testimonials: [
-        {
-          quote:
-            'Honestly, it has been a great experience. If we continue like this, progress will reach a whole new level. The team is highly professional, respectful, cooperative and always responsive, and we can clearly see the continuous improvement.',
-          name: 'Mr. Mahmoud',
-          company: 'Al-Kayan Steel'
-        },
-        {
-          quote:
-            'There has definitely been a noticeable improvement in reducing errors. We really hope the progress and the continuous follow-up carry on.',
-          name: 'Mr. Tarek',
-          company: 'Jacquardina'
-        }
-      ]
+      testimonials: []
     },
 
     // Hidden until Ahmed approves the package structure (site.config.js → showPricingSlot).
@@ -373,7 +344,7 @@ module.exports = {
   services: {
     title: 'Services | Modern Financial Technology',
     description:
-      'Odoo ERP Solutions, tax solutions, internal audit, Virtual CFO, financial consulting, business analysis and Claude for teams, from one CPA-led team in Egypt, Saudi Arabia and the US.',
+      'Odoo ERP Solutions, tax solutions, internal audit, Virtual CFO, financial consulting, business analysis and Claude for teams, from one team in Egypt and Saudi Arabia, led by a registered chartered accountant.',
     page: {
       eyebrow: 'Services',
       title: 'Seven services. One accountable team.',
@@ -406,14 +377,14 @@ module.exports = {
         name: 'Odoo ERP Solutions',
         short: 'Implementation, integrations, training and support for Odoo from one accountant-led team, plus custom module development with internal controls and governance built in.',
         tagline: 'An ERP that mirrors the business, closes the books, and governs itself.',
-        definition: 'Odoo ERP Solutions by MFT is one service for the whole life of the system: implementation and configuration, integrations and custom reports, custom module development, training, support and upgrades, and tax inside Odoo. It is led by certified Odoo partners who are also licensed accountants, so the ledger is right from day one and stays right.',
+        definition: 'Odoo ERP Solutions by MFT is one service for the whole life of the system: implementation and configuration, integrations and custom reports, custom module development, training, support and upgrades, and tax inside Odoo. It is delivered by Odoo implementation experts led by accountants, so the ledger is right from day one and stays right.',
         highlight: {
           value: '40+',
           label: 'review axes on your books, one of them for your activity family’s controls',
           body: 'With SEG Audit, we classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls inside Odoo (trading, retail, manufacturing, services). We configure those controls into your system from the first setup. This is what Standard Enterprise Governance means inside your system: governance is part of the configuration, not a report that comes after it.'
         },
         body: [
-          'Odoo implementations fail when the chart of accounts, cost centres and tax setup are an afterthought. MFT starts there. Our certified partners configure finance, inventory, manufacturing, sales, purchasing and HR around how your operation actually runs, for industrial, trading and service companies in Egypt and the Gulf.',
+          'Odoo implementations fail when the chart of accounts, cost centres and tax setup are an afterthought. MFT starts there. Our Odoo implementation experts, led by accountants, configure finance, inventory, manufacturing, sales, purchasing and HR around how your operation actually runs, for industrial, trading and service companies in Egypt and the Gulf.',
           'Because we practise smart audit, permissions, segregation of duties and documentation cycles are designed into the system from the first configuration, so the ERP prevents errors instead of just recording them. After go-live the same team stays with you: it trains every role, supports and upgrades the system, and builds what your activity needs.'
         ],
         tracks: [
@@ -477,7 +448,7 @@ module.exports = {
       {
         slug: 'internal-audit',
         name: 'Internal Audit',
-        short: 'Control testing and risk reviews by a CPA-led team, reported for the board.',
+        short: 'Control testing and risk reviews by a team led by a registered chartered accountant, reported for the board.',
         tagline: 'Find the gap before the auditor, the bank or the tax authority does.',
         body: [
           'An internal audit programme designed around your actual risks: revenue leakage, duplicate payments, near-duplicate vendors, inventory shrinkage, access rights and tax exposure. Fieldwork is done inside your ERP and supported by Standard Enterprise Governance (SEG), MFT’s own platform, which runs its checks on the whole population rather than a sample, and rolls the results into a documented risk score.',
@@ -493,7 +464,7 @@ module.exports = {
           'Follow-up tracking until closure'
         ],
         forWho: 'Owner-managed companies, groups with multiple entities, and businesses preparing for external audit, financing or acquisition.',
-        definition: 'Internal audit by MFT is a risk-based programme run by a CPA-led team inside your ERP: controls are tested, findings are ranked by financial impact, and each one carries an owner, a fix and a deadline.',
+        definition: 'Internal audit by MFT is a risk-based programme run inside your ERP by a team led by a registered chartered accountant: controls are tested, findings are ranked by financial impact, and each one carries an owner, a fix and a deadline.',
         faq: [
           { q: 'How is this different from our annual external audit?', a: 'External audit samples and looks back once a year. Our programme runs monthly or weekly, runs its checks on the whole population rather than a sample, and is designed to prevent findings rather than report them.' },
           { q: 'Do you use software or people?', a: 'Both. SEG and the MFT Auditor agent do the coverage; licensed auditors decide what matters and sign the report.' },
@@ -736,11 +707,9 @@ module.exports = {
     credentials: {
       title: 'Credentials',
       items: [
-        'CPA-led team of licensed accountants and auditors',
+        'Led by a registered chartered accountant (reg. 57986)',
         // Registration number from the CEO (5 Nov 2026). The register/authority name is added once confirmed, not before.
-        'Chartered accountant registration no. 57986',
-        '40+ years of combined experience in manufacturing, trading and financial services',
-        'Odoo Certified Partner',
+        'Odoo implementation experts led by accountants',
         { live: 'reports', text: 'Reports generated on SEG so far: {n}' },
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
         `Standard Enterprise Governance (SEG) by MFT, with its continuous audit product SEG Audit: ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
@@ -1511,7 +1480,7 @@ module.exports = {
   },
 
   homeFaq: [
-    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its continuous audit product SEG Audit and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
+    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a firm in Egypt and Saudi Arabia, led by a registered chartered accountant, that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its continuous audit product SEG Audit and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
     { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report. No credit card, no commitment.' },
     { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
   ],
@@ -1540,10 +1509,10 @@ module.exports = {
         name: 'Egypt',
         city: 'Cairo',
         title: 'Odoo ERP, Internal Audit and Virtual CFO in Egypt | MFT Cairo',
-        description: 'MFT is a CPA-led Odoo partner and audit firm headquartered in Cairo. Odoo ERP with ETA e-invoicing, internal audit programmes and Virtual CFO reporting for Egyptian companies.',
+        description: 'MFT is an audit firm and team of Odoo implementation experts led by accountants, headquartered in Cairo. Odoo ERP with ETA e-invoicing, internal audit programmes and Virtual CFO reporting for Egyptian companies.',
         eyebrow: 'Egypt',
         headline: 'Odoo, audit and Virtual CFO for Egyptian companies, from Cairo.',
-        definition: 'MFT is a CPA-led financial technology and audit firm headquartered in Korba, Heliopolis, Cairo, serving companies across Egypt with Odoo ERP implementation, internal audit and Virtual CFO reporting, in Arabic and English.',
+        definition: 'MFT is a financial technology and audit firm, led by a registered chartered accountant, headquartered in Korba, Heliopolis, Cairo, serving companies across Egypt with Odoo ERP implementation, internal audit and Virtual CFO reporting, in Arabic and English.',
         intro: 'Egyptian finance teams carry the Egyptian Tax Authority e-invoicing mandate, 14% VAT, withholding tax and a market where many ERP implementations stop at go-live. MFT’s Cairo team implements the system, audits the controls around it and reads the results with you every month.',
         obligations: [
           'ETA e-invoicing: every issued invoice submitted and validated, with the receipt mandate for B2C',

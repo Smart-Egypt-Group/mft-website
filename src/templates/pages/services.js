@@ -42,22 +42,24 @@ function seeAlso(ctx, links) {
 function proofBlock(ctx, { stories = true } = {}) {
   const S = ctx.c.home.stories;
   if (!S) return '';
+  stories = stories && S.cases.length > 0;
+  if (!stories && !S.testimonials.length) return '';
   const cases = stories
     ? `<ul class="grid grid-2 cases">${S.cases.map((cs) => `<li class="case"><p class="case-sector">${t(cs.sector)}</p><p class="case-figure">${t(cs.figure)}</p><p class="case-label">${t(cs.label)}</p><p class="case-body">${t(cs.body)}</p></li>`).join('')}</ul>`
     : '';
-  const quotes = `<ul class="grid grid-2 testimonials">${S.testimonials.map((q) => `<li class="testimonial"><blockquote><p>${t(q.quote)}</p></blockquote><p class="testimonial-by"><strong>${t(q.name)}</strong> · ${t(q.company)}</p></li>`).join('')}</ul>`;
+  const quotes = !S.testimonials.length ? '' : `<ul class="grid grid-2 testimonials">${S.testimonials.map((q) => `<li class="testimonial"><blockquote><p>${t(q.quote)}</p></blockquote><p class="testimonial-by"><strong>${t(q.name)}</strong> · ${t(q.company)}</p></li>`).join('')}</ul>`;
   return `<section class="section section-mist proof" aria-labelledby="proof-block-title">
   <div class="container">
     <div class="section-head"><h2 id="proof-block-title">${t(stories ? ctx.c.ui.proofTitle : ctx.c.ui.reviewsTitle)}</h2></div>
     ${cases}
-    ${stories ? `<h3 class="testimonials-title">${t(ctx.c.ui.reviewsTitle)}</h3>` : ''}
+    ${stories && quotes ? `<h3 class="testimonials-title">${t(ctx.c.ui.reviewsTitle)}</h3>` : ''}
     ${quotes}
   </div>
 </section>`;
 }
 function reviewSchema(ctx) {
   const S = ctx.c.home.stories;
-  if (!S) return null;
+  if (!S || !S.testimonials.length) return null;
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -185,7 +187,7 @@ ${ctaBand(ctx)}`;
     description: item.short,
     body,
     bodyClass: 'page-service-detail',
-    jsonld
+    jsonld: jsonld.filter(Boolean)
   };
 }
 
