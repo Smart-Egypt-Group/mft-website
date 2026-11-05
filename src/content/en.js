@@ -404,14 +404,13 @@ module.exports = {
       {
         slug: 'odoo-erp',
         name: 'Odoo ERP Solutions',
-        short: 'Implementation, integrations, training and support for Odoo from one accountant-led team, with internal controls and governance built into a module for each activity.',
-        cardStat: { value: '94', label: 'custom modules, one per activity' },
+        short: 'Implementation, integrations, training and support for Odoo from one accountant-led team, plus custom module development with internal controls and governance built in.',
         tagline: 'An ERP that mirrors the business, closes the books, and governs itself.',
-        definition: 'Odoo ERP Solutions by MFT is one service for the whole life of the system: implementation and configuration, integrations and custom reports, custom modules for each activity, training, support and upgrades, and tax inside Odoo. It is led by certified Odoo partners who are also licensed accountants, so the ledger is right from day one and stays right.',
+        definition: 'Odoo ERP Solutions by MFT is one service for the whole life of the system: implementation and configuration, integrations and custom reports, custom module development, training, support and upgrades, and tax inside Odoo. It is led by certified Odoo partners who are also licensed accountants, so the ledger is right from day one and stays right.',
         highlight: {
-          value: '94',
-          label: 'activities, each with its own custom module',
-          body: 'Each module is built for one activity, with that activity’s internal controls and governance policies built in from the start, so the system runs on your activity’s rules instead of being set up from scratch. This is what Standard Enterprise Governance means inside your system: governance is part of the configuration, not a report that comes after it.'
+          value: '40+',
+          label: 'review axes on your activity family',
+          body: 'SEG Audit classifies your activity under ISIC Rev.4, then checks the controls your activity family needs inside Odoo across more than 40 review axes. We configure those controls into your system from the first setup. This is what Standard Enterprise Governance means inside your system: governance is part of the configuration, not a report that comes after it.'
         },
         body: [
           'Odoo implementations fail when the chart of accounts, cost centres and tax setup are an afterthought. MFT starts there. Our certified partners configure finance, inventory, manufacturing, sales, purchasing and HR around how your operation actually runs, for industrial, trading and service companies in Egypt and the Gulf.',
@@ -420,7 +419,7 @@ module.exports = {
         tracks: [
           { id: 'implementation', title: 'Implementation and configuration', body: 'A finance-led deployment, from discovery to go-live.', items: ['Process mapping and gap analysis', 'Chart of accounts, analytic and cost-centre design', 'Module configuration: Accounting, Inventory, Manufacturing, Sales, Purchase, HR', 'Access rights and segregation of duties built in', 'Data migration with reconciled opening balances', 'Go-live support and 90-day stabilisation'] },
           { id: 'integrations', title: 'Integrations and custom reports', body: 'Odoo connected to everything around it, with reports shaped to your decisions.', items: ['Integrations with banks, e-invoicing portals, WhatsApp and third-party tools', 'Integrations and API work', 'Custom reports and dashboards'] },
-          { id: 'custom-modules', featured: true, title: 'Custom module development', body: 'One module for each of 94 activities, with internal controls and governance policies built in.', items: ['A custom module for your activity, out of 94 activities', 'The activity’s internal controls built into the module', 'Governance policies enforced inside the system, not in a separate manual', 'The module configured on your chart of accounts and data within the implementation project'] },
+          { id: 'custom-modules', featured: true, title: 'Custom module development', body: 'Odoo modules shaped to your activity, with internal controls and governance policies built in, not left in a separate manual.', items: ['Custom modules for your processes, developed within the implementation project', 'Your activity classified under ISIC Rev.4, with check rules for your activity family across more than 40 review axes', 'Ready-made module packages for each activity: being built and coming soon to the Odoo App Store; until then they are set up within the implementation project', 'Sector benchmarks for more than 50 activities (being added)'] },
           { id: 'training', title: 'Training', body: 'Role-based training on your own configuration and data, in Arabic or English, with recorded sessions.', items: ['Role-based curriculum on your live configuration', 'Hands-on workshops, on site or remote', 'Bilingual user guides and quick-reference cards', 'Competency check-outs before go-live', 'Refresher sessions after upgrades'] },
           { id: 'support', title: 'Support and upgrades', body: 'A support agreement with agreed response times, handled by people who know your configuration and chart of accounts.', items: ['Help desk with agreed response times', 'Version upgrades and regression testing', 'Monthly health check and backup verification'] },
           { id: 'tax', title: 'Tax inside Odoo', body: 'Egyptian e-invoicing (ETA), Saudi ZATCA phase two, withholding tax, VAT and multi-entity consolidation are part of the standard build, not change requests.', items: [], link: { label: 'Innovative Tax Solutions', href: 'services/tax-solutions/' } }
@@ -428,7 +427,7 @@ module.exports = {
         forWho: 'Companies moving off spreadsheets or a legacy system, and Odoo users whose implementation never produced reliable financials or who need one partner for training, support and upgrades.',
         faq: [
           { q: 'How long does an implementation take?', a: 'Typically eight to sixteen weeks from discovery to go-live for a single entity, depending on modules and data migration. We commit to a calendar at the end of discovery.' },
-          { q: 'What are the 94 activity modules?', a: 'A custom module for each of 94 activities, carrying that activity’s internal controls and governance policies. We identify your activity’s module during discovery and configure it within the implementation.' },
+          { q: 'Do you have ready-made modules for each activity?', a: 'Odoo module packages for each activity, with its controls, are being built and will be listed on the Odoo App Store soon; until then we configure your activity’s controls and build what is needed within the implementation project. Today SEG Audit classifies your activity under ISIC Rev.4 and checks your activity family’s controls across more than 40 review axes, with sector benchmarks for more than 50 activities being added.' },
           { q: 'Do you handle Egyptian e-invoicing and Saudi ZATCA?', a: 'Yes. ETA e-invoicing, ZATCA phase two, withholding tax and multi-entity consolidation are part of the standard build. For return reconciliation and tax-file readiness, see Innovative Tax Solutions.' },
           { q: 'What happens after go-live?', a: 'Ninety days of stabilisation are included, then optional support with response times agreed per contract; critical issues are acknowledged the same business day.' },
           { q: 'Do you handle upgrades and integrations?', a: 'Yes. Version upgrades with regression testing and a monthly health check, and integrations with banks, e-invoicing portals (ETA, ZATCA), WhatsApp and third-party tools via API.' },
@@ -439,12 +438,12 @@ module.exports = {
       {
         slug: 'tax-solutions',
         name: 'Innovative Tax Solutions',
-        short: 'Tax compliance checked on every invoice and entry in your system, not a sample: e-invoicing, VAT, withholding tax, zakat and a tax file ready for inspection.',
+        short: 'Tax compliance checked on every invoice and entry in your system, not a sample, through to filing the returns for you: e-invoicing, VAT, withholding tax and zakat.',
         tagline: 'Your return matches your books before the inspector asks.',
-        definition: 'Tax solutions by MFT combine tax configuration inside Odoo (Egyptian ETA e-invoicing, Saudi ZATCA phase two, VAT and withholding tax) with automated checks that read every invoice and entry read-only, with results signed off by licensed accountants. We prepare the reconciliations, working papers and tax-file readiness; the return is filed from your company’s own account.',
+        definition: 'Tax solutions by MFT combine tax configuration inside Odoo (Egyptian ETA e-invoicing, Saudi ZATCA phase two, VAT and withholding tax) with automated checks that read every invoice and entry read-only, with results signed off by licensed accountants. It is a full managed service: we prepare the reconciliations, working papers and tax-file readiness, then file the tax returns on your company’s behalf, supervised by a qualified accountant at every stage.',
         body: [
           'Most tax differences only surface at inspection: an e-invoice never submitted or rejected, tax on an invoice that does not match its entry, a supplier with no tax withheld, a VAT return that does not match the books. So we start with the setup itself: Odoo taxes per entity, item codes, customer and supplier registration data, invoice sequences and lock dates, configured by accountants, not just developers.',
-          'SEG Audit then reads all of your books, not a sample, and runs specific tax checks: ETA submission status or ZATCA clearance and reporting, output and input VAT reconciled to the return, tax differences between invoice and entry, supplier bills with no tax withheld, the zakat base, and tax-file readiness. The figures are computed from your books with fixed rules, and AI calculates no tax: it drafts the explanation of each finding and the proposed fix, and an MFT accountant approves it before it reaches you.'
+          'SEG Audit then reads all of your books, not a sample, and runs specific tax checks: ETA submission status or ZATCA clearance and reporting, output and input VAT reconciled to the return, tax differences between invoice and entry, supplier bills with no tax withheld, the zakat base, and tax-file readiness. The figures are computed from your books with fixed rules, and AI calculates no tax: it drafts the explanation of each finding and the proposed fix, and an MFT accountant approves it before it reaches you. Once you approve the reconciliation, we file the return on the official portal under your company’s authorisation and keep the filed return and proof of submission on your file.'
         ],
         deliverables: [
           'Tax configuration in Odoo: VAT and withholding tax per entity',
@@ -456,7 +455,8 @@ module.exports = {
           'E-invoice item data: item codes, customer addresses and free-text lines',
           'Zakat base computed and reconciled to the filed return, for Saudi companies',
           'Tax-file readiness before inspection: registration numbers, invoice sequence gaps, draft invoices and lock dates',
-          'Working papers and reconciliations the return is built on, and a findings report ranked by severity, each finding with its evidence from the books and an owner for the fix'
+          'Working papers and reconciliations the return is built on, and a findings report ranked by severity, each finding with its evidence from the books and an owner for the fix',
+          'Tax returns filed on your company’s behalf (VAT, withholding tax and zakat) on the Egyptian Tax Authority or ZATCA portal, under your authorisation and after your approval, with proof of submission'
         ],
         systems: [
           { name: 'Odoo', status: 'now' },
@@ -467,8 +467,8 @@ module.exports = {
         forWho: 'Companies running Odoo in Egypt and Saudi Arabia ahead of a tax inspection or after e-invoicing goes live, and finance teams that still prepare returns by hand from spreadsheets.',
         faq: [
           { q: 'Does AI calculate the tax or decide our tax position?', a: 'No. The checks compute figures straight from your books with fixed rules; AI drafts the explanation and proposed fix for an accountant to approve. Anything that needs professional judgement, such as the right withholding rate for each type of transaction, is raised for review, never decided automatically.' },
-          { q: 'Do you file the returns for us?', a: 'No. We prepare the reconciliations, working papers and tax-file readiness the return is built on; the return is filed from your company’s account on the Egyptian Tax Authority or ZATCA portal.' },
-          { q: 'Do you need write access to our system?', a: 'No, read-only. VAT and withholding returns are filed outside Odoo, so we reconcile them to the books by entering the filed figures.' },
+          { q: 'Do you file the returns for us?', a: 'Yes. It is a full managed service supervised by a qualified accountant: we prepare the reconciliations and working papers, your company approves the figures, then we file the return on the Egyptian Tax Authority or ZATCA portal under its authorisation and hand you the filed return and proof of submission.' },
+          { q: 'Do you need write access to our system?', a: 'No, read-only. VAT and withholding returns are filed outside Odoo, so we reconcile them to the books before filing, then file them on the portal for you.' },
           { q: 'We are not on Odoo. Does this apply to us?', a: 'The automated checks run on Odoo today; SAP, Oracle and Microsoft Dynamics are coming soon.' }
         ]
       },
@@ -984,7 +984,7 @@ module.exports = {
     packages: {
       eyebrow: 'Activity packages',
       title: 'Each activity has its own controls in Odoo.',
-      intro: 'The platform classifies the client’s activity (ISIC) and then checks the controls that activity needs in its Odoo setup, on top of the general checks.',
+      intro: 'The platform classifies the client’s activity (ISIC Rev.4) and then checks the controls that activity needs in its Odoo setup, on top of the general checks.',
       items: [
         { title: 'Trading and distribution', sectors: 'Wholesale and distribution', controls: ['Inventory valued automatically with every move', 'Three-way match: purchase order, receipt and bill', 'Freight and customs costs loaded onto inventory'] },
         { title: 'Retail and point of sale', sectors: 'Shops, restaurants and points of sale', controls: ['Inventory valued automatically with every move', 'Three-way match: purchase order, receipt and bill', 'Point-of-sale sessions closed the same day'] },
@@ -1433,7 +1433,7 @@ module.exports = {
         ],
         services: [
           { title: 'Odoo ERP with ETA built in', body: 'Chart of accounts, e-invoicing submission, withholding and VAT configured by accountants, not just developers.', href: 'services/odoo-erp/' },
-          { title: 'Innovative Tax Solutions', body: 'VAT return reconciled to the books, withholding tax review, ETA invoice follow-up and a tax file ready before inspection.', href: 'services/tax-solutions/' },
+          { title: 'Innovative Tax Solutions', body: 'VAT return reconciled to the books, withholding tax review, ETA invoice follow-up, and the returns filed for you.', href: 'services/tax-solutions/' },
           { title: 'Internal audit, monthly or continuous', body: 'Risk-based programmes run inside your ERP, with findings ranked by impact and an owner for each.', href: 'services/internal-audit/' },
           { title: 'Virtual CFO', body: 'A monthly management pack and a review call with an MFT accountant, from your first closed month.', href: 'services/virtual-cfo/' },
           { title: 'MFT Intelligence agents', body: 'The Auditor and Virtual CFO agents, delivered as a managed service with human sign-off.', href: 'intelligence/' }
@@ -1464,7 +1464,7 @@ module.exports = {
         ],
         services: [
           { title: 'Odoo ERP with ZATCA phase two', body: 'Integration, clearance and reporting configured as part of the standard build, with zakat and VAT set per entity.', href: 'services/odoo-erp/' },
-          { title: 'Innovative Tax Solutions', body: 'ZATCA clearance and reporting follow-up, VAT reconciled to the books, and the zakat base reconciled to the filed return.', href: 'services/tax-solutions/' },
+          { title: 'Innovative Tax Solutions', body: 'ZATCA clearance and reporting follow-up, VAT and the zakat base reconciled to the books, and the returns filed for you.', href: 'services/tax-solutions/' },
           { title: 'Internal audit', body: 'Risk-based programmes with ISA-classified findings, run on site in the Kingdom or remotely.', href: 'services/internal-audit/' },
           { title: 'Virtual CFO', body: 'Monthly management packs and cash forecasts in Arabic or English, with a review call each month.', href: 'services/virtual-cfo/' },
           { title: 'Cross-border structuring', body: 'Egypt and Saudi groups: treaty position, transfer of profits and consolidated reporting.', href: 'services/financial-consulting/' }

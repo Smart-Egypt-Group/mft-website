@@ -107,7 +107,7 @@ function tracks(ctx, item, L) {
   const nav = item.tracks.map((x) => `<li><a href="#${esc(x.id)}">${t(x.title)}</a></li>`).join('');
   const cards = item.tracks
     .map((x) => `<section class="track-card${x.featured ? ' is-featured' : ''}" id="${esc(x.id)}" aria-labelledby="${esc(x.id)}-title">
-        <h3 id="${esc(x.id)}-title">${x.featured && item.highlight ? `<span class="track-stat lat">${esc(item.highlight.value)}</span>` : ''}${t(x.title)}</h3>
+        <h3 id="${esc(x.id)}-title">${x.stat ? `<span class="track-stat lat">${esc(x.stat)}</span>` : ''}${t(x.title)}</h3>
         <p>${t(x.body)}</p>
         ${x.items.length ? `<ul class="check-list">${x.items.map((d) => `<li>${t(d)}</li>`).join('')}</ul>` : ''}
         ${x.link ? `<p><a class="btn btn-link" href="${url(ctx, x.link.href)}">${t(x.link.label)}</a></p>` : ''}
