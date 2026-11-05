@@ -18,7 +18,7 @@
 //   tb-check        the lead magnet: «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق», a trial
 //                   balance with its five risk indicators marked 01–05 (not a full audit report)
 //   hemicycle       real scarcity: 50 seats as a hemicycle, the visitor's seat in cyan, «برنامج الأعضاء
-//                   المؤسِّسون — 50 مقعد فقط بسعر مؤسِّس مدى الحياة» (seats lit only with the real counter)
+//                   المؤسِّسون — 50 مقعد فقط · سعر المؤسِّس: 50% مدى الحياة» (seats lit only with the real counter)
 //   carousel        «5 أخطاء في دفاترك مش هتلاحظها»: the five trial-balance indicators, 7 slides 4:5 + PDF
 //   video-*         storyboard frames 1080×1920 for two short videos (3-second hook first) and a
 //                   storyboard sheet per video
@@ -65,7 +65,7 @@ const T = {
     ns: { eb: 'Standard Enterprise Governance · صفر تخمين', head: 'رقم بلا مصدر؟ لا يدخل تقريرك.', sub: 'كل رقم في تقارير SEG مرتبط بمصدره في دفاترك.', tag: 'بلا مصدر', note: 'مثال توضيحي' },
     hemi: FM.showCount
       ? { eb: 'Standard Enterprise Governance · الأعضاء المؤسِّسون', title: `باقي ${LEFT} من ${FM.total} · ${FILLED} شركة انضمّت`, t1: `باقي ${LEFT} من ${FM.total}`, t2: `${FILLED} شركة انضمّت`, sub: 'احجز مقعدك قبل اكتمال العدد.', pill: 'احجز مقعدك  ·  app.seg-audit.com' }
-      : { eb: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', title: `${FM.total} مقعد فقط بسعر مؤسِّس مدى الحياة`, t1: `${FM.total} مقعد فقط`, t2: 'بسعر مؤسِّس مدى الحياة', sub: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', pill: 'احجز مقعدك  ·  app.seg-audit.com' },
+      : { eb: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', title: `${FM.total} مقعد فقط · سعر المؤسِّس: 50% مدى الحياة`, t1: `${FM.total} مقعد فقط`, t2: 'سعر المؤسِّس: 50% مدى الحياة', sub: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', pill: 'احجز مقعدك  ·  app.seg-audit.com' },
     car: {
       cover: { l1: 'أخطاء في دفاترك', l2: 'مش هتلاحظها', sub: 'وكلها باينة في ميزان المراجعة.', swipe: 'اسحب  ←' },
       // the five trial-balance indicators of the free check (CEO, 3 Nov 2026)
@@ -80,7 +80,7 @@ const T = {
       end: { head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', line: 'مؤشرات من ميزان المراجعة فقط. ليس تقرير مراجعة كاملًا.', pill: 'افحص ميزانك مجانًا  ·  app.seg-audit.com' }
     },
     vid: { a2: 'مراجعة سنوية واحدة. والسنة 365 يومًا.', a3: 'SEG بيقرا دفاترك كل يوم.', a4: 'وكل ملاحظة معاها دليلها.', b1: 'دفاترك شكلها كده؟', b2: 'SEG بيراجع…', b3: 'ملاحظة حرجة واحدة. ومعها مصدرها.' },
-    pov: { hook: 'ليه 50 شركة بس؟', name: 'أحمد أشرف', role: 'المؤسس والرئيس التنفيذي، MFT', pill: FM.showCount ? `باقي ${LEFT} من ${FM.total}` : `${FM.total} مقعدًا فقط بسعر مؤسِّس مدى الحياة`, ph: 'لقطة المؤسس هنا (POV)' }
+    pov: { hook: 'ليه 50 شركة بس؟', name: 'أحمد أشرف', role: 'المؤسس والرئيس التنفيذي، MFT', pill: FM.showCount ? `باقي ${LEFT} من ${FM.total}` : `${FM.total} مقعدًا فقط · سعر المؤسِّس: 50% مدى الحياة`, ph: 'لقطة المؤسس هنا (POV)' }
   },
   en: {
     cta: 'Check your trial balance free  ·  app.seg-audit.com',
@@ -92,8 +92,8 @@ const T = {
     ba: { before: 'Before', after: 'After', head: 'From books no one sees to a report you see in full.' },
     ns: { eb: 'STANDARD ENTERPRISE GOVERNANCE · ZERO GUESSWORK', head: 'A number with no source never reaches your report.', sub: 'Every number in an SEG report links to its source in your books.', tag: 'No source', note: 'Illustrative example' },
     hemi: FM.showCount
-      ? { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', title: `${LEFT} of ${FM.total} left · ${FILLED} companies joined`, t1: `${LEFT} of ${FM.total} left`, t2: `${FILLED} companies joined`, sub: 'Claim your seat before the count closes.', pill: 'Claim your seat  ·  app.seg-audit.com' }
-      : { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', title: `Only ${FM.total} seats, founder price for life`, t1: `Only ${FM.total} seats`, t2: 'Founder price for life', sub: 'Start with a free check of your company’s trial balance.', pill: 'Claim your seat  ·  app.seg-audit.com' },
+      ? { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', title: `${LEFT} of ${FM.total} left · ${FILLED} seats reserved`, t1: `${LEFT} of ${FM.total} left`, t2: `${FILLED} seats reserved`, sub: 'Claim your seat before the count closes.', pill: 'Claim your seat  ·  app.seg-audit.com' }
+      : { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', title: `Only ${FM.total} seats · Founder price: 50% off for life`, t1: `Only ${FM.total} seats`, t2: 'Founder price: 50% off for life', sub: 'Start with a free check of your company’s trial balance.', pill: 'Claim your seat  ·  app.seg-audit.com' },
     car: {
       cover: { l1: 'mistakes in your books', l2: "you won't notice", sub: 'And every one shows in your trial balance.', swipe: 'Swipe  →' },
       items: [
@@ -107,7 +107,7 @@ const T = {
       end: { head: 'A free check of your company’s trial balance that flags its risk points in minutes', line: 'Trial-balance indicators only. Not a full audit report.', pill: 'Check your trial balance free  ·  app.seg-audit.com' }
     },
     vid: { a2: 'One annual audit. A year has 365 days.', a3: 'SEG reads your books every day.', a4: 'And every finding comes with its evidence.', b1: 'Do your books look like this?', b2: 'SEG is reviewing…', b3: 'One critical finding. With its source.' },
-    pov: { hook: 'Why only 50 companies?', name: 'Ahmed Ashraf', role: 'Founder & CEO, MFT', pill: FM.showCount ? `${LEFT} of ${FM.total} left` : `Only ${FM.total} seats · founder price for life`, ph: 'Founder footage here (POV)' }
+    pov: { hook: 'Why only 50 companies?', name: 'Ahmed Ashraf', role: 'Founder & CEO, MFT', pill: FM.showCount ? `${LEFT} of ${FM.total} left` : `Only ${FM.total} seats · Founder price: 50% off for life`, ph: 'Founder footage here (POV)' }
   }
 };
 
@@ -683,11 +683,11 @@ function videoFrames(lang) {
 }
 const SB = {
   ar: {
-    a: { title: 'فيديو قصير ١: «باقي 360 يوم» · 15 ثانية · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'الخطّاف: السؤال كامل على الشاشة، بلا كلام أول ثانية، ثم بصوت المؤسس'], ['0:03–0:06', 'التقويم: 365 نقطة، أسبوع عمل واحد مضيء'], ['0:06–0:10', 'النقاط تضيء سماويًا يومًا بعد يوم: SEG يقرأ كل يوم'], ['0:10–0:13', 'التقرير الأبيض: الملاحظة السماوية ومعها مصدرها'], ['0:13–0:15', 'الختام: 50 مقعد فقط بسعر مؤسِّس مدى الحياة · الرابط في البايو']] },
+    a: { title: 'فيديو قصير ١: «باقي 360 يوم» · 15 ثانية · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'الخطّاف: السؤال كامل على الشاشة، بلا كلام أول ثانية، ثم بصوت المؤسس'], ['0:03–0:06', 'التقويم: 365 نقطة، أسبوع عمل واحد مضيء'], ['0:06–0:10', 'النقاط تضيء سماويًا يومًا بعد يوم: SEG يقرأ كل يوم'], ['0:10–0:13', 'التقرير الأبيض: الملاحظة السماوية ومعها مصدرها'], ['0:13–0:15', 'الختام: 50 مقعد فقط · سعر المؤسِّس: 50% مدى الحياة · الرابط في البايو']] },
     b: { title: 'فيديو قصير ٢: «قبل / بعد» · 12 ثانية', notes: [['0:00–0:03', 'الخطّاف: دفاتر مائلة متداخلة، والسؤال بخط ضخم'], ['0:03–0:06', 'خط المسح يمر من أعلى لأسفل: ما فوقه منظَّم وأبيض'], ['0:06–0:09', 'التقرير كاملًا: ملاحظة حرجة واحدة بالسماوي'], ['0:09–0:12', 'الختام: المقاعد · الرابط']] }
   },
   en: {
-    a: { title: 'Short video 1: "The other 360 days" · 15 s · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'Hook: the full question on screen, silent first second, then the founder’s voice'], ['0:03–0:06', 'The calendar: 365 dots, one working week lit'], ['0:06–0:10', 'Day by day the dots turn cyan: SEG reads every day'], ['0:10–0:13', 'The white report: the cyan finding with its source'], ['0:13–0:15', 'End card: only 50 seats, founder price for life · link in bio']] },
+    a: { title: 'Short video 1: "The other 360 days" · 15 s · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'Hook: the full question on screen, silent first second, then the founder’s voice'], ['0:03–0:06', 'The calendar: 365 dots, one working week lit'], ['0:06–0:10', 'Day by day the dots turn cyan: SEG reads every day'], ['0:10–0:13', 'The white report: the cyan finding with its source'], ['0:13–0:15', 'End card: only 50 seats · Founder price: 50% off for life · link in bio']] },
     b: { title: 'Short video 2: "Before / After" · 12 s', notes: [['0:00–0:03', 'Hook: a tilted, overlapping ledger and the question in huge type'], ['0:03–0:06', 'The scan line sweeps down: above it, ordered and white'], ['0:06–0:09', 'The full report: one critical finding in cyan'], ['0:09–0:12', 'End card: the seats · the link']] }
   }
 };

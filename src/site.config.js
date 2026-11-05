@@ -63,9 +63,12 @@ module.exports = {
     }
   },
 
-  // Founding Members launch (SEG Audit): 50 seats at a founder price for life. Public counter ON
-  // (CEO, 3 Nov 2026): 17 confirmed founding members on the SEG platform as of 2026-11-03.
-  // To update: set `filled` to the confirmed count and `asOf` to the date; `showCount: false` hides it.
+  // Founding Members launch of the platform, Standard Enterprise Governance (SEG): 50 seats, founder price: 50% off for life. Public counter ON
+  // (CEO, 3 Nov 2026). Live count (CEO, 5 Nov 2026): the platform computes left = 50 - applications
+  // submitted, and the site shows that number from api.seats; `total` (50) is the cap and the API's
+  // own total is ignored. `filled` / `asOf` are only the fallback shown when the endpoint is
+  // unreachable (17 as of 2026-11-03): update them to the last known applications count.
+  // `showCount: false` hides the counter.
   // With the counter on, the page, header bar, home band, seat meter and titles switch to the
   // counter copy in content/<lang>.js → founding.counter,
   // and the generators (launch-images.js, launch-concepts.js) draw the filled seats.
@@ -76,7 +79,26 @@ module.exports = {
     filled: 17,
     asOf: '2026-11-03',
     // Every launch CTA lands on the app sign-up. UTM content is added per placement in the template.
-    signup: { ar: 'https://app.seg-audit.com/ar/signup', en: 'https://app.seg-audit.com/en/signup' }
+    signup: { ar: 'https://app.seg-audit.com/ar/signup', en: 'https://app.seg-audit.com/en/signup' },
+    // Founding application (page founding-members/apply/), contract: seg-audit
+    // docs/api/founding-applications.md. Both endpoints are public; the browser calls them only
+    // once the portal lists this site's origin in SEG_PUBLIC_FORM_ORIGINS (CORS).
+    //   seats  GET  → {open, total, left}; drives every [data-seats] number on the site live.
+    //              If it fails, the numbers above (filled / asOf) stay: the last known count.
+    //   apply  POST → 202 always; 422 field errors; 429 Retry-After.
+    // utmField: the contract forbids unknown fields (422), so UTMs are NOT sent with the
+    // application yet; they ride on the Meta Lead event. When the platform accepts an object
+    // field for them, set its name here (e.g. 'utm') and the form starts sending it.
+    api: {
+      seats: 'https://app.seg-audit.com/api/public/founding-seats',
+      apply: 'https://app.seg-audit.com/api/public/founding-applications',
+      utmField: null,
+      // Captcha (Cloudflare Turnstile): off on the platform for now (CEO, 5 Nov 2026). The form
+      // already sends captcha_token = "" (ignored while off). To switch on: MFT sets the platform
+      // secret, puts the Turnstile site key here, and the widget renders in the form's slot; the
+      // token is then required (a failed check = 400).
+      captchaSiteKey: null
+    }
   },
 
   // Reports counter (CEO, 5 Nov 2026): replaces the fixed «+500 تقرير». The platform's real count

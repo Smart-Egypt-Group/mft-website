@@ -76,8 +76,24 @@ const fm = (ctx, key) => {
   const v = ctx.config.founding.showCount && C[key] != null ? C[key] : key.split('.').reduce((o, k) => o && o[k], P);
   return seats(ctx, v);
 };
+// The same as fm, as HTML: every seat number is a [data-seats] span, so main.js can update it from
+// the platform's live counter (site.config → founding.api.seats). Server-rendered value = the last
+// known count from site.config, so the page reads right without JS or if the counter is down.
+const fmh = (ctx, key) => {
+  const P = ctx.c.founding, C = P.counter || {};
+  const v = ctx.config.founding.showCount && C[key] != null ? C[key] : key.split('.').reduce((o, k) => o && o[k], P);
+  return seatsHtml(ctx, v);
+};
+const seatsHtml = (ctx, s) => {
+  const F = ctx.config.founding, filled = F.showCount ? F.filled : 0;
+  const span = (k, n) => `<span data-seats="${k}">${n}</span>`;
+  return t(String(s).replace(/\{(left|filled|total)\}/g, '\u0001$1\u0002'))
+    .replace(/\u0001left\u0002/g, span('left', F.total - filled))
+    .replace(/\u0001filled\u0002/g, span('filled', filled))
+    .replace(/\u0001total\u0002/g, span('total', F.total));
+};
 // Launch CTA → app sign-up, tagged so the app can attribute it (see marketing/README.md → UTM).
 const signupUrl = (ctx, content) =>
   `${ctx.config.founding.signup[ctx.lang]}?utm_source=website&utm_medium=owned&utm_campaign=founding-members-2026&utm_content=${encodeURIComponent(content)}`;
 
-module.exports = { esc, t, plain, url, attrs, link, btn, eyebrow, sectionHead, phTag, pad2, seats, fm, signupUrl };
+module.exports = { esc, t, plain, url, attrs, link, btn, eyebrow, sectionHead, phTag, pad2, seats, fm, fmh, seatsHtml, signupUrl };
