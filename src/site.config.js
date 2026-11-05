@@ -76,7 +76,21 @@ module.exports = {
     filled: 17,
     asOf: '2026-11-03',
     // Every launch CTA lands on the app sign-up. UTM content is added per placement in the template.
-    signup: { ar: 'https://app.seg-audit.com/ar/signup', en: 'https://app.seg-audit.com/en/signup' }
+    signup: { ar: 'https://app.seg-audit.com/ar/signup', en: 'https://app.seg-audit.com/en/signup' },
+    // Founding application (page founding-members/apply/), contract: seg-audit
+    // docs/api/founding-applications.md. Both endpoints are public; the browser calls them only
+    // once the portal lists this site's origin in SEG_PUBLIC_FORM_ORIGINS (CORS).
+    //   seats  GET  → {open, total, left}; drives every [data-seats] number on the site live.
+    //              If it fails, the numbers above (filled / asOf) stay: the last known count.
+    //   apply  POST → 202 always; 422 field errors; 429 Retry-After.
+    // utmField: the contract forbids unknown fields (422), so UTMs are NOT sent with the
+    // application yet; they ride on the Meta Lead event. When the platform accepts an object
+    // field for them, set its name here (e.g. 'utm') and the form starts sending it.
+    api: {
+      seats: 'https://app.seg-audit.com/api/public/founding-seats',
+      apply: 'https://app.seg-audit.com/api/public/founding-applications',
+      utmField: null
+    }
   },
 
   // PENDING (Ahmed): package structure/prices. Section is fully written in

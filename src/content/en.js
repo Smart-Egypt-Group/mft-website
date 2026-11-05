@@ -884,7 +884,7 @@ module.exports = {
       eyebrow: 'How to join',
       title: 'Three steps to the risk points in your trial balance, in minutes.',
       steps: [
-        { title: 'Sign up', body: 'Create your company account at app.seg-audit.com. Sign-up reserves your seat in order.' },
+        { title: 'Sign up', body: 'Create your company account at app.seg-audit.com and start the free check. To reserve a Founding seat, apply through the application form: MFT approves each one by hand.' },
         { title: 'Upload your trial balance', body: 'Upload the trial balance of your last closed month, or connect Odoo read-only.' },
         { title: 'Get your trial-balance check', body: 'Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report.' }
       ]
@@ -896,6 +896,94 @@ module.exports = {
       { q: 'Can the platform change my data?', a: 'No. It reads only. The Odoo connection is read-only and the platform writes nothing to your system.' },
       { q: 'We are not on Odoo. Can we join?', a: 'Yes. Send your last closed month as a trial balance or spreadsheet and we work from that with you.' }
     ],
+    // Founding seat application (page founding-members/apply/). Option values are the contract's
+    // exactly (seg-audit docs/api/founding-applications.md); only the labels change.
+    apply: {
+      title: 'Apply for a Founding seat | Standard Enterprise Governance (SEG)',
+      description: 'Apply to join the Standard Enterprise Governance (SEG) Founding Members from MFT: {total} seats only, every application reviewed by hand by the MFT team.',
+      eyebrow: 'Founding seat application',
+      headline: 'Apply for a seat among the {accent}Founding Members{/accent}',
+      intro: 'Two minutes of your time. The MFT team reviews every application by hand, and approval is what reserves the seat. Once approved, you sign up on the platform with the same e-mail you applied with.',
+      counter: {
+        caption: 'seats left of {total}',
+        asOf: 'Last known count',
+        full: 'The founding seats are taken. Apply and we will put you on the waitlist, and contact you if a seat opens.',
+        off: 'Founding seat applications are paused for now. Get in touch and we will tell you if they reopen.',
+        offCta: 'Contact us'
+      },
+      sections: { business: 'Your company', system: 'Your system', fit: 'Audit and role', contact: 'Contact details', commit: 'Participation and commitment' },
+      fields: {
+        companies: 'Companies or entities on one system',
+        branches: 'Branches or locations',
+        employees: 'Employees',
+        je_monthly: 'Journal entries per month',
+        revenue: 'Annual revenue (US$ equivalent)',
+        erp: 'ERP',
+        erp_version: 'Version (optional)',
+        erp_version_hint: 'e.g. 17.0 or 18',
+        hosting: 'Hosting',
+        modules: 'Modules in use',
+        sector: 'Sector',
+        markets: 'Markets',
+        auditor: 'Do you have an auditor?',
+        role: 'Your role',
+        main_pain: 'What is the biggest finance or control problem you want solved?',
+        main_pain_hint: 'A line or two is enough (up to 500 characters).',
+        contact_name: 'Name',
+        company_name: 'Company name',
+        email: 'Work e-mail',
+        email_hint: 'Sign up on the platform later with this same e-mail so the seat reaches your company.',
+        phone: 'Phone (optional)',
+        consent_contact: 'I agree that the MFT team may contact me about this application, under the [[privacy/|privacy notice]].',
+        case_study: 'Open to a case study about our experience',
+        testimonial: 'Open to a written or video testimonial',
+        logo: 'Open to showing our logo among the Founding Members',
+        annual_commitment: 'We commit to an annual subscription',
+        beta_feedback: 'We will give regular feedback on new features',
+        commitHint: 'All optional; they help us order applications. Your name or logo is never published without a separate written approval.',
+        choose: 'Choose',
+        honeypot: 'Leave this field empty'
+      },
+      options: {
+        employees: [['1_10', '1 to 10'], ['11_50', '11 to 50'], ['51_200', '51 to 200'], ['201_1000', '201 to 1,000'], ['1000_plus', 'More than 1,000']],
+        je_monthly: [['under_500', 'Under 500 entries'], ['500_2k', '500 to 2,000'], ['2k_10k', '2,000 to 10,000'], ['10k_50k', '10,000 to 50,000'], ['50k_plus', 'More than 50,000']],
+        revenue: [['under_1m', 'Under 1M'], ['1m_5m', '1M to 5M'], ['5m_25m', '5M to 25M'], ['25m_100m', '25M to 100M'], ['over_100m', 'Over 100M']],
+        erp: [['odoo', 'Odoo'], ['other', 'Another system']],
+        hosting: [['odoo_online', 'Odoo Online'], ['odoo_sh', 'Odoo.sh'], ['on_premise', 'Our own server (on-premise)'], ['other', 'Other']],
+        modules: [['accounting', 'Accounting'], ['sales', 'Sales'], ['purchase', 'Purchase'], ['inventory', 'Inventory'], ['manufacturing', 'Manufacturing'], ['pos', 'Point of Sale'], ['hr_payroll', 'HR and payroll'], ['projects', 'Projects'], ['other', 'Other']],
+        sector: [['manufacturing', 'Manufacturing'], ['trading', 'Trading and distribution'], ['retail', 'Retail'], ['services', 'Services'], ['construction', 'Construction'], ['healthcare', 'Healthcare'], ['hospitality', 'Hospitality'], ['technology', 'Technology'], ['other', 'Other']],
+        markets: [['EG', 'Egypt'], ['SA', 'Saudi Arabia'], ['OTHER', 'Other markets']],
+        auditor: [['none', 'None'], ['internal', 'Internal auditor'], ['external', 'External auditor'], ['both', 'Internal and external']],
+        role: [['owner', 'Owner or partner'], ['cfo', 'CFO'], ['finance_manager', 'Finance manager'], ['accountant', 'Accountant'], ['other', 'Other']]
+      },
+      errors: {
+        required: 'This field is required.',
+        email: 'Enter a valid e-mail address.',
+        number: 'Enter a whole number from {min} to {max}.',
+        pick: 'Choose at least one.',
+        length: 'Write {min} to {max} characters.',
+        phone: 'Digits, spaces and + ( ) - only, 6 to 32 characters.',
+        consent: 'We need your consent to be contacted to send the application.',
+        server: 'Please check the highlighted fields.'
+      },
+      submit: 'Send application',
+      submitWaitlist: 'Join the waitlist',
+      sending: 'Sending…',
+      success: 'Application received, thank you. The MFT team reviews every application by hand and will contact you. If a confirmation e-mail reaches you, click the link in it so your application reaches the team.',
+      successWaitlist: 'Application received; you are on the waitlist. The MFT team reviews every application by hand and will contact you if a seat opens. If a confirmation e-mail reaches you, click the link in it.',
+      rateLimited: 'Too many attempts in a short time. Please try again in a little while.',
+      failed: 'The application could not be sent right now. Please try again shortly, or e-mail us at {email}.',
+      aside: {
+        title: 'What happens after you apply',
+        steps: [
+          'The MFT team reviews your application by hand.',
+          'Approval reserves one of the {total} seats for you at once.',
+          'You sign up on the platform with the same e-mail, and the seat becomes your company’s.'
+        ],
+        note: 'One seat per company and per Odoo database.'
+      },
+      cta: 'Apply for a Founding seat'
+    },
   },
 
   partners: {
@@ -1129,7 +1217,7 @@ module.exports = {
     sections: [
       {
         title: 'What we collect',
-        body: 'When you submit the contact form we receive the name, company, email, phone number, country, service of interest and message you enter, plus the page you sent it from and the language you used.'
+        body: 'When you submit the contact form we receive the name, company, email, phone number, country, service of interest and message you enter, plus the page you sent it from and the language you used. When you apply for a Founding seat we receive the contact details you enter (name, company, work e-mail, optional phone), your answers about the company and its system (size bands, ERP, modules, sector, markets, auditor, your role, the main problem) and the participation choices you tick.'
       },
       {
         title: 'Cookies and visits',
@@ -1137,7 +1225,7 @@ module.exports = {
         items: [
           { k: 'Essential', v: 'your browser keeps the visit source (utm) for the session, which is passed to the sign-up link on SEG so we know which ad or post brought you. It is not sent to a third party.' },
           { k: 'Advertising', v: 'the Meta Pixel from Meta Platforms loads when the page opens, for three purposes: advertising, conversion measurement and retargeting (showing our ads to people who visited the site).' },
-          { k: 'What is sent to Meta', v: 'the page address and the previous page, the time of the visit, browser and device type, your IP address, clicks on the free-check button, and a cookie identifier. It sets the _fbp cookie (up to 90 days), and _fbc when you arrive from an ad. We do not send what you type into forms.' },
+          { k: 'What is sent to Meta', v: 'the page address and the previous page, the time of the visit, browser and device type, your IP address, clicks on the free-check button, the fact that a Founding seat application was sent (not its contents), and a cookie identifier. It sets the _fbp cookie (up to 90 days), and _fbc when you arrive from an ad. We do not send what you type into forms.' },
           { k: 'Later', v: 'we may add the TikTok Pixel for the same purposes and under the same rules, after this notice is updated.' },
           { k: 'Your right to object and withdraw consent', v: 'you may object to this processing or withdraw your consent at any time, under Egypt’s Personal Data Protection Law No. 151 of 2020 and Saudi Arabia’s Personal Data Protection Law, by writing to privacy@seg-audit.com. You can also block third-party cookies in your browser, or manage what reached Meta in your account’s ad settings.' }
         ]
@@ -1148,6 +1236,7 @@ module.exports = {
         items: [
           { k: 'Website hosting', v: 'GitHub Pages by GitHub, Inc., which may log IP addresses for security.' },
           { k: 'Forms', v: 'the MFT customer system on Odoo (erp.seg-audit.com).' },
+          { k: 'Founding seat applications', v: 'the SEG platform operated by MFT (app.seg-audit.com), where the MFT team reviews each application.' },
           { k: 'Advertising', v: 'Meta Platforms (Meta Pixel), and later TikTok (TikTok Pixel).' }
         ]
       },

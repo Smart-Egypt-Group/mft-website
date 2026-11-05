@@ -5,7 +5,8 @@
    IDs come from site.config.js → analytics, rendered onto this script tag as data attributes.
      PageView  every page (Meta) / page() (TikTok)
      Lead      click on a [data-track="lead"] CTA: the free trial-balance check (Meta "Lead",
-               TikTok "ClickButton")
+               TikTok "ClickButton"); and a founding application received (apply.js → 'mft:lead',
+               Meta "Lead" content_name founding-application, TikTok "SubmitForm")
    A browser that opted out under the short-lived notice bar (localStorage mft-consent = 'denied')
    stays opted out. */
 (function () {
@@ -51,6 +52,19 @@
       ttq.page();
     }(window, document, 'ttq');
   }
+
+  /* ---------- Lead: a founding seat application received (202), fired by apply.js. Only the
+     event name and this visit's UTMs: never what was typed in the form (privacy notice). ---------- */
+  document.addEventListener('mft:lead', function (e) {
+    var d = (e && e.detail) || {};
+    var params = { content_name: d.name || 'founding-application', content_category: d.waitlist ? 'waitlist' : 'founding-seat' };
+    try {
+      var utm = JSON.parse(window.sessionStorage.getItem('mft-utm') || 'null');
+      if (utm) ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) { if (utm[k]) params[k] = utm[k]; });
+    } catch (err) { /* storage blocked */ }
+    if (window.fbq) window.fbq('track', 'Lead', params);
+    if (window.ttq && tiktokId) window.ttq.track('SubmitForm', { content_name: params.content_name });
+  });
 
   /* ---------- Lead: the free-check CTA. Same-tab clicks wait a moment so the event leaves before the page does ---------- */
   document.addEventListener('click', function (e) {

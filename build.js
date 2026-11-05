@@ -43,6 +43,7 @@ const privacy = require('./src/templates/pages/privacy');
 const trust = require('./src/templates/pages/trust');
 const partners = require('./src/templates/pages/partners');
 const founding = require('./src/templates/pages/founding');
+const foundingApply = require('./src/templates/pages/founding-apply');
 const intelligence = require('./src/templates/pages/intelligence');
 const agentPage = require('./src/templates/pages/agent');
 const quote = require('./src/templates/pages/quote');
@@ -98,7 +99,7 @@ function pageList(c) {
     { path: 'privacy/', render: (ctx) => privacy(ctx) },
     { path: 'trust/', render: (ctx) => trust(ctx) },
     { path: 'partners/', render: (ctx) => partners(ctx) },
-    ...(config.founding && config.founding.enabled ? [{ path: 'founding-members/', render: (ctx) => founding(ctx) }] : []),
+    ...(config.founding && config.founding.enabled ? [{ path: 'founding-members/', render: (ctx) => founding(ctx) }, { path: 'founding-members/apply/', render: (ctx) => foundingApply(ctx) }] : []),
     { path: '404.html', render: (ctx) => notFound(ctx), file: true, noindex: true },
     // Review-only preview of the alternative hero. Excluded from sitemap, disallowed in robots.
     { path: '_preview/hero-b/', render: (ctx) => home(ctx, { heroVariant: 'B' }), noindex: true },
