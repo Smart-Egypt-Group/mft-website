@@ -123,7 +123,7 @@ module.exports = {
       trust: [
         'CPA-Led Team',
         'Odoo Certified Partners',
-        '500+ Reports Delivered',
+        { live: 'reports', text: 'Reports generated on SEG: {n}' },
         'Egypt and Saudi Arabia, expanding to the US'
       ]
     },
@@ -285,7 +285,7 @@ module.exports = {
       eyebrow: 'Why MFT',
       title: 'Credentials you can verify. Numbers you can audit.',
       facts: [
-        { value: '500+', label: 'Reports delivered' },
+        { live: 'reports', label: 'Reports generated on SEG so far' },
         { value: 'CPA', label: 'Licensed, CPA-led audit team' },
         { value: 'Odoo', label: 'Certified implementation partner' },
         { value: '2', label: 'Markets: Egypt and Saudi Arabia, expanding to the US' }
@@ -436,9 +436,9 @@ module.exports = {
       {
         slug: 'tax-solutions',
         name: 'Innovative Tax Solutions',
-        short: 'Tax compliance checked on every invoice and entry in your system, not a sample, through to filing the returns for you: e-invoicing, VAT, withholding tax and zakat.',
+        short: 'Tax compliance checked on every invoice and entry in your system, not a sample, through to filing the returns for you: e-invoicing and e-receipts, VAT, withholding tax and zakat.',
         tagline: 'Your return matches your books before the inspector asks.',
-        definition: 'Tax solutions by MFT combine tax configuration inside Odoo (Egyptian ETA e-invoicing, Saudi ZATCA phase two, VAT and withholding tax) with automated checks that read every invoice and entry read-only, with results signed off by licensed accountants. It is a full managed service: we prepare the reconciliations, working papers and tax-file readiness, then file the tax returns on your company’s behalf, supervised by a qualified accountant at every stage.',
+        definition: 'Tax solutions by MFT combine tax configuration inside Odoo (Egyptian ETA e-invoicing and e-receipts, Saudi ZATCA phase two, VAT and withholding tax) with automated checks that read every invoice and entry read-only, with results signed off by licensed accountants. It is a full managed service: we prepare the reconciliations, working papers and tax-file readiness, then file the tax returns on your company’s behalf, supervised by a qualified accountant at every stage.',
         body: [
           'Most tax differences only surface at inspection: an e-invoice never submitted or rejected, tax on an invoice that does not match its entry, a supplier with no tax withheld, a VAT return that does not match the books. So we start with the setup itself: Odoo taxes per entity, item codes, customer and supplier registration data, invoice sequences and lock dates, configured by accountants, not just developers.',
           'SEG Audit then reads all of your books, not a sample, and runs specific tax checks: ETA submission status or ZATCA clearance and reporting, output and input VAT reconciled to the return, tax differences between invoice and entry, supplier bills with no tax withheld, the zakat base, and tax-file readiness. The figures are computed from your books with fixed rules, and AI calculates no tax: it drafts the explanation of each finding and the proposed fix, and an MFT accountant approves it before it reaches you. Once you approve the reconciliation, we file the return on the official portal under your company’s authorisation and keep the filed return and proof of submission on your file.'
@@ -733,9 +733,11 @@ module.exports = {
       title: 'Credentials',
       items: [
         'CPA-led team of licensed accountants and auditors',
+        // Registration number from the CEO (5 Nov 2026). The register/authority name is added once confirmed, not before.
+        'Chartered accountant registration no. 57986',
         '40+ years of combined experience in manufacturing, trading and financial services',
         'Odoo Certified Partner',
-        '500+ reports delivered across Egypt, Saudi Arabia and the US',
+        { live: 'reports', text: 'Reports generated on SEG so far: {n}' },
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
         `Standard Enterprise Governance (SEG) by MFT, with its continuous-audit module SEG Audit: ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
       ]
@@ -749,6 +751,15 @@ module.exports = {
         { title: 'Two disciplines, one desk', body: 'The people who configure the ERP are the people who audit it and read its output.' },
         { title: 'Bilingual by default', body: 'Every deliverable is available in Arabic and English.' }
       ]
+    },
+    // PENDING (CEO): the «Digital Transformation certificate» goes here from the certificate itself:
+    // its exact name, the issuing body, the year and a verification link if any. The section does
+    // not render while the list is empty. Shape: { name: '…', issuer: '…', year: '2026', href: 'https://…' }
+    founder: {
+      title: 'Founder',
+      intro: '',
+      certificationsTitle: 'Certifications',
+      certifications: []
     },
     offices: {
       title: 'Where we are',

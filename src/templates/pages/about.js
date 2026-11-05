@@ -1,6 +1,26 @@
-const { t } = require('../html');
+const { t, esc } = require('../html');
 const { ctaBand } = require('../layout');
+const { isLive, liveAttrs, liveText } = require('../live-reports');
 const { pageHeader, faqBlock, faqSchema, seeAlso } = require('./services');
+
+// Founder's certifications (CEO, 5 Nov 2026): the slot is ready, the content is not. Renders
+// nothing while about.founder.certifications is empty; never fill it without the certificate.
+function founder(ctx, F) {
+  const list = (F && F.certifications) || [];
+  if (!list.length) return '';
+  const item = (x) => {
+    const meta = [x.issuer, x.year].filter(Boolean).map((v) => t(String(v))).join(ctx.lang === 'ar' ? '، ' : ', ');
+    const name = x.href ? `<a href="${esc(x.href)}" rel="noopener" target="_blank">${t(x.name)}</a>` : t(x.name);
+    return `<li class="badge"><span class="dot" aria-hidden="true"></span><span class="badge-label">${name}${meta ? ` <span class="badge-meta">(${meta})</span>` : ''}</span></li>`;
+  };
+  return `<section class="section" aria-labelledby="founder-title">
+  <div class="container">
+    <div class="section-head"><h2 id="founder-title">${t(F.title)}</h2>${F.intro ? `<p class="lead">${t(F.intro)}</p>` : ''}</div>
+    <h3>${t(F.certificationsTitle)}</h3>
+    <ul class="badge-grid founder-certs">${list.map(item).join('')}</ul>
+  </div>
+</section>`;
+}
 
 module.exports = function about(ctx) {
   const A = Object.assign({}, ctx.c.about, { milestones: ctx.c.milestones });
@@ -25,7 +45,7 @@ module.exports = function about(ctx) {
   <div class="container">
     <div class="section-head"><h2 id="cred-title">${t(A.credentials.title)}</h2></div>
     <ul class="badge-grid">
-      ${A.credentials.items.map((x) => `<li class="badge"><span class="dot" aria-hidden="true"></span><span class="badge-label">${t(x)}</span></li>`).join('')}
+      ${A.credentials.items.map((x) => (isLive(x) ? `<li class="badge"${liveAttrs(ctx)}><span class="dot" aria-hidden="true"></span><span class="badge-label">${liveText(ctx, x)}</span></li>` : `<li class="badge"><span class="dot" aria-hidden="true"></span><span class="badge-label">${t(x)}</span></li>`)).join('')}
     </ul>
   </div>
 </section>
@@ -39,6 +59,7 @@ module.exports = function about(ctx) {
   </div>
 </section>
 
+${founder(ctx, A.founder)}
 <section class="section section-mist" aria-labelledby="ms-title">
   <div class="container">
     <div class="section-head"><h2 id="ms-title">${t(A.milestones.title)}</h2></div>

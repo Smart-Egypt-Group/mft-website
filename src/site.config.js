@@ -79,6 +79,15 @@ module.exports = {
     signup: { ar: 'https://app.seg-audit.com/ar/signup', en: 'https://app.seg-audit.com/en/signup' }
   },
 
+  // Reports counter (CEO, 5 Nov 2026): replaces the fixed «+500 تقرير». A live total of reports
+  // generated on the SEG platform, growing with every report.
+  //   api        public endpoint from the platform (contract pending); null = not live yet.
+  //              Expected body for now: { total: <number> }. Adjust main.js if the contract differs.
+  //   lastKnown  last confirmed total, shown quietly when the endpoint is off or unreachable.
+  //              null = the counter stays hidden everywhere (no number is claimed).
+  //   asOf       date of lastKnown (YYYY-MM-DD).
+  reportsCounter: { api: null, lastKnown: null, asOf: null },
+
   // PENDING (Ahmed): package structure/prices. Section is fully written in
   // home.pricing; flip to true once the packages are approved.
   showPricingSlot: false,

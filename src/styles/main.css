@@ -894,3 +894,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   li > a, .breadcrumb a { display: inline-block; min-height: 24px; padding-block: 3px; }
   .breadcrumb ol { row-gap: 4px; }
 }
+
+/* Live counters: an element marked hidden stays hidden whatever its display rule. */
+[data-reports-live][hidden] { display: none !important; }
+.badge-meta { opacity: .8; }

@@ -52,6 +52,44 @@
     setTimeout(function () { countUp(el); }, 350);
   });
 
+  /* ---------- Reports generated on SEG, live ----------
+     Elements [data-reports-live] carry the endpoint and the last known total from site.config
+     (reportsCounter). The endpoint answers { total }; a good answer fills every
+     [data-reports="count"] and shows the element. Otherwise the last known total is shown, and
+     with no total at all the element stays hidden: the page never claims a number it lacks. */
+  (function () {
+    var els = document.querySelectorAll('[data-reports-live]');
+    if (!els.length) return;
+    var api = els[0].getAttribute('data-reports-api') || '';
+    var built = { total: parseInt(els[0].getAttribute('data-reports-last'), 10), at: Date.parse(els[0].getAttribute('data-reports-asof') || '') || 0 };
+    var KEY = 'mft-reports', TTL = 60 * 1000;
+    function ok(d) { return d && typeof d.total === 'number' && isFinite(d.total) && d.total > 0; }
+    function read(store) { try { return JSON.parse(window[store].getItem(KEY) || 'null'); } catch (e) { return null; } }
+    function write(store, v) { try { window[store].setItem(KEY, JSON.stringify(v)); } catch (e) { /* storage blocked */ } }
+    function show(d) {
+      var txt = String(Math.floor(d.total)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      Array.prototype.forEach.call(document.querySelectorAll('[data-reports="count"]'), function (el) { el.textContent = txt; });
+      Array.prototype.forEach.call(els, function (el) { el.hidden = false; });
+    }
+    function fallback() {
+      var last = read('localStorage');
+      var d = ok(last) && last.at > built.at ? last : built;
+      if (ok(d)) show(d);
+    }
+    var cached = read('sessionStorage');
+    if (ok(cached) && Date.now() - cached.at < TTL) { show(cached); return; }
+    if (!api || !window.fetch) { fallback(); return; }
+    fetch(api, { credentials: 'omit', cache: 'no-store' })
+      .then(function (r) { if (r.status !== 200) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (b) {
+        var d = { total: b && b.total, at: Date.now() };
+        if (!ok(d)) throw new Error('bad body');
+        write('sessionStorage', d); write('localStorage', d);
+        show(d);
+      })
+      .catch(fallback);
+  })();
+
   /* ---------- Campaign attribution ----------
      Ads land here with utm_* in the URL. Carry them, for this tab's session, onto every app
      sign-up link, so the sign-up is credited to the ad and not to the site's own

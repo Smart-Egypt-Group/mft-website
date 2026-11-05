@@ -2,10 +2,11 @@
 // concept, 14 Sep 2026). A = trust-strip hero and B = split dashboard stay as /_preview/ pages.
 // Switch in site.config.js.
 const { t, esc, plain, btn } = require('../html');
+const { isLive, liveAttrs, liveText } = require('../live-reports');
 
 function heroA(ctx) {
   const h = ctx.c.home.hero;
-  const trust = h.trust.map((b) => `<li class="badge"><span class="dot" aria-hidden="true"></span><span class="badge-label">${t(b)}</span></li>`).join('');
+  const trust = h.trust.map((b) => (isLive(b) ? `<li class="badge"${liveAttrs(ctx)}><span class="dot" aria-hidden="true"></span><span class="badge-label">${liveText(ctx, b)}</span></li>` : `<li class="badge"><span class="dot" aria-hidden="true"></span><span class="badge-label">${t(b)}</span></li>`)).join('');
   return `<section class="hero hero-a" aria-labelledby="hero-title">
   <div class="container">
     <div class="hero-inner">
@@ -45,6 +46,7 @@ function heroB(ctx) {
   const trust = ctx.c.home.hero.trust
     .slice(0, 4)
     .map((b, i) => {
+      if (isLive(b)) return `<li class="badge" style="--i:${i}"${liveAttrs(ctx)}><span class="dot" aria-hidden="true"></span><span class="badge-label">${liveText(ctx, b)}</span></li>`;
       const m = String(b).match(/^\{lat\}(\d+)\+\{\/lat\}(.*)$|^(\d+)\+(.*)$/);
       if (m) {
         const n = m[1] || m[3], rest = m[2] || m[4];
