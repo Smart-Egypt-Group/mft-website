@@ -401,6 +401,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .card-more { margin-top: 14px; }
 .service-card a { display: inline-block; }
 .service-card a:hover { color: var(--cyan-text); text-decoration: underline; text-underline-offset: 4px; }
+/* Card stat (Odoo ERP Solutions: 94 activity modules) */
+.card-stat { display: flex; align-items: baseline; gap: 8px; margin: 10px 0 6px; }
+.card-stat-value { font-size: 2.25rem; font-weight: 800; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.card-stat-label { font-size: var(--fs-small); font-weight: 700; color: var(--navy); }
 .pillars { gap: 0; }
 .pillar { padding: 8px 32px 8px 0; }
 .pillar + .pillar { border-inline-start: 1px solid var(--line); padding-inline-start: 32px; }
@@ -518,6 +522,31 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .detail-main h2 { margin: 40px 0 16px; font-size: 1.5rem; }
 .detail-main h2:first-of-type { margin-top: 0; }
 .detail-main .lead { max-width: 68ch; }
+/* Service highlight band: the differentiator stated as a figure */
+.svc-highlight { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px 28px; align-items: center; margin: 28px 0; padding: clamp(20px, 3vw, 32px); background: var(--navy); color: var(--on-navy-2); border-radius: 10px; }
+.svc-highlight-value { margin: 0; font-size: clamp(4rem, 3rem + 4vw, 6.5rem); font-weight: 800; line-height: .9; color: var(--cyan); font-variant-numeric: tabular-nums; }
+.svc-highlight-label { margin: 0 0 6px; font-size: 1.125rem; font-weight: 800; color: var(--on-navy); }
+.svc-highlight p:last-child { margin: 0; }
+@media (max-width: 599px) { .svc-highlight { grid-template-columns: 1fr; } }
+/* Tracks of a merged service */
+.track-nav ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; padding: 0; list-style: none; }
+.track-nav a { display: inline-block; min-height: 40px; padding: 8px 14px; line-height: 1.5; border: 1px solid var(--line-strong); border-radius: 999px; font-size: var(--fs-small); font-weight: 700; color: var(--navy); text-decoration: none; }
+.track-nav a:hover { border-color: var(--navy); }
+.track-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 799px) { .track-grid { grid-template-columns: 1fr; } }
+.track-card { padding: 22px 24px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); scroll-margin-top: calc(var(--header-h) + 16px); }
+.track-card h3 { margin: 0 0 8px; font-size: 1.125rem; }
+.track-card > p { color: var(--ink-2); }
+.track-card .check-list { margin: 14px 0 0; }
+.track-card.is-featured { grid-column: 1 / -1; border: 2px solid var(--accent); box-shadow: var(--shadow-card); }
+.track-stat { display: inline-block; font-size: 1.6rem; font-weight: 800; line-height: 1; color: var(--accent); margin-right: 10px; }
+[dir="rtl"] .track-stat { margin-right: 0; margin-left: 10px; }
+/* Supported systems (tax service) */
+.system-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.system { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 999px; font-weight: 700; color: var(--navy); }
+.system-status { font-size: var(--fs-small); font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--mist); color: var(--ink-3); }
+.system-now { border-color: var(--accent); }
+.system-now .system-status { background: #E3F7F9; color: #0B5D69; }
 .detail-side { padding: 28px; background: var(--mist); border-radius: var(--radius); align-self: start; }
 .detail-side .footer-title { color: var(--ink-3); }
 .side-links { margin: 12px 0 20px; }

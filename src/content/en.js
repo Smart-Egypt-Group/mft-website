@@ -63,13 +63,13 @@ module.exports = {
       {
         title: 'Services',
         links: [
-          { label: 'Odoo ERP Implementation', href: 'services/odoo-erp/' },
+          { label: 'Odoo ERP Solutions', href: 'services/odoo-erp/' },
+          { label: 'Innovative Tax Solutions', href: 'services/tax-solutions/' },
           { label: 'Internal Audit', href: 'services/internal-audit/' },
           { label: 'Virtual CFO', href: 'services/virtual-cfo/' },
           { label: 'Financial Consulting', href: 'services/financial-consulting/' },
           { label: 'Business Analysis', href: 'services/business-analysis/' },
-          { label: 'User Training', href: 'services/training/' },
-          { label: 'Technical Support', href: 'services/technical-support/' }
+          { label: 'Claude for teams', href: 'services/claude-team/' }
         ]
       },
       {
@@ -373,10 +373,10 @@ module.exports = {
   services: {
     title: 'Services | Modern Financial Technology',
     description:
-      'Odoo ERP implementation, internal audit, Virtual CFO, financial consulting, business analysis, training and technical support from one CPA-led team in Egypt, Saudi Arabia and the US.',
+      'Odoo ERP Solutions, tax solutions, internal audit, Virtual CFO, financial consulting, business analysis and Claude for teams, from one CPA-led team in Egypt, Saudi Arabia and the US.',
     page: {
       eyebrow: 'Services',
-      title: 'Eight services. One accountable team.',
+      title: 'Seven services. One accountable team.',
       intro:
         'Every engagement is led by a licensed accountant who also knows the system your numbers live in. Pick one service, or hand us the whole finance function.'
     },
@@ -386,34 +386,90 @@ module.exports = {
       deliverables: 'What you get',
       forWho: 'Who it is for',
       related: 'Related services',
-      cta: 'Discuss this service'
+      cta: 'Discuss this service',
+      tracks: 'What the service covers',
+      systems: 'Supported systems',
+      now: 'Available now',
+      soon: 'Coming soon',
+      moved: 'This service has moved to',
+      movedNote: 'It is now part of Odoo ERP Solutions.'
     },
+    // Merged into odoo-erp (CEO, 5 Nov 2026). Old URLs stay alive as light redirect pages
+    // (noindex, canonical to the new anchor, out of the sitemap).
+    legacy: [
+      { slug: 'training', name: 'User Training', to: 'services/odoo-erp/#training' },
+      { slug: 'technical-support', name: 'Technical Support', to: 'services/odoo-erp/#support' }
+    ],
     items: [
       {
         slug: 'odoo-erp',
-        name: 'Odoo ERP Implementation',
-        short: 'Configured by accountants, not just developers, so the ledger is right on day one.',
-        tagline: 'An ERP that mirrors the business and closes the books.',
+        name: 'Odoo ERP Solutions',
+        short: 'Implementation, integrations, training and support for Odoo from one accountant-led team, with internal controls and governance built into a module for each activity.',
+        cardStat: { value: '94', label: 'custom modules, one per activity' },
+        tagline: 'An ERP that mirrors the business, closes the books, and governs itself.',
+        definition: 'Odoo ERP Solutions by MFT is one service for the whole life of the system: implementation and configuration, integrations and custom reports, custom modules for each activity, training, support and upgrades, and tax inside Odoo. It is led by certified Odoo partners who are also licensed accountants, so the ledger is right from day one and stays right.',
+        highlight: {
+          value: '94',
+          label: 'activities, each with its own custom module',
+          body: 'Each module is built for one activity, with that activity’s internal controls and governance policies built in from the start, so the system runs on your activity’s rules instead of being set up from scratch. This is what Standard Enterprise Governance means inside your system: governance is part of the configuration, not a report that comes after it.'
+        },
         body: [
           'Odoo implementations fail when the chart of accounts, cost centres and tax setup are an afterthought. MFT starts there. Our certified partners configure finance, inventory, manufacturing, sales, purchasing and HR around how your operation actually runs, for industrial, trading and service companies in Egypt and the Gulf.',
-          'Egyptian e-invoicing (ETA), Saudi ZATCA phase two, withholding tax and multi-entity consolidation are part of the standard build, not change requests. And because we practise smart audit, permissions, segregation of duties and documentation cycles are designed into the system from the first configuration, so the ERP prevents errors instead of just recording them.'
+          'Because we practise smart audit, permissions, segregation of duties and documentation cycles are designed into the system from the first configuration, so the ERP prevents errors instead of just recording them. After go-live the same team stays with you: it trains every role, supports and upgrades the system, and builds what your activity needs.'
         ],
-        deliverables: [
-          'Process mapping and gap analysis',
-          'Chart of accounts, analytic and cost-centre design',
-          'Module configuration: Accounting, Inventory, Manufacturing, Sales, Purchase, HR',
-          'Tax and e-invoicing compliance (Egypt ETA, Saudi ZATCA)',
-          'Access rights and segregation of duties built in',
-          'Data migration with reconciled opening balances',
-          'Go-live support and 90-day stabilisation'
+        tracks: [
+          { id: 'implementation', title: 'Implementation and configuration', body: 'A finance-led deployment, from discovery to go-live.', items: ['Process mapping and gap analysis', 'Chart of accounts, analytic and cost-centre design', 'Module configuration: Accounting, Inventory, Manufacturing, Sales, Purchase, HR', 'Access rights and segregation of duties built in', 'Data migration with reconciled opening balances', 'Go-live support and 90-day stabilisation'] },
+          { id: 'integrations', title: 'Integrations and custom reports', body: 'Odoo connected to everything around it, with reports shaped to your decisions.', items: ['Integrations with banks, e-invoicing portals, WhatsApp and third-party tools', 'Integrations and API work', 'Custom reports and dashboards'] },
+          { id: 'custom-modules', featured: true, title: 'Custom module development', body: 'One module for each of 94 activities, with internal controls and governance policies built in.', items: ['A custom module for your activity, out of 94 activities', 'The activity’s internal controls built into the module', 'Governance policies enforced inside the system, not in a separate manual', 'The module configured on your chart of accounts and data within the implementation project'] },
+          { id: 'training', title: 'Training', body: 'Role-based training on your own configuration and data, in Arabic or English, with recorded sessions.', items: ['Role-based curriculum on your live configuration', 'Hands-on workshops, on site or remote', 'Bilingual user guides and quick-reference cards', 'Competency check-outs before go-live', 'Refresher sessions after upgrades'] },
+          { id: 'support', title: 'Support and upgrades', body: 'A support agreement with agreed response times, handled by people who know your configuration and chart of accounts.', items: ['Help desk with agreed response times', 'Version upgrades and regression testing', 'Monthly health check and backup verification'] },
+          { id: 'tax', title: 'Tax inside Odoo', body: 'Egyptian e-invoicing (ETA), Saudi ZATCA phase two, withholding tax, VAT and multi-entity consolidation are part of the standard build, not change requests.', items: [], link: { label: 'Innovative Tax Solutions', href: 'services/tax-solutions/' } }
         ],
-        forWho: 'Companies moving off spreadsheets or a legacy system, and Odoo users whose implementation never produced reliable financials.',
-        definition: 'Odoo ERP implementation by MFT is a finance-led deployment: certified Odoo partners who are also licensed accountants configure the system around your chart of accounts, tax obligations and controls, so the ledger is right from day one.',
+        forWho: 'Companies moving off spreadsheets or a legacy system, and Odoo users whose implementation never produced reliable financials or who need one partner for training, support and upgrades.',
         faq: [
           { q: 'How long does an implementation take?', a: 'Typically eight to sixteen weeks from discovery to go-live for a single entity, depending on modules and data migration. We commit to a calendar at the end of discovery.' },
-          { q: 'Do you handle Egyptian e-invoicing and Saudi ZATCA?', a: 'Yes. ETA e-invoicing, ZATCA phase two, withholding tax and multi-entity consolidation are part of the standard build.' },
-          { q: 'What happens after go-live?', a: 'Ninety days of stabilisation are included, then optional technical support with agreed response times.' },
-          { q: 'We are an Odoo partner serving several clients. Does SEG work for us?', a: 'Yes. Each client lives in its own organisation, isolated from every other one, and that isolation has been tested on seven real organisations with zero leaks. Talk to us about a partner arrangement and how many clients you serve.' },
+          { q: 'What are the 94 activity modules?', a: 'A custom module for each of 94 activities, carrying that activity’s internal controls and governance policies. We identify your activity’s module during discovery and configure it within the implementation.' },
+          { q: 'Do you handle Egyptian e-invoicing and Saudi ZATCA?', a: 'Yes. ETA e-invoicing, ZATCA phase two, withholding tax and multi-entity consolidation are part of the standard build. For return reconciliation and tax-file readiness, see Innovative Tax Solutions.' },
+          { q: 'What happens after go-live?', a: 'Ninety days of stabilisation are included, then optional support with response times agreed per contract; critical issues are acknowledged the same business day.' },
+          { q: 'Do you handle upgrades and integrations?', a: 'Yes. Version upgrades with regression testing and a monthly health check, and integrations with banks, e-invoicing portals (ETA, ZATCA), WhatsApp and third-party tools via API.' },
+          { q: 'Is training on site or remote, and is competency verified?', a: 'Either. Sessions are recorded so new hires onboard without a new engagement, and check-outs before go-live confirm each role can complete its daily tasks.' },
+          { q: 'We are an Odoo partner serving several clients. Does SEG work for us?', a: 'Yes. Each client lives in its own organisation, isolated from every other one, and that isolation has been tested on seven real organisations with zero leaks. Talk to us about a partner arrangement and how many clients you serve.' }
+        ]
+      },
+      {
+        slug: 'tax-solutions',
+        name: 'Innovative Tax Solutions',
+        short: 'Tax compliance checked on every invoice and entry in your system, not a sample: e-invoicing, VAT, withholding tax, zakat and a tax file ready for inspection.',
+        tagline: 'Your return matches your books before the inspector asks.',
+        definition: 'Tax solutions by MFT combine tax configuration inside Odoo (Egyptian ETA e-invoicing, Saudi ZATCA phase two, VAT and withholding tax) with automated checks that read every invoice and entry read-only, with results signed off by licensed accountants. We prepare the reconciliations, working papers and tax-file readiness; the return is filed from your company’s own account.',
+        body: [
+          'Most tax differences only surface at inspection: an e-invoice never submitted or rejected, tax on an invoice that does not match its entry, a supplier with no tax withheld, a VAT return that does not match the books. So we start with the setup itself: Odoo taxes per entity, item codes, customer and supplier registration data, invoice sequences and lock dates, configured by accountants, not just developers.',
+          'SEG Audit then reads all of your books, not a sample, and runs specific tax checks: ETA submission status or ZATCA clearance and reporting, output and input VAT reconciled to the return, tax differences between invoice and entry, supplier bills with no tax withheld, the zakat base, and tax-file readiness. The figures are computed from your books with fixed rules, and AI calculates no tax: it drafts the explanation of each finding and the proposed fix, and an MFT accountant approves it before it reaches you.'
+        ],
+        deliverables: [
+          'Tax configuration in Odoo: VAT and withholding tax per entity',
+          'Egyptian ETA e-invoicing and e-receipts: setup and follow-up of unsubmitted, rejected or late invoices',
+          'Saudi ZATCA phase two: integration, clearance and reporting, with hash-chain and UUID checks',
+          'VAT return reconciled to the books: output, input, rate mismatches and zero-tax invoices',
+          'Withholding tax review: tax setup, supplier bills without withholding, total withheld for the period',
+          'Tax differences between invoice and entry, and manual tax entries',
+          'E-invoice item data: item codes, customer addresses and free-text lines',
+          'Zakat base computed and reconciled to the filed return, for Saudi companies',
+          'Tax-file readiness before inspection: registration numbers, invoice sequence gaps, draft invoices and lock dates',
+          'Working papers and reconciliations the return is built on, and a findings report ranked by severity, each finding with its evidence from the books and an owner for the fix'
+        ],
+        systems: [
+          { name: 'Odoo', status: 'now' },
+          { name: 'SAP', status: 'soon' },
+          { name: 'Oracle', status: 'soon' },
+          { name: 'Microsoft Dynamics', status: 'soon' }
+        ],
+        forWho: 'Companies running Odoo in Egypt and Saudi Arabia ahead of a tax inspection or after e-invoicing goes live, and finance teams that still prepare returns by hand from spreadsheets.',
+        faq: [
+          { q: 'Does AI calculate the tax or decide our tax position?', a: 'No. The checks compute figures straight from your books with fixed rules; AI drafts the explanation and proposed fix for an accountant to approve. Anything that needs professional judgement, such as the right withholding rate for each type of transaction, is raised for review, never decided automatically.' },
+          { q: 'Do you file the returns for us?', a: 'No. We prepare the reconciliations, working papers and tax-file readiness the return is built on; the return is filed from your company’s account on the Egyptian Tax Authority or ZATCA portal.' },
+          { q: 'Do you need write access to our system?', a: 'No, read-only. VAT and withholding returns are filed outside Odoo, so we reconcile them to the books by entering the filed figures.' },
+          { q: 'We are not on Odoo. Does this apply to us?', a: 'The automated checks run on Odoo today; SAP, Oracle and Microsoft Dynamics are coming soon.' }
         ]
       },
       {
@@ -518,54 +574,6 @@ module.exports = {
           { q: 'What do we receive?', a: 'As-is and to-be process maps, functional requirements with acceptance criteria, KPI definitions and a change-impact assessment.' },
           { q: 'Is it tied to Odoo?', a: 'No. The output is system-neutral and can be used to evaluate vendors.' },
         ]
-      },
-      {
-        slug: 'training',
-        name: 'User Training',
-        short: 'Role-based Odoo and finance training so the team runs the system without us.',
-        tagline: 'A system is only as good as the people posting into it.',
-        body: [
-          'Training is built per role, from accountant and storekeeper to sales admin, production planner and manager, on your own data and your own workflows, in Arabic or English.',
-          'Sessions are recorded and documented so new hires onboard without a new engagement.'
-        ],
-        deliverables: [
-          'Role-based curriculum on your live configuration',
-          'Hands-on workshops, on site or remote',
-          'Bilingual user guides and quick-reference cards',
-          'Competency check-outs before go-live',
-          'Refresher sessions after upgrades'
-        ],
-        forWho: 'Teams going live on Odoo, and existing users whose adoption never got past the basics.',
-        definition: 'User training by MFT is role-based Odoo and finance training delivered on your own configuration and data, in Arabic or English, with recorded sessions and bilingual guides.',
-        faq: [
-          { q: 'Who is it for?', a: 'Accountants, storekeepers, sales admins, production planners and managers, each with their own curriculum.' },
-          { q: 'On site or remote?', a: 'Either. Sessions are recorded so new hires onboard without a new engagement.' },
-          { q: 'Is competency verified?', a: 'Yes. Check-outs before go-live confirm each role can complete its daily tasks.' },
-        ]
-      },
-      {
-        slug: 'technical-support',
-        name: 'Technical Support',
-        short: 'Odoo administration, upgrades, integrations and fixes under a response-time agreement.',
-        tagline: 'Keep the system current, integrated and closing on time.',
-        body: [
-          'A support agreement that covers the day-to-day: user issues, report changes, access rights, upgrades, and integrations with banks, e-invoicing portals, WhatsApp and third-party tools.',
-          'Every request is logged, prioritised and answered within the agreed window, by people who know your configuration and your chart of accounts.'
-        ],
-        deliverables: [
-          'Help desk with agreed response times',
-          'Version upgrades and regression testing',
-          'Custom reports and dashboards',
-          'Integrations and API work',
-          'Monthly health check and backup verification'
-        ],
-        forWho: 'Any company running Odoo in production that needs a partner rather than a ticket queue.',
-        definition: 'Technical support by MFT is an Odoo administration and maintenance agreement with agreed response times: user issues, report changes, access rights, upgrades and integrations, handled by people who know your chart of accounts.',
-        faq: [
-          { q: 'What response times do you offer?', a: 'Agreed per contract; critical issues are acknowledged the same business day.' },
-          { q: 'Do you handle upgrades?', a: 'Yes. Version upgrades with regression testing and a monthly health check are included.' },
-          { q: 'Which integrations?', a: 'Banks, e-invoicing portals (ETA, ZATCA), WhatsApp and third-party tools via API.' },
-        ],
       },
       {
         slug: 'claude-team',
@@ -1425,6 +1433,7 @@ module.exports = {
         ],
         services: [
           { title: 'Odoo ERP with ETA built in', body: 'Chart of accounts, e-invoicing submission, withholding and VAT configured by accountants, not just developers.', href: 'services/odoo-erp/' },
+          { title: 'Innovative Tax Solutions', body: 'VAT return reconciled to the books, withholding tax review, ETA invoice follow-up and a tax file ready before inspection.', href: 'services/tax-solutions/' },
           { title: 'Internal audit, monthly or continuous', body: 'Risk-based programmes run inside your ERP, with findings ranked by impact and an owner for each.', href: 'services/internal-audit/' },
           { title: 'Virtual CFO', body: 'A monthly management pack and a review call with an MFT accountant, from your first closed month.', href: 'services/virtual-cfo/' },
           { title: 'MFT Intelligence agents', body: 'The Auditor and Virtual CFO agents, delivered as a managed service with human sign-off.', href: 'intelligence/' }
@@ -1455,6 +1464,7 @@ module.exports = {
         ],
         services: [
           { title: 'Odoo ERP with ZATCA phase two', body: 'Integration, clearance and reporting configured as part of the standard build, with zakat and VAT set per entity.', href: 'services/odoo-erp/' },
+          { title: 'Innovative Tax Solutions', body: 'ZATCA clearance and reporting follow-up, VAT reconciled to the books, and the zakat base reconciled to the filed return.', href: 'services/tax-solutions/' },
           { title: 'Internal audit', body: 'Risk-based programmes with ISA-classified findings, run on site in the Kingdom or remotely.', href: 'services/internal-audit/' },
           { title: 'Virtual CFO', body: 'Monthly management packs and cash forecasts in Arabic or English, with a review call each month.', href: 'services/virtual-cfo/' },
           { title: 'Cross-border structuring', body: 'Egypt and Saudi groups: treaty position, transfer of profits and consolidated reporting.', href: 'services/financial-consulting/' }

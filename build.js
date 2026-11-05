@@ -86,6 +86,8 @@ function pageList(c) {
     { path: '', render: (ctx) => home(ctx) },
     { path: 'services/', render: (ctx) => services.index(ctx) },
     ...c.services.items.map((item) => ({ path: `services/${item.slug}/`, render: (ctx) => services.detail(ctx, ctx.c.services.items.find((s) => s.slug === item.slug)) })),
+    // Merged services: old URLs redirect to the new anchor (noindex, out of the sitemap).
+    ...(c.services.legacy || []).map((old) => ({ path: `services/${old.slug}/`, render: (ctx) => services.moved(ctx, ctx.c.services.legacy.find((x) => x.slug === old.slug)), noindex: true, redirect: old.to })),
     { path: 'industries/', render: (ctx) => industries(ctx) },
     { path: 'intelligence/', render: (ctx) => intelligence(ctx) },
     ...c.agentPages.items.map((a) => ({ path: `intelligence/${a.slug}/`, render: (ctx) => agentPage(ctx, ctx.c.agentPages.items.find((x) => x.slug === a.slug)) })),
@@ -135,6 +137,12 @@ function build() {
       const rendered = page.render(ctx);
       let html = layout(ctx, rendered);
       if (page.noindex) html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n  <meta name="viewport"');
+      if (page.redirect) {
+        const to = `/${lang}/${page.redirect}`;
+        html = html
+          .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${config.siteUrl}/${lang}/${page.redirect.split('#')[0]}">`)
+          .replace('<meta name="viewport"', `<meta http-equiv="refresh" content="0; url=${to}">\n  <meta name="viewport"`);
+      }
       const rel = page.file ? `${lang}/${page.path}` : `${lang}/${page.path}index.html`;
       write(rel, html);
       count++;
@@ -172,6 +180,7 @@ function build() {
     [
       ...config.languages.filter((l) => l !== d).map((l) => `/  /${l}/  302  Language=${l}`),
       `/  /${d}/  302`,
+      ...config.languages.flatMap((l) => (contents[l].services.legacy || []).map((x) => `/${l}/services/${x.slug}/  /${l}/${x.to.split('#')[0]}  301`)),
       ...config.languages.map((l) => `/${l}/*  /${l}/404.html  404`),
       ''
     ].join('\n')
