@@ -24,7 +24,7 @@ module.exports = {
     shortName: 'MFT',
     tagline: 'Financial clarity, delivered',
     description:
-      'MFT is a CPA-led firm that implements Odoo ERP, runs internal audit and acts as your Virtual CFO: one team, one set of numbers, in Egypt and Saudi Arabia, expanding to the US.'
+      'MFT is a firm led by a registered chartered accountant that implements Odoo ERP, runs internal audit and acts as your Virtual CFO: one team, one set of numbers, in Egypt and Saudi Arabia, expanding to the US.'
   },
 
   ui: {
@@ -58,7 +58,7 @@ module.exports = {
 
   footer: {
     blurb:
-      'A CPA-led financial technology and auditing firm. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.',
+      'A financial technology and auditing firm led by a registered chartered accountant. Odoo ERP, internal audit and Virtual CFO from one team, with one set of numbers.',
     columns: [
       {
         title: 'Services',
@@ -105,15 +105,16 @@ module.exports = {
       }
     ],
     contactTitle: 'Contact',
-    officesTitle: 'Offices',
+    officesTitle: 'Our office',
+    markets: 'We work in Egypt and Saudi Arabia, expanding to the US',
     socialTitle: 'Follow',
-    offices: { eg: 'Egypt', sa: 'Saudi Arabia', us: 'United States' },
+    offices: { eg: 'Egypt' },
     legal: '© {year} Modern Financial Technology. All rights reserved.'
   },
 
   home: {
     title: 'Modern Financial Technology (MFT) | Standard Enterprise Governance (SEG), Odoo ERP & Internal Audit',
-    description: 'MFT is a CPA-led firm with its own platform, Standard Enterprise Governance (SEG), and SEG Audit, its continuous audit product. We implement Odoo ERP, run internal audit and act as your Virtual CFO in Egypt, Saudi Arabia and the US.',
+    description: 'MFT is a firm led by a registered chartered accountant, with its own platform, Standard Enterprise Governance (SEG), and SEG Audit, its continuous audit product. We implement Odoo ERP, run internal audit and act as your Virtual CFO in Egypt and Saudi Arabia, expanding to the US.',
     hero: {
       eyebrow: 'Financial Clarity, Delivered',
       headline: 'Decisions built on {accent}numbers{/accent}.\nNot on guesses.',
@@ -122,8 +123,8 @@ module.exports = {
       cta: { label: 'Check your trial balance free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
       trust: [
-        'CPA-Led Team',
-        'Odoo Certified Partners',
+        'Led by a registered chartered accountant (reg. 57986)',
+        'Odoo implementation experts led by accountants',
         { live: 'reports', text: 'Reports generated on SEG: {n}' },
         'Egypt and Saudi Arabia, expanding to the US'
       ]
@@ -134,10 +135,10 @@ module.exports = {
       subhead:
         'MFT turns your data into clear financial reports on profitability, cash flow and internal controls, backed by a licensed audit team, Odoo ERP experts, and the SEG platform.',
       cta: { label: 'Check your trial balance free', href: SIGNUP },
-      trust: 'Trusted by finance teams across Egypt and Saudi Arabia, expanding to the US',
+      trust: 'For finance teams in Egypt and Saudi Arabia, expanding to the US',
       dashboard: {
         title: 'Monthly P&L Snapshot',
-        badge: 'Sample',
+        badge: 'Illustrative example',
         kpis: [
           { label: 'Revenue', value: '$482K' },
           { label: 'Net Margin', value: '18.4%', up: true },
@@ -167,7 +168,7 @@ module.exports = {
       secondary: { label: 'See our services', href: 'services/' },
       risk: {
         title: 'Illustrative sample of a check result. You will see this same screen on your data.',
-        badge: 'Sample',
+        badge: 'Illustrative example',
         scanning: 'Scanning',
         done: 'Check complete',
         findings: [
@@ -191,27 +192,27 @@ module.exports = {
     // Nothing here depends on a screen that does not exist yet.
     trust: {
       eyebrow: 'Why you can trust the result',
-      title: 'Nothing in your report can be tampered with quietly.',
+      title: 'Changes to your report record leave a trace.',
       intro: 'Five guarantees built into SEG and actually tested, not promises on a policy page.',
       items: [
         {
-          title: 'Nobody can alter your numbers without you knowing',
-          body: 'Every report and every approval is written to a log where each entry is mathematically chained to the one before. Any edit or deletion outside the system, even directly in the database, shows up immediately and is located.'
+          title: 'Every report and approval action is hash-chained',
+          body: 'Every report and approval action is written to a log where each entry is mathematically chained to the one before. An edited or deleted row breaks the chain when the log is verified, and the break is located. We tested this in production with a direct database edit.'
         },
         {
           title: 'Your data is completely isolated from every other client',
-          body: 'Each organisation lives in its own space, and anyone reaching for another client’s data finds that it does not exist for them. Isolation was tested across seven real organisations with zero leaks. That is verified, not promised.'
+          body: 'Each organisation lives in its own space, and anyone reaching for another client’s data finds that it does not exist for them. Isolation was verified on all seven organisations when the data was backfilled, is probed live in production with two organisations, and is covered by automated tests.'
         },
         {
           title: 'Your backup has actually been restored, not just taken',
-          body: 'Most companies take backups and never try restoring one. We restored a full copy of production data onto a clean server and it worked. What broke along the way was fixed.'
+          body: 'A backup only counts once it has been restored. We restored a full snapshot of all four production databases (31 July 2026) and verified it; a full rebuild on a new server is the next drill.'
         },
         {
           title: 'The platform runs with the least privilege possible',
           body: 'Platform services run under non-administrative accounts with no extra system privileges, verified on the running servers rather than on paper.'
         },
         {
-          title: `More than ${N(F.testsFloor)} automated tests before every update, none skipped`,
+          title: `More than ${N(F.testsFloor)} automated tests before every update`,
           body: `Test code is ${Math.floor(F.testRatio * 100)}% the size of the platform itself, and some of those tests guard the governance rules: one of them stopped a rule-breaking change before it reached any client.`
         }
       ],
@@ -222,11 +223,11 @@ module.exports = {
       eyebrow: 'One team. One set of numbers.',
       title: 'ERP, audit and CFO. Usually three vendors. Here, one.',
       body:
-        'Odoo partners stop at go-live. Advisors write reports without ever opening the system. Audit software flags exceptions and leaves you to explain them. MFT is one team that implements the ERP your numbers live in, audits the controls around it, and reads the results with you every month, with Egyptian e-invoicing and Saudi ZATCA compliance built in.',
+        'Many Odoo partners stop at go-live. Many advisors write reports without opening the system. Audit software often flags exceptions and leaves you to explain them. MFT is one team that implements the ERP your numbers live in, audits the controls around it, and reads the results with you every month, with Egyptian e-invoicing and Saudi ZATCA compliance built in.',
       pillars: [
         {
           title: 'Odoo ERP',
-          body: 'Implemented by certified partners who are also the accountants reading the output. Configuration decisions are accounting decisions here.'
+          body: 'Implemented by Odoo implementation experts led by accountants, the same people who read the output. Configuration decisions are accounting decisions here.'
         },
         {
           title: 'Internal Audit',
@@ -259,7 +260,7 @@ module.exports = {
         {
           when: 'Within minutes',
           title: 'The free trial-balance check',
-          body: 'A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report.'
+          body: 'A free check of your company’s trial balance that flags its risk points in minutes. From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report.'
         },
         {
           when: 'Week 1',
@@ -287,8 +288,8 @@ module.exports = {
       title: 'Credentials you can verify. Numbers you can audit.',
       facts: [
         { live: 'reports', label: 'Reports generated on SEG so far' },
-        { value: 'CPA', label: 'Licensed, CPA-led audit team' },
-        { value: 'Odoo', label: 'Certified implementation partner' },
+        { value: 'Reg. 57986', label: 'Led by a registered chartered accountant' },
+        { value: 'Odoo', label: 'Implementation experts led by accountants' },
         { value: '2', label: 'Markets: Egypt and Saudi Arabia, expanding to the US' }
       ]
     },
@@ -298,39 +299,10 @@ module.exports = {
       title: 'What the numbers found.',
       intro:
         'Two findings from recent audit engagements. Clients are anonymised and no financial amounts are published, only what was found and when.',
-      cases: [
-        {
-          sector: 'Food & beverage distribution · Cairo',
-          figure: '23 transactions',
-          label: 'missed by manual review, surfaced in six weeks',
-          body:
-            'Running SEG alongside the external audit of the second quarter, the engine flagged a duplicate payment to one supplier registered under two vendor codes, caught before the close, not after it.',
-          quote: '“We would have found it eventually. Eventually is expensive.”'
-        },
-        {
-          sector: 'Construction · Riyadh',
-          figure: '3 weeks before close',
-          label: 'an inventory valuation gap caught before year-end',
-          body:
-            'A costing method never updated after a supplier contract changed. Found before the close, it was a board discussion. After it, it would have been a restatement.',
-          quote: ''
-        }
-      ],
+      // CEO decision (6 Nov 2026): the two case studies and the two named testimonials are removed (no written consent on file). The section and its structured data disappear while these are empty.
+      cases: [],
       testimonialsTitle: 'What clients say',
-      testimonials: [
-        {
-          quote:
-            'Honestly, it has been a great experience. If we continue like this, progress will reach a whole new level. The team is highly professional, respectful, cooperative and always responsive, and we can clearly see the continuous improvement.',
-          name: 'Mr. Mahmoud',
-          company: 'Al-Kayan Steel'
-        },
-        {
-          quote:
-            'There has definitely been a noticeable improvement in reducing errors. We really hope the progress and the continuous follow-up carry on.',
-          name: 'Mr. Tarek',
-          company: 'Jacquardina'
-        }
-      ]
+      testimonials: []
     },
 
     // Hidden until Ahmed approves the package structure (site.config.js → showPricingSlot).
@@ -349,7 +321,7 @@ module.exports = {
     cta: {
       title: 'Start with a free trial-balance check.',
       body:
-        'A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. Upload your trial balance or connect Odoo read-only, with no commitment.',
+        'A free check of your company’s trial balance that flags its risk points in minutes. From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report. Upload your trial balance or connect Odoo read-only, with no commitment.',
       button: { label: 'Check your trial balance free', href: SIGNUP },
       alt: 'Or call us directly:'
     }
@@ -358,8 +330,8 @@ module.exports = {
   // Home teaser for the agents page
   intelligenceTeaser: {
     eyebrow: 'MFT Intelligence',
-    title: 'AI agents that watch your books every day, reviewed by our accountants.',
-    body: 'An Auditor agent that applies ISA 320 materiality to every transaction, and a Virtual CFO agent that turns your Odoo data into board-ready reports. Available now; ten more agents in internal validation.',
+    title: 'AI agents that review your books, checked by our accountants.',
+    body: 'An Auditor agent that tests your journal entries against an ISA 320-based materiality threshold, and a Virtual CFO agent that turns your ledger into board-ready reports. Available now, delivered from a ledger export; ten more agents in internal validation.',
     cta: { label: 'Meet the agents', href: 'intelligence/' }
   },
 
@@ -372,7 +344,7 @@ module.exports = {
   services: {
     title: 'Services | Modern Financial Technology',
     description:
-      'Odoo ERP Solutions, tax solutions, internal audit, Virtual CFO, financial consulting, business analysis and Claude for teams, from one CPA-led team in Egypt, Saudi Arabia and the US.',
+      'Odoo ERP Solutions, tax solutions, internal audit, Virtual CFO, financial consulting, business analysis and Claude for teams, from one team in Egypt and Saudi Arabia, led by a registered chartered accountant.',
     page: {
       eyebrow: 'Services',
       title: 'Seven services. One accountable team.',
@@ -405,20 +377,20 @@ module.exports = {
         name: 'Odoo ERP Solutions',
         short: 'Implementation, integrations, training and support for Odoo from one accountant-led team, plus custom module development with internal controls and governance built in.',
         tagline: 'An ERP that mirrors the business, closes the books, and governs itself.',
-        definition: 'Odoo ERP Solutions by MFT is one service for the whole life of the system: implementation and configuration, integrations and custom reports, custom module development, training, support and upgrades, and tax inside Odoo. It is led by certified Odoo partners who are also licensed accountants, so the ledger is right from day one and stays right.',
+        definition: 'Odoo ERP Solutions by MFT is one service for the whole life of the system: implementation and configuration, integrations and custom reports, custom module development, training, support and upgrades, and tax inside Odoo. It is delivered by Odoo implementation experts led by accountants, so the ledger is right from day one and stays right.',
         highlight: {
           value: '40+',
           label: 'review axes on your books, one of them for your activity family’s controls',
           body: 'With SEG Audit, we classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls inside Odoo (trading, retail, manufacturing, services). We configure those controls into your system from the first setup. This is what Standard Enterprise Governance means inside your system: governance is part of the configuration, not a report that comes after it.'
         },
         body: [
-          'Odoo implementations fail when the chart of accounts, cost centres and tax setup are an afterthought. MFT starts there. Our certified partners configure finance, inventory, manufacturing, sales, purchasing and HR around how your operation actually runs, for industrial, trading and service companies in Egypt and the Gulf.',
+          'Odoo implementations fail when the chart of accounts, cost centres and tax setup are an afterthought. MFT starts there. Our Odoo implementation experts, led by accountants, configure finance, inventory, manufacturing, sales, purchasing and HR around how your operation actually runs, for industrial, trading and service companies in Egypt and the Gulf.',
           'Because we practise smart audit, permissions, segregation of duties and documentation cycles are designed into the system from the first configuration, so the ERP prevents errors instead of just recording them. After go-live the same team stays with you: it trains every role, supports and upgrades the system, and builds what your activity needs.'
         ],
         tracks: [
           { id: 'implementation', title: 'Implementation and configuration', body: 'A finance-led deployment, from discovery to go-live.', items: ['Process mapping and gap analysis', 'Chart of accounts, analytic and cost-centre design', 'Module configuration: Accounting, Inventory, Manufacturing, Sales, Purchase, HR', 'Access rights and segregation of duties built in', 'Data migration with reconciled opening balances', 'Go-live support and 90-day stabilisation'] },
           { id: 'integrations', title: 'Integrations and custom reports', body: 'Odoo connected to everything around it, with reports shaped to your decisions.', items: ['Integrations with banks, e-invoicing portals, WhatsApp and third-party tools', 'Integrations and API work', 'Custom reports and dashboards'] },
-          { id: 'custom-modules', featured: true, title: 'Custom module development', body: 'Odoo modules shaped to your activity, with internal controls and governance policies built in, not left in a separate manual.', items: ['Custom modules for your processes, developed within the implementation project', 'We classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls', 'Ready-made module packages for each activity: being built and coming soon to the Odoo App Store; until then they are set up within the implementation project', 'Sector benchmarks for more than 50 activities (being added)'] },
+          { id: 'custom-modules', featured: true, title: 'Custom module development', body: 'Odoo modules shaped to your activity, with internal controls and governance policies built in, not left in a separate manual.', items: ['Custom modules for your processes, developed within the implementation project', 'We classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls', 'Ready-made module packages for each activity: being built and coming soon to the Odoo App Store; until then they are set up within the implementation project', 'Sector benchmarks: planned once enough classified clients are on the platform'] },
           { id: 'training', title: 'Training', body: 'Role-based training on your own configuration and data, in Arabic or English, with recorded sessions.', items: ['Role-based curriculum on your live configuration', 'Hands-on workshops, on site or remote', 'Bilingual user guides and quick-reference cards', 'Competency check-outs before go-live', 'Refresher sessions after upgrades'] },
           { id: 'support', title: 'Support and upgrades', body: 'A support agreement with agreed response times, handled by people who know your configuration and chart of accounts.', items: ['Help desk with agreed response times', 'Version upgrades and regression testing', 'Monthly health check and backup verification'] },
           { id: 'tax', title: 'Tax inside Odoo', body: 'Egyptian e-invoicing (ETA), Saudi ZATCA phase two, withholding tax, VAT and multi-entity consolidation are part of the standard build, not change requests.', items: [], link: { label: 'Innovative Tax Solutions', href: 'services/tax-solutions/' } }
@@ -427,19 +399,19 @@ module.exports = {
         faq: [
           // Implementation time: CEO decision (5 Nov 2026), "6 weeks for any project".
           { q: 'How long does an implementation take?', a: 'Six weeks for any implementation project, from discovery to go-live.' },
-          { q: 'Do you have ready-made modules for each activity?', a: 'Odoo module packages for each activity, with its controls, are being built and will be listed on the Odoo App Store soon; until then we configure your activity’s controls and build what is needed within the implementation project. Today, with SEG Audit, we classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls, with sector benchmarks for more than 50 activities being added.' },
+          { q: 'Do you have ready-made modules for each activity?', a: 'Odoo module packages for each activity, with its controls, are being built and will be listed on the Odoo App Store soon; until then we configure your activity’s controls and build what is needed within the implementation project. Today, with SEG Audit, we classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls. Sector benchmarks are planned once enough classified clients are on the platform.' },
           { q: 'Do you handle Egyptian e-invoicing and Saudi ZATCA?', a: 'Yes. ETA e-invoicing, ZATCA phase two, withholding tax and multi-entity consolidation are part of the standard build. For return reconciliation and tax-file readiness, see Innovative Tax Solutions.' },
           // "90 days of stabilisation" and "critical issues acknowledged the same business day": confirmed by the CEO (5 Nov 2026).
           { q: 'What happens after go-live?', a: 'Ninety days of stabilisation are included, then optional support with response times agreed per contract; critical issues are acknowledged the same business day.' },
           { q: 'Do you handle upgrades and integrations?', a: 'Yes. Version upgrades with regression testing and a monthly health check, and integrations with banks, e-invoicing portals (ETA, ZATCA), WhatsApp and third-party tools via API.' },
           { q: 'Is training on site or remote, and is competency verified?', a: 'Either. Sessions are recorded so new hires onboard without a new engagement, and check-outs before go-live confirm each role can complete its daily tasks.' },
-          { q: 'We are an Odoo partner serving several clients. Does SEG work for us?', a: 'Yes. Each client lives in its own organisation, isolated from every other one, and that isolation has been tested on seven real organisations with zero leaks. Talk to us about a partner arrangement and how many clients you serve.' }
+          { q: 'We are an Odoo partner serving several clients. Does SEG work for us?', a: 'Yes. Each client lives in its own organisation, isolated from every other one, and that isolation was verified on all seven organisations at backfill, is probed live in production, and is covered by automated tests. Talk to us about a partner arrangement and how many clients you serve.' }
         ]
       },
       {
         slug: 'tax-solutions',
         name: 'Innovative Tax Solutions',
-        short: 'Tax compliance checked on every invoice and entry in your system, not a sample, through to filing the returns for you: e-invoicing and e-receipts, VAT, withholding tax and zakat.',
+        short: 'Tax compliance checked on every invoice and entry in your system, not a sample, through to filing the returns for you under your authorisation: e-invoicing and e-receipts, VAT, withholding tax and zakat.',
         tagline: 'Your return matches your books before the inspector asks.',
         definition: 'Tax solutions by MFT combine tax configuration inside Odoo (Egyptian ETA e-invoicing and e-receipts, Saudi ZATCA phase two, VAT and withholding tax) with automated checks that read every invoice and entry read-only, with results signed off by licensed accountants. It is a full managed service: we prepare the reconciliations, working papers and tax-file readiness, then file the tax returns on your company’s behalf, supervised by a qualified accountant at every stage.',
         body: [
@@ -454,7 +426,7 @@ module.exports = {
           'Withholding tax review: tax setup, supplier bills without withholding, total withheld for the period',
           'Tax differences between invoice and entry, and manual tax entries',
           'E-invoice item data: item codes, customer addresses and free-text lines',
-          'Zakat base reconciled to the filed return, for Saudi companies',
+          'Zakat base computed from the books and reconciled to the figures you enter from your return, for Saudi companies',
           'Tax-file readiness before inspection: registration numbers, invoice sequence gaps, draft invoices and lock dates',
           'Working papers and reconciliations the return is built on, and a findings report ranked by severity, each finding with its evidence from the books and an owner for the fix',
           'Tax returns filed on your company’s behalf (VAT, withholding tax and zakat) on the Egyptian Tax Authority or ZATCA portal, under your authorisation and after your approval, with proof of submission'
@@ -476,11 +448,11 @@ module.exports = {
       {
         slug: 'internal-audit',
         name: 'Internal Audit',
-        short: 'Control testing and risk reviews by a CPA-led team, reported for the board.',
+        short: 'Control testing and risk reviews by a team led by a registered chartered accountant, reported for the board.',
         tagline: 'Find the gap before the auditor, the bank or the tax authority does.',
         body: [
-          'An internal audit programme designed around your actual risks: revenue leakage, duplicate payments, near-duplicate vendors, inventory shrinkage, access rights and tax exposure. Fieldwork is done inside your ERP and supported by Standard Enterprise Governance (SEG), MFT’s own platform, which scores every transaction by risk instead of sampling five percent and hoping the errors are in it.',
-          'Annual audits leave eleven months uncovered. Our programmes run monthly or continuously with the same rigour, and every finding is ranked by financial impact and comes with an owner, a fix and a deadline.'
+          'An internal audit programme designed around your actual risks: revenue leakage, duplicate payments, near-duplicate vendors, inventory shrinkage, access rights and tax exposure. Fieldwork is done inside your ERP and supported by Standard Enterprise Governance (SEG), MFT’s own platform, which runs its checks on the whole population rather than a sample, and rolls the results into a documented risk score.',
+          'An annual audit looks back once a year, on a sample. Our programmes run monthly or weekly with the same rigour, and every finding is classified by severity and comes with an owner, a fix and a deadline.'
         ],
         deliverables: [
           'Risk-based annual audit plan',
@@ -492,13 +464,13 @@ module.exports = {
           'Follow-up tracking until closure'
         ],
         forWho: 'Owner-managed companies, groups with multiple entities, and businesses preparing for external audit, financing or acquisition.',
-        definition: 'Internal audit by MFT is a risk-based programme run by a CPA-led team inside your ERP: controls are tested, findings are ranked by financial impact, and each one carries an owner, a fix and a deadline.',
+        definition: 'Internal audit by MFT is a risk-based programme run inside your ERP by a team led by a registered chartered accountant: controls are tested, findings are ranked by financial impact, and each one carries an owner, a fix and a deadline.',
         faq: [
-          { q: 'How is this different from our annual external audit?', a: 'External audit samples and looks back once a year. Our programme runs monthly or continuously, covers the whole population by risk, and is designed to prevent findings rather than report them.' },
+          { q: 'How is this different from our annual external audit?', a: 'External audit samples and looks back once a year. Our programme runs monthly or weekly, runs its checks on the whole population rather than a sample, and is designed to prevent findings rather than report them.' },
           { q: 'Do you use software or people?', a: 'Both. SEG and the MFT Auditor agent do the coverage; licensed auditors decide what matters and sign the report.' },
           { q: 'Can findings be shared with our external auditor or bank?', a: 'Yes. Reports are written for boards and third parties, with ISA-classified findings and an evidence trail.' },
-          { q: 'I am an external auditor. Can I rely on what the platform produces?', a: 'Every report and every approval is written to a log that cannot be edited or trimmed without it showing. And an approval is bound to the exact version that was approved: regenerate the report and the old approval lapses instead of silently carrying over to a version nobody has seen.' },
-          { q: 'I run internal audit. What happens to a finding after it is detected?', a: 'It is not forgotten. The finding stays on record with its evidence and severity, a repeat in a later period is linked to the earlier one, and it cannot be closed or dismissed without a named, registered approver. Your MFT accountant follows remediation with you to closure as part of the programme.' },
+          { q: 'I am an external auditor. Can I rely on what the platform produces?', a: 'Every report and approval action is written to a hash-chained log: an edited or deleted row breaks the chain when the log is verified. And an approval is bound to the exact version that was approved: regenerate the report and the old approval lapses instead of silently carrying over to a version nobody has seen.' },
+          { q: 'I run internal audit. What happens to a finding after it is detected?', a: 'It is not forgotten. The finding stays on record with its evidence and severity, a repeat in a later period is linked to the earlier one, a fix is marked verified only by a named MFT reviewer, and dismissing a high or critical finding needs a reviewer. Your MFT accountant follows remediation with you to closure as part of the programme.' },
         ]
       },
       {
@@ -507,7 +479,7 @@ module.exports = {
         short: 'Monthly reporting, cash forecasting and decisions: a CFO on your calendar, not your payroll.',
         tagline: 'The reports a CFO would build. The questions a CFO would ask.',
         body: [
-          'Every month you receive a management pack you can read in five minutes: profitability by product and customer, cash-flow forecast, working-capital position and the variances that matter. Then we sit with you and decide what to do about them.',
+          'Every month you receive a concise management pack: profitability by product and customer, cash-flow forecast, working-capital position and the variances that matter. Then we sit with you and decide what to do about them.',
           'The service scales from a single monthly review to a full finance-function lead with your team reporting to us. It works best on Odoo, but it does not require it.'
         ],
         deliverables: [
@@ -523,7 +495,7 @@ module.exports = {
         faq: [
           { q: 'How many hours a month do we get?', a: 'It is scoped by deliverables, not hours: the monthly pack, the forecast and the review meeting are fixed; ad-hoc questions are answered within the engagement.' },
           { q: 'Do we need Odoo?', a: 'No. A monthly trial balance and sub-ledger export from any system is enough to start; Odoo makes it faster.' },
-          { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. No credit card, no commitment.' },
+          { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report. No credit card, no commitment.' },
           { q: 'I am a CFO. What do I get after the trial-balance check?', a: 'The service does not end at a PDF. Every month you receive a new pack compared with the one before, you sit with your MFT accountant in a decision review, and audit findings stay on record from one month to the next instead of starting from zero each time.' },
           { q: 'I own a small company. What happens after the free trial-balance check?', a: 'A 30-minute diagnosis call with a licensed accountant that ends with one concrete next step, then, if you want it, a monthly pack with a defined scope. Nothing to install and no change to your system.' },
         ]
@@ -735,11 +707,9 @@ module.exports = {
     credentials: {
       title: 'Credentials',
       items: [
-        'CPA-led team of licensed accountants and auditors',
+        'Led by a registered chartered accountant (reg. 57986)',
         // Registration number from the CEO (5 Nov 2026). The register/authority name is added once confirmed, not before.
-        'Chartered accountant registration no. 57986',
-        '40+ years of combined experience in manufacturing, trading and financial services',
-        'Odoo Certified Partner',
+        'Odoo implementation experts led by accountants',
         { live: 'reports', text: 'Reports generated on SEG so far: {n}' },
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
         `Standard Enterprise Governance (SEG) by MFT, with its continuous audit product SEG Audit: ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
@@ -752,7 +722,7 @@ module.exports = {
       points: [
         { title: 'CEO-led', body: 'The firm is run by its founding auditor, who still leads client engagements.' },
         { title: 'Two disciplines, one desk', body: 'The people who configure the ERP are the people who audit it and read its output.' },
-        { title: 'Bilingual by default', body: 'Every deliverable is available in Arabic and English.' }
+        { title: 'Arabic or English', body: 'Deliverables in Arabic or English, as you choose.' }
       ]
     },
     // Founder's certificates: the certificate details as sent by the CEO (5 Nov 2026), verbatim.
@@ -787,12 +757,12 @@ module.exports = {
 
   contact: {
     title: 'Contact | Modern Financial Technology',
-    description: 'Send one question or your last closed month. A licensed accountant replies within one business day with a first diagnosis and one concrete next step.',
+    description: 'Send one question or your last closed month. A licensed accountant aims to reply within one business day with a first diagnosis and one concrete next step.',
     page: {
       eyebrow: 'Contact',
       title: 'One question can save you months.',
       intro:
-        'You do not need to prepare anything. Send your question or your last closed month, and a licensed accountant, not a sales rep, replies within one business day with a first diagnosis and one concrete next step. Full confidentiality.'
+        'You do not need to prepare anything. Send your question or your last closed month, and a licensed accountant, not a sales rep, aims to reply within one business day with a first diagnosis and one concrete next step. Full confidentiality.'
     },
     form: {
       heading: 'Request your free trial-balance check',
@@ -816,7 +786,7 @@ module.exports = {
       consent: 'I agree to be contacted by MFT about this request, and I have read and accept the privacy notice, including its cookies and advertising pixels.',
       submit: 'Send request',
       sending: 'Sending…',
-      success: 'Thank you. Your request has been received, and we will reply within one business day.',
+      success: 'Thank you. Your request has been received, and we aim to reply within one business day.',
       error: 'The request could not be sent. Please email or WhatsApp us directly using the details on this page.',
       offline: 'Online submission is not available right now. Please email or WhatsApp us using the details on this page.',
       required: 'Required',
@@ -838,8 +808,8 @@ module.exports = {
       whatsapp: 'WhatsApp',
       whatsappCta: 'Start a WhatsApp conversation',
       responseLabel: 'Response time',
-      response: 'Within one business day. Most clients started with a single WhatsApp message.',
-      officesLabel: 'Offices',
+      response: 'We aim to reply within one business day. You can start with a single WhatsApp message.',
+      officesLabel: 'Office',
       address: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis, Cairo'
     }
   },
@@ -875,7 +845,7 @@ module.exports = {
     },
     homeBand: {
       title: 'Founding Members: only {total} seats. Founder price: 50% off for life',
-      body: 'Founding seats on SEG are capped at {total} and will not reopen. Start with a free check of your company’s trial balance that flags its risk points in minutes.',
+      body: 'Founding seats on SEG are capped at {total}; a seat opens only if an application’s approval window expires or it is declined. Start with a free check of your company’s trial balance that flags its risk points in minutes.',
       more: 'Programme details'
     },
     final: {
@@ -884,32 +854,32 @@ module.exports = {
     },
     // The real counter, later: replaces the matching copy above only when showCount is true and
     // The platform computes it: left = 50 − applications submitted (CEO, 5 Nov 2026). So {filled}
-    // reads «reserved», not «joined»: an application is not a confirmed subscription. {total} is the cap (50).
+    // reads «applications received», not «reserved» or «joined»: an application is not a confirmed subscription. {total} is the cap (50).
     counter: {
       title: 'Standard Enterprise Governance (SEG) Founding Members | {left} of {total} seats left',
-      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats, founder price: 50% off for life; {filled} reserved, {left} left.',
+      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats, founder price: 50% off for life; {filled} applications received, {left} left.',
       ogAlt: '{left} of {total} seats left: Standard Enterprise Governance (SEG) Founding Members',
       bar: 'SEG Founding Members: {left} of {total} seats left. Learn more',
       'hero.headline': '{left} of {total} seats left: Standard Enterprise Governance (SEG) {accent}Founding Members{/accent}',
-      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} of {total} seats reserved so far; {left} remain. Founder price: 50% off for life.',
+      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} applications received so far; {left} of {total} seats left. Founder price: 50% off for life.',
       'hero.meterCaption': 'seats left of {total}',
-      'hero.legend.filled': 'Reserved: {filled}',
+      'hero.legend.filled': 'Applications received: {filled}',
       'homeBand.title': 'Founding Members: {left} of {total} seats left',
-      'homeBand.body': '{filled} of {total} founding seats reserved so far. Founding seats are capped at {total} and will not reopen. Founder price: 50% off for life.',
+      'homeBand.body': '{filled} applications received so far; {left} of {total} seats left. The cap is {total}; a seat opens only if an application’s approval window expires or it is declined. Founder price: 50% off for life.',
       'final.title': '{left} of {total} seats left.',
-      'final.body': 'Every application counts against the seats left. Claim your seat before the count closes.'
+      'final.body': 'Every application counts against the seats left. Apply before the count closes.'
     },
     // The lead magnet (CEO, 3 Nov 2026): trial-balance indicators only, not a full audit report.
     check: {
       eyebrow: 'The free check',
       title: 'A free check of your company’s trial balance that flags its risk points in minutes',
-      intro: 'Not a full audit report: indicators computed directly from the balances in your trial balance, not estimates.',
+      intro: 'Not a full audit report: computed figures, not estimates. An uploaded trial balance gives the balance checks; the four entry-level checks run when Odoo is connected read-only.',
       items: [
-        { title: 'Suspense accounts', body: 'Balances left in clearing or suspense accounts.' },
-        { title: 'Abnormal balances', body: 'An account with a balance against its nature, such as cash in credit.' },
+        { title: 'Suspense accounts', body: 'Balances left in clearing or suspense accounts (Odoo connected).' },
+        { title: 'Abnormal balances', body: 'An account with a balance against its nature, such as cash in credit (Odoo connected).' },
         { title: 'Imbalance', body: 'Total debits do not equal total credits.' },
-        { title: 'Heavy manual entries', body: 'A high share of manual entries on sensitive accounts.' },
-        { title: 'Backdated entries', body: 'Entries dated earlier than the day they were recorded.' }
+        { title: 'Heavy manual entries', body: 'A high share of manual entries on sensitive accounts (Odoo connected).' },
+        { title: 'Backdated entries', body: 'Entries dated earlier than the day they were recorded (Odoo connected).' }
       ],
       cta: 'Check your trial balance free'
     },
@@ -930,7 +900,7 @@ module.exports = {
       steps: [
         { title: 'Sign up', body: 'Create your company account at app.seg-audit.com and start the free check. To reserve a Founding seat, apply through the application form: MFT approves each one by hand.' },
         { title: 'Upload your trial balance', body: 'Upload the trial balance of your last closed month, or connect Odoo read-only.' },
-        { title: 'Get your trial-balance check', body: 'Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report.' }
+        { title: 'Get your trial-balance check', body: 'From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report.' }
       ]
     },
     faq: [
@@ -1034,20 +1004,20 @@ module.exports = {
 
   partners: {
     title: 'Standard Enterprise Governance (SEG) partner programme | Accounting and audit firms, Odoo partners',
-    description: 'The Standard Enterprise Governance (SEG) partner programme for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia: review your clients faster from one account for up to 25 companies, with Arabic reports signed off in your firm’s name.',
+    description: 'The Standard Enterprise Governance (SEG) partner programme for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia: review your clients faster from one account for up to 25 companies, with Arabic reports approved by a named MFT reviewer.',
     page: {
       eyebrow: 'Partners',
-      title: 'Your clients run Odoo. Continuous audit, under your name.',
-      intro: 'The partner programme of Standard Enterprise Governance (SEG) from MFT, with its continuous audit product SEG Audit, for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia. Give your clients continuous review of their books: read-only access, every finding with its evidence, and your firm’s sign-off before the final sign-off by an MFT reviewer.',
+      title: 'Your clients run Odoo. Add continuous audit to your service.',
+      intro: 'The partner programme of Standard Enterprise Governance (SEG) from MFT, with its continuous audit product SEG Audit, for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia. Give your clients continuous review of their books: read-only access, every finding with its evidence, and approval by a named MFT reviewer before release.',
       cta: 'Become a partner'
     },
     value: {
       eyebrow: 'Value for your firm',
-      title: 'Review your clients faster. Under your name.',
+      title: 'Review your clients faster. The judgement stays yours.',
       items: [
         { title: 'The platform prepares, you judge', body: `${N(F.checks)} checks across ${F.reports} reports on each company’s books, with findings ranked by severity and each one tied to its evidence. You read the ten that matter instead of thousands of entries, and the professional judgement stays yours.` },
         { title: 'All your clients from one account', body: 'The Enterprise plan covers up to 25 companies and 100 reports a month on one account, with the same method for every client.' },
-        { title: 'Signed off in your firm’s name', body: 'Your firm signs the report off internally before the final sign-off by a named MFT reviewer, so it reaches your client under your name.' },
+        { title: 'A named reviewer on every report', body: 'Every report is approved by a named MFT reviewer before it is released, and your firm reads it with your client.' },
         { title: 'A recurring monthly service', body: 'You read the approved report with your client before every close. A monthly relationship instead of a yearly visit.' }
       ]
     },
@@ -1057,7 +1027,7 @@ module.exports = {
       items: [
         { title: 'Referral', body: 'Introduce a client; we sell, invoice and serve, and you earn a commission on collected revenue.' },
         { title: 'Reseller', body: 'Sell and invoice yourself at the partner price, and give your clients first-line support.' },
-        { title: 'Practice partner', body: 'Offer continuous audit as a monthly service in your firm’s name, from one account for up to 25 companies, and read the reports with your clients before every close.' }
+        { title: 'Practice partner', body: 'Offer continuous audit as a monthly service from your firm, from one account for up to 25 companies, and read the reports with your clients before every close.' }
       ]
     },
     // Partner levels. A null figure shows `pending` on the page; put the number (as text, e.g. '20%')
@@ -1065,7 +1035,7 @@ module.exports = {
     levels: {
       eyebrow: 'Levels',
       title: 'Three levels that grow with your client base.',
-      caption: 'Levels are reviewed every quarter and counted in active paying companies.',
+      caption: 'Levels are reviewed every quarter and counted in active paying companies. Certification, the partner directory and deal protection are being set up; their terms are set in the partner agreement.',
       cols: ['Registered', 'Certified', 'Premier'],
       pending: 'Set in the partner agreement',
       rows: [
@@ -1081,7 +1051,7 @@ module.exports = {
       title: 'From application to first client, step by step.',
       steps: [
         { when: 'Day 0', title: 'Partner application', body: 'From the form at the end of this page.' },
-        { when: 'Within 3 days', title: 'A 30-minute call', body: 'Your type of firm, your clients on Odoo, their activities, and the independence rule.' },
+        { when: 'Next', title: 'A 30-minute call', body: 'Your type of firm, your clients on Odoo, their activities, and the independence rule.' },
         { when: 'Week 1', title: 'Agreement and demo account', body: 'The partner agreement, a demo account with no client data, and the sales kit in Arabic and English.' },
         { when: 'Week 2', title: '90-minute training', body: 'A product tour, read-only connection, what we say and what we don’t, and deal registration, then a short test.' },
         { when: 'Month 1', title: 'Your first three clients', body: 'A free trial-balance check for three of your client companies, and a joint read-out with you and the MFT team.' }
@@ -1151,11 +1121,11 @@ module.exports = {
 
   trustCenter: {
     title: 'Trust & security | Standard Enterprise Governance (SEG) by MFT',
-    description: 'What the SEG platform guarantees and how each guarantee is enforced in code: read-only access, no guessed numbers, a ledger that cannot be edited silently, full client isolation. Plus what we do not claim yet.',
+    description: 'What the SEG platform guarantees and how each guarantee is enforced in code: read-only access, no guessed numbers, a hash-chained record of reports and approvals, full client isolation. Plus what we do not claim yet.',
     page: {
       eyebrow: 'Trust & security',
       title: 'What we guarantee, how it is enforced, and what we do not claim yet.',
-      intro: 'Every guarantee on this page is built into the Standard Enterprise Governance (SEG) platform and guarded by an automated test, not a line in a policy. At the end of the page: what we have not done yet, written just as plainly.'
+      intro: 'Every guarantee on this page is built into the Standard Enterprise Governance (SEG) platform, enforced in code and verified by a test or a documented production check, not a line in a policy. At the end of the page: what we have not done yet, written just as plainly.'
     },
     groups: [
       {
@@ -1198,11 +1168,11 @@ module.exports = {
       },
       {
         eyebrow: 'Record integrity',
-        title: 'What appears in your report cannot be changed silently.',
+        title: 'Changes to your report record leave a trace.',
         items: [
           {
             title: 'A chained log that exposes edits and deletions',
-            body: 'Everything in your organisation’s account is recorded in a log mathematically linked to the entry before it, one chain per organisation. Any edit or deletion, even straight in the database, shows up and is located.',
+            body: 'Every report and approval action in your organisation’s account is recorded in a log mathematically linked to the entry before it, one chain per organisation. An edited or deleted row, even one changed straight in the database, breaks the chain when it is verified, and the break is located.',
             proof: 'Tried in production: a row edited with a direct database command was detected.'
           },
           {
@@ -1225,7 +1195,7 @@ module.exports = {
           },
           {
             title: 'Backups we have actually restored',
-            body: 'We restored a full copy of the platform databases onto a clean server and confirmed it works, rather than only taking backups.'
+            body: 'We restored a full snapshot of all four production databases (31 July 2026) and verified it, rather than only taking backups. A full rebuild on a new server is the next drill.'
           },
           {
             title: `More than ${N(F.testsFloor)} automated tests before every update`,
@@ -1245,7 +1215,7 @@ module.exports = {
     },
     report: {
       title: 'Found a vulnerability?',
-      body: 'Email {email} and please do not disclose it publicly. We reply within 72 business hours.'
+      body: 'Email {email} and please do not disclose it publicly. We aim to reply within 72 business hours.'
     },
     securityEmail: 'security@seg-audit.com',
     platformLink: 'SEG platform',
@@ -1296,7 +1266,7 @@ module.exports = {
       },
       {
         title: 'Your rights',
-        body: 'You can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted at any time by emailing {email}. We answer within one business day.'
+        body: 'You can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted at any time by emailing {email}. We aim to answer within one business day.'
       },
       {
         title: 'Other MFT platforms',
@@ -1314,18 +1284,18 @@ module.exports = {
       eyebrow: 'MFT Intelligence',
       title: 'AI agents that work your numbers. Accountants who sign off.',
       intro:
-        'MFT Intelligence is a set of twelve specialised finance agents built by our audit and Odoo teams. Each does one job continuously on your own data. Every finding cites the records it came from, every proposed action stays a draft until a named person approves it, and a licensed MFT accountant reviews what reaches you.'
+        'MFT Intelligence is a set of twelve specialised finance agent roles built by our audit and Odoo teams; two are available to clients today. Each role does one job. Every finding cites the records it came from, every proposed action stays a draft until a named person approves it, and a licensed MFT accountant reviews what reaches you.'
     },
     definition: 'MFT Intelligence is a managed AI-agent service from Modern Financial Technology: MFT runs specialised audit, CFO and finance-operations agents on a client’s ERP data and delivers reviewed findings, draft entries and reports under a governance policy enforced in code.',
     statusLabels: { available: 'Available now', validation: 'Internal validation, launching soon' },
     benefitLabel: 'What it does for you',
     agentsTitle: 'Twelve agents. Two selling today.',
-    agentsIntro: 'The Auditor and Virtual CFO agents are delivered now as a managed service. The other ten run daily inside MFT’s own validation programme and are promoted only after a written decision, never automatically.',
+    agentsIntro: 'The Auditor and Virtual CFO agents are delivered now as a managed service. The other ten are built and in internal validation, and are promoted only after a written decision, never automatically.',
     learnMore: 'Full details and pricing path',
     agents: [
       { slug: 'auditor', name: 'Auditor agent', status: 'available', page: 'intelligence/auditor/',
-        does: ['Continuous review of your books against ISA 320 materiality thresholds calibrated to your business', 'Flags every transaction or balance above the threshold, ranked by financial impact', 'Duplicate payments, near-duplicate vendors, unusual approvals and cut-off issues'],
-        benefit: 'Problems surface when they happen, not at the annual audit, and the risk of a material misstatement drops.' },
+        does: ['Review of your ledger against an ISA 320-based materiality threshold calibrated to your business', 'Flags transactions and balances above the threshold, classified by severity', 'Duplicate payments, near-duplicate vendors and unusual approvals'],
+        benefit: 'Problems surface during the year, not at the annual audit.' },
       { slug: 'virtual-cfo', name: 'Virtual CFO agent', status: 'available', page: 'intelligence/virtual-cfo/',
         does: ['Profitability, cash flow and budget-variance analysis every month', 'Board-ready reports in Arabic or English', 'Reviewed and presented by an MFT accountant'],
         benefit: 'CFO-level visibility without the cost of a full-time hire, built for small and mid-sized companies.' },
@@ -1367,8 +1337,8 @@ module.exports = {
       items: [
         { title: 'Provider authorisation', body: 'Real client data may only be processed by providers the policy authorises. Unauthorised providers are refused even when technically configured, and automatic fallback stops rather than switching to one.' },
         { title: 'Evidence or silence', body: 'Every finding must cite the record ids the agent actually retrieved. Findings that cite nothing, or a number not in the cited records, are rejected and shown struck through, never as facts.' },
-        { title: 'Run log, seven years', body: 'Each run records provider, model, whether it ran in the cloud, tokens, client and task. Retained seven years by default, in line with ISA 230 working-paper conventions.' },
-        { title: 'Your data stays on your system', body: 'Client ledgers are read from the client’s own Odoo at query time and are not copied into MFT’s systems, in line with Saudi PDPL and Egyptian data-protection requirements.' }
+        { title: 'Run log, seven years', body: 'Each run records provider, model, whether it ran in the cloud, tokens, client and task. Retained seven years by default.' },
+        { title: 'Only the records a run needs', body: 'Agents read only the records a run needs as evidence; the full ledger is not copied. Those records are kept in the run log. During the current phase each run is processed by a cloud AI model provider that the policy authorises, and the run log records which one.' }
       ]
     },
     execution: {
@@ -1384,31 +1354,31 @@ module.exports = {
     },
     segAudit: {
       eyebrow: 'Inside SEG',
-      title: 'Every SEG report will be AI-reviewed before it reaches you.',
+      title: 'Coming next: AI review inside every SEG report.',
       body: 'The Auditor and Virtual CFO agents are being built into the SEG report pipeline itself, not as a paid add-on. Their output enters the platform’s existing two-stage human approval chain as a draft, the requester never approves their own run, and nothing is released without a person’s decision. The integration is in final review and switches on only after the AI-processing disclosure is published in the platform’s terms.',
       link: { label: 'About the SEG platform', href: 'https://app.seg-audit.com' }
     },
     faq: {
       title: 'Direct answers',
       items: [
-        { q: 'What is MFT Intelligence?', a: 'A managed AI-agent service from Modern Financial Technology. Twelve specialised finance agents run on your ERP data; MFT accountants review the output; a governance policy enforced in code controls what the agents may do and where your data goes.' },
-        { q: 'Which agents can I buy today?', a: 'The Auditor agent and the Virtual CFO agent, delivered as a managed service with monthly or continuous review. The other ten are in MFT’s internal validation programme and are offered as they are promoted.' },
+        { q: 'What is MFT Intelligence?', a: 'A managed AI-agent service from Modern Financial Technology. Twelve agent roles are built, and the Auditor and Virtual CFO agents work on your ledger today; MFT accountants review the output; a governance policy enforced in code controls what the agents may do and where your data goes.' },
+        { q: 'Which agents can I buy today?', a: 'The Auditor agent and the Virtual CFO agent, delivered as a managed service with monthly or weekly review. The other ten are in MFT’s internal validation programme and are offered as they are promoted.' },
         { q: 'Does an agent ever post or pay anything by itself?', a: 'No. Agents only draft. A named, registered person approves every action; above your materiality threshold a second person must approve. Corrections are made by reversal entries, never deletion.' },
-        { q: 'Where does my data live?', a: 'On your own Odoo (or other ERP). Agents read it through the API at query time; MFT does not copy your ledger into its systems.' },
+        { q: 'Where does my data live?', a: 'Your ledger stays on your own Odoo or ERP. Today the agents work from a ledger export you send us; the live Odoo connector is being wired. They read only the records a run needs, and during the current phase each run is processed by a cloud AI model provider authorised by our policy; the run log records which one.' },
         { q: 'How is it priced?', a: 'Per engagement, based on the agents you need, the number of entities and your monthly transaction volume. Request a quote and you receive a scoped proposal from an MFT accountant.' },
-        { q: 'Is this the same as SEG?', a: 'Standard Enterprise Governance (SEG) is MFT’s governance and audit platform. The same Auditor and CFO agents are being integrated into its report pipeline so every report is AI-reviewed before human review. MFT Intelligence is the standalone service you can engage directly, with or without seg-audit.' }
+        { q: 'Is this the same as SEG?', a: 'Standard Enterprise Governance (SEG) is MFT’s governance and audit platform. The same Auditor and CFO agents are being integrated into its report pipeline, so that once switched on each report gets an AI review before human review. MFT Intelligence is the standalone service you can engage directly, with or without seg-audit.' }
       ]
     },
     plans: {
       eyebrow: 'Engagement',
       title: 'Scoped to you. Quoted by an accountant.',
-      intro: 'Three engagement shapes, priced per scope. Every one includes onboarding by an MFT accountant, materiality calibration for your business, and integration with your Odoo (or other ERP) data with every proposed action held as a draft for your approval.',
+      intro: 'Three engagement shapes, priced per scope. Every one includes onboarding by an MFT accountant, materiality calibration for your business, and work from your Odoo (or other ERP) ledger, today by export, with every proposed action held as a draft for your approval.',
       cta: 'Request a quote',
       note: 'No fixed prices are published. Each engagement is priced to entity count, transaction volume and reporting scope.',
       tiers: [
-        { name: 'Essential', summary: 'One agent, one monthly report.', features: ['Your choice of the Auditor or the Virtual CFO agent', 'One monthly report reviewed by an MFT accountant', 'ERP connection and onboarding; proposals delivered as drafts for your approval'] },
-        { name: 'Professional', summary: 'Audit and CFO together, continuously.', features: ['Auditor and Virtual CFO agents together', 'Continuous weekly review of your books', 'Instant alerts when a transaction exceeds your materiality threshold', 'Monthly review call with your MFT accountant'], featured: true },
-        { name: 'Complete', summary: 'Every agent, fully integrated.', features: ['All twelve agents, the validation-stage ones as they are promoted', 'Full Odoo integration across finance, inventory, HR and projects', 'Custom reports and dashboards', 'Named MFT lead for the engagement'] }
+        { name: 'Essential', summary: 'One agent, one monthly report.', features: ['Your choice of the Auditor or the Virtual CFO agent', 'One monthly report reviewed by an MFT accountant', 'Ledger export and onboarding; proposals delivered as drafts for your approval'] },
+        { name: 'Professional', summary: 'Audit and CFO together, every week.', features: ['Auditor and Virtual CFO agents together', 'Weekly review of your books', 'A weekly exception list of items above your materiality threshold', 'Monthly review call with your MFT accountant'], featured: true },
+        { name: 'Complete', summary: 'Every agent, as each is promoted.', features: ['All twelve agents, the validation-stage ones as they are promoted', 'Odoo integration across finance, inventory, HR and projects, once the live connector is in place', 'Custom reports and dashboards', 'Named MFT lead for the engagement'] }
       ]
     }
   },
@@ -1420,21 +1390,21 @@ module.exports = {
       {
         slug: 'auditor',
         name: 'Auditor agent',
-        title: 'Auditor agent: continuous ISA 320 review of your books | MFT Intelligence',
-        description: 'The MFT Auditor agent reviews every transaction against your ISA 320 materiality threshold, cites its evidence, and delivers findings reviewed by a licensed accountant. Available now.',
+        title: 'Auditor agent: ISA 320-based review of your whole ledger | MFT Intelligence',
+        description: 'The MFT Auditor agent tests your journal entries against your ISA 320-based materiality threshold, cites its evidence, and delivers findings reviewed by a licensed accountant. Available now.',
         eyebrow: 'MFT Intelligence · Available now',
-        headline: 'Every transaction reviewed. Every finding evidenced.',
-        definition: 'The Auditor agent is a continuous internal-audit service: an AI agent reviews 100% of your transactions against ISA 320 materiality thresholds calibrated to your business, and a licensed MFT auditor reviews and signs every finding before it reaches you.',
-        intro: 'Annual audits sample a few percent and leave eleven months uncovered. The Auditor agent reads the whole ledger, every week or every day, ranks what it finds by financial impact, and cites the exact records, or says nothing.',
-        deliverables: ['Findings report ranked by impact, each with cited record ids and an ISA classification', 'Materiality threshold calibrated at onboarding (1% of revenue or 5% of net profit, per ISA 320) and reviewed quarterly', 'Duplicate and near-duplicate payment analysis, vendor-master hygiene, approval and cut-off exceptions', 'Alerts when a transaction exceeds your threshold (Professional and above)', 'Reviewer notes from a licensed MFT auditor on every report', 'Seven-year run log available to your external auditor'],
-        cadence: 'Monthly report (Essential) or continuous weekly review with alerts (Professional).',
-        delivery: ['Onboarding call: entity, ERP, chart of accounts, materiality calibration, registered approvers', 'Connector to your Odoo (or ledger export for other systems); your data stays on your system', 'Agent runs on schedule; a licensed MFT auditor reviews, annotates and signs the report', 'Monthly review call to decide what to do about the findings'],
+        headline: 'The whole ledger tested. Every finding evidenced.',
+        definition: 'The Auditor agent is a continuous internal-audit service: an AI agent runs its checks on the whole ledger, not a sample, against an ISA 320-based materiality threshold calibrated to your business, and a licensed MFT auditor reviews and signs every finding before it reaches you.',
+        intro: 'An annual audit looks back once a year, on a sample. The Auditor agent reads the whole ledger export, every week or every month, classifies what it finds by severity, and cites the exact records, or says nothing.',
+        deliverables: ['Findings report classified by severity, each with cited record ids and an ISA classification', 'Materiality threshold calibrated at onboarding (benchmarks such as 1% of revenue or 5% of net profit, as illustrated in ISA 320) and recomputed at each year-end or when the basis changes', 'Duplicate and near-duplicate payment analysis, vendor-master hygiene and approval exceptions', 'A weekly exception list of items above your threshold (Professional and above)', 'Reviewer notes from a licensed MFT auditor on every report', 'Seven-year run log available to your external auditor'],
+        cadence: 'Monthly report (Essential) or weekly review with an exception list (Professional).',
+        delivery: ['Onboarding call: entity, ERP, chart of accounts, materiality calibration, registered approvers', 'Delivered today from a ledger export you send us; the live Odoo connector is being wired', 'Agent runs on schedule; a licensed MFT auditor reviews, annotates and signs the report', 'Monthly review call to decide what to do about the findings'],
         forWho: 'Owner-managed companies and groups in Egypt and Saudi Arabia that want audit coverage between annual audits, and finance teams preparing for external audit, financing or acquisition.',
         faq: [
-          { q: 'Does the agent replace our external auditor?', a: 'No. It is continuous internal review. Its run log and evidence trail make the external audit faster and cheaper, and its findings are classified against ISA so your auditor can use them.' },
+          { q: 'Does the agent replace our external auditor?', a: 'No. It is continuous internal review. Its run log and evidence trail can make the external audit smoother, though how far your auditor relies on it is their decision, and its findings are classified against ISA so your auditor can use them.' },
           { q: 'What does “evidence or silence” mean in practice?', a: 'Each finding names the journal entries, payments or balances it is based on. If the agent cannot cite a record it retrieved, the finding is rejected and never shown as fact.' },
-          { q: 'Can it fix what it finds?', a: 'It drafts. Correcting entries are proposed to your team, approved by a registered person, or two people above your materiality threshold, and only then posted. Nothing is deleted; mistakes are reversed.' },
-          { q: 'Which systems does it read?', a: 'Odoo natively. Other ERPs via a periodic ledger export during onboarding.' }
+          { q: 'Can it fix what it finds?', a: 'It drafts. It proposes correcting entries for your team to post, after approval by a registered person, or two people above your materiality threshold. Nothing is deleted; mistakes are reversed.' },
+          { q: 'Which systems does it read?', a: 'Today, a periodic ledger export from Odoo or any other ERP; the live Odoo connector is being wired.' }
         ],
         related: { label: 'Internal Audit service', href: 'services/internal-audit/' }
       },
@@ -1442,19 +1412,19 @@ module.exports = {
         slug: 'virtual-cfo',
         name: 'Virtual CFO agent',
         title: 'Virtual CFO agent: monthly board-ready analysis | MFT Intelligence',
-        description: 'The MFT Virtual CFO agent analyses profitability, cash flow and budget variances from your ERP every month and produces board-ready reports reviewed by an MFT accountant. Available now.',
+        description: 'The MFT Virtual CFO agent analyses profitability, cash flow and budget variances from your ledger every month and produces board-ready reports reviewed by an MFT accountant. Available now.',
         eyebrow: 'MFT Intelligence · Available now',
         headline: 'A board pack every month. A CFO’s questions with it.',
-        definition: 'The Virtual CFO agent is a managed monthly reporting service: an AI agent analyses profitability, cash flow and budget variances directly from your ERP data, and an MFT accountant reviews the analysis and presents it to management.',
-        intro: 'Most small and mid-sized companies close the month and still cannot say where the margin went. The Virtual CFO agent produces the pack a CFO would build, by product, customer and cost centre, and MFT’s accountant sits with you to turn it into decisions.',
-        deliverables: ['Monthly management pack: P&L by product and customer, cash-flow statement and 13-week forecast, working-capital position, budget variances', 'Board-ready summary in Arabic or English with the three questions management should ask', 'Variance explanations tied to the underlying entries (cited, never asserted)', 'Runway and covenant watch when terms or balances change', 'Monthly review call with an MFT accountant; quarterly with a partner', 'Seven-year run log'],
+        definition: 'The Virtual CFO agent is a managed monthly reporting service: an AI agent analyses profitability, cash flow and budget variances from your ledger data, and an MFT accountant reviews the analysis and presents it to management.',
+        intro: 'Many small and mid-sized companies close the month and still cannot say where the margin went. The Virtual CFO agent produces the pack a CFO would build, by product, customer and cost centre, and MFT’s accountant sits with you to turn it into decisions.',
+        deliverables: ['Monthly management pack: P&L by product and customer, cash-flow statement and 13-week forecast, working-capital position, budget variances', 'Board-ready summary in Arabic or English with the three questions management should ask', 'Variance explanations tied to the underlying entries (cited, never asserted)', 'Monthly review call with an MFT accountant; quarterly with a partner', 'Seven-year run log'],
         cadence: 'Monthly pack and review call; weekly cash view on Professional and above.',
-        delivery: ['Onboarding: entities, chart of accounts, budget upload, reporting currency and language', 'Connector to Odoo or a monthly ledger export; your data stays on your system', 'Agent produces the analysis; an MFT accountant reviews, annotates and signs it', 'Review meeting with management; actions tracked to the next month'],
-        forWho: 'Growing companies in Egypt, Saudi Arabia and the US that need CFO-level judgement every month without a full-time hire, and founders who want to understand their own numbers.',
+        delivery: ['Onboarding: entities, chart of accounts, budget upload, reporting currency and language', 'A monthly ledger export you send us; the live Odoo connector is being wired', 'Agent produces the analysis; an MFT accountant reviews, annotates and signs it', 'Review meeting with management; actions tracked to the next month'],
+        forWho: 'Growing companies in Egypt and Saudi Arabia that need CFO-level judgement every month without a full-time hire, and founders who want to understand their own numbers.',
         faq: [
           { q: 'Is this a dashboard or a person?', a: 'Both. The agent does the analysis from your data; a licensed MFT accountant reviews it, signs it and presents it. You are never handed raw AI output.' },
           { q: 'Do we need Odoo?', a: 'It works best on Odoo, but a monthly trial balance and sub-ledger export from any system is enough to start.' },
-          { q: 'How fast is the trial-balance check?', a: 'Minutes: upload your trial balance or connect Odoo read-only and the risk points in your trial balance appear. The full monthly pack starts from your next close.' },
+          { q: 'How fast is the trial-balance check?', a: 'Minutes: upload your trial balance and the balance checks appear; connecting Odoo read-only adds the entry-level checks. The full monthly pack starts from your next close.' },
           { q: 'Can it prepare investor or bank reporting?', a: 'Yes. Bank, investor and board formats are part of the Professional and Complete engagements.' }
         ],
         related: { label: 'Virtual CFO service', href: 'services/virtual-cfo/' }
@@ -1465,8 +1435,8 @@ module.exports = {
   // ---- Quote request ----
   quote: {
     title: 'Request a quote | MFT Intelligence',
-    description: 'Tell MFT your scope, from agents and ERP to entities and transaction volume, and receive a priced proposal from an accountant within two business days.',
-    page: { eyebrow: 'Request a quote', title: 'Tell us the scope. We price it.', intro: 'No fixed price list, because no two ledgers are the same. Give us four facts about your scope and an MFT accountant returns a scoped proposal within two business days.' },
+    description: 'Tell MFT your scope, from agents and ERP to entities and transaction volume, and receive a priced proposal from an accountant, which we aim to send within two business days.',
+    page: { eyebrow: 'Request a quote', title: 'Tell us the scope. We price it.', intro: 'No fixed price list, because no two ledgers are the same. Give us four facts about your scope and an MFT accountant returns a scoped proposal, which we aim to send within two business days.' },
     form: {
       heading: 'Scope',
       agents: 'Which agents are you interested in?',
@@ -1486,8 +1456,8 @@ module.exports = {
       cadence: 'Preferred cadence',
       cadenceOptions: [{ value: 'monthly', label: 'Monthly report' }, { value: 'weekly', label: 'Continuous weekly review' }, { value: 'unsure', label: 'Advise me' }],
       submit: 'Send scope and get a quote',
-      success: 'Received. An MFT accountant will send your scoped proposal within two business days.',
-      aside: { title: 'What happens next', steps: ['We confirm the scope by email or WhatsApp within one business day.', 'An MFT accountant prices the engagement to your entities, volume and cadence.', 'You receive a written proposal: scope, deliverables, cadence, price, start date.'] }
+      success: 'Received. An MFT accountant will send your scoped proposal; we aim to do it within two business days.',
+      aside: { title: 'What happens next', steps: ['We confirm the scope by email or WhatsApp, aiming for one business day.', 'An MFT accountant prices the engagement to your entities, volume and cadence.', 'You receive a written proposal: scope, deliverables, cadence, price, start date.'] }
     }
   },
 
@@ -1495,7 +1465,7 @@ module.exports = {
   latest: {
     eyebrow: 'Latest from MFT',
     title: 'Twelve finance agents, built by accountants, governed in code.',
-    body: 'MFT Intelligence is live as a managed service: the Auditor agent reviews every transaction against your ISA 320 materiality threshold; the Virtual CFO agent turns your Odoo data into a board pack. Ten more agents run daily in our own validation programme. Every action stays a draft until a named person approves it.',
+    body: 'MFT Intelligence is available as a managed service, delivered today from a ledger export you send us: the Auditor agent tests your journal entries against your ISA 320-based materiality threshold; the Virtual CFO agent turns your ledger into a board pack. Ten more agents are built and in internal validation. Every action stays a draft until a named person approves it.',
     facts: [
       { value: '12', label: 'agent roles built' },
       { value: '2', label: 'selling today' },
@@ -1518,8 +1488,8 @@ module.exports = {
   },
 
   homeFaq: [
-    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its continuous audit product SEG Audit and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
-    { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. No credit card, no commitment.' },
+    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a firm in Egypt and Saudi Arabia, led by a registered chartered accountant, that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its continuous audit product SEG Audit and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
+    { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report. No credit card, no commitment.' },
     { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
   ],
   industriesFaq: [
@@ -1533,7 +1503,7 @@ module.exports = {
     { q: 'What is smart audit?', a: 'MFT’s approach of building controls into the system so errors are prevented and caught as they happen: documentation cycles, permissions and segregation of duties, and audit requirements turned into operating rules inside Odoo.' }
   ],
   contactFaq: [
-    { q: 'How fast do you reply?', a: 'Within one business day, by email or WhatsApp. Most clients started with a single WhatsApp message.' },
+    { q: 'How fast do you reply?', a: 'We aim to reply within one business day, by email or WhatsApp. You can start with a single WhatsApp message.' },
     { q: 'What do I send for the free trial-balance check?', a: 'The trial balance of your last closed month, or connect Odoo read-only. No preparation is needed.' },
     { q: 'Is my data confidential?', a: 'Yes. Files shared for the trial-balance check are treated as confidential client data, restricted to the engagement team and deleted on request. Nothing is published about any client without written consent.' }
   ],
@@ -1547,11 +1517,11 @@ module.exports = {
         name: 'Egypt',
         city: 'Cairo',
         title: 'Odoo ERP, Internal Audit and Virtual CFO in Egypt | MFT Cairo',
-        description: 'MFT is a CPA-led Odoo partner and audit firm headquartered in Cairo. Odoo ERP with ETA e-invoicing, internal audit programmes and Virtual CFO reporting for Egyptian companies.',
+        description: 'MFT is an audit firm and team of Odoo implementation experts led by accountants, headquartered in Cairo. Odoo ERP with ETA e-invoicing, internal audit programmes and Virtual CFO reporting for Egyptian companies.',
         eyebrow: 'Egypt',
         headline: 'Odoo, audit and Virtual CFO for Egyptian companies, from Cairo.',
-        definition: 'MFT is a CPA-led financial technology and audit firm headquartered in Korba, Heliopolis, Cairo, serving companies across Egypt with Odoo ERP implementation, internal audit and Virtual CFO reporting, in Arabic and English.',
-        intro: 'Egyptian finance teams carry the Egyptian Tax Authority e-invoicing mandate, 14% VAT, withholding tax and a market where most ERP implementations stop at go-live. MFT’s Cairo team implements the system, audits the controls around it and reads the results with you every month.',
+        definition: 'MFT is a financial technology and audit firm, led by a registered chartered accountant, headquartered in Korba, Heliopolis, Cairo, serving companies across Egypt with Odoo ERP implementation, internal audit and Virtual CFO reporting, in Arabic and English.',
+        intro: 'Egyptian finance teams carry the Egyptian Tax Authority e-invoicing mandate, 14% VAT, withholding tax and a market where many ERP implementations stop at go-live. MFT’s Cairo team implements the system, audits the controls around it and reads the results with you every month.',
         obligations: [
           'ETA e-invoicing: every issued invoice submitted and validated, with the receipt mandate for B2C',
           'VAT at 14% with monthly returns, and withholding tax on supplier payments',
@@ -1560,7 +1530,7 @@ module.exports = {
         ],
         services: [
           { title: 'Odoo ERP with ETA built in', body: 'Chart of accounts, e-invoicing submission, withholding and VAT configured by accountants, not just developers.', href: 'services/odoo-erp/' },
-          { title: 'Innovative Tax Solutions', body: 'VAT return reconciled to the books, withholding tax review, ETA invoice follow-up, and the returns filed for you.', href: 'services/tax-solutions/' },
+          { title: 'Innovative Tax Solutions', body: 'VAT return reconciled to the books, withholding tax review, ETA invoice follow-up, and the returns filed for you under your authorisation.', href: 'services/tax-solutions/' },
           { title: 'Internal audit, monthly or continuous', body: 'Risk-based programmes run inside your ERP, with findings ranked by impact and an owner for each.', href: 'services/internal-audit/' },
           { title: 'Virtual CFO', body: 'A monthly management pack and a review call with an MFT accountant, from your first closed month.', href: 'services/virtual-cfo/' },
           { title: 'MFT Intelligence agents', body: 'The Auditor and Virtual CFO agents, delivered as a managed service with human sign-off.', href: 'intelligence/' }
@@ -1578,28 +1548,28 @@ module.exports = {
         name: 'Saudi Arabia',
         city: 'Riyadh',
         title: 'ZATCA-ready Odoo ERP, Internal Audit and Virtual CFO in Saudi Arabia | MFT',
-        description: 'MFT delivers ZATCA phase-two Odoo implementations, internal audit and Virtual CFO reporting for Saudi companies, with client data kept in the Kingdom under PDPL.',
+        description: 'MFT delivers ZATCA phase-two Odoo implementations, internal audit and Virtual CFO reporting for Saudi companies, in Arabic and English.',
         eyebrow: 'Saudi Arabia',
         headline: 'ZATCA-ready Odoo, audit and Virtual CFO for Saudi companies.',
-        definition: 'MFT serves Saudi companies with ZATCA phase-two compliant Odoo ERP implementation, internal audit programmes and Virtual CFO reporting, delivered on site and remotely in Arabic and English, with client data remaining on the client’s own systems in line with the Saudi Personal Data Protection Law.',
+        definition: 'MFT serves Saudi companies with ZATCA phase-two compliant Odoo ERP implementation, internal audit programmes and Virtual CFO reporting, delivered on site and remotely in Arabic and English.',
         intro: 'Saudi finance teams face ZATCA phase-two integration, 15% VAT, zakat and withholding rules, and a data-protection law that decides where client data may live. MFT builds all of that into the implementation and the audit programme, and its own tax and zakat research covers the Egypt and Saudi treaty position for groups operating in both.',
         obligations: [
           'ZATCA e-invoicing phase two: integration, clearance and reporting of invoices',
           'VAT at 15%, zakat for Saudi and GCC-owned entities, and withholding on payments abroad',
           'SOCPA standards and the annual external audit',
-          'Personal Data Protection Law: client data stays on the client’s own systems'
+          'Personal Data Protection Law: rules on processing personal data and transferring it outside the Kingdom'
         ],
         services: [
           { title: 'Odoo ERP with ZATCA phase two', body: 'Integration, clearance and reporting configured as part of the standard build, with zakat and VAT set per entity.', href: 'services/odoo-erp/' },
-          { title: 'Innovative Tax Solutions', body: 'ZATCA clearance and reporting follow-up, VAT and the zakat base reconciled to the books, and the returns filed for you.', href: 'services/tax-solutions/' },
+          { title: 'Innovative Tax Solutions', body: 'ZATCA clearance and reporting follow-up, VAT reconciled to the books, the zakat base computed from them and reconciled to your return, and the returns filed for you under your authorisation.', href: 'services/tax-solutions/' },
           { title: 'Internal audit', body: 'Risk-based programmes with ISA-classified findings, run on site in the Kingdom or remotely.', href: 'services/internal-audit/' },
           { title: 'Virtual CFO', body: 'Monthly management packs and cash forecasts in Arabic or English, with a review call each month.', href: 'services/virtual-cfo/' },
           { title: 'Cross-border structuring', body: 'Egypt and Saudi groups: treaty position, transfer of profits and consolidated reporting.', href: 'services/financial-consulting/' }
         ],
-        how: ['Discovery call in Arabic or English; on-site visits arranged for fieldwork', 'A free check of your company’s trial balance that flags its risk points in minutes', 'Client data read from your own Odoo at query time and never copied out of the Kingdom', 'Reports written for owners, boards and Saudi auditors'],
+        how: ['Discovery call in Arabic or English; on-site visits arranged for fieldwork', 'A free check of your company’s trial balance that flags its risk points in minutes', 'Read-only access to your books; we change nothing in your system', 'Reports written for owners, boards and Saudi auditors'],
         faq: [
           { q: 'Is your Odoo implementation ZATCA phase-two compliant?', a: 'Yes. Integration, clearance and reporting are part of the standard implementation, and the configuration is tested against the ZATCA sandbox before go-live.' },
-          { q: 'Where does my data live?', a: 'On your own Odoo or ERP in the Kingdom. MFT and the MFT Intelligence agents read it at query time and do not copy it, in line with the Personal Data Protection Law.' },
+          { q: 'Where does my data live?', a: 'Your ledger stays on your own Odoo or ERP, and we read it read-only. Files you upload to SEG are processed on the SEG platform server, and during the current phase MFT Intelligence agent runs are processed by a cloud AI model provider. Ask us for the processing details and have your legal adviser review them against the Personal Data Protection Law before you connect live data.' },
           { q: 'Do you have a Saudi office?', a: 'Engagements are delivered on site in Saudi Arabia and remotely from Cairo. Fieldwork visits are scheduled as part of the engagement.' }
         ]
       }

@@ -318,7 +318,7 @@ module.exports = {
         { p: 'A forecast is only as good as the last time it was checked. Each week, compare what was forecast for the week just ended with what actually happened, line by line. Large variances have an explanation: a customer who pays later than assumed, a supplier paid early, a cost nobody listed. Fix the assumption, not just the number. Over several weeks this review is what turns a spreadsheet into a reliable tool, and it shows the owners which parts of the forecast deserve confidence.' },
         { quote: 'The point of a cash forecast is not to be right. It is to be wrong early enough to do something about it.' },
         { h2: 'Who should own it?' },
-        { p: 'The forecast belongs to finance, but its inputs come from sales, purchasing and operations, and the decisions it prompts belong to the owners or management. In the companies where MFT acts as Virtual CFO, the 13-week forecast is reviewed in a short weekly cash meeting: the closing balance per week, the lowest point in the quarter, the variances from last week, and the actions agreed to protect the tight weeks.' }
+        { p: 'The forecast belongs to finance, but its inputs come from sales, purchasing and operations, and the decisions it prompts belong to the owners or management. In a Virtual CFO engagement, the 13-week forecast is reviewed in a short weekly cash meeting: the closing balance per week, the lowest point in the quarter, the variances from last week, and the actions agreed to protect the tight weeks.' }
       ],
       faq: [
         { q: 'What is a 13-week cash flow forecast?', a: 'It is a week-by-week projection of cash receipts and payments over the next thirteen weeks, built with the direct method and updated every week. It shows the expected cash balance at the end of each week and highlights when a shortfall could occur.' },
@@ -643,7 +643,7 @@ module.exports = {
         { p: 'التوقعات جيدة بقدر آخر مرة فُحصت فيها. كل أسبوع قارن ما توقعته للأسبوع المنقضي بما حدث فعلًا، سطرًا بسطر. والانحرافات الكبيرة لها تفسير: عميل يدفع متأخرًا عمّا افتُرض، أو مورد دُفع له مبكرًا، أو تكلفة لم يذكرها أحد. أصلح الافتراض، لا الرقم فقط. وعلى مدى أسابيع تحوّل هذه المراجعة جدول البيانات إلى أداة موثوقة، وتُظهر للملّاك أي أجزاء التوقعات تستحق الثقة.' },
         { quote: 'الغاية من توقعات النقدية ليست أن تكون صحيحة، بل أن تكون خاطئة مبكرًا بما يكفي لتفعل شيئًا حيال ذلك.' },
         { h2: 'من ينبغي أن يتملكها؟' },
-        { p: 'التوقعات مسؤولية المالية، لكن مدخلاتها تأتي من المبيعات والمشتريات والعمليات، والقرارات التي تستدعيها للملّاك أو الإدارة. وفي الشركات التي تعمل فيها {lat}MFT{/lat} مديرًا ماليًا افتراضيًا، تُراجع توقعات الأسابيع الثلاثة عشر في اجتماع نقدية أسبوعي قصير: الرصيد الختامي لكل أسبوع، وأدنى نقطة في الربع، وانحرافات الأسبوع الماضي، والإجراءات المتفق عليها لحماية الأسابيع الضيقة.' }
+        { p: 'التوقعات مسؤولية المالية، لكن مدخلاتها تأتي من المبيعات والمشتريات والعمليات، والقرارات التي تستدعيها للملّاك أو الإدارة. وفي تكليف المدير المالي الافتراضي تُراجع توقعات الأسابيع الثلاثة عشر في اجتماع نقدية أسبوعي قصير: الرصيد الختامي لكل أسبوع، وأدنى نقطة في الربع، وانحرافات الأسبوع الماضي، والإجراءات المتفق عليها لحماية الأسابيع الضيقة.' }
       ],
       faq: [
         { q: 'ما توقعات التدفق النقدي لمدة {lat}13{/lat} أسبوعًا؟', a: 'هي إسقاط أسبوعي للمقبوضات والمدفوعات النقدية على مدى الأسابيع الثلاثة عشر القادمة، يُبنى بالطريقة المباشرة ويُحدَّث كل أسبوع. وتُظهر الرصيد النقدي المتوقع في نهاية كل أسبوع وتنبّه إلى موعد احتمال العجز.' },

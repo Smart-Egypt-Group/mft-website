@@ -14,13 +14,13 @@ module.exports = {
       description: 'What Odoo 20 changes for finance teams in Egypt and Saudi Arabia: bank entries, bill payments, duplicate checks, valuation, the AI assistant and what to test.',
       answer: 'According to the Odoo 20 release notes, the finance changes that matter are in the bank and payables: bank entries must originate from bank transactions, bills can be paid through bank payment initiation where bank and country allow, and duplicate bills get red or yellow warnings. An AI assistant follows. Re-test ETA and ZATCA e-invoicing after upgrading.',
       takeaways: [
-        'Odoo 20 was released on 24 September 2026; Odoo 17.0 reaches the planned end of standard support the same month.',
+        'Odoo 20 was released in September 2026; Odoo 17.0 reaches the planned end of standard support the same month.',
         'The bank, payables and valuation changes alter controls, not just screens, so they need testing.',
-        'AI features run on IAP credits bought separately, and AI agents are Enterprise-only.',
-        'No Odoo 20 specific ETA or ZATCA changes are verified; re-test e-invoicing in a sandbox anyway.'
+        'AI features run on IAP credits bought separately; confirm with Odoo which editions include AI agents.',
+        'The release notes list localization changes for Egypt’s ETA and Saudi ZATCA; re-test e-invoicing in a sandbox after upgrading.'
       ],
       body: [
-        { p: 'Odoo 20 was released on 24 September 2026 at Odoo Experience in Brussels, with one version number for Community and Enterprise. For a finance team in Cairo or Riyadh, the more important changes are quieter: how bank entries are created, how bills are paid, how duplicates are caught and how inventory valuation is closed. This is a reading of the Odoo 20 release notes from the finance side: what changes, what can wait, and what to test before you move.' },
+        { p: 'Odoo 20 was released in September 2026 at Odoo Experience in Brussels, with one version number for Community and Enterprise. For a finance team in Cairo or Riyadh, the more important changes are quieter: how bank entries are created, how bills are paid, how duplicates are caught and how inventory valuation is closed. This is a reading of the Odoo 20 release notes from the finance side: what changes, what can wait, and what to test before you move.' },
         { h2: 'Does the release date matter if we are not upgrading yet?' },
         { p: 'It matters because of support, not features. Odoo supports each major version for three years. According to Odoo’s published plan, standard support for 17.0 ends in September 2026, for 18.0 in September 2027 and for 19.0 in September 2028, which places Odoo 20 at roughly September 2029. If you run 17.0, the question is no longer whether to plan an upgrade but which version to land on. Odoo’s upgrade service can take an Enterprise database across several versions in one request, for example from 17 to 20, but skipping versions raises the testing burden, because every change in between arrives at once.' },
         { h2: 'What changes in accounting and the bank?' },
@@ -38,9 +38,9 @@ module.exports = {
         { h2: 'What changes in inventory valuation?' },
         { p: 'Under perpetual valuation, accrual entries affecting inventory valuation can be made from the inventory valuation closing report and post directly to the inventory valuation account, rather than through the stock variation account. The release notes also list a retroactive COGS update when a cost changes after delivery, landed costs assignable to individual products of a transfer, inventory at a past date, a stock aging report, and the ability to manage stock on hand and valuation without the Inventory app. Each changes how a balance sheet or gross profit figure is produced, so each belongs in your close review.' },
         { h2: 'What does the AI assistant do for accounting?' },
-        { p: 'According to the release notes, you can ask the accounting AI assistant about receivables, gross profit or cash flow and get figures drawn from the reports, and it can review suspected bank reconciliation errors and return recommendations. AI features consume IAP credits bought separately from user licences and billed per request. Treat its answers as a fast way to find the right report, and its recommendations as proposals that a person checks against the ledger.' },
+        { p: 'According to the release notes, you can ask the accounting AI assistant about receivables, gross profit or cash flow and get figures drawn from the reports, and it can review suspected bank reconciliation errors and return recommendations. AI features need IAP credits, bought separately from user licences. Treat its answers as a fast way to find the right report, and its recommendations as proposals that a person checks against the ledger.' },
         { h2: 'What about ETA and ZATCA e-invoicing?' },
-        { p: 'We have not verified any Odoo 20 specific change for Egypt’s ETA e-invoicing or Saudi ZATCA. The localization modules you rely on today still exist, but an upgrade touches the data and code underneath them. After any upgrade, re-test e-invoicing end to end in a sandbox or pre-production environment before production invoices flow.' },
+        { p: 'According to the Odoo 20 release notes, the localization changes include, for Egypt, ETA synchronisation inside the send wizard and a test mode, and for Saudi Arabia, the invoice date used as the ZATCA issue date, document-level rounding and handling of submission timeouts. Beyond those, an upgrade touches the data and code underneath the localization modules. After any upgrade, re-test e-invoicing end to end in a sandbox or pre-production environment before production invoices flow.' },
         { h2: 'What can a finance team safely ignore for now?' },
         { p: 'Anything that does not change how a balance is produced or approved can wait for a second phase: presentation changes such as the consolidated exchange difference line, purchasing helpers such as vendor quality ratings and suggested reordering rules, and AI agents until you have decided who governs them.' },
         { h2: 'What should you test before you upgrade?' },
@@ -56,9 +56,9 @@ module.exports = {
         { p: 'When we run an Odoo upgrade for a client, these tests are part of acceptance, run on a copy of the client’s own closed periods, before anyone is asked to sign off.' }
       ],
       faq: [
-        { q: 'When was Odoo 20 released?', a: 'Odoo 20 was released on 24 September 2026 at Odoo Experience in Brussels, with one version number for Community and Enterprise.' },
+        { q: 'When was Odoo 20 released?', a: 'Odoo 20 was released in September 2026 at Odoo Experience in Brussels, with one version number for Community and Enterprise.' },
         { q: 'How long will Odoo 20 be supported?', a: 'Odoo supports each major version for three years, which places standard support for Odoo 20 at roughly September 2029. Odoo 17.0 reaches its planned end of standard support in September 2026.' },
-        { q: 'Does Odoo 20 change Egyptian ETA or Saudi ZATCA e-invoicing?', a: 'No Odoo 20 specific change for ETA or ZATCA is verified. Re-test e-invoicing in a sandbox or pre-production environment after any upgrade, before production invoices are issued.' }
+        { q: 'Does Odoo 20 change Egyptian ETA or Saudi ZATCA e-invoicing?', a: 'The release notes list localization changes: ETA synchronisation in the send wizard and a test mode for Egypt; for Saudi Arabia, the invoice date as the ZATCA issue date, document-level rounding and timeout handling. Re-test e-invoicing in a sandbox or pre-production environment after any upgrade, before production invoices are issued.' }
       ]
     },
     {
@@ -70,10 +70,10 @@ module.exports = {
       title: 'Odoo 20 AI agents in finance: useful, billable, and in need of an approver',
       dek: 'Odoo 20 lets AI agents create and update records on a schedule. That makes them part of your control environment, and they should be governed like it.',
       description: 'What Odoo 20 AI agents can do in finance, what they cost in IAP credits, and how to govern them: agents draft, a named person approves, run logs are kept.',
-      answer: 'According to the Odoo 20 release notes, AI agents are Enterprise-only records with instructions, skills, knowledge sources and triggers. They can create and update records, run in automated and scheduled actions, and every run is logged. Each request consumes IAP credits. Govern them like a new team member: the agent drafts, a named person approves.',
+      answer: 'According to the Odoo 20 release notes, AI agents are records with instructions, skills, knowledge sources and triggers; the release notes do not say which editions include AI agents, so confirm with Odoo for your edition and plan. They can create and update records, run in automated and scheduled actions, and every run is logged. AI features need IAP credits. Govern them like a new team member: the agent drafts, a named person approves.',
       takeaways: [
-        'AI agents are part of Odoo 20 Enterprise, not Community.',
-        'Every request consumes IAP credits, including requests fired by scheduled triggers.',
+        'The release notes do not say which editions include AI agents, so confirm with Odoo for your edition and plan.',
+        'AI features need IAP credits, so budget for agents that run on a schedule.',
         'An agent that can create or update records needs an approver and segregation of duties.',
         'Keep and review the run logs as audit evidence, not as a debugging aid.'
       ],
@@ -82,9 +82,9 @@ module.exports = {
         { h2: 'What is an AI agent in Odoo 20?' },
         { p: 'The release notes describe an agent as a record with instructions, reusable skills, knowledge sources and triggers wired to automation rules. Every run is logged. Agents can also connect to outside assistants through MCP. In finance terms, an agent is a standing instruction with the ability to act: it wakes on a trigger, reads what its knowledge sources allow, and changes records within the rights it has been given.' },
         { h2: 'What can agents do for finance today?' },
-        { p: 'The release notes name a few finance uses directly. The accounting AI assistant answers questions about receivables, gross profit or cash flow with figures from the reports, and can review suspected bank reconciliation errors and return recommendations. In purchasing, an agent points out vendors worth renegotiating with, and a vendor quality rating is built from past orders. Beyond these, what an agent does depends on how you configure it, which is exactly why configuration is a finance decision and not only an IT one.' },
+        { p: 'The release notes name a few finance uses directly. The accounting AI assistant answers questions about receivables, gross profit or cash flow with figures from the reports, and can review suspected bank reconciliation errors and return recommendations. In purchasing, a vendor quality rating is built from past orders. Beyond these, what an agent does depends on how you configure it, which is exactly why configuration is a finance decision and not only an IT one.' },
         { h2: 'Who can use them, and what do they cost?' },
-        { p: 'AI agents are part of Odoo 20 Enterprise, not Community. AI features consume IAP credits, bought separately from user licences and billed per request. That includes requests fired by scheduled triggers: a trigger that runs every hour consumes credits every hour, whether or not there was anything useful to do. A cost that grows with a schedule rather than with use is easy to miss in the budget and easy to fix once someone owns it.' },
+        { p: 'The release notes do not say which editions include AI agents, so confirm with Odoo for your edition and plan. AI features need IAP credits, bought separately from user licences. An agent on a scheduled trigger can use credits each time it runs, whether or not there was anything useful to do. A cost that grows with a schedule rather than with use is easy to miss in the budget and easy to fix once someone owns it.' },
         { ul: [
           'Name an owner for the IAP credit balance and review consumption monthly, by agent.',
           'Set trigger frequency to the business need: a daily review does not need an hourly trigger.',
@@ -107,8 +107,8 @@ module.exports = {
         { p: 'If you are evaluating Odoo 20 agents, write down for each one its purpose, its trigger, its rights, its approver and its expected credit use. If you cannot fill in the approver, the agent is not ready.' }
       ],
       faq: [
-        { q: 'Are Odoo 20 AI agents available in Community?', a: 'No. According to the Odoo 20 release notes, AI agents are part of Odoo 20 Enterprise.' },
-        { q: 'How are Odoo AI agents billed?', a: 'AI features consume IAP credits bought separately from user licences, billed per request, including requests fired by scheduled triggers. A trigger that runs hourly consumes credits hourly.' },
+        { q: 'Are Odoo 20 AI agents available in Community?', a: 'The release notes do not say which editions include AI agents, so confirm with Odoo for your edition and plan. Do that before you design a process around them.' },
+        { q: 'How are Odoo AI agents billed?', a: 'AI features need IAP credits, bought separately from user licences. An agent on a scheduled trigger can use credits each time it runs, so set the trigger to the business need.' },
         { q: 'Can an Odoo 20 agent post accounting entries without approval?', a: 'Agents can create and update records within the rights they are given. Whether ledger changes need approval is a control you design: keep agent output in draft and require a named approver.' }
       ]
     },
@@ -129,7 +129,7 @@ module.exports = {
         'Red duplicate warnings need correction; yellow ones need investigation before posting.'
       ],
       body: [
-        { p: 'Bank reconciliation and supplier payments are where most of the cash controls of a company live. According to the Odoo 20 release notes, both change in this version. Some of the changes close gaps we have seen for years. Others move a control from the bank portal into Odoo, which means the control has to move with it.' },
+        { p: 'Bank reconciliation and supplier payments are where most of the cash controls of a company live. According to the Odoo 20 release notes, both change in this version. Some of the changes close long-standing gaps. Others move a control from the bank portal into Odoo, which means the control has to move with it.' },
         { h2: 'Why must bank entries now originate from bank transactions?' },
         { p: 'The release notes state that all journal entries impacting bank accounts must originate from bank transactions, to prevent manual entries that break bank consistency. In practice, the classic reconciliation problem is a manual journal entry posted straight to the bank account: a bank charge, a transfer, a correction. The ledger moves, the statement does not, and the difference sits in the reconciliation until someone explains it. Under the new rule, the bank transaction comes first and the accounting follows it.' },
         { p: 'Finance teams that relied on manual bank entries for transfers between accounts, opening balances or corrections should map those cases before upgrading and decide how each will now be recorded. The release notes also mention refined statement validation feedback to help find and fix balance inconsistencies.' },
@@ -140,7 +140,7 @@ module.exports = {
         { h2: 'How does paying bills from Odoo work?' },
         { p: 'According to the release notes, you can select one or more bills, pay, and confirm with the bank, individually or in batch, through payment initiation (PISP). Availability depends on your bank and country, so check with your bank in Egypt or Saudi Arabia before you plan for it. Where it is available, payment release moves from the bank portal into Odoo, and the bank portal’s own approval chain may no longer be the only gate.' },
         { h2: 'What do the red and yellow duplicate warnings mean?' },
-        { p: 'Duplicate detection on invoices and bills has two levels. Red means a highly likely duplicate, to be corrected. Yellow means a potential duplicate, to be investigated before posting. The release notes also describe protection against double payments. Duplicates are one of the most common payables errors we find, so this is useful, but a warning is only a control if someone acts on it and the action is recorded.' },
+        { p: 'Duplicate detection on invoices and bills has two levels. Red means a highly likely duplicate, to be corrected. Yellow means a potential duplicate, to be investigated before posting. The release notes also describe protection against double payments. Duplicates are one of the most common payables errors, so this is useful, but a warning is only a control if someone acts on it and the action is recorded.' },
         { h2: 'Which controls need to change?' },
         { ul: [
           'Approval before payment: a bill should be approved under your approval matrix before it can be selected for payment, and that approval should be visible on the bill.',
@@ -172,13 +172,13 @@ module.exports = {
       description: 'ما الذي يغيّره Odoo 20 لفرق المالية في مصر والسعودية: قيود البنك، وسداد فواتير الموردين، وكشف التكرار، وتقييم المخزون، والمساعد الذكي، وما يجب اختباره.',
       answer: 'بحسب ملاحظات إصدار {lat}Odoo 20{/lat}، أهم التغييرات المالية في البنك والدائنين: قيود حسابات البنك يجب أن تنشأ من معاملات بنكية، ويمكن سداد فواتير الموردين عبر خدمة بدء الدفع حيث يسمح البنك والدولة، وتظهر تحذيرات حمراء وصفراء للفواتير المكررة. يليها مساعد ذكي. وأعد اختبار الفوترة الإلكترونية لدى {lat}ETA{/lat} و{lat}ZATCA{/lat} بعد الترقية.',
       takeaways: [
-        'صدر {lat}Odoo 20{/lat} في {lat}24{/lat} سبتمبر {lat}2026{/lat}، وفي الشهر نفسه ينتهي الدعم القياسي المخطط للإصدار {lat}17.0{/lat}.',
+        'صدر {lat}Odoo 20{/lat} في سبتمبر {lat}2026{/lat}، وفي الشهر نفسه ينتهي الدعم القياسي المخطط للإصدار {lat}17.0{/lat}.',
         'تغييرات البنك والدائنين والتقييم تغيّر الضوابط الرقابية لا الشاشات فقط، لذا تحتاج اختبارًا.',
-        'ميزات الذكاء الاصطناعي تعمل برصيد {lat}IAP{/lat} يُشترى منفصلًا، ووكلاء الذكاء الاصطناعي متاحون في نسخة {lat}Enterprise{/lat} فقط.',
-        'لا توجد تغييرات موثّقة خاصة بـ{lat}Odoo 20{/lat} لمنظومتي {lat}ETA{/lat} و{lat}ZATCA{/lat}، ومع ذلك أعد اختبار الفوترة الإلكترونية في بيئة تجريبية.'
+        'ميزات الذكاء الاصطناعي تعمل برصيد {lat}IAP{/lat} يُشترى منفصلًا؛ وتأكّد من {lat}Odoo{/lat} أي النسخ تتضمن وكلاء الذكاء الاصطناعي.',
+        'تذكر ملاحظات الإصدار تغييرات في التوطين لمنظومتي {lat}ETA{/lat} و{lat}ZATCA{/lat}؛ أعد اختبار الفوترة الإلكترونية في بيئة تجريبية بعد الترقية.'
       ],
       body: [
-        { p: 'صدر {lat}Odoo 20{/lat} في {lat}24{/lat} سبتمبر {lat}2026{/lat} خلال مؤتمر {lat}Odoo Experience{/lat} في بروكسل، برقم إصدار واحد لنسختي {lat}Community{/lat} و{lat}Enterprise{/lat}. معظم التغطية دارت حول الذكاء الاصطناعي. لكن لفريق مالي في القاهرة أو الرياض، التغييرات الأهم أهدأ من ذلك: كيف تُنشأ قيود البنك، وكيف تُسدّد فواتير الموردين، وكيف تُكتشف الفواتير المكررة، وكيف يُقفل تقييم المخزون. هذه قراءة لملاحظات الإصدار من زاوية المالية: ما الذي يتغير، وما الذي يمكن تأجيله، وما الذي يجب اختباره قبل الانتقال.' },
+        { p: 'صدر {lat}Odoo 20{/lat} في سبتمبر {lat}2026{/lat} خلال مؤتمر {lat}Odoo Experience{/lat} في بروكسل، برقم إصدار واحد لنسختي {lat}Community{/lat} و{lat}Enterprise{/lat}. معظم التغطية دارت حول الذكاء الاصطناعي. لكن لفريق مالي في القاهرة أو الرياض، التغييرات الأهم أهدأ من ذلك: كيف تُنشأ قيود البنك، وكيف تُسدّد فواتير الموردين، وكيف تُكتشف الفواتير المكررة، وكيف يُقفل تقييم المخزون. هذه قراءة لملاحظات الإصدار من زاوية المالية: ما الذي يتغير، وما الذي يمكن تأجيله، وما الذي يجب اختباره قبل الانتقال.' },
         { h2: 'هل يهم تاريخ الإصدار إن لم نكن سنرقّي الآن؟' },
         { p: 'يهم بسبب الدعم لا الميزات. يدعم {lat}Odoo{/lat} كل إصدار رئيسي ثلاث سنوات. وبحسب خطته المعلنة، ينتهي الدعم القياسي للإصدار {lat}17.0{/lat} في سبتمبر {lat}2026{/lat}، وللإصدار {lat}18.0{/lat} في سبتمبر {lat}2027{/lat}، وللإصدار {lat}19.0{/lat} في سبتمبر {lat}2028{/lat}، ما يضع {lat}Odoo 20{/lat} تقريبًا حتى سبتمبر {lat}2029{/lat}. إن كنت تعمل على {lat}17.0{/lat} فالسؤال لم يعد هل تخطط للترقية، بل إلى أي إصدار. خدمة الترقية لدى {lat}Odoo{/lat} تستطيع نقل قاعدة بيانات {lat}Enterprise{/lat} عبر عدة إصدارات في طلب واحد، من {lat}17{/lat} إلى {lat}20{/lat} مثلًا، لكن تخطي الإصدارات يزيد عبء الاختبار، لأن كل ما تغيّر بينها يصل دفعة واحدة.' },
         { h2: 'ما الذي يتغير في المحاسبة والبنك؟' },
@@ -196,9 +196,9 @@ module.exports = {
         { h2: 'ما الذي يتغير في تقييم المخزون؟' },
         { p: 'في التقييم المستمر، يمكن إنشاء قيود الاستحقاق المؤثرة في تقييم المخزون من تقرير إقفال تقييم المخزون، فتُرحّل مباشرة إلى حساب تقييم المخزون بدل المرور بحساب تغير المخزون. وتذكر ملاحظات الإصدار أيضًا تحديثًا بأثر رجعي لتكلفة البضاعة المباعة ({lat}COGS{/lat}) عندما تتغير التكلفة بعد التسليم، وتحميل التكاليف الإضافية على منتجات بعينها داخل عملية النقل، وعرض المخزون في تاريخ سابق، وتقرير أعمار المخزون، وإمكانية إدارة الكميات والتقييم دون تطبيق المخزون. كل واحد من هذه يغيّر طريقة إنتاج رقم في الميزانية أو في مجمل الربح، فمكانه مراجعة الإقفال لا المستودع وحده.' },
         { h2: 'ماذا يفعل المساعد الذكي في المحاسبة؟' },
-        { p: 'بحسب ملاحظات الإصدار، يمكنك سؤال مساعد المحاسبة الذكي عن الذمم المدينة أو مجمل الربح أو التدفق النقدي فيعطيك أرقامًا من التقارير، ويمكنه مراجعة أخطاء التسوية البنكية المشتبه بها وتقديم توصيات. وميزات الذكاء الاصطناعي تستهلك رصيد {lat}IAP{/lat} يُشترى منفصلًا عن تراخيص المستخدمين ويُحتسب لكل طلب. تعامل مع إجاباته كطريق سريع إلى التقرير الصحيح، ومع توصياته كمقترحات يتحقق منها شخص مقابل دفتر الأستاذ.' },
+        { p: 'بحسب ملاحظات الإصدار، يمكنك سؤال مساعد المحاسبة الذكي عن الذمم المدينة أو مجمل الربح أو التدفق النقدي فيعطيك أرقامًا من التقارير، ويمكنه مراجعة أخطاء التسوية البنكية المشتبه بها وتقديم توصيات. وميزات الذكاء الاصطناعي تحتاج رصيد {lat}IAP{/lat} يُشترى منفصلًا عن تراخيص المستخدمين. تعامل مع إجاباته كطريق سريع إلى التقرير الصحيح، ومع توصياته كمقترحات يتحقق منها شخص مقابل دفتر الأستاذ.' },
         { h2: 'وماذا عن الفوترة الإلكترونية لدى {lat}ETA{/lat} و{lat}ZATCA{/lat}؟' },
-        { p: 'لم نتحقق من أي تغيير خاص بـ{lat}Odoo 20{/lat} لمنظومة الفاتورة الإلكترونية المصرية أو لهيئة الزكاة والضريبة والجمارك السعودية. الحزم المحلية التي تعتمد عليها اليوم ما زالت موجودة، لكن الترقية تمس البيانات والشيفرة التي تحتها. بعد أي ترقية، أعد اختبار الفوترة الإلكترونية من أولها إلى آخرها في بيئة تجريبية أو بيئة ما قبل الإنتاج قبل أن تصدر فواتير حقيقية.' },
+        { p: 'بحسب ملاحظات إصدار {lat}Odoo 20{/lat}، تشمل تغييرات التوطين لمصر مزامنة {lat}ETA{/lat} داخل معالج الإرسال ووضعًا تجريبيًا، وللسعودية اعتماد تاريخ الفاتورة تاريخَ إصدار لدى {lat}ZATCA{/lat} والتقريب على مستوى المستند ومعالجة انتهاء مهلة الإرسال. وفوق ذلك تمس الترقية البيانات والشيفرة التي تقوم عليها حزم التوطين. بعد أي ترقية، أعد اختبار الفوترة الإلكترونية من أولها إلى آخرها في بيئة تجريبية أو بيئة ما قبل الإنتاج قبل أن تصدر فواتير حقيقية.' },
         { h2: 'ما الذي يمكن لفريق المالية تجاهله الآن بأمان؟' },
         { p: 'كل ما لا يغيّر طريقة إنتاج رصيد أو اعتماده يمكن أن ينتظر مرحلة ثانية: تغييرات العرض مثل سطر فروق العملة المجمّع، وأدوات المشتريات مثل تقييم جودة الموردين وقواعد إعادة الطلب المقترحة، ووكلاء الذكاء الاصطناعي إلى أن تقرر من يحكمهم. وتجاهل ميزة قرار أيضًا، فدوّنه.' },
         { h2: 'ما الذي يجب اختباره قبل الترقية؟' },
@@ -214,9 +214,9 @@ module.exports = {
         { p: 'وعندما ننفّذ ترقية {lat}Odoo{/lat} لعملائنا، تكون هذه الاختبارات جزءًا من القبول، تُجرى على نسخة من الفترات المقفلة لدى العميل نفسه، قبل أن يُطلب من أحد التوقيع.' }
       ],
       faq: [
-        { q: 'متى صدر {lat}Odoo 20{/lat}؟', a: 'صدر {lat}Odoo 20{/lat} في {lat}24{/lat} سبتمبر {lat}2026{/lat} خلال مؤتمر {lat}Odoo Experience{/lat} في بروكسل، برقم إصدار واحد لنسختي {lat}Community{/lat} و{lat}Enterprise{/lat}.' },
+        { q: 'متى صدر {lat}Odoo 20{/lat}؟', a: 'صدر {lat}Odoo 20{/lat} في سبتمبر {lat}2026{/lat} خلال مؤتمر {lat}Odoo Experience{/lat} في بروكسل، برقم إصدار واحد لنسختي {lat}Community{/lat} و{lat}Enterprise{/lat}.' },
         { q: 'إلى متى سيُدعم {lat}Odoo 20{/lat}؟', a: 'يدعم {lat}Odoo{/lat} كل إصدار رئيسي ثلاث سنوات، ما يضع الدعم القياسي لـ{lat}Odoo 20{/lat} تقريبًا حتى سبتمبر {lat}2029{/lat}. وينتهي الدعم القياسي المخطط للإصدار {lat}17.0{/lat} في سبتمبر {lat}2026{/lat}.' },
-        { q: 'هل يغيّر {lat}Odoo 20{/lat} الفوترة الإلكترونية لدى {lat}ETA{/lat} المصرية أو {lat}ZATCA{/lat} السعودية؟', a: 'لا يوجد تغيير موثّق خاص بـ{lat}Odoo 20{/lat} لأي منهما. أعد اختبار الفوترة الإلكترونية في بيئة تجريبية أو بيئة ما قبل الإنتاج بعد أي ترقية، قبل إصدار فواتير حقيقية.' }
+        { q: 'هل يغيّر {lat}Odoo 20{/lat} الفوترة الإلكترونية لدى {lat}ETA{/lat} المصرية أو {lat}ZATCA{/lat} السعودية؟', a: 'تذكر ملاحظات الإصدار تغييرات في التوطين: مزامنة {lat}ETA{/lat} في معالج الإرسال ووضعًا تجريبيًا لمصر؛ وللسعودية تاريخ الفاتورة تاريخَ إصدار لدى {lat}ZATCA{/lat} والتقريب على مستوى المستند ومعالجة انتهاء المهلة. أعد اختبار الفوترة الإلكترونية في بيئة تجريبية أو بيئة ما قبل الإنتاج بعد أي ترقية، قبل إصدار فواتير حقيقية.' }
       ]
     },
     {
@@ -228,10 +228,10 @@ module.exports = {
       title: 'وكلاء الذكاء الاصطناعي في {lat}Odoo 20{/lat} للمالية: مفيدون، بتكلفة، ويحتاجون إلى معتمِد',
       dek: 'يسمح {lat}Odoo 20{/lat} لوكلاء الذكاء الاصطناعي بإنشاء السجلات وتعديلها وفق جدول زمني. وهذا يجعلهم جزءًا من بيئة الرقابة لديك، ويجب أن يُحكموا على هذا الأساس.',
       description: 'ما الذي يستطيعه وكلاء الذكاء الاصطناعي في Odoo 20 للمالية، وتكلفتهم برصيد IAP، وكيف تحكمهم: الوكيل يعدّ المسودة، وشخص مسمّى يعتمد، وسجلات التشغيل تُحفظ.',
-      answer: 'بحسب ملاحظات إصدار {lat}Odoo 20{/lat}، وكلاء الذكاء الاصطناعي سجلات في نسخة {lat}Enterprise{/lat} فقط، لها تعليمات ومهارات ومصادر معرفة ومحفزات. يستطيعون إنشاء السجلات وتعديلها والعمل داخل الإجراءات الآلية والمجدولة، وكل تشغيل يُسجَّل. وكل طلب يستهلك رصيد {lat}IAP{/lat}. احكمهم كموظف جديد: الوكيل يعدّ المسودة، وشخص مسمّى يعتمد.',
+      answer: 'بحسب ملاحظات إصدار {lat}Odoo 20{/lat}، وكلاء الذكاء الاصطناعي سجلات لها تعليمات ومهارات ومصادر معرفة ومحفزات، وملاحظات الإصدار لا تحدد النسخ التي تتضمن وكلاء الذكاء الاصطناعي، فتأكّد من {lat}Odoo{/lat} لنسختك وباقتك. يستطيعون إنشاء السجلات وتعديلها والعمل داخل الإجراءات الآلية والمجدولة، وكل تشغيل يُسجَّل. وميزات الذكاء الاصطناعي تحتاج رصيد {lat}IAP{/lat}. احكمهم كموظف جديد: الوكيل يعدّ المسودة، وشخص مسمّى يعتمد.',
       takeaways: [
-        'وكلاء الذكاء الاصطناعي جزء من {lat}Odoo 20 Enterprise{/lat}، لا من {lat}Community{/lat}.',
-        'كل طلب يستهلك رصيد {lat}IAP{/lat}، بما في ذلك الطلبات التي تطلقها المحفزات المجدولة.',
+        'ملاحظات الإصدار لا تحدد النسخ التي تتضمن وكلاء الذكاء الاصطناعي، فتأكّد من {lat}Odoo{/lat} لنسختك وباقتك.',
+        'ميزات الذكاء الاصطناعي تحتاج رصيد {lat}IAP{/lat}، فضع في الموازنة الوكلاء الذين يعملون وفق جدول.',
         'الوكيل القادر على إنشاء السجلات أو تعديلها يحتاج إلى معتمِد وإلى فصل بين المهام.',
         'احفظ سجلات التشغيل وراجعها كدليل مراجعة، لا كأداة لتصحيح الأخطاء فقط.'
       ],
@@ -240,9 +240,9 @@ module.exports = {
         { h2: 'ما وكيل الذكاء الاصطناعي في {lat}Odoo 20{/lat}؟' },
         { p: 'تصف ملاحظات الإصدار الوكيل بأنه سجل له تعليمات، ومهارات قابلة لإعادة الاستخدام، ومصادر معرفة، ومحفزات مربوطة بقواعد الأتمتة. وكل تشغيل يُسجَّل. ويمكن للوكلاء أيضًا الاتصال بمساعدين خارجيين عبر {lat}MCP{/lat}. وبلغة المالية، الوكيل تعليمة دائمة لديها القدرة على التنفيذ: يستيقظ عند محفز، ويقرأ ما تسمح به مصادر معرفته، ويغيّر السجلات في حدود الصلاحيات الممنوحة له.' },
         { h2: 'ماذا يستطيع الوكلاء أن يفعلوا للمالية اليوم؟' },
-        { p: 'تذكر ملاحظات الإصدار بعض الاستخدامات المالية صراحة. مساعد المحاسبة الذكي يجيب عن أسئلة الذمم المدينة ومجمل الربح والتدفق النقدي بأرقام من التقارير، ويستطيع مراجعة أخطاء التسوية البنكية المشتبه بها وتقديم توصيات. وفي المشتريات، يشير وكيل إلى الموردين الذين تستحق إعادة التفاوض معهم، ويُبنى تقييم لجودة المورد من أوامره السابقة. وما عدا ذلك، فما يفعله الوكيل يتوقف على طريقة إعداده، ولهذا بالتحديد يكون الإعداد قرارًا ماليًا لا تقنيًا فقط.' },
+        { p: 'تذكر ملاحظات الإصدار بعض الاستخدامات المالية صراحة. مساعد المحاسبة الذكي يجيب عن أسئلة الذمم المدينة ومجمل الربح والتدفق النقدي بأرقام من التقارير، ويستطيع مراجعة أخطاء التسوية البنكية المشتبه بها وتقديم توصيات. وفي المشتريات، يُبنى تقييم لجودة المورد من أوامره السابقة. وما عدا ذلك، فما يفعله الوكيل يتوقف على طريقة إعداده، ولهذا بالتحديد يكون الإعداد قرارًا ماليًا لا تقنيًا فقط.' },
         { h2: 'من يستطيع استخدامهم، وكم يكلّفون؟' },
-        { p: 'وكلاء الذكاء الاصطناعي جزء من {lat}Odoo 20 Enterprise{/lat}، لا من {lat}Community{/lat}. وميزات الذكاء الاصطناعي تستهلك رصيد {lat}IAP{/lat} يُشترى منفصلًا عن تراخيص المستخدمين ويُحتسب لكل طلب. ويشمل ذلك الطلبات التي تطلقها المحفزات المجدولة: المحفز الذي يعمل كل ساعة يستهلك رصيدًا كل ساعة، سواء وُجد ما يستحق العمل أم لا. والتكلفة التي تنمو مع الجدول لا مع الاستخدام يسهل أن تغيب عن الموازنة، ويسهل إصلاحها متى صار لها مالك.' },
+        { p: 'ملاحظات الإصدار لا تحدد النسخ التي تتضمن وكلاء الذكاء الاصطناعي، فتأكّد من {lat}Odoo{/lat} لنسختك وباقتك. وميزات الذكاء الاصطناعي تحتاج رصيد {lat}IAP{/lat} يُشترى منفصلًا عن تراخيص المستخدمين. والوكيل الذي يعمل بمحفز مجدول قد يستهلك رصيدًا في كل مرة يعمل فيها، سواء وُجد ما يستحق العمل أم لا. والتكلفة التي تنمو مع الجدول لا مع الاستخدام يسهل أن تغيب عن الموازنة، ويسهل إصلاحها متى صار لها مالك.' },
         { ul: [
           'سمِّ مالكًا لرصيد {lat}IAP{/lat}، وراجع الاستهلاك شهريًا لكل وكيل.',
           'اضبط تكرار المحفز على حاجة العمل: المراجعة اليومية لا تحتاج إلى محفز كل ساعة.',
@@ -265,8 +265,8 @@ module.exports = {
         { p: 'إن كنت تقيّم وكلاء {lat}Odoo 20{/lat}، فاكتب لكل وكيل غرضه، ومحفزه، وصلاحياته، ومعتمِده، والاستهلاك المتوقع من الرصيد. وإن لم تستطع ملء خانة المعتمِد، فالوكيل ليس جاهزًا.' }
       ],
       faq: [
-        { q: 'هل وكلاء الذكاء الاصطناعي في {lat}Odoo 20{/lat} متاحون في نسخة {lat}Community{/lat}؟', a: 'لا. بحسب ملاحظات إصدار {lat}Odoo 20{/lat}، وكلاء الذكاء الاصطناعي جزء من نسخة {lat}Odoo 20 Enterprise{/lat}.' },
-        { q: 'كيف تُحتسب تكلفة وكلاء الذكاء الاصطناعي في {lat}Odoo{/lat}؟', a: 'تستهلك ميزات الذكاء الاصطناعي رصيد {lat}IAP{/lat} يُشترى منفصلًا عن تراخيص المستخدمين ويُحتسب لكل طلب، بما في ذلك طلبات المحفزات المجدولة. المحفز الذي يعمل كل ساعة يستهلك رصيدًا كل ساعة.' },
+        { q: 'هل وكلاء الذكاء الاصطناعي في {lat}Odoo 20{/lat} متاحون في نسخة {lat}Community{/lat}؟', a: 'ملاحظات الإصدار لا تحدد النسخ التي تتضمن وكلاء الذكاء الاصطناعي، فتأكّد من {lat}Odoo{/lat} لنسختك وباقتك. افعل ذلك قبل أن تبني إجراءً عليهم.' },
+        { q: 'كيف تُحتسب تكلفة وكلاء الذكاء الاصطناعي في {lat}Odoo{/lat}؟', a: 'تحتاج ميزات الذكاء الاصطناعي رصيد {lat}IAP{/lat} يُشترى منفصلًا عن تراخيص المستخدمين. والوكيل الذي يعمل بمحفز مجدول قد يستهلك رصيدًا في كل مرة يعمل فيها، فاضبط المحفز على حاجة العمل.' },
         { q: 'هل يستطيع وكيل في {lat}Odoo 20{/lat} ترحيل قيود محاسبية دون اعتماد؟', a: 'يستطيع الوكلاء إنشاء السجلات وتعديلها في حدود الصلاحيات الممنوحة لهم. أما اشتراط الاعتماد لتغييرات دفتر الأستاذ فضابط تصممه أنت: أبقِ مخرجات الوكيل مسودة واشترط معتمِدًا مسمّى.' }
       ]
     },
@@ -287,7 +287,7 @@ module.exports = {
         'التحذير الأحمر للتكرار يستلزم التصحيح، والأصفر يستلزم الفحص قبل الترحيل.'
       ],
       body: [
-        { p: 'التسوية البنكية وسداد الموردين هما الموضع الذي تعيش فيه أغلب ضوابط النقدية في أي شركة. وبحسب ملاحظات إصدار {lat}Odoo 20{/lat}، يتغير كلاهما في هذا الإصدار. بعض التغييرات يسد ثغرات نراها منذ سنوات، وبعضها ينقل ضابطًا من بوابة البنك إلى داخل {lat}Odoo{/lat}، وهذا يعني أن الضابط يجب أن ينتقل معه.' },
+        { p: 'التسوية البنكية وسداد الموردين هما الموضع الذي تعيش فيه أغلب ضوابط النقدية في أي شركة. وبحسب ملاحظات إصدار {lat}Odoo 20{/lat}، يتغير كلاهما في هذا الإصدار. بعض التغييرات يسد ثغرات قديمة، وبعضها ينقل ضابطًا من بوابة البنك إلى داخل {lat}Odoo{/lat}، وهذا يعني أن الضابط يجب أن ينتقل معه.' },
         { h2: 'لماذا يجب أن تنشأ قيود البنك الآن من معاملات بنكية؟' },
         { p: 'تنص ملاحظات الإصدار على أن كل قيود اليومية المؤثرة في حسابات البنك يجب أن تنشأ من معاملات بنكية، لمنع القيود اليدوية التي تُخلّ باتساق البنك. والمشكلة الكلاسيكية في التسوية قيد يدوي يُرحّل مباشرة إلى حساب البنك: عمولة بنكية، أو تحويل، أو تصحيح. يتحرك الدفتر ولا يتحرك الكشف، ويبقى الفرق في التسوية إلى أن يفسّره أحد. وبموجب القاعدة الجديدة تأتي المعاملة البنكية أولًا ثم تتبعها المحاسبة.' },
         { p: 'على فرق المالية التي اعتمدت على القيود اليدوية للتحويل بين الحسابات أو للأرصدة الافتتاحية أو للتصحيحات أن تحصر هذه الحالات قبل الترقية، وأن تقرر كيف ستُسجَّل كل حالة من الآن. وتذكر ملاحظات الإصدار أيضًا رسائل أدق عند اعتماد كشف الحساب تساعد على اكتشاف فروق الأرصدة وإصلاحها.' },
@@ -298,7 +298,7 @@ module.exports = {
         { h2: 'كيف يعمل سداد فواتير الموردين من داخل {lat}Odoo{/lat}؟' },
         { p: 'بحسب ملاحظات الإصدار، يمكنك اختيار فاتورة أو أكثر، والدفع، ثم التأكيد مع البنك، فرديًا أو دفعة واحدة، عبر خدمة بدء الدفع ({lat}PISP{/lat}). الإتاحة تعتمد على البنك والدولة، فتحقق مع بنكك في مصر أو السعودية قبل أن تخطط لها. وحيث تتاح، ينتقل إطلاق الدفعات من بوابة البنك إلى داخل {lat}Odoo{/lat}، وقد لا تبقى سلسلة الاعتماد في بوابة البنك هي البوابة الوحيدة.' },
         { h2: 'ماذا تعني تحذيرات التكرار الحمراء والصفراء؟' },
-        { p: 'لكشف التكرار في فواتير العملاء والموردين مستويان. الأحمر يعني فاتورة مكررة على الأرجح يجب تصحيحها، والأصفر يعني احتمال تكرار يجب فحصه قبل الترحيل. وتصف ملاحظات الإصدار أيضًا حماية من السداد المزدوج. الفواتير المكررة من أكثر أخطاء الدائنين التي نجدها، لذا فهذه ميزة مفيدة، لكن التحذير لا يصبح ضابطًا إلا إذا تصرف أحد بناءً عليه وسُجّل تصرفه.' },
+        { p: 'لكشف التكرار في فواتير العملاء والموردين مستويان. الأحمر يعني فاتورة مكررة على الأرجح يجب تصحيحها، والأصفر يعني احتمال تكرار يجب فحصه قبل الترحيل. وتصف ملاحظات الإصدار أيضًا حماية من السداد المزدوج. الفواتير المكررة من أكثر أخطاء الدائنين شيوعًا، لذا فهذه ميزة مفيدة، لكن التحذير لا يصبح ضابطًا إلا إذا تصرف أحد بناءً عليه وسُجّل تصرفه.' },
         { h2: 'ما الضوابط التي يجب أن تتغير؟' },
         { ul: [
           'الاعتماد قبل الدفع: تُعتمد الفاتورة وفق مصفوفة الاعتماد لديك قبل أن يمكن اختيارها للسداد، ويكون هذا الاعتماد ظاهرًا على الفاتورة.',

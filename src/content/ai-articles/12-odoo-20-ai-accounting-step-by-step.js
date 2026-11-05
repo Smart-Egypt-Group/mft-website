@@ -21,7 +21,7 @@ module.exports = {
       'Agent conversations are kept up to 30 days, so export what your audit file needs.'
     ],
     body: [
-      { p: 'Gartner’s 2025 survey of finance leaders found that 59% use AI in their finance function, almost unchanged from 58% a year earlier, after a sharp rise from 37% in 2023. The barriers cited were complexity, data and talent. In our experience the stall rarely comes from the model. It comes from the order of work: a team switches on several AI features at once, cannot tell which one produced which error, and quietly returns to doing things by hand.' },
+      { p: 'Gartner’s 2025 survey of finance leaders found that 59% use AI in their finance function, almost unchanged from 58% a year earlier, after a sharp rise from 37% in 2023. The barriers cited were complexity, data and talent. The stall rarely comes from the model. It comes from the order of work: a team switches on several AI features at once, cannot tell which one produced which error, and quietly returns to doing things by hand.' },
       { p: 'Odoo 20 puts a broad set of AI features inside the accounting application. This guide is the procedure we use to bring them in one layer at a time, over roughly 90 days, with a gate between phases that must be passed on evidence.' },
       { h2: 'What does applying AI accounting on Odoo 20 mean?' },
       { p: 'AI accounting on Odoo 20 is the controlled use of Odoo’s AI features, and of external AI agents connected to the database, to suggest, match, explain and draft accounting records, with every output reviewed by a named person before it affects the ledger. According to Odoo’s 20 release notes, the relevant features include:' },
@@ -31,7 +31,7 @@ module.exports = {
         'Agentic automation: agents triggered by automated and scheduled actions that create and update records.',
         'A connection to the database through MCP (Model Context Protocol) for outside AI tools.'
       ] },
-      { p: 'All AI features require IAP credits, billed per request and not included in any plan. Confirm which agent features your edition and plan include before you design around them. The full inventory is in [[blog/odoo-20-ai-features-accounting/|the Odoo 20 AI feature map for accounting]].' },
+      { p: 'All AI features require IAP credits. Confirm which agent features your edition and plan include before you design around them. The full inventory is in [[blog/odoo-20-ai-features-accounting/|the Odoo 20 AI feature map for accounting]].' },
       { h2: 'What must be true before day 1?' },
       { p: 'Day 0 is the step most teams skip, and it decides whether the gates mean anything.' },
       { ul: [
@@ -128,7 +128,7 @@ module.exports = {
       'محادثات الوكلاء تُحفظ حتى {lat}30{/lat} يومًا فقط، فصدّر ما يحتاجه ملف المراجعة.'
     ],
     body: [
-      { p: 'وجد استطلاع {lat}Gartner{/lat} لقيادات المالية في {lat}2025{/lat} أن {lat}59%{/lat} منهم يستخدمون الذكاء الاصطناعي في الوظيفة المالية، مقابل {lat}58%{/lat} في العام السابق، بعد قفزة من {lat}37%{/lat} في {lat}2023{/lat}. أي أن الانتشار توقف عن النمو تقريبًا، والعوائق المذكورة هي التعقيد والبيانات والكفاءات. وما نراه في الميدان أن التعثر نادرًا ما يأتي من النموذج نفسه، بل من ترتيب العمل: يفعّل الفريق عدة ميزات دفعة واحدة، ثم لا يعرف أي ميزة أنتجت أي خطأ، فيعود بهدوء إلى العمل اليدوي.' },
+      { p: 'وجد استطلاع {lat}Gartner{/lat} لقيادات المالية في {lat}2025{/lat} أن {lat}59%{/lat} منهم يستخدمون الذكاء الاصطناعي في الوظيفة المالية، مقابل {lat}58%{/lat} في العام السابق، بعد قفزة من {lat}37%{/lat} في {lat}2023{/lat}. أي أن الانتشار توقف عن النمو تقريبًا، والعوائق المذكورة هي التعقيد والبيانات والكفاءات. والتعثر نادرًا ما يأتي من النموذج نفسه، بل من ترتيب العمل: يفعّل الفريق عدة ميزات دفعة واحدة، ثم لا يعرف أي ميزة أنتجت أي خطأ، فيعود بهدوء إلى العمل اليدوي.' },
       { p: 'يضع {lat}Odoo 20{/lat} مجموعة واسعة من ميزات الذكاء الاصطناعي داخل تطبيق المحاسبة. وهذا الدليل هو الإجراء الذي نتبعه لإدخالها طبقةً بعد طبقة، خلال نحو {lat}90{/lat} يومًا، مع بوابة بين كل مرحلتين لا تُجتاز إلا بدليل.' },
       { h2: 'ماذا يعني تطبيق المحاسبة بالذكاء الاصطناعي على {lat}Odoo 20{/lat}؟' },
       { p: 'المحاسبة بالذكاء الاصطناعي على {lat}Odoo 20{/lat} هي الاستخدام المنضبط لميزات الذكاء الاصطناعي في {lat}Odoo{/lat}، وللوكلاء الخارجيين المتصلين بقاعدة البيانات، في اقتراح السجلات المحاسبية ومطابقتها وتفسيرها وإعداد مسوداتها، على أن يراجع شخص مسمّى كل مخرَج قبل أن يمس دفتر الأستاذ. وبحسب ملاحظات إصدار {lat}Odoo 20{/lat} تشمل الميزات ذات الصلة:' },
@@ -138,7 +138,7 @@ module.exports = {
         'الأتمتة بالوكلاء: وكلاء تطلقهم الإجراءات الآلية والمجدولة، ينشئون السجلات ويحدّثونها.',
         'الاتصال بقاعدة البيانات عبر {lat}MCP (Model Context Protocol){/lat} لأدوات الذكاء الاصطناعي الخارجية.'
       ] },
-      { p: 'وكل ميزات الذكاء الاصطناعي تحتاج رصيد {lat}IAP{/lat} يُحتسب لكل طلب ولا يدخل في أي خطة. وتأكد من ميزات الوكلاء المشمولة في نسختك وخطتك قبل أن تبني عليها. والحصر الكامل في [[blog/odoo-20-ai-features-accounting/|خريطة ميزات الذكاء الاصطناعي في {lat}Odoo 20{/lat} للمحاسبة]].' },
+      { p: 'وكل ميزات الذكاء الاصطناعي تحتاج رصيد {lat}IAP{/lat}. وتأكد من ميزات الوكلاء المشمولة في نسختك وخطتك قبل أن تبني عليها. والحصر الكامل في [[blog/odoo-20-ai-features-accounting/|خريطة ميزات الذكاء الاصطناعي في {lat}Odoo 20{/lat} للمحاسبة]].' },
       { h2: 'ما الذي يجب أن يكون جاهزًا قبل اليوم الأول؟' },
       { p: 'اليوم صفر هو الخطوة التي تتجاوزها أغلب الفرق، وهو الذي يحدد هل للبوابات معنى أصلًا.' },
       { ul: [

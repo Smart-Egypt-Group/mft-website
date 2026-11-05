@@ -7,8 +7,8 @@ module.exports = {
     reviewer: 'practice',
     image: { alt: 'Illustration: scattered transactions flow through a glowing white core onto a white ledger page showing source records chained to a finding outlined in cyan, and an unsupported claim struck out.' },
     date: '2026-10-14',
-    title: 'AI audit trail and zero hallucination: the evidence-or-silence rule',
-    metaTitle: 'AI audit trail and zero hallucination in finance',
+    title: 'AI audit trail: the evidence-or-silence rule',
+    metaTitle: 'AI audit trail in finance: the evidence-or-silence rule',
     dek: 'An AI answer with no record behind it is an assertion, not evidence. How provenance, a validation gate and a named reviewer make AI output auditable.',
     description: 'How to build an AI audit trail auditors can rely on: provenance to record ids, the evidence-or-silence rule, and a re-performance test for each AI finding.',
     keywords: [
@@ -20,7 +20,7 @@ module.exports = {
       'ISA 500 audit evidence AI'
     ],
     about: ['Audit trail', 'Audit evidence', 'Artificial intelligence', 'AI hallucination', 'Odoo'],
-    answer: 'An AI audit trail links every AI output to the specific records it retrieved, the instruction and run that produced it, and the person who reviewed it. Zero hallucination is enforced, not hoped for: under the evidence-or-silence rule, a finding that cites no record, or a number absent from its cited records, is rejected.',
+    answer: 'An AI audit trail links every AI output to the specific records it retrieved, the instruction and run that produced it, and the person who reviewed it. Output without evidence is rejected, not hoped away: under the evidence-or-silence rule, a finding that cites no record, or a number absent from its cited records, is rejected.',
     takeaways: [
       'Provenance means every AI output can be traced to record ids, an instruction version and a named reviewer.',
       'Zero hallucination is a property of the process: unsupported output is struck through, never shown as fact.',
@@ -94,7 +94,7 @@ module.exports = {
         'Version the instructions of every agent that touches finance, and review changes before they go live.',
         'Add a re-performance check on a few AI findings to each month-end close review.'
       ] },
-      { p: 'This is the discipline behind Standard Enterprise Governance (SEG), MFT’s governance and continuous audit platform. It reads the books straight from the ERP, read-only, scores every transaction by risk, and works to one rule: "No number without evidence". Findings stay on record with evidence and severity, repeats are linked to earlier findings, a finding cannot be closed without a named, registered approver, and the evidence trail is usable by external auditors. The [[intelligence/auditor/|Auditor agent]] applies evidence or silence today as a managed service and is being integrated into the SEG report pipeline, where its output will enter a two-stage human approval chain as a draft; that integration is in final review, not yet live. For the case for continuous evidence, read [[blog/continuous-audit-eleven-months/|what the annual audit misses in eleven months]], or talk to our [[services/internal-audit/|internal audit team]].' }
+      { p: 'This is the discipline behind Standard Enterprise Governance (SEG), MFT’s governance and continuous audit platform. It reads the books straight from the ERP, read-only, runs its checks on the whole population, not a sample, and rolls the results into a documented risk score, and works to one rule: "No number without evidence". Findings stay on record with evidence and severity, repeats are linked to earlier findings, a fix is marked verified only by a named MFT reviewer, and dismissing a high or critical finding needs a reviewer, and the evidence trail is usable by external auditors. The [[intelligence/auditor/|Auditor agent]] applies evidence or silence today as a managed service and is being integrated into the SEG report pipeline, where its output will enter a two-stage human approval chain as a draft; that integration is in final review, not yet live. For the case for continuous evidence, read [[blog/continuous-audit-eleven-months/|what the annual audit misses in eleven months]], or talk to our [[services/internal-audit/|internal audit team]].' }
     ],
     faq: [
       { q: 'What is AI hallucination in accounting?', a: 'It is when an AI model produces a figure, name, date or statement that reads as correct but does not exist in the underlying records. In accounting it is dangerous because it looks like the result of a calculation. The control is to require every output to cite the records it came from and reject anything unsupported.' },
@@ -104,7 +104,7 @@ module.exports = {
       { q: 'Does zero hallucination mean the AI never makes mistakes?', a: 'No. No model can guarantee that. Zero hallucination here means a process rule: output that cites no record, or contains a number not found in its cited records, is rejected and shown struck through, so unsupported claims never reach a report as facts. A named reviewer still checks what passes.' }
     ],
     sources: [
-      { label: 'Odoo, "Odoo 20 Release Notes" (24 September 2026)', url: 'https://www.odoo.com/odoo-20-release-notes' },
+      { label: 'Odoo, "Odoo 20 Release Notes" (September 2026)', url: 'https://www.odoo.com/odoo-20-release-notes' },
       { label: 'IAASB, "Project update: ISA 500, Audit Evidence" (exposure drafts, August 2026)', url: 'https://www.iaasb.org/publications/project-update-isa-500-audit-evidence' }
     ]
   },
@@ -116,8 +116,8 @@ module.exports = {
     reviewer: 'practice',
     image: { alt: 'رسم توضيحي: معاملات متناثرة تتدفق عبر نواة بيضاء مضيئة إلى صفحة دفتر بيضاء تُظهر سجلات مصدر مرتبطة بسلسلة حتى ملاحظة بإطار سماوي، مع شطب ادعاء غير مدعوم.' },
     date: '2026-10-14',
-    title: 'مسار التدقيق في الذكاء الاصطناعي وصفر هلوسة: قاعدة الدليل أو الصمت',
-    metaTitle: 'مسار التدقيق في الذكاء الاصطناعي ومبدأ صفر هلوسة',
+    title: 'مسار التدقيق في الذكاء الاصطناعي: قاعدة الدليل أو الصمت',
+    metaTitle: 'مسار التدقيق في الذكاء الاصطناعي في المالية: قاعدة الدليل أو الصمت',
     dek: 'إجابة الذكاء الاصطناعي التي لا يقف خلفها سجل ادعاء لا دليل. كيف يجعل تتبع المصدر وبوابة التحقق والمراجع المسمّى مخرجات الذكاء الاصطناعي قابلة للمراجعة.',
     description: 'كيف تبني مسار تدقيق للذكاء الاصطناعي يعتمد عليه المراجع: ربط كل مخرج بمعرّفات السجلات، وقاعدة الدليل أو الصمت، واختبار إعادة أداء لكل ملاحظة.',
     keywords: [
@@ -128,7 +128,7 @@ module.exports = {
       'الدليل أو الصمت'
     ],
     about: ['مسار التدقيق', 'أدلة المراجعة', 'الذكاء الاصطناعي', 'هلوسة النماذج اللغوية', 'أودو'],
-    answer: 'مسار التدقيق في الذكاء الاصطناعي يربط كل مخرج بالسجلات المحددة التي استرجعها، وبالتعليمات والتشغيل اللذين أنتجاه، وبالشخص الذي راجعه. ومبدأ صفر هلوسة يُفرض ولا يُتمنى: وفق قاعدة الدليل أو الصمت، تُرفض كل ملاحظة لا تستشهد بسجل، أو تتضمن رقمًا غير موجود في السجلات التي استشهدت بها، ولا تُعرض كحقيقة.',
+    answer: 'مسار التدقيق في الذكاء الاصطناعي يربط كل مخرج بالسجلات المحددة التي استرجعها، وبالتعليمات والتشغيل اللذين أنتجاه، وبالشخص الذي راجعه. والمخرج بلا دليل يُرفض، لا يُترك للأمل: وفق قاعدة الدليل أو الصمت، تُرفض كل ملاحظة لا تستشهد بسجل، أو تتضمن رقمًا غير موجود في السجلات التي استشهدت بها، ولا تُعرض كحقيقة.',
     takeaways: [
       'تتبع المصدر يعني أن كل مخرج يعود إلى معرّفات سجلات وإصدار تعليمات ومراجع مسمّى.',
       'صفر هلوسة خاصية في الإجراء: المخرج غير المدعوم يُشطب ولا يُعرض كحقيقة.',
@@ -202,7 +202,7 @@ module.exports = {
         'أدِر إصدارات تعليمات كل وكيل يمس المالية، وراجع أي تغيير قبل تفعيله.',
         'أضف إلى مراجعة الإقفال الشهري إعادة أداء لعدد قليل من ملاحظات الذكاء الاصطناعي.'
       ] },
-      { p: 'هذا هو الانضباط نفسه وراء {lat}Standard Enterprise Governance (SEG){/lat}، منصة {lat}MFT{/lat} للحوكمة والمراجعة المستمرة: تقرأ الدفاتر مباشرة من نظام {lat}ERP{/lat} قراءة فقط، وتقيّم كل معاملة حسب الخطر، وتعمل بقاعدة واحدة: لا رقم بلا دليل. تبقى الملاحظات مسجلة بأدلتها ودرجة خطورتها، وتُربط الملاحظات المتكررة بسابقاتها، ولا تُغلق ملاحظة دون معتمِد مسمّى ومسجّل، ومسار الأدلة صالح لاستخدام المراجع الخارجي. و[[intelligence/auditor/|وكيل المراجع]] يطبق قاعدة الدليل أو الصمت اليوم كخدمة مُدارة، ويجري دمجه في مسار تقارير {lat}SEG{/lat} ليدخل مخرجه سلسلة اعتماد بشري من مرحلتين كمسودة؛ والدمج في المراجعة النهائية ولم يُطلق بعد. ولماذا يهم الدليل المستمر، اقرأ [[blog/continuous-audit-eleven-months/|ما يفوت المراجعة السنوية في أحد عشر شهرًا]]، أو تواصل مع فريق [[services/internal-audit/|المراجعة الداخلية]] لدينا.' }
+      { p: 'هذا هو الانضباط نفسه وراء {lat}Standard Enterprise Governance (SEG){/lat}، منصة {lat}MFT{/lat} للحوكمة والمراجعة المستمرة: تقرأ الدفاتر مباشرة من نظام {lat}ERP{/lat} قراءة فقط، وتشغّل فحوصها على المجتمع كله لا على عينة وتجمع النتائج في درجة خطر موثّقة، وتعمل بقاعدة واحدة: لا رقم بلا دليل. تبقى الملاحظات مسجلة بأدلتها ودرجة خطورتها، وتُربط الملاحظات المتكررة بسابقاتها، ولا يُعلَّم إصلاح الملاحظة كمُتحقَّق إلا بمراجع مسمّى من {lat}MFT{/lat}، واستبعاد الملاحظة العالية أو الحرجة يحتاج مراجعًا، ومسار الأدلة صالح لاستخدام المراجع الخارجي. و[[intelligence/auditor/|وكيل المراجع]] يطبق قاعدة الدليل أو الصمت اليوم كخدمة مُدارة، ويجري دمجه في مسار تقارير {lat}SEG{/lat} ليدخل مخرجه سلسلة اعتماد بشري من مرحلتين كمسودة؛ والدمج في المراجعة النهائية ولم يُطلق بعد. ولماذا يهم الدليل المستمر، اقرأ [[blog/continuous-audit-eleven-months/|ما يفوت المراجعة السنوية في أحد عشر شهرًا]]، أو تواصل مع فريق [[services/internal-audit/|المراجعة الداخلية]] لدينا.' }
     ],
     faq: [
       { q: 'ما هلوسة الذكاء الاصطناعي في المحاسبة؟', a: 'هي أن ينتج النموذج رقمًا أو اسمًا أو تاريخًا أو عبارة تبدو صحيحة ولا وجود لها في السجلات. وخطرها في المحاسبة أنها تبدو كناتج عملية حسابية. والضابط أن يُلزم كل مخرج بالاستشهاد بالسجلات التي جاء منها، وأن يُرفض كل ما لا يدعمه سجل.' },
@@ -212,7 +212,7 @@ module.exports = {
       { q: 'هل يعني صفر هلوسة أن الذكاء الاصطناعي لا يخطئ؟', a: 'لا، فلا نموذج يضمن ذلك. صفر هلوسة هنا قاعدة إجراء: المخرج الذي لا يستشهد بسجل، أو يتضمن رقمًا غير موجود في سجلاته، يُرفض ويظهر مشطوبًا، فلا يصل ادعاء غير مدعوم إلى تقرير كحقيقة. ويبقى المراجع المسمّى يفحص ما يمر.' }
     ],
     sources: [
-      { label: 'أودو، ملاحظات إصدار {lat}Odoo 20{/lat}: {lat}"Odoo 20 Release Notes"{/lat} ({lat}24{/lat} سبتمبر {lat}2026{/lat})', url: 'https://www.odoo.com/odoo-20-release-notes' },
+      { label: 'أودو، ملاحظات إصدار {lat}Odoo 20{/lat}: {lat}"Odoo 20 Release Notes"{/lat} (سبتمبر {lat}2026{/lat})', url: 'https://www.odoo.com/odoo-20-release-notes' },
       { label: 'مجلس معايير المراجعة والتأكيد الدولية، تحديث مشروع أدلة المراجعة: {lat}"Project update: ISA 500, Audit Evidence"{/lat} (مسودات عرض، أغسطس {lat}2026{/lat})', url: 'https://www.iaasb.org/publications/project-update-isa-500-audit-evidence' }
     ]
   }

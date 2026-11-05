@@ -17,6 +17,7 @@ module.exports = function contact(ctx) {
   const wa = cfg.contact.whatsapp.replace(/[^0-9]/g, '');
   const offices = cfg.contact.offices
     .map((o) => `<li>${t(ctx.c.footer.offices[o.key])}</li>`)
+    .concat(ctx.c.footer.markets ? [`<li class="muted">${t(ctx.c.footer.markets)}</li>`] : [])
     .join('');
 
   const body = `${pageHeader(ctx, C.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: C.page.eyebrow }])}

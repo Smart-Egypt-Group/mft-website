@@ -97,14 +97,13 @@ function orgSchema(ctx) {
     telephone: config.contact.phones[0] && config.contact.phones[0].tel,
     areaServed: [
       { '@type': 'Country', name: 'Egypt', identifier: 'EG' },
-      { '@type': 'Country', name: 'Saudi Arabia', identifier: 'SA' },
-      { '@type': 'Country', name: 'United States', identifier: 'US' }
+      { '@type': 'Country', name: 'Saudi Arabia', identifier: 'SA' }
     ],
     knowsLanguage: ['ar', 'en'],
     address: { '@type': 'PostalAddress', streetAddress: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis', addressLocality: 'Cairo', addressRegion: 'Cairo Governorate', addressCountry: 'EG' },
     geo: { '@type': 'GeoCoordinates', latitude: 30.0879, longitude: 31.3241 },
     contactPoint: [
-      { '@type': 'ContactPoint', contactType: 'sales', telephone: config.contact.phones[0] && config.contact.phones[0].tel, email: config.contact.email, availableLanguage: ['ar', 'en'], areaServed: ['EG', 'SA', 'US'] }
+      { '@type': 'ContactPoint', contactType: 'sales', telephone: config.contact.phones[0] && config.contact.phones[0].tel, email: config.contact.email, availableLanguage: ['ar', 'en'], areaServed: ['EG', 'SA'] }
     ],
     sameAs: Object.values(config.contact.social || {}).filter(Boolean),
     knowsAbout: ['Odoo ERP implementation', 'Internal audit', 'Virtual CFO', 'ISA 320 materiality', 'ZATCA e-invoicing', 'Egyptian e-invoicing (ETA)', 'AI agents for finance']
@@ -169,7 +168,7 @@ function footer(ctx) {
       const line = ctx.lang === 'ar' ? o.lineAr : o.line;
       return `<li>${t(c.footer.offices[o.key])}${line ? `: <span class="muted">${t(line)}</span>` : ''}</li>`;
     })
-    .join('');
+    .join('') + (c.footer.markets ? `<li class="muted">${t(c.footer.markets)}</li>` : '');
   const socialNames = { linkedin: 'LinkedIn', facebook: 'Facebook', instagram: 'Instagram', youtube: 'YouTube', tiktok: 'TikTok', x: 'X' };
   const social = Object.entries(config.contact.social || {})
     .filter(([, href]) => href)

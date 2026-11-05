@@ -33,7 +33,7 @@ module.exports = {
       { p: 'AI financial fraud detection is the use of rules, statistical models and language models to score every transaction in a company’s books for patterns associated with fraud or error, so that people review the riskiest items first instead of a random few. Three parts of that definition matter. It covers every transaction, which is why it belongs with [[blog/full-population-testing-ai-vs-sampling/|full-population testing rather than sampling]]. It produces a score, not a verdict. And it ends with a person, because a model can rank but cannot judge intent.' },
       { p: 'It is also wider than fraud. The pattern behind a fraudulent payment equally fits an honest duplicate, a cut-off error or a misconfigured tax. Most flags turn out to be error, which is useful: both usually live in the same weak control.' },
       { h2: 'Which red flags can AI test across the whole ledger?' },
-      { p: 'These red flags recur in MFT’s continuous-audit work. Each is testable from ERP data and points back to a control, where the lasting fix belongs.' },
+      { p: 'These red flags are common in continuous-audit work. Each is testable from ERP data and points back to a control, where the lasting fix belongs.' },
       { table: {
         caption: 'Red flags, what the model compares, and the first human test',
         head: ['Red flag', 'What the model compares', 'First test by a reviewer', 'Control it points to'],
@@ -94,7 +94,7 @@ module.exports = {
         'Tune for two or three cycles: retire noisy tests, tighten useful ones.',
         'Move to weekly once triage keeps pace.'
       ] },
-      { p: 'This is the approach behind Standard Enterprise Governance (SEG), MFT’s governance and continuous audit platform. It reads the books straight from the ERP, read-only, scores every transaction by risk instead of sampling a few percent, links repeat findings to earlier ones, and no finding closes without a named, registered approver. The [[intelligence/auditor/|MFT Auditor agent]] drafts findings and corrections under the evidence-or-silence rule, and a person approves them. If you want an independent view of where your controls are thin, our [[services/internal-audit/|internal audit service]] starts with exactly these tests.' }
+      { p: 'This is the approach behind Standard Enterprise Governance (SEG), MFT’s governance and continuous audit platform. It reads the books straight from the ERP, read-only, runs its checks on the whole population, not a sample, and rolls the results into a documented risk score, links repeat findings to earlier ones, and a fix is marked verified only by a named MFT reviewer, and dismissing a high or critical finding needs a reviewer. The [[intelligence/auditor/|MFT Auditor agent]] drafts findings and corrections under the evidence-or-silence rule, and a person approves them. If you want an independent view of where your controls are thin, our [[services/internal-audit/|internal audit service]] starts with exactly these tests.' }
     ],
     faq: [
       { q: 'Can AI detect financial fraud on its own?', a: 'No. AI can score every transaction for patterns associated with fraud or error and rank the riskiest for review, but it cannot establish intent or confirm that fraud occurred. That takes a person examining source documents, explanations and context, and, where warranted, an investigation run by the right owner with the evidence preserved.' },
@@ -142,7 +142,7 @@ module.exports = {
       { p: 'كشف الاحتيال المالي بالذكاء الاصطناعي هو استخدام القواعد والنماذج الإحصائية ونماذج اللغة لتقييم كل معاملة في دفاتر الشركة مقابل أنماط مرتبطة بالاحتيال أو الخطأ، بحيث يبدأ المراجع بالأعلى خطرًا بدل عدد عشوائي من البنود. في هذا التعريف ثلاث نقاط حاسمة: أنه يشمل المجتمع الكامل لا العينة، ولذلك مكانه مع [[blog/full-population-testing-ai-vs-sampling/|الانتقال من العينة إلى فحص المجتمع الكامل]]؛ وأن ناتجه درجة خطر لا حكم؛ وأنه ينتهي عند إنسان، لأن النموذج يرتّب ولا يستطيع الحكم على النية.' },
       { p: 'وهو أوسع من الاحتيال. النمط الذي يدل على دفعة احتيالية يدل بالقدر نفسه على تكرار غير مقصود، أو خطأ في الفصل بين الفترات، أو ضريبة مُعدّة بشكل خاطئ. وعمليًا يتبيّن أن معظم التنبيهات أخطاء، وهذه فائدة لا عيب: خطأ يُكتشف في الأسبوع نفسه أيسر تصحيحًا من احتيال يُكتشف بعد عام، والاثنان يعيشان عادة في الضابط الضعيف نفسه.' },
       { h2: 'ما مؤشرات الاحتيال التي يفحصها الذكاء الاصطناعي في الدفتر كله؟' },
-      { p: 'المؤشرات التالية هي التي تتكرر في أعمال المراجعة المستمرة لدى {lat}MFT{/lat}. كل منها قابل للفحص من بيانات موجودة أصلًا في نظام {lat}ERP{/lat}، وكل منها يعود إلى ضابط رقابي، وهناك يكون العلاج الدائم.' },
+      { p: 'المؤشرات التالية شائعة في أعمال المراجعة المستمرة. كل منها قابل للفحص من بيانات موجودة أصلًا في نظام {lat}ERP{/lat}، وكل منها يعود إلى ضابط رقابي، وهناك يكون العلاج الدائم.' },
       { table: {
         caption: 'المؤشر، وما يقارنه النموذج، وأول اختبار يجريه المراجع',
         head: ['المؤشر', 'ما يقارنه النموذج', 'أول اختبار للمراجع', 'الضابط المرتبط'],
@@ -203,7 +203,7 @@ module.exports = {
         'اضبط الاختبارات على مدى دورتين أو ثلاث: أوقف ما لا يُنتج إلا ضجيجًا، وشدّد ما يكشف مشكلات حقيقية.',
         'انتقل من الفحص الربع سنوي إلى الأسبوعي حين يصبح الفرز قادرًا على مجاراة التنبيهات.'
       ] },
-      { p: 'هذه هي الفكرة التي بُنيت عليها منصة {lat}Standard Enterprise Governance (SEG){/lat}، منصة الحوكمة والمراجعة المستمرة لدى {lat}MFT{/lat}: تقرأ الدفاتر مباشرة من نظام {lat}ERP{/lat} بصلاحية قراءة فقط، وتقيّم كل معاملة حسب الخطر بدل عينة من نسبة ضئيلة، وتحفظ كل ملاحظة بمصدرها ودرجة خطورتها، وتربط الملاحظة المتكررة بسابقاتها، ولا تسمح بإغلاق ملاحظة دون معتمِد مسمّى ومسجّل. ويُعدّ [[intelligence/auditor/|وكيل المراجع من {lat}MFT{/lat}]] مسودات الملاحظات والتصحيحات وفق قاعدة "الدليل أو الصمت"، ثم يعتمدها شخص مسؤول. وإن أردت رأيًا مستقلًا في مواضع ضعف ضوابطك، فإن [[services/internal-audit/|خدمة المراجعة الداخلية لدينا]] تبدأ بهذه الاختبارات تحديدًا.' }
+      { p: 'هذه هي الفكرة التي بُنيت عليها منصة {lat}Standard Enterprise Governance (SEG){/lat}، منصة الحوكمة والمراجعة المستمرة لدى {lat}MFT{/lat}: تقرأ الدفاتر مباشرة من نظام {lat}ERP{/lat} بصلاحية قراءة فقط، وتشغّل فحوصها على المجتمع كله لا على عينة وتجمع النتائج في درجة خطر موثّقة، وتحفظ كل ملاحظة بمصدرها ودرجة خطورتها، وتربط الملاحظة المتكررة بسابقاتها، ولا يُعلَّم إصلاح الملاحظة كمُتحقَّق إلا بمراجع مسمّى من {lat}MFT{/lat}، واستبعاد الملاحظة العالية أو الحرجة يحتاج مراجعًا. ويُعدّ [[intelligence/auditor/|وكيل المراجع من {lat}MFT{/lat}]] مسودات الملاحظات والتصحيحات وفق قاعدة "الدليل أو الصمت"، ثم يعتمدها شخص مسؤول. وإن أردت رأيًا مستقلًا في مواضع ضعف ضوابطك، فإن [[services/internal-audit/|خدمة المراجعة الداخلية لدينا]] تبدأ بهذه الاختبارات تحديدًا.' }
     ],
     faq: [
       { q: 'هل يستطيع الذكاء الاصطناعي كشف الاحتيال المالي وحده؟', a: 'لا. يستطيع تقييم كل معاملة مقابل أنماط مرتبطة بالاحتيال أو الخطأ وترتيب الأعلى خطرًا للمراجعة، لكنه لا يستطيع إثبات النية ولا تأكيد وقوع احتيال. هذا يحتاج شخصًا يفحص المستندات المؤيدة والتفسيرات والسياق، وعند الحاجة تحقيقًا يتولاه صاحب الاختصاص مع حفظ الأدلة.' },

@@ -51,7 +51,7 @@ module.exports = {
       { h2: 'What does AI actually do in a continuous audit?' },
       { p: 'Three layers do different jobs, and confusing them is a frequent design mistake.' },
       { h3: 'Rules: the known patterns' },
-      { p: 'Deterministic tests answer yes or no questions and run first, because they are cheap, explainable and repeatable. The patterns we find most often in continuous-audit work are:' },
+      { p: 'Deterministic tests answer yes or no questions and run first, because they are cheap, explainable and repeatable. Patterns that continuous-audit work commonly finds include:' },
       { ul: [
         'Duplicate and near-duplicate payments to the same vendor.',
         'Near-duplicate vendors: the same supplier set up twice under slightly different names.',
@@ -85,12 +85,12 @@ module.exports = {
         'Silent test failure. Control: a test that returns zero exceptions for three cycles is reviewed, not celebrated.',
         'Loss of independence. Control: the people who own the process do not edit the tests, and every rule change is logged with an approver.',
         'Invented explanations. Control: drafts without record citations are rejected and never presented as facts.',
-        'Usage cost. If you use Odoo’s native AI, Odoo’s 20 release notes say all AI features consume IAP credits billed per request, so budget by volume of runs.'
+        'Usage cost. If you use Odoo’s native AI, Odoo’s 20 release notes say all AI features consume IAP credits, so budget by volume of runs.'
       ] },
       { quote: 'A finding that arrives eleven months late is a history lesson, not a control.' },
       { h2: 'Where should a finance team start on Monday?' },
       { p: 'Pick one process with high volume and clear rules, usually payables. Choose three to five tests from the list above. Run them backwards on the last closed quarter and compare the results with what your last audit sample found; that comparison calibrates thresholds and tells you which tests produce noise. Then run weekly, assign a named reviewer, and keep the working papers ISA 230 expects: what was tested, what was found and how each exception was resolved. Widen to a second process only when the first queue is being cleared on time.' },
-      { p: 'This is how we run it. MFT’s platform, Standard Enterprise Governance (SEG), reads the books straight from the ERP, read-only, scores every transaction by risk instead of sampling a few percent, and keeps each finding on record with its evidence and severity; a finding cannot be closed without a named, registered approver. Our [[intelligence/auditor/|Auditor agent]] drafts findings and correcting entries for a person to approve, and our [[services/internal-audit/|internal audit service]] supplies the licensed reviewers when you do not have them in-house.' }
+      { p: 'This is how we run it. MFT’s platform, Standard Enterprise Governance (SEG), reads the books straight from the ERP, read-only, runs its checks on the whole population, not a sample, and rolls the results into a documented risk score, and keeps each finding on record with its evidence and severity; a fix is marked verified only by a named MFT reviewer, and dismissing a high or critical finding needs a reviewer. Our [[intelligence/auditor/|Auditor agent]] drafts findings and correcting entries for a person to approve, and our [[services/internal-audit/|internal audit service]] supplies the licensed reviewers when you do not have them in-house.' }
     ],
     faq: [
       { q: 'Does continuous auditing replace the external auditor?', a: 'No. The external auditor still forms an independent opinion under the ISAs and decides how much to rely on internal work. Continuous auditing improves the evidence available during the year and can reduce surprises at year end, but reliance is the external auditor’s judgement, not something the company can assume.' },
@@ -155,7 +155,7 @@ module.exports = {
       { h2: 'ماذا يفعل الذكاء الاصطناعي فعلًا في المراجعة المستمرة؟' },
       { p: 'ثلاث طبقات، لكل منها عمل مختلف، والخلط بينها أكثر أخطاء التصميم شيوعًا.' },
       { h3: 'القواعد: الأنماط المعروفة' },
-      { p: 'الاختبارات القطعية تجيب بنعم أو لا، ويجب أن تعمل أولًا لأنها رخيصة وقابلة للتفسير والتكرار. وأكثر الأنماط التي نجدها في أعمال المراجعة المستمرة:' },
+      { p: 'الاختبارات القطعية تجيب بنعم أو لا، ويجب أن تعمل أولًا لأنها رخيصة وقابلة للتفسير والتكرار. ومن الأنماط الشائعة في أعمال المراجعة المستمرة:' },
       { ul: [
         'المدفوعات المكررة وشبه المكررة للمورّد نفسه.',
         'المورّدون شبه المكررين: المورّد ذاته مُسجَّل مرتين بأسماء متقاربة.',
@@ -194,7 +194,7 @@ module.exports = {
       { quote: 'الملاحظة التي تصل بعد أحد عشر شهرًا درس في التاريخ، لا ضابط رقابي.' },
       { h2: 'من أين تبدأ الإدارة المالية يوم الإثنين؟' },
       { p: 'اختر عملية واحدة كثيرة الحركة وواضحة القواعد، وغالبًا ستكون الموردين والمدفوعات. اختر ثلاثة إلى خمسة اختبارات من القائمة السابقة، وشغّلها بأثر رجعي على آخر ربع مقفل، ثم قارن نتائجها بما وجدته عينة آخر مراجعة؛ هذه المقارنة تضبط الحدود وتكشف الاختبارات التي لا تنتج إلا ضجيجًا. بعد ذلك شغّلها أسبوعيًا، وعيّن مراجعًا مسمّى، واحتفظ بأوراق العمل التي يتوقعها {lat}ISA 230{/lat}: ماذا اختُبر، وماذا وُجد، وكيف حُسم كل استثناء. ولا تنتقل إلى عملية ثانية قبل أن تُصفّى قائمة الأولى في موعدها.' },
-      { p: 'هكذا نعمل نحن. منصة {lat}Standard Enterprise Governance (SEG){/lat} الخاصة بـ{lat}MFT{/lat} تقرأ الدفاتر مباشرة من نظام {lat}ERP{/lat} قراءة فقط، وتقيّم كل معاملة حسب الخطر بدلًا من سحب عينة بنسبة صغيرة، وتحفظ كل ملاحظة بدليلها ودرجة خطورتها، ولا تُغلق ملاحظة دون معتمِد مسمّى ومسجَّل. ووكيل [[intelligence/auditor/|المراجع الذكي]] يصوغ الملاحظات وقيود التصحيح كمسودات يعتمدها شخص، وتوفر [[services/internal-audit/|خدمة المراجعة الداخلية]] لدينا المراجعين المرخّصين إن لم يكونوا لديك داخل الشركة.' }
+      { p: 'هكذا نعمل نحن. منصة {lat}Standard Enterprise Governance (SEG){/lat} الخاصة بـ{lat}MFT{/lat} تقرأ الدفاتر مباشرة من نظام {lat}ERP{/lat} قراءة فقط، وتشغّل فحوصها على المجتمع كله لا على عينة وتجمع النتائج في درجة خطر موثّقة، وتحفظ كل ملاحظة بدليلها ودرجة خطورتها، ولا يُعلَّم إصلاح الملاحظة كمُتحقَّق إلا بمراجع مسمّى من {lat}MFT{/lat}، واستبعاد الملاحظة العالية أو الحرجة يحتاج مراجعًا. ووكيل [[intelligence/auditor/|المراجع الذكي]] يصوغ الملاحظات وقيود التصحيح كمسودات يعتمدها شخص، وتوفر [[services/internal-audit/|خدمة المراجعة الداخلية]] لدينا المراجعين المرخّصين إن لم يكونوا لديك داخل الشركة.' }
     ],
     faq: [
       { q: 'هل تحل المراجعة المستمرة محل المراجع الخارجي؟', a: 'لا. المراجع الخارجي ما زال يكوّن رأيًا مستقلًا وفق معايير المراجعة الدولية، ويقرر مدى اعتماده على العمل الداخلي. المراجعة المستمرة تحسّن الأدلة المتاحة خلال السنة وتقلل مفاجآت نهاية العام، لكن الاعتماد عليها قرار يعود للمراجع الخارجي، لا أمر تفترضه الشركة.' },

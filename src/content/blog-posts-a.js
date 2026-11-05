@@ -19,7 +19,7 @@ module.exports = {
         'Lock the declared period in Odoo once the return is filed.'
       ],
       body: [
-        { p: 'In most Egyptian companies we meet, the monthly VAT return is prepared in a spreadsheet that starts from an Odoo export and ends in a figure someone types into the Egyptian Tax Authority portal. The spreadsheet works until the month it does not: a credit note posted after the export, a purchase invoice without a valid tax registration number, an e-invoice that was rejected and never resubmitted. The return should come out of the ledger, and the ledger should agree with what the Authority already holds.' },
+        { p: 'In many Egyptian companies, the monthly VAT return is prepared in a spreadsheet that starts from an Odoo export and ends in a figure someone types into the Egyptian Tax Authority portal. The spreadsheet works until the month it does not: a credit note posted after the export, a purchase invoice without a valid tax registration number, an e-invoice that was rejected and never resubmitted. The return should come out of the ledger, and the ledger should agree with what the Authority already holds.' },
         { h2: 'What does the Egyptian VAT return actually summarise?' },
         { p: 'For each tax period, the return reports the output tax charged on taxable sales, the input tax recoverable on purchases, and the net amount payable or carried forward. The standard rate is 14%. Some supplies are exempt, exports are generally zero-rated, and certain goods carry schedule (table) tax under its own rules. Each of these must land in its own line on the return, which means each must be distinguishable in Odoo before the month starts, not after it ends.' },
         { h2: 'How should taxes be mapped in Odoo?' },
@@ -93,11 +93,11 @@ module.exports = {
           'A receipt layout with the QR code and the fields the Authority requires, tested on the actual printers in the stores.'
         ] },
         { h2: 'How should finance reconcile e-receipts?' },
-        { p: 'The e-receipt system creates a third record of every sale, beside the POS session and the accounting entry. The three must agree. Our daily routine for retail clients compares, per terminal and per day, the POS session totals, the receipts accepted by the Authority, and the cash and card amounts actually banked. Differences fall into a few patterns: receipts stuck in a transmission queue, sessions closed without posting, refunds processed outside the system, and card settlements that arrive net of fees on a different day.' },
+        { p: 'The e-receipt system creates a third record of every sale, beside the POS session and the accounting entry. The three must agree. A sound daily routine for retail compares, per terminal and per day, the POS session totals, the receipts accepted by the Authority, and the cash and card amounts actually banked. Differences fall into a few patterns: receipts stuck in a transmission queue, sessions closed without posting, refunds processed outside the system, and card settlements that arrive net of fees on a different day.' },
         { p: 'Monthly, the output VAT on retail sales in the return should agree with the sum of accepted receipts after returns. If it does not, either the return is wrong or the receipts are, and the Authority can see both.' },
         { quote: 'At the till, compliance is a cashier’s habit. Design the system so the correct habit is the easy one.' },
         { h2: 'Where do implementations usually go wrong?' },
-        { p: 'Most of the problems we see are not in the connector. They are in the store: a terminal added at a new branch and never registered, a promotion configured with a discount the receipt format cannot express, staff trained on the old cash register and taught nothing about returns. That is why we treat e-receipts as an operations project with an accounting owner. In an Odoo implementation for retail, we test every receipt type, sale, return, exchange, discount and void, in a test environment before the first store switches over.' },
+        { p: 'Many of the problems are not in the connector. They are in the store: a terminal added at a new branch and never registered, a promotion configured with a discount the receipt format cannot express, staff trained on the old cash register and taught nothing about returns. That is why we treat e-receipts as an operations project with an accounting owner. In an Odoo implementation for retail, we test every receipt type, sale, return, exchange, discount and void, in a test environment before the first store switches over.' },
         { p: 'After go-live, the daily reconciliation is the control. It is short when the setup is right, and it is the first place a missing terminal or a broken refund process shows itself, long before the VAT return is due.' }
       ],
       faq: [
@@ -260,7 +260,7 @@ module.exports = {
       faq: [
         { q: 'Is FIFO or average cost better in Odoo?', a: 'Neither is better in general. FIFO suits goods with distinct batches or price-sensitive margins; average cost suits interchangeable goods bought continuously. Choose per product category and apply it consistently.' },
         { q: 'Can I change the costing method in Odoo after go-live?', a: 'Odoo allows it and revalues stock on hand, but a change of cost formula is a change in accounting policy. Do it at a period end, document it and agree it with your auditor.' },
-        { q: 'Do landed costs work with standard price in Odoo?', a: 'No. Landed costs in Odoo require FIFO or average cost with automated inventory valuation.' }
+        { q: 'Do landed costs work with standard price in Odoo?', a: 'No. In Odoo 17 and 18, landed costs require FIFO or average cost with automated inventory valuation (valuation changed in Odoo 20, so check your version).' }
       ]
     },
     {
@@ -309,7 +309,7 @@ module.exports = {
         { h2: 'Step seven: who reviews, and when do you lock?' },
         { p: 'The preparer hands over the trial balance, the reconciliations and a short note on unusual movements. The reviewer compares the profit and loss with budget and with prior months, questions the large movements and reads the manual journal entries posted in the last days of the month. Only after review are the lock dates set in Odoo, so that nothing can be posted into the closed period without a deliberate, recorded change by an authorised person.' },
         { quote: 'A close without a lock date is a draft.' },
-        { p: 'Many owners we support through our Virtual CFO service start with a close that takes weeks and ends without review. Run consistently, the checklist above shortens itself: each month starts from reconciled balances instead of last month’s open questions.' }
+        { p: 'Many owners start with a close that takes weeks and ends without review. Run consistently, the checklist above shortens itself: each month starts from reconciled balances instead of last month’s open questions.' }
       ],
       faq: [
         { q: 'How do I lock a period in Odoo?', a: 'Set the lock dates in Odoo’s accounting settings once the period has been reviewed, and restrict who can change them, so reopening a closed period is a deliberate and traceable decision.' },
@@ -336,7 +336,7 @@ module.exports = {
         'اقفل الفترة المُقرّ عنها في {lat}Odoo{/lat} فور تقديم الإقرار.'
       ],
       body: [
-        { p: 'في أغلب الشركات المصرية التي نعمل معها، يُعدّ إقرار ضريبة القيمة المضافة الشهري في جدول بيانات يبدأ بتصدير من {lat}Odoo{/lat} وينتهي برقم يكتبه أحدهم يدويًا على بوابة مصلحة الضرائب المصرية. ينجح الجدول حتى الشهر الذي لا ينجح فيه: إشعار دائن رُحّل بعد التصدير، أو فاتورة شراء بلا رقم تسجيل ضريبي صالح، أو فاتورة إلكترونية رُفضت ولم يُعد إرسالها. الإقرار يجب أن يخرج من دفتر الأستاذ، ودفتر الأستاذ يجب أن يتفق مع ما تملكه المصلحة بالفعل.' },
+        { p: 'في كثير من الشركات المصرية يُعدّ إقرار ضريبة القيمة المضافة الشهري في جدول بيانات يبدأ بتصدير من {lat}Odoo{/lat} وينتهي برقم يكتبه أحدهم يدويًا على بوابة مصلحة الضرائب المصرية. ينجح الجدول حتى الشهر الذي لا ينجح فيه: إشعار دائن رُحّل بعد التصدير، أو فاتورة شراء بلا رقم تسجيل ضريبي صالح، أو فاتورة إلكترونية رُفضت ولم يُعد إرسالها. الإقرار يجب أن يخرج من دفتر الأستاذ، ودفتر الأستاذ يجب أن يتفق مع ما تملكه المصلحة بالفعل.' },
         { h2: 'ماذا يلخّص إقرار القيمة المضافة المصري فعلًا؟' },
         { p: 'يعرض الإقرار عن كل فترة ضريبية ضريبة المخرجات المحصّلة على المبيعات الخاضعة، وضريبة المدخلات القابلة للخصم على المشتريات، والصافي المستحق أو المرحّل. السعر العام أربعة عشر بالمئة، وبعض التوريدات معفاة، والصادرات عمومًا بسعر صفر، وبعض السلع تخضع لضريبة الجدول بقواعدها الخاصة. كل فئة من هذه يجب أن تقع في سطرها في الإقرار، أي يجب أن تكون مميّزة في {lat}Odoo{/lat} قبل أن يبدأ الشهر، لا بعد أن ينتهي.' },
         { h2: 'كيف تُربط الضرائب في {lat}Odoo{/lat}؟' },
@@ -410,11 +410,11 @@ module.exports = {
           'تصميم إيصال يحمل رمز {lat}QR{/lat} والحقول التي تطلبها المصلحة، مُختبر على الطابعات الفعلية في الفروع.'
         ] },
         { h2: 'كيف تطابق الإدارة المالية الإيصالات الإلكترونية؟' },
-        { p: 'تُنشئ منظومة الإيصال سجلًا ثالثًا لكل عملية بيع، بجانب جلسة نقطة البيع والقيد المحاسبي، ويجب أن تتفق الثلاثة. روتيننا اليومي لعملاء التجزئة يقارن، لكل جهاز ولكل يوم، إجماليات جلسات نقاط البيع، والإيصالات التي قبلتها المصلحة، والمبالغ النقدية ومبالغ البطاقات التي أُودعت فعلًا في البنك. وتقع الفروق في أنماط قليلة: إيصالات عالقة في طابور الإرسال، وجلسات أُغلقت دون ترحيل، واستردادات تمت خارج النظام، وتسويات بطاقات تصل صافية من العمولة في يوم مختلف.' },
+        { p: 'تُنشئ منظومة الإيصال سجلًا ثالثًا لكل عملية بيع، بجانب جلسة نقطة البيع والقيد المحاسبي، ويجب أن تتفق الثلاثة. الروتين اليومي السليم في التجزئة يقارن، لكل جهاز ولكل يوم، إجماليات جلسات نقاط البيع، والإيصالات التي قبلتها المصلحة، والمبالغ النقدية ومبالغ البطاقات التي أُودعت فعلًا في البنك. وتقع الفروق في أنماط قليلة: إيصالات عالقة في طابور الإرسال، وجلسات أُغلقت دون ترحيل، واستردادات تمت خارج النظام، وتسويات بطاقات تصل صافية من العمولة في يوم مختلف.' },
         { p: 'وشهريًا، يجب أن تتفق ضريبة المخرجات على مبيعات التجزئة في الإقرار مع مجموع الإيصالات المقبولة بعد المرتجعات. فإن لم تتفق، فالخطأ إما في الإقرار وإما في الإيصالات، والمصلحة ترى الاثنين.' },
         { quote: 'عند الكاشير، الامتثال عادة يومية للموظف. صمّم النظام بحيث تكون العادة الصحيحة هي الأسهل.' },
         { h2: 'أين تتعثر التطبيقات عادة؟' },
-        { p: 'أغلب المشكلات التي نراها ليست في الموصل، بل في الفرع: جهاز أُضيف في فرع جديد ولم يُسجّل، أو عرض ترويجي بخصم لا يستطيع شكل الإيصال التعبير عنه، أو موظفون دُرّبوا على الماكينة القديمة ولم يتعلموا شيئًا عن المرتجعات. لذلك نعامل الإيصال الإلكتروني كمشروع تشغيلي له مالك محاسبي. وفي تنفيذ {lat}Odoo{/lat} لقطاع التجزئة نختبر كل نوع إيصال، البيع والمرتجع والاستبدال والخصم والإلغاء، في بيئة اختبار قبل أن ينتقل أول فرع.' },
+        { p: 'كثير من المشكلات ليست في الموصل، بل في الفرع: جهاز أُضيف في فرع جديد ولم يُسجّل، أو عرض ترويجي بخصم لا يستطيع شكل الإيصال التعبير عنه، أو موظفون دُرّبوا على الماكينة القديمة ولم يتعلموا شيئًا عن المرتجعات. لذلك نعامل الإيصال الإلكتروني كمشروع تشغيلي له مالك محاسبي. وفي تنفيذ {lat}Odoo{/lat} لقطاع التجزئة نختبر كل نوع إيصال، البيع والمرتجع والاستبدال والخصم والإلغاء، في بيئة اختبار قبل أن ينتقل أول فرع.' },
         { p: 'وبعد التشغيل تصبح المطابقة اليومية هي أداة الرقابة. تكون قصيرة حين يكون الإعداد سليمًا، وهي أول مكان يظهر فيه جهاز غير مسجّل أو إجراء استرداد معطوب، قبل موعد إقرار القيمة المضافة بوقت طويل.' }
       ],
       faq: [
@@ -577,7 +577,7 @@ module.exports = {
       faq: [
         { q: 'أيهما أفضل في {lat}Odoo{/lat}: {lat}FIFO{/lat} أم متوسط التكلفة؟', a: 'لا أفضلية مطلقة لأي منهما. {lat}FIFO{/lat} تناسب الأصناف ذات الدفعات المميزة أو الهوامش الحساسة للسعر، ومتوسط التكلفة يناسب الأصناف المتماثلة التي تُشترى باستمرار. اختر لكل فئة منتجات وطبّق باتساق.' },
         { q: 'هل يمكن تغيير طريقة التكلفة في {lat}Odoo{/lat} بعد التشغيل؟', a: 'يسمح {lat}Odoo{/lat} بذلك ويعيد تقييم المخزون القائم، لكن تغيير معادلة التكلفة تغيير في السياسة المحاسبية. نفّذه في نهاية فترة، ووثّقه، واتفق عليه مع مراجعك.' },
-        { q: 'هل تعمل التكاليف الإضافية مع السعر المعياري في {lat}Odoo{/lat}؟', a: 'لا. تتطلب التكاليف الإضافية في {lat}Odoo{/lat} طريقة {lat}FIFO{/lat} أو متوسط التكلفة مع التقييم الآلي للمخزون.' }
+        { q: 'هل تعمل التكاليف الإضافية مع السعر المعياري في {lat}Odoo{/lat}؟', a: 'لا. في {lat}Odoo 17{/lat} و{lat}18{/lat} تتطلب التكاليف الإضافية طريقة {lat}FIFO{/lat} أو متوسط التكلفة مع التقييم الآلي للمخزون (وقد تغيّر التقييم في {lat}Odoo 20{/lat}، فتحقّق على نسختك).' }
       ]
     },
     {
@@ -626,7 +626,7 @@ module.exports = {
         { h2: 'الخطوة السابعة: من يراجع، ومتى تقفل؟' },
         { p: 'يسلّم المُعدّ ميزان المراجعة والمطابقات وملاحظة قصيرة بالحركات غير المعتادة. ويقارن المراجع قائمة الدخل بالموازنة وبالأشهر السابقة، ويسأل عن الحركات الكبيرة، ويقرأ القيود اليدوية المرحّلة في الأيام الأخيرة من الشهر. وبعد المراجعة فقط تُضبط تواريخ القفل في {lat}Odoo{/lat}، حتى لا يُرحّل شيء في الفترة المقفلة إلا بتغيير متعمد ومسجّل من شخص مخوّل.' },
         { quote: 'الإقفال بلا تاريخ قفل مجرد مسودة.' },
-        { p: 'كثير من الملّاك الذين ندعمهم عبر خدمة المدير المالي الافتراضي يبدؤون بإقفال يستغرق أسابيع وينتهي دون مراجعة. والقائمة أعلاه، إذا نُفّذت باتساق، تختصر نفسها بنفسها: كل شهر يبدأ من أرصدة مطابقة بدل الأسئلة المفتوحة من الشهر الماضي.' }
+        { p: 'كثير من الملّاك يبدؤون بإقفال يستغرق أسابيع وينتهي دون مراجعة. والقائمة أعلاه، إذا نُفّذت باتساق، تختصر نفسها بنفسها: كل شهر يبدأ من أرصدة مطابقة بدل الأسئلة المفتوحة من الشهر الماضي.' }
       ],
       faq: [
         { q: 'كيف أقفل فترة في {lat}Odoo{/lat}؟', a: 'اضبط تواريخ القفل في إعدادات المحاسبة في {lat}Odoo{/lat} بعد مراجعة الفترة، وقيّد من يستطيع تغييرها، حتى تكون إعادة فتح فترة مقفلة قرارًا متعمدًا يمكن تتبعه.' },

@@ -58,12 +58,12 @@ module.exports = function home(ctx, opts = {}) {
       (q) => `<li class="testimonial"><blockquote><p>${t(q.quote)}</p></blockquote><p class="testimonial-by"><strong>${t(q.name)}</strong> · ${t(q.company)}</p></li>`
     )
     .join('');
-  const caseStudy = `<section class="section section-mist" aria-labelledby="stories-title">
+  const caseStudy = !cases && !testimonials ? '' : `<section class="section section-mist" aria-labelledby="stories-title">
   <div class="container">
     <div class="section-head"><p class="eyebrow">${t(H.stories.eyebrow)}</p><h2 id="stories-title">${t(H.stories.title)}</h2><p class="lead">${t(H.stories.intro)}</p></div>
-    <ul class="grid grid-2 cases">${cases}</ul>
-    <h3 class="testimonials-title">${t(H.stories.testimonialsTitle)}</h3>
-    <ul class="grid grid-2 testimonials">${testimonials}</ul>
+    ${cases ? `<ul class="grid grid-2 cases">${cases}</ul>` : ''}
+    ${testimonials ? `<h3 class="testimonials-title">${t(H.stories.testimonialsTitle)}</h3>
+    <ul class="grid grid-2 testimonials">${testimonials}</ul>` : ''}
   </div>
 </section>`;
 
