@@ -10,8 +10,10 @@ module.exports = function industries(ctx) {
       (it, i) => `<section class="section industry${i % 2 ? ' section-mist' : ''}" id="${esc(it.slug)}" aria-labelledby="${esc(it.slug)}-title">
   <div class="container">
     <div class="section-head">
-      <h2 id="${esc(it.slug)}-title">${t(it.name)}</h2>
+      ${(it.aliases || []).map((a) => `<span id="${esc(a)}" class="anchor-alias" aria-hidden="true"></span>`).join('')}<h2 id="${esc(it.slug)}-title">${t(it.name)}</h2>
       <p class="lead">${t(it.short)}</p>
+      <p class="industry-isic">${t(I.labels.isic)}: <bdi class="industry-codes">${t(it.isic)}</bdi></p>
+      <p class="industry-examples">${t(I.labels.examples)}: ${it.examples.map((x) => t(x)).join(ctx.lang === 'ar' ? '، ' : '; ')}</p>
     </div>
     <div class="grid grid-2 industry-cols">
       <div>
@@ -22,6 +24,10 @@ module.exports = function industries(ctx) {
         <h3>${t(I.labels.how)}</h3>
         <ul class="check-list">${it.how.map((x) => `<li>${t(x)}</li>`).join('')}</ul>
       </div>
+    </div>
+    <div class="industry-checks">
+      <h3>${t(I.labels.checks)}</h3>
+      <ul class="check-list">${it.checks.map((x) => `<li>${t(x)}</li>`).join('')}</ul>
     </div>
     <p class="section-foot">${btn(ctx, { label: I.labels.cta, href: 'contact/' }, 'btn btn-navy')}</p>
   </div>

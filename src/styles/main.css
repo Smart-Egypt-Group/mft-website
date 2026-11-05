@@ -561,6 +561,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .dash-list li::before { background: var(--line-strong); }
 .industry-cols h3 { margin-bottom: 14px; }
 .industry .section-head { margin-bottom: 28px; }
+.industry-isic, .industry-examples { margin: 6px 0 0; color: var(--ink-2); font-size: .95rem; }
+.industry-codes { font-weight: 600; }
+.industry-checks { margin-top: 28px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.industry-checks h3 { margin-bottom: 12px; }
+.anchor-alias { display: block; position: relative; top: -96px; visibility: hidden; }
 
 /* ---------- MFT Intelligence ---------- */
 .teaser { border-top: 1px solid var(--line); }

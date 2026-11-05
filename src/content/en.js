@@ -75,11 +75,10 @@ module.exports = {
       {
         title: 'Industries',
         links: [
-          { label: 'Manufacturing', href: 'industries/#manufacturing' },
           { label: 'Trading & Distribution', href: 'industries/#trading' },
-          { label: 'Food & Beverage', href: 'industries/#food-beverage' },
-          { label: 'Healthcare', href: 'industries/#healthcare' },
-          { label: 'Construction', href: 'industries/#construction' }
+          { label: 'Retail & Point of Sale', href: 'industries/#retail' },
+          { label: 'Manufacturing', href: 'industries/#manufacturing' },
+          { label: 'Services & Projects', href: 'industries/#services' }
         ]
       },
       {
@@ -276,10 +275,10 @@ module.exports = {
 
     industries: {
       eyebrow: 'Industries',
-      title: 'Built for the sectors where margins hide in operations.',
+      title: 'Built for the activities where margins hide in operations.',
       intro:
-        'Manufacturing, trading, food & beverage, healthcare and construction share one trait: the numbers only make sense when the ERP mirrors the operation.',
-      cta: 'See industry detail'
+        'We classify your activity under ISIC Rev.4 into one of four families: trading, retail and point of sale, manufacturing, and services and projects. In each, the numbers only make sense when the ERP mirrors the operation.',
+      cta: 'See each family'
     },
 
     proof: {
@@ -607,37 +606,30 @@ module.exports = {
   industries: {
     title: 'Industries | Modern Financial Technology',
     description:
-      'Odoo ERP, audit and Virtual CFO services for manufacturing, trading, food & beverage, healthcare and construction companies in Egypt, Saudi Arabia and the US.',
+      'We serve activities classified under ISIC Rev.4 across four families: trading, retail and point of sale, manufacturing, and services and projects. Odoo ERP, audit and Virtual CFO in Egypt and Saudi Arabia.',
+    // Source of the families and codes: seg-audit audit-engine/app/tenancy/industries.py (the list
+    // the client picks from) and app/analysis/odoo_best_practice.py (family_of, FAMILY_RULES).
+    // Do not add an activity here before the platform has rules for it.
     page: {
       eyebrow: 'Industries',
       title: 'Where the numbers depend on the operation.',
       intro:
-        'Five sectors where MFT implements, audits and reports. In each, the finance answer lives in the operational detail: costing, stock, contracts, compliance.'
+        'We serve activities classified under ISIC Rev.4 across four families: trading, retail and point of sale, manufacturing, and services and projects. They are the same classifications your company picks its activity from in SEG Audit, and each family has an axis that checks its controls in Odoo.'
     },
     labels: {
+      isic: 'ISIC divisions',
+      examples: 'From the classification list',
       challenges: 'What usually goes wrong',
       how: 'How MFT helps',
-      cta: 'Talk about your sector'
+      checks: 'What SEG Audit checks in Odoo',
+      cta: 'Talk about your activity'
     },
     items: [
       {
-        slug: 'manufacturing',
-        name: 'Manufacturing',
-        short: 'True product cost, from bill of materials to landed overhead.',
-        challenges: [
-          'Standard costs that nobody has updated since the bill of materials changed',
-          'Work-in-progress that never reconciles to the ledger',
-          'Scrap, rework and yield losses invisible in the margin report'
-        ],
-        how: [
-          'Odoo Manufacturing with routings, work centres and actual costing',
-          'Inventory valuation and WIP controls tested by internal audit',
-          'Monthly product-margin reporting by line and customer'
-        ]
-      },
-      {
         slug: 'trading',
         name: 'Trading & Distribution',
+        isic: '45, 46',
+        examples: ['Wholesale trade: distributors, wholesale agents and importers', 'Vehicle trade, spare parts and service centres'],
         short: 'Margin by SKU, customer and channel, after discounts, returns and freight.',
         challenges: [
           'Gross margin reported before rebates, returns and logistics',
@@ -648,11 +640,14 @@ module.exports = {
           'Odoo Sales, Purchase and Inventory with landed-cost allocation',
           'Vendor-master, receivables ageing and credit-limit controls',
           'Channel and customer profitability in the monthly pack'
-        ]
+        ],
+        checks: ['Inventory valued automatically with every move', 'Three-way match: purchase order, receipt and bill', 'Freight and customs costs loaded onto inventory']
       },
       {
-        slug: 'food-beverage',
-        name: 'Food & Beverage',
+        slug: 'retail',
+        name: 'Retail & Point of Sale',
+        isic: '47, 56',
+        examples: ['Shops, chains, supermarkets and online stores', 'Restaurants, cafes and catering'],
         short: 'Recipe costing, expiry-driven stock and multi-outlet control.',
         challenges: [
           'Recipe costs drifting with ingredient prices and portion sizes',
@@ -663,37 +658,46 @@ module.exports = {
           'Lot and expiry tracking with recipe (BoM) costing in Odoo',
           'Branch-level P&L with waste and variance reporting',
           'Cash, purchasing and supplier-payment controls audited on site'
-        ]
+        ],
+        checks: ['Inventory valued automatically with every move', 'Three-way match: purchase order, receipt and bill', 'Point-of-sale sessions closed the same day']
       },
       {
-        slug: 'healthcare',
-        name: 'Healthcare',
-        short: 'Revenue cycle, insurer receivables and consumables under control.',
+        slug: 'manufacturing',
+        aliases: ['food-beverage'],
+        name: 'Manufacturing',
+        isic: '10 to 33 (section C)',
+        examples: ['Food products and beverages', 'Chemicals, metals, textiles, furniture and other manufacturing'],
+        short: 'True product cost, from bill of materials to landed overhead.',
         challenges: [
-          'Claims and insurer receivables reconciled months late',
-          'Consumables and pharmacy stock leaking through weak controls',
-          'Doctor, department and service-line profitability unknown'
+          'Standard costs that nobody has updated since the bill of materials changed',
+          'Work-in-progress that never reconciles to the ledger',
+          'Scrap, rework and yield losses invisible in the margin report'
         ],
         how: [
-          'Odoo configured for service-line accounting and insurer billing',
-          'Pharmacy and consumables controls with regular stock audits',
-          'Department and payer profitability reporting'
-        ]
+          'Odoo Manufacturing with routings, work centres and actual costing',
+          'Inventory valuation and WIP controls tested by internal audit',
+          'Monthly product-margin reporting by line and customer'
+        ],
+        checks: ['Inventory valued automatically with every move', 'Active bills of materials for manufactured products', 'Work orders on manufacturing orders', 'A separate work-in-progress account']
       },
       {
-        slug: 'construction',
-        name: 'Construction',
-        short: 'Project accounting, retentions and subcontractor exposure by site.',
+        slug: 'services',
+        aliases: ['construction', 'healthcare'],
+        name: 'Services & Projects',
+        isic: '41 to 43, 55, 58 to 63, 69 to 75, 77 to 82, 85 to 88',
+        examples: ['Building, civil engineering and specialised construction', 'Hospitals, clinics, radiology centres and laboratories'],
+        short: 'Cost per project and per service line, from timesheets to retentions.',
         challenges: [
           'Cost-to-complete and margin per project known only at the end',
           'Retentions, advances and subcontractor certificates tracked in spreadsheets',
-          'Inventory costing methods left unchanged after supplier contracts change'
+          'Claims and insurer receivables reconciled months late'
         ],
         how: [
           'Project-based analytic accounting and budgets in Odoo',
           'Subcontractor, retention and progress-billing controls',
-          'Project cash-flow forecasting and monthly cost-to-complete review'
-        ]
+          'Odoo configured for service-line accounting and insurer billing'
+        ],
+        checks: ['Timesheets on projects', 'Analytic distribution tying income and expenses to each project’s cost']
       }
     ]
   },
@@ -1394,9 +1398,9 @@ module.exports = {
     { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
   ],
   industriesFaq: [
-    { q: 'Which industries does MFT serve?', a: 'Manufacturing, trading and distribution, food and beverage, healthcare and construction, in Egypt and Saudi Arabia. Each sector page lists what usually goes wrong in that sector and how MFT addresses it in Odoo and in the audit programme.' },
-    { q: 'Do you configure Odoo differently per industry?', a: 'Yes. Manufacturing gets routings, work centres and actual costing; trading gets landed costs and credit controls; food and beverage gets lot and expiry tracking with recipe costing; healthcare gets service-line accounting and insurer billing; construction gets project analytic accounting and retentions.' },
-    { q: 'My sector is not listed. Can you still help?', a: 'Usually yes. The five sectors are where MFT has the deepest experience; services companies and groups with mixed activities are onboarded after a scoping call.' }
+    { q: 'Which industries does MFT serve?', a: 'We serve activities classified under ISIC Rev.4 across four families: trading (45 and 46), retail and point of sale (47 and 56), manufacturing (10 to 33), and services and projects, including construction (41 to 43) and healthcare (86), in Egypt and Saudi Arabia. These are the families SEG Audit has Odoo control rules for today.' },
+    { q: 'Do you configure Odoo differently per activity?', a: 'Yes. Manufacturing gets routings, work centres and actual costing; trading gets landed costs and credit controls; retail and restaurants get lot and expiry tracking with recipe costing and branch profitability; services and projects get project analytic accounting, retentions and service-line accounting. SEG Audit checks each family’s controls in a dedicated axis.' },
+    { q: 'My activity is outside the four families. Can you still help?', a: 'SEG Audit’s general checks run on any activity. The activity-controls axis applies to the four families only, and we do not guess your activity from your data: the report states that your activity is outside the rules written today. Implementation and audit scope for any other activity is set on a call.' }
   ],
   aboutFaq: [
     { q: 'Where is MFT based?', a: 'The head office is on Dr. Sayed Abdel Wahed Street in Korba, Heliopolis, Cairo. Saudi engagements are delivered on site and remotely, and US clients are served remotely.' },
