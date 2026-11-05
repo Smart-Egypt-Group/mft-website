@@ -1,4 +1,8 @@
 /  /en/  302  Language=en
 /  /ar/  302
+/ar/services/training/  /ar/services/odoo-erp/  301
+/ar/services/technical-support/  /ar/services/odoo-erp/  301
+/en/services/training/  /en/services/odoo-erp/  301
+/en/services/technical-support/  /en/services/odoo-erp/  301
 /ar/*  /ar/404.html  404
 /en/*  /en/404.html  404

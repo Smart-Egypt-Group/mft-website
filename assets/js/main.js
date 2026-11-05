@@ -52,6 +52,66 @@
     setTimeout(function () { countUp(el); }, 350);
   });
 
+  /* ---------- Reports generated on SEG, live ----------
+     Contract: seg-audit docs/api/public-reports-count.md. Elements [data-reports-live] carry the
+     endpoint (site.config reportsCounter).
+       200 {"reports": N}        fill every [data-reports="count"], show the elements, remember N
+       429                       keep what is shown; wait Retry-After before the next call
+       502 / 503 (any 5xx)       hide: the platform is down, so no number is shown
+       network / CORS failure    keep the last number this visitor saw, else stay hidden
+     Polls every data-reports-poll seconds (30 to 60) while the tab is visible. */
+  (function () {
+    var els = document.querySelectorAll('[data-reports-live]');
+    if (!els.length) return;
+    var api = els[0].getAttribute('data-reports-api') || '';
+    var poll = Math.min(60, Math.max(30, parseInt(els[0].getAttribute('data-reports-poll'), 10) || 45)) * 1000;
+    var built = { reports: parseInt(els[0].getAttribute('data-reports-last'), 10), at: Date.parse(els[0].getAttribute('data-reports-asof') || '') || 0 };
+    var KEY = 'mft-reports';
+    var timer = null, shown = false;
+    function ok(d) { return d && typeof d.reports === 'number' && isFinite(d.reports) && d.reports >= 0 && Math.floor(d.reports) === d.reports; }
+    function read() { try { return JSON.parse(window.localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
+    function write(v) { try { window.localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) { /* storage blocked */ } }
+    function each(fn) { Array.prototype.forEach.call(els, fn); }
+    function show(d) {
+      var txt = String(d.reports).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      Array.prototype.forEach.call(document.querySelectorAll('[data-reports="count"]'), function (el) { el.textContent = txt; });
+      each(function (el) { el.hidden = false; });
+      shown = true;
+    }
+    function hide() { each(function (el) { el.hidden = true; }); shown = false; }
+    function last() {
+      var l = read();
+      return ok(l) && l.at > built.at ? l : ok(built) ? built : null;
+    }
+    function keepLast() { if (!shown) { var l = last(); if (l) show(l); } }
+    function next(ms) { clearTimeout(timer); timer = setTimeout(tick, ms); }
+    function tick() {
+      if (document.hidden) return;   // resumes on visibilitychange
+      fetch(api, { credentials: 'omit', cache: 'no-store' })
+        .then(function (r) {
+          if (r.status === 200) {
+            return r.json().then(function (b) {
+              var d = { reports: b && b.reports, at: Date.now() };
+              if (!ok(d)) throw new Error('bad body');
+              write(d); show(d); next(poll);
+            });
+          }
+          if (r.status === 429) {
+            var wait = parseInt(r.headers.get('Retry-After'), 10);
+            keepLast(); next(Math.max(poll, (isFinite(wait) ? wait : 60) * 1000));
+            return;
+          }
+          if (r.status >= 500) { hide(); next(poll); return; }
+          throw new Error('HTTP ' + r.status);
+        })
+        .catch(function () { keepLast(); next(poll); });
+    }
+    if (!api || !window.fetch) { keepLast(); return; }
+    keepLast();   // last known first, so the number does not flash in
+    tick();
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) next(0); });
+  })();
+
   /* ---------- Campaign attribution ----------
      Ads land here with utm_* in the URL. Carry them, for this tab's session, onto every app
      sign-up link, so the sign-up is credited to the ad and not to the site's own
@@ -82,6 +142,87 @@
     });
   })();
 
+  /* ---------- Founding seats, live ----------
+     The platform's public counter (contract: seg-audit docs/api/founding-applications.md):
+       200 {open:true,  total, left}  open: update every [data-seats] number
+       200 {open:false, total, left}  full: waitlist wording ([data-seats-show="full"])
+       200 {open:false}               offer off: hide [data-seats-hide="off"], show [data-seats-show="off"]
+       anything else / network / CORS failure: keep the last known count, quietly
+     Last known = the last good answer this browser saw (localStorage), else the count rendered
+     from site.config. [data-seats-stale] (the apply page only) then shows its date.
+     The state is published on <html data-seats-state> and as a 'mft:seats' event for apply.js. */
+  (function () {
+    var me = document.querySelector('script[data-seats-api]');
+    if (!me) return;
+    var api = me.getAttribute('data-seats-api');
+    var KEY = 'mft-seats', TTL = 60 * 1000;
+    var built = {
+      open: true,
+      total: parseInt(me.getAttribute('data-seats-total'), 10),
+      left: parseInt(me.getAttribute('data-seats-left'), 10),
+      at: Date.parse(me.getAttribute('data-seats-asof') || '') || 0
+    };
+    function read(store) { try { return JSON.parse(window[store].getItem(KEY) || 'null'); } catch (e) { return null; } }
+    function write(store, v) { try { window[store].setItem(KEY, JSON.stringify(v)); } catch (e) { /* storage blocked */ } }
+    function valid(d) { return d && typeof d.open === 'boolean'; }
+    function counted(d) { return typeof d.total === 'number' && typeof d.left === 'number' && d.total > 0 && d.left >= 0 && d.left <= d.total; }
+
+    function each(sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
+    // Cap (CEO, 5 Nov 2026): the seat total is 50, set in site.config (data-seats-total), and the
+    // platform's `left` (= 50 − applications submitted) is clamped to it. A `total` from the API
+    // that differs from the cap is ignored, so the site never shows 49 (or any other ceiling).
+    var CAP = built.total;
+    function capped(d) {
+      if (!counted(d) || !(CAP > 0)) return d;
+      return { open: d.open, total: CAP, left: Math.max(0, Math.min(d.left, CAP)), at: d.at };
+    }
+    function apply(d, stale) {
+      d = capped(d);
+      var state = !d.open && !counted(d) ? 'off' : !d.open || d.left === 0 ? 'full' : 'open';
+      document.documentElement.setAttribute('data-seats-state', state);
+      if (counted(d)) {
+        var filled = d.total - d.left;
+        each('[data-seats="left"]', function (el) { el.textContent = d.left; });
+        each('[data-seats="total"]', function (el) { el.textContent = d.total; });
+        each('[data-seats="filled"]', function (el) { el.textContent = filled; });
+        each('[data-seats-grid]', function (g) {
+          Array.prototype.forEach.call(g.children, function (c, i) {
+            c.className = i < filled ? 'seat seat-filled' : i === filled ? 'seat seat-next' : 'seat';
+          });
+        });
+      }
+      each('[data-seats-hide]', function (el) { el.hidden = el.getAttribute('data-seats-hide').split(' ').indexOf(state) !== -1; });
+      each('[data-seats-show]', function (el) { el.hidden = el.getAttribute('data-seats-show').split(' ').indexOf(state) === -1; });
+      each('[data-seats-stale]', function (el) {
+        el.hidden = !stale;
+        var at = el.querySelector('[data-seats="asof"]');
+        if (at && stale && d.at) at.textContent = new Date(d.at).toISOString().slice(0, 10);
+      });
+      try { document.dispatchEvent(new CustomEvent('mft:seats', { detail: { state: state, seats: d, stale: !!stale } })); } catch (e) { /* old browser */ }
+    }
+    function fallback() {
+      var last = read('localStorage');
+      apply(valid(last) && last.at > built.at ? last : built, true);
+    }
+
+    var cached = read('sessionStorage');
+    if (valid(cached) && Date.now() - cached.at < TTL) { apply(cached, false); return; }
+    if (!window.fetch) { fallback(); return; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 6000);
+    fetch(api, { credentials: 'omit', cache: 'no-store', signal: ctl ? ctl.signal : undefined })
+      .then(function (r) { if (r.status !== 200) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (d) {
+        if (!valid(d) || (d.open && !counted(d))) throw new Error('bad body');
+        d = { open: d.open, total: d.total, left: d.left, at: Date.now() };
+        write('sessionStorage', d);
+        if (counted(d)) write('localStorage', d);
+        apply(d, false);
+      })
+      .catch(fallback)
+      .then(function () { clearTimeout(timer); });
+  })();
+
   /* ---------- Lead form ---------- */
   var form = document.getElementById('lead-form');
   if (!form) return;
@@ -90,7 +231,7 @@
   var endpoint = form.getAttribute('data-endpoint') || '';
   var mode = form.getAttribute('data-mode') || 'function';
   var SERVICE_LABELS = {
-    'odoo-erp': 'Odoo ERP Implementation', 'internal-audit': 'Internal Audit', 'virtual-cfo': 'Virtual CFO',
+    'odoo-erp': 'Odoo ERP Solutions', 'tax-solutions': 'Innovative Tax Solutions', 'internal-audit': 'Internal Audit', 'virtual-cfo': 'Virtual CFO',
     'financial-consulting': 'Financial Consulting', 'business-analysis': 'Business Analysis',
     'training': 'User Training', 'technical-support': 'Technical Support', 'unsure': 'Not sure yet',
     'partners': 'Partner programme',
@@ -207,6 +348,10 @@
 
     request
       .then(function () {
+        // Delivery not verified (opaque Odoo route): never claim "received"; point to the direct
+        // channels and keep what the visitor typed, so they can copy it into WhatsApp or email.
+        var unverified = status.getAttribute('data-unverified');
+        if (unverified) { setStatus('info', unverified); status.setAttribute('tabindex', '-1'); status.focus(); return; }
         setStatus('ok', status.getAttribute('data-success'));
         form.reset();
         status.focus && status.setAttribute('tabindex', '-1');

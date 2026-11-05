@@ -16,6 +16,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/odoo-erp/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/services/tax-solutions/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/tax-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/tax-solutions/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/ar/services/internal-audit/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/internal-audit/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/internal-audit/"/>
@@ -34,16 +39,6 @@
     <loc>https://www.seg-audit.com/ar/services/business-analysis/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/business-analysis/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/business-analysis/"/>
-  </url>
-  <url>
-    <loc>https://www.seg-audit.com/ar/services/training/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/training/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/training/"/>
-  </url>
-  <url>
-    <loc>https://www.seg-audit.com/ar/services/technical-support/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/technical-support/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/technical-support/"/>
   </url>
   <url>
     <loc>https://www.seg-audit.com/ar/services/claude-team/</loc>
@@ -291,6 +286,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/founding-members/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/founding-members/apply/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/founding-members/apply/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/founding-members/apply/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/"/>
@@ -304,6 +304,11 @@
     <loc>https://www.seg-audit.com/en/services/odoo-erp/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/odoo-erp/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/odoo-erp/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/services/tax-solutions/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/tax-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/tax-solutions/"/>
   </url>
   <url>
     <loc>https://www.seg-audit.com/en/services/internal-audit/</loc>
@@ -324,16 +329,6 @@
     <loc>https://www.seg-audit.com/en/services/business-analysis/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/business-analysis/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/business-analysis/"/>
-  </url>
-  <url>
-    <loc>https://www.seg-audit.com/en/services/training/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/training/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/training/"/>
-  </url>
-  <url>
-    <loc>https://www.seg-audit.com/en/services/technical-support/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/technical-support/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/technical-support/"/>
   </url>
   <url>
     <loc>https://www.seg-audit.com/en/services/claude-team/</loc>
@@ -579,5 +574,10 @@
     <loc>https://www.seg-audit.com/en/founding-members/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/founding-members/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/founding-members/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/en/founding-members/apply/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/founding-members/apply/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/founding-members/apply/"/>
   </url>
 </urlset>
