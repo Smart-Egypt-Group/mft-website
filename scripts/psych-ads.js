@@ -169,7 +169,7 @@ function scarcity(kind) {
   return page(kind, {
     eyebrow: '<b>Standard Enterprise Governance</b> · الأعضاء المؤسِّسون',
     head: `باقي <em>${ar(LEFT)}</em> من ${ar(TOTAL)}.`,
-    sub: `انضمّت ${ar(FILLED)} شركة. ${ar(LEFT)} مقعد بس فاضل بسعر مؤسِّس مدى الحياة.`,
+    sub: `انضمّت ${ar(FILLED)} شركة. ${ar(LEFT)} مقعد بس فاضل. سعر المؤسِّس: 50% مدى الحياة.`,
     visual: `<div class="seats">${seats}</div><div class="legend"><span><i class="f"></i>انضمّت</span><span><i class="nx"></i>مقعدك</span><span><i></i>متاح</span></div>`,
     css: `.seats{position:absolute;inset:0 0 12% 0;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(5,1fr);gap:1.6cqmin;place-items:center;direction:rtl}
       .seats i,.legend i{display:block;width:min(7.4cqw,14cqh);aspect-ratio:1;border-radius:50%;border:2px solid rgba(255,255,255,.45)}

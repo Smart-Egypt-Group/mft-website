@@ -815,44 +815,44 @@ module.exports = {
   // PENDING (Ahmed): the "Founding terms" benefit and the "after 50" FAQ are commercial commitments;
   // approve or remove before merge.
   founding: {
-    // Real scarcity, no counter (launch lead, 3 Nov 2026): only 50 seats at a founder price for life.
+    // Real scarcity, no counter (launch lead, 3 Nov 2026): only 50 seats. Founder price: 50% off for life.
     // Counter copy lives in founding.counter below and shows only when site.config → founding.showCount is true.
-    title: 'Standard Enterprise Governance (SEG) Founding Members | Only {total} seats at a founder price for life',
-    description: 'The Standard Enterprise Governance (SEG) Founding Members programme: only {total} seats, at a founder price for life. Start with a free check of your company’s trial balance at app.seg-audit.com.',
-    ogAlt: 'Founding Members programme: only {total} seats at a founder price for life',
-    bar: 'SEG Founding Members: only {total} seats at a founder price for life. Learn more',
+    title: 'Standard Enterprise Governance (SEG) Founding Members | Only {total} seats. Founder price: 50% off for life',
+    description: 'The Standard Enterprise Governance (SEG) Founding Members programme: only {total} seats. Founder price: 50% off for life, at every renewal. Start with a free check of your company’s trial balance at app.seg-audit.com.',
+    ogAlt: 'Founding Members programme: only {total} seats. Founder price: 50% off for life',
+    bar: 'SEG Founding Members: only {total} seats. Founder price: 50% off for life. Learn more',
     page: { eyebrow: 'Founding Members' },
     hero: {
-      headline: 'SEG {accent}Founding Members{/accent}: only {total} seats at a founder price for life',
-      subhead: 'We are opening SEG, the governance platform from MFT, with its continuous audit product SEG Audit, to {total} companies as Founding Members, at a founder price that stays with you for life. When the seats are taken, the programme closes.',
+      headline: 'SEG {accent}Founding Members{/accent}: only {total} seats. Founder price: 50% off for life',
+      subhead: 'We are opening SEG, the governance platform from MFT, with its continuous audit product SEG Audit, to {total} companies as Founding Members. Founder price: 50% off for life, applied at every renewal. When the seats are taken, the programme closes.',
       cta: 'Claim your seat',
       secondary: 'How to join',
       assurance: ['Read-only access to your system', 'Evidence behind every finding', 'Reports in Arabic and English'],
-      meterCaption: 'seats only, at a founder price for life',
+      meterCaption: 'seats only. Founder price: 50% off for life',
       legend: { next: 'Your seat', open: 'Founding seat' }
     },
     homeBand: {
-      title: 'Founding Members: only {total} seats at a founder price for life',
+      title: 'Founding Members: only {total} seats. Founder price: 50% off for life',
       body: 'Founding seats on SEG are capped at {total} and will not reopen. Start with a free check of your company’s trial balance that flags its risk points in minutes.',
       more: 'Programme details'
     },
     final: {
-      title: 'Only {total} seats, at a founder price for life.',
+      title: 'Only {total} seats. Founder price: 50% off for life.',
       body: 'Start with a free trial-balance check, and claim your seat before the count closes.'
     },
     // The real counter, later: replaces the matching copy above only when showCount is true and
     // founding.filled holds a confirmed subscription count. Tokens: {filled}, {left}, {total}.
     counter: {
       title: 'Standard Enterprise Governance (SEG) Founding Members | {left} of {total} seats left',
-      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats at a founder price for life; {filled} companies in, {left} left.',
+      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats, founder price: 50% off for life; {filled} companies in, {left} left.',
       ogAlt: '{left} of {total} seats left: Standard Enterprise Governance (SEG) Founding Members',
       bar: 'SEG Founding Members: {left} of {total} seats left. Learn more',
       'hero.headline': '{left} of {total} seats left: Standard Enterprise Governance (SEG) {accent}Founding Members{/accent}',
-      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} companies have joined the Founding Members; {left} seats remain at a founder price for life.',
+      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} companies have joined the Founding Members; {left} seats remain. Founder price: 50% off for life.',
       'hero.meterCaption': 'seats left of {total}',
       'hero.legend.filled': '{filled} companies joined',
       'homeBand.title': 'Founding Members: {left} of {total} seats left',
-      'homeBand.body': '{filled} companies have joined SEG. Founding seats are capped at {total}, at a founder price for life, and will not reopen.',
+      'homeBand.body': '{filled} companies have joined SEG. Founding seats are capped at {total} and will not reopen. Founder price: 50% off for life.',
       'final.title': '{left} of {total} seats left.',
       'final.body': '{filled} companies joined before you. Claim your seat before the count closes.'
     },
@@ -877,7 +877,7 @@ module.exports = {
       items: [
         { title: 'Onboarding with the MFT team', body: 'We connect your system read-only and walk through your first trial-balance check with you in one session, not a manual you read alone.' },
         { title: 'A direct line to the product team', body: 'Your feedback goes straight to the people building the platform, and you have a say in what we build next.' },
-        { title: 'A founder price for life', body: 'Your founding price stays with you for as long as your subscription runs, and is not offered once the {total} seats are filled.' },
+        { title: 'Founder price: 50% off for life', body: '50% off any plan, monthly or annual, at every renewal for as long as your subscription renews. Not offered once the {total} seats are filled.' },
         { title: 'The Founding Member title', body: 'Your company listed among the Founding Members, only with your written consent.' }
       ]
     },
@@ -893,7 +893,7 @@ module.exports = {
     faq: [
       { q: 'Why only {total} seats?', a: 'Every Founding Member works directly with the MFT team on setup and follow-up, and that does not stretch beyond {total} companies in the first phase.' },
       { q: 'What happens once the {total} seats are filled?', a: 'The programme closes. The platform stays open for sign-up, without the founder price.' },
-      { q: 'What does “a founder price for life” mean?', a: 'The price you join at as a Founding Member stays with you for as long as your subscription runs, and is not offered once the seats are taken.' },
+      { q: 'What does “Founder price: 50% off for life” mean?', a: '50% off any plan you choose, monthly or annual, applied at every renewal for as long as your subscription renews; you can cancel by yourself at any time. It is not offered once the seats are taken.' },
       { q: 'Can the platform change my data?', a: 'No. It reads only. The Odoo connection is read-only and the platform writes nothing to your system.' },
       { q: 'We are not on Odoo. Can we join?', a: 'Yes. Send your last closed month as a trial balance or spreadsheet and we work from that with you.' }
     ],
