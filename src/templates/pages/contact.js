@@ -1,10 +1,11 @@
-const { t, esc, plain } = require('../html');
+const { t, esc, plain, leadDirect } = require('../html');
 const { pageHeader, faqBlock, faqSchema, seeAlso } = require('./services');
 
 module.exports = function contact(ctx) {
   const C = ctx.c.contact;
   const F = C.form;
   const cfg = ctx.config;
+  const LD = leadDirect(ctx);
   const services = ctx.c.services.items
     .map((s) => `<option value="${esc(s.slug)}">${esc(plain(s.name))}</option>`)
     .join('');
@@ -23,7 +24,8 @@ module.exports = function contact(ctx) {
     <form class="lead-form card" id="lead-form" method="post" action="${esc(cfg.formEndpoint || '#')}" novalidate
           data-endpoint="${esc(cfg.formEndpoint || '')}" data-mode="${esc(cfg.formMode || 'function')}" data-lang="${ctx.lang}" aria-labelledby="form-title">
       <h2 id="form-title">${t(F.heading)}</h2>
-      <p class="form-status" role="status" aria-live="polite" data-success="${esc(F.success)}" data-error="${esc(F.error)}" data-offline="${esc(F.offline)}" data-sending="${esc(F.sending)}"></p>
+      ${LD.block}
+      <p class="form-status" role="status" aria-live="polite"${LD.attr} data-success="${esc(F.success)}" data-error="${esc(F.error)}" data-offline="${esc(F.offline)}" data-sending="${esc(F.sending)}"></p>
 
       <div class="field-row">
         <div class="field">

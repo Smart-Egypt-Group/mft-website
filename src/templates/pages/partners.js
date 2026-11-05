@@ -2,7 +2,7 @@
 // the firm, tracks, levels, enablement), the activity packages (control rules per Odoo activity
 // family), and an application form that lands in Odoo CRM as "Partner application: …".
 // Copy: content/<lang>.js → partners. Level figures left null render as `levels.pending`.
-const { t, esc, plain, phTag } = require('../html');
+const { t, esc, plain, phTag, leadDirect } = require('../html');
 const { pageHeader, seeAlso } = require('./services');
 
 const select = (id, name, label, options) =>
@@ -15,6 +15,7 @@ module.exports = function partners(ctx) {
   const F = P.form;
   const C = ctx.c.contact.form;
   const cfg = ctx.config;
+  const LD = leadDirect(ctx);
   const countries = C.countries.map((o) => `<option value="${esc(o.value)}">${esc(o.label)}</option>`).join('');
 
   const value = `<section class="section" aria-labelledby="pt-value">
@@ -107,7 +108,8 @@ module.exports = function partners(ctx) {
     <form class="lead-form card" id="lead-form" method="post" action="${esc(cfg.formEndpoint || '#')}" novalidate
           data-endpoint="${esc(cfg.formEndpoint || '')}" data-mode="${esc(cfg.formMode || 'function')}" data-lang="${ctx.lang}" data-kind="Partner application" aria-labelledby="form-title">
       <h2 id="form-title">${t(F.heading)}</h2>
-      <p class="form-status" role="status" aria-live="polite" data-success="${esc(plain(F.success))}" data-error="${esc(C.error)}" data-offline="${esc(C.offline)}" data-sending="${esc(C.sending)}"></p>
+      ${LD.block}
+      <p class="form-status" role="status" aria-live="polite"${LD.attr} data-success="${esc(plain(F.success))}" data-error="${esc(C.error)}" data-offline="${esc(C.offline)}" data-sending="${esc(C.sending)}"></p>
       <div class="field-row">
         ${select('p-type', 'partner_type', F.type, F.typeOptions)}
         ${select('p-clients', 'odoo_clients', F.clients, F.clientOptions)}

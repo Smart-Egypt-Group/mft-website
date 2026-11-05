@@ -1,4 +1,4 @@
-const { t, esc, plain } = require('../html');
+const { t, esc, plain, leadDirect } = require('../html');
 const { pageHeader, seeAlso } = require('./services');
 
 const select = (id, name, label, options) =>
@@ -11,6 +11,7 @@ module.exports = function quote(ctx) {
   const F = Q.form;
   const C = ctx.c.contact.form;
   const cfg = ctx.config;
+  const LD = leadDirect(ctx);
   const countries = C.countries.map((o) => `<option value="${esc(o.value)}">${esc(o.label)}</option>`).join('');
 
   const body = `${pageHeader(ctx, Q.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: Q.page.eyebrow }])}
@@ -19,7 +20,8 @@ module.exports = function quote(ctx) {
     <form class="lead-form card" id="lead-form" method="post" action="${esc(cfg.formEndpoint || '#')}" novalidate
           data-endpoint="${esc(cfg.formEndpoint || '')}" data-mode="${esc(cfg.formMode || 'function')}" data-lang="${ctx.lang}" data-kind="Quote request" aria-labelledby="form-title">
       <h2 id="form-title">${t(F.heading)}</h2>
-      <p class="form-status" role="status" aria-live="polite" data-success="${esc(plain(F.success))}" data-error="${esc(C.error)}" data-offline="${esc(C.offline)}" data-sending="${esc(C.sending)}"></p>
+      ${LD.block}
+      <p class="form-status" role="status" aria-live="polite"${LD.attr} data-success="${esc(plain(F.success))}" data-error="${esc(C.error)}" data-offline="${esc(C.offline)}" data-sending="${esc(C.sending)}"></p>
       <div class="field-row">
         ${select('q-agents', 'agents', F.agents, F.agentOptions)}
         ${select('q-erp', 'erp', F.erp, F.erpOptions)}

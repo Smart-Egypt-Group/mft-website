@@ -207,6 +207,10 @@
 
     request
       .then(function () {
+        // Delivery not verified (opaque Odoo route): never claim "received"; point to the direct
+        // channels and keep what the visitor typed, so they can copy it into WhatsApp or email.
+        var unverified = status.getAttribute('data-unverified');
+        if (unverified) { setStatus('info', unverified); status.setAttribute('tabindex', '-1'); status.focus(); return; }
         setStatus('ok', status.getAttribute('data-success'));
         form.reset();
         status.focus && status.setAttribute('tabindex', '-1');

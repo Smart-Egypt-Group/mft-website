@@ -786,7 +786,15 @@ module.exports = {
       offline: 'Online submission is not available right now. Please email or WhatsApp us using the details on this page.',
       required: 'Required',
       invalidEmail: 'Enter a valid email address.',
-      honeypotLabel: 'Leave this field empty'
+      honeypotLabel: 'Leave this field empty',
+      // Temporary safeguard (5 Nov 2026): see the Arabic file.
+      direct: {
+        title: 'The surest way to reach us right now',
+        body: 'Message us directly on WhatsApp or by email, and we reply within one business day.',
+        whatsapp: 'WhatsApp',
+        email: 'Email'
+      },
+      unverified: 'We have noted your details. To make sure your request reaches us, contact us directly on WhatsApp {wa} or at {email}.'
     },
     details: {
       title: 'Direct contact',
