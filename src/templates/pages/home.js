@@ -2,6 +2,7 @@ const { t, esc, url, btn, sectionHead, phTag, pad2, fm, signupUrl } = require('.
 const { faqBlock, faqSchema, seeAlso, reviewSchema } = require('./services');
 const { latestBlock } = require('./blog');
 const { heroA, heroB, heroC } = require('../partials/hero');
+const { isLive, liveAttrs, countSpan } = require('../live-reports');
 
 module.exports = function home(ctx, opts = {}) {
   const { c, config } = ctx;
@@ -34,6 +35,7 @@ module.exports = function home(ctx, opts = {}) {
 
   const facts = H.proof.facts
     .map((f, i) => {
+      if (isLive(f)) return `<li class="fact reveal" style="--i:${i}"${liveAttrs(ctx)}><span class="fact-value lat">${countSpan(ctx)}</span><span class="fact-label">${t(f.label)}</span></li>`;
       const m = String(f.value).match(/^(\d+)(\+?)$/);
       const val = m ? `<span class="count" data-count="${m[1]}">${m[1]}</span>${m[2]}` : esc(f.value);
       return `<li class="fact reveal" style="--i:${i}"><span class="fact-value lat">${val}</span><span class="fact-label">${t(f.label)}</span></li>`;

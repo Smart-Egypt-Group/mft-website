@@ -561,6 +561,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .dash-list li::before { background: var(--line-strong); }
 .industry-cols h3 { margin-bottom: 14px; }
 .industry .section-head { margin-bottom: 28px; }
+.industry-isic, .industry-examples { margin: 6px 0 0; color: var(--ink-2); font-size: .95rem; }
+.industry-codes { font-weight: 600; }
+.industry-checks { margin-top: 28px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.industry-checks h3 { margin-bottom: 12px; }
+.anchor-alias { display: block; position: relative; top: -96px; visibility: hidden; }
 
 /* ---------- MFT Intelligence ---------- */
 .teaser { border-top: 1px solid var(--line); }
@@ -889,3 +894,15 @@ button, input, select, textarea { font: inherit; color: inherit; }
   li > a, .breadcrumb a { display: inline-block; min-height: 24px; padding-block: 3px; }
   .breadcrumb ol { row-gap: 4px; }
 }
+
+/* Live counters: an element marked hidden stays hidden whatever its display rule. */
+[data-reports-live][hidden] { display: none !important; }
+/* Founder certificate card (About). */
+.cert-heading { margin-bottom: 14px; }
+.cert-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.cert-card { border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; background: #fff; }
+.cert-name { font-size: 1.05rem; line-height: 1.5; margin-bottom: 12px; }
+.cert-meta .deflist-row { padding: 8px 0; }
+.cert-meta a { text-decoration: underline; text-underline-offset: 3px; }
+.cert-card .lat { white-space: normal; }
+@media (max-width: 599px) { .cert-meta .deflist-row { grid-template-columns: 1fr; gap: 4px; } }

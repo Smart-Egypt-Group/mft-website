@@ -79,6 +79,22 @@ module.exports = {
     signup: { ar: 'https://app.seg-audit.com/ar/signup', en: 'https://app.seg-audit.com/en/signup' }
   },
 
+  // Reports counter (CEO, 5 Nov 2026): replaces the fixed «+500 تقرير». The platform's real count
+  // of report PDFs rendered and delivered. Contract: seg-audit docs/api/public-reports-count.md.
+  //   GET api, no sign-in; CORS only for origins in the portal's SEG_PUBLIC_FORM_ORIGINS.
+  //   200 {"reports": N}      show N (whole number, >= 0); polled every pollSeconds while visible
+  //   429 {"reports": null}   keep the last number shown (Retry-After respected)
+  //   502/503 {"reports":null} hide the counter: never a guessed number
+  //   unreachable / CORS      keep the last number this visitor saw, else stay hidden
+  //   lastKnown / asOf        optional confirmed total printed in the page before the first
+  //                           answer; null = nothing is printed and the item starts hidden.
+  reportsCounter: {
+    api: 'https://app.seg-audit.com/api/public/reports-count',
+    pollSeconds: 45,
+    lastKnown: null,
+    asOf: null
+  },
+
   // PENDING (Ahmed): package structure/prices. Section is fully written in
   // home.pricing; flip to true once the packages are approved.
   showPricingSlot: false,

@@ -52,6 +52,66 @@
     setTimeout(function () { countUp(el); }, 350);
   });
 
+  /* ---------- Reports generated on SEG, live ----------
+     Contract: seg-audit docs/api/public-reports-count.md. Elements [data-reports-live] carry the
+     endpoint (site.config reportsCounter).
+       200 {"reports": N}        fill every [data-reports="count"], show the elements, remember N
+       429                       keep what is shown; wait Retry-After before the next call
+       502 / 503 (any 5xx)       hide: the platform is down, so no number is shown
+       network / CORS failure    keep the last number this visitor saw, else stay hidden
+     Polls every data-reports-poll seconds (30 to 60) while the tab is visible. */
+  (function () {
+    var els = document.querySelectorAll('[data-reports-live]');
+    if (!els.length) return;
+    var api = els[0].getAttribute('data-reports-api') || '';
+    var poll = Math.min(60, Math.max(30, parseInt(els[0].getAttribute('data-reports-poll'), 10) || 45)) * 1000;
+    var built = { reports: parseInt(els[0].getAttribute('data-reports-last'), 10), at: Date.parse(els[0].getAttribute('data-reports-asof') || '') || 0 };
+    var KEY = 'mft-reports';
+    var timer = null, shown = false;
+    function ok(d) { return d && typeof d.reports === 'number' && isFinite(d.reports) && d.reports >= 0 && Math.floor(d.reports) === d.reports; }
+    function read() { try { return JSON.parse(window.localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
+    function write(v) { try { window.localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) { /* storage blocked */ } }
+    function each(fn) { Array.prototype.forEach.call(els, fn); }
+    function show(d) {
+      var txt = String(d.reports).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      Array.prototype.forEach.call(document.querySelectorAll('[data-reports="count"]'), function (el) { el.textContent = txt; });
+      each(function (el) { el.hidden = false; });
+      shown = true;
+    }
+    function hide() { each(function (el) { el.hidden = true; }); shown = false; }
+    function last() {
+      var l = read();
+      return ok(l) && l.at > built.at ? l : ok(built) ? built : null;
+    }
+    function keepLast() { if (!shown) { var l = last(); if (l) show(l); } }
+    function next(ms) { clearTimeout(timer); timer = setTimeout(tick, ms); }
+    function tick() {
+      if (document.hidden) return;   // resumes on visibilitychange
+      fetch(api, { credentials: 'omit', cache: 'no-store' })
+        .then(function (r) {
+          if (r.status === 200) {
+            return r.json().then(function (b) {
+              var d = { reports: b && b.reports, at: Date.now() };
+              if (!ok(d)) throw new Error('bad body');
+              write(d); show(d); next(poll);
+            });
+          }
+          if (r.status === 429) {
+            var wait = parseInt(r.headers.get('Retry-After'), 10);
+            keepLast(); next(Math.max(poll, (isFinite(wait) ? wait : 60) * 1000));
+            return;
+          }
+          if (r.status >= 500) { hide(); next(poll); return; }
+          throw new Error('HTTP ' + r.status);
+        })
+        .catch(function () { keepLast(); next(poll); });
+    }
+    if (!api || !window.fetch) { keepLast(); return; }
+    keepLast();   // last known first, so the number does not flash in
+    tick();
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) next(0); });
+  })();
+
   /* ---------- Campaign attribution ----------
      Ads land here with utm_* in the URL. Carry them, for this tab's session, onto every app
      sign-up link, so the sign-up is credited to the ad and not to the site's own

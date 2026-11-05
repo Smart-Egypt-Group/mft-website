@@ -209,7 +209,7 @@ function build() {
     `- Full text of every article with short answers and FAQs: ${config.siteUrl}/llms-full.txt`,
     '',
     '## Facts',
-    '- CPA-led team; Odoo Certified Partner; ISO-aligned internal controls; 500+ reports delivered; Egypt, Saudi Arabia, US.',
+    '- CPA-led team (chartered accountant registration no. 57986); Odoo Certified Partner; Egypt and Saudi Arabia, expanding to the US.',
     '- Agents draft only; every action needs a named human approval (two above ISA 320 materiality); corrections by reversal, never deletion.',
     '- AI governance policy enforced in code; run log retained 7 years (ISA 230); client data stays on the client’s own ERP.',
     '',
