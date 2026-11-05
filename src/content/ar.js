@@ -808,7 +808,7 @@ module.exports = {
   // باقات الموديولات الجاهزة وطرحها على Odoo App Store لم تُبنَ بعد: معلَّمة «قريبًا».
   // العمولة وهامش إعادة البيع لم يُحسما: «تُحدَّد في اتفاقية الشراكة»، بلا أرقام.
   // الأعضاء المؤسِّسون (إطلاق Standard Enterprise Governance (SEG)، نوفمبر 2026). عدد المقاعد من site.config → founding:
-  // {left} المتبقي، {filled} المنضم، {total} الإجمالي. الأرقام لا تُكتب هنا يدويًا.
+  // {left} المتبقي، {filled} المحجوز (طلبات الانضمام المقدَّمة)، {total} الإجمالي. الأرقام لا تُكتب هنا يدويًا.
   // PENDING (أحمد): بند «شروط التأسيس» في gets.items وسؤال «بعد اكتمال الخمسين» التزامان تجاريان؛
   // يُعتمدان أو يُحذفان قبل الدمج.
   founding: {
@@ -838,20 +838,21 @@ module.exports = {
       body: 'ابدأ بفحص مجاني لميزان شركتك، واحجز مقعدك قبل أن يكتمل العدد.'
     },
     // العدّاد الحقيقي، لاحقًا: يُستخدم بدل النصوص المقابلة أعلاه فقط عند showCount = true وبعدد
-    // اشتراكات مؤكَّد في founding.filled. الرموز: {filled} المنضمون، {left} المتبقي، {total} الإجمالي.
+    // تحسبه المنصّة: المتبقي = 50 − عدد طلبات الانضمام المقدَّمة (قرار الـCEO، 5 نوفمبر 2026).
+    // لذلك {filled} «محجوز» لا «انضمّ»: الطلب ليس اشتراكًا مؤكَّدًا. {left} المتبقي، {total} السقف (50).
     counter: {
       title: 'الأعضاء المؤسِّسون في Standard Enterprise Governance (SEG) | باقي {left} من {total} مقعدًا',
-      description: 'برنامج الأعضاء المؤسِّسين في Standard Enterprise Governance (SEG): {total} مقعدًا، سعر المؤسِّس: {lat}50%{/lat} مدى الحياة، انضمت منها {filled} شركة، وباقي {left}.',
+      description: 'برنامج الأعضاء المؤسِّسين في Standard Enterprise Governance (SEG): {total} مقعدًا، سعر المؤسِّس: {lat}50%{/lat} مدى الحياة، حُجز منها {filled} وباقي {left}.',
       ogAlt: 'باقي {left} من {total}: الأعضاء المؤسِّسون في Standard Enterprise Governance (SEG)',
       bar: 'الأعضاء المؤسِّسون في {lat}SEG{/lat}: باقي {lat}{left}{/lat} من {lat}{total}{/lat} مقعدًا. اعرف أكثر',
       'hero.headline': 'باقي {lat}{left}{/lat} من {lat}{total}{/lat}: {accent}الأعضاء المؤسِّسون{/accent} في {lat}Standard Enterprise Governance (SEG){/lat}',
-      'hero.subhead': 'منصة {lat}SEG{/lat} للحوكمة من {lat}MFT{/lat}، ومعها منتج المراجعة المستمرة {lat}SEG Audit{/lat}. انضمت {lat}{filled}{/lat} شركة إلى الأعضاء المؤسِّسين، وبقي {lat}{left}{/lat} مقعدًا. سعر المؤسِّس: {lat}50%{/lat} مدى الحياة.',
+      'hero.subhead': 'منصة {lat}SEG{/lat} للحوكمة من {lat}MFT{/lat}، ومعها منتج المراجعة المستمرة {lat}SEG Audit{/lat}. المقاعد المحجوزة حتى الآن {lat}{filled}{/lat} من {lat}{total}{/lat}، وبقي {lat}{left}{/lat} مقعدًا. سعر المؤسِّس: {lat}50%{/lat} مدى الحياة.',
       'hero.meterCaption': 'مقعدًا متبقيًا من {lat}{total}{/lat}',
-      'hero.legend.filled': '{lat}{filled}{/lat} شركة انضمت',
+      'hero.legend.filled': 'محجوز: {lat}{filled}{/lat}',
       'homeBand.title': 'الأعضاء المؤسِّسون: باقي {lat}{left}{/lat} من {lat}{total}{/lat} مقعدًا',
-      'homeBand.body': 'انضمت {lat}{filled}{/lat} شركة إلى {lat}SEG{/lat}. المقاعد التأسيسية محدودة بـ{lat}{total}{/lat} ولا يُعاد فتحها. سعر المؤسِّس: {lat}50%{/lat} مدى الحياة.',
+      'homeBand.body': 'المقاعد المحجوزة حتى الآن {lat}{filled}{/lat} من {lat}{total}{/lat}. المقاعد التأسيسية محدودة بـ{lat}{total}{/lat} ولا يُعاد فتحها. سعر المؤسِّس: {lat}50%{/lat} مدى الحياة.',
       'final.title': 'باقي {lat}{left}{/lat} مقعدًا من {lat}{total}{/lat}.',
-      'final.body': 'انضمت {lat}{filled}{/lat} شركة قبلك. احجز مقعدك قبل أن يكتمل العدد.'
+      'final.body': 'كل طلب انضمام يُحتسب من المقاعد المتبقية. احجز مقعدك قبل أن يكتمل العدد.'
     },
     // الطُعم (قرار الـCEO، 3 نوفمبر 2026): «مؤشرات الميزان فقط»، لا تقرير مراجعة كامل.
     check: {

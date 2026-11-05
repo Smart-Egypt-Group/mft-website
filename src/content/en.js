@@ -811,7 +811,7 @@ module.exports = {
   // Ready-made module packages and their Odoo App Store listing are not built yet: marked "soon".
   // Commission and resale margin are not decided: "set in the partner agreement", no figures.
   // Founding Members (Standard Enterprise Governance (SEG) launch, November 2026). Seat numbers come from site.config → founding:
-  // {left} remaining, {filled} joined, {total} seats. Never type the numbers here.
+  // {left} remaining, {filled} reserved (applications submitted), {total} seats. Never type the numbers here.
   // PENDING (Ahmed): the "Founding terms" benefit and the "after 50" FAQ are commercial commitments;
   // approve or remove before merge.
   founding: {
@@ -841,20 +841,21 @@ module.exports = {
       body: 'Start with a free trial-balance check, and claim your seat before the count closes.'
     },
     // The real counter, later: replaces the matching copy above only when showCount is true and
-    // founding.filled holds a confirmed subscription count. Tokens: {filled}, {left}, {total}.
+    // The platform computes it: left = 50 − applications submitted (CEO, 5 Nov 2026). So {filled}
+    // reads «reserved», not «joined»: an application is not a confirmed subscription. {total} is the cap (50).
     counter: {
       title: 'Standard Enterprise Governance (SEG) Founding Members | {left} of {total} seats left',
-      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats, founder price: 50% off for life; {filled} companies in, {left} left.',
+      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats, founder price: 50% off for life; {filled} reserved, {left} left.',
       ogAlt: '{left} of {total} seats left: Standard Enterprise Governance (SEG) Founding Members',
       bar: 'SEG Founding Members: {left} of {total} seats left. Learn more',
       'hero.headline': '{left} of {total} seats left: Standard Enterprise Governance (SEG) {accent}Founding Members{/accent}',
-      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} companies have joined the Founding Members; {left} seats remain. Founder price: 50% off for life.',
+      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} of {total} seats reserved so far; {left} remain. Founder price: 50% off for life.',
       'hero.meterCaption': 'seats left of {total}',
-      'hero.legend.filled': '{filled} companies joined',
+      'hero.legend.filled': 'Reserved: {filled}',
       'homeBand.title': 'Founding Members: {left} of {total} seats left',
-      'homeBand.body': '{filled} companies have joined SEG. Founding seats are capped at {total} and will not reopen. Founder price: 50% off for life.',
+      'homeBand.body': '{filled} of {total} founding seats reserved so far. Founding seats are capped at {total} and will not reopen. Founder price: 50% off for life.',
       'final.title': '{left} of {total} seats left.',
-      'final.body': '{filled} companies joined before you. Claim your seat before the count closes.'
+      'final.body': 'Every application counts against the seats left. Claim your seat before the count closes.'
     },
     // The lead magnet (CEO, 3 Nov 2026): trial-balance indicators only, not a full audit report.
     check: {

@@ -64,8 +64,11 @@ module.exports = {
   },
 
   // Founding Members launch of the platform, Standard Enterprise Governance (SEG): 50 seats, founder price: 50% off for life. Public counter ON
-  // (CEO, 3 Nov 2026): 17 confirmed founding members on the SEG platform as of 2026-11-03.
-  // To update: set `filled` to the confirmed count and `asOf` to the date; `showCount: false` hides it.
+  // (CEO, 3 Nov 2026). Live count (CEO, 5 Nov 2026): the platform computes left = 50 - applications
+  // submitted, and the site shows that number from api.seats; `total` (50) is the cap and the API's
+  // own total is ignored. `filled` / `asOf` are only the fallback shown when the endpoint is
+  // unreachable (17 as of 2026-11-03): update them to the last known applications count.
+  // `showCount: false` hides the counter.
   // With the counter on, the page, header bar, home band, seat meter and titles switch to the
   // counter copy in content/<lang>.js → founding.counter,
   // and the generators (launch-images.js, launch-concepts.js) draw the filled seats.

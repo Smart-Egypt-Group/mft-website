@@ -92,7 +92,7 @@ const T = {
     ba: { before: 'Before', after: 'After', head: 'From books no one sees to a report you see in full.' },
     ns: { eb: 'STANDARD ENTERPRISE GOVERNANCE · ZERO GUESSWORK', head: 'A number with no source never reaches your report.', sub: 'Every number in an SEG report links to its source in your books.', tag: 'No source', note: 'Illustrative example' },
     hemi: FM.showCount
-      ? { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', title: `${LEFT} of ${FM.total} left · ${FILLED} companies joined`, t1: `${LEFT} of ${FM.total} left`, t2: `${FILLED} companies joined`, sub: 'Claim your seat before the count closes.', pill: 'Claim your seat  ·  app.seg-audit.com' }
+      ? { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', title: `${LEFT} of ${FM.total} left · ${FILLED} seats reserved`, t1: `${LEFT} of ${FM.total} left`, t2: `${FILLED} seats reserved`, sub: 'Claim your seat before the count closes.', pill: 'Claim your seat  ·  app.seg-audit.com' }
       : { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', title: `Only ${FM.total} seats · Founder price: 50% off for life`, t1: `Only ${FM.total} seats`, t2: 'Founder price: 50% off for life', sub: 'Start with a free check of your company’s trial balance.', pill: 'Claim your seat  ·  app.seg-audit.com' },
     car: {
       cover: { l1: 'mistakes in your books', l2: "you won't notice", sub: 'And every one shows in your trial balance.', swipe: 'Swipe  →' },

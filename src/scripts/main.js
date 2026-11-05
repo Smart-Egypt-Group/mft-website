@@ -108,7 +108,16 @@
     function counted(d) { return typeof d.total === 'number' && typeof d.left === 'number' && d.total > 0 && d.left >= 0 && d.left <= d.total; }
 
     function each(sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
+    // Cap (CEO, 5 Nov 2026): the seat total is 50, set in site.config (data-seats-total), and the
+    // platform's `left` (= 50 − applications submitted) is clamped to it. A `total` from the API
+    // that differs from the cap is ignored, so the site never shows 49 (or any other ceiling).
+    var CAP = built.total;
+    function capped(d) {
+      if (!counted(d) || !(CAP > 0)) return d;
+      return { open: d.open, total: CAP, left: Math.max(0, Math.min(d.left, CAP)), at: d.at };
+    }
     function apply(d, stale) {
+      d = capped(d);
       var state = !d.open && !counted(d) ? 'off' : !d.open || d.left === 0 ? 'full' : 'open';
       document.documentElement.setAttribute('data-seats-state', state);
       if (counted(d)) {
