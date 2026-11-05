@@ -86,6 +86,7 @@ function index(ctx) {
       (s, i) => `<li class="card service-card">
       <span class="num lat" aria-hidden="true">${pad2(i + 1)}</span>
       <h2><a href="${url(ctx, `services/${s.slug}/`)}">${t(s.name)}</a></h2>
+      ${s.cardStat ? `<p class="card-stat"><span class="card-stat-value lat">${esc(s.cardStat.value)}</span><span class="card-stat-label">${t(s.cardStat.label)}</span></p>` : ''}
       <p>${t(s.short)}</p>
       <p class="card-more"><a class="btn btn-link" href="${url(ctx, `services/${s.slug}/`)}" aria-label="${esc(plain(ctx.c.ui.learnMore))}: ${esc(plain(s.name))}">${t(ctx.c.ui.learnMore)}</a></p>
     </li>`
@@ -98,6 +99,33 @@ function index(ctx) {
 ${seeAlso(ctx, [{ label: ctx.c.industries.page.eyebrow, href: 'industries/' }, { label: ctx.c.intelligence.page.eyebrow, href: 'intelligence/' }, ...ctx.c.locations.items.map((x) => ({ label: x.name, href: `${x.slug}/` }))])}
 ${ctaBand(ctx)}`;
   return { title: S.title, description: S.description, body, bodyClass: 'page-services' };
+}
+
+// A merged service (odoo-erp): one card per track, each with its own anchor so other pages and
+// the legacy redirects can point at it. A featured track is set apart.
+function tracks(ctx, item, L) {
+  const nav = item.tracks.map((x) => `<li><a href="#${esc(x.id)}">${t(x.title)}</a></li>`).join('');
+  const cards = item.tracks
+    .map((x) => `<section class="track-card${x.featured ? ' is-featured' : ''}" id="${esc(x.id)}" aria-labelledby="${esc(x.id)}-title">
+        <h3 id="${esc(x.id)}-title">${x.stat ? `<span class="track-stat lat">${esc(x.stat)}</span>` : ''}${t(x.title)}</h3>
+        <p>${t(x.body)}</p>
+        ${x.items.length ? `<ul class="check-list">${x.items.map((d) => `<li>${t(d)}</li>`).join('')}</ul>` : ''}
+        ${x.link ? `<p><a class="btn btn-link" href="${url(ctx, x.link.href)}">${t(x.link.label)}</a></p>` : ''}
+      </section>`)
+    .join('');
+  return `<h2>${t(L.tracks)}</h2>
+      <nav class="track-nav" aria-label="${esc(plain(L.tracks))}"><ul>${nav}</ul></nav>
+      <div class="track-grid">${cards}</div>`;
+}
+
+// Old service URL kept alive after a merge: a light page that sends the visitor to the new
+// anchor (meta refresh added by build.js, canonical to the target, noindex, out of the sitemap).
+function moved(ctx, old) {
+  const S = ctx.c.services, L = S.detailLabels;
+  const target = S.items.find((s) => old.to.startsWith(`services/${s.slug}/`));
+  const body = `${pageHeader(ctx, { eyebrow: S.page.eyebrow, title: old.name, intro: L.movedNote }, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: S.page.eyebrow, href: 'services/' }, { label: old.name }])}
+<section class="section"><div class="container narrow"><p class="lead">${t(L.moved)} <a href="${url(ctx, old.to)}">${t(target ? target.name : old.to)}</a></p></div></section>`;
+  return { title: `${plain(old.name)} ${plain(S.titleSuffix)}`, description: plain(L.movedNote), body, bodyClass: 'page-service-moved', motion: false };
 }
 
 function detail(ctx, item) {
@@ -118,9 +146,12 @@ function detail(ctx, item) {
     <article class="detail-main">
       <h2 class="visually-hidden">${t(L.overview)}</h2>
       ${item.definition ? `<p class="lead definition">${t(item.definition)}</p>` : ''}
+      ${item.highlight ? `<div class="svc-highlight"><p class="svc-highlight-value lat" aria-hidden="true">${esc(item.highlight.value)}</p><div><p class="svc-highlight-label"><span class="visually-hidden">${esc(item.highlight.value)} </span>${t(item.highlight.label)}</p><p>${t(item.highlight.body)}</p></div></div>` : ''}
       ${item.body.map((p) => `<p>${t(p)}</p>`).join('')}
-      <h2>${t(L.deliverables)}</h2>
-      <ul class="check-list">${item.deliverables.map((d) => `<li>${t(d)}</li>`).join('')}</ul>
+      ${item.tracks ? tracks(ctx, item, L) : `<h2>${t(L.deliverables)}</h2>
+      <ul class="check-list">${item.deliverables.map((d) => `<li>${t(d)}</li>`).join('')}</ul>`}
+      ${item.systems ? `<h2>${t(L.systems)}</h2>
+      <ul class="system-list">${item.systems.map((x) => `<li class="system system-${x.status}"><span class="lat">${esc(x.name)}</span><span class="system-status">${t(x.status === 'now' ? L.now : L.soon)}</span></li>`).join('')}</ul>` : ''}
       <h2>${t(L.forWho)}</h2>
       <p>${t(item.forWho)}</p>
       <p class="cta-row">${btn(ctx, { label: L.cta, href: 'contact/' }, 'btn btn-primary')}</p>
@@ -158,4 +189,4 @@ ${ctaBand(ctx)}`;
   };
 }
 
-module.exports = { index, detail, pageHeader, faqBlock, faqSchema, seeAlso, proofBlock, reviewSchema };
+module.exports = { index, detail, moved, pageHeader, faqBlock, faqSchema, seeAlso, proofBlock, reviewSchema };

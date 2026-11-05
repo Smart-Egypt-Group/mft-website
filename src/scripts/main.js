@@ -90,7 +90,7 @@
   var endpoint = form.getAttribute('data-endpoint') || '';
   var mode = form.getAttribute('data-mode') || 'function';
   var SERVICE_LABELS = {
-    'odoo-erp': 'Odoo ERP Implementation', 'internal-audit': 'Internal Audit', 'virtual-cfo': 'Virtual CFO',
+    'odoo-erp': 'Odoo ERP Solutions', 'tax-solutions': 'Innovative Tax Solutions', 'internal-audit': 'Internal Audit', 'virtual-cfo': 'Virtual CFO',
     'financial-consulting': 'Financial Consulting', 'business-analysis': 'Business Analysis',
     'training': 'User Training', 'technical-support': 'Technical Support', 'unsure': 'Not sure yet',
     'partners': 'Partner programme',

@@ -19,7 +19,7 @@ module.exports = function home(ctx, opts = {}) {
     .map(
       (s, i) => `<li class="index-row">
         <span class="num lat" aria-hidden="true">${pad2(i + 1)}</span>
-        <div><h3><a href="${url(ctx, `services/${s.slug}/`)}">${t(s.name)}</a></h3><p>${t(s.short)}</p></div>
+        <div><h3><a href="${url(ctx, `services/${s.slug}/`)}">${t(s.name)}</a></h3>${s.cardStat ? `<p class="card-stat"><span class="card-stat-value lat">${esc(s.cardStat.value)}</span><span class="card-stat-label">${t(s.cardStat.label)}</span></p>` : ''}<p>${t(s.short)}</p></div>
       </li>`
     )
     .join('');
