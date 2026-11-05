@@ -107,7 +107,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 /* Latin / digits inside Arabic: isolate so bidi never reorders "100%" or ".xlsx" */
 .lat { direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
-.prose .lat, .form-status .lat { white-space: normal; }
+.prose .lat, .form-status .lat, h1 .lat, h2 .lat, .lead .lat { white-space: normal; }
 [dir="rtl"] .lat { font-family: 'Inter', 'Cairo', system-ui, sans-serif; }
 
 /* ---------- Utilities ---------- */

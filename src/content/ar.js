@@ -114,7 +114,8 @@ module.exports = {
   },
 
   home: {
-    title: 'Modern Financial Technology | Odoo ERP والمراجعة الداخلية والمدير المالي الافتراضي',
+    title: 'Modern Financial Technology (MFT) | منصة Standard Enterprise Governance (SEG) وOdoo ERP والمراجعة الداخلية',
+    description: 'MFT شركة بقيادة محاسبين معتمدين، ومنصتها Standard Enterprise Governance (SEG) للحوكمة ومعها منتج المراجعة المستمرة SEG Audit. ننفّذ Odoo ERP وندير المراجعة الداخلية ونعمل مديرًا ماليًا افتراضيًا في مصر والسعودية والولايات المتحدة.',
     hero: {
       eyebrow: 'وضوح مالي، يُسلَّم في موعده',
       headline: 'قرارات مبنية على {accent}أرقام{/accent}.\nلا على تخمين.',
@@ -161,7 +162,7 @@ module.exports = {
       // الهيرو يخطف من أول سطر: شريط «فحص مباشر» ثم سؤال عن مال حقيقي، لا مصطلح مراجعة.
       eyebrow: 'وضوح مالي، يُسلَّم في موعده',
       live: `فحص مباشر لدفاترك: {lat}${N(F.checks)}{/lat} فحصًا في {lat}${F.reports}{/lat} تقريرًا`,
-      headline: '{lat}Standard Enterprise Governance{/lat}: {accent}المنصة التي تراجع نفسها{/accent}',
+      headline: '{lat}Standard Enterprise Governance (SEG){/lat}: {accent}المنصة التي تراجع نفسها{/accent}',
       subhead: 'كم دفعة مكررة خرجت من شركتك هذا العام ولم يلاحظها أحد؟ {lat}SEG{/lat} يقرأ دفاترك من نظامك بصلاحية قراءة فقط، ويُريك كل ملاحظة مرتبة حسب خطورتها، ومعها دليلها.',
       assurance: ['قراءة فقط', 'بياناتك تبقى على نظامك', 'لا رقم من غير دليل'],
       cta: { label: 'افحص ميزانك مجانًا', href: SIGNUP },
@@ -724,7 +725,7 @@ module.exports = {
         'إطار رقابة داخلية متوافق مع {lat}ISO{/lat}',
         '{lat}500+{/lat} تقرير مُسلَّم في مصر والسعودية والولايات المتحدة',
         'خبرة في الفوترة الإلكترونية المصرية ({lat}ETA{/lat}) والمرحلة الثانية من {lat}ZATCA{/lat}',
-        `{lat}Standard Enterprise Governance (SEG){/lat} من {lat}MFT{/lat}، ووحدة المراجعة المستمرة فيها {lat}SEG Audit{/lat}: {lat}${N(F.checks)}{/lat} فحصًا في {lat}${F.reports}{/lat} تقريرًا، وأكثر من {lat}${N(F.testsFloor)}{/lat} اختبار آلي قبل كل تحديث`
+        `{lat}Standard Enterprise Governance (SEG){/lat} من {lat}MFT{/lat}، ومنتج المراجعة المستمرة فيها {lat}SEG Audit{/lat}: {lat}${N(F.checks)}{/lat} فحصًا في {lat}${F.reports}{/lat} تقريرًا، وأكثر من {lat}${N(F.testsFloor)}{/lat} اختبار آلي قبل كل تحديث`
       ]
     },
     team: {
@@ -819,8 +820,8 @@ module.exports = {
     bar: 'برنامج الأعضاء المؤسِّسون في {lat}SEG{/lat}: {lat}{total}{/lat} مقعدًا فقط بسعر مؤسِّس مدى الحياة. اعرف أكثر',
     page: { eyebrow: 'الأعضاء المؤسِّسون' },
     hero: {
-      headline: '{accent}الأعضاء المؤسِّسون{/accent} في {lat}SEG{/lat}: {lat}{total}{/lat} مقعدًا فقط بسعر مؤسِّس مدى الحياة',
-      subhead: 'نفتح {lat}Standard Enterprise Governance (SEG){/lat} من {lat}MFT{/lat}، ووحدة المراجعة المستمرة فيها {lat}SEG Audit{/lat}، لـ{lat}{total}{/lat} شركة فقط بصفة أعضاء مؤسِّسين، بسعر مؤسِّس يبقى لك مدى الحياة. وبعد اكتمال المقاعد يُغلق البرنامج.',
+      headline: '{accent}الأعضاء المؤسِّسون{/accent} في {lat}Standard Enterprise Governance (SEG){/lat}: {lat}{total}{/lat} مقعدًا فقط بسعر مؤسِّس مدى الحياة',
+      subhead: 'نفتح منصة {lat}SEG{/lat} للحوكمة من {lat}MFT{/lat}، ومعها منتج المراجعة المستمرة {lat}SEG Audit{/lat}، لـ{lat}{total}{/lat} شركة فقط بصفة أعضاء مؤسِّسين، بسعر مؤسِّس يبقى لك مدى الحياة. وبعد اكتمال المقاعد يُغلق البرنامج.',
       cta: 'احجز مقعدك الآن',
       secondary: 'كيف تنضم',
       assurance: ['قراءة فقط من نظامك', 'لكل ملاحظة دليلها', 'تقارير بالعربية'],
@@ -843,8 +844,8 @@ module.exports = {
       description: 'برنامج الأعضاء المؤسِّسين في Standard Enterprise Governance (SEG): {total} مقعدًا بسعر مؤسِّس مدى الحياة، انضمت منها {filled} شركة، وباقي {left}.',
       ogAlt: 'باقي {left} من {total}: الأعضاء المؤسِّسون في Standard Enterprise Governance (SEG)',
       bar: 'الأعضاء المؤسِّسون في {lat}SEG{/lat}: باقي {lat}{left}{/lat} من {lat}{total}{/lat} مقعدًا. اعرف أكثر',
-      'hero.headline': 'باقي {lat}{left}{/lat} من {lat}{total}{/lat}: {accent}الأعضاء المؤسِّسون{/accent} في {lat}SEG{/lat}',
-      'hero.subhead': 'انضمت {lat}{filled}{/lat} شركة إلى الأعضاء المؤسِّسين، وبقي {lat}{left}{/lat} مقعدًا بسعر مؤسِّس مدى الحياة.',
+      'hero.headline': 'باقي {lat}{left}{/lat} من {lat}{total}{/lat}: {accent}الأعضاء المؤسِّسون{/accent} في {lat}Standard Enterprise Governance (SEG){/lat}',
+      'hero.subhead': 'منصة {lat}SEG{/lat} للحوكمة من {lat}MFT{/lat}، ومعها منتج المراجعة المستمرة {lat}SEG Audit{/lat}. انضمت {lat}{filled}{/lat} شركة إلى الأعضاء المؤسِّسين، وبقي {lat}{left}{/lat} مقعدًا بسعر مؤسِّس مدى الحياة.',
       'hero.meterCaption': 'مقعدًا متبقيًا من {lat}{total}{/lat}',
       'hero.legend.filled': '{lat}{filled}{/lat} شركة انضمت',
       'homeBand.title': 'الأعضاء المؤسِّسون: باقي {lat}{left}{/lat} من {lat}{total}{/lat} مقعدًا',
@@ -901,7 +902,7 @@ module.exports = {
     page: {
       eyebrow: 'الشركاء',
       title: 'عملاؤك على {lat}Odoo{/lat}. والمراجعة المستمرة باسمك.',
-      intro: 'برنامج شركاء {lat}Standard Enterprise Governance (SEG){/lat} من {lat}MFT{/lat}، ومعها وحدة المراجعة المستمرة {lat}SEG Audit{/lat}، لمكاتب المحاسبة والمراجعة وشركاء تنفيذ {lat}Odoo{/lat} في مصر والسعودية. أضف لعملائك مراجعة مستمرة لدفاترهم: بقراءة فقط، وكل ملاحظة ومعها دليلها، واعتماد باسم مكتبك قبل الاعتماد النهائي من مراجع {lat}MFT{/lat}.',
+      intro: 'برنامج شركاء {lat}Standard Enterprise Governance (SEG){/lat} من {lat}MFT{/lat}، ومعها منتج المراجعة المستمرة {lat}SEG Audit{/lat}، لمكاتب المحاسبة والمراجعة وشركاء تنفيذ {lat}Odoo{/lat} في مصر والسعودية. أضف لعملائك مراجعة مستمرة لدفاترهم: بقراءة فقط، وكل ملاحظة ومعها دليلها، واعتماد باسم مكتبك قبل الاعتماد النهائي من مراجع {lat}MFT{/lat}.',
       cta: 'انضم كشريك'
     },
     value: {
@@ -1392,7 +1393,7 @@ module.exports = {
   },
 
   homeFaq: [
-    { q: 'ماذا تقدم {lat}Modern Financial Technology{/lat} ({lat}MFT{/lat})؟', a: '{lat}MFT{/lat} شركة بقيادة محاسبين معتمدين في مصر والسعودية تنفّذ {lat}Odoo ERP{/lat}، وتدير برامج المراجعة الداخلية، وتعمل مديرًا ماليًا افتراضيًا للشركات النامية، حيث تحقق منصة {lat}SEG (Standard Enterprise Governance){/lat} ووحدتها للمراجعة المستمرة {lat}SEG Audit{/lat} ووكلاء {lat}MFT Intelligence{/lat} التغطية ويوقّع محاسبون مرخّصون النتائج.' },
+    { q: 'ماذا تقدم {lat}Modern Financial Technology{/lat} ({lat}MFT{/lat})؟', a: '{lat}MFT{/lat} شركة بقيادة محاسبين معتمدين في مصر والسعودية تنفّذ {lat}Odoo ERP{/lat}، وتدير برامج المراجعة الداخلية، وتعمل مديرًا ماليًا افتراضيًا للشركات النامية، حيث تحقق منصة {lat}SEG (Standard Enterprise Governance){/lat} ومنتجها للمراجعة المستمرة {lat}SEG Audit{/lat} ووكلاء {lat}MFT Intelligence{/lat} التغطية ويوقّع محاسبون مرخّصون النتائج.' },
     { q: 'هل فحص الميزان مجاني فعلًا؟', a: 'نعم. فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق: مؤشرات محسوبة من ميزان المراجعة فقط: حسابات معلّقة، وأرصدة شاذة، وعدم اتزان، وقيود يدوية كثيفة، وتواريخ رجعية. ليس تقرير مراجعة كاملًا. دون بطاقة ائتمان ودون التزام.' },
     { q: 'هل تعملون مع شركات خارج القاهرة؟', a: 'نعم. التعاقدات تُنفَّذ في الموقع وعن بُعد في مصر والسعودية، وخدمات المدير المالي الافتراضي و{lat}Odoo{/lat} للشركات الأمريكية، بالعربية أو الإنجليزية.' }
   ],

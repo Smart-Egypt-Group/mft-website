@@ -113,7 +113,8 @@ module.exports = {
   },
 
   home: {
-    title: 'Modern Financial Technology | Odoo ERP, Internal Audit & Virtual CFO',
+    title: 'Modern Financial Technology (MFT) | Standard Enterprise Governance (SEG), Odoo ERP & Internal Audit',
+    description: 'MFT is a CPA-led firm with its own platform, Standard Enterprise Governance (SEG), and SEG Audit, its continuous audit product. We implement Odoo ERP, run internal audit and act as your Virtual CFO in Egypt, Saudi Arabia and the US.',
     hero: {
       eyebrow: 'Financial Clarity, Delivered',
       headline: 'Decisions built on {accent}numbers{/accent}.\nNot on guesses.',
@@ -161,7 +162,7 @@ module.exports = {
       // The hero hooks on the first line: a live "scanning" strip, then a question about real money, not audit jargon.
       eyebrow: 'Financial Clarity, Delivered',
       live: `Live check of your books: ${N(F.checks)} checks across ${F.reports} reports`,
-      headline: 'Standard Enterprise Governance: {accent}the platform that audits itself{/accent}',
+      headline: 'Standard Enterprise Governance (SEG): {accent}the platform that audits itself{/accent}',
       subhead: 'How many duplicate payments left your company this year without anyone noticing? SEG reads your books straight from your ERP, read-only, and shows you every finding ranked by severity, with its evidence.',
       assurance: ['Read-only', 'Your data stays on your system', 'No number without evidence'],
       cta: { label: 'Check your trial balance free', href: SIGNUP },
@@ -727,7 +728,7 @@ module.exports = {
         'ISO-aligned internal-control framework',
         '500+ reports delivered across Egypt, Saudi Arabia and the US',
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
-        `Standard Enterprise Governance (SEG) by MFT, with its continuous-audit module SEG Audit: ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
+        `Standard Enterprise Governance (SEG) by MFT, with its continuous audit product SEG Audit: ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
       ]
     },
     team: {
@@ -823,7 +824,7 @@ module.exports = {
     page: { eyebrow: 'Founding Members' },
     hero: {
       headline: 'SEG {accent}Founding Members{/accent}: only {total} seats at a founder price for life',
-      subhead: 'We are opening Standard Enterprise Governance (SEG) from MFT, with its continuous audit module SEG Audit, to {total} companies as Founding Members, at a founder price that stays with you for life. When the seats are taken, the programme closes.',
+      subhead: 'We are opening SEG, the governance platform from MFT, with its continuous audit product SEG Audit, to {total} companies as Founding Members, at a founder price that stays with you for life. When the seats are taken, the programme closes.',
       cta: 'Claim your seat',
       secondary: 'How to join',
       assurance: ['Read-only access to your system', 'Evidence behind every finding', 'Reports in Arabic and English'],
@@ -846,8 +847,8 @@ module.exports = {
       description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats at a founder price for life; {filled} companies in, {left} left.',
       ogAlt: '{left} of {total} seats left: Standard Enterprise Governance (SEG) Founding Members',
       bar: 'SEG Founding Members: {left} of {total} seats left. Learn more',
-      'hero.headline': '{left} of {total} seats left: SEG {accent}Founding Members{/accent}',
-      'hero.subhead': '{filled} companies have joined the Founding Members; {left} seats remain at a founder price for life.',
+      'hero.headline': '{left} of {total} seats left: Standard Enterprise Governance (SEG) {accent}Founding Members{/accent}',
+      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} companies have joined the Founding Members; {left} seats remain at a founder price for life.',
       'hero.meterCaption': 'seats left of {total}',
       'hero.legend.filled': '{filled} companies joined',
       'homeBand.title': 'Founding Members: {left} of {total} seats left',
@@ -904,7 +905,7 @@ module.exports = {
     page: {
       eyebrow: 'Partners',
       title: 'Your clients run Odoo. Continuous audit, under your name.',
-      intro: 'The partner programme of Standard Enterprise Governance (SEG) from MFT, with its continuous audit module SEG Audit, for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia. Give your clients continuous review of their books: read-only access, every finding with its evidence, and your firm’s sign-off before the final sign-off by an MFT reviewer.',
+      intro: 'The partner programme of Standard Enterprise Governance (SEG) from MFT, with its continuous audit product SEG Audit, for accounting and audit firms and Odoo implementation partners in Egypt and Saudi Arabia. Give your clients continuous review of their books: read-only access, every finding with its evidence, and your firm’s sign-off before the final sign-off by an MFT reviewer.',
       cta: 'Become a partner'
     },
     value: {
@@ -1383,7 +1384,7 @@ module.exports = {
   },
 
   homeFaq: [
-    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its SEG Audit continuous-audit module and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
+    { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its continuous audit product SEG Audit and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
     { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. No credit card, no commitment.' },
     { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
   ],
