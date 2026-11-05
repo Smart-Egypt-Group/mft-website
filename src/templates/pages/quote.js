@@ -1,4 +1,5 @@
-const { t, esc, plain, leadDirect } = require('../html');
+const { t, esc, plain } = require('../html');
+const { leadDirect } = require('../lead-direct');
 const { pageHeader, seeAlso } = require('./services');
 
 const select = (id, name, label, options) =>

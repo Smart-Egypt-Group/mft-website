@@ -2,7 +2,8 @@
 // the firm, tracks, levels, enablement), the activity packages (control rules per Odoo activity
 // family), and an application form that lands in Odoo CRM as "Partner application: …".
 // Copy: content/<lang>.js → partners. Level figures left null render as `levels.pending`.
-const { t, esc, plain, phTag, leadDirect } = require('../html');
+const { t, esc, plain, phTag } = require('../html');
+const { leadDirect } = require('../lead-direct');
 const { pageHeader, seeAlso } = require('./services');
 
 const select = (id, name, label, options) =>
