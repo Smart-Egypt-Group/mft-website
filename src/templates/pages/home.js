@@ -1,8 +1,8 @@
 const { t, esc, url, btn, sectionHead, phTag, pad2, fm, signupUrl } = require('../html');
-const { isLive, liveAttrs, countSpan } = require('../live-reports');
 const { faqBlock, faqSchema, seeAlso, reviewSchema } = require('./services');
 const { latestBlock } = require('./blog');
 const { heroA, heroB, heroC } = require('../partials/hero');
+const { isLive, liveAttrs, countSpan } = require('../live-reports');
 
 module.exports = function home(ctx, opts = {}) {
   const { c, config } = ctx;
