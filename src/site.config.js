@@ -63,7 +63,7 @@ module.exports = {
     }
   },
 
-  // Founding Members launch (SEG Audit): 50 seats at a founder price for life. Public counter ON
+  // Founding Members launch of the platform, Standard Enterprise Governance (SEG): 50 seats at a founder price for life. Public counter ON
   // (CEO, 3 Nov 2026): 17 confirmed founding members on the SEG platform as of 2026-11-03.
   // To update: set `filled` to the confirmed count and `asOf` to the date; `showCount: false` hides it.
   // With the counter on, the page, header bar, home band, seat meter and titles switch to the

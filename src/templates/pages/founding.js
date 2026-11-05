@@ -1,4 +1,4 @@
-// Founding Members: the SEG Audit launch page. Scarcity is the fixed cap (50 seats at a founder price
+// Founding Members: the launch page of the platform, Standard Enterprise Governance (SEG). Scarcity is the fixed cap (50 seats at a founder price
 // for life). A live counter (seats filled / left) exists but stays off until site.config → founding
 // .showCount is true; copy from content/<lang>.js → founding (counter copy in founding.counter).
 // "Claim your seat" CTAs go to the application form (founding-members/apply/); the free check goes

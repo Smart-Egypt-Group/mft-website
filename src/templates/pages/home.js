@@ -184,5 +184,5 @@ ${seeAlso(ctx, [{ label: c.services.page.eyebrow, href: 'services/' }, { label: 
   </div>
 </section>`;
 
-  return { title: H.title, description: c.meta.description, body, bodyClass: `page-home variant-${variant.toLowerCase()}`, jsonld: [faqSchema(c.homeFaq), reviewSchema(ctx)].filter(Boolean) };
+  return { title: H.title, description: H.description || c.meta.description, body, bodyClass: `page-home variant-${variant.toLowerCase()}`, jsonld: [faqSchema(c.homeFaq), reviewSchema(ctx)].filter(Boolean) };
 };

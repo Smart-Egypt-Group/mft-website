@@ -1,6 +1,6 @@
 /* MFT website — ad pixels (CEO, 4 Nov 2026). The pixels load with the page on the production hosts,
    on the basis of the disclosure in the privacy notice (content/<lang>.js → privacy); consent is part
-   of accepting that notice and the terms (forms here, sign-up on SEG Audit). No banner, no opt-out UI.
+   of accepting that notice and the terms (forms here, sign-up on the SEG platform). No banner, no opt-out UI.
    The right to object is exercised by email (privacy@seg-audit.com), as the notice says.
    IDs come from site.config.js → analytics, rendered onto this script tag as data attributes.
      PageView  every page (Meta) / page() (TikTok)
