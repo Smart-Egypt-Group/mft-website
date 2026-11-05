@@ -18,7 +18,7 @@ const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 function liveAttrs(ctx) {
   const R = ctx.config.reportsCounter || {};
   const n = last(ctx);
-  return ` data-reports-live data-reports-api="${esc(R.api || '')}" data-reports-last="${n || ''}" data-reports-asof="${esc(R.asOf || '')}"${n ? '' : ' hidden'}`;
+  return ` data-reports-live data-reports-api="${esc(R.api || '')}" data-reports-poll="${Number(R.pollSeconds) || 45}" data-reports-last="${n || ''}" data-reports-asof="${esc(R.asOf || '')}"${n ? '' : ' hidden'}`;
 }
 
 const countSpan = (ctx) => `<span class="lat" data-reports="count">${last(ctx) ? fmt(last(ctx)) : ''}</span>`;
