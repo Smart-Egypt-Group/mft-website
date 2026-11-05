@@ -108,7 +108,7 @@ module.exports = {
     officesTitle: 'Our office',
     markets: 'We work in Egypt and Saudi Arabia, expanding to the US',
     socialTitle: 'Follow',
-    offices: { eg: 'Cairo, Egypt' },
+    offices: { eg: 'Egypt' },
     legal: '© {year} Modern Financial Technology. All rights reserved.'
   },
 

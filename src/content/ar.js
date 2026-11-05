@@ -109,7 +109,7 @@ module.exports = {
     officesTitle: 'مكتبنا',
     markets: 'نعمل في مصر والسعودية، والتوسع في الولايات المتحدة',
     socialTitle: 'تابعنا',
-    offices: { eg: 'القاهرة، مصر' },
+    offices: { eg: 'مصر' },
     legal: '© {year} {lat}Modern Financial Technology{/lat}. جميع الحقوق محفوظة.'
   },
 
