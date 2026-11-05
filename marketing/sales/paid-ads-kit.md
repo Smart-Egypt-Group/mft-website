@@ -4,6 +4,7 @@
 > الـCEO هو من يشحن الحساب، ويحدد الميزانية، ويطلق بنفسه باتباع القسم 6.
 >
 > **المراجع:** القواعد العامة في [`workflow/03-paid-ads.md`](../workflow/03-paid-ads.md)، ومخطط UTM في [`workflow/05-kpis-and-reporting.md`](../workflow/05-kpis-and-reporting.md#utm-scheme)، واقتصاديات CAC في [`00-economics.md`](00-economics.md).
+> **بنية Meta المعتمدة الآن (5 نوفمبر 2026):** [`meta-build-sheet.md`](meta-build-sheet.md): حملة واحدة، ومجموعتا مصر والسعودية، و4 إعلانات golden لكل مجموعة. تحلّ محل §3–§4 لـMeta هنا، وتبقى البوابة §0 والقواعد §5 والقياس §7.
 > **يحلّ محل:** نسخ [`content/week-1/ads.md`](../content/week-1/ads.md)، التي كُتبت والعدّاد مُطفأ.
 >
 > **تاريخ الإعداد:** 4 نوفمبر 2026.
