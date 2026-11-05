@@ -29,6 +29,11 @@ module.exports = {
   // "online submission not available" message can never ship by accident (14 Sep 2026 incident:
   // a preview built with FORM_ENDPOINT= was reviewed as if it were the live site).
   formMode: 'odoo-direct',
+  // Temporary safeguard (5 Nov 2026): erp.seg-audit.com answered 404 on /website/form/crm.lead,
+  // and an odoo-direct post is opaque, so the browser cannot tell delivered from lost. While
+  // false, every lead form shows WhatsApp and email up front and never says "received".
+  // Set true only after a test lead is seen in Odoo CRM.
+  leadForm: { deliveryVerified: false },
   formEndpoint: '/.netlify/functions/lead', // used only when formMode === 'function'
   odooFormUrl: 'https://erp.seg-audit.com/website/form/crm.lead',
 

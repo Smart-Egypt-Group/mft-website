@@ -817,7 +817,17 @@ module.exports = {
       offline: 'الإرسال الإلكتروني غير متاح حاليًا. يرجى مراسلتنا أو التواصل عبر واتساب من البيانات في هذه الصفحة.',
       required: 'مطلوب',
       invalidEmail: 'أدخل بريدًا إلكترونيًا صحيحًا.',
-      honeypotLabel: 'اترك هذا الحقل فارغًا'
+      honeypotLabel: 'اترك هذا الحقل فارغًا',
+      // Temporary safeguard (5 Nov 2026): the Odoo form route cannot confirm delivery, so the form
+      // shows the direct channels and never claims "received" until delivery is verified
+      // (site.config → leadForm.deliveryVerified).
+      direct: {
+        title: 'أضمن طريقة للوصول إلينا الآن',
+        body: 'راسلنا مباشرة على واتساب أو بالبريد الإلكتروني، ونرد خلال يوم عمل.',
+        whatsapp: 'واتساب',
+        email: 'البريد الإلكتروني'
+      },
+      unverified: 'سجّلنا بياناتك من جهتنا. لضمان وصول طلبك تواصل معنا مباشرة على واتساب {wa} أو على {email}.'
     },
     details: {
       title: 'تواصل مباشر',
