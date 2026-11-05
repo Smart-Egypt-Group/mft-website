@@ -24,7 +24,7 @@ module.exports = {
     shortName: 'MFT',
     tagline: 'Financial clarity, delivered',
     description:
-      'MFT is a CPA-led firm that implements Odoo ERP, runs internal audit and acts as your Virtual CFO: one team, one set of numbers, in Egypt, Saudi Arabia and the US.'
+      'MFT is a CPA-led firm that implements Odoo ERP, runs internal audit and acts as your Virtual CFO: one team, one set of numbers, in Egypt and Saudi Arabia, expanding to the US.'
   },
 
   ui: {
@@ -124,9 +124,8 @@ module.exports = {
       trust: [
         'CPA-Led Team',
         'Odoo Certified Partners',
-        'ISO-Aligned Internal Controls',
         '500+ Reports Delivered',
-        'Egypt · Saudi Arabia · US'
+        'Egypt and Saudi Arabia, expanding to the US'
       ]
     },
     heroB: {
@@ -135,7 +134,7 @@ module.exports = {
       subhead:
         'MFT turns your data into clear financial reports on profitability, cash flow and internal controls, backed by a licensed audit team, Odoo ERP experts, and the SEG platform.',
       cta: { label: 'Check your trial balance free', href: SIGNUP },
-      trust: 'Trusted by finance teams across Egypt, Saudi Arabia, and the US',
+      trust: 'Trusted by finance teams across Egypt and Saudi Arabia, expanding to the US',
       dashboard: {
         title: 'Monthly P&L Snapshot',
         badge: 'Sample',
@@ -163,7 +162,7 @@ module.exports = {
       live: `Live check of your books: ${N(F.checks)} checks across ${F.reports} reports`,
       headline: 'Standard Enterprise Governance: {accent}the platform that audits itself{/accent}',
       subhead: 'How many duplicate payments left your company this year without anyone noticing? SEG reads your books straight from your ERP, read-only, and shows you every finding ranked by severity, with its evidence.',
-      assurance: ['Read-only', 'Your data stays on your system', 'No number without evidence'],
+      assurance: ['Read-only', 'We change nothing in your system', 'No number without evidence'],
       cta: { label: 'Check your trial balance free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
       risk: {
@@ -223,7 +222,7 @@ module.exports = {
       eyebrow: 'One team. One set of numbers.',
       title: 'ERP, audit and CFO. Usually three vendors. Here, one.',
       body:
-        'Odoo partners stop at go-live. Advisors write reports without ever opening the system. Audit software flags exceptions and leaves you to explain them. MFT is the only firm in the region that implements the ERP your numbers live in, audits the controls around it, and reads the results with you every month, with Egyptian e-invoicing and Saudi ZATCA compliance built in.',
+        'Odoo partners stop at go-live. Advisors write reports without ever opening the system. Audit software flags exceptions and leaves you to explain them. MFT is one team that implements the ERP your numbers live in, audits the controls around it, and reads the results with you every month, with Egyptian e-invoicing and Saudi ZATCA compliance built in.',
       pillars: [
         {
           title: 'Odoo ERP',
@@ -244,7 +243,7 @@ module.exports = {
       eyebrow: 'Services',
       title: 'From the first journal entry to the board pack.',
       intro:
-        'Eight services, one accountable team. Start with a single report, or hand us the whole finance function.',
+        'Seven services, one accountable team. Start with a single report, or hand us the whole finance function.',
       cta: 'Explore all services'
     },
 
@@ -290,7 +289,7 @@ module.exports = {
         { value: '500+', label: 'Reports delivered' },
         { value: 'CPA', label: 'Licensed, CPA-led audit team' },
         { value: 'Odoo', label: 'Certified implementation partner' },
-        { value: '3', label: 'Markets: Egypt, Saudi Arabia, US' }
+        { value: '2', label: 'Markets: Egypt and Saudi Arabia, expanding to the US' }
       ]
     },
 
@@ -360,7 +359,7 @@ module.exports = {
   intelligenceTeaser: {
     eyebrow: 'MFT Intelligence',
     title: 'AI agents that watch your books every day, reviewed by our accountants.',
-    body: 'An Auditor agent that applies ISA 320 materiality to every transaction, and a Virtual CFO agent that turns your Odoo data into board-ready reports. Available now; four more agents in validation.',
+    body: 'An Auditor agent that applies ISA 320 materiality to every transaction, and a Virtual CFO agent that turns your Odoo data into board-ready reports. Available now; ten more agents in internal validation.',
     cta: { label: 'Meet the agents', href: 'intelligence/' }
   },
 
@@ -409,8 +408,8 @@ module.exports = {
         definition: 'Odoo ERP Solutions by MFT is one service for the whole life of the system: implementation and configuration, integrations and custom reports, custom module development, training, support and upgrades, and tax inside Odoo. It is led by certified Odoo partners who are also licensed accountants, so the ledger is right from day one and stays right.',
         highlight: {
           value: '40+',
-          label: 'review axes on your activity family',
-          body: 'SEG Audit classifies your activity under ISIC Rev.4, then checks the controls your activity family needs inside Odoo across more than 40 review axes. We configure those controls into your system from the first setup. This is what Standard Enterprise Governance means inside your system: governance is part of the configuration, not a report that comes after it.'
+          label: 'review axes on your books, one of them for your activity family’s controls',
+          body: 'With SEG Audit, we classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls inside Odoo (trading, retail, manufacturing, services). We configure those controls into your system from the first setup. This is what Standard Enterprise Governance means inside your system: governance is part of the configuration, not a report that comes after it.'
         },
         body: [
           'Odoo implementations fail when the chart of accounts, cost centres and tax setup are an afterthought. MFT starts there. Our certified partners configure finance, inventory, manufacturing, sales, purchasing and HR around how your operation actually runs, for industrial, trading and service companies in Egypt and the Gulf.',
@@ -419,7 +418,7 @@ module.exports = {
         tracks: [
           { id: 'implementation', title: 'Implementation and configuration', body: 'A finance-led deployment, from discovery to go-live.', items: ['Process mapping and gap analysis', 'Chart of accounts, analytic and cost-centre design', 'Module configuration: Accounting, Inventory, Manufacturing, Sales, Purchase, HR', 'Access rights and segregation of duties built in', 'Data migration with reconciled opening balances', 'Go-live support and 90-day stabilisation'] },
           { id: 'integrations', title: 'Integrations and custom reports', body: 'Odoo connected to everything around it, with reports shaped to your decisions.', items: ['Integrations with banks, e-invoicing portals, WhatsApp and third-party tools', 'Integrations and API work', 'Custom reports and dashboards'] },
-          { id: 'custom-modules', featured: true, title: 'Custom module development', body: 'Odoo modules shaped to your activity, with internal controls and governance policies built in, not left in a separate manual.', items: ['Custom modules for your processes, developed within the implementation project', 'Your activity classified under ISIC Rev.4, with check rules for your activity family across more than 40 review axes', 'Ready-made module packages for each activity: being built and coming soon to the Odoo App Store; until then they are set up within the implementation project', 'Sector benchmarks for more than 50 activities (being added)'] },
+          { id: 'custom-modules', featured: true, title: 'Custom module development', body: 'Odoo modules shaped to your activity, with internal controls and governance policies built in, not left in a separate manual.', items: ['Custom modules for your processes, developed within the implementation project', 'We classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls', 'Ready-made module packages for each activity: being built and coming soon to the Odoo App Store; until then they are set up within the implementation project', 'Sector benchmarks for more than 50 activities (being added)'] },
           { id: 'training', title: 'Training', body: 'Role-based training on your own configuration and data, in Arabic or English, with recorded sessions.', items: ['Role-based curriculum on your live configuration', 'Hands-on workshops, on site or remote', 'Bilingual user guides and quick-reference cards', 'Competency check-outs before go-live', 'Refresher sessions after upgrades'] },
           { id: 'support', title: 'Support and upgrades', body: 'A support agreement with agreed response times, handled by people who know your configuration and chart of accounts.', items: ['Help desk with agreed response times', 'Version upgrades and regression testing', 'Monthly health check and backup verification'] },
           { id: 'tax', title: 'Tax inside Odoo', body: 'Egyptian e-invoicing (ETA), Saudi ZATCA phase two, withholding tax, VAT and multi-entity consolidation are part of the standard build, not change requests.', items: [], link: { label: 'Innovative Tax Solutions', href: 'services/tax-solutions/' } }
@@ -427,7 +426,7 @@ module.exports = {
         forWho: 'Companies moving off spreadsheets or a legacy system, and Odoo users whose implementation never produced reliable financials or who need one partner for training, support and upgrades.',
         faq: [
           { q: 'How long does an implementation take?', a: 'Typically eight to sixteen weeks from discovery to go-live for a single entity, depending on modules and data migration. We commit to a calendar at the end of discovery.' },
-          { q: 'Do you have ready-made modules for each activity?', a: 'Odoo module packages for each activity, with its controls, are being built and will be listed on the Odoo App Store soon; until then we configure your activity’s controls and build what is needed within the implementation project. Today SEG Audit classifies your activity under ISIC Rev.4 and checks your activity family’s controls across more than 40 review axes, with sector benchmarks for more than 50 activities being added.' },
+          { q: 'Do you have ready-made modules for each activity?', a: 'Odoo module packages for each activity, with its controls, are being built and will be listed on the Odoo App Store soon; until then we configure your activity’s controls and build what is needed within the implementation project. Today, with SEG Audit, we classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls, with sector benchmarks for more than 50 activities being added.' },
           { q: 'Do you handle Egyptian e-invoicing and Saudi ZATCA?', a: 'Yes. ETA e-invoicing, ZATCA phase two, withholding tax and multi-entity consolidation are part of the standard build. For return reconciliation and tax-file readiness, see Innovative Tax Solutions.' },
           { q: 'What happens after go-live?', a: 'Ninety days of stabilisation are included, then optional support with response times agreed per contract; critical issues are acknowledged the same business day.' },
           { q: 'Do you handle upgrades and integrations?', a: 'Yes. Version upgrades with regression testing and a monthly health check, and integrations with banks, e-invoicing portals (ETA, ZATCA), WhatsApp and third-party tools via API.' },
@@ -453,7 +452,7 @@ module.exports = {
           'Withholding tax review: tax setup, supplier bills without withholding, total withheld for the period',
           'Tax differences between invoice and entry, and manual tax entries',
           'E-invoice item data: item codes, customer addresses and free-text lines',
-          'Zakat base computed and reconciled to the filed return, for Saudi companies',
+          'Zakat base reconciled to the filed return, for Saudi companies',
           'Tax-file readiness before inspection: registration numbers, invoice sequence gaps, draft invoices and lock dates',
           'Working papers and reconciliations the return is built on, and a findings report ranked by severity, each finding with its evidence from the books and an owner for the fix',
           'Tax returns filed on your company’s behalf (VAT, withholding tax and zakat) on the Egyptian Tax Authority or ZATCA portal, under your authorisation and after your approval, with proof of submission'
@@ -702,7 +701,7 @@ module.exports = {
   about: {
     title: 'About | Modern Financial Technology',
     description:
-      'MFT started in financial audit, developed the smart-audit approach, and now implements Odoo ERP and acts as Virtual CFO for companies in Egypt, Saudi Arabia and the US.',
+      'MFT started in financial audit, developed the smart-audit approach, and now implements Odoo ERP and acts as Virtual CFO for companies in Egypt and Saudi Arabia, expanding to the US.',
     page: {
       eyebrow: 'About MFT',
       title: 'Accountants who build systems. Technologists who read ledgers.',
@@ -732,7 +731,6 @@ module.exports = {
         'CPA-led team of licensed accountants and auditors',
         '40+ years of combined experience in manufacturing, trading and financial services',
         'Odoo Certified Partner',
-        'ISO-aligned internal-control framework',
         '500+ reports delivered across Egypt, Saudi Arabia and the US',
         'Egyptian e-invoicing (ETA) and Saudi ZATCA phase-two experience',
         `Standard Enterprise Governance (SEG) by MFT, with its continuous-audit module SEG Audit: ${N(F.checks)} checks across ${F.reports} reports and more than ${N(F.testsFloor)} automated tests before every update`
