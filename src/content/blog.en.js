@@ -41,7 +41,7 @@ module.exports = {
         { h2: 'Why one figure for everyone fails' },
         { p: 'A threshold that is right for one entity is wrong for the next. Set it high and a growing company reviews too little: duplicate payments, near-duplicate vendors and cut-off errors slip under the line month after month. Set it low and the team drowns in exceptions and stops reading them. Both failures look like diligence from the outside.' },
         { h2: 'How we calibrate it' },
-        { p: 'At onboarding we compute the threshold from the client’s own last closed year: the benchmark, the percentage, and a performance materiality below it. We write the calculation down, we review it every quarter, and we recompute it when revenue or profit moves by more than the percentage itself. The Auditor agent in MFT Intelligence carries exactly this number, so every transaction it flags is flagged against your threshold, not a default.' },
+        { p: 'At onboarding we compute the threshold from the client’s own ledger, annualised when the year is not yet closed: the benchmark, the percentage, and a performance materiality below it. We write the calculation down, and we recompute it at each year-end or when the basis changes. The Auditor agent in MFT Intelligence carries exactly this number, so the entries it tests are tested against your threshold, not a default.' },
         { quote: 'A threshold you cannot explain to your board in one sentence is not a threshold. It is a guess with a decimal point.' },
         { h2: 'What changes for your team' },
         { p: 'Two things. First, the review becomes explainable: this entry was flagged because it exceeds a documented threshold derived from your own numbers. Second, approvals become proportionate: below the line one registered approver, at or above it a second person. That is the same logic MFT applies when an agent drafts a correcting entry and a person approves it.' }
@@ -73,7 +73,7 @@ module.exports = {
       author: 'ahmed',
       date: '2026-09-16',
       title: 'Egyptian e-invoicing in Odoo: seven configuration mistakes that block submissions',
-      dek: 'Most ETA rejections are not tax problems. They are master-data problems that were visible in Odoo weeks earlier.',
+      dek: 'Many ETA rejections are not tax problems. They are master-data problems that were visible in Odoo weeks earlier.',
       description: 'The seven Odoo configuration errors MFT sees most often behind Egyptian Tax Authority e-invoice rejections, and how to fix each one at the source.',
       body: [
         { p: 'When an e-invoice is rejected by the Egyptian Tax Authority, the finance team reads it as a tax issue. In our implementations, the cause is almost always upstream: a product without a GS1 or EGS code, a customer without a valid tax id, an address missing a field the portal requires. The fix is in master data, not in the tax return.' },
@@ -101,9 +101,9 @@ module.exports = {
         { ul: ['Duplicate and near-duplicate payments: same bank account, same tax id, two vendor codes.', 'Approvals outside the matrix: the same person requesting and approving, or an approver acting above their limit.', 'Cut-off errors that move revenue or cost between periods and flatter one month at the expense of the next.', 'Inventory valuation drift when a costing method is not updated after a supplier contract changes.', 'Manual journal entries posted late on the last day of the month, in round amounts, with thin descriptions.'] },
         { p: 'None of these are exotic. All of them were visible in the ledger long before year-end. Our published client stories describe two of them: transactions missed by manual review and surfaced within six weeks, and a valuation gap caught three weeks before close. No amounts, by policy; the pattern is the point.' },
         { h2: 'Coverage, not sampling' },
-        { p: 'With the whole population scored by risk, the question changes from “which five percent do we look at” to “which findings matter this week”. The Auditor agent in MFT Intelligence ranks every flagged item by financial impact against your ISA 320 threshold and cites the exact records. A licensed auditor reviews the ranked list and signs the report. That is the division of labour: the machine covers, the accountant judges.' },
+        { p: 'With checks run on the whole population, the question changes from “which sample do we look at” to “which findings matter this week”. The Auditor agent in MFT Intelligence classifies each finding by severity, tests journal entries against your ISA 320-based threshold and cites the exact records. A licensed auditor reviews the list and signs the report. That is the division of labour: the machine covers, the accountant judges.' },
         { h2: 'Your external auditor is not the competition' },
-        { p: 'Continuous review makes the annual audit shorter and cheaper. Findings are classified against ISA, the evidence trail is already there, and the working papers are retained for seven years by default. Most external auditors we work with ask for the run log on day one.' }
+        { p: 'Continuous review can make the annual audit smoother; how far your auditor relies on it is their decision. Findings are classified against ISA, the evidence trail is already there, and the AI run log is retained for seven years by default. Offer your external auditor the run log on day one.' }
       ]
     },
     {
@@ -125,7 +125,7 @@ module.exports = {
         { p: 'Every run records which model processed the data and whether it ran in the cloud, the tokens used, the client and the task, and every approval, execution and reversal with the resulting entry id. The log is kept for seven years by default, in line with working-paper conventions. When a client’s auditor asks how a number got there, the answer is a line in a file, not a meeting.' },
         { quote: 'Governance that lives in a document gets waived. Governance that lives in code gets a pull request.' },
         { h2: 'Where this is today' },
-        { p: 'The Auditor and Virtual CFO agents are available as a managed service with MFT accountants reviewing every output. The execution path is built and tested; live write-back to Odoo is configured per client once their connector is in place, and until then approved drafts are handed to the team as ready-to-post entries. The same two agents are being built into the SEG report pipeline so every report is AI-reviewed before a person reviews it. That integration switches on only after the AI-processing disclosure is published in the platform’s terms.' }
+        { p: 'The Auditor and Virtual CFO agents are available as a managed service, delivered today from a ledger export, with MFT accountants reviewing every output. The execution path is built and tested; live write-back to Odoo is configured per client once their connector is in place, and until then approved drafts are handed to the team as ready-to-post entries. The same two agents are being built into the SEG report pipeline so that, once switched on, each report gets an AI review before a person reviews it. That integration switches on only after the AI-processing disclosure is published in the platform’s terms.' }
       ]
     }
   ]

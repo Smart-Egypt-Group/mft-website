@@ -105,9 +105,10 @@ module.exports = {
       }
     ],
     contactTitle: 'Contact',
-    officesTitle: 'Offices',
+    officesTitle: 'Our office',
+    markets: 'We work in Egypt and Saudi Arabia, expanding to the US',
     socialTitle: 'Follow',
-    offices: { eg: 'Egypt', sa: 'Saudi Arabia', us: 'United States' },
+    offices: { eg: 'Cairo, Egypt' },
     legal: '© {year} Modern Financial Technology. All rights reserved.'
   },
 
@@ -222,7 +223,7 @@ module.exports = {
       eyebrow: 'One team. One set of numbers.',
       title: 'ERP, audit and CFO. Usually three vendors. Here, one.',
       body:
-        'Odoo partners stop at go-live. Advisors write reports without ever opening the system. Audit software flags exceptions and leaves you to explain them. MFT is one team that implements the ERP your numbers live in, audits the controls around it, and reads the results with you every month, with Egyptian e-invoicing and Saudi ZATCA compliance built in.',
+        'Many Odoo partners stop at go-live. Many advisors write reports without opening the system. Audit software often flags exceptions and leaves you to explain them. MFT is one team that implements the ERP your numbers live in, audits the controls around it, and reads the results with you every month, with Egyptian e-invoicing and Saudi ZATCA compliance built in.',
       pillars: [
         {
           title: 'Odoo ERP',
@@ -259,7 +260,7 @@ module.exports = {
         {
           when: 'Within minutes',
           title: 'The free trial-balance check',
-          body: 'A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report.'
+          body: 'A free check of your company’s trial balance that flags its risk points in minutes. From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report.'
         },
         {
           when: 'Week 1',
@@ -349,7 +350,7 @@ module.exports = {
     cta: {
       title: 'Start with a free trial-balance check.',
       body:
-        'A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. Upload your trial balance or connect Odoo read-only, with no commitment.',
+        'A free check of your company’s trial balance that flags its risk points in minutes. From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report. Upload your trial balance or connect Odoo read-only, with no commitment.',
       button: { label: 'Check your trial balance free', href: SIGNUP },
       alt: 'Or call us directly:'
     }
@@ -418,7 +419,7 @@ module.exports = {
         tracks: [
           { id: 'implementation', title: 'Implementation and configuration', body: 'A finance-led deployment, from discovery to go-live.', items: ['Process mapping and gap analysis', 'Chart of accounts, analytic and cost-centre design', 'Module configuration: Accounting, Inventory, Manufacturing, Sales, Purchase, HR', 'Access rights and segregation of duties built in', 'Data migration with reconciled opening balances', 'Go-live support and 90-day stabilisation'] },
           { id: 'integrations', title: 'Integrations and custom reports', body: 'Odoo connected to everything around it, with reports shaped to your decisions.', items: ['Integrations with banks, e-invoicing portals, WhatsApp and third-party tools', 'Integrations and API work', 'Custom reports and dashboards'] },
-          { id: 'custom-modules', featured: true, title: 'Custom module development', body: 'Odoo modules shaped to your activity, with internal controls and governance policies built in, not left in a separate manual.', items: ['Custom modules for your processes, developed within the implementation project', 'We classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls', 'Ready-made module packages for each activity: being built and coming soon to the Odoo App Store; until then they are set up within the implementation project', 'Sector benchmarks for more than 50 activities (being added)'] },
+          { id: 'custom-modules', featured: true, title: 'Custom module development', body: 'Odoo modules shaped to your activity, with internal controls and governance policies built in, not left in a separate manual.', items: ['Custom modules for your processes, developed within the implementation project', 'We classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls', 'Ready-made module packages for each activity: being built and coming soon to the Odoo App Store; until then they are set up within the implementation project', 'Sector benchmarks: planned once enough classified clients are on the platform'] },
           { id: 'training', title: 'Training', body: 'Role-based training on your own configuration and data, in Arabic or English, with recorded sessions.', items: ['Role-based curriculum on your live configuration', 'Hands-on workshops, on site or remote', 'Bilingual user guides and quick-reference cards', 'Competency check-outs before go-live', 'Refresher sessions after upgrades'] },
           { id: 'support', title: 'Support and upgrades', body: 'A support agreement with agreed response times, handled by people who know your configuration and chart of accounts.', items: ['Help desk with agreed response times', 'Version upgrades and regression testing', 'Monthly health check and backup verification'] },
           { id: 'tax', title: 'Tax inside Odoo', body: 'Egyptian e-invoicing (ETA), Saudi ZATCA phase two, withholding tax, VAT and multi-entity consolidation are part of the standard build, not change requests.', items: [], link: { label: 'Innovative Tax Solutions', href: 'services/tax-solutions/' } }
@@ -427,7 +428,7 @@ module.exports = {
         faq: [
           // Implementation time: CEO decision (5 Nov 2026), "6 weeks for any project".
           { q: 'How long does an implementation take?', a: 'Six weeks for any implementation project, from discovery to go-live.' },
-          { q: 'Do you have ready-made modules for each activity?', a: 'Odoo module packages for each activity, with its controls, are being built and will be listed on the Odoo App Store soon; until then we configure your activity’s controls and build what is needed within the implementation project. Today, with SEG Audit, we classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls, with sector benchmarks for more than 50 activities being added.' },
+          { q: 'Do you have ready-made modules for each activity?', a: 'Odoo module packages for each activity, with its controls, are being built and will be listed on the Odoo App Store soon; until then we configure your activity’s controls and build what is needed within the implementation project. Today, with SEG Audit, we classify your activity under ISIC Rev.4 and check your books across 40+ review axes, including one dedicated to your activity family’s controls. Sector benchmarks are planned once enough classified clients are on the platform.' },
           { q: 'Do you handle Egyptian e-invoicing and Saudi ZATCA?', a: 'Yes. ETA e-invoicing, ZATCA phase two, withholding tax and multi-entity consolidation are part of the standard build. For return reconciliation and tax-file readiness, see Innovative Tax Solutions.' },
           // "90 days of stabilisation" and "critical issues acknowledged the same business day": confirmed by the CEO (5 Nov 2026).
           { q: 'What happens after go-live?', a: 'Ninety days of stabilisation are included, then optional support with response times agreed per contract; critical issues are acknowledged the same business day.' },
@@ -439,7 +440,7 @@ module.exports = {
       {
         slug: 'tax-solutions',
         name: 'Innovative Tax Solutions',
-        short: 'Tax compliance checked on every invoice and entry in your system, not a sample, through to filing the returns for you: e-invoicing and e-receipts, VAT, withholding tax and zakat.',
+        short: 'Tax compliance checked on every invoice and entry in your system, not a sample, through to filing the returns for you under your authorisation: e-invoicing and e-receipts, VAT, withholding tax and zakat.',
         tagline: 'Your return matches your books before the inspector asks.',
         definition: 'Tax solutions by MFT combine tax configuration inside Odoo (Egyptian ETA e-invoicing and e-receipts, Saudi ZATCA phase two, VAT and withholding tax) with automated checks that read every invoice and entry read-only, with results signed off by licensed accountants. It is a full managed service: we prepare the reconciliations, working papers and tax-file readiness, then file the tax returns on your company’s behalf, supervised by a qualified accountant at every stage.',
         body: [
@@ -480,7 +481,7 @@ module.exports = {
         tagline: 'Find the gap before the auditor, the bank or the tax authority does.',
         body: [
           'An internal audit programme designed around your actual risks: revenue leakage, duplicate payments, near-duplicate vendors, inventory shrinkage, access rights and tax exposure. Fieldwork is done inside your ERP and supported by Standard Enterprise Governance (SEG), MFT’s own platform, which runs its checks on the whole population rather than a sample, and rolls the results into a documented risk score.',
-          'Annual audits leave eleven months uncovered. Our programmes run monthly or continuously with the same rigour, and every finding is ranked by financial impact and comes with an owner, a fix and a deadline.'
+          'An annual audit looks back once a year, on a sample. Our programmes run monthly or weekly with the same rigour, and every finding is classified by severity and comes with an owner, a fix and a deadline.'
         ],
         deliverables: [
           'Risk-based annual audit plan',
@@ -523,7 +524,7 @@ module.exports = {
         faq: [
           { q: 'How many hours a month do we get?', a: 'It is scoped by deliverables, not hours: the monthly pack, the forecast and the review meeting are fixed; ad-hoc questions are answered within the engagement.' },
           { q: 'Do we need Odoo?', a: 'No. A monthly trial balance and sub-ledger export from any system is enough to start; Odoo makes it faster.' },
-          { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. No credit card, no commitment.' },
+          { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report. No credit card, no commitment.' },
           { q: 'I am a CFO. What do I get after the trial-balance check?', a: 'The service does not end at a PDF. Every month you receive a new pack compared with the one before, you sit with your MFT accountant in a decision review, and audit findings stay on record from one month to the next instead of starting from zero each time.' },
           { q: 'I own a small company. What happens after the free trial-balance check?', a: 'A 30-minute diagnosis call with a licensed accountant that ends with one concrete next step, then, if you want it, a monthly pack with a defined scope. Nothing to install and no change to your system.' },
         ]
@@ -787,12 +788,12 @@ module.exports = {
 
   contact: {
     title: 'Contact | Modern Financial Technology',
-    description: 'Send one question or your last closed month. A licensed accountant replies within one business day with a first diagnosis and one concrete next step.',
+    description: 'Send one question or your last closed month. A licensed accountant aims to reply within one business day with a first diagnosis and one concrete next step.',
     page: {
       eyebrow: 'Contact',
       title: 'One question can save you months.',
       intro:
-        'You do not need to prepare anything. Send your question or your last closed month, and a licensed accountant, not a sales rep, replies within one business day with a first diagnosis and one concrete next step. Full confidentiality.'
+        'You do not need to prepare anything. Send your question or your last closed month, and a licensed accountant, not a sales rep, aims to reply within one business day with a first diagnosis and one concrete next step. Full confidentiality.'
     },
     form: {
       heading: 'Request your free trial-balance check',
@@ -816,7 +817,7 @@ module.exports = {
       consent: 'I agree to be contacted by MFT about this request, and I have read and accept the privacy notice, including its cookies and advertising pixels.',
       submit: 'Send request',
       sending: 'Sending…',
-      success: 'Thank you. Your request has been received, and we will reply within one business day.',
+      success: 'Thank you. Your request has been received, and we aim to reply within one business day.',
       error: 'The request could not be sent. Please email or WhatsApp us directly using the details on this page.',
       offline: 'Online submission is not available right now. Please email or WhatsApp us using the details on this page.',
       required: 'Required',
@@ -830,8 +831,8 @@ module.exports = {
       whatsapp: 'WhatsApp',
       whatsappCta: 'Start a WhatsApp conversation',
       responseLabel: 'Response time',
-      response: 'Within one business day. Most clients started with a single WhatsApp message.',
-      officesLabel: 'Offices',
+      response: 'We aim to reply within one business day. You can start with a single WhatsApp message.',
+      officesLabel: 'Office',
       address: 'Dr. Sayed Abdel Wahed Street, Korba, Heliopolis, Cairo'
     }
   },
@@ -867,7 +868,7 @@ module.exports = {
     },
     homeBand: {
       title: 'Founding Members: only {total} seats. Founder price: 50% off for life',
-      body: 'Founding seats on SEG are capped at {total} and will not reopen. Start with a free check of your company’s trial balance that flags its risk points in minutes.',
+      body: 'Founding seats on SEG are capped at {total}; a seat opens only if an application’s approval window expires or it is declined. Start with a free check of your company’s trial balance that flags its risk points in minutes.',
       more: 'Programme details'
     },
     final: {
@@ -876,32 +877,32 @@ module.exports = {
     },
     // The real counter, later: replaces the matching copy above only when showCount is true and
     // The platform computes it: left = 50 − applications submitted (CEO, 5 Nov 2026). So {filled}
-    // reads «reserved», not «joined»: an application is not a confirmed subscription. {total} is the cap (50).
+    // reads «applications received», not «reserved» or «joined»: an application is not a confirmed subscription. {total} is the cap (50).
     counter: {
       title: 'Standard Enterprise Governance (SEG) Founding Members | {left} of {total} seats left',
-      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats, founder price: 50% off for life; {filled} reserved, {left} left.',
+      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats, founder price: 50% off for life; {filled} applications received, {left} left.',
       ogAlt: '{left} of {total} seats left: Standard Enterprise Governance (SEG) Founding Members',
       bar: 'SEG Founding Members: {left} of {total} seats left. Learn more',
       'hero.headline': '{left} of {total} seats left: Standard Enterprise Governance (SEG) {accent}Founding Members{/accent}',
-      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} of {total} seats reserved so far; {left} remain. Founder price: 50% off for life.',
+      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} applications received so far; {left} of {total} seats left. Founder price: 50% off for life.',
       'hero.meterCaption': 'seats left of {total}',
-      'hero.legend.filled': 'Reserved: {filled}',
+      'hero.legend.filled': 'Applications received: {filled}',
       'homeBand.title': 'Founding Members: {left} of {total} seats left',
-      'homeBand.body': '{filled} of {total} founding seats reserved so far. Founding seats are capped at {total} and will not reopen. Founder price: 50% off for life.',
+      'homeBand.body': '{filled} applications received so far; {left} of {total} seats left. The cap is {total}; a seat opens only if an application’s approval window expires or it is declined. Founder price: 50% off for life.',
       'final.title': '{left} of {total} seats left.',
-      'final.body': 'Every application counts against the seats left. Claim your seat before the count closes.'
+      'final.body': 'Every application counts against the seats left. Apply before the count closes.'
     },
     // The lead magnet (CEO, 3 Nov 2026): trial-balance indicators only, not a full audit report.
     check: {
       eyebrow: 'The free check',
       title: 'A free check of your company’s trial balance that flags its risk points in minutes',
-      intro: 'Not a full audit report: indicators computed directly from the balances in your trial balance, not estimates.',
+      intro: 'Not a full audit report: computed figures, not estimates. An uploaded trial balance gives the balance checks; the four entry-level checks run when Odoo is connected read-only.',
       items: [
-        { title: 'Suspense accounts', body: 'Balances left in clearing or suspense accounts.' },
-        { title: 'Abnormal balances', body: 'An account with a balance against its nature, such as cash in credit.' },
+        { title: 'Suspense accounts', body: 'Balances left in clearing or suspense accounts (Odoo connected).' },
+        { title: 'Abnormal balances', body: 'An account with a balance against its nature, such as cash in credit (Odoo connected).' },
         { title: 'Imbalance', body: 'Total debits do not equal total credits.' },
-        { title: 'Heavy manual entries', body: 'A high share of manual entries on sensitive accounts.' },
-        { title: 'Backdated entries', body: 'Entries dated earlier than the day they were recorded.' }
+        { title: 'Heavy manual entries', body: 'A high share of manual entries on sensitive accounts (Odoo connected).' },
+        { title: 'Backdated entries', body: 'Entries dated earlier than the day they were recorded (Odoo connected).' }
       ],
       cta: 'Check your trial balance free'
     },
@@ -922,7 +923,7 @@ module.exports = {
       steps: [
         { title: 'Sign up', body: 'Create your company account at app.seg-audit.com and start the free check. To reserve a Founding seat, apply through the application form: MFT approves each one by hand.' },
         { title: 'Upload your trial balance', body: 'Upload the trial balance of your last closed month, or connect Odoo read-only.' },
-        { title: 'Get your trial-balance check', body: 'Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report.' }
+        { title: 'Get your trial-balance check', body: 'From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report.' }
       ]
     },
     faq: [
@@ -1073,7 +1074,7 @@ module.exports = {
       title: 'From application to first client, step by step.',
       steps: [
         { when: 'Day 0', title: 'Partner application', body: 'From the form at the end of this page.' },
-        { when: 'Within 3 days', title: 'A 30-minute call', body: 'Your type of firm, your clients on Odoo, their activities, and the independence rule.' },
+        { when: 'Next', title: 'A 30-minute call', body: 'Your type of firm, your clients on Odoo, their activities, and the independence rule.' },
         { when: 'Week 1', title: 'Agreement and demo account', body: 'The partner agreement, a demo account with no client data, and the sales kit in Arabic and English.' },
         { when: 'Week 2', title: '90-minute training', body: 'A product tour, read-only connection, what we say and what we don’t, and deal registration, then a short test.' },
         { when: 'Month 1', title: 'Your first three clients', body: 'A free trial-balance check for three of your client companies, and a joint read-out with you and the MFT team.' }
@@ -1237,7 +1238,7 @@ module.exports = {
     },
     report: {
       title: 'Found a vulnerability?',
-      body: 'Email {email} and please do not disclose it publicly. We reply within 72 business hours.'
+      body: 'Email {email} and please do not disclose it publicly. We aim to reply within 72 business hours.'
     },
     securityEmail: 'security@seg-audit.com',
     platformLink: 'SEG platform',
@@ -1288,7 +1289,7 @@ module.exports = {
       },
       {
         title: 'Your rights',
-        body: 'You can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted at any time by emailing {email}. We answer within one business day.'
+        body: 'You can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted at any time by emailing {email}. We aim to answer within one business day.'
       },
       {
         title: 'Other MFT platforms',
@@ -1359,7 +1360,7 @@ module.exports = {
       items: [
         { title: 'Provider authorisation', body: 'Real client data may only be processed by providers the policy authorises. Unauthorised providers are refused even when technically configured, and automatic fallback stops rather than switching to one.' },
         { title: 'Evidence or silence', body: 'Every finding must cite the record ids the agent actually retrieved. Findings that cite nothing, or a number not in the cited records, are rejected and shown struck through, never as facts.' },
-        { title: 'Run log, seven years', body: 'Each run records provider, model, whether it ran in the cloud, tokens, client and task. Retained seven years by default, in line with ISA 230 working-paper conventions.' },
+        { title: 'Run log, seven years', body: 'Each run records provider, model, whether it ran in the cloud, tokens, client and task. Retained seven years by default.' },
         { title: 'Only the records a run needs', body: 'Agents read only the records a run needs as evidence; the full ledger is not copied. Those records are kept in the run log. During the current phase each run is processed by a cloud AI model provider that the policy authorises, and the run log records which one.' }
       ]
     },
@@ -1457,8 +1458,8 @@ module.exports = {
   // ---- Quote request ----
   quote: {
     title: 'Request a quote | MFT Intelligence',
-    description: 'Tell MFT your scope, from agents and ERP to entities and transaction volume, and receive a priced proposal from an accountant within two business days.',
-    page: { eyebrow: 'Request a quote', title: 'Tell us the scope. We price it.', intro: 'No fixed price list, because no two ledgers are the same. Give us four facts about your scope and an MFT accountant returns a scoped proposal within two business days.' },
+    description: 'Tell MFT your scope, from agents and ERP to entities and transaction volume, and receive a priced proposal from an accountant, which we aim to send within two business days.',
+    page: { eyebrow: 'Request a quote', title: 'Tell us the scope. We price it.', intro: 'No fixed price list, because no two ledgers are the same. Give us four facts about your scope and an MFT accountant returns a scoped proposal, which we aim to send within two business days.' },
     form: {
       heading: 'Scope',
       agents: 'Which agents are you interested in?',
@@ -1478,8 +1479,8 @@ module.exports = {
       cadence: 'Preferred cadence',
       cadenceOptions: [{ value: 'monthly', label: 'Monthly report' }, { value: 'weekly', label: 'Continuous weekly review' }, { value: 'unsure', label: 'Advise me' }],
       submit: 'Send scope and get a quote',
-      success: 'Received. An MFT accountant will send your scoped proposal within two business days.',
-      aside: { title: 'What happens next', steps: ['We confirm the scope by email or WhatsApp within one business day.', 'An MFT accountant prices the engagement to your entities, volume and cadence.', 'You receive a written proposal: scope, deliverables, cadence, price, start date.'] }
+      success: 'Received. An MFT accountant will send your scoped proposal; we aim to do it within two business days.',
+      aside: { title: 'What happens next', steps: ['We confirm the scope by email or WhatsApp, aiming for one business day.', 'An MFT accountant prices the engagement to your entities, volume and cadence.', 'You receive a written proposal: scope, deliverables, cadence, price, start date.'] }
     }
   },
 
@@ -1511,7 +1512,7 @@ module.exports = {
 
   homeFaq: [
     { q: 'What does Modern Financial Technology (MFT) do?', a: 'MFT is a CPA-led firm in Egypt and Saudi Arabia that implements Odoo ERP, runs internal audit programmes and acts as Virtual CFO for growing companies, with the SEG (Standard Enterprise Governance) platform, its continuous audit product SEG Audit and the MFT Intelligence agents doing the coverage and licensed accountants signing the results.' },
-    { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. Indicators computed from your trial balance only: suspense accounts, abnormal balances, imbalances, heavy manual entries and backdated entries. Not a full audit report. No credit card, no commitment.' },
+    { q: 'Is the trial-balance check really free?', a: 'Yes. A free check of your company’s trial balance that flags its risk points in minutes. From an uploaded trial balance: balance and imbalance checks and key indicators. Connect Odoo read-only and it also checks suspense balances, accounts on the wrong side, backdated entries and heavy manual entries. Not a full audit report. No credit card, no commitment.' },
     { q: 'Do you work with companies outside Cairo?', a: 'Yes. Engagements run on site and remotely across Egypt and Saudi Arabia, and Virtual CFO and Odoo work for US companies, in Arabic or English.' }
   ],
   industriesFaq: [
@@ -1525,7 +1526,7 @@ module.exports = {
     { q: 'What is smart audit?', a: 'MFT’s approach of building controls into the system so errors are prevented and caught as they happen: documentation cycles, permissions and segregation of duties, and audit requirements turned into operating rules inside Odoo.' }
   ],
   contactFaq: [
-    { q: 'How fast do you reply?', a: 'Within one business day, by email or WhatsApp. Most clients started with a single WhatsApp message.' },
+    { q: 'How fast do you reply?', a: 'We aim to reply within one business day, by email or WhatsApp. You can start with a single WhatsApp message.' },
     { q: 'What do I send for the free trial-balance check?', a: 'The trial balance of your last closed month, or connect Odoo read-only. No preparation is needed.' },
     { q: 'Is my data confidential?', a: 'Yes. Files shared for the trial-balance check are treated as confidential client data, restricted to the engagement team and deleted on request. Nothing is published about any client without written consent.' }
   ],
@@ -1543,7 +1544,7 @@ module.exports = {
         eyebrow: 'Egypt',
         headline: 'Odoo, audit and Virtual CFO for Egyptian companies, from Cairo.',
         definition: 'MFT is a CPA-led financial technology and audit firm headquartered in Korba, Heliopolis, Cairo, serving companies across Egypt with Odoo ERP implementation, internal audit and Virtual CFO reporting, in Arabic and English.',
-        intro: 'Egyptian finance teams carry the Egyptian Tax Authority e-invoicing mandate, 14% VAT, withholding tax and a market where most ERP implementations stop at go-live. MFT’s Cairo team implements the system, audits the controls around it and reads the results with you every month.',
+        intro: 'Egyptian finance teams carry the Egyptian Tax Authority e-invoicing mandate, 14% VAT, withholding tax and a market where many ERP implementations stop at go-live. MFT’s Cairo team implements the system, audits the controls around it and reads the results with you every month.',
         obligations: [
           'ETA e-invoicing: every issued invoice submitted and validated, with the receipt mandate for B2C',
           'VAT at 14% with monthly returns, and withholding tax on supplier payments',
@@ -1552,7 +1553,7 @@ module.exports = {
         ],
         services: [
           { title: 'Odoo ERP with ETA built in', body: 'Chart of accounts, e-invoicing submission, withholding and VAT configured by accountants, not just developers.', href: 'services/odoo-erp/' },
-          { title: 'Innovative Tax Solutions', body: 'VAT return reconciled to the books, withholding tax review, ETA invoice follow-up, and the returns filed for you.', href: 'services/tax-solutions/' },
+          { title: 'Innovative Tax Solutions', body: 'VAT return reconciled to the books, withholding tax review, ETA invoice follow-up, and the returns filed for you under your authorisation.', href: 'services/tax-solutions/' },
           { title: 'Internal audit, monthly or continuous', body: 'Risk-based programmes run inside your ERP, with findings ranked by impact and an owner for each.', href: 'services/internal-audit/' },
           { title: 'Virtual CFO', body: 'A monthly management pack and a review call with an MFT accountant, from your first closed month.', href: 'services/virtual-cfo/' },
           { title: 'MFT Intelligence agents', body: 'The Auditor and Virtual CFO agents, delivered as a managed service with human sign-off.', href: 'intelligence/' }
@@ -1583,7 +1584,7 @@ module.exports = {
         ],
         services: [
           { title: 'Odoo ERP with ZATCA phase two', body: 'Integration, clearance and reporting configured as part of the standard build, with zakat and VAT set per entity.', href: 'services/odoo-erp/' },
-          { title: 'Innovative Tax Solutions', body: 'ZATCA clearance and reporting follow-up, VAT and the zakat base reconciled to the books, and the returns filed for you.', href: 'services/tax-solutions/' },
+          { title: 'Innovative Tax Solutions', body: 'ZATCA clearance and reporting follow-up, VAT and the zakat base reconciled to the books, and the returns filed for you under your authorisation.', href: 'services/tax-solutions/' },
           { title: 'Internal audit', body: 'Risk-based programmes with ISA-classified findings, run on site in the Kingdom or remotely.', href: 'services/internal-audit/' },
           { title: 'Virtual CFO', body: 'Monthly management packs and cash forecasts in Arabic or English, with a review call each month.', href: 'services/virtual-cfo/' },
           { title: 'Cross-border structuring', body: 'Egypt and Saudi groups: treaty position, transfer of profits and consolidated reporting.', href: 'services/financial-consulting/' }

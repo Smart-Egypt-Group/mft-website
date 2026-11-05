@@ -9,12 +9,12 @@ module.exports = {
         'ISA 320 gives a method, not a fixed number.',
         'Common benchmarks: around five percent of profit before tax, or around one percent of revenue, or a percentage of total assets.',
         'Performance materiality sits below the threshold so small errors cannot add up unnoticed.',
-        'MFT computes the threshold from the client’s last closed year and reviews it every quarter.'
+        'MFT computes the threshold from the client’s own ledger at onboarding and recomputes it at each year-end or when the basis changes.'
       ],
       faq: [
         { q: 'How is materiality calculated under ISA 320?', a: 'By selecting a benchmark that reflects how the entity is judged, such as profit before tax, revenue or total assets, and applying a percentage that reflects its risk. The standard does not prescribe a fixed number.' },
         { q: 'What is performance materiality?', a: 'It is a lower amount set below overall materiality so that several small misstatements cannot add up to a material one without being noticed.' },
-        { q: 'How often should the materiality threshold be reviewed?', a: 'MFT reviews it every quarter and recomputes it when revenue or profit moves by more than the percentage itself, so the threshold stays aligned with the business.' }
+        { q: 'How often should the materiality threshold be reviewed?', a: 'MFT documents it at onboarding and recomputes it at each year-end or when the basis changes, for example after a large change in revenue or profit, so the threshold stays aligned with the business.' }
       ]
     },
     'zatca-phase-two-odoo-checklist': {
@@ -55,7 +55,7 @@ module.exports = {
       ],
       faq: [
         { q: 'What is continuous auditing?', a: 'It is internal audit that reviews transactions throughout the year rather than sampling once at year-end, scoring the whole population by risk so that issues surface while they can still be corrected.' },
-        { q: 'Does continuous audit replace the external audit?', a: 'No. It complements it: findings are classified against ISA and the evidence trail already exists, which makes the annual audit shorter and cheaper.' },
+        { q: 'Does continuous audit replace the external audit?', a: 'No. It complements it: findings are classified against ISA and the evidence trail already exists, which can make the annual audit smoother; how far the auditor relies on it is the auditor’s decision.' },
         { q: 'What does continuous audit typically find?', a: 'Common findings include duplicate and near-duplicate payments, approvals outside the approval matrix, cut-off errors, inventory valuation drift, and manual journal entries posted late at month-end in round amounts.' }
       ]
     },
@@ -81,12 +81,12 @@ module.exports = {
         'معيار {lat}ISA 320{/lat} يعطي منهجًا، لا رقمًا ثابتًا.',
         'المقاييس الشائعة: نحو خمسة بالمئة من الربح قبل الضريبة، أو نحو واحد بالمئة من الإيراد، أو نسبة من مجموع الأصول.',
         'الأهمية النسبية للأداء تقع تحت الحد حتى لا تتراكم أخطاء صغيرة دون أن يلاحظها أحد.',
-        'تحسب {lat}MFT{/lat} الحد من آخر سنة مُقفلة للعميل وتراجعه كل ربع سنة.'
+        'تحسب {lat}MFT{/lat} الحد من دفتر العميل عند التهيئة وتعيد حسابه في نهاية كل سنة أو عند تغيّر الأساس.'
       ],
       faq: [
         { q: 'كيف تُحسب الأهمية النسبية وفق {lat}ISA 320{/lat}؟', a: 'باختيار مقياس يعكس كيف يُحكم على المنشأة، كالربح قبل الضريبة أو الإيراد أو مجموع الأصول، وتطبيق نسبة تعكس مخاطرها. ولا يفرض المعيار رقمًا ثابتًا.' },
         { q: 'ما الأهمية النسبية للأداء؟', a: 'هي مبلغ أدنى يُحدَّد تحت الأهمية النسبية الكلية، حتى لا تتراكم أخطاء صغيرة عدة إلى خطأ جوهري دون أن تُلاحظ.' },
-        { q: 'كم مرة ينبغي مراجعة حد الأهمية النسبية؟', a: 'تراجعه {lat}MFT{/lat} كل ربع سنة، وتعيد حسابه عندما يتحرك الإيراد أو الربح بأكثر من النسبة نفسها، حتى يبقى الحد متسقًا مع الشركة.' }
+        { q: 'كم مرة ينبغي مراجعة حد الأهمية النسبية؟', a: 'توثّقه {lat}MFT{/lat} عند التهيئة، وتعيد حسابه في نهاية كل سنة أو عند تغيّر الأساس، مثل تغيّر كبير في الإيراد أو الربح، حتى يبقى الحد متسقًا مع الشركة.' }
       ]
     },
     'zatca-phase-two-odoo-checklist': {
@@ -127,7 +127,7 @@ module.exports = {
       ],
       faq: [
         { q: 'ما المراجعة المستمرة؟', a: 'هي مراجعة داخلية تفحص المعاملات طوال السنة بدل عينة واحدة في نهايتها، وتقيّم المجتمع كله حسب المخاطر فتظهر المشكلات وما زال تصحيحها ممكنًا.' },
-        { q: 'هل تحل المراجعة المستمرة محل المراجعة الخارجية؟', a: 'لا، بل تكمّلها: الملاحظات مصنّفة وفق {lat}ISA{/lat} وأثر الأدلة موجود أصلًا، وهذا يجعل المراجعة السنوية أقصر وأقل تكلفة.' },
+        { q: 'هل تحل المراجعة المستمرة محل المراجعة الخارجية؟', a: 'لا، بل تكمّلها: الملاحظات مصنّفة وفق {lat}ISA{/lat} وأثر الأدلة موجود أصلًا، وهذا قد يجعل المراجعة السنوية أيسر، ومدى اعتماد المراجع عليها قراره هو.' },
         { q: 'ما الذي تجده المراجعة المستمرة عادة؟', a: 'من الملاحظات الشائعة المدفوعات المكررة وشبه المكررة، والاعتمادات خارج مصفوفة الصلاحيات، وأخطاء الفصل الزمني، وانحراف تقييم المخزون، والقيود اليدوية المتأخرة في آخر الشهر بمبالغ مدوّرة.' }
       ]
     },

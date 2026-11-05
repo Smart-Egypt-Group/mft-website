@@ -20,6 +20,16 @@ const LOGO_FILE = 'file://' + path.join(ROOT, 'src/assets/logo/mft-lockup-white.
 const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 
+// The markets line is the last plain-text item of the hero trust strip (the approved wording,
+// e.g. "Egypt and Saudi Arabia, expanding to the US"). Read it by type, not by index, so the
+// card never prints "undefined" when the strip changes.
+function marketsLine(c) {
+  const items = (c.home.hero.trust || []).filter((t) => typeof t === 'string');
+  const line = items[items.length - 1];
+  if (!line) throw new Error(`og-image: no markets line in home.hero.trust (${c.htmlLang})`);
+  return line.replace(/\{\/?lat\}/g, '');
+}
+
 function html(c) {
   const rtl = c.dir === 'rtl';
   const headline = c.home.hero.headline.replace(/\{\/?accent\}/g, (m) => (m === '{accent}' ? '<span class="a">' : '</span>')).replace(/\{\/?lat\}/g, '').replace('\n', '<br>');
@@ -39,7 +49,7 @@ h1 .a{color:#1BB7CD}
 </style></head><body>
 <div class="top"><img src="${LOGO_FILE}" alt=""><span class="eyebrow" dir="${c.dir}">${c.home.hero.eyebrow}</span></div>
 <h1>${headline}</h1>
-<div class="bottom"><span class="tag">${c.home.hero.trust[4]}</span><span class="rule"></span></div>
+<div class="bottom"><span class="tag">${marketsLine(c)}</span><span class="rule"></span></div>
 </body></html>`;
 }
 

@@ -175,7 +175,7 @@ ${ctaBand(ctx)}`;
       serviceType: plain(item.name),
       description: plain(item.definition || item.short),
       provider: { '@type': 'Organization', name: ctx.c.meta.siteName, url: ctx.config.siteUrl },
-      areaServed: ['EG', 'SA', 'US'],
+      areaServed: ['EG', 'SA'],
       availableLanguage: ['ar', 'en']
     }
   ];

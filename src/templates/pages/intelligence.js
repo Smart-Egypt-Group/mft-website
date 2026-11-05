@@ -121,7 +121,7 @@ ${ctaBand(ctx)}`;
       serviceType: 'Managed AI agents for audit, CFO reporting and finance operations',
       description: plain(I.definition),
       provider: { '@type': 'Organization', name: ctx.c.meta.siteName, url: ctx.config.siteUrl },
-      areaServed: ['EG', 'SA', 'US'],
+      areaServed: ['EG', 'SA'],
       availableLanguage: ['ar', 'en'],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',

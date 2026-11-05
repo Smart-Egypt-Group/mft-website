@@ -212,7 +212,7 @@ function build() {
     '## Facts',
     '- CPA-led team (chartered accountant registration no. 57986); Odoo Certified Partner; Egypt and Saudi Arabia, expanding to the US.',
     '- Agents draft only; every action needs a named human approval (two above ISA 320 materiality); corrections by reversal, never deletion.',
-    '- AI governance policy enforced in code; run log retained 7 years (ISA 230); agents read only the records a run needs, and the run log records the model provider of each run.',
+    '- AI governance policy enforced in code; AI run log retained 7 years by default; agents read only the records a run needs, and the run log records the model provider of each run.',
     '',
     '## Contact',
     `- ${config.contact.email} · ${config.contact.phones.map((p) => p.display).join(' · ')} · ${config.siteUrl}/en/contact/`,

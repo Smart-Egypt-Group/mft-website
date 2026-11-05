@@ -50,16 +50,19 @@ const f = (n) => +n.toFixed(1);
 // ---- Copy (three levels + CTA). The AR seats headline is the approved campaign line, verbatim. ----
 const COPY = {
   'seats-ar': FM.showCount
-    ? { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · الأعضاء المؤسِّسون', hero: [String(LEFT), `/${FM.total}`], title: `باقي ${LEFT} من ${FM.total} — الأعضاء المؤسِّسون`, support: `المقاعد المحجوزة ${FILLED} من ${FM.total}. احجز مقعدك قبل اكتمال العدد.`, cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' }
+    ? { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · الأعضاء المؤسِّسون', hero: [String(LEFT), `/${FM.total}`], title: `باقي ${LEFT} من ${FM.total}: الأعضاء المؤسِّسون`, support: `طلبات مقدَّمة ${FILLED}، والمتبقي ${LEFT} من ${FM.total}. قدّم طلبك قبل اكتمال العدد.`, cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' }
     : { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', hero: [String(FM.total), ''], title: `${FM.total} مقعد فقط · سعر المؤسِّس: 50% مدى الحياة`, support: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' },
   'seats-en': FM.showCount
-    ? { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left — Founding Members`, support: `${FILLED} of ${FM.total} seats reserved. Claim yours before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' }
+    ? { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left: Founding Members`, support: `${FILLED} applications received; ${LEFT} of ${FM.total} left. Apply before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' }
     : { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', hero: [String(FM.total), ''], title: `Only ${FM.total} seats · Founder price: 50% off for life`, support: 'Start with a free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' },
   'live-ar': { dir: 'rtl', eyebrow: 'Standard Enterprise Governance من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com', motif: 'live' },
   'live-en': { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'A free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Check your trial balance free  ·  app.seg-audit.com', motif: 'live' },
   'neutral-seats': { motif: 'seats' },
   'neutral-live': { motif: 'live' }
 };
+// No-count forms for the founding page og:image, used whatever showCount says (integrity register H1).
+COPY['og-seats-ar'] = { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', hero: [String(FM.total), ''], title: `${FM.total} مقعد فقط · سعر المؤسِّس: 50% مدى الحياة`, support: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'قدّم طلبك  ·  app.seg-audit.com', motif: 'seats', noCount: true };
+COPY['og-seats-en'] = { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', hero: [String(FM.total), ''], title: `Only ${FM.total} seats · Founder price: 50% off for life`, support: 'Start with a free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Apply  ·  app.seg-audit.com', motif: 'seats', noCount: true };
 
 // ---- Formats. kind: land (vertical split), stack (horizontal split), strip (covers/banners). ----
 // safe: the area the platform never crops or covers (UI overlays, avatars, TV/mobile crops).
@@ -187,11 +190,12 @@ function scene(F, variant) {
   if (C.motif === 'seats') {
     const landscape = G.axis === 'x';
     const S = seatLayout(P, landscape);
-    const next = FILLED; // the visitor's seat: the first open one
+    const drawn = C.noCount ? 0 : FILLED; // og:image: no count, so no seat is drawn as taken
+    const next = drawn; // the visitor's seat: the first open one
     target = S.seats[next];
     S.seats.forEach((p, i) => {
       if (i === next) return;
-      if (i < FILLED) page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r)}" fill="${NAVY}"/>`;
+      if (i < drawn) page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r)}" fill="${NAVY}"/>`;
       else page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r - 1.25 * u)}" fill="none" stroke="${NAVY}" stroke-opacity=".55" stroke-width="${f(2.5 * u)}"/>`;
     });
     if (next != null) {
@@ -361,10 +365,15 @@ function typePlan(F, C) {
       fs.writeFileSync(path.join(dir, base + '.webp'), Buffer.from(webp, 'base64'));
       fs.writeFileSync(path.join(dir, base + '.jpg'), Buffer.from(jpg, 'base64'));
       written.push({ dir: F.dir, base, w: F.w, h: F.h, variant: v, name: F.name });
-      // the founding page og:image is the 1200×630 seats card in each language
+      // The founding page og:image is the 1200×630 seats card in each language, always in its
+      // no-count form: a share image is cached by every platform and never updates, so it must not
+      // carry a number that the live counter will contradict (integrity register H1).
       if (F.name === 'linkedin-facebook-link' && /^seats-(ar|en)$/.test(v)) {
+        const ogV = `og-${v}`;
+        const og = scene(F, ogV);
+        const [, ogJpg] = await render({ svg: og.svg, G: og.G, w: F.w, h: F.h, kind: F.kind, C: COPY[ogV], plan: typePlan(F, COPY[ogV]), markNavy: MARK_NAVY, markWhite: MARK_WHITE });
         fs.mkdirSync(SITE_OUT, { recursive: true });
-        fs.writeFileSync(path.join(SITE_OUT, `founding-og-${v.slice(-2)}.jpg`), Buffer.from(jpg, 'base64'));
+        fs.writeFileSync(path.join(SITE_OUT, `founding-og-${v.slice(-2)}.jpg`), Buffer.from(ogJpg, 'base64'));
       }
       console.log('wrote', F.dir + '/' + base);
     }

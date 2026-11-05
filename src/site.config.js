@@ -42,12 +42,10 @@ module.exports = {
       { display: '+20 104 005 7520', tel: '+201040057520' }
     ],
     whatsapp: '+201062399941', // official WhatsApp number on the contact page
-    // Cairo address from the official contact page. Saudi and US have no street
-    // address published; country names only.
+    // Cairo address from the official contact page. It is the only office: Saudi Arabia is served
+    // on site and remotely, the US is a market MFT is expanding into (footer.markets says so).
     offices: [
-      { key: 'eg', line: 'Korba, Heliopolis, Cairo', lineAr: 'الكوربة، مصر الجديدة، القاهرة' },
-      { key: 'sa', line: '', lineAr: '' },
-      { key: 'us', line: '', lineAr: '' }
+      { key: 'eg', line: 'Korba, Heliopolis, Cairo', lineAr: 'الكوربة، مصر الجديدة، القاهرة' }
     ],
     // Public profiles, rendered in the footer and in Organization.sameAs. An empty value is not
     // rendered (and `npm run check` warns), so a profile only appears once its URL is confirmed.
