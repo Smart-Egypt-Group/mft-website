@@ -33,7 +33,7 @@ module.exports = function foundingApply(ctx) {
     errors: A.errors,
     submit: plain(A.submit), submitWaitlist: plain(A.submitWaitlist), sending: plain(A.sending),
     success: plain(seats(ctx, A.success)), successWaitlist: plain(seats(ctx, A.successWaitlist)),
-    rateLimited: plain(A.rateLimited), failed: plain(A.failed).replace('{email}', ctx.config.contact.email)
+    rateLimited: plain(A.rateLimited), captchaFailed: plain(A.captchaFailed), failed: plain(A.failed).replace('{email}', ctx.config.contact.email)
   };
   for (const k in i18n.errors) i18n.errors[k] = plain(i18n.errors[k]);
 
@@ -99,6 +99,8 @@ module.exports = function foundingApply(ctx) {
       <div class="check-stack">${['case_study', 'testimonial', 'logo', 'annual_commitment', 'beta_feedback'].map(check).join('')}</div>
 
       <div class="field field-check field-consent"><input id="ap-consent_contact" name="consent_contact" type="checkbox" required><label for="ap-consent_contact">${tl(L.consent_contact)} ${req}</label></div>
+      <div class="captcha-slot" id="ap-captcha" data-captcha-slot data-sitekey="${esc(F.api.captchaSiteKey || '')}"${F.api.captchaSiteKey ? '' : ' hidden'}></div>
+      <input type="hidden" name="captcha_token" id="ap-captcha_token" value="">
       <div class="hp" aria-hidden="true"><label for="ap-website">${t(L.honeypot)}</label><input id="ap-website" name="website" type="text" tabindex="-1" autocomplete="off" value=""></div>
 
       <p class="form-status" role="status" aria-live="polite" tabindex="-1"></p>

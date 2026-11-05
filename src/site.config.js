@@ -89,7 +89,12 @@ module.exports = {
     api: {
       seats: 'https://app.seg-audit.com/api/public/founding-seats',
       apply: 'https://app.seg-audit.com/api/public/founding-applications',
-      utmField: null
+      utmField: null,
+      // Captcha (Cloudflare Turnstile): off on the platform for now (CEO, 5 Nov 2026). The form
+      // already sends captcha_token = "" (ignored while off). To switch on: MFT sets the platform
+      // secret, puts the Turnstile site key here, and the widget renders in the form's slot; the
+      // token is then required (a failed check = 400).
+      captchaSiteKey: null
     }
   },
 

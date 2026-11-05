@@ -864,6 +864,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .check-chip input:focus-visible + label { outline: 3px solid var(--cyan); outline-offset: 2px; }
 .field-group.invalid .check-chip label { cursor: pointer; border-color: #B3261E; }
 .check-stack .field { margin-bottom: 10px; }
+.captcha-slot { margin: 18px 0 0; min-height: 65px; }
 .field-consent { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
 .field-consent a { color: var(--accent); text-decoration: underline; }
 .apply-aside .num-list { margin-top: 16px; }

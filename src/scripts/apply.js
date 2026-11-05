@@ -3,10 +3,12 @@
      202  always the same, whatever happened: one neutral "received" message (never "created")
      422  {detail:[{loc:["body",field],msg}]}: mark those fields
      429  Retry-After: "try again in a little while"
+     400  with the captcha on: the Turnstile check failed → reset the widget, ask to retry
      else / network / CORS: "could not send now", with the e-mail fallback
    The page validates first with the contract's own rules, so a 422 should be rare.
    On 202 a 'mft:lead' event fires; pixel.js sends it to Meta as Lead with the visit's UTMs only
-   (never the form's contents). UTMs go with the application only once site.config →
+   (never the form's contents). The 202 message asks the applicant to confirm their e-mail: an
+   application reaches MFT only once its e-mailed link is confirmed (contract). UTMs go with the application only once site.config →
    founding.api.utmField names a field the platform accepts (unknown fields are a 422). */
 (function () {
   'use strict';
@@ -87,6 +89,9 @@
     INTS.forEach(function (k) { p[k] = parseInt(val(k), 10); });
     CHOICES.forEach(function (k) { p[k] = val(k); });
     LISTS.forEach(function (k) { p[k] = checked(k); });
+    // Turnstile token (site.config → founding.api.captchaSiteKey). Empty while the captcha is
+    // off: the platform ignores it until MFT switches it on, then it is required.
+    p.captcha_token = captchaToken();
     p.erp_version = val('erp_version');
     p.main_pain = val('main_pain');
     FLAGS.forEach(function (k) { p[k] = !!el(k).checked; });
@@ -96,6 +101,31 @@
       if (utm) p[utmField] = utm;
     }
     return p;
+  }
+
+  // Captcha: when a site key is configured, render Turnstile in the slot (its script is loaded
+  // only then) and keep its token in the hidden field. With no key: nothing loads, token "".
+  var slot = form.querySelector('[data-captcha-slot]');
+  var siteKey = slot && slot.getAttribute('data-sitekey');
+  function captchaToken() { var i = form.querySelector('[name="captcha_token"]'); return i ? i.value || '' : ''; }
+  function captchaReset() {
+    var i = form.querySelector('[name="captcha_token"]'); if (i) i.value = '';
+    if (siteKey && window.turnstile) try { window.turnstile.reset(slot); } catch (e) { /* not rendered */ }
+  }
+  if (siteKey) {
+    window.mftTurnstile = function () {
+      window.turnstile.render(slot, {
+        sitekey: siteKey,
+        language: form.getAttribute('data-lang') || 'auto',
+        callback: function (token) { form.querySelector('[name="captcha_token"]').value = token; },
+        'expired-callback': captchaReset,
+        'error-callback': captchaReset
+      });
+    };
+    var ts = document.createElement('script');
+    ts.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=mftTurnstile&render=explicit';
+    ts.async = true; ts.defer = true;
+    document.head.appendChild(ts);
   }
 
   // Page-side validation with the contract's rules. Returns [[field, message], ...].
@@ -174,6 +204,7 @@
           var seats = res.body && res.body.seats;
           var full = state === 'full' || (seats && seats.left === 0);
           form.reset();
+          captchaReset();
           form.classList.add('is-sent');
           setStatus('ok', full ? M.successWaitlist : M.success);
           status.focus();
@@ -192,6 +223,7 @@
           return;
         }
         if (res.status === 429) { setStatus('err', M.rateLimited); return; }
+        if (res.status === 400 && siteKey) { captchaReset(); setStatus('err', M.captchaFailed); return; }   // captcha on: failed check
         setStatus('err', M.failed);
       })
       .catch(function () { setStatus('err', M.failed); })

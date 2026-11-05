@@ -904,7 +904,7 @@ module.exports = {
       description: 'Apply to join the Standard Enterprise Governance (SEG) Founding Members from MFT: {total} seats only, every application reviewed by hand by the MFT team.',
       eyebrow: 'Founding seat application',
       headline: 'Apply for a seat among the {accent}Founding Members{/accent}',
-      intro: 'Two minutes of your time. The MFT team reviews every application by hand, and approval is what reserves the seat. Once approved, you sign up on the platform with the same e-mail you applied with.',
+      intro: 'Two minutes of your time. The MFT team reviews every application by hand, and approval is what reserves the seat. Once approved, you sign up on the platform with the same e-mail you applied with. An approved seat is held for 14 days; if you have not signed up and connected Odoo by then, the seat goes back to the pool.',
       counter: {
         caption: 'seats left of {total}',
         asOf: 'Last known count',
@@ -970,16 +970,18 @@ module.exports = {
       submit: 'Send application',
       submitWaitlist: 'Join the waitlist',
       sending: 'Sending…',
-      success: 'Application received, thank you. The MFT team reviews every application by hand and will contact you. If a confirmation e-mail reaches you, click the link in it so your application reaches the team.',
-      successWaitlist: 'Application received; you are on the waitlist. The MFT team reviews every application by hand and will contact you if a seat opens. If a confirmation e-mail reaches you, click the link in it.',
+      success: 'Application received, thank you. Check your e-mail and confirm your application from the link we sent (valid for 72 hours); it does not reach the MFT team until it is confirmed. The team then reviews every application by hand and will contact you.',
+      successWaitlist: 'Application received, thank you. Check your e-mail and confirm your application from the link we sent (valid for 72 hours). The seats are taken for now, so once confirmed your application goes on the waitlist, and we will contact you if a seat opens.',
+      captchaFailed: 'The check that you are not a robot did not complete. Please try again.',
       rateLimited: 'Too many attempts in a short time. Please try again in a little while.',
       failed: 'The application could not be sent right now. Please try again shortly, or e-mail us at {email}.',
       aside: {
         title: 'What happens after you apply',
         steps: [
+          'You confirm your e-mail from the link you receive; the application does not reach the team before that.',
           'The MFT team reviews your application by hand.',
-          'Approval reserves one of the {total} seats for you at once.',
-          'You sign up on the platform with the same e-mail, and the seat becomes your company’s.'
+          'Approval reserves one of the {total} seats for you at once, for 14 days.',
+          'You sign up on the platform with the same e-mail and connect Odoo, and the seat becomes your company’s.'
         ],
         note: 'One seat per company and per Odoo database.'
       },
