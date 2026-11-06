@@ -1,0 +1,86 @@
+{
+  "generatedBy": "scripts/brand-type-metrics.js",
+  "note": "Regular instances; ratios ≈ 1.000 = the two scripts match",
+  "pairs": [
+    {
+      "id": "cairo+inter",
+      "use": "الحملة والموقع اليوم",
+      "arabic": {
+        "family": "Cairo",
+        "body": 0.5,
+        "alef": 0.717,
+        "stem": 0.077
+      },
+      "latin": {
+        "family": "Inter",
+        "x": 0.546,
+        "cap": 0.728,
+        "stem": 0.088
+      },
+      "bodyToX": 0.916,
+      "alefToCap": 0.986,
+      "stemRatio": 0.876,
+      "latinSizeAdjust": 0.916
+    },
+    {
+      "id": "plexArabic+plexSans",
+      "use": "تقارير الـPDF في المنصة",
+      "arabic": {
+        "family": "IBM Plex Sans Arabic",
+        "body": 0.38,
+        "alef": 0.74,
+        "stem": 0.074
+      },
+      "latin": {
+        "family": "IBM Plex Sans Arabic",
+        "x": 0.516,
+        "cap": 0.698,
+        "stem": 0.08
+      },
+      "bodyToX": 0.736,
+      "alefToCap": 1.06,
+      "stemRatio": 0.925,
+      "latinSizeAdjust": 0.736
+    },
+    {
+      "id": "plexArabic+inter",
+      "use": "بديل: Plex عربي + Inter",
+      "arabic": {
+        "family": "IBM Plex Sans Arabic",
+        "body": 0.38,
+        "alef": 0.74,
+        "stem": 0.074
+      },
+      "latin": {
+        "family": "Inter",
+        "x": 0.546,
+        "cap": 0.728,
+        "stem": 0.088
+      },
+      "bodyToX": 0.696,
+      "alefToCap": 1.017,
+      "stemRatio": 0.842,
+      "latinSizeAdjust": 0.696
+    },
+    {
+      "id": "cairo+plexSans",
+      "use": "بديل: Cairo + Plex لاتيني",
+      "arabic": {
+        "family": "Cairo",
+        "body": 0.5,
+        "alef": 0.717,
+        "stem": 0.077
+      },
+      "latin": {
+        "family": "IBM Plex Sans Arabic",
+        "x": 0.516,
+        "cap": 0.698,
+        "stem": 0.08
+      },
+      "bodyToX": 0.969,
+      "alefToCap": 1.027,
+      "stemRatio": 0.963,
+      "latinSizeAdjust": 0.969
+    }
+  ]
+}

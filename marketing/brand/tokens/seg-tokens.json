@@ -1,73 +1,76 @@
 {
-  "$description": "SEG design tokens: the single source for brand colours, type, spacing and radii. Read by scripts/lib/brand-tokens.js (design generators) and exported to seg-tokens.css / tailwind.seg.cjs for the platform UI (Next.js, RTL). Blue ramp: the SEG logo's own blues (darkest / mid / lightest measured from the CEO's file, 6 Nov 2026) plus interpolated steps. Navy and cyan: the colours already used on every campaign design. Status: proposal until the CEO approves the identity.",
-  "version": "0.1.0-proposal",
+  "$description": "SEG design tokens: the single source for colour, type, space, radius, elevation and logo rules. Three layers: primitives (color) → semantic roles per theme (role.light / role.dark) → components use roles only. Read by scripts/lib/brand-tokens.js; exported by scripts/brand-book.js to seg-tokens.css and tailwind.seg.cjs. Every role pair is contrast-checked at build (text ≥ 4.5:1, large text and UI boundaries ≥ 3:1). Status: proposal until the CEO approves the identity.",
+  "version": "0.2.0-proposal",
   "color": {
-    "seg50": "#EEF3FF",
-    "seg100": "#DCE6FE",
-    "seg200": "#A9C1FB",
-    "seg300": "#7FA2F7",
-    "seg400": "#5884EF",
-    "seg500": "#3369E4",
-    "seg600": "#2A51CE",
-    "seg700": "#1F3CBC",
-    "seg800": "#1426AC",
-    "seg900": "#0A129E",
-    "navy": "#0D1B3E",
-    "navy800": "#1C2F63",
-    "navyDeep": "#081230",
-    "navyNight": "#050B20",
-    "cyan": "#1BB7CD",
-    "cyanInk": "#1497AA",
-    "cyanDeep": "#0F7C91",
-    "cyanTint": "#E4F3F6",
-    "ink": "#0D1B3E",
-    "slate": "#3B4262",
-    "muted": "#5A6483",
-    "line": "#E6E9F0",
-    "surface": "#F5F7FA",
-    "paper": "#F3F5F9",
-    "white": "#FFFFFF",
-    "danger": "#C0392B",
-    "warning": "#9A6312",
-    "success": "#1A7F50",
-    "info": "#2A51CE"
+    "seg50": "#EEF3FF", "seg100": "#DCE6FE", "seg200": "#A9C1FB", "seg300": "#7FA2F7", "seg400": "#5884EF",
+    "seg500": "#3369E4", "seg600": "#2A51CE", "seg700": "#1F3CBC", "seg800": "#1426AC", "seg900": "#0A129E",
+    "navy": "#0D1B3E", "navy800": "#1C2F63", "navyDeep": "#081230", "navyNight": "#050B20",
+    "cyan": "#1BB7CD", "cyanInk": "#1497AA", "cyanDeep": "#0F7C91", "cyanTint": "#E4F3F6",
+    "ink": "#0D1B3E", "slate": "#3B4262", "muted": "#5A6483", "line": "#E6E9F0", "lineStrong": "#848EA6",
+    "surface": "#F5F7FA", "surfaceSunken": "#EDF0F5", "paper": "#F3F5F9", "white": "#FFFFFF",
+    "danger": "#C0392B", "dangerTint": "#FBEAE8", "dangerInk": "#8E2A20", "dangerOnDark": "#FF8A7D",
+    "warning": "#9A6312", "warningTint": "#FBF1E3", "warningInk": "#6B430A", "warningOnDark": "#F2B45A",
+    "success": "#1A7F50", "successTint": "#E6F4EC", "successInk": "#125A39", "successOnDark": "#4FD39A",
+    "info": "#2A51CE",
+    "darkText": "#EEF2FA", "darkTextMuted": "#AEB8D0", "darkTextSubtle": "#8C97B5", "darkLine": "#22356A", "darkLineStrong": "#6575A3"
   },
   "role": {
-    "brandPrimary": "seg700",
-    "brandDark": "navy",
-    "accent": "cyan",
-    "textPrimary": "ink",
-    "textSecondary": "slate",
-    "textMuted": "muted",
-    "textOnDark": "white",
-    "link": "seg600",
-    "linkOnDark": "seg200",
-    "border": "line",
-    "background": "white",
-    "backgroundAlt": "surface",
-    "backgroundDark": "navy",
-    "focusRing": "cyan",
-    "severityCritical": "danger",
-    "severityHigh": "warning",
-    "severityOk": "success"
+    "light": {
+      "background": "white", "surface": "white", "surfaceAlt": "surface", "surfaceSunken": "surfaceSunken", "surfaceInverse": "navy",
+      "onSurface": "ink", "onSurfaceMuted": "slate", "onSurfaceSubtle": "muted",
+      "outline": "line", "outlineStrong": "lineStrong",
+      "primary": "seg700", "primaryHover": "seg800", "onPrimary": "white", "primaryContainer": "seg50", "onPrimaryContainer": "seg900", "link": "seg600",
+      "accent": "cyanInk", "onAccent": "navy", "accentText": "cyanDeep",
+      "critical": "danger", "onCritical": "white", "criticalContainer": "dangerTint", "onCriticalContainer": "dangerInk",
+      "warning": "warning", "onWarning": "white", "warningContainer": "warningTint", "onWarningContainer": "warningInk",
+      "success": "success", "onSuccess": "white", "successContainer": "successTint", "onSuccessContainer": "successInk",
+      "focus": "cyanDeep"
+    },
+    "dark": {
+      "background": "navyNight", "surface": "navyDeep", "surfaceAlt": "navy", "surfaceSunken": "navyNight", "surfaceInverse": "white",
+      "onSurface": "darkText", "onSurfaceMuted": "darkTextMuted", "onSurfaceSubtle": "darkTextSubtle",
+      "outline": "darkLine", "outlineStrong": "darkLineStrong",
+      "primary": "seg300", "primaryHover": "seg200", "onPrimary": "navyNight", "primaryContainer": "seg900", "onPrimaryContainer": "seg100", "link": "seg200",
+      "accent": "cyan", "onAccent": "navy", "accentText": "cyan",
+      "critical": "dangerOnDark", "onCritical": "navyNight", "criticalContainer": "navy800", "onCriticalContainer": "dangerOnDark",
+      "warning": "warningOnDark", "onWarning": "navyNight", "warningContainer": "navy800", "onWarningContainer": "warningOnDark",
+      "success": "successOnDark", "onSuccess": "navyNight", "successContainer": "navy800", "onSuccessContainer": "successOnDark",
+      "focus": "cyan"
+    }
+  },
+  "contrastPairs": {
+    "text": [
+      ["onSurface", "surface"], ["onSurface", "surfaceAlt"], ["onSurfaceMuted", "surface"], ["onSurfaceSubtle", "surface"],
+      ["onPrimary", "primary"], ["onPrimaryContainer", "primaryContainer"], ["link", "surface"], ["onAccent", "accent"], ["accentText", "surface"],
+      ["onCritical", "critical"], ["onCriticalContainer", "criticalContainer"], ["onWarning", "warning"], ["onWarningContainer", "warningContainer"],
+      ["onSuccess", "success"], ["onSuccessContainer", "successContainer"], ["critical", "surface"], ["success", "surface"], ["warning", "surface"]
+    ],
+    "ui": [["outlineStrong", "surface"], ["focus", "surface"], ["primary", "surface"], ["accent", "surface"]]
+  },
+  "gradient": {
+    "depth": { "type": "linear", "angle": 160, "stops": [["navy", 0], ["seg900", 0.7], ["seg700", 1]], "use": "brand backgrounds, report covers, banners" },
+    "night": { "type": "radial", "at": "80% 10%", "stops": [["seg800", 0], ["navy", 0.55], ["navyNight", 1]], "use": "social posts and dark hero fields" },
+    "signal": { "type": "radial", "stops": [["cyan@0.45", 0], ["cyan@0", 1]], "use": "the light that marks the exception: one per composition" },
+    "logoA.left": { "type": "linear", "along": "face U", "stops": [["seg900", 0], ["seg600", 1]] },
+    "logoA.top": { "type": "linear", "along": "face U", "stops": [["seg700", 0], ["seg500", 1]] },
+    "logoA.right": { "type": "linear", "along": "face U", "stops": [["seg900", 0], ["seg500", 1]] }
   },
   "font": {
     "arabic": { "family": "Cairo", "file": "src/assets/fonts/cairo-arabic-var.woff2", "weights": "200–1000 (variable)", "licence": "SIL OFL 1.1" },
-    "latin": { "family": "Inter", "file": "src/assets/fonts/inter-latin-var.woff2", "weights": "100–900 (variable)", "licence": "SIL OFL 1.1", "features": "tnum for figures in tables" },
-    "stack": "\"Cairo\", \"Inter\", system-ui, sans-serif",
-    "stackLatin": "\"Inter\", \"Cairo\", system-ui, sans-serif"
+    "latin": { "family": "Inter", "file": "src/assets/fonts/inter-latin-var.woff2", "weights": "100–900 (variable)", "licence": "SIL OFL 1.1", "status": "current campaign face; proposal replaces it with latinProposed" },
+    "latinProposed": { "family": "IBM Plex Sans", "file": "marketing/brand/fonts/IBMPlexSansArabic-Regular.ttf + -Bold.ttf (Latin glyphs of IBM Plex Sans Arabic)", "licence": "SIL OFL 1.1 (marketing/brand/fonts/OFL.txt)", "why": "measured closest to Cairo (type-metrics.json): body/x 0.969, alef/cap 1.027, stem 0.963; tabular figures by default (all digits 600 units); already the platform's PDF report face", "status": "used for the logo name; full switch after approval" },
+    "stack": "\"Cairo\", \"IBM Plex Sans\", \"Inter\", system-ui, sans-serif",
+    "stackLatin": "\"IBM Plex Sans\", \"Inter\", \"Cairo\", system-ui, sans-serif"
   },
   "type": {
-    "display": { "size": 96, "line": 1.05, "weight": 800 },
-    "h1": { "size": 64, "line": 1.15, "weight": 800 },
-    "h2": { "size": 44, "line": 1.2, "weight": 800 },
-    "h3": { "size": 32, "line": 1.25, "weight": 700 },
-    "bodyLg": { "size": 24, "line": 1.6, "weight": 500 },
-    "body": { "size": 16, "line": 1.7, "weight": 400 },
-    "caption": { "size": 13, "line": 1.5, "weight": 600 },
-    "overline": { "size": 12, "line": 1.3, "weight": 700, "tracking": "0.14em", "note": "Latin only; Arabic is never letter-spaced" }
+    "$ratio": "UI: major third 1.25 from 16; display (marketing): perfect fourth 1.333 from 24. Line heights snap to the 4 px grid; Arabic gets more leading than Latin (taller ascenders, dots and marks above and below).",
+    "ui": { "base": 16, "ratio": 1.25, "steps": { "caption": -1, "body": 0, "bodyLg": 1, "h4": 2, "h3": 3, "h2": 4, "h1": 5 } },
+    "display": { "base": 24, "ratio": 1.333, "steps": { "lead": 0, "title": 1, "headline": 2, "hero": 3, "display": 4, "mega": 5 } },
+    "leading": { "arabicBody": 1.7, "latinBody": 1.5, "arabicHeading": 1.3, "latinHeading": 1.15 },
+    "weight": { "regular": 400, "medium": 500, "semibold": 600, "bold": 700, "black": 800 },
+    "tracking": { "overlineLatin": "0.14em", "arabic": "0 (never letter-space Arabic)" }
   },
-  "space": { "0": 0, "1": 4, "2": 8, "3": 12, "4": 16, "5": 24, "6": 32, "7": 48, "8": 64, "9": 96 },
+  "space": { "0": 0, "1": 4, "2": 8, "3": 12, "4": 16, "5": 24, "6": 32, "7": 48, "8": 64, "9": 96, "10": 128 },
   "radius": { "sm": 6, "md": 10, "lg": 14, "xl": 20, "pill": 999 },
   "shadow": {
     "card": "0 1px 2px rgba(13,27,62,.06), 0 4px 16px rgba(13,27,62,.08)",
@@ -75,9 +78,10 @@
     "glowCyan": "0 0 24px rgba(27,183,205,.45)"
   },
   "logo": {
-    "clearSpace": "1 × the height of one letter band (= 1/5 of a face's height ≈ 0.1 of the cube's height) on every side; 0.25 × cube height around lockups",
-    "minSize": { "digitalPx": 24, "digitalPxDirectionB": 16, "printMm": 10 },
-    "lightBackground": "colour cube",
-    "darkBackground": "on-dark cube (lifted ramp) or mono white"
+    "lockup": "cube + «Standard Enterprise Governance» (CEO, 6 Nov 2026); variants: line, stack (3 lines), two (2 lines, the signature)",
+    "signature": "SEG lockup (two) | hairline | full MFT logo (eagle + MODERN FINTECH). Never mirrored. Compact variant (cube + MFT, no name) only below the minimum.",
+    "clearSpace": "2 modules on every side (≈ 0.18 of the cube's height in A)",
+    "minSize": { "cubeDigitalPx": 24, "cubeDirectionBPx": 16, "printMm": 10, "nameCapPx": 10, "signatureCubeOn1080Px": 54 },
+    "lightBackground": "colour cube", "darkBackground": "on-dark cube or mono white"
   }
 }
