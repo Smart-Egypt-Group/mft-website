@@ -1,5 +1,7 @@
 # حزمة الإعلانات المدفوعة الجاهزة للإطلاق (Meta + TikTok)
 
+> **تحديث 6 نوفمبر 2026:** إعلانات «المقاعد» (`*-seats-*`) سُحبت مع أرقام 17/33، واستُبدلت بإعلانات «الإغلاق» (`*-close-*`): سعر المؤسِّس يُغلق نهائيًا **الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة** (`src/site.config.js → founding.closesAt`، افتراض عمل) + العضوية بالطلب. تصاميم `ads/*_seats-*` ممنوعة (انظر `marketing/strategy/design-redo-list.md`). **لا سعر رقمي في أي إعلان.** **TikTok:** الصرف معلّق حتى يُضاف الـPixel ويثبت فيديو المؤسس عضويًا (`marketing/strategy/launch-review-2026-11.md` §D).
+
 > **مستند تجهيزي فقط.** لم تُنشأ أي حملة، ولم يُلمس أي حساب إعلاني، ولم يُصرف شيء.
 > الـCEO هو من يشحن الحساب، ويحدد الميزانية، ويطلق بنفسه باتباع القسم 6.
 >
@@ -21,7 +23,7 @@
 | **G3** | **التطبيق يحفظ UTM التسجيل** في سجل الحساب، ويرسل Lead لـCRM بالمصدر ([03 §0](../workflow/03-paid-ads.md), البندان 5 و6) | ☐ غير متحقق | ياسر |
 | **G4** | **تتبع التحويل.** على الموقع: **Meta Pixel `501774495051160` حيّ منذ 4 نوفمبر 2026**: `PageView` في كل صفحة، و`Lead` على زر الفحص المجاني. وعلى التطبيق: `CompleteRegistration` (Pixel + Conversions API) مطلوب في PR لياسر حسب [`workflow/app-conversion-tracking-pr.md`](../workflow/app-conversion-tracking-pr.md). وTikTok Pixel: مكانه جاهز في `site.config.js → analytics.tiktokPixelId`، فارغ حتى يتوفر الـID | ✅ الموقع · ☐ التطبيق · ☐ TikTok | ياسر / الـCEO |
 | **G5** | الحساب الإعلاني والدفع وتحقق النطاق `seg-audit.com` ([03 §0](../workflow/03-paid-ads.md)، البنود 1–3) | ☐ | الـCEO |
-| **G6** | **الأرقام على التصاميم مطابقة للموقع:** «باقي 33 من 50». راجع `src/site.config.js → founding.filled` يوم الإطلاق | ☐ صباح الإطلاق | الـCEO |
+| **G6** | **لا أرقام مقاعد في أي إعلان أو صفحة هبوط** (تحديث 6 نوفمبر): `node scripts/close-date.js --check` نظيف، وصفحة الأعضاء المؤسِّسين الحية بلا عدّاد (`founding.showCount: false`، قرار منفصل) | ☐ صباح الإطلاق | الـCEO |
 | **G7** | **سياسة الخصوصية** تذكر البكسل | ✅ الموقع (حُدّثت 4 نوفمبر 2026) · ☐ التطبيق (ضمن PR ياسر) · ☐ رأي قانوني في الموافقة (Consent) | القانوني |
 
 **قاعدة:** G1 وG1-b وG5 وG6 شرط لأي إطلاق. G2 مكتمل. ويبقى G3 (حفظ التطبيق لـUTM) شرطًا لقراءة التسجيلات حسب الإعلان.
@@ -92,17 +94,17 @@ TikTok جمهوره أصغر سنًّا وأقل تخصصًا. لذلك هو **�
 
 ```
 Meta  ── SEG-FM | Meta | Traffic | prospecting | ar | 2026-11            (حملة واحدة، ميزانية على مستوى المجموعة)
-         ├─ eg-finance   → m-eg-bait-ar · m-eg-seats-ar
-         ├─ sa-finance   → m-sa-bait-ar · m-sa-seats-ar · m-sa-bait-en
-         └─ odoo-firms   → m-odoo-bait-ar · m-odoo-seats-ar
+         ├─ eg-finance   → m-eg-bait-ar · m-eg-close-ar
+         ├─ sa-finance   → m-sa-bait-ar · m-sa-close-ar · m-sa-bait-en
+         └─ odoo-firms   → m-odoo-bait-ar · m-odoo-close-ar
 
 TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (حملة واحدة، ميزانية على مستوى المجموعة)
-         ├─ eg-finance   → t-eg-bait-ar · t-eg-seats-ar
-         └─ sa-finance   → t-sa-bait-ar · t-sa-seats-ar
+         ├─ eg-finance   → t-eg-bait-ar · t-eg-close-ar
+         └─ sa-finance   → t-sa-bait-ar · t-sa-close-ar
 ```
 
 - **اختبار الجمهور:** بين المجموعات، بنفس الرسالتين في كل مجموعة.
-- **اختبار الرسالة:** داخل كل مجموعة، **«الطُعم» (bait)** مقابل **«المقاعد» (seats)**.
+- **اختبار الرسالة:** داخل كل مجموعة، **«الطُعم» (bait)** مقابل **«الإغلاق» (close)**.
 - **اسم الإعلان = قيمة `utm_content`** نفسها، حتى يُقرأ التقرير بلا جدول تحويل.
 - **الميزانية على مستوى المجموعة:** Meta ABO، أي Advantage campaign budget مطفأ. وTikTok ميزانية الحملة بلا حد. السبب أن ميزانية الحملة الموحّدة ترسل المال لمجموعة واحدة مبكرًا وتفسد الاختبار.
 
@@ -112,8 +114,8 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 
 ### الصياغة المعتمدة (لا تُغيَّر)
 
-- **الطُعم:** «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق». مؤشرات من الميزان فقط. **لا** «تقرير مجاني» ولا «تقرير مراجعة».
-- **المقاعد:** «50 مقعد. انضمّت 17 شركة. باقي 33.» بسعر مؤسِّس مدى الحياة.
+- **الطُعم:** «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق». مؤشرات من الميزان، 3 منها مع ربط Odoo. **لا** «تقرير مجاني» ولا «تقرير مراجعة».
+- **الإغلاق والانتقاء:** «سعر المؤسِّس يُغلق نهائيًا الإثنين 30 نوفمبر، 11:59 مساءً بتوقيت القاهرة» + «العضوية بالطلب، وليس كل طلب يُقبل». «مدى الحياة» في خطاب القبول فقط.
 - **المنصة (الاسم البارز):** **Standard Enterprise Governance (SEG)** من MFT، أول ذكر كاملًا ثم SEG. **SEG Audit** فقط لوحدة المراجعة تحديدًا (قرار الـCEO، 4 نوفمبر 2026).
 - **الثقة:** قراءة فقط، ولكل ملاحظة دليلها.
 
@@ -126,9 +128,9 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 | النسخة | Feed 4:5 | Feed 1:1 | Stories / Reels / TikTok 9:16 |
 |---|---|---|---|
 | **bait-ar** («متاح الآن» + الفحص المجاني) | `meta-feed-4x5_live-ar_1080x1350.jpg` | `meta-feed-1x1_live-ar_1080x1080.jpg` | `tiktok-9x16_live-ar_1080x1920.jpg` |
-| **seats-ar** (باقي 33 من 50) | `meta-feed-4x5_seats-ar_1080x1350.jpg` | `meta-feed-1x1_seats-ar_1080x1080.jpg` | `tiktok-9x16_seats-ar_1080x1920.jpg` |
+| **close-ar** (الإغلاق، مؤقت حتى تصميم N1) | — | `../guerrilla/graffiti/graffiti-03-closing_ar_square_1080x1080.jpg` | `../guerrilla/graffiti/graffiti-03-closing_ar_story_1080x1920.jpg` |
 | **bait-en** | `meta-feed-4x5_live-en_1080x1350.jpg` | `meta-feed-1x1_live-en_1080x1080.jpg` | `tiktok-9x16_live-en_1080x1920.jpg` |
-| **seats-en** (احتياطي) | `meta-feed-4x5_seats-en_1080x1350.jpg` | `meta-feed-1x1_seats-en_1080x1080.jpg` | `tiktok-9x16_seats-en_1080x1920.jpg` |
+| ~~seats-ar / seats-en~~ | ⛔ مسحوبة (تعرض 33/50) | ⛔ | ⛔ |
 
 **ملاحظات على التصاميم:**
 - ملف 9:16 نفسه يُستخدم لمواضع Stories وReels في Meta.
@@ -139,8 +141,8 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
   |---|---|
   | bait-ar | `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` |
   | bait-en | `ads/video/tiktok-9x16_live-en_1080x1920_8s.mp4` |
-  | seats-ar | `ads/video/tiktok-9x16_seats-ar_1080x1920_8s.mp4` |
-  | seats-en | `ads/video/tiktok-9x16_seats-en_1080x1920_8s.mp4` |
+  | ~~seats-ar~~ | ⛔ `ads/video/tiktok-9x16_seats-ar_1080x1920_8s.mp4` (مسحوب) |
+  | ~~seats-en~~ | ⛔ `ads/video/tiktok-9x16_seats-en_1080x1920_8s.mp4` (مسحوب) |
 
   - **المواصفات:** 8 ثوانٍ، 1080×1920، 30 إطارًا/ثانية، H.264، بين 6 و7 ميجابايت.
   - **الحركة:** تقريب بطيء على التصميم، فالإطار الأول هو التصميم كاملًا ويصلح غلافًا.
@@ -180,17 +182,17 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 - **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-eg-bait-ar#fm-check`
 - **التصميم:** `ads/meta-feed-4x5_live-ar_1080x1350.jpg` · `ads/meta-feed-1x1_live-ar_1080x1080.jpg` · `ads/tiktok-9x16_live-ar_1080x1920.jpg`
 
-#### `m-eg-seats-ar` · مجموعة eg-finance · المقاعد
+#### `m-eg-close-ar` · مجموعة eg-finance · الإغلاق
 
 - **النص الأساسي:**
-  > 50 مقعد بس للأعضاء المؤسِّسين في Standard Enterprise Governance (SEG). انضمّت 17 شركة، وباقي 33.
+  > سعر المؤسِّس في Standard Enterprise Governance (SEG) بيتقفل نهائيًا الإثنين 30 نوفمبر، 11:59 مساءً بتوقيت القاهرة.
   >
-  > سعر مؤسِّس يفضل معاك مدى الحياة، والعضو المؤسِّس بيشتغل مع فريق MFT مباشرة في الإعداد. ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.
-- **العنوان:** باقي 33 مقعد من 50
-- **الوصف:** سعر مؤسِّس مدى الحياة
+  > والعضوية بالطلب: فريق MFT بيراجع كل طلب بنفسه، ومش كل طلب بيتقبل. ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.
+- **العنوان:** سعر المؤسِّس يُغلق 30 نوفمبر
+- **الوصف:** العضوية بالطلب · فحص مجاني أولًا
 - **زر الدعوة:** Sign up (التسجيل)
-- **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-eg-seats-ar`
-- **التصميم:** `ads/meta-feed-4x5_seats-ar_1080x1350.jpg` · `ads/meta-feed-1x1_seats-ar_1080x1080.jpg` · `ads/tiktok-9x16_seats-ar_1080x1920.jpg`
+- **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-eg-close-ar`
+- **التصميم (مؤقت):** `guerrilla/graffiti/graffiti-03-closing_ar_square_1080x1080.jpg` · ستوري `graffiti-03-closing_ar_story_1080x1920.jpg`. **لا** `ads/*_seats-*` (⛔)
 
 #### `m-sa-bait-ar` · مجموعة sa-finance · الطُعم
 
@@ -206,17 +208,17 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 - **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-sa-bait-ar#fm-check`
 - **التصميم:** نفس ملفات `live-ar` أعلاه
 
-#### `m-sa-seats-ar` · مجموعة sa-finance · المقاعد
+#### `m-sa-close-ar` · مجموعة sa-finance · الإغلاق
 
 - **النص الأساسي:**
-  > 50 مقعدًا فقط للأعضاء المؤسِّسين في Standard Enterprise Governance (SEG). انضمّت 17 شركة، وبقي 33.
+  > سعر المؤسِّس في Standard Enterprise Governance (SEG) يُغلق نهائيًا الإثنين 30 نوفمبر، 11:59 مساءً بتوقيت القاهرة.
   >
-  > سعر مؤسِّس يبقى لك مدى الحياة، وفريق MFT يعمل معك مباشرة في الإعداد. ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.
-- **العنوان:** باقي 33 مقعدًا من 50
-- **الوصف:** سعر مؤسِّس مدى الحياة
+  > والعضوية بالطلب: فريق MFT يراجع كل طلب بنفسه، وليس كل طلب يُقبل. ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.
+- **العنوان:** سعر المؤسِّس يُغلق 30 نوفمبر
+- **الوصف:** العضوية بالطلب · فحص مجاني أولًا
 - **زر الدعوة:** Sign up (التسجيل)
-- **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-sa-seats-ar`
-- **التصميم:** نفس ملفات `seats-ar` أعلاه
+- **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-sa-close-ar`
+- **التصميم:** نفس ملفات `close-ar` أعلاه
 
 #### `m-sa-bait-en` · مجموعة sa-finance · الطُعم بالإنجليزية
 
@@ -239,7 +241,7 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 - **النص الأساسي:**
   > شركتك أو عملاءك على Odoo؟
   >
-  > فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. وبعده Standard Enterprise Governance (SEG) يقرأ دفاتر Odoo باستمرار، بصلاحية قراءة فقط: 361 فحصًا في 22 تقريرًا، ولكل ملاحظة دليلها.
+  > فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. وبعده Standard Enterprise Governance (SEG) يقرأ دفاتر Odoo باستمرار، بصلاحية قراءة فقط: 388 فحصًا في 22 تقريرًا، ولكل ملاحظة دليلها.
   >
   > مكاتب المحاسبة: حساب واحد لحد 25 شركة.
 - **العنوان:** افحص ميزان Odoo مجانًا
@@ -248,17 +250,17 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 - **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-odoo-bait-ar#fm-check`
 - **التصميم:** نفس ملفات `live-ar` أعلاه
 
-#### `m-odoo-seats-ar` · مجموعة odoo-firms · المقاعد
+#### `m-odoo-close-ar` · مجموعة odoo-firms · الإغلاق
 
 - **النص الأساسي:**
   > مراجعة مستمرة لدفاتر Odoo، من غير ما تستنى آخر السنة.
   >
-  > 50 مقعد بس للأعضاء المؤسِّسين في SEG: انضمّت 17 شركة، وباقي 33. سعر مؤسِّس مدى الحياة. ابدأ بفحص مجاني لميزانك.
-- **العنوان:** باقي 33 مقعد من 50
+  > سعر المؤسِّس في SEG بيتقفل نهائيًا 30 نوفمبر، والعضوية بالطلب. ابدأ بفحص مجاني لميزانك.
+- **العنوان:** سعر المؤسِّس يُغلق 30 نوفمبر
 - **الوصف:** لشركات Odoo ومكاتبها
 - **زر الدعوة:** Sign up (التسجيل)
-- **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-odoo-seats-ar`
-- **التصميم:** نفس ملفات `seats-ar` أعلاه
+- **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-odoo-close-ar`
+- **التصميم:** نفس ملفات `close-ar` أعلاه
 
 ### TikTok
 
@@ -269,9 +271,9 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 | الإعلان | المجموعة | النص | زر الدعوة | الرابط | التصميم |
 |---|---|---|---|---|---|
 | `t-eg-bait-ar` | eg-finance | فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق. مؤشرات من الميزان فقط. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-eg-bait-ar#fm-check` | `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` |
-| `t-eg-seats-ar` | eg-finance | 50 مقعد بسعر مؤسِّس مدى الحياة. انضمّت 17 شركة، باقي 33. احجز مقعدك. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-eg-seats-ar` | `ads/video/tiktok-9x16_seats-ar_1080x1920_8s.mp4` |
+| `t-eg-close-ar` | eg-finance | سعر المؤسِّس بيتقفل نهائيًا 30 نوفمبر. العضوية بالطلب. ابدأ بفحص مجاني لميزانك. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-eg-close-ar` | `video/reel-post-close-entry_ar_1080x1920.mp4` |
 | `t-sa-bait-ar` | sa-finance | فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق، قبل الإقفال. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-sa-bait-ar#fm-check` | `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` |
-| `t-sa-seats-ar` | sa-finance | 50 مقعدًا بسعر مؤسِّس مدى الحياة. انضمّت 17 شركة، وبقي 33. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-sa-seats-ar` | `ads/video/tiktok-9x16_seats-ar_1080x1920_8s.mp4` |
+| `t-sa-close-ar` | sa-finance | سعر المؤسِّس يُغلق نهائيًا 30 نوفمبر. العضوية بالطلب. ابدأ بفحص مجاني لميزانك. | Sign up | `https://www.seg-audit.com/ar/founding-members/?utm_source=tiktok&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=t-sa-close-ar` | `video/reel-post-close-entry_ar_1080x1920.mp4` |
 
 ---
 
@@ -323,7 +325,8 @@ CAC في [00](00-economics.md) **شامل**: الإعلانات + الأدوات
 | التكرار > **3.0** خلال 7 أيام مع ارتفاع التكلفة | تصميم جديد، لا زيادة ميزانية |
 | تعليقات سلبية > 5%، أو أي تحذير سياسة | إيقاف وتصعيد للـCEO في نفس اليوم |
 | الصفحة أو التسجيل لا يعمل | **إيقاف كل شيء فورًا** |
-| `founding.filled` تغيّر | إيقاف إعلانات المقاعد، واستبدالها بتصاميم الرقم الجديد |
+| `founding.closesAt` تغيّر | تعديل نص إعلانات الإغلاق وEnd date قبل أي صرف (`node scripts/close-date.js --from …`) |
+| موعد الإغلاق حلّ | إيقاف كل إعلان فيه «سعر المؤسِّس» في نفس الدقيقة |
 | اكتمال الخمسين مقعدًا | إيقاف كل الحملات في نفس اليوم |
 
 **فترة التعلّم:** لا تعديل على المجموعة أول 3 أيام، إلا للتوقفات الصلبة.
@@ -389,7 +392,7 @@ CAC في [00](00-economics.md) **شامل**: الإعلانات + الأدوات
 - [ ] **Preview:** راجع كل موضع على الجوال، وتأكد أن العربي من اليمين وأن النص لا يغطي الرقم.
 
 **5. باقي البنية:**
-- [ ] **Duplicate** الإعلان، ثم عدّله إلى `m-eg-seats-ar`: الملفات، والنص، والرابط.
+- [ ] **Duplicate** الإعلان، ثم عدّله إلى `m-eg-close-ar`: الملفات، والنص، والرابط.
 - [ ] **Duplicate** المجموعة إلى `sa-finance`: الموقع السعودية، ونصوص `m-sa-*`، وإعلان `m-sa-bait-en` بلغة English.
 - [ ] **Duplicate** إلى `odoo-firms`: الاهتمامات حسب القسم 2، ونصوص `m-odoo-*`.
 
@@ -429,7 +432,7 @@ CAC في [00](00-economics.md) **شامل**: الإعلانات + الأدوات
 
 **4. الإعلان `t-eg-bait-ar`:**
 - [ ] **Identity:** Custom identity «Modern Financial Technology» + الشعار.
-- [ ] **Format:** Single video. ارفع `marketing/designs/ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4`، وفي إعلان المقاعد `…_seats-ar_…_8s.mp4`.
+- [ ] **Format:** Single video. ارفع `marketing/designs/ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4`، وفي إعلان الإغلاق: الريل `reel-post-close-entry_ar_1080x1920.mp4` (لا `…_seats-…` ⛔).
   - اختر الإطار الأول غلافًا (Cover).
   - أضف موسيقى من **Commercial Music Library** فقط.
 - [ ] **Ad text** من القسم 4، و**CTA:** Sign up، و**URL:** الرابط الكامل بـUTM.
@@ -437,7 +440,7 @@ CAC في [00](00-economics.md) **شامل**: الإعلانات + الأدوات
 - [ ] **Preview** على الجوال.
 
 **5. باقي البنية:**
-- [ ] انسخ الإعلان إلى `t-eg-seats-ar`.
+- [ ] انسخ الإعلان إلى `t-eg-close-ar`.
 - [ ] انسخ المجموعة إلى `sa-finance` بنصوص `t-sa-*`.
 
 **6. قبل الإطلاق:**

@@ -8,7 +8,7 @@
 >
 > **الإبداعات:** [`marketing/designs/golden/`](../designs/golden/README.md) (v2)، والريلز في [`marketing/designs/video/`](../designs/video/README.md).
 >
-> **تاريخ الإعداد:** 5 نوفمبر 2026.
+> **تاريخ الإعداد:** 5 نوفمبر 2026. **تحديث 6 نوفمبر 2026:** إعلان `hourglass` («بقي 33 من 50») **سُحب** واستُبدل بإعلان `close` (نافذة إغلاق سعر المؤسِّس + الانتقائية). أرقام 17/33 مسحوبة. وأرقام المنصة الحالية: 9,900 اختبار و388 فحصًا (`platform-facts.js`، 5 نوفمبر). تاريخ الإغلاق من `src/site.config.js → founding.closesAt` (افتراض عمل: الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة). **لا سعر رقمي في أي إعلان.**
 
 ---
 
@@ -19,11 +19,11 @@
 │         الهدف: Traffic (Landing page views) الآن، ثم Leads/Sales على CompleteRegistration لاحقًا · ABO
 ├── المجموعة  eg · مصر
 │     ├── eg-crack        تصميم الشرخ        + ريل الحساب الوسيط
-│     ├── eg-hourglass    الساعة الرملية      + ريل الدفع المكرر
+│     ├── eg-close        الإقفال جايّ (نافذة الإغلاق) + ريل الدفع المكرر
 │     ├── eg-hawk-eye     عين الصقر          + ريل المصروف بلا مرفق
 │     └── eg-lineup       طابور الاستجواب     + ريل القيود اليدوية المدوّرة
 └── المجموعة  sa · السعودية   (نسخة مكررة من مصر: يتغير الموقع وقيمة utm_content فقط)
-      ├── sa-crack · sa-hourglass · sa-hawk-eye · sa-lineup
+      ├── sa-crack · sa-close · sa-hawk-eye · sa-lineup
 ```
 
 **قاعدة التسمية:** اسم الإعلان = قيمة `utm_content` نفسها، حتى يُقرأ التقرير بلا جدول تحويل.
@@ -81,7 +81,7 @@
 | الإعلان | الزاوية | Feed 4:5 (أساسي) | 1:1 (بديل) | الريل لـStories/Reels |
 |---|---|---|---|---|
 | `crack` | الخطأ المستخبي اللي بيكبر (Loss aversion) | `marketing/designs/golden/1-crack/golden-1-crack_ar_4x5_1080x1350.jpg`<br>https://www.seg-audit.com/assets/social/golden/golden-1-crack_ar_4x5_1080x1350.jpg | https://www.seg-audit.com/assets/social/golden/golden-1-crack_ar_1x1_1080x1080.jpg | `reel-suspense-account_ar` (حساب وسيط يكبر كل شهر)<br>https://www.seg-audit.com/assets/social/video/reel-suspense-account_ar_1080x1920.mp4 |
-| `hourglass` | الندرة «بقي 33 من 50» | `marketing/designs/golden/2-hourglass/golden-2-hourglass_ar_4x5_1080x1350.jpg`<br>https://www.seg-audit.com/assets/social/golden/golden-2-hourglass_ar_4x5_1080x1350.jpg | https://www.seg-audit.com/assets/social/golden/golden-2-hourglass_ar_1x1_1080x1080.jpg | `reel-duplicate-payment_ar` (الريل الرئيسي: فاتورة اتدفعت مرتين)<br>https://www.seg-audit.com/assets/social/video/reel-duplicate-payment_ar_1080x1920.mp4 |
+| `close` | نافذة الإغلاق + الانتقائية («سعر المؤسِّس يُغلق 30 نوفمبر») | **مؤقت (لا 4:5):** `marketing/designs/guerrilla/graffiti/graffiti-03-closing_ar_square_1080x1080.jpg` («الإقفال جايّ. وفيه مفاجآت.») لكل مواضع الـFeed، إلى أن يجهز تصميم N1 من [`design-redo-list.md`](../strategy/design-redo-list.md) | نفس المربع | `reel-duplicate-payment_ar` (الريل الرئيسي)<br>https://www.seg-audit.com/assets/social/video/reel-duplicate-payment_ar_1080x1920.mp4 · أو ستوري `graffiti-03-closing_ar_story_1080x1920.jpg` |
 | `hawk-eye` | «كل رقم بدليله» / «المنصة التي تراجع نفسها» (سلطة الثقة) | `marketing/designs/golden/3-hawk-eye/golden-3-hawk-eye_ar_4x5_1080x1350.jpg`<br>https://www.seg-audit.com/assets/social/golden/golden-3-hawk-eye_ar_4x5_1080x1350.jpg | https://www.seg-audit.com/assets/social/golden/golden-3-hawk-eye_ar_1x1_1080x1080.jpg | `reel-no-receipt_ar` (مصروف معتمد بلا مرفق = رقم بلا دليل)<br>https://www.seg-audit.com/assets/social/video/reel-no-receipt_ar_1080x1920.mp4 |
 | `lineup` | الصادم: «كل قيد تحت الاستجواب» | `marketing/designs/golden/4-lineup/golden-4-lineup_ar_4x5_1080x1350.jpg`<br>https://www.seg-audit.com/assets/social/golden/golden-4-lineup_ar_4x5_1080x1350.jpg | https://www.seg-audit.com/assets/social/golden/golden-4-lineup_ar_1x1_1080x1080.jpg | `reel-round-manual_ar` (قيود يدوية مدوّرة في آخر يومين من الشهر)<br>https://www.seg-audit.com/assets/social/video/reel-round-manual_ar_1080x1920.mp4 |
 
@@ -89,7 +89,7 @@
 
 **قواعد الصياغة:**
 - عربية مبسّطة يقرأها السوقان، لأن الطقم واحد في البلدين.
-- الأرقام في النص هي أرقام العرض المنشور (33/50/17) وحقائق المنصة (361 فحصًا، و22 تقريرًا، و+7,900 اختبار، من [`platform-facts.js`](../../src/content/platform-facts.js)).
+- **لا أرقام مقاعد** (17/33 مسحوبة). المسموح: تاريخ الإغلاق من `founding.closesAt`، وحقائق المنصة (388 فحصًا، و22 تقريرًا، و+9,900 اختبار، من [`platform-facts.js`](../../src/content/platform-facts.js)).
 - لا أرقام دفاتر في النصوص. أرقام الدفاتر على التصاميم فقط، ومعلَّمة «مثال توضيحي».
 - الطُعم بالصياغة المعتمدة. لا «تقرير مجاني» ولا «تقرير مراجعة».
 - **زر CTA في الأربعة: «اعرف المزيد» (Learn more).**
@@ -106,29 +106,30 @@
 - **الوصف:** فحص مجاني · مؤشرات من الميزان فقط
 - **CTA:** اعرف المزيد
 
-#### `hourglass` · الندرة
+#### `close` · نافذة الإغلاق + الانتقائية
 
 - **النص الأساسي:**
-  > 50 مقعدًا فقط للأعضاء المؤسِّسين في Standard Enterprise Governance (SEG): انضمّت 17 شركة، وبقي 33.
+  > سعر المؤسِّس في Standard Enterprise Governance (SEG) يُغلق نهائيًا الإثنين 30 نوفمبر، 11:59 مساءً بتوقيت القاهرة. بعدها لا يعود.
   >
-  > سعر مؤسِّس يبقى لك مدى الحياة، وفريق MFT يعمل معك مباشرة في الإعداد.
+  > والعضوية بالطلب فقط: فريق MFT يراجع كل طلب بنفسه، وليس كل طلب يُقبل. والمقبول يعمل معه فريقنا مباشرة في الإعداد.
   >
   > ابدأ بفحص مجاني لميزان شركتك… في دقائق.
-- **العنوان:** بقي 33 مقعدًا من 50
-- **الوصف:** سعر مؤسِّس مدى الحياة
+- **العنوان:** سعر المؤسِّس يُغلق 30 نوفمبر
+- **الوصف:** العضوية بالطلب · فحص مجاني أولًا
 - **CTA:** اعرف المزيد
-- **قبل الإطلاق:** طابق 17/33 مع `src/site.config.js → founding.filled` (بوابة G6). لو تغيّر الرقم، يتعدّل النص ويُعاد توليد التصميم.
+- **قبل الإطلاق:** `node scripts/close-date.js --check` نظيف، والتاريخ في النص = `founding.closesAt`. لا «مدى الحياة» في الإعلان: يُقال في خطاب القبول.
+- **بعد الإغلاق (1 ديسمبر 00:00):** يُوقف الإعلان في نفس الدقيقة (جدولة End date = موعد الإغلاق).
 
 #### `hawk-eye` · سلطة الثقة
 
 - **النص الأساسي:**
   > كل رقم في التقرير… ومعه دليله: القيد، وفاتورة المورّد، والمرفق.
   >
-  > Standard Enterprise Governance (SEG) هي المنصة التي تراجع نفسها: أكثر من 7,900 اختبار آلي قبل كل تحديث. تقرأ دفاتر Odoo بصلاحية قراءة فقط، وتُجري 361 فحصًا في 22 تقريرًا.
+  > Standard Enterprise Governance (SEG) هي المنصة التي تراجع نفسها: أكثر من 9,900 اختبار آلي قبل كل تحديث. تقرأ دفاتر Odoo بصلاحية قراءة فقط، وتُجري 388 فحصًا في 22 تقريرًا.
   >
   > ابدأ بفحص مجاني لميزان شركتك… في دقائق.
 - **العنوان:** كل رقم بدليله
-- **الوصف:** قراءة فقط · 361 فحصًا · 22 تقريرًا
+- **الوصف:** قراءة فقط · 388 فحصًا · 22 تقريرًا
 - **CTA:** اعرف المزيد
 
 #### `lineup` · كل قيد تحت الاستجواب
@@ -153,11 +154,11 @@
 | الإعلان | الرابط |
 |---|---|
 | `eg-crack` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=eg-crack#fm-check` |
-| `eg-hourglass` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=eg-hourglass` |
+| `eg-close` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=eg-close` |
 | `eg-hawk-eye` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=eg-hawk-eye#fm-check` |
 | `eg-lineup` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=eg-lineup#fm-check` |
 | `sa-crack` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=sa-crack#fm-check` |
-| `sa-hourglass` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=sa-hourglass` |
+| `sa-close` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=sa-close` |
 | `sa-hawk-eye` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=sa-hawk-eye#fm-check` |
 | `sa-lineup` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=sa-lineup#fm-check` |
 
@@ -247,11 +248,12 @@
 
 ### الخطوة 4 · باقي إعلانات مصر (بالتكرار)
 - [ ] على `eg-crack` → **Duplicate** → نفس المجموعة → Duplicate (مرة واحدة).
-- [ ] عدّل النسخة إلى `eg-hourglass`:
+- [ ] عدّل النسخة إلى `eg-close`:
   - الاسم.
-  - الميديا: الـ4:5 والـ1:1 بتاعة الساعة الرملية، والريل `reel-duplicate-payment_ar`.
-  - النصوص من §4 → `hourglass`.
-  - الرابط: `eg-hourglass`، وهو **بلا** `#fm-check`.
+  - الميديا: مربع `graffiti-03-closing_ar_square_1080x1080.jpg` للـFeed (مؤقتًا)، والريل `reel-duplicate-payment_ar`.
+  - النصوص من §4 → `close`.
+  - **End date للإعلان:** موعد الإغلاق (`founding.closesAt`).
+  - الرابط: `eg-close`، وهو **بلا** `#fm-check`.
 - [ ] كرر نفس الخطوات لـ`eg-hawk-eye` (الريل `reel-no-receipt_ar`) ولـ`eg-lineup` (الريل `reel-round-manual_ar`).
 - [ ] تأكد أن كل إعلان رابطه مطابق لاسمه. **هذا أكثر خطأ شائع في التكرار.**
 
@@ -278,10 +280,10 @@
 | # | البند | كيف تتأكد | ✓ |
 |---|---|---|---|
 | **B1** | **الطُعم شغّال على الإنتاج** (G1 وG1-b) | من الجوال افتح رابط `eg-crack`، ثم «ابدأ الفحص المجاني»، ثم سجّل بحساب اختبار وارفع ميزان مراجعة تجريبيًا. **يجب أن تظهر المؤشرات الخمسة في دقائق، بلا نموذج إضافي وبلا دفع.** احذف حساب الاختبار بعدها | ☐ |
-| **B2** | الرابط يفتح القسم الصحيح | `#fm-check` ينزل على قسم الفحص المجاني، ورابط `hourglass` يفتح أول الصفحة | ☐ |
+| **B2** | الرابط يفتح القسم الصحيح | `#fm-check` ينزل على قسم الفحص المجاني، ورابط `close` يفتح أول الصفحة | ☐ |
 | **B3** | الـUTM وصل للتسجيل | بعد الضغط على زر التسجيل، رابط `app.seg-audit.com` في شريط العنوان يحمل `utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=eg-crack` و`cta=` | ☐ |
 | **B4** | البكسل يسجّل | Events Manager → Dataset `501774495051160` → **Test events**: افتح الرابط، ثم يظهر `PageView`. اضغط زر الفحص، ثم يظهر `Lead` | ☐ |
-| **B5** | أرقام المقاعد مطابقة (G6) | `src/site.config.js → founding.filled` = 17 والصفحة الحية تقول «بقي 33». غير ذلك = عدّل نص `hourglass` والتصميم قبل الإطلاق | ☐ |
+| **B5** | لا أرقام مقاعد في أي مكان (تحديث 6 نوفمبر) | `node scripts/close-date.js --check` نظيف. **وصفحة الهبوط الحية لا تعرض عدّادًا** («طلبات مقدَّمة / المتبقي»): هذا يتطلب `founding.showCount: false` في الموقع، وهو قرار منفصل. ما دام العدّاد ظاهرًا على الصفحة = **لا تطلق** | ☐ |
 | **B6** | الحساب جاهز (G5) | الدفع، وحد الإنفاق، وتحقق النطاق `seg-audit.com` | ☐ |
 | **B7** | المعاينة | الإعلانات الثمانية، كل واحد في 3 مواضع على الجوال: النص صحيح، والميديا صحيحة، والرابط مطابق للاسم | ☐ |
 

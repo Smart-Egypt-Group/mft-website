@@ -34,7 +34,7 @@ Every field below is checked against the platform's character limit (counted in 
 > **المنصة التي تراجع نفسها.**
 > Modern Financial Technology (MFT) شركة تكنولوجيا مالية ومراجعة بقيادة محاسبين معتمدين.
 >
-> منصتنا Standard Enterprise Governance (SEG)، ووحدة المراجعة المستمرة فيها SEG Audit تراجع دفاتر شركتك باستمرار، لا مرة في السنة: تقرأ من نظامك بصلاحية قراءة فقط، وتعرض كل ملاحظة مرتبة حسب خطورتها، ومعها دليلها. ونراجع أنفسنا قبل أن نراجعك: أكثر من 7,900 اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.
+> منصتنا Standard Enterprise Governance (SEG)، ووحدة المراجعة المستمرة فيها SEG Audit تراجع دفاتر شركتك باستمرار، لا مرة في السنة: تقرأ من نظامك بصلاحية قراءة فقط، وتعرض كل ملاحظة مرتبة حسب خطورتها، ومعها دليلها. ونراجع أنفسنا قبل أن نراجعك: أكثر من 9,900 اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.
 >
 > ومع المنصة: تنفيذ Odoo ERP، والمراجعة الداخلية، والمدير المالي الافتراضي، في مصر والسعودية والولايات المتحدة.
 >
@@ -43,7 +43,7 @@ Every field below is checked against the platform's character limit (counted in 
 > المنصة: app.seg-audit.com · الموقع: www.seg-audit.com
 >
 > **The platform that reviews itself.**
-> MFT is a fintech and audit firm led by certified accountants. Our platform is Standard Enterprise Governance (SEG); SEG Audit, its continuous audit module, reads your books read-only, ranks every finding by severity and shows its evidence. We review ourselves first: 7,900+ automated tests before every update and a log nothing can change silently. We also implement Odoo ERP and run internal audit and virtual CFO services in Egypt, Saudi Arabia and the United States.
+> MFT is a fintech and audit firm led by certified accountants. Our platform is Standard Enterprise Governance (SEG); SEG Audit, its continuous audit module, reads your books read-only, ranks every finding by severity and shows its evidence. We review ourselves first: 9,900+ automated tests before every update and a log nothing can change silently. We also implement Odoo ERP and run internal audit and virtual CFO services in Egypt, Saudi Arabia and the United States.
 >
 > Start with a free check of your company’s trial balance that flags its risk points in minutes: indicators computed from your trial balance only (suspense accounts, abnormal balances, imbalance, heavy manual entries, backdated entries).
 

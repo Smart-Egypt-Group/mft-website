@@ -25,14 +25,14 @@ Until item 4 is live, run only **phase 1** below with Meta Instant Forms (leads 
 
 ## 1. Campaign structure
 
-Naming: `SEG-FM | <platform> | <objective> | <audience> | <lang> | <yyyy-mm>`; ad set and ad names carry the asset file name, e.g. `seats-ar_1080x1350`.
+Naming: `SEG-FM | <platform> | <objective> | <audience> | <lang> | <yyyy-mm>`; ad set and ad names carry the asset file name, e.g. `golden-1-crack_ar_4x5_1080x1350`. **6 Nov 2026:** every `seats-*` creative is withdrawn (it shows 33/50); the scarcity creative is `close` (closing window + selectivity), see `sales/meta-build-sheet.md`.
 
 ### Meta
 
 | Campaign | Objective | Ad sets | Creatives | Share of B |
 |---|---|---|---|---|
 | **FM-Prospecting** | Leads (Instant Form) in phase 1; Sales/Leads optimised for `CompleteRegistration` in phase 2 | (1) Egypt: finance and accounting job interests + business owners, 28–60; (2) KSA: same; (3) Odoo / ERP interest stack (both countries) | `ads/meta-feed-4x5_seats-ar`, `ads/meta-feed-1x1_seats-ar`, `social/story_seats-ar` (Stories/Reels), `live-ar` set as the second angle; EN only in a separate ad set for KSA expat finance roles | 60% |
-| **FM-Retargeting** | Same objective | Website + app visitors 30 days, page/profile engagers 60 days, video viewers 50%+ | `seats-ar` with the scarcity line; testimonial creative when one is approved | 25% |
+| **FM-Retargeting** | Same objective | Website + app visitors 30 days, page/profile engagers 60 days, video viewers 50%+ | `close` (closing window + selectivity) and the live-session clip; testimonial creative when one is approved | 25% |
 | **FM-Lookalike** (phase 2, after 100+ sign-ups) | Same | 1–3% lookalike of sign-ups (hashed, with consent per the privacy policy) | Best two creatives from prospecting | 15% (until then, add to prospecting) |
 
 Placements: Advantage+ placements, with the 4:5 asset for feeds and the 9:16 asset for Stories/Reels supplied explicitly.
@@ -41,7 +41,7 @@ Placements: Advantage+ placements, with the 4:5 asset for feeds and the 9:16 ass
 
 | Campaign | Objective | Ad groups | Creatives | Share |
 |---|---|---|---|---|
-| **FM-TikTok** | Traffic in phase 1 (landing page views), Web conversions in phase 2 | Egypt 25–55 business/finance interests; KSA same | `ads/tiktok-9x16_seats-ar`, `ads/tiktok-9x16_live-ar` as a static open, plus the founder's short videos (scripts in `content/week-1/tiktok.md`) | Tested inside B: start at 15% of B taken equally from Meta prospecting, keep only if it meets the rules below |
+| **FM-TikTok** | Traffic in phase 1 (landing page views), Web conversions in phase 2 | Egypt 25–55 business/finance interests; KSA same | `ads/tiktok-9x16_live-ar` (the `seats` versions are withdrawn) as a static open, plus the founder's short videos (scripts in `content/week-1/tiktok.md`) | Tested inside B: start at 15% of B taken equally from Meta prospecting, keep only if it meets the rules below |
 
 ## 2. Budget rules
 
@@ -71,14 +71,14 @@ Placements: Advantage+ placements, with the 4:5 asset for feeds and the 9:16 ass
 
 - Daily spend of the account > 1.3 × (B / 7) → find the cause, cap the campaign budgets.
 - Landing page or sign-up broken → pause everything that links there until fixed.
-- Counter switched on (see 01-operating-system.md) → replace seat creatives with the regenerated ones (new ads; pause the old).
-- All 50 seats filled → pause every Founding Members campaign the same day.
+- Close date changed before publication → new ads with the new date (never edit a live ad's date).
+- All 50 seats filled **or the close date (`founding.closesAt`) reached** → pause every Founding Members campaign the same minute.
 
 Every change goes into `templates/ad-change-log.csv` with date, platform, object, old → new, rule applied, and who made it.
 
 ## 3. Creative rotation
 
-Start each ad set with **three ads**: `seats-ar` (scarcity), `live-ar` (product), and one founder video once recorded. Retire an ad only by the rules above, never by taste. Every Monday the designer prepares one new variant per active angle so there is always a replacement ready.
+Start each ad set with **three ads**: `close` (closing window, from the day the close date is confirmed), `live-ar` (product), and one founder video once recorded. Retire an ad only by the rules above, never by taste. Every Monday the designer prepares one new variant per active angle so there is always a replacement ready.
 
 ## 4. Lead handling (paid leads cost money: they never wait)
 

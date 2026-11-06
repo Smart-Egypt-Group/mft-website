@@ -17,8 +17,8 @@ One identity on every profile, post and page. This kit is the reference; the sit
 - The platform that reviews itself
 
 **What it means (use in about sections):**
-- AR: نراجع أنفسنا قبل أن نراجع دفاترك: أكثر من 7,900 اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت، وقراءة فقط من نظامك، ولكل ملاحظة دليلها.
-- EN: We review ourselves before we review your books: 7,900+ automated tests before every update, a log nothing can change silently, read-only access to your system, and evidence behind every finding.
+- AR: نراجع أنفسنا قبل أن نراجع دفاترك: أكثر من 9,900 اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت، وقراءة فقط من نظامك، ولكل ملاحظة دليلها.
+- EN: We review ourselves before we review your books: 9,900+ automated tests before every update, a log nothing can change silently, read-only access to your system, and evidence behind every finding.
 
 Every claim above is published on the site (trust centre, platform figures in `src/content/platform-facts.js`). The test count is regenerated from the seg-audit code; update the text when it changes.
 

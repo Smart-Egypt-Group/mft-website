@@ -1,5 +1,7 @@
 # Short-video storyboards (Reels / TikTok / Shorts)
 
+> **⚠️ أرشيف (6 نوفمبر 2026):** سطور الندرة في هذا الملف («50 مقعد فقط بسعر مؤسِّس مدى الحياة») **قديمة**. الندرة الآن: سعر المؤسِّس يُغلق نهائيًا الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة (`src/site.config.js → founding.closesAt`) + العضوية بالطلب، ومش كل طلب بيتقبل. «مدى الحياة» يُقال في خطاب القبول فقط. المحتوى الجاهز للنشر: [`november-calendar.md`](november-calendar.md).
+
 Frames: `marketing/designs/concepts/video/`. Storyboard sheets: `video-a_{ar,en}_storyboard_*.jpg`, `video-b_{ar,en}_storyboard_*.jpg`.
 Format: 1080×1920, 30 fps, burned-in captions (most views are muted), text inside the safe zone (250–1440 px from the top, 150 px clear of the right edge).
 Edit: CapCut or Premiere. Each frame is a still; motion comes from the moves listed (scale, wipe, light sweep). No stock footage, no music with lyrics; a low, steady pulse or ticking beat.

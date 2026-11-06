@@ -81,6 +81,12 @@ module.exports = {
     showCount: true,
     filled: 17,
     asOf: '2026-11-03',
+    // Founder-price close (working assumption, 6 Nov 2026; the CEO confirms). The ONE place the date
+    // lives: the founder price disappears for good at this moment (Cairo time, UTC+2 in November).
+    // Marketing copy writes it out in full; to move it, change this value and run
+    //   node scripts/close-date.js --from <old ISO>     (rewrites the date across marketing/)
+    // Not yet rendered by the site templates (switching the site to the close date is a separate decision).
+    closesAt: '2026-11-30T23:59:00+02:00',
     // Every launch CTA lands on the app sign-up. UTM content is added per placement in the template.
     signup: { ar: 'https://app.seg-audit.com/ar/signup', en: 'https://app.seg-audit.com/en/signup' },
     // Founding application (page founding-members/apply/), contract: seg-audit

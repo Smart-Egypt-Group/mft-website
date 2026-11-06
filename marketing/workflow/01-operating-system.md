@@ -55,14 +55,17 @@ Response SLA: comments and DMs within **2 working hours**; sign-ups contacted wi
 
 Track B status per member lives in the CRM (Odoo, erp.seg-audit.com) with one activity per touchpoint. Never post anything that identifies a member without written consent.
 
-## Switching on the real counter
+## Scarcity: closing window + selectivity (6 Nov 2026)
 
-Today there is **no public counter** (launch lead, 3 Nov 2026): every channel says «برنامج الأعضاء المؤسِّسون — 50 مقعد فقط بسعر مؤسِّس مدى الحياة» and nothing about how many have joined. Seats filled are tracked internally (weekly report) from day one.
+The seat counter is **retired as a public device**. The 17 / 33 figures were withdrawn (existing Odoo customers, not platform users), and no new count is published in this launch. Seats filled stay an **internal** number in the weekly report.
 
-Switch the counter on only when the campaign owner decides to, with **paid founding subscriptions confirmed in CRM**:
+Public scarcity has two parts, both backed by fact:
 
-1. Set `src/site.config.js → founding.filled` to the confirmed count, `asOf` to the date, `showCount: true`. `npm run check` refuses the counter without both.
-2. PR + deploy: the page, header bar, home band, seat meter and titles switch to the counter copy (`content/<lang>.js → founding.counter`).
-3. Rerun `scripts/launch-images.js` and `scripts/launch-concepts.js`; the seat designs then light the filled seats and show «باقي X من 50». Replace the seat ads with new ads (do not edit live ones).
-4. From then on, every seat filled = `filled` +1 the same day, and scheduled posts that name a number are updated before they go out.
-5. At 10 seats left, switch the angle to «آخر 10 مقاعد»; at 0, close the programme on every channel the same day.
+1. **Closing window.** The founder price disappears for good at `src/site.config.js → founding.closesAt` (working assumption: Monday 30 November 2026, 11:59 pm Cairo; the CEO confirms). Once published, the date is **never extended**. To move it before it is published: change `closesAt`, run `node scripts/close-date.js --from <old ISO>`, then `--check`.
+2. **Selectivity.** Membership is by application; MFT reviews each one by hand (stated on `/ar/founding-members/apply/`), and not every application is accepted. An approved seat is held 14 days for sign-up and the Odoo connection. Publish the acceptance criteria before using «not everyone is accepted» in ads.
+
+Rules:
+- «Founder price» is the name. No numeric price in any ad until one price list is approved. «For life» is stated in the **acceptance letter**, not promised as billing in a post.
+- `node scripts/close-date.js --check` must pass before anything is scheduled.
+- At the close: every ad that mentions the founder price stops at the same minute (set the ad End date to `closesAt`), the site switches to the waitlist / full-price message, and the 1 December post says the programme closed.
+- The site still shows `showCount: true`; turning it off is a separate site decision and a gate before any paid launch (`sales/meta-build-sheet.md` B5).

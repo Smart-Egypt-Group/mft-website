@@ -7,12 +7,12 @@ Everything the marketing team needs to run the **Founding Members** launch day b
 | | |
 |---|---|
 | Product | **SEG Audit**, the continuous audit platform from MFT (app.seg-audit.com) |
-| Offer | **Founding Members programme**: only 50 seats, at a founder price for life. **No public counter**: the earlier 17 / 33 figures were withdrawn (launch lead, 3 Nov 2026) |
-| Lead magnet (CEO) | **«فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق»**: trial-balance indicators only (suspense accounts, abnormal balances, imbalance, heavy manual entries, backdated entries). Never called a free report or an audit report |
-| Launch angle | Real scarcity without a counter: «برنامج الأعضاء المؤسِّسون — 50 مقعد فقط بسعر مؤسِّس مدى الحياة» |
+| Offer | **Founding Members programme**, by application only (MFT reviews every application by hand; not every one is accepted), 50 companies at most, at the **founder price** (its terms are written in the acceptance letter; billing does not yet support «for life», `PENDING-DECISIONS.md` #3). **No seat numbers anywhere**: the 17 / 33 figures were withdrawn (they were existing Odoo customers, not platform users) |
+| Lead magnet (CEO) | **«فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق»**: trial-balance indicators (three of the five, suspense, manual and backdated entries, need an Odoo connection, `PENDING-DECISIONS.md` #8) (suspense accounts, abnormal balances, imbalance, heavy manual entries, backdated entries). Never called a free report or an audit report |
+| Launch angle (6 Nov 2026) | **Closing window + selectivity**: «سعر المؤسِّس يُغلق نهائيًا الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة + العضوية بالطلب، ومش كل طلب بيتقبل». One source for the date: `src/site.config.js → founding.closesAt` (working assumption; the CEO confirms). Calendar to the close: [content/november-calendar.md](content/november-calendar.md) |
 | Every CTA | `https://app.seg-audit.com/ar/signup` (or `/en/signup`) with UTM tags, see [UTM scheme](workflow/05-kpis-and-reporting.md#utm-scheme) |
 | Website | `/ar/founding-members/` and `/en/founding-members/`, a launch bar on every page, a band on the home page |
-| Counter | Off (`src/site.config.js → founding.showCount: false`). It can be switched on only with a confirmed count of paid founding subscriptions; see [01-operating-system.md](workflow/01-operating-system.md#switching-on-the-real-counter) |
+| Counter | **Retired as a scarcity device** (6 Nov 2026). The site config still has `showCount: true`; switching it off is a separate site decision and a gate before any paid launch. Claims check before every post: `node scripts/close-date.js --check` |
 
 ### Two tracks
 
@@ -70,7 +70,7 @@ For the creative concepts: `node scripts/launch-concepts.js` (same requirements)
 
 1. **No invented numbers.** Only the cap of 50 and the platform figures already on the site (`src/content/platform-facts.js`). No savings claims, no "X% fewer errors", no client amounts.
 2. **No customer named without written consent.** Founding members are a count, not a logo wall, until each one says yes in writing.
-3. **No member count in public.** No «انضمت X شركة», no «باقي X», no countdown, until the real counter is switched on with confirmed subscriptions.
+3. **No member count in public, ever, in this launch.** No «انضمت X شركة», no «باقي X», no «X من 50». The only countdown allowed is to the real close date in `founding.closesAt`, and that date is never extended once published.
 4. **Nothing is "fraud" or "a misstatement".** We talk about findings and exceptions with evidence, never accusations.
 5. **Every link carries UTM tags.** An untagged link is a post that cannot be measured.
 6. **The free offer has one description**: «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق» / "A free check of your company’s trial balance that flags its risk points in minutes". Never «تقرير مجاني», never "audit report".
