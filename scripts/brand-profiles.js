@@ -19,8 +19,8 @@ const { design, navyField, light, spiral, rect, circ, bar, cyanCheck, text, pill
 
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/brand/assets');
-const MARK_WHITE = 'data:image/png;base64,' + fs.readFileSync(path.join(ROOT, 'src/assets/logo/mft-mark-white.png')).toString('base64');
-const MARK_RATIO = 1024 / 1406; // mft-mark-*.png width / height
+const MARK_WHITE = 'data:image/png;base64,' + fs.readFileSync(path.join(ROOT, 'src/assets/logo/mft-mark-white.png')).toString('base64'); // qa-allow-mft-mark: MFT's own company avatars + watermark (SEG cube decision pending the CEO's logo direction)
+const MARK_RATIO = 1024 / 1406; // mft-mark-*.png width / height qa-allow-mft-mark
 
 const LINE = { ar: 'المنصة التي تراجع نفسها', en: 'The platform that reviews itself' };
 const EYEBROW = 'MODERN FINANCIAL TECHNOLOGY · STANDARD ENTERPRISE GOVERNANCE';

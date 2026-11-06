@@ -33,8 +33,8 @@ const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs');
 const SITE_OUT = path.join(ROOT, 'src/assets/img/launch');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const MARK_NAVY = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-navy.png');
-const MARK_WHITE = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-white.png');
+const { MARK: SEG_MARK } = require('./lib/campaign.js');
+const MARK_NAVY = SEG_MARK.navy, MARK_WHITE = SEG_MARK.white; // SEG cube: colour on the page, white on navy
 const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 const { founding: FM } = require('../src/site.config.js');

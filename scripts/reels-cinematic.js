@@ -33,7 +33,7 @@ const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/video');
 const PUB = path.join(ROOT, 'src/assets/social/video');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const MARK = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-white.png');
+const MARK = require('./lib/campaign.js').MARK.white; // SEG cube, white (app bar mock on navy)
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const W = 1080, H = 1920, FPS = 30, TOTAL = 34;

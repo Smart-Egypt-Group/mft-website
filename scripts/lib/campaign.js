@@ -4,9 +4,12 @@
 //   1. the close date in words, from src/site.config.js → founding.closesAt (change it there only)
 //   2. the campaign copy: scarcity = a closing window + selectivity. No seat numbers, no counts, no numeric
 //      price or discount, no «مدى الحياة» (it belongs in the acceptance letter, not on an ad)
-//   3. the platform signature: the official mark (src/assets/logo/mft-mark-*.png; no separate SEG file
-//      exists) + the «SEG» wordmark + «by MFT», one per design, bottom-start margin, same proportions
-//      everywhere (mark height = H; word = 0.74 H, 800, tracking .14em; «by MFT» = 0.36 H, 600)
+//   3. the platform signature: the official SEG logo (the S-E-G cube the CEO sent on 6 Nov 2026,
+//      marketing/brand/assets/logo/, cleaned by scripts/seg-logo-raster.js) + the «SEG» wordmark +
+//      «BY MFT», one per design, bottom-start margin, same proportions everywhere (logo height = H;
+//      word = 0.6 H, 800, tracking .14em; «BY MFT» = 0.27 H, 600). Colour cube on light backgrounds;
+//      the white cube on dark ones (the cube's dark blue is ≈1.3:1 on navy, below the 3:1 a logo needs).
+//      The MFT mark (src/assets/logo/mft-mark-*.png) stays for MFT's own company profiles only.
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..', '..');
@@ -86,8 +89,12 @@ const FORBIDDEN = [
 
 // ---- the signature ----
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const MARK = { white: 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-white.png'), navy: 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-navy.png') };
-const MARK_RATIO = 1024 / 1406;
+const LOGO = 'marketing/brand/assets/logo/';
+// navy key = for light backgrounds (the colour cube); white key = for dark backgrounds
+const MARK = { white: 'data:image/png;base64,' + b64(LOGO + 'seg-logo_sign-white.png'), navy: 'data:image/png;base64,' + b64(LOGO + 'seg-logo_sign.png') };
+MARK.color = MARK.navy; MARK.onDark = MARK.white; MARK.onLight = MARK.navy;
+const MARK_FILES = { white: LOGO + 'seg-logo_sign-white.png', color: LOGO + 'seg-logo_sign.png' };
+const MARK_RATIO = 262 / 256;
 const NAVY = '#0D1B3E', CYAN = '#1BB7CD';
 
 // HTML signature (for the HTML/CSS generators). `h` = mark height in px; `onLight` = navy version.
@@ -118,4 +125,4 @@ const SIGN_CANVAS_SRC = `async function drawSign(g, img, x, y, h, onLight, rtlEn
   return total;
 }`;
 
-module.exports = { CLOSE, COPY, FORBIDDEN, MARK, MARK_RATIO, signHTML, SIGN_CANVAS_SRC, words, parts, DAYS_AR, DAYS_EN, MONTHS_AR, MONTHS_EN, founding };
+module.exports = { CLOSE, COPY, FORBIDDEN, MARK, MARK_FILES, MARK_RATIO, signHTML, SIGN_CANVAS_SRC, words, parts, DAYS_AR, DAYS_EN, MONTHS_AR, MONTHS_EN, founding };

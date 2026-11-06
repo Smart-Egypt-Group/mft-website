@@ -21,7 +21,6 @@ catch { console.error('playwright not found. npm i -D playwright, or set PLAYWRI
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/psych');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const MARK = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-white.png');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const { founding: FM } = require('../src/site.config.js');

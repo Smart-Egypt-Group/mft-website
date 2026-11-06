@@ -7,7 +7,8 @@
 // Data: scripts/lib/daily-nov.js. What is verified, per post:
 //   • every asset exists under marketing/designs, its pixel size (read from the file header) is the
 //     format's platform size, videos have the right frame size, their duration and whether audio exists
-//   • every asset was rendered in the quality pass (6 Nov 2026 18:00 or later: SEG signature, close copy)
+//   • every asset was rendered after the SEG logo went into the signature (6 Nov 2026 21:10 or later:
+//     the SEG cube + SEG + BY MFT, close copy)
 //     and none is a withdrawn file (seats / hourglass / scarcity-proof)
 //   • the copy: no forbidden line (scripts/lib/campaign.js → FORBIDDEN), «باقي N» matches the date,
 //     illustrative companies are labelled, no unfilled [placeholder] unless the post is marked `need`,
@@ -23,7 +24,8 @@ const { FORBIDDEN, DAYS_AR } = require('./lib/campaign.js');
 const { imageSize, mp4Info } = require('./lib/media-info.js');
 const { DAYS } = require('./lib/daily-nov.js');
 const CHECK_ONLY = process.argv.includes('--check');
-const QUALITY_PASS = new Date('2026-11-06T18:00:00+02:00');
+// every asset must be rendered after the SEG logo went into the signature (6 Nov 2026, 21:10 Cairo)
+const QUALITY_PASS = new Date('2026-11-06T21:10:00+02:00');
 
 const CH = {
   'li-page': { name: 'LinkedIn · صفحة الشركة', src: 'linkedin', medium: 'organic', link: 'comment' },
@@ -197,7 +199,7 @@ for (const X of days) {
   md += `> **حالة اليوم:** ${X.state}${X.condNote ? `\n> **${X.condNote}** (🟡، متتنشرش قبل الشرط).` : ''}\n`;
   md += `> **مفيش حاجة منشورة أو مجدولة.** كل منشور بيعدّي على [سير النشر](../../workflow/02-publishing-workflow.md) واعتماد الـCEO.\n`;
   md += `> **الاتجاه:** سعر المؤسِّس يُغلق نهائيًا الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة (\`src/site.config.js → founding.closesAt\`) + العضوية بالطلب، ومش كل طلب بيتقبل. لا مقاعد، ولا سعر رقمي، ولا «مدى الحياة».\n`;
-  md += `> **الدليل:** اتولّد بـ\`node scripts/daily-packs.js\` (${stamp}). كل أصل اتفحص على الديسك: موجود، ومقاسه من هيدر الملف، ومدة الفيديو ووجود الصوت، وتاريخ توليده بعد مرحلة الجودة (توقيع SEG + BY MFT ونص الإغلاق). النصوص اتفحصت ضد الممنوعات، وعدّ الأيام، ووسم «مثال توضيحي».\n\n`;
+  md += `> **الدليل:** اتولّد بـ\`node scripts/daily-packs.js\` (${stamp}). كل أصل اتفحص على الديسك: موجود، ومقاسه من هيدر الملف، ومدة الفيديو ووجود الصوت، وتاريخ توليده بعد دمج لوجو SEG الرسمي (التوقيع = مكعّب SEG + SEG + BY MFT، ونص الإغلاق). النصوص اتفحصت ضد الممنوعات، وعدّ الأيام، ووسم «مثال توضيحي».\n\n`;
   md += `**الحالة:** ✅ جاهز (أصل ونص) · 🔴 محتاج إدخال بشري (والبديل الجاهز مكتوب تحته) · 🟡 جاهز، بس مستني شرط برّه الحزمة\n\n`;
   md += `## قبل أول نشر\n\n` + GLOBAL.map((g) => `- ${g}`).join('\n') + '\n' + (D.gates.length ? D.gates.map((g) => `- ${g}`).join('\n') + '\n' : '') + '\n';
   md += `## الجدول\n\n| # | الوقت | القناة | الفورمات | الأصل (المسار تحت \`marketing/designs/\`) | فحص الأصل | الهوك | CTA | \`utm_content\` | الحالة |\n|---|---|---|---|---|---|---|---|---|---|\n`;
@@ -254,7 +256,7 @@ for (const X of days) {
 // ---- index ----
 let ix = `# حزم النشر اليومية: 7 → 30 نوفمبر 2026\n\n`;
 ix += `> اتولّدت بـ\`node scripts/daily-packs.js\` (${stamp}) من \`scripts/lib/daily-nov.js\`. **مفيش حاجة منشورة أو مجدولة.**\n`;
-ix += `> **اتفحص:** ${days.length} يوم · ${nPosts} منشور · ${nAssets} أصل مختلف موجود على الديسك بمقاسه الصحيح ومولَّد بعد مرحلة الجودة · النصوص نظيفة. قبل كل يوم: \`node scripts/daily-packs.js --check\`.\n`;
+ix += `> **اتفحص:** ${days.length} يوم · ${nPosts} منشور · ${nAssets} أصل مختلف موجود على الديسك بمقاسه الصحيح ومولَّد بعد دمج لوجو SEG · النصوص نظيفة. قبل كل يوم: \`node scripts/daily-packs.js --check\`.\n`;
 ix += `> المصادر: [\`november-calendar.md\`](../november-calendar.md) (الخطة) · [\`coverage-matrix-nov.md\`](../coverage-matrix-nov.md) (الخانات والنبرة) · [\`voiceover-scripts-nov.md\`](../voiceover-scripts-nov.md) (الصوت).\n\n`;
 ix += `## حالة كل يوم\n\n| اليوم | الزاوية | المنشورات | الحالة | الناقص بالظبط | مشروط (🟡) |\n|---|---|---|---|---|---|\n`;
 for (const X of days) {

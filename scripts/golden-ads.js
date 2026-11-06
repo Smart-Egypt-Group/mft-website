@@ -38,8 +38,6 @@ const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/golden');
 const HOST = path.join(ROOT, 'src/assets/social/golden');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const MARK_W = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-white.png');
-const MARK_N = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-navy.png');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const { founding: FM } = require('../src/site.config.js');

@@ -9,6 +9,10 @@
 //   3. any image whose pixel size is not the size in its file name, or whose size is not a known
 //      platform spec (Instagram, Facebook, LinkedIn, TikTok, YouTube, X)
 //   4. a generator that draws the old «MFT» text signature instead of the shared SEG signature
+//   5. the SEG logo: the shared kit (scripts/lib/campaign.js) must load the SEG cube files; a generator
+//      that writes «SEG» as a wordmark (fillText('SEG'…), <span class="lat">SEG…) must take its logo from
+//      the kit, and no generator may load the MFT mark (src/assets/logo/mft-mark-*) except on a line
+//      marked «qa-allow-mft-mark» (MFT's own company avatars)
 // Comment lines (// …) in generators are not scanned: they document what was withdrawn.
 const fs = require('fs');
 const path = require('path');
@@ -24,6 +28,7 @@ const SPECS = [
   [150, 150, 'YouTube watermark'], [2316, 1180, 'storyboard sheet'], [1860, 1180, 'storyboard sheet']
 ];
 const AVATAR = /avatar_/; // avatars: each platform's own square size
+const LOGO_DIR = /brand\/assets\/logo\//; // logo masters: their own sizes
 
 const problems = [];
 // 1 + 4: generator sources
@@ -37,6 +42,23 @@ for (const g of GENERATORS) {
 }
 
 const { imageSize: size } = require('./lib/media-info.js');
+// 5: the SEG logo
+const KIT = fs.readFileSync(path.join(ROOT, 'scripts/lib/campaign.js'), 'utf8');
+for (const f of ['seg-logo_sign.png', 'seg-logo_sign-white.png']) {
+  if (!KIT.includes(f)) problems.push(`scripts/lib/campaign.js: signature does not load the SEG logo (${f})`);
+  if (!fs.existsSync(path.join(ROOT, 'marketing/brand/assets/logo', f))) problems.push(`marketing/brand/assets/logo/${f}: missing`);
+}
+if (/mft-mark-/.test(KIT.replace(/^\s*\/\/.*$/gm, ''))) problems.push('scripts/lib/campaign.js: signature still loads the MFT mark');
+for (const g of GENERATORS) {
+  const src = fs.readFileSync(path.join(ROOT, 'scripts', g + '.js'), 'utf8');
+  const usesKitLogo = /require\('\.\/lib\/campaign\.js'\)/.test(src) && /\bMARK\b|signHTML|SIGN_CANVAS_SRC|drawSign/.test(src);
+  src.split('\n').forEach((l, i) => {
+    if (/^\s*\/\//.test(l)) return;
+    if (/mft-mark-/.test(l) && !/qa-allow-mft-mark/.test(l)) problems.push(`scripts/${g}.js:${i + 1}: loads the MFT mark (the SEG logo comes from scripts/lib/campaign.js → MARK)`);
+    if (/fillText\('SEG'|class="lat">SEG|>SEG<\/(b|span)>/.test(l) && !usesKitLogo) problems.push(`scripts/${g}.js:${i + 1}: writes SEG as text without the SEG logo`);
+  });
+}
+
 function walk(dir) {
   const out = [];
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -57,8 +79,8 @@ for (const base of ['marketing/designs', 'marketing/brand/assets']) {
     const named = [...path.basename(f).matchAll(/_(\d{3,})x(\d{3,})(?=[_.])/g)].pop();
     if (named && (+named[1] !== s[0] || +named[2] !== s[1])) problems.push(`${rel}: is ${s[0]}×${s[1]}, name says ${named[1]}×${named[2]}`);
     const spec = SPECS.find(([w, h]) => w === s[0] && h === s[1]);
-    if (!spec && !(AVATAR.test(f) && s[0] === s[1])) problems.push(`${rel}: ${s[0]}×${s[1]} is not a platform spec`);
-    const k = spec ? spec[2] : 'avatar';
+    if (!spec && !(AVATAR.test(f) && s[0] === s[1]) && !LOGO_DIR.test(rel)) problems.push(`${rel}: ${s[0]}×${s[1]} is not a platform spec`);
+    const k = spec ? spec[2] : LOGO_DIR.test(rel) ? 'logo master' : 'avatar';
     bySpec[k] = (bySpec[k] || 0) + 1;
   }
 }

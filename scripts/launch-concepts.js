@@ -37,7 +37,8 @@ catch { console.error('playwright not found. npm i -D playwright, or set PLAYWRI
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/concepts');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const MARK = { navy: 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-navy.png'), white: 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-white.png') };
+const { MARK: SEG_MARK } = require('./lib/campaign.js');
+const MARK = { navy: SEG_MARK.navy, white: SEG_MARK.white }; // SEG cube (colour on light, white on dark)
 const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 const { founding: FM } = require('../src/site.config.js');
@@ -792,7 +793,7 @@ async function openRenderer() {
       if (o.type === 'mark') {
         const mk = o.white ? marks.white : marks.navy, mw = o.h * mk.width / mk.height;
         g.drawImage(mk, o.x, o.y - o.h, mw, o.h);
-        // platform signature (scripts/lib/campaign.js): mark + SEG + BY MFT
+        // platform signature (scripts/lib/campaign.js): SEG logo + SEG + BY MFT
         g.save(); g.fillStyle = o.white ? '#FFFFFF' : '#0D1B3E'; g.direction = 'ltr'; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
         g.font = `800 ${o.h * 0.6}px "Inter"`; g.letterSpacing = `${o.h * 0.084}px`;
         g.fillText('SEG', o.x + mw + o.h * 0.32, o.y - o.h * 0.47);
