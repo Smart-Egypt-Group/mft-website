@@ -19,7 +19,7 @@ const GENERATORS = ['launch-images', 'launch-concepts', 'psych-ads', 'golden-ads
 // Platform specs: [w, h, where]
 const SPECS = [
   [1080, 1080, 'IG/FB/LI square · Meta 1:1'], [1080, 1350, 'IG/FB/LI portrait 4:5 · Meta 4:5'], [1080, 1920, 'Story/Reel/TikTok/Shorts 9:16'],
-  [1200, 630, 'LinkedIn/Facebook link'], [1600, 900, 'X post'], [1280, 720, 'YouTube thumbnail'], [2560, 1440, 'YouTube banner'],
+  [1200, 630, 'LinkedIn/Facebook link'], [1600, 900, 'X post'], [1280, 720, 'YouTube thumbnail'], [1920, 1080, 'YouTube/LinkedIn 16:9 video frame'], [2560, 1440, 'YouTube banner'],
   [1128, 191, 'LinkedIn company cover'], [1584, 396, 'LinkedIn personal banner'], [1500, 500, 'X header'], [1640, 624, 'Facebook cover'],
   [150, 150, 'YouTube watermark'], [2316, 1180, 'storyboard sheet'], [1860, 1180, 'storyboard sheet']
 ];

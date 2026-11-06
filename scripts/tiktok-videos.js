@@ -20,9 +20,20 @@ catch { console.error('playwright not found. npm i -D playwright, or set PLAYWRI
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'marketing/designs/ads');
 const OUT = path.join(SRC, 'video');
-const W = 1080, H = 1920, FPS = 30, SECONDS = 8, ZOOM = 0.04, BITRATE = 8e6;
+let W = 1080, H = 1920; const FPS = 30, SECONDS = 8, ZOOM = 0.04, BITRATE = 8e6;
 const TIMESCALE = 15360, DELTA = TIMESCALE / FPS;
 const VARIANTS = ['live-ar', 'live-en', 'close-ar', 'close-en']; // seats-* withdrawn 6 Nov 2026
+// Every motion job (coverage pass, 6 Nov 2026): the 9:16 ads, plus 4:5 feed video (Facebook/Instagram/
+// LinkedIn feed), 16:9 (YouTube, LinkedIn/Facebook landscape) and 9:16 stories of the scarcity concepts.
+const D = path.join(ROOT, 'marketing/designs');
+const JOBS = [
+  ...VARIANTS.map((v) => ({ name: `tiktok-9x16_${v}_1080x1920`, src: path.join(SRC, `tiktok-9x16_${v}_1080x1920.jpg`), w: 1080, h: 1920 })),
+  ...VARIANTS.map((v) => ({ name: `meta-feed-4x5_${v}_1080x1350`, src: path.join(SRC, `meta-feed-4x5_${v}_1080x1350.jpg`), w: 1080, h: 1350 })),
+  ...VARIANTS.map((v) => ({ name: `video-16x9_${v}_1920x1080`, src: path.join(SRC, `video-16x9_${v}_1920x1080.jpg`), w: 1920, h: 1080 })),
+  ...['ar', 'en'].map((l) => ({ name: `council-story_${l}_1080x1920`, src: path.join(D, `concepts/hemicycle/hemicycle_${l}_story_1080x1920.jpg`), w: 1080, h: 1920 })),
+  { name: 'selectivity-story_ar_1080x1920', src: path.join(D, 'psych/4-selectivity/psych-4-selectivity_ar_story_1080x1920.jpg'), w: 1080, h: 1920 },
+  { name: 'days-4x5_ar_1080x1350', src: path.join(D, 'golden/2-days/golden-2-days_ar_4x5_1080x1350.jpg'), w: 1080, h: 1350 }
+];
 
 // ---------------------------------------------------------------- MP4 (ISO BMFF) writer
 const u8 = (n) => Buffer.from([n & 255]);
@@ -101,10 +112,11 @@ async function main() {
   const page = await browser.newPage();
   await page.goto('file://' + blank);
   const written = [];
-  for (const v of VARIANTS) {
-    const name = `tiktok-9x16_${v}_1080x1920`;
+  for (const job of JOBS) {
+    const name = job.name;
     if (only && !name.includes(only)) continue;
-    const jpg = fs.readFileSync(path.join(SRC, `${name}.jpg`)).toString('base64');
+    W = job.w; H = job.h;
+    const jpg = fs.readFileSync(job.src).toString('base64');
     const out = await page.evaluate(async ({ jpg, W, H, FPS, SECONDS, ZOOM, BITRATE }) => {
       const img = new Image(); img.src = 'data:image/jpeg;base64,' + jpg; await img.decode();
       const c = new OffscreenCanvas(W, H), g = c.getContext('2d');
@@ -117,7 +129,7 @@ async function main() {
         },
         error: (e) => { fail = String(e); }
       });
-      enc.configure({ codec: 'avc1.42E028', width: W, height: H, bitrate: BITRATE, framerate: FPS, hardwareAcceleration: 'prefer-software', latencyMode: 'quality', avc: { format: 'avc' } });
+      enc.configure({ codec: W * H > 1080 * 1920 ? 'avc1.42E032' : 'avc1.42E028', width: W, height: H, bitrate: BITRATE, framerate: FPS, hardwareAcceleration: 'prefer-software', latencyMode: 'quality', avc: { format: 'avc' } });
       const n = FPS * SECONDS, ease = (t) => 0.5 - 0.5 * Math.cos(Math.PI * t);
       for (let i = 0; i < n; i++) {
         const s = 1 + ZOOM * ease(i / (n - 1)), dw = W * s, dh = H * s;
@@ -135,7 +147,7 @@ async function main() {
     }, { jpg, W, H, FPS, SECONDS, ZOOM, BITRATE });
     const samples = out.samples.map((s) => ({ key: s.key, data: Buffer.from(s.data, 'base64') }));
     const file = path.join(OUT, `${name}_8s.mp4`);
-    fs.writeFileSync(file, mp4(samples, Buffer.from(out.avcC, 'base64')));
+    fs.writeFileSync(file, mp4(samples, Buffer.from(out.avcC, 'base64'), null, { width: W, height: H }));
     written.push(file);
     console.log('wrote', path.relative(ROOT, file), `${samples.length} frames`, `${(fs.statSync(file).size / 1e6).toFixed(1)} MB`);
   }

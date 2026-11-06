@@ -51,6 +51,8 @@ const COPY = {
   'close-en': { dir: 'ltr', eyebrow: `SEG · ${K.en.program.toUpperCase()}`, hero: [String(CLOSE.d), CLOSE.enMonth.slice(0, 3).toUpperCase()], title: K.en.closes, support: [`${K.en.when}.`, K.en.select], cta: `${K.en.cta}  ·  ${K.en.ctaUrl}`, motif: 'close' },
   'live-ar': { dir: 'rtl', eyebrow: 'Standard Enterprise Governance من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com', motif: 'live' },
   'live-en': { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'A free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Check your trial balance free  ·  app.seg-audit.com', motif: 'live' },
+  // N8: YouTube thumbnail for the live recording (Tue 10 Nov), used from Wed 11
+  'live-recording-ar': { dir: 'rtl', eyebrow: 'SEG · تسجيل البث · عرض توضيحي', heroText: 'ميزان المراجعة قبل الإقفال', title: '5 نقاط خطر في ميزان شركة نموذجية', support: 'داتا اختبارية. مؤشرات، مش تقرير مراجعة.', cta: 'افحص ميزانك مجانًا  ·  seg-audit.com', motif: 'live' },
   'neutral-close': { motif: 'close' },
   'neutral-live': { motif: 'live' }
 };
@@ -68,10 +70,12 @@ const FORMATS = [
   // Story layout keeps TikTok's safe zone too (top 160, bottom 480, end 140), so it doubles as
   // Instagram/Facebook Stories, Reels cover, and Meta Stories/Reels ads.
   { dir: 'social', name: 'story', w: 1080, h: 1920, kind: 'stack', safe: { t: 250, b: 480, s: 96, e: 150 }, variants: ['close-ar', 'close-en', 'live-ar', 'live-en', 'neutral-close', 'neutral-live'] },
-  { dir: 'social', name: 'youtube-thumbnail', w: 1280, h: 720, kind: 'land', variants: ['close-ar', 'close-en', 'live-ar', 'live-en'] },
+  { dir: 'social', name: 'youtube-thumbnail', w: 1280, h: 720, kind: 'land', variants: ['close-ar', 'close-en', 'live-ar', 'live-en', 'live-recording-ar'] },
   { dir: 'ads', name: 'meta-feed-4x5', w: 1080, h: 1350, kind: 'stack', variants: ['close-ar', 'close-en', 'live-ar', 'live-en'] },
   { dir: 'ads', name: 'meta-feed-1x1', w: 1080, h: 1080, kind: 'stack', variants: ['close-ar', 'close-en', 'live-ar', 'live-en'] },
   { dir: 'ads', name: 'tiktok-9x16', w: 1080, h: 1920, kind: 'stack', safe: { t: 250, b: 520, s: 96, e: 170 }, variants: ['close-ar', 'close-en', 'live-ar', 'live-en'] },
+  // 16:9 source frame for landscape video (YouTube in-feed, LinkedIn/Facebook landscape video); motion in tiktok-videos.js
+  { dir: 'ads', name: 'video-16x9', w: 1920, h: 1080, kind: 'land', variants: ['close-ar', 'close-en', 'live-ar', 'live-en'] },
   // Profile covers: long-lived, so they carry the "now live" message, never a seat count.
   // YouTube: 2560×1440 canvas, everything that matters inside the 1546×423 all-devices safe area.
   { dir: 'covers', name: 'youtube-banner', w: 2560, h: 1440, kind: 'strip', safe: { x: 507, y: 508, w: 1546, h: 423 }, variants: ['live-ar', 'live-en', 'neutral-live'] },

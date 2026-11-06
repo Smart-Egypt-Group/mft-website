@@ -2,6 +2,7 @@
 
 > **الحالة:** خطة للاعتماد (6 نوفمبر 2026). لا شيء منشور أو مجدول. كل منشور يمر بـ[سير النشر](../workflow/02-publishing-workflow.md) واعتماد الـCEO.
 > **الذروة:** الإثنين 30 نوفمبر، **11:59 مساءً بتوقيت القاهرة** = إغلاق سعر المؤسِّس. المصدر الوحيد للتاريخ: `src/site.config.js → founding.closesAt` (افتراض عمل يؤكده الـCEO). لتغييره: `node scripts/close-date.js --from <القديم>` ثم مراجعة سطور «باقي N يوم» يدويًا (السكربت يسردها).
+> **الأصول والنصوص الجاهزة لكل منصة:** [`coverage-matrix-nov.md`](coverage-matrix-nov.md) (المصفوفة + النص النهائي والهوك والـCTA لكل خانة؛ §4 بيربط كل يوم هنا بنصّه وأصله).
 > **قبل كل يوم نشر:** `node scripts/close-date.js --check` نظيف · أرقام المنصة من `src/content/platform-facts.js` · تسجيل أمس في `workflow/templates/content-log.csv`.
 
 ## القواعد الثابتة لكل منشور
