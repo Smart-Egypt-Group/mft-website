@@ -52,7 +52,7 @@ const TESTS = FACTS.testsFloor.toLocaleString('en-US');
 
 const { NAVY, CYAN, W } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
 const DIM = 'rgba(255,255,255,.78)', DIM2 = 'rgba(255,255,255,.55)';
-const PHI = (1 + Math.sqrt(5)) / 2;
+const { PHI } = require('./lib/brand-tokens.js').phi; // one source for φ
 const f = (n) => +(+n).toFixed(1);
 function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
 
@@ -294,8 +294,8 @@ function hook360(w, h, lang, o = {}) {
   if (k === 'link') {
     light(d, w * 0.62, 330, 300 * u, 0.22);
     const a = st(lang, 70, 1130);
-    text(d, { t: C.l1, ...a, y: 128, px: 62, maxW: 1060, fit: true });
-    runs(d, { ...a, y: 400, dir: A ? 'rtl' : 'ltr', gap: 22, maxW: 1060, items: [{ t: C.pre, px: 62 }, { t: '360', px: 250, c: CYAN, glow: CYAN, wt: 900 }, { t: C.post, px: 62 }] });
+    text(d, { t: C.l1, ...a, y: 128, px: 68, maxW: 1060, fit: true });
+    runs(d, { ...a, y: 400, dir: A ? 'rtl' : 'ltr', gap: 22, maxW: 1060, items: [{ t: C.pre, px: 68 }, { t: '360', px: 226, c: CYAN, glow: CYAN, wt: 900 }, { t: C.post, px: 68 }] });
     calendar(d, 70, 470, 1060, 125, { lit });
     mark(d, 70, 54, 26, true);
     return d;
@@ -305,7 +305,7 @@ function hook360(w, h, lang, o = {}) {
     : { m: 90, eb: 110, l1: 230, l2: 0, num: 650, numPx: 380, post: 0, cal: [715, 120], cap: 890 };
   light(d, w / 2, S.num - S.numPx * 0.35, 380 * u, 0.24);
   const a = st(lang, S.m, w - S.m), pxL = (k === 'story' ? 128 : k === 'portrait' ? 104 : 96) * u;
-  text(d, { t: 'Standard Enterprise Governance', ...a, y: S.eb, px: 30 * u, wt: 800, c: CYAN, ls: 3 * u });
+  text(d, { t: 'Standard Enterprise Governance', ...a, y: S.eb, px: 33 * u, wt: 800, c: CYAN, ls: 3 * u });
   if (k === 'story') {
     text(d, { t: C.s1, ...a, y: S.l1, px: pxL, maxW: w - 2 * S.m, fit: true });
     text(d, { t: C.s2, ...a, y: S.l2, px: pxL, maxW: w - 2 * S.m, fit: true });
@@ -318,12 +318,12 @@ function hook360(w, h, lang, o = {}) {
   }
   if (!o.noCal) {
     calendar(d, S.m, S.cal[0] * (k === 'square' ? 1 : 1), w - 2 * S.m, S.cal[1] * u, { lit });
-    text(d, { t: C.cap, ...a, y: S.cap - (k === 'story' ? 60 : 0), px: 30 * u, wt: 600, c: DIM });
+    text(d, { t: C.cap, ...a, y: S.cap - (k === 'story' ? 60 : 0), px: 33 * u, wt: 600, c: DIM });
   }
   if (!o.frame) {
     const by = k === 'story' ? 1640 : h - 90 * u;
     mark(d, S.m, by + 14 * u, 32 * u, true);
-    pill(d, { t: T[lang].cta, x: w - S.m, y: by - 34 * u, h: 64 * u, px: 24 * u, al: 'right', padX: 28 * u, maxW: w - 2 * S.m - 200 * u });
+    pill(d, { t: T[lang].cta, x: w - S.m, y: by - 34 * u, h: 64 * u, px: 26 * u, al: 'right', padX: 28 * u, maxW: w - 2 * S.m - 400 * u }); // leaves the signature row free
   }
   return d;
 }
@@ -335,16 +335,16 @@ function selfAudit(w, h, lang) {
     const a = st(lang, 70, 520);
     light(d, 860, 320, 260, 0.2);
     text(d, { t: C.eb, ...a, y: 120, px: 20, c: CYAN, ls: 3 });
-    text(d, { t: C.head, ...a, y: 190, px: 52, maxW: 450, wrap: true, lh: 1.2 });
-    text(d, { t: C.sub, ...a, y: 360, px: 21, wt: 500, c: DIM, maxW: 440, wrap: true, lh: 1.55 });
+    text(d, { t: C.head, ...a, y: 190, px: 53, maxW: 450, wrap: true, lh: 1.2 });
+    text(d, { t: C.sub, ...a, y: 360, px: 20, wt: 500, c: DIM, maxW: 440, wrap: true, lh: 1.55 });
     spiral(d, 590, 150, 540, 540 / PHI);
     mark(d, 70, 578, 26, true);
     return d;
   }
-  const S = k === 'story' ? { m: 96, eb: 300, hd: 420, hpx: 92, sb: 640, box: 860 } : k === 'portrait' ? { m: 90, eb: 140, hd: 250, hpx: 84, sb: 450, box: 640 } : { m: 90, eb: 105, hd: 195, hpx: 70, sb: 325, box: 405 };
+  const S = k === 'story' ? { m: 96, eb: 300, hd: 420, hpx: 86, sb: 640, box: 860 } : k === 'portrait' ? { m: 90, eb: 140, hd: 250, hpx: 86, sb: 450, box: 640 } : { m: 90, eb: 105, hd: 195, hpx: 68, sb: 325, box: 405 };
   const a = st(lang, S.m, w - S.m), bw = w - 2 * S.m, bh = bw / PHI;
   light(d, w / 2, S.box + bh / 2, 420 * u, 0.22);
-  text(d, { t: C.eb, ...a, y: S.eb, px: 28 * u, c: CYAN, ls: 3 * u });
+  text(d, { t: C.eb, ...a, y: S.eb, px: 26 * u, c: CYAN, ls: 3 * u });
   text(d, { t: C.head, ...a, y: S.hd, px: S.hpx * u, maxW: bw, wrap: true, lh: 1.15 });
   text(d, { t: C.sub, ...a, y: S.sb, px: (k === 'story' ? 36 : 30) * u, wt: 500, c: DIM, maxW: bw * 0.96, wrap: true, lh: 1.55 });
   spiral(d, S.m, S.box, bw, bh);
@@ -360,21 +360,21 @@ function beforeAfter(w, h, lang, o = {}) {
   if (k === 'link') {
     const sx = Math.round(w - w / PHI); // before 38.2% on the left, after 61.8%
     navyField(d, 0, 0, sx, h, sx * 0.5, h * 0.5, { dark: true });
-    messy(d, 40, 70, sx - 80, h - 120, 7, { rows: 12, px: 18 });
+    messy(d, 40, 70, sx - 80, h - 120, 7, { rows: 12, px: 16 });
     d.svg += rect(sx, 0, w - sx, h, W);
-    report(d, sx + 70, 70, w - sx - 140, words ? 380 : 480, lang, { rows: 5, hot: 2, px: 22 });
+    report(d, sx + 70, 70, w - sx - 140, words ? 380 : 480, lang, { rows: 5, hot: 2, px: 20 });
     d.svg += `<g filter="url(#bloom)">${rect(sx - 2.5, 0, 5, h, W)}</g>` + rect(sx - 1, 0, 2, h, CYAN);
     if (words) {
-      pill(d, { t: C.before, x: 40, y: 30, h: 40, px: 18, al: 'left', bg: 'rgba(255,255,255,.12)', fg: W, padX: 18 });
-      pill(d, { t: C.after, x: sx + 70, y: 22, h: 40, px: 18, al: 'left', bg: NAVY, fg: W, padX: 18 });
-      text(d, { t: C.head, ...st(lang, sx + 70, w - 70), y: 540, px: 30, c: NAVY, maxW: w - sx - 140, fit: true });
+      pill(d, { t: C.before, x: 40, y: 30, h: 40, px: 16, al: 'left', bg: 'rgba(255,255,255,.12)', fg: W, padX: 18 });
+      pill(d, { t: C.after, x: sx + 70, y: 22, h: 40, px: 16, al: 'left', bg: NAVY, fg: W, padX: 18 });
+      text(d, { t: C.head, ...st(lang, sx + 70, w - 70), y: 540, px: 33, c: NAVY, maxW: w - sx - 140, fit: true });
     }
     mark(d, 40, h - 34, 24, true);
     return d;
   }
   const sy = Math.round(h - h / PHI) - (k === 'story' ? 0 : 0), m = k === 'story' ? 96 : 80 * u;
   navyField(d, 0, 0, w, sy, w * 0.5, sy * 0.5, { dark: true });
-  messy(d, m * 0.6, (k === 'story' ? 250 : 60) * u, w - m * 1.2, sy - (k === 'story' ? 300 : 110) * u, 11, { rows: k === 'story' ? 9 : 8, px: 24 * u });
+  messy(d, m * 0.6, (k === 'story' ? 250 : 60) * u, w - m * 1.2, sy - (k === 'story' ? 300 : 110) * u, 11, { rows: k === 'story' ? 9 : 8, px: 26 * u });
   d.svg += rect(0, sy, w, h - sy, W);
   const repTop = sy + (k === 'story' ? 100 : 70) * u, repH = (k === 'story' ? 560 : k === 'portrait' ? 470 : 380) * u;
   report(d, m, repTop, w - 2 * m - (k === 'story' ? 54 * u : 0), repH, lang, { rows: k === 'square' ? 5 : 6, hot: 2, px: 26 * u });
@@ -383,8 +383,8 @@ function beforeAfter(w, h, lang, o = {}) {
   const r = rng(5); for (let i = 0; i < 26; i++) d.svg += circ(r() * w, sy - (6 + r() * 60) * u, (1 + r() * 2.4) * u, r() < 0.3 ? CYAN : W, { op: 0.3 + r() * 0.6, filter: 'glowW' });
   if (words) {
     const a = st(lang, m, w - m);
-    pill(d, { t: C.before, x: a.x, y: (k === 'story' ? 180 : 24) * u, h: 48 * u, px: 22 * u, al: a.al, bg: 'rgba(255,255,255,.14)', fg: W, padX: 22 * u });
-    pill(d, { t: C.after, x: a.x, y: sy + 26 * u, h: 48 * u, px: 22 * u, al: a.al, bg: NAVY, fg: W, padX: 22 * u });
+    pill(d, { t: C.before, x: a.x, y: (k === 'story' ? 180 : 24) * u, h: 48 * u, px: 20 * u, al: a.al, bg: 'rgba(255,255,255,.14)', fg: W, padX: 22 * u });
+    pill(d, { t: C.after, x: a.x, y: sy + 26 * u, h: 48 * u, px: 20 * u, al: a.al, bg: NAVY, fg: W, padX: 22 * u });
     text(d, { t: C.head, ...a, y: repTop + repH + (k === 'story' ? 90 : 70) * u, px: (k === 'story' ? 50 : 34) * u, c: NAVY, maxW: w - 2 * m - (k === 'story' ? 54 * u : 0), wrap: k === 'story', fit: k !== 'story', lh: 1.25 });
   }
   mark(d, m, k === 'story' ? 1800 : h - 40 * u, 30 * u, false);
@@ -411,7 +411,7 @@ function noSource(w, h, lang) {
       if (hot) pill(d, { t: C.tag, x: A ? x + w2 : x, y: cy + 24 * s, h: 40 * s, px: 20 * s, al: A ? 'right' : 'left', bg: CYAN, fg: NAVY, padX: 18 * s });
       if (i < rows.length - 1) d.svg += rect(x, cy + (hot ? 80 : 34) * s, w2, 1.5 * s, NAVY, { op: 0.12 });
     });
-    text(d, { t: C.note, ...en(lang, x, x + w2), y: y + h2, px: 18 * s, wt: 600, c: '#5A6483' });
+    text(d, { t: C.note, ...en(lang, x, x + w2), y: y + h2, px: 16 * s, wt: 600, c: '#5A6483' });
   };
   if (k === 'link') {
     const sx = Math.round(w - w / PHI);
@@ -419,8 +419,8 @@ function noSource(w, h, lang) {
     d.svg += rect(sx, 0, w - sx, h, W);
     const a = st(lang, 56, sx - 50);
     text(d, { t: C.eb, ...a, y: 110, px: 16, c: CYAN, ls: 2 });
-    text(d, { t: C.head, ...a, y: 175, px: 38, maxW: sx - 106, wrap: true, lh: 1.22 });
-    text(d, { t: C.sub, ...a, y: 390, px: 19, wt: 500, c: DIM, maxW: sx - 106, wrap: true, lh: 1.55 });
+    text(d, { t: C.head, ...a, y: 175, px: 42, maxW: sx - 106, wrap: true, lh: 1.22 });
+    text(d, { t: C.sub, ...a, y: 390, px: 20, wt: 500, c: DIM, maxW: sx - 106, wrap: true, lh: 1.55 });
     page(sx + 60, 90, w - sx - 120, 470, 0.9);
     mark(d, 56, h - 40, 24, true);
     return d;
@@ -429,11 +429,11 @@ function noSource(w, h, lang) {
   navyField(d, 0, 0, w, sy, w * 0.3, sy * 0.4);
   d.svg += rect(0, sy, w, h - sy, W) + `<g filter="url(#glowW)">${rect(w * 0.08, sy - 1.5 * u, w * 0.84, 3 * u, CYAN, { op: 0.8 })}</g>`;
   const a = st(lang, m, w - m);
-  const S = k === 'story' ? { eb: 300, hd: 410, hpx: 72, sb: 0 } : k === 'portrait' ? { eb: 120, hd: 215, hpx: 66, sb: 430 } : { eb: 90, hd: 175, hpx: 56, sb: 345 };
+  const S = k === 'story' ? { eb: 300, hd: 410, hpx: 68, sb: 0 } : k === 'portrait' ? { eb: 120, hd: 215, hpx: 68, sb: 430 } : { eb: 90, hd: 175, hpx: 53, sb: 345 };
   text(d, { t: C.eb, ...a, y: S.eb * (k === 'story' ? 1 : u), px: 26 * u, c: CYAN, ls: 3 * u });
   text(d, { t: C.head, ...a, y: S.hd * (k === 'story' ? 1 : u), px: S.hpx * u, maxW: w - 2 * m, wrap: true, lh: 1.18 });
-  if (S.sb) text(d, { t: C.sub, ...a, y: S.sb * u, px: 28 * u, wt: 500, c: DIM, maxW: w - 2 * m, wrap: true, lh: 1.5 });
-  if (k === 'story') text(d, { t: C.sub, ...a, y: 650, px: 30, wt: 500, c: DIM, maxW: w - 2 * m - 54, wrap: true, lh: 1.5 });
+  if (S.sb) text(d, { t: C.sub, ...a, y: S.sb * u, px: 26 * u, wt: 500, c: DIM, maxW: w - 2 * m, wrap: true, lh: 1.5 });
+  if (k === 'story') text(d, { t: C.sub, ...a, y: 650, px: 33, wt: 500, c: DIM, maxW: w - 2 * m - 54, wrap: true, lh: 1.5 });
   if (k === 'story') page(m, sy + 120, w - 2 * m - 54, 560, 1.4);
   else page(m, sy + 80 * u, w - 2 * m, (k === 'portrait' ? 520 : 400) * u, u);
   mark(d, m, k === 'story' ? 1800 : h - 36 * u, 30 * u, false);
@@ -446,13 +446,13 @@ function hemi(w, h, lang, o = {}) {
     navyField(d, 0, 0, w, h, 840, 420);
     light(d, 840, 400, 300, 0.3);
     hemicycle(d, 840, 470, 190, 330, lang);
-    text(d, { t: HEADLINE, x: 840, y: 452, px: 150, wt: 900, c: CYAN, glow: CYAN, al: 'center', dir: 'ltr' });
-    text(d, { t: C.month, x: 840, y: 318, px: 30, wt: 800, c: W, al: 'center', ls: A ? 0 : 4 });
+    text(d, { t: HEADLINE, x: 840, y: 452, px: 139, wt: 900, c: CYAN, glow: CYAN, al: 'center', dir: 'ltr' });
+    text(d, { t: C.month, x: 840, y: 318, px: 33, wt: 800, c: W, al: 'center', ls: A ? 0 : 4 });
     const a = st(lang, 64, 460);
     text(d, { t: C.eb, ...a, y: 150, px: 16, c: CYAN, ls: 2, maxW: 396, fit: true });
-    text(d, { t: C.t1, ...a, y: 250, px: 64, maxW: 396, fit: true });
-    text(d, { t: C.t2, ...a, y: 325, px: 40, c: DIM, maxW: 396, fit: true });
-    pill(d, { t: C.pill, x: a.x, y: 380, h: 54, px: 21, al: a.al, padX: 24 });
+    text(d, { t: C.t1, ...a, y: 250, px: 68, maxW: 396, fit: true });
+    text(d, { t: C.t2, ...a, y: 325, px: 42, c: DIM, maxW: 396, fit: true });
+    pill(d, { t: C.pill, x: a.x, y: 380, h: 54, px: 20, al: a.al, padX: 24 });
     mark(d, 64, h - 40, 24, true);
     return d;
   }
@@ -462,11 +462,11 @@ function hemi(w, h, lang, o = {}) {
   light(d, w / 2, cy - 140 * u, 380 * u, 0.32);
   hemicycle(d, w / 2, cy, S.R0 * u, S.R1 * u, lang);
   text(d, { t: HEADLINE, x: w / 2, y: cy - 22 * u, px: S.R0 * 0.78 * u, wt: 900, c: CYAN, glow: CYAN, al: 'center', dir: 'ltr' });
-  text(d, { t: C.month, x: w / 2, y: cy - 22 * u - S.R0 * 0.62 * u, px: 36 * u, wt: 800, c: W, al: 'center', ls: A ? 0 : 5 * u });
+  text(d, { t: C.month, x: w / 2, y: cy - 22 * u - S.R0 * 0.62 * u, px: 33 * u, wt: 800, c: W, al: 'center', ls: A ? 0 : 5 * u });
   text(d, { t: C.eb, x: w / 2, y: S.eb * u, px: 26 * u, c: CYAN, al: 'center', ls: 3 * u });
   if (o.frame) return d;
   text(d, { t: C.title, x: w / 2, y: S.tt * u, px: (k === 'story' ? 62 : 54) * u, al: 'center', maxW: w - 160 * u, fit: true });
-  text(d, { t: C.sub, x: w / 2, y: S.sb * u, px: 30 * u, wt: 500, c: DIM, al: 'center', maxW: w - 200 * u, fit: true });
+  text(d, { t: C.sub, x: w / 2, y: S.sb * u, px: 33 * u, wt: 500, c: DIM, al: 'center', maxW: w - 200 * u, fit: true });
   pill(d, { t: C.pill, x: w / 2, y: S.pl * u, h: 66 * u, px: 26 * u, al: 'center', padX: 32 * u });
   mark(d, 90 * u, k === 'story' ? 1800 : h - 50 * u, 30 * u, true);
   return d;
@@ -489,7 +489,7 @@ function tbTable(d, x, y, w, rowH, lang, s) {
   text(d, { t: C.cols[0], ...name, y: y + head * 0.66, px: px * 0.85, wt: 700 });
   text(d, { t: C.cols[1], x: dr, y: y + head * 0.66, px: px * 0.85, wt: 700, al: 'right' });
   text(d, { t: C.cols[2], x: cr, y: y + head * 0.66, px: px * 0.85, wt: 700, al: 'right' });
-  const marker = (n, cx, cy) => { d.svg += `<g filter="url(#glow)">${circ(cx, cy, 17 * s, CYAN)}</g>`; text(d, { t: String(n).padStart(2, '0'), x: cx, y: cy + 6.5 * s, px: 17 * s, wt: 800, c: NAVY, al: 'center', dir: 'ltr' }); };
+  const marker = (n, cx, cy) => { d.svg += `<g filter="url(#glow)">${circ(cx, cy, 17 * s, CYAN)}</g>`; text(d, { t: String(n).padStart(2, '0'), x: cx, y: cy + 6.5 * s, px: 16 * s, wt: 800, c: NAVY, al: 'center', dir: 'ltr' }); };
   const mx = A ? x + w - 0.045 * w : x + 0.045 * w;
   TB_ROWS.forEach(([ai, dv, cv, mk], i) => {
     const cy = y + head + rowH * (i + 0.5);
@@ -518,8 +518,8 @@ function tbLegend(d, x, y, w, lang, s, cols = 3) {
   C.legend.forEach((nm, i) => {
     const c = i % cols, r = Math.floor(i / cols), cy = y + r * lh;
     const ax = A ? x + w - c * cw : x + c * cw;
-    text(d, { t: String(i + 1).padStart(2, '0'), x: ax, y: cy, px: 22 * s, wt: 800, c: CYAN, al: A ? 'right' : 'left', dir: 'ltr' });
-    text(d, { t: nm, x: A ? ax - 40 * s : ax + 40 * s, y: cy, px: 22 * s, wt: 600, c: W, al: A ? 'right' : 'left', maxW: cw - 50 * s, fit: true });
+    text(d, { t: String(i + 1).padStart(2, '0'), x: ax, y: cy, px: 20 * s, wt: 800, c: CYAN, al: A ? 'right' : 'left', dir: 'ltr' });
+    text(d, { t: nm, x: A ? ax - 40 * s : ax + 40 * s, y: cy, px: 20 * s, wt: 600, c: W, al: A ? 'right' : 'left', maxW: cw - 50 * s, fit: true });
   });
 }
 function tbCheck(w, h, lang) {
@@ -529,29 +529,29 @@ function tbCheck(w, h, lang) {
     navyField(d, 0, 0, w, h, w * 0.7, h * 0.5);
     light(d, 820, 300, 300, 0.2);
     const a = st(lang, 56, sx - 30);
-    text(d, { t: C.eb, ...a, y: 92, px: 15, c: CYAN, ls: 2, maxW: sx - 86, fit: true });
+    text(d, { t: C.eb, ...a, y: 92, px: 16, c: CYAN, ls: 2, maxW: sx - 86, fit: true });
     text(d, { t: C.head, ...a, y: 150, px: 33, maxW: sx - 86, wrap: true, lh: 1.3 });
-    text(d, { t: C.sub, ...a, y: 360, px: 17, wt: 500, c: DIM, maxW: sx - 86, wrap: true, lh: 1.5 });
-    pill(d, { t: T[lang].cta, x: a.x, y: 430, h: 48, px: 17, al: a.al, padX: 20, maxW: sx - 86 });
+    text(d, { t: C.sub, ...a, y: 360, px: 16, wt: 500, c: DIM, maxW: sx - 86, wrap: true, lh: 1.5 });
+    pill(d, { t: T[lang].cta, x: a.x, y: 430, h: 48, px: 16, al: a.al, padX: 20, maxW: sx - 86 });
     tbTable(d, sx + 40, 50, w - sx - 90, 40, lang, 0.85);
     tbLegend(d, sx + 40, 520, w - sx - 90, lang, 0.78, 3);
     mark(d, 56, h - 36, 24, true);
     return d;
   }
-  const L = k === 'story' ? { eb: 300, hd: 400, hpx: 70, sb: 680, tb: 790, rh: 52, s: 1.15, lg: 1335, pl: 1450 }
-    : k === 'portrait' ? { eb: 115, hd: 200, hpx: 56, sb: 420, tb: 495, rh: 46, s: 1, lg: 970, pl: 1150 }
-    : { eb: 88, hd: 160, hpx: 50, sb: 330, tb: 385, rh: 42, s: 0.95, lg: 830, pl: 950 };
+  const L = k === 'story' ? { eb: 300, hd: 400, hpx: 68, sb: 680, tb: 790, rh: 52, s: 1.15, lg: 1335, pl: 1450 }
+    : k === 'portrait' ? { eb: 115, hd: 200, hpx: 53, sb: 420, tb: 495, rh: 46, s: 1, lg: 970, pl: 1150 }
+    : { eb: 88, hd: 160, hpx: 53, sb: 330, tb: 385, rh: 42, s: 0.95, lg: 830, pl: 950 };
   const m = 90 * u;
   if (!A) { const extra = L.hpx * 1.25; L.sb += extra; L.tb += extra * 0.6; L.lg += extra * 0.6; } // the English line wraps once more
   navyField(d, 0, 0, w, h, w * 0.5, h * 0.35);
   light(d, w / 2, (L.tb + 180) * u, 420 * u, 0.2);
   const a = st(lang, m, w - m - (k === 'story' ? 60 : 0));
-  text(d, { t: C.eb, ...a, y: L.eb * u, px: 24 * u, c: CYAN, ls: 3 * u });
+  text(d, { t: C.eb, ...a, y: L.eb * u, px: 26 * u, c: CYAN, ls: 3 * u });
   text(d, { t: C.head, ...a, y: L.hd * u, px: L.hpx * u, maxW: w - 2 * m - (k === 'story' ? 60 : 0), wrap: true, lh: 1.25 });
   text(d, { t: C.sub, ...a, y: L.sb * u, px: 26 * u, wt: 500, c: DIM, maxW: w - 2 * m, wrap: true, lh: 1.5 });
   tbTable(d, m, L.tb * u, w - 2 * m - (k === 'story' ? 60 : 0), L.rh * u, lang, L.s * u);
   tbLegend(d, m, L.lg * u, w - 2 * m - (k === 'story' ? 60 : 0), lang, u, 3);
-  pill(d, { t: T[lang].cta, ...en(lang, m, w - m), y: L.pl * u, h: 64 * u, px: 24 * u, padX: 28 * u, maxW: w - 2 * m - 400 * u }); // leaves the signature row free
+  pill(d, { t: T[lang].cta, ...en(lang, m, w - m), y: L.pl * u, h: 64 * u, px: 26 * u, padX: 28 * u, maxW: w - 2 * m - 400 * u }); // leaves the signature row free
   mark(d, A ? w - m : m, (L.pl + 46) * u, 28 * u, true, A);
   return d;
 }
@@ -565,27 +565,27 @@ function carouselSlide(i, lang) {
   text(d, { t: `${String(i + 1).padStart(2, '0')}/07`, ...b, y: 110, px: 26, wt: 700, c: DIM2, dir: 'ltr' });
   if (i === 0) {
     light(d, A ? w * 0.7 : w * 0.3, 470, 380, 0.3);
-    text(d, { t: '5', ...a, y: 800, px: 640, wt: 900, c: CYAN, glow: CYAN, dir: 'ltr' });
-    text(d, { t: C.cover.l1, ...a, y: 950, px: 96, maxW: w - 2 * m, fit: true });
-    text(d, { t: C.cover.l2, ...a, y: 1070, px: 96, maxW: w - 2 * m, fit: true, c: W });
-    text(d, { t: C.cover.sub, ...a, y: 1160, px: 34, wt: 500, c: DIM });
-    text(d, { t: C.cover.swipe, ...b, y: 1175, px: 30, c: CYAN });
+    text(d, { t: '5', ...a, y: 800, px: 591, wt: 900, c: CYAN, glow: CYAN, dir: 'ltr' });
+    text(d, { t: C.cover.l1, ...a, y: 950, px: 86, maxW: w - 2 * m, fit: true });
+    text(d, { t: C.cover.l2, ...a, y: 1070, px: 86, maxW: w - 2 * m, fit: true, c: W });
+    text(d, { t: C.cover.sub, ...a, y: 1160, px: 33, wt: 500, c: DIM });
+    text(d, { t: C.cover.swipe, ...b, y: 1175, px: 33, c: CYAN });
     mark(d, m, 1290, 28, true);
     return d;
   }
   if (i === 6) {
     light(d, w / 2, 420, 380, 0.25);
     tbTable(d, m + 40, 175, w - 2 * m - 80, 40, lang, 0.85);
-    text(d, { t: C.end.head, x: w / 2, y: 760, px: 60, al: 'center', maxW: w - 2 * m, wrap: true, lh: 1.25 });
-    text(d, { t: C.end.line, x: w / 2, y: 1015, px: 32, wt: 600, c: CYAN, al: 'center', maxW: w - 2 * m, fit: true });
-    pill(d, { t: C.end.pill, x: w / 2, y: 1070, h: 70, px: 28, al: 'center', padX: 34, maxW: w - 2 * m });
+    text(d, { t: C.end.head, x: w / 2, y: 760, px: 53, al: 'center', maxW: w - 2 * m, wrap: true, lh: 1.25 });
+    text(d, { t: C.end.line, x: w / 2, y: 1015, px: 33, wt: 600, c: CYAN, al: 'center', maxW: w - 2 * m, fit: true });
+    pill(d, { t: C.end.pill, x: w / 2, y: 1070, h: 70, px: 26, al: 'center', padX: 34, maxW: w - 2 * m });
     mark(d, m, 1290, 28, true);
     return d;
   }
   const it = C.items[i - 1];
-  text(d, { t: String(i).padStart(2, '0'), ...a, y: 380, px: 230, wt: 900, c: CYAN, stroke: 3, glow: CYAN, dir: 'ltr' });
+  text(d, { t: String(i).padStart(2, '0'), ...a, y: 380, px: 226, wt: 900, c: CYAN, stroke: 3, glow: CYAN, dir: 'ltr' });
   text(d, { t: it.t, ...a, y: 530, px: 68, maxW: w - 2 * m, fit: true });
-  text(d, { t: it.d, ...a, y: 625, px: 34, wt: 500, c: DIM, maxW: w - 2 * m, wrap: true, lh: 1.5 });
+  text(d, { t: it.d, ...a, y: 625, px: 33, wt: 500, c: DIM, maxW: w - 2 * m, wrap: true, lh: 1.5 });
   // the white evidence card with the mistake drawn in navy + cyan
   const cx = m, cy = 800, cw = w - 2 * m, ch = 360;
   d.svg += `<g filter="url(#glowW)" opacity=".5">${rect(cx, cy, cw, ch, W, { r: 18 })}</g>` + rect(cx, cy, cw, ch, W, { r: 18 });
@@ -595,28 +595,28 @@ function carouselSlide(i, lang) {
   const nameAt = A ? { x: cx + cw - 60, al: 'right' } : { x: cx + 60, al: 'left' };
   const amtX = A ? cx + 60 : cx + cw - 60;
   if (i === 1) { // suspense: the same balance month after month
-    text(d, { t: Cb.acc[1], ...nameAt, y: cy + 90, px: 36, wt: 700, c: NAVY });
+    text(d, { t: Cb.acc[1], ...nameAt, y: cy + 90, px: 33, wt: 700, c: NAVY });
     num('86,250', amtX, cy + 90, 40);
     const x0 = cx + 80, x1 = cx + cw - 80, ly = cy + 230;
     d.svg += `<g filter="url(#glow)">${rect(x0, ly - 2.5, x1 - x0, 5, CYAN, { r: 2.5 })}</g>`;
-    ['05', '06', '07', '08', '09', '10'].forEach((mo, k) => { const x = A ? x1 - k * (x1 - x0) / 5 : x0 + k * (x1 - x0) / 5; d.svg += circ(x, ly, 12, k === 5 ? CYAN : NAVY, { op: k === 5 ? 1 : 0.85 }); text(d, { t: mo, x, y: ly + 56, px: 24, wt: 700, c: '#5A6483', al: 'center', dir: 'ltr' }); });
+    ['05', '06', '07', '08', '09', '10'].forEach((mo, k) => { const x = A ? x1 - k * (x1 - x0) / 5 : x0 + k * (x1 - x0) / 5; d.svg += circ(x, ly, 12, k === 5 ? CYAN : NAVY, { op: k === 5 ? 1 : 0.85 }); text(d, { t: mo, x, y: ly + 56, px: 26, wt: 700, c: '#5A6483', al: 'center', dir: 'ltr' }); });
   }
   if (i === 2) { // abnormal balance: cash sitting on the credit side
     const dr = A ? cx + cw * 0.5 : cx + cw * 0.62, cr = A ? cx + cw * 0.22 : cx + cw * 0.92;
     text(d, { t: Cb.cols[1], x: dr, y: cy + 80, px: 26, wt: 700, c: '#5A6483', al: 'right' });
     text(d, { t: Cb.cols[2], x: cr, y: cy + 80, px: 26, wt: 700, c: '#5A6483', al: 'right' });
-    text(d, { t: Cb.acc[0], ...nameAt, y: cy + 200, px: 38, wt: 700, c: NAVY });
+    text(d, { t: Cb.acc[0], ...nameAt, y: cy + 200, px: 42, wt: 700, c: NAVY });
     d.svg += rect(dr - 200, cy + 150, 200, 70, 'none', { r: 10, stroke: NAVY, sw: 2.5, so: 0.5, dash: '10 8' });
     d.svg += `<g filter="url(#glow)">${rect(cr - 215, cy + 145, 230, 80, CYAN, { r: 12, op: 0.25 })}</g>` + rect(cr - 215, cy + 145, 230, 80, 'none', { r: 12, stroke: CYAN, sw: 3.5 });
-    text(d, { t: '12,400', x: cr - 12, y: cy + 200, px: 40, wt: 800, c: NAVY, al: 'right', dir: 'ltr' });
+    text(d, { t: '12,400', x: cr - 12, y: cy + 200, px: 42, wt: 800, c: NAVY, al: 'right', dir: 'ltr' });
     d.svg += `<path d="M${dr - 100} ${cy + 250} C ${dr - 100} ${cy + 310}, ${cr - 100} ${cy + 310}, ${cr - 100} ${cy + 240}" fill="none" stroke="${CYAN}" stroke-width="4" stroke-dasharray="8 8"/>`;
   }
   if (i === 3) { // imbalance: the totals do not match
-    text(d, { t: Cb.cols[1], x: cx + cw * (A ? 0.72 : 0.28), y: cy + 100, px: 28, wt: 700, c: '#5A6483', al: 'center' });
-    text(d, { t: Cb.cols[2], x: cx + cw * (A ? 0.28 : 0.72), y: cy + 100, px: 28, wt: 700, c: '#5A6483', al: 'center' });
-    text(d, { t: A ? '1,249,400' : '1,241,050', x: cx + cw * 0.28, y: cy + 210, px: 58, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
-    text(d, { t: A ? '1,241,050' : '1,249,400', x: cx + cw * 0.72, y: cy + 210, px: 58, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
-    text(d, { t: '≠', x: cx + cw / 2, y: cy + 215, px: 90, wt: 800, c: CYAN, glow: CYAN, al: 'center', dir: 'ltr' });
+    text(d, { t: Cb.cols[1], x: cx + cw * (A ? 0.72 : 0.28), y: cy + 100, px: 26, wt: 700, c: '#5A6483', al: 'center' });
+    text(d, { t: Cb.cols[2], x: cx + cw * (A ? 0.28 : 0.72), y: cy + 100, px: 26, wt: 700, c: '#5A6483', al: 'center' });
+    text(d, { t: A ? '1,249,400' : '1,241,050', x: cx + cw * 0.28, y: cy + 210, px: 53, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
+    text(d, { t: A ? '1,241,050' : '1,249,400', x: cx + cw * 0.72, y: cy + 210, px: 53, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
+    text(d, { t: '≠', x: cx + cw / 2, y: cy + 215, px: 86, wt: 800, c: CYAN, glow: CYAN, al: 'center', dir: 'ltr' });
     d.svg += rect(cx + 70, cy + 260, cw - 140, 4, NAVY, { op: 0.8 }) + rect(cx + 70, cy + 272, cw - 140, 4, NAVY, { op: 0.8 });
   }
   if (i === 4) { // heavy manual entries: the manual share grows
@@ -633,13 +633,13 @@ function carouselSlide(i, lang) {
     const x0 = cx + 70, x1 = cx + cw - 70, ly = cy + 250, days = ['26', '27', '28', '29', '30', '31', '01', '02', '03', '04', '05'];
     const X = (k) => (A ? x1 - k * (x1 - x0) / 10 : x0 + k * (x1 - x0) / 10);
     d.svg += rect(x0, ly - 2, x1 - x0, 4, NAVY, { op: 0.35 });
-    days.forEach((dd, k) => { d.svg += circ(X(k), ly, k === 2 || k === 10 ? 14 : 8, k === 2 ? CYAN : NAVY, { op: k === 2 ? 1 : 0.7 }); text(d, { t: dd, x: X(k), y: ly + 50, px: 22, wt: 700, c: k === 2 ? '#0E7C8C' : '#5A6483', al: 'center', dir: 'ltr' }); });
+    days.forEach((dd, k) => { d.svg += circ(X(k), ly, k === 2 || k === 10 ? 14 : 8, k === 2 ? CYAN : NAVY, { op: k === 2 ? 1 : 0.7 }); text(d, { t: dd, x: X(k), y: ly + 50, px: 20, wt: 700, c: k === 2 ? '#0E7C8C' : '#5A6483', al: 'center', dir: 'ltr' }); });
     d.svg += `<g filter="url(#glow)"><path d="M${X(10)} ${ly - 24} C ${X(10)} ${ly - 170}, ${X(2)} ${ly - 170}, ${X(2)} ${ly - 30}" fill="none" stroke="${CYAN}" stroke-width="5"/></g>`;
     d.svg += `<path d="M${X(2) - 14} ${ly - 52} L${X(2)} ${ly - 28} L${X(2) + 14} ${ly - 52}" fill="none" stroke="${CYAN}" stroke-width="5" stroke-linejoin="round"/>`;
     text(d, { t: '05/11', x: X(10), y: cy + 70, px: 26, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
     text(d, { t: '28/10', x: X(2), y: cy + 70, px: 26, wt: 800, c: '#0E7C8C', al: 'center', dir: 'ltr' });
   }
-  text(d, { t: C.foot, ...a, y: 1196, px: 30, c: CYAN }); // above the signature row
+  text(d, { t: C.foot, ...a, y: 1196, px: 33, c: CYAN }); // above the signature row
   mark(d, A ? m : w - m, 1290, 28, true, !A);
   return d;
 }
@@ -652,17 +652,17 @@ function founderPov(lang, mock) {
     light(d, w / 2, h * 0.44, 420, 0.16);
     [w / PHI, w - w / PHI].forEach((x) => { d.svg += `<path d="M${f(x)} 0 V${h}" stroke="${W}" stroke-opacity=".12" stroke-dasharray="8 10" stroke-width="2"/>`; });
     [h / PHI, h - h / PHI].forEach((y) => { d.svg += `<path d="M0 ${f(y)} H${w}" stroke="${W}" stroke-opacity=".12" stroke-dasharray="8 10" stroke-width="2"/>`; });
-    text(d, { t: C.ph, x: w / 2, y: 930, px: 34, wt: 600, c: DIM2, al: 'center' });
+    text(d, { t: C.ph, x: w / 2, y: 930, px: 33, wt: 600, c: DIM2, al: 'center' });
   } else d.alpha = true;
   // top: the hook in caption boxes (safe from 250)
-  text(d, { t: C.hook, x: w / 2, y: 380, px: 92, al: 'center', bg: NAVY, bgPad: 30, maxW: w - 2 * m, fit: true });
+  text(d, { t: C.hook, x: w / 2, y: 380, px: 86, al: 'center', bg: NAVY, bgPad: 30, maxW: w - 2 * m, fit: true });
   pill(d, { t: C.pill, x: w / 2, y: 470, h: 60, px: 26, al: 'center', padX: 28 });
   // lower third (above the platform caption zone)
   const ly = 1180, lw = 760, lx = A ? w - m - lw : m;
   d.svg += rect(lx, ly, lw, 170, NAVY, { r: 14, op: 0.94 }) + `<g filter="url(#glow)">${rect(A ? lx + lw - 8 : lx, ly, 8, 170, CYAN, { r: 4 })}</g>`;
   const a = st(lang, lx + 40, lx + lw - 40);
-  text(d, { t: C.name, ...a, y: ly + 78, px: 50 });
-  text(d, { t: C.role, ...a, y: ly + 130, px: 28, wt: 600, c: DIM });
+  text(d, { t: C.name, ...a, y: ly + 78, px: 53 });
+  text(d, { t: C.role, ...a, y: ly + 130, px: 26, wt: 600, c: DIM });
   mark(d, A ? lx + lw : lx, ly - 30, 28, true, A); // above the card, aligned to its start edge
   return d;
 }
@@ -670,18 +670,18 @@ function founderPov(lang, mock) {
 // ---- storyboard frames (1080×1920) for two short videos
 function videoFrames(lang) {
   const V = T[lang].vid, A = lang === 'ar', w = 1080, h = 1920, m = 96;
-  const cap = (d, t, y = 330, c = W) => text(d, { t, ...st(lang, m, w - 150), y, px: 62, c, maxW: w - m - 150, wrap: true, lh: 1.2 });
+  const cap = (d, t, y = 330, c = W) => text(d, { t, ...st(lang, m, w - 150), y, px: 68, c, maxW: w - m - 150, wrap: true, lh: 1.2 });
   const frames = {};
   // A: "360 days"
   frames.a1 = hook360(w, h, lang, { frame: true, noCal: true });
   frames.a2 = (() => { const d = design(w, h, 1); navyField(d, 0, 0, w, h, w / 2, h / 2); cap(d, V.a2); calendar(d, m, 520, w - m - 150, 900, { cols: 19, rows: 20, byRow: true, lit: [22, 23, 24, 25, 26], k: 0.3 }); return d; })();
   frames.a3 = (() => { const d = design(w, h, 1); navyField(d, 0, 0, w, h, w / 2, h / 2); cap(d, V.a3); calendar(d, m, 520, w - m - 150, 900, { cols: 19, rows: 20, byRow: true, wave: 240, k: 0.3 }); return d; })();
-  frames.a4 = (() => { const d = design(w, h, 1); const sy = 720; navyField(d, 0, 0, w, sy, w / 2, sy / 2); cap(d, V.a4, 380); d.svg += rect(0, sy, w, h - sy, W) + `<g filter="url(#bloom)">${rect(0, sy - 3, w, 6, W)}</g>` + rect(0, sy - 1, w, 2, CYAN); report(d, m, sy + 110, w - m - 150, 600, lang, { rows: 6, hot: 1, px: 28 }); return d; })();
+  frames.a4 = (() => { const d = design(w, h, 1); const sy = 720; navyField(d, 0, 0, w, sy, w / 2, sy / 2); cap(d, V.a4, 380); d.svg += rect(0, sy, w, h - sy, W) + `<g filter="url(#bloom)">${rect(0, sy - 3, w, 6, W)}</g>` + rect(0, sy - 1, w, 2, CYAN); report(d, m, sy + 110, w - m - 150, 600, lang, { rows: 6, hot: 1, px: 26 }); return d; })();
   frames.a5 = hemi(w, h, lang);
   // B: before → after
-  frames.b1 = (() => { const d = design(w, h, 1); navyField(d, 0, 0, w, h, w / 2, h * 0.45, { dark: true }); messy(d, 50, 200, w - 100, 1400, 21, { rows: 18, px: 26 }); d.svg += rect(0, 560, w, 300, '#050B20', { op: 0.55 }); text(d, { t: V.b1, x: w / 2, y: 745, px: 104, al: 'center', maxW: w - 2 * m, fit: true }); return d; })();
-  frames.b2 = (() => { const d = design(w, h, 1); const sy = 980; d.svg += rect(0, 0, w, sy, W); report(d, m, 300, w - m - 150, 600, lang, { rows: 6, hot: 3, px: 28 }); navyField(d, 0, sy, w, h - sy, w / 2, sy + 300, { dark: true }); messy(d, 50, sy + 40, w - 100, 820, 23, { rows: 10, px: 26 }); d.svg += `<g filter="url(#bloom)">${rect(0, sy - 4, w, 8, W)}</g>` + rect(0, sy - 1.5, w, 3, CYAN); text(d, { t: V.b2, ...st(lang, m, w - 150), y: 1130, px: 56, c: W, bg: NAVY, bgPad: 18 }); return d; })();
-  frames.b3 = (() => { const d = design(w, h, 1); const sy = 640; navyField(d, 0, 0, w, sy, w / 2, sy / 2); cap(d, V.b3, 380); d.svg += rect(0, sy, w, h - sy, W); report(d, m, sy + 110, w - m - 150, 620, lang, { rows: 6, hot: 2, px: 28 }); return d; })();
+  frames.b1 = (() => { const d = design(w, h, 1); navyField(d, 0, 0, w, h, w / 2, h * 0.45, { dark: true }); messy(d, 50, 200, w - 100, 1400, 21, { rows: 18, px: 26 }); d.svg += rect(0, 560, w, 300, '#050B20', { op: 0.55 }); text(d, { t: V.b1, x: w / 2, y: 745, px: 110, al: 'center', maxW: w - 2 * m, fit: true }); return d; })();
+  frames.b2 = (() => { const d = design(w, h, 1); const sy = 980; d.svg += rect(0, 0, w, sy, W); report(d, m, 300, w - m - 150, 600, lang, { rows: 6, hot: 3, px: 26 }); navyField(d, 0, sy, w, h - sy, w / 2, sy + 300, { dark: true }); messy(d, 50, sy + 40, w - 100, 820, 23, { rows: 10, px: 26 }); d.svg += `<g filter="url(#bloom)">${rect(0, sy - 4, w, 8, W)}</g>` + rect(0, sy - 1.5, w, 3, CYAN); text(d, { t: V.b2, ...st(lang, m, w - 150), y: 1130, px: 53, c: W, bg: NAVY, bgPad: 18 }); return d; })();
+  frames.b3 = (() => { const d = design(w, h, 1); const sy = 640; navyField(d, 0, 0, w, sy, w / 2, sy / 2); cap(d, V.b3, 380); d.svg += rect(0, sy, w, h - sy, W); report(d, m, sy + 110, w - m - 150, 620, lang, { rows: 6, hot: 2, px: 26 }); return d; })();
   frames.b4 = hemi(w, h, lang);
   return frames;
 }
@@ -857,14 +857,14 @@ async function main() {
       const S = SB[lang][v], fw = 420, fh = 747, gap = 36, W2 = ids.length * fw + (ids.length + 1) * gap, H2 = 1180;
       const d = design(W2, H2, 1);
       d.svg += rect(0, 0, W2, H2, '#F5F7FA');
-      text(d, { t: S.title, ...st(lang, gap, W2 - gap), y: 90, px: 40, c: NAVY });
+      text(d, { t: S.title, ...st(lang, gap, W2 - gap), y: 90, px: 42, c: NAVY });
       const order = lang === 'ar' ? [...ids].reverse() : ids; // Arabic sheets read right to left
       order.forEach((id, i) => {
         const x = gap + i * (fw + gap), n = ids.indexOf(id);
         d.svg += rect(x - 1, 139, fw + 2, fh + 2, NAVY, { r: 14, op: 0.15 });
         d.ops.push({ type: 'img', src: shots[id], x, y: 140, w: fw, h: fh, r: 14 });
-        text(d, { t: S.notes[n][0], x: x + fw / 2, y: 940, px: 30, wt: 800, c: '#0E7C8C', al: 'center', dir: 'ltr' });
-        text(d, { t: S.notes[n][1], x: x + fw / 2, y: 990, px: 22, wt: 600, c: NAVY, al: 'center', maxW: fw - 10, wrap: true, lh: 1.45 });
+        text(d, { t: S.notes[n][0], x: x + fw / 2, y: 940, px: 33, wt: 800, c: '#0E7C8C', al: 'center', dir: 'ltr' });
+        text(d, { t: S.notes[n][1], x: x + fw / 2, y: 990, px: 20, wt: 600, c: NAVY, al: 'center', maxW: fw - 10, wrap: true, lh: 1.45 });
       });
       mark(d, gap, H2 - 40, 28, false);
       await save('video', `video-${v}_${lang}_storyboard_${W2}x${H2}`, d, ['webp', 'jpg']);

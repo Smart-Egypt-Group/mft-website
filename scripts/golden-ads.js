@@ -44,7 +44,7 @@ const { founding: FM } = require('../src/site.config.js');
 const FACTS = require('../src/content/platform-facts.js');
 
 const { NAVY, DEEP, CYAN, CYAN_INK, W, RED, PAPER } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
-const PHI = (1 + Math.sqrt(5)) / 2;
+const { PHI } = require('./lib/brand-tokens.js').phi; // one source for φ
 const FORMATS = { '1x1': [1080, 1080], '4x5': [1080, 1350] };
 const ar = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '٬').replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
 const { CLOSE, COPY: K, signHTML } = require('./lib/campaign.js');
@@ -98,31 +98,31 @@ function shell(G, { scene, head, headCss = '', css = '', eyebrowNote = '', paper
   return `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><style>
 @font-face{font-family:Cairo;src:url(data:font/woff2;base64,${CAIRO});font-weight:400 900}
 @font-face{font-family:Inter;src:url(data:font/woff2;base64,${INTER});font-weight:400 900}
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin: 0;padding: 0}
 html,body{width:${Wd}px;height:${Hd}px;overflow:hidden}
 body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:${ink};background:${paper ? PAPER : NAVY}}
 .abs{position:absolute}
 .lat{font-family:Inter,sans-serif;direction:ltr;unicode-bidi:isolate}
 .guides{position:absolute;inset:0;display:none;z-index:9}
 body.show-guides .guides{display:block}
-.eyebrow{top:${m}px;right:${m}px;left:${m}px;height:${Math.round(T[1] * PHI)}px;display:flex;align-items:center;gap:${S.s}px;font-size:${T[1]}px;font-weight:800;color:${accent};white-space:nowrap;z-index:5}
+.eyebrow{top:${m}px;right:${m}px;left:${m}px;height:${Math.round(T[1] * PHI)}px;display:flex;align-items:center;gap: ${S.s}px;font-size: ${T[1]}px;font-weight:800;color:${accent};white-space:nowrap;z-index:5}
 .eyebrow .lat{font-weight:800}
-.eyebrow small{font-size:${T[0]}px;color:${paper ? 'rgba(13,27,62,.6)' : 'rgba(255,255,255,.62)'};font-weight:700}
-h1{right:${m}px;left:${m}px;bottom:${Hd - Y1}px;font-weight:900;line-height:${2 / PHI};font-size:${T[3]}px;z-index:5}
+.eyebrow small{font-size: ${T[0]}px;color:${paper ? 'rgba(13,27,62,.6)' : 'rgba(255,255,255,.62)'};font-weight:700}
+h1{right:${m}px;left:${m}px;bottom:${Hd - Y1}px;font-weight:900;line-height:${2 / PHI};font-size: ${T[3]}px;z-index:5}
 h1 em{font-style:normal;color:${accent}}
-h1 .s{display:block;font-size:${T[1]}px;line-height:${PHI};font-weight:800;color:${paper ? 'rgba(13,27,62,.75)' : 'rgba(255,255,255,.85)'}}
+h1 .s{display:block;font-size: ${T[1]}px;line-height:${PHI};font-weight:800;color:${paper ? 'rgba(13,27,62,.75)' : 'rgba(255,255,255,.85)'}}
 ${headCss}
-.sub{right:${m}px;left:${m}px;top:${G.subTop}px;height:${Math.round(T[1] * PHI)}px;font-size:${T[1]}px;line-height:${PHI};font-weight:700;white-space:nowrap;z-index:5;color:${paper ? 'rgba(13,27,62,.85)' : 'rgba(255,255,255,.88)'}}
+.sub{right:${m}px;left:${m}px;top:${G.subTop}px;height:${Math.round(T[1] * PHI)}px;font-size: ${T[1]}px;line-height:${PHI};font-weight:700;white-space:nowrap;z-index:5;color:${paper ? 'rgba(13,27,62,.85)' : 'rgba(255,255,255,.88)'}}
 .sub b{font-weight:900;color:${ink}}
 .foot{top:${G.footTop}px;height:${T[2]}px;left:${m}px;right:${m}px;z-index:5}
 .cta{position:absolute;top:0;right:0;height:${T[2]}px;width:${Wd - m - X2}px;border-radius:${T[2]}px;background:${CYAN};color:${NAVY};
-  display:flex;align-items:center;justify-content:center;gap:${S.xs}px;font-size:${T[0]}px;font-weight:800;white-space:nowrap;box-shadow:0 ${S.xs}px ${S.m}px rgba(27,183,205,.3)}
+  display:flex;align-items:center;justify-content:center;gap: ${S.xs}px;font-size: ${T[0]}px;font-weight:800;white-space:nowrap;box-shadow:0 ${S.xs}px ${S.m}px rgba(27,183,205,.3)}
 .cta .lat{font-weight:800}
-.mark{position:absolute;top:0;left:0;height:${T[2]}px;display:flex;align-items:center;gap:${S.xs}px;direction:ltr}
+.mark{position:absolute;top:0;left:0;height:${T[2]}px;display:flex;align-items:center;gap: ${S.xs}px;direction:ltr}
 .mark img{height:${T[1]}px}
-.mark span{font:800 ${T[0]}px Inter,sans-serif;letter-spacing:.15em}
-.tag{display:inline-flex;align-items:center;gap:${S.xs}px;height:${T[1]}px;padding:0 ${S.s}px;border-radius:${T[1]}px;border:1.5px solid ${paper ? 'rgba(13,27,62,.35)' : 'rgba(27,183,205,.7)'};
-  color:${accent};font-size:${T[0]}px;font-weight:800;white-space:nowrap;background:${paper ? 'rgba(255,255,255,.85)' : 'rgba(13,27,62,.75)'};z-index:5}
+.mark span{font: 800 ${T[0]}px Inter,sans-serif;letter-spacing:.15em}
+.tag{display:inline-flex;align-items:center;gap: ${S.xs}px;height:${T[1]}px;padding: 0 ${S.s}px;border-radius:${T[1]}px;border:1.5px solid ${paper ? 'rgba(13,27,62,.35)' : 'rgba(27,183,205,.7)'};
+  color:${accent};font-size: ${T[0]}px;font-weight:800;white-space:nowrap;background:${paper ? 'rgba(255,255,255,.85)' : 'rgba(13,27,62,.75)'};z-index:5}
 .tag::before{content:'';width:${S.xs}px;height:${S.xs}px;border-radius:50%;background:${accent}}
 .dot{display:inline-block;flex:0 0 auto;width:${S.xs}px;height:${S.xs}px;border-radius:50%;background:${RED};box-shadow:0 0 0 ${S.xs / 2}px rgba(192,57,43,.22)}
 .fade{left:0;right:0;bottom:0;height:${T[5]}px;background:linear-gradient(180deg,transparent,${paper ? PAPER : DEEP} 61.8%);z-index:4}
@@ -198,16 +198,16 @@ function crack(G) {
       ${marks}
       <div class="abs end" style="left:${m}px;top:${r1(ey)}px;transform:translateY(-50%)"><span>عند الإقفال</span><b>${ar(980000)}</b></div>
       <span class="abs tag" style="left:${m}px;top:${r1(G.vz.top)}px">${DEMO}</span>`,
-    css: `.row{left:0;right:0;height:${T[1]}px;font-size:${T[0]}px;color:rgba(13,27,62,.28);font-weight:700}
+    css: `.row{left:0;right:0;height:${T[1]}px;font-size: ${T[0]}px;color:rgba(13,27,62,.28);font-weight:700}
       .row span{position:absolute;white-space:nowrap}
       .origin{width:${T[0]}px;height:${T[0]}px;z-index:3}
-      .o-lbl{display:flex;flex-direction:column;font-size:${T[0]}px;line-height:1.236;font-weight:800;color:${NAVY};white-space:nowrap}
+      .o-lbl{display:flex;flex-direction:column;font-size: ${T[0]}px;line-height:1.236;font-weight:800;color:${NAVY};white-space:nowrap}
       .o-lbl span{color:${RED}}
-      .mk{display:flex;flex-direction:column;align-items:center;font-size:${T[0]}px;line-height:1.236;font-weight:800;white-space:nowrap;color:${NAVY}}
+      .mk{display:flex;flex-direction:column;align-items:center;font-size: ${T[0]}px;line-height:1.236;font-weight:800;white-space:nowrap;color:${NAVY}}
       .mk span{color:rgba(13,27,62,.65)}
-      .end{display:flex;flex-direction:column;align-items:flex-start;padding:0 ${S.s}px;color:#fff;line-height:1.236;z-index:3}
-      .end span{font-size:${T[0]}px;font-weight:800;color:${CYAN}}
-      .end b{font-size:${T[2]}px;font-weight:900;white-space:nowrap}`
+      .end{display:flex;flex-direction:column;align-items:flex-start;padding: 0 ${S.s}px;color:#fff;line-height:1.236;z-index:3}
+      .end span{font-size: ${T[0]}px;font-weight:800;color:${CYAN}}
+      .end b{font-size: ${T[2]}px;font-weight:900;white-space:nowrap}`
   });
 }
 
@@ -249,9 +249,9 @@ function hourglass(G) {
     sub: `سعر المؤسِّس… <b>${K.ar.after}</b>`, cta: K.ar.cta,
     head: `<span class="pre">يُغلق</span><b class="big" data-a="cy=${r1(ny)}">${ar(CLOSE.d)}</b><span class="s">${CLOSE.arMonth} · ${CLOSE.arTime.replace(/\d/g, (x) => '٠١٢٣٤٥٦٧٨٩'[x]).replace('مساءً', 'م')}</span>`,
     headCss: `h1{right:auto;left:${m}px;bottom:auto;top:${r1(top)}px;width:${r1(nx - m)}px;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1}
-      h1 .pre{font-size:${T[3]}px;line-height:1.236}
-      h1 .big{font-size:${T[6]}px;line-height:1;color:${CYAN};font-weight:900;margin:-${S.m}px 0 0}
-      h1 .s{margin-top:${S.xs}px}`,
+      h1 .pre{font-size: ${T[3]}px;line-height:1.236}
+      h1 .big{font-size: ${T[6]}px;line-height:1;color:${CYAN};font-weight:900;margin: -${S.m}px 0 0}
+      h1 .s{margin-top: ${S.xs}px}`,
     scene: () => `<div class="abs bg"></div><svg class="abs" style="left:0;top:0;z-index:2" width="${G.W}" height="${G.H}">
         <defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".3" stop-color="#fff" stop-opacity=".03"/><stop offset=".8" stop-color="#fff" stop-opacity=".02"/><stop offset="1" stop-color="#fff" stop-opacity=".12"/></linearGradient>
           <filter id="b8"><feGaussianBlur stdDeviation="8"/></filter><filter id="b2"><feGaussianBlur stdDeviation="2"/></filter>
@@ -271,8 +271,8 @@ function hourglass(G) {
       g.av rect{fill:rgba(27,183,205,.08);stroke:${CYAN};stroke-width:1.8} g.av path{stroke:${CYAN}}
       g.tk path{fill:#fff;stroke:#fff;stroke-width:1} g.tk path:last-child{stroke:#fff}
       g.fall rect{fill:${CYAN};stroke:${CYAN};stroke-width:1.4} g.fall path{stroke:${NAVY}}
-      .legend{display:flex;justify-content:center;gap:${S.s}px;font-size:${T[0]}px;font-weight:700;color:rgba(255,255,255,.8);white-space:nowrap}
-      .legend span{display:flex;align-items:center;gap:${S.xs}px}
+      .legend{display:flex;justify-content:center;gap: ${S.s}px;font-size: ${T[0]}px;font-weight:700;color:rgba(255,255,255,.8);white-space:nowrap}
+      .legend span{display:flex;align-items:center;gap: ${S.xs}px}
       .legend i{width:${S.xs}px;height:${S.xs}px;border-radius:3px;display:block}
       .legend i.tk{background:#fff;border-radius:50%} .legend i.av{border:2px solid ${CYAN}}`
   });
@@ -342,9 +342,9 @@ function hawk(G) {
       ${chain.map(([k, v], i) => `<div class="abs chip" style="right:${m}px;top:${r1(cy0 + T[3] + i * (T[2] + S.s))}px;height:${T[2]}px"><span class="ok">✓</span><span>${k}</span><span class="lat v">${v}</span></div>`).join('')}
       <span class="abs tag" style="right:${m}px;top:${r1(cy0 + T[3] + 3 * (T[2] + S.s))}px">${DEMO}</span>`,
     css: `.proof{display:flex;flex-direction:column;align-items:flex-start;line-height:1.236;color:#fff}
-      .proof b{font-size:${T[2]}px;font-weight:900;color:${CYAN}}
-      .proof span{font-size:${T[0]}px;font-weight:700;color:rgba(255,255,255,.75);white-space:nowrap}
-      .chip{display:flex;align-items:center;gap:${S.xs}px;padding:0 ${S.s}px;border-radius:${T[2]}px;background:rgba(255,255,255,.95);color:${NAVY};font-size:${T[0]}px;font-weight:800;white-space:nowrap}
+      .proof b{font-size: ${T[2]}px;font-weight:900;color:${CYAN}}
+      .proof span{font-size: ${T[0]}px;font-weight:700;color:rgba(255,255,255,.75);white-space:nowrap}
+      .chip{display:flex;align-items:center;gap: ${S.xs}px;padding: 0 ${S.s}px;border-radius:${T[2]}px;background:rgba(255,255,255,.95);color:${NAVY};font-size: ${T[0]}px;font-weight:800;white-space:nowrap}
       .chip .ok{color:#fff;background:${CYAN};width:${T[1]}px;height:${T[1]}px;border-radius:50%;display:flex;align-items:center;justify-content:center}
       .chip .v{font-weight:700;color:#3B4262}`
   });
@@ -384,17 +384,17 @@ function lineup(G) {
       <span class="abs tag" style="left:${m}px;top:${r1(vz.top)}px">${DEMO}</span>`,
     css: `.bg{inset:0;background:radial-gradient(ellipse at ${r1(cx)}px ${r1(floor)}px,#1B2F66 0%,${NAVY} 38.2%,#050B1E 100%)}
       .card{border-radius:${S.xs / 2}px;display:flex;flex-direction:column;justify-content:center}
-      .dim{background:#B9C3D6;opacity:.32;padding:${S.s}px;gap:${S.xs}px;justify-content:flex-start;filter:blur(.6px)}
+      .dim{background:#B9C3D6;opacity:.32;padding: ${S.s}px;gap: ${S.xs}px;justify-content:flex-start;filter:blur(.6px)}
       .dim i{display:block;height:${S.xs / 2}px;border-radius:4px;background:${NAVY};opacity:.6}
-      .plac{position:absolute;left:${S.xs}px;right:${S.xs}px;bottom:${S.s}px;height:${T[1]}px;background:${NAVY};color:#fff;font-size:${T[0]}px;font-weight:800;display:flex;align-items:center;justify-content:center}
-      .lit{background:#FBFCFE;color:${NAVY};padding:${S.s}px ${S.xs}px;gap:${S.xs / 2}px;box-shadow:0 0 ${T[2]}px rgba(233,251,254,.25),0 ${S.m}px ${T[2]}px rgba(0,0,0,.5)}
-      .lit .k{font-size:${T[0]}px;font-weight:900;color:${CYAN_INK}}
-      .lit .code{font-size:${T[0]}px;font-weight:800;background:${NAVY};color:#fff;align-self:flex-start;padding:0 ${S.xs}px;border-radius:4px}
-      .lit .k2{font-size:${T[0]}px;font-weight:700;color:rgba(13,27,62,.7)}
-      .lit b{font-size:${T[2]}px;font-weight:900;line-height:1.236}
-      .flag{display:flex;align-items:center;gap:${S.xs}px;font-size:${T[0]}px;font-weight:800;color:${NAVY};white-space:nowrap}
-      .qs{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:${S.s}px}
-      .qs span{font-size:${T[1]}px;font-weight:800;color:#fff;white-space:nowrap;border-inline-start:3px solid ${CYAN};padding-inline-start:${S.xs}px;line-height:1.236}`
+      .plac{position:absolute;left:${S.xs}px;right:${S.xs}px;bottom:${S.s}px;height:${T[1]}px;background:${NAVY};color:#fff;font-size: ${T[0]}px;font-weight:800;display:flex;align-items:center;justify-content:center}
+      .lit{background:#FBFCFE;color:${NAVY};padding: ${S.s}px ${S.xs}px;gap: ${S.xs / 2}px;box-shadow:0 0 ${T[2]}px rgba(233,251,254,.25),0 ${S.m}px ${T[2]}px rgba(0,0,0,.5)}
+      .lit .k{font-size: ${T[0]}px;font-weight:900;color:${CYAN_INK}}
+      .lit .code{font-size: ${T[0]}px;font-weight:800;background:${NAVY};color:#fff;align-self:flex-start;padding: 0 ${S.xs}px;border-radius:4px}
+      .lit .k2{font-size: ${T[0]}px;font-weight:700;color:rgba(13,27,62,.7)}
+      .lit b{font-size: ${T[2]}px;font-weight:900;line-height:1.236}
+      .flag{display:flex;align-items:center;gap: ${S.xs}px;font-size: ${T[0]}px;font-weight:800;color:${NAVY};white-space:nowrap}
+      .qs{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap: ${S.s}px}
+      .qs span{font-size: ${T[1]}px;font-weight:800;color:#fff;white-space:nowrap;border-inline-start:3px solid ${CYAN};padding-inline-start: ${S.xs}px;line-height:1.236}`
   });
 }
 
@@ -499,9 +499,9 @@ async function main() {
   const url = (b) => `https://www.seg-audit.com/assets/social/golden/${b}.jpg`;
 
   const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG golden campaign v2</title>
-<style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.618 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 4px}.p{margin:0 0 8px;color:#3B4262;max-width:80ch}
-.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;align-items:start}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto}
-figcaption{font-size:12px;margin-top:8px;direction:ltr;text-align:left}figcaption a{color:#0F7C91}.k{font-size:12px;font-weight:700;color:#0F7C91}code{direction:ltr;unicode-bidi:isolate}</style>
+<style>body{margin: 0;padding: 34px 13px;background:#F5F7FA;color:#0D1B3E;font: 16px/1.618 system-ui,sans-serif}h1{font-size: 26px;margin: 0 0 5px}h2{font-size: 16px;margin: 34px 0 5px}.p{margin: 0 0 8px;color:#3B4262;max-width:80ch}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap: 21px;align-items:start}figure{margin: 0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding: 8px}img{display:block;width:100%;height:auto}
+figcaption{font-size: 13px;margin-top: 8px;direction:ltr;text-align:left}figcaption a{color:#0F7C91}.k{font-size: 13px;font-weight:700;color:#0F7C91}code{direction:ltr;unicode-bidi:isolate}</style>
 <h1>Standard Enterprise Governance (SEG): إبداعات حملة Meta، النسبة الذهبية φ (v2)</h1>
 <p class="p">٤ مفاهيم × مقاسي Meta feed (1:1 و4:5)، نفس الطقم لمجموعتَي مصر والسعودية. مولَّدة بالكود عبر <code>scripts/golden-ads.js</code>. بجانب كل إعلان نسخة guides: خطوط القسمة بالأصفر، والحلزون بالأخضر، والعين والهامش بالبنفسجي. القياسات في <code>metrics.json</code>.</p>
 ${DESIGNS.map((d) => `<h2>${d.slug} <span class="k">${d.angle}</span></h2><p class="p"><b>الفكرة:</b> ${d.idea}</p><p class="p"><b>φ:</b> ${d.phi}</p><div class="g">${written.filter((x) => x.d === d).map((x) => `<figure><img loading="lazy" src="${d.slug}/${x.base}.webp" alt="${x.base}"><figcaption>${x.fmt} · ${x.w}×${x.h} · <a href="${url(x.base)}">JPG</a></figcaption></figure><figure><img loading="lazy" src="${d.slug}/${x.base}_guides.webp" alt="${x.base} guides"><figcaption>${x.fmt} · guides</figcaption></figure>`).join('')}</div>`).join('\n')}`;

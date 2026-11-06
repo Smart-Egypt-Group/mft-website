@@ -8,7 +8,7 @@
 //      Governance», marketing/brand/assets/logo/official/, built by scripts/seg-logo-vector.js) | a hairline
 //      divider | the full MFT logo (eagle + MODERN FINTECH: src/assets/logo/mft-lockup-*.png, cut from the
 //      official 5906 px pack). One endorsed unit, SEG first, never mirrored in RTL layouts. H = the cube's
-//      height; divider 0.7 H; MFT logo 0.5 H; gaps 0.42 H. Minimum H = 54 px on a 1080 px design, so the
+//      height; divider H/φ; MFT logo H/φ; gaps H/φ². Minimum H = 55 px on a 1080 px design, so the
 //      name's capitals stay ≥ 10 px. Navy ink on light backgrounds, white on dark (the cube's dark blue is
 //      ≈1.3:1 on navy). Compact variant (cube + MFT logo, no name) only where the name cannot reach
 //      10 px (strip covers 1128×191 etc.). The MFT mark alone (mft-mark-*) stays for MFT's own company profiles.
@@ -101,7 +101,9 @@ const MARK = {
   cubeColor: uri(LOGO + 'seg-logo_sign.png'), cubeWhite: uri(LOGO + 'seg-logo_sign-white.png') // the cube alone (app-bar mocks)
 };
 const MARK_FILES = { segLight: OFFICIAL + 'seg-lockup-official_two-light.png', segDark: OFFICIAL + 'seg-lockup-official_two-dark.png', mftNavy: 'src/assets/logo/mft-lockup-navy.png', mftWhite: 'src/assets/logo/mft-lockup-white.png' };
-const SIGN = { segRatio: 1940 / 512, mftRatio: 2000 / 683, minH: 54, gap: 0.42, div: 0.7, mft: 0.5 };
+// φ proportions (CEO, 7 Nov 2026): divider and MFT logo = H/φ, gaps = H/φ², minimum H = 55 (Fibonacci)
+const { PHI } = require('./brand-tokens.js').phi;
+const SIGN = { segRatio: 1940 / 512, mftRatio: 2000 / 683, minH: 55, gap: 1 / (PHI * PHI), div: 1 / PHI, mft: 1 / PHI };
 const MARK_RATIO = SIGN.segRatio;
 const { NAVY, CYAN } = require('./brand-tokens.js').legacy;
 

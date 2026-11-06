@@ -39,7 +39,7 @@ const DEMO = 'مثال توضيحي · داتا اختبارية';
 const BASE_CSS = `
 @font-face{font-family:Cairo;src:url(data:font/woff2;base64,${CAIRO});font-weight:400 900}
 @font-face{font-family:Inter;src:url(data:font/woff2;base64,${INTER});font-weight:400 900}
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin: 0;padding: 0}
 html,body{width:100%;height:100%;overflow:hidden}
 body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:${W};
   background:radial-gradient(ellipse at 70% 15%, #1C2F63 0%, ${NAVY} 55%, #081230 100%)}
@@ -50,29 +50,29 @@ body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:${W};
 h1{font-weight:900;line-height:1.18}
 h1 em{font-style:normal;color:${CYAN}}
 .sub{color:rgba(255,255,255,.8);font-weight:600;line-height:1.55}
-.tag{display:inline-flex;align-items:center;gap:.5em;align-self:flex-start;border:1.5px solid rgba(27,183,205,.7);color:${CYAN};
-  border-radius:999px;padding:.25em .9em;font-weight:800;white-space:nowrap;background:rgba(13,27,62,.6)}
+.tag{display:inline-flex;align-items:center;gap: .5em;align-self:flex-start;border:1.5px solid rgba(27,183,205,.7);color:${CYAN};
+  border-radius:999px;padding: .25em .9em;font-weight:800;white-space:nowrap;background:rgba(13,27,62,.6)}
 .tag::before{content:'';width:.55em;height:.55em;border-radius:50%;background:${CYAN}}
 .red-dot{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:${RED};box-shadow:0 0 0 .18em rgba(192,57,43,.25)}
 .visual{position:relative;flex:1;min-height:0;container-type:size}
 .foot{display:flex;align-items:center;justify-content:space-between;direction:rtl}
-.cta{display:flex;align-items:center;gap:.6em;padding:0 1.15em;border-radius:999px;background:${CYAN};color:${NAVY};font-weight:800;white-space:nowrap;box-shadow:0 8px 28px rgba(27,183,205,.3)}
+.cta{display:flex;align-items:center;gap: .6em;padding: 0 1.15em;border-radius:999px;background:${CYAN};color:${NAVY};font-weight:800;white-space:nowrap;box-shadow:0 8px 28px rgba(27,183,205,.3)}
 .cta b{font-family:Inter;font-weight:800}
-.mark{display:flex;align-items:center;gap:.4em;direction:ltr}
-.mark span{font:800 1em Inter,sans-serif;letter-spacing:.15em}
+.mark{display:flex;align-items:center;gap: .4em;direction:ltr}
+.mark span{font: 800 1em Inter,sans-serif;letter-spacing:.15em}
 .lat{font-family:Inter;font-weight:800;direction:ltr;unicode-bidi:isolate}`;
 
 // Layout tokens per format. link = two columns (copy on the right, visual on the left).
 function kindCss(kind) {
-  if (kind === 'story') return `.frame{padding:150px 72px 120px;gap:34px} .eyebrow{font-size:30px} h1{font-size:98px} .sub{font-size:38px} .tag{font-size:26px}
-    .foot{height:72px} .cta{height:72px;font-size:30px} .mark{font-size:30px} .mark img{height:40px}`;
-  if (kind === 'link') return `.frame{padding:52px 56px 44px;display:grid;grid-template-columns:1fr 1.12fr;grid-template-rows:auto 1fr auto;column-gap:44px;row-gap:14px}
-    .copy{grid-column:1;grid-row:1/3;display:flex;flex-direction:column;gap:14px;justify-content:center}
+  if (kind === 'story') return `.frame{padding: 144px 55px 144px;gap: 34px} .eyebrow{font-size: 33px} h1{font-size: 86px} .sub{font-size: 42px} .tag{font-size: 26px}
+    .foot{height:auto;flex-direction:column-reverse;align-items:flex-start;gap: 21px} .cta{height:72px;font-size: 33px} .mark{font-size: 33px} .mark img{height:40px}`; // stories: signature row above the pill
+  if (kind === 'link') return `.frame{padding: 55px 55px 34px;display:grid;grid-template-columns:1fr 1.12fr;grid-template-rows:auto 1fr auto;column-gap: 34px;row-gap: 13px}
+    .copy{grid-column:1;grid-row:1/3;display:flex;flex-direction:column;gap: 13px;justify-content:center}
     .visual{grid-column:2;grid-row:1/3} .foot{grid-column:1/3;grid-row:3;height:50px}
-    .eyebrow{font-size:20px} h1{font-size:46px} .sub{font-size:21px} .tag{font-size:17px}
-    .cta{height:48px;font-size:20px} .mark{font-size:20px} .mark img{height:26px}`;
-  return `.frame{padding:72px 72px 64px;gap:22px} .eyebrow{font-size:26px} h1{font-size:78px} .sub{font-size:29px} .tag{font-size:21px}
-    .foot{height:62px} .cta{height:62px;font-size:25px} .mark{font-size:26px} .mark img{height:34px}`;
+    .eyebrow{font-size: 20px} h1{font-size: 42px} .sub{font-size: 20px} .tag{font-size: 16px}
+    .cta{height:48px;font-size: 20px} .mark{font-size: 20px} .mark img{height:26px}`;
+  return `.frame{padding: 55px 55px 55px;gap: 21px} .eyebrow{font-size: 26px} h1{font-size: 86px} .sub{font-size: 26px} .tag{font-size: 20px}
+    .foot{height:62px} .cta{height:62px;font-size: 26px} .mark{font-size: 26px} .mark img{height:34px}`;
 }
 
 // Shrinks every .fit element (block) until its content fits its own width (and data-max-h, if set).
@@ -104,15 +104,15 @@ function loss(kind) {
     tag: `${DEMO} · المبالغ بالجنيه`,
     visual: `<div class="row">${nodes}</div>`,
     css: `.row{--u:${vertical ? 'min(1cqw, calc(1cqh / 1.75))' : 'min(1cqh, calc(1cqw / 1.75))'};position:absolute;inset:0;display:flex;flex-direction:${vertical ? 'column' : 'row'};align-items:center;justify-content:space-between}
-      .node{display:flex;flex-direction:${vertical ? 'row' : 'column'};align-items:center;gap:calc(var(--u) * 2.4)}
+      .node{display:flex;flex-direction:${vertical ? 'row' : 'column'};align-items:center;gap: calc(var(--u) * 2.4)}
       .disc{position:relative;width:calc(var(--s) * var(--u));height:calc(var(--s) * var(--u));border-radius:50%;display:flex;align-items:center;justify-content:center;
         background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.22), rgba(27,183,205,.10) 60%, rgba(27,183,205,.05));border:2px solid rgba(27,183,205,.55)}
       .n3 .disc{border-color:#fff;box-shadow:0 0 0 calc(var(--u) * 1.4) rgba(255,255,255,.06),0 0 calc(var(--u) * 6) rgba(27,183,205,.35)}
-      .amt{font-weight:900;font-size:calc(var(--s) * var(--u) * .22);white-space:nowrap}
-      .disc .red-dot{position:absolute;top:calc(var(--u) * -.6);inset-inline-start:calc(var(--u) * -.6);font-size:calc(var(--u) * 3)}
-      .badge{position:absolute;top:4%;inset-inline-end:4%;width:calc(var(--u) * 8);height:calc(var(--u) * 8);border-radius:50%;background:${RED};font-weight:900;font-size:calc(var(--u) * 5.6);display:flex;align-items:center;justify-content:center;line-height:1}
-      .when{font-weight:800;font-size:calc(var(--u) * 4.2);color:rgba(255,255,255,.75);white-space:nowrap}
-      .arrow{flex:1;align-self:center;${vertical ? 'width:2px;min-height:2cqmin' : 'height:2px;min-width:2cqmin'};background:linear-gradient(${vertical ? '180deg' : '270deg'},rgba(27,183,205,.2),rgba(27,183,205,.8));margin:0 1cqmin}`
+      .amt{font-weight:900;font-size: calc(var(--s) * var(--u) * .22);white-space:nowrap}
+      .disc .red-dot{position:absolute;top:calc(var(--u) * -.6);inset-inline-start:calc(var(--u) * -.6);font-size: calc(var(--u) * 3)}
+      .badge{position:absolute;top:4%;inset-inline-end:4%;width:calc(var(--u) * 8);height:calc(var(--u) * 8);border-radius:50%;background:${RED};font-weight:900;font-size: calc(var(--u) * 5.6);display:flex;align-items:center;justify-content:center;line-height:1}
+      .when{font-weight:800;font-size: calc(var(--u) * 4.2);color:rgba(255,255,255,.75);white-space:nowrap}
+      .arrow{flex:1;align-self:center;${vertical ? 'width:2px;min-height:2cqmin' : 'height:2px;min-width:2cqmin'};background:linear-gradient(${vertical ? '180deg' : '270deg'},rgba(27,183,205,.2),rgba(27,183,205,.8));margin: 0 1cqmin}`
   });
 }
 
@@ -125,17 +125,17 @@ function curiosity(kind) {
     sub: '٣ منهم قدامك… والاتنين الباقيين في ميزانك.',
     visual: `<div class="card">${rows.map(([t, shown], i) => `<div class="r${shown ? '' : ' hid'}"><span class="n">${ar(i + 1)}</span><span class="t">${t}</span>${shown ? '<span class="red-dot"></span>' : ''}</div>`).join('')}
       <div class="lock"><svg viewBox="0 0 24 24" width="1em" height="1em"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="${NAVY}" stroke-width="2.4" stroke-linecap="round"/><rect x="4.5" y="10" width="15" height="11" rx="2.5" fill="${NAVY}"/></svg><span>اكشف الاتنين بالفحص المجاني</span></div></div>`,
-    css: `.card{position:absolute;inset:0;background:#fff;color:${NAVY};border-radius:2.4cqmin;padding:3.5cqmin 4cqmin;display:flex;flex-direction:column;justify-content:space-around;box-shadow:0 3cqmin 7cqmin rgba(0,0,0,.35)}
-      .r{display:flex;align-items:center;gap:2.6cqmin;font-weight:800;font-size:min(5.2cqmin,7cqh);border-bottom:2px solid #E6E9F0;padding:1cqmin 0}
+    css: `.card{position:absolute;inset:0;background:#fff;color:${NAVY};border-radius:2.4cqmin;padding: 3.5cqmin 4cqmin;display:flex;flex-direction:column;justify-content:space-around;box-shadow:0 3cqmin 7cqmin rgba(0,0,0,.35)}
+      .r{display:flex;align-items:center;gap: 2.6cqmin;font-weight:800;font-size: min(5.2cqmin,7cqh);border-bottom:2px solid #E6E9F0;padding: 1cqmin 0}
       .r:last-of-type{border-bottom:0}
-      .n{flex:0 0 auto;width:1.7em;height:1.7em;border-radius:50%;background:${NAVY};color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8em}
+      .n{flex:0 0 auto;width:1.7em;height:1.7em;border-radius:50%;background:${NAVY};color:#fff;display:flex;align-items:center;justify-content:center;font-size: .8em}
       .t{flex:1}
-      .r .red-dot{font-size:.7em}
+      .r .red-dot{font-size: .7em}
       .hid .t,.hid .n{filter:blur(.3em);opacity:.9}
-      .lock{position:absolute;left:50%;bottom:13%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:1.6cqmin;white-space:nowrap;
-        background:${NAVY};color:#fff;border-radius:999px;padding:1.4cqmin 3.4cqmin;font-weight:900;font-size:min(4cqmin,5.4cqh);box-shadow:0 1.4cqmin 3cqmin rgba(13,27,62,.35)}
+      .lock{position:absolute;left:50%;bottom:13%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap: 1.6cqmin;white-space:nowrap;
+        background:${NAVY};color:#fff;border-radius:999px;padding: 1.4cqmin 3.4cqmin;font-weight:900;font-size: min(4cqmin,5.4cqh);box-shadow:0 1.4cqmin 3cqmin rgba(13,27,62,.35)}
       .lock svg path{stroke:#fff} .lock svg rect{fill:#fff}
-      .lock svg{font-size:1.3em}`
+      .lock svg{font-size: 1.3em}`
   });
 }
 
@@ -150,15 +150,15 @@ function shock(kind) {
         <div class="num"><span class="minus">−</span><span class="digits">${ar(18747106)}</span><span class="cur">ج.م</span></div>
         <div class="flag"><span class="red-dot"></span><span>رصيد دائن على حساب نقدية</span></div>
       </div>`,
-    css: `.acct{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:3cqh;padding:4cqmin 5cqmin;border-radius:2.4cqmin;
+    css: `.acct{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap: 3cqh;padding: 4cqmin 5cqmin;border-radius:2.4cqmin;
         background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1.5px solid rgba(255,255,255,.14)}
-      .hdr{display:flex;justify-content:space-between;align-items:center;gap:2cqmin;font-weight:800;font-size:min(4.2cqmin,7cqh);color:rgba(255,255,255,.8);flex-wrap:wrap}
-      .demo{color:${CYAN};border:1.5px solid rgba(27,183,205,.7);border-radius:999px;padding:.15em .8em;font-size:.85em;white-space:nowrap}
-      .num{display:flex;align-items:baseline;justify-content:center;gap:1.4cqmin;direction:ltr;white-space:nowrap}
-      .digits{font-weight:900;font-size:min(15cqw,30cqh);line-height:1;letter-spacing:-.01em}
-      .minus{font-weight:900;font-size:min(15cqw,30cqh);line-height:1;color:${RED}}
-      .cur{font-weight:800;font-size:min(5cqw,9cqh);color:rgba(255,255,255,.7)}
-      .flag{display:flex;align-items:center;justify-content:center;gap:1.4cqmin;font-weight:800;font-size:min(4.4cqmin,7cqh)}`
+      .hdr{display:flex;justify-content:space-between;align-items:center;gap: 2cqmin;font-weight:800;font-size: min(4.2cqmin,7cqh);color:rgba(255,255,255,.8);flex-wrap:wrap}
+      .demo{color:${CYAN};border:1.5px solid rgba(27,183,205,.7);border-radius:999px;padding: .15em .8em;font-size: .85em;white-space:nowrap}
+      .num{display:flex;align-items:baseline;justify-content:center;gap: 1.4cqmin;direction:ltr;white-space:nowrap}
+      .digits{font-weight:900;font-size: min(15cqw,30cqh);line-height:1;letter-spacing:-.01em}
+      .minus{font-weight:900;font-size: min(15cqw,30cqh);line-height:1;color:${RED}}
+      .cur{font-weight:800;font-size: min(5cqw,9cqh);color:rgba(255,255,255,.7)}
+      .flag{display:flex;align-items:center;justify-content:center;gap: 1.4cqmin;font-weight:800;font-size: min(4.4cqmin,7cqh)}`
   });
 }
 
@@ -178,14 +178,14 @@ function selectivity(kind) {
       <p class="t">طلب عضوية مؤسِّسة</p>
       ${rows.map((r, i) => `<div class="row"><span>${r}</span><i style="width:${[58, 44, 36, 50, 66][i]}%"></i></div>`).join('')}
       <div class="stamp"><b>قيد المراجعة</b><span>فريق MFT</span></div></div>`,
-    css: `.app{position:absolute;inset:2% 6% 4%;background:#F7F9FC;color:${NAVY};border-radius:2.4cqmin;padding:7cqmin 6cqmin 5cqmin;box-shadow:0 3cqmin 7cqmin rgba(0,0,0,.45);display:flex;flex-direction:column;gap:3.2cqmin;transform:rotate(-1.6deg)}
-      .app .t{font-weight:900;font-size:min(5.6cqmin,9cqh);margin-bottom:1cqmin}
-      .row{display:flex;align-items:center;gap:3cqmin;font-weight:700;font-size:min(3.4cqmin,6cqh);color:rgba(13,27,62,.7)}
+    css: `.app{position:absolute;inset:2% 6% 4%;background:#F7F9FC;color:${NAVY};border-radius:2.4cqmin;padding: 7cqmin 6cqmin 5cqmin;box-shadow:0 3cqmin 7cqmin rgba(0,0,0,.45);display:flex;flex-direction:column;gap: 3.2cqmin;transform:rotate(-1.6deg)}
+      .app .t{font-weight:900;font-size: min(5.6cqmin,9cqh);margin-bottom: 1cqmin}
+      .row{display:flex;align-items:center;gap: 3cqmin;font-weight:700;font-size: min(3.4cqmin,6cqh);color:rgba(13,27,62,.7)}
       .row span{flex:0 0 34%} .row i{display:block;height:1.6cqmin;border-radius:1cqmin;background:rgba(13,27,62,.14)}
-      .tab{position:absolute;top:-3.4cqmin;inset-inline-start:6cqmin;background:${NAVY};color:#fff;border:2px solid ${CYAN};border-radius:1.6cqmin;padding:1.4cqmin 3cqmin;display:flex;align-items:center;gap:2cqmin;font-weight:800;font-size:min(3.2cqmin,5.6cqh);white-space:nowrap}
+      .tab{position:absolute;top:-3.4cqmin;inset-inline-start:6cqmin;background:${NAVY};color:#fff;border:2px solid ${CYAN};border-radius:1.6cqmin;padding: 1.4cqmin 3cqmin;display:flex;align-items:center;gap: 2cqmin;font-weight:800;font-size: min(3.2cqmin,5.6cqh);white-space:nowrap}
       .tab b{color:${CYAN};font-weight:900}
-      .stamp{position:absolute;inset-inline-end:5cqmin;bottom:5cqmin;width:min(30cqmin,46cqh);aspect-ratio:1;border-radius:50%;border:.9cqmin solid #1497AA;outline:.35cqmin solid #1497AA;outline-offset:.9cqmin;color:#1497AA;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-14deg);font-weight:900;font-size:min(4.6cqmin,8cqh);line-height:1.2;opacity:.92}
-      .stamp span{font-size:.62em;font-weight:800}`
+      .stamp{position:absolute;inset-inline-end:5cqmin;bottom:5cqmin;width:min(30cqmin,46cqh);aspect-ratio:1;border-radius:50%;border:.9cqmin solid #1497AA;outline:.35cqmin solid #1497AA;outline-offset:.9cqmin;color:#1497AA;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-14deg);font-weight:900;font-size: min(4.6cqmin,8cqh);line-height:1.2;opacity:.92}
+      .stamp span{font-size: .62em;font-weight:800}`
   });
 }
 
@@ -201,10 +201,10 @@ function authority(kind) {
       <div class="in"><span class="big">+${TESTS}</span><span class="lbl">اختبار قبل كل تحديث</span><span class="src">من كود المنصة · ${ar(+FACTS.measuredOn.slice(8))} ${['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'][+FACTS.measuredOn.slice(5,7)-1]} ${FACTS.measuredOn.slice(0,4).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d])}</span></div></div>`,
     css: `.seal{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
       .seal svg{height:100%;max-width:100%;aspect-ratio:1}
-      .in{position:absolute;display:flex;flex-direction:column;align-items:center;gap:.6cqmin;text-align:center}
-      .big{font-weight:900;font-size:min(17cqmin,30cqw);line-height:1}
-      .lbl{font-weight:800;font-size:min(5cqmin,8cqw);color:${CYAN}}
-      .src{font-weight:600;font-size:min(3cqmin,5cqw);color:rgba(255,255,255,.6)}`
+      .in{position:absolute;display:flex;flex-direction:column;align-items:center;gap: .6cqmin;text-align:center}
+      .big{font-weight:900;font-size: min(17cqmin,30cqw);line-height:1}
+      .lbl{font-weight:800;font-size: min(5cqmin,8cqw);color:${CYAN}}
+      .src{font-weight:600;font-size: min(3cqmin,5cqw);color:rgba(255,255,255,.6)}`
   });
 }
 
@@ -222,19 +222,19 @@ function anchoring(kind) {
         <div class="c good"><p class="h">الفحص المجاني</p><ul><li>ميزان آخر شهر مقفول</li><li>٥ مؤشرات خطر</li><li>في دقائق</li></ul>
           <p class="price">مجانًا</p><p class="demo">بلا بطاقة ولا التزام</p></div>
       </div>`,
-    css: `.cmp{position:absolute;inset:0;display:flex;flex-direction:${vertical ? 'column' : 'row'};gap:2.4cqmin;align-items:stretch}
-      .c{flex:1;min-height:0;border-radius:2.4cqmin;padding:${vertical ? '2.4cqmin 3.4cqmin' : '3.4cqmin'};display:flex;flex-direction:column;gap:${vertical ? '.8cqh' : '1.6cqmin'};justify-content:center}
+    css: `.cmp{position:absolute;inset:0;display:flex;flex-direction:${vertical ? 'column' : 'row'};gap: 2.4cqmin;align-items:stretch}
+      .c{flex:1;min-height:0;border-radius:2.4cqmin;padding: ${vertical ? '2.4cqmin 3.4cqmin' : '3.4cqmin'};display:flex;flex-direction:column;gap: ${vertical ? '.8cqh' : '1.6cqmin'};justify-content:center}
       .bad{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.16)}
       .good{background:#fff;color:${NAVY};box-shadow:0 0 0 .8cqmin rgba(27,183,205,.35),0 3cqmin 6cqmin rgba(0,0,0,.35)}
-      .h{font-weight:900;font-size:min(5cqmin,${vertical ? 3.4 : 9}cqh)}
+      .h{font-weight:900;font-size: min(5cqmin,${vertical ? 3.4 : 9}cqh)}
       .good .h{color:#0F7C91}
-      ul{list-style:none;display:flex;flex-direction:column;gap:.8cqmin;font-weight:700;font-size:min(3.8cqmin,${vertical ? 2.6 : 6.4}cqh)}
-      li{display:flex;align-items:center;gap:1.2cqmin}
+      ul{list-style:none;display:flex;flex-direction:column;gap: .8cqmin;font-weight:700;font-size: min(3.8cqmin,${vertical ? 2.6 : 6.4}cqh)}
+      li{display:flex;align-items:center;gap: 1.2cqmin}
       .good li::before{content:'✓';color:${CYAN};font-weight:900}
-      .price{font-weight:900;font-size:min(9cqmin,${vertical ? 5 : 15}cqh);line-height:1.1}
-      .price small{font-size:.4em;font-weight:800;opacity:.7}
-      .demo{font-weight:700;font-size:min(2.8cqmin,${vertical ? 2 : 5}cqh);opacity:.7}
-      .vs{align-self:center;font-weight:900;font-size:min(3.4cqmin,6cqh);color:rgba(255,255,255,.6)}`
+      .price{font-weight:900;font-size: min(9cqmin,${vertical ? 5 : 15}cqh);line-height:1.1}
+      .price small{font-size: .4em;font-weight:800;opacity:.7}
+      .demo{font-weight:700;font-size: min(2.8cqmin,${vertical ? 2 : 5}cqh);opacity:.7}
+      .vs{align-self:center;font-weight:900;font-size: min(3.4cqmin,6cqh);color:rgba(255,255,255,.6)}`
   });
 }
 
@@ -248,7 +248,7 @@ function graffiti(kind) {
   const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><style>
 @font-face{font-family:Cairo;src:url(data:font/woff2;base64,${CAIRO});font-weight:400 900}
 @font-face{font-family:Inter;src:url(data:font/woff2;base64,${INTER});font-weight:400 900}
-*{box-sizing:border-box;margin:0;padding:0} html,body{width:100%;height:100%;overflow:hidden}
+*{box-sizing:border-box;margin: 0;padding: 0} html,body{width:100%;height:100%;overflow:hidden}
 body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:#fff;background:radial-gradient(ellipse at 50% 0%, #2A3E78 0%, #172852 45%, ${NAVY} 100%)}
 .layer{position:absolute;inset:0}
 .light{background:radial-gradient(ellipse 80% 45% at 50% 0%, rgba(255,255,255,.16), transparent 70%)}
@@ -260,14 +260,14 @@ body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:#fff;bac
 .drip{position:absolute;background:currentColor;border-radius:0 0 999px 999px}
 .drip::after{content:'';position:absolute;left:50%;bottom:-5px;transform:translateX(-50%);width:170%;aspect-ratio:1;border-radius:50%;background:currentColor}
 .speck{position:absolute;border-radius:50%;background:currentColor}
-.stencil{position:absolute;top:${story ? 210 : 96}px;inset-inline-end:86px;display:flex;align-items:center;gap:14px;opacity:.9;filter:url(#spray)}
+.stencil{position:absolute;top:${story ? 210 : 96}px;inset-inline-end:86px;display:flex;align-items:center;gap: 13px;opacity:.9;filter:url(#spray)}
 .eye{width:${story ? 150 : 120}px}
-.stencil span{font:800 ${story ? 34 : 28}px Inter;letter-spacing:.3em;color:${CYAN};direction:ltr}
+.stencil span{font: 800 ${story ? 34 : 28}px Inter;letter-spacing:.3em;color:${CYAN};direction:ltr}
 .alarm{position:absolute;font-family:Waseem,Cairo;font-weight:700;color:${RED};filter:url(#spray);text-shadow:0 0 18px rgba(192,57,43,.5)}
-.demo{position:absolute;bottom:${story ? 210 : 150}px;inset-inline:0;text-align:center;font-weight:800;font-size:${story ? 30 : 24}px;color:rgba(255,255,255,.65)}
-.cta{position:absolute;right:64px;bottom:64px;display:flex;align-items:center;gap:14px;height:${story ? 68 : 58}px;padding:0 28px;border-radius:999px;background:${CYAN};color:${NAVY};font-weight:800;font-size:${story ? 30 : 25}px;white-space:nowrap}
-.cta b{font-family:Inter} .mark{position:absolute;left:64px;bottom:${story ? 78 : 76}px;display:flex;align-items:center;gap:12px;direction:ltr}
-.mark img{height:${story ? 40 : 34}px} .mark span{font:800 ${story ? 30 : 26}px Inter;letter-spacing:.15em}
+.demo{position:absolute;bottom:${story ? 210 : 150}px;inset-inline:0;text-align:center;font-weight:800;font-size: ${story ? 30 : 24}px;color:rgba(255,255,255,.65)}
+.cta{position:absolute;right:64px;bottom:64px;display:flex;align-items:center;gap: 13px;height:${story ? 68 : 58}px;padding: 0 34px;border-radius:999px;background:${CYAN};color:${NAVY};font-weight:800;font-size: ${story ? 30 : 25}px;white-space:nowrap}
+.cta b{font-family:Inter} .mark{position:absolute;${story ? 'right:64px;bottom:166px' : 'left:64px;bottom:76px'};display:flex;align-items:center;gap: 13px;direction:ltr}
+.mark img{height:${story ? 40 : 34}px} .mark span{font: 800 ${story ? 30 : 26}px Inter;letter-spacing:.15em}
 </style><body>
 <svg class="layer" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><defs>
   <filter id="grainW"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="${seed}"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 .55 0 0 0 -.2"/></filter>
@@ -277,7 +277,7 @@ body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:#fff;bac
 </defs><rect width="${w}" height="${h}" filter="url(#stain)"/><rect width="${w}" height="${h}" filter="url(#grainK)"/><rect width="${w}" height="${h}" filter="url(#grainW)"/>${seams}${holes}</svg>
 <div class="layer light"></div>
 <div class="stencil"><svg class="eye" viewBox="0 0 120 60"><path d="M4 30 C30 4 90 4 116 30 C90 56 30 56 4 30Z" fill="none" stroke="${CYAN}" stroke-width="6"/><circle cx="60" cy="30" r="15" fill="${CYAN}"/><circle cx="60" cy="30" r="6" fill="${NAVY}"/><path d="M2 18 L38 6" stroke="${CYAN}" stroke-width="6" stroke-linecap="round"/></svg><span>SEG</span></div>
-<div class="copy"><div class="ln"><span class="sp fit" style="color:#fff;font-size:${story ? 230 : 210}px">دفاترك فيها<i class="bl"></i></span></div><div class="ln"><span class="sp fit" style="color:${CYAN};font-size:${story ? 230 : 210}px">حاجة مش<i class="bl"></i></span></div><div class="ln"><span class="sp fit" style="color:#fff;font-size:${story ? 230 : 210}px">شايفها.<i class="bl"></i></span></div></div>
+<div class="copy"><div class="ln"><span class="sp fit" style="color:#fff;font-size: ${story ? 230 : 210}px">دفاترك فيها<i class="bl"></i></span></div><div class="ln"><span class="sp fit" style="color:${CYAN};font-size: ${story ? 230 : 210}px">حاجة مش<i class="bl"></i></span></div><div class="ln"><span class="sp fit" style="color:#fff;font-size: ${story ? 230 : 210}px">شايفها.<i class="bl"></i></span></div></div>
 <span class="alarm" id="alarm">!</span>
 <p class="demo">اكشفها قبل الإقفال</p>
 <div class="cta"><span>فحص مجاني في دقائق</span><i>·</i><b>seg-audit.com</b></div><div class="mark">${signHTML(story ? 44 : 38)}</div>
@@ -330,21 +330,21 @@ function palm(kind) {
   const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><style>
 @font-face{font-family:Cairo;src:url(data:font/woff2;base64,${CAIRO});font-weight:400 900}
 @font-face{font-family:Inter;src:url(data:font/woff2;base64,${INTER});font-weight:400 900}
-*{box-sizing:border-box;margin:0;padding:0} html,body{width:100%;height:100%;overflow:hidden}
+*{box-sizing:border-box;margin: 0;padding: 0} html,body{width:100%;height:100%;overflow:hidden}
 body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:#fff;background:radial-gradient(ellipse at 50% 35%, #1E3368 0%, ${NAVY} 60%, #081230 100%)}
 .glow{position:absolute;inset:0;background:radial-gradient(circle at 50% ${story ? 34 : 38}%, rgba(27,183,205,.30), transparent 42%)}
 .hand{position:absolute;left:${(1080 - hw) / 2}px;top:${top}px;width:${hw}px;height:${hh}px}
 .ink{position:absolute;left:17%;right:11%;top:54%;transform:translateY(-50%) rotate(-9deg);text-align:center}
 .ink .l{display:block;white-space:nowrap;font-family:Farisi,Cairo,serif;color:${NAVY};filter:url(#pen);line-height:1.15}
-.ink .l1{font-size:${hw * 0.16}px} .ink .l2{font-size:${hw * 0.115}px}
+.ink .l1{font-size: ${hw * 0.16}px} .ink .l2{font-size: ${hw * 0.115}px}
 .circle{position:absolute;left:4%;top:-26%;width:${hw * 0.12}px;height:${hw * 0.12}px;filter:url(#pen)}
-.under{display:block;margin:6px auto 0;width:66%;height:9px;border-radius:9px;background:${CYAN};filter:url(#pen);transform:rotate(1.5deg)}
+.under{display:block;margin: 5px auto 0;width:66%;height:9px;border-radius:9px;background:${CYAN};filter:url(#pen);transform:rotate(1.5deg)}
 .fade{position:absolute;left:0;right:0;top:${capY - (story ? 230 : 150)}px;height:${story ? 230 : 150}px;background:linear-gradient(to bottom, rgba(13,27,62,0), ${NAVY})}
-.cap{position:absolute;right:64px;left:64px;top:${capY}px;text-align:center;font-weight:800;font-size:${story ? 50 : 38}px;line-height:1.5}
+.cap{position:absolute;right:64px;left:64px;top:${capY}px;text-align:center;font-weight:800;font-size: ${story ? 50 : 38}px;line-height:1.5}
 .cap em{font-style:normal;color:${CYAN}}
-.cta{position:absolute;right:64px;bottom:64px;display:flex;align-items:center;gap:14px;height:${story ? 68 : 58}px;padding:0 28px;border-radius:999px;background:${CYAN};color:${NAVY};font-weight:800;font-size:${story ? 30 : 25}px;white-space:nowrap}
-.cta b{font-family:Inter} .mark{position:absolute;left:64px;bottom:${story ? 78 : 76}px;display:flex;align-items:center;gap:12px;direction:ltr}
-.mark img{height:${story ? 40 : 34}px} .mark span{font:800 ${story ? 30 : 26}px Inter;letter-spacing:.15em}
+.cta{position:absolute;right:64px;bottom:64px;display:flex;align-items:center;gap: 13px;height:${story ? 68 : 58}px;padding: 0 34px;border-radius:999px;background:${CYAN};color:${NAVY};font-weight:800;font-size: ${story ? 30 : 25}px;white-space:nowrap}
+.cta b{font-family:Inter} .mark{position:absolute;${story ? 'right:64px;bottom:166px' : 'left:64px;bottom:76px'};display:flex;align-items:center;gap: 13px;direction:ltr}
+.mark img{height:${story ? 40 : 34}px} .mark span{font: 800 ${story ? 30 : 26}px Inter;letter-spacing:.15em}
 </style><body>
 <svg width="0" height="0" style="position:absolute"><filter id="pen"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="3"/></filter></svg>
 <div class="glow"></div>
@@ -377,9 +377,9 @@ function eye(kind) {
         <path d="M100 -6 C112 4 116 14 108 26" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
         <circle cx="6" cy="-2" r="40" fill="none" stroke="${CYAN}" stroke-width="1" opacity=".5" filter="url(#g)"/>
       </svg><p class="cap"><span class="red-dot"></span>رصدها في دقائق · ${DEMO}</p></div>`,
-    css: `.eyebox{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2cqh}
+    css: `.eyebox{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap: 2cqh}
       .eyebox svg{width:min(100cqw,170cqh);max-height:85cqh;filter:drop-shadow(0 0 4cqmin rgba(27,183,205,.35))}
-      .cap{display:flex;align-items:center;gap:1.4cqmin;font-weight:800;font-size:min(3.6cqmin,6cqh);color:rgba(255,255,255,.75)}`
+      .cap{display:flex;align-items:center;gap: 1.4cqmin;font-weight:800;font-size: min(3.6cqmin,6cqh);color:rgba(255,255,255,.75)}`
   });
 }
 
@@ -430,7 +430,7 @@ async function main() {
 
   if (!only) {
     const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG persuasion pack</title>
-<style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.6 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 4px}.p{margin:0 0 12px;color:#3B4262;max-width:80ch}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;align-items:start}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto}figcaption{font-size:12px;margin-top:8px;word-break:break-all;direction:ltr;text-align:left}.k{display:inline-block;font-size:12px;font-weight:700;color:#0F7C91;direction:ltr}</style>
+<style>body{margin: 0;padding: 34px 13px;background:#F5F7FA;color:#0D1B3E;font: 16px/1.6 system-ui,sans-serif}h1{font-size: 26px;margin: 0 0 5px}h2{font-size: 16px;margin: 34px 0 5px}.p{margin: 0 0 13px;color:#3B4262;max-width:80ch}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap: 21px;align-items:start}figure{margin: 0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding: 8px}img{display:block;width:100%;height:auto}figcaption{font-size: 13px;margin-top: 8px;word-break:break-all;direction:ltr;text-align:left}.k{display:inline-block;font-size: 13px;font-weight:700;color:#0F7C91;direction:ltr}</style>
 <h1>Standard Enterprise Governance (SEG): حزمة علم نفس الإقناع</h1><p class="p">مولَّدة بالكود عبر scripts/psych-ads.js. navy وcyan وأبيض، وأحمر إنذار #C0392B لعلامات الخطر الصغيرة فقط، بلا ذهبي. كل الأرقام داتا اختبارية معلَّمة «مثال توضيحي»، ما عدا تاريخ إغلاق سعر المؤسِّس (site.config.js) وعدد الاختبارات (من كود المنصة). بلا أرقام مقاعد ولا سعر رقمي.</p>
 ${DESIGNS.map((d) => `<h2>${d.slug} <span class="k">${d.principle}</span></h2><p class="p">${d.note}</p><div class="g">${written.filter((x) => x.d === d).map((x) => `<figure><img loading="lazy" src="${d.slug}/${x.base}.webp" alt="${x.base}"><figcaption>${d.slug}/${x.base}.jpg · ${x.w}×${x.h}</figcaption></figure>`).join('')}</div>`).join('\n')}`;
     fs.writeFileSync(path.join(OUT, 'index.html'), html);

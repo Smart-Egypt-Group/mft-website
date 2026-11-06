@@ -26,9 +26,10 @@ const { DAYS } = require('./lib/daily-nov.js');
 const CHECK_ONLY = process.argv.includes('--check');
 // every asset must be rendered after the CEO's signature decision went in (6 Nov 2026, 22:15 Cairo):
 // SEG lockup (cube + «Standard Enterprise Governance») | the full MFT logo
-const QUALITY_PASS = new Date('2026-11-06T22:15:00+02:00');
+// φ pass (CEO, 7 Nov 2026 00:31 Cairo): spacing/type on the φ scale, signature on φ — every asset after it
+const QUALITY_PASS = new Date('2026-11-07T00:31:00+02:00');
 // reels: after the end card stopped repeating the name under the lockup (6 Nov 2026, 23:38 Cairo)
-const REEL_PASS = new Date('2026-11-06T23:38:00+02:00');
+const REEL_PASS = new Date('2026-11-07T00:31:00+02:00');
 
 const CH = {
   'li-page': { name: 'LinkedIn · صفحة الشركة', src: 'linkedin', medium: 'organic', link: 'comment' },
@@ -165,6 +166,10 @@ for (const D of DAYS) {
     rows.push({ p, ch, fm, checked, support, alt, L, text, status });
   });
   rows.sort((a, b) => a.p.t.localeCompare(b.p.t));
+  // completeness (CEO, 7 Nov 2026): every day has a design (image), a video and a story, primary or ready fallback
+  const all = rows.flatMap((r) => [...r.checked, ...((r.alt && r.alt.checked) || [])].map((c) => ({ c, r })));
+  const has = { design: all.some((x) => /\.(jpe?g|png)$/.test(x.c.rel) && !/^yt-long$/.test(x.r.p.fmt)), video: all.some((x) => /\.mp4$/.test(x.c.rel)), story: rows.some((r) => r.p.ch === 'ig-story' && r.checked.length) };
+  for (const [k, v] of Object.entries(has)) if (!v) problems.push(`${D.d} Nov: no ${k} on the day`);
   const needs = rows.filter((r) => r.p.need);
   const conds = rows.filter((r) => r.p.cond && !r.p.need);
   let state, stateShort;
@@ -174,7 +179,7 @@ for (const D of DAYS) {
     state = `${stateShort}: ${[...new Set(needs.map((r) => r.p.need))].join(' · ')}`;
   } else { stateShort = '✅ جاهز كامل'; state = stateShort; }
   const condNote = conds.length ? `صفوف مشروطة: ${[...new Set(conds.map((r) => r.p.cond))].join(' · ')}` : '';
-  days.push({ D, wd, rows, state, stateShort, condNote, needs, conds });
+  days.push({ D, wd, rows, state, stateShort, condNote, needs, conds, has });
 }
 
 if (problems.length) { console.error(`${problems.length} problem(s):\n` + problems.join('\n')); process.exit(1); }
@@ -203,7 +208,7 @@ for (const X of days) {
   md += `> **حالة اليوم:** ${X.state}${X.condNote ? `\n> **${X.condNote}** (🟡، متتنشرش قبل الشرط).` : ''}\n`;
   md += `> **مفيش حاجة منشورة أو مجدولة.** كل منشور بيعدّي على [سير النشر](../../workflow/02-publishing-workflow.md) واعتماد الـCEO.\n`;
   md += `> **الاتجاه:** سعر المؤسِّس يُغلق نهائيًا الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة (\`src/site.config.js → founding.closesAt\`) + العضوية بالطلب، ومش كل طلب بيتقبل. لا مقاعد، ولا سعر رقمي، ولا «مدى الحياة».\n`;
-  md += `> **الدليل:** اتولّد بـ\`node scripts/daily-packs.js\` (${stamp}). كل أصل اتفحص على الديسك: موجود، ومقاسه من هيدر الملف، ومدة الفيديو ووجود الصوت، وتاريخ توليده بعد قرار التوقيع (لوكاب SEG = المكعّب + «Standard Enterprise Governance»، ثم شعار MFT الكامل). النصوص اتفحصت ضد الممنوعات، وعدّ الأيام، ووسم «مثال توضيحي».\n\n`;
+  md += `> **الدليل:** اتولّد بـ\`node scripts/daily-packs.js\` (${stamp}). كل أصل اتفحص على الديسك: موجود، ومقاسه من هيدر الملف، ومدة الفيديو ووجود الصوت، وتاريخ توليده بعد قرار التوقيع ونظام φ (لوكاب SEG + شعار MFT الكامل، والمسافات والخطوط على سلّم φ). النصوص اتفحصت ضد الممنوعات، وعدّ الأيام، ووسم «مثال توضيحي».\n\n`;
   md += `**الحالة:** ✅ جاهز (أصل ونص) · 🔴 محتاج إدخال بشري (والبديل الجاهز مكتوب تحته) · 🟡 جاهز، بس مستني شرط برّه الحزمة\n\n`;
   md += `## قبل أول نشر\n\n` + GLOBAL.map((g) => `- ${g}`).join('\n') + '\n' + (D.gates.length ? D.gates.map((g) => `- ${g}`).join('\n') + '\n' : '') + '\n';
   md += `## الجدول\n\n| # | الوقت | القناة | الفورمات | الأصل (المسار تحت \`marketing/designs/\`) | فحص الأصل | الهوك | CTA | \`utm_content\` | الحالة |\n|---|---|---|---|---|---|---|---|---|---|\n`;
@@ -262,12 +267,12 @@ let ix = `# حزم النشر اليومية: 7 → 30 نوفمبر 2026\n\n`;
 ix += `> اتولّدت بـ\`node scripts/daily-packs.js\` (${stamp}) من \`scripts/lib/daily-nov.js\`. **مفيش حاجة منشورة أو مجدولة.**\n`;
 ix += `> **اتفحص:** ${days.length} يوم · ${nPosts} منشور · ${nAssets} أصل مختلف موجود على الديسك بمقاسه الصحيح ومولَّد بعد قرار التوقيع (لوكاب SEG + شعار MFT) · النصوص نظيفة. قبل كل يوم: \`node scripts/daily-packs.js --check\`.\n`;
 ix += `> المصادر: [\`november-calendar.md\`](../november-calendar.md) (الخطة) · [\`coverage-matrix-nov.md\`](../coverage-matrix-nov.md) (الخانات والنبرة) · [\`voiceover-scripts-nov.md\`](../voiceover-scripts-nov.md) (الصوت).\n\n`;
-ix += `## حالة كل يوم\n\n| اليوم | الزاوية | المنشورات | الحالة | الناقص بالظبط | مشروط (🟡) |\n|---|---|---|---|---|---|\n`;
+ix += `## حالة كل يوم\n\n| اليوم | الزاوية | المنشورات | تصميم · فيديو · ستوري | الحالة | الناقص بالظبط | مشروط (🟡) |\n|---|---|---|---|---|---|---|\n`;
 for (const X of days) {
   const dd = String(X.D.d).padStart(2, '0');
   const miss = X.needs.length ? [...new Set(X.needs.map((r) => r.p.need))].join(' · ') : '—';
   const cnd = X.conds.length ? [...new Set(X.conds.map((r) => r.p.cond))].join(' · ') : '—';
-  ix += `| [${X.wd} ${X.D.d}](2026-11-${dd}-ready.md) | ${cell(X.D.angle)} | ${X.rows.length} | ${X.stateShort} | ${cell(miss)} | ${cell(cnd)} |\n`;
+  ix += `| [${X.wd} ${X.D.d}](2026-11-${dd}-ready.md) | ${cell(X.D.angle)} | ${X.rows.length} | ${['design', 'video', 'story'].map((k) => (X.has[k] ? '✓' : '✗')).join(' · ')} | ${X.stateShort} | ${cell(miss)} | ${cell(cnd)} |\n`;
 }
 const allNeeds = new Map();
 for (const X of days) for (const r of X.needs) { const k = r.p.need; if (!allNeeds.has(k)) allNeeds.set(k, []); allNeeds.get(k).push(`${X.D.d}`); }

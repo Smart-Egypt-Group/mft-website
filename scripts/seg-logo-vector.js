@@ -12,8 +12,8 @@
 // counter and seam is a whole or half number of modules.
 // Optical rules (each measured and printed by this script):
 //   1. Stroke parity. A bar on a side face is sheared: its perpendicular weight is band·(H/Nv)·cos α;
-//      a stem's is stem·m. Type practice makes verticals 5–12 % heavier than horizontals so both read
-//      equal. B and C sit in that window; A keeps the CEO's heavier stems on purpose (faithful).
+//      a stem's is stem·m. B and C sit in the type-design window (verticals 5–12 % heavier). A keeps the
+//      CEO's heavier stems, and they measure φ: stem 2.86 m (0.26 of the face) ÷ band = 1.618.
 //   2. Equal seams. Vertical and diagonal seams get one perpendicular width s: side faces move ±s/2
 //      sideways, and a·sin α + (b + c)·cos α = s splits the diagonals between top and sides.
 //   3. Rounding compensation. A round stroke-join of width r rounds outer corners and grows each
@@ -37,13 +37,14 @@ const FONTKIT = process.env.FONTKIT || '/Users/mac/seg-audit/portal/node_modules
 const f = (n) => Math.round(n * 100) / 100;
 const rad = (d) => (d * Math.PI) / 180;
 const NAME = 'Standard Enterprise Governance';
+const PHI_ = require('./lib/brand-tokens.js').phi.PHI;
 
 const DIRS = {
   A: {
-    key: 'a', name: 'a-faithful', title: 'A · تنظيف أمين', alpha: 28, W: 450, Nu: 11, Nv: 10, seam: 1.1, round: 9, stem: 3, band: 2, topStroke: 2.5,
-    why: 'لوجو الـCEO بنفس شخصيته (ميل 28°، أوجه 11:10، أعمدة تقيلة)، على شبكة 11×10 موديول: كل خط عدد صحيح من الموديول، والفواصل متساوية، وقطر الحواف ثابت.',
-    S: [[0, 0, 11, 2], [0, 2, 3, 4], [0, 4, 11, 6], [8, 6, 11, 8], [0, 8, 11, 10]],
-    E: [[0, 0, 11, 2], [0, 2, 3, 4], [0, 4, 8, 6], [0, 6, 3, 8], [0, 8, 11, 10]],
+    key: 'a', name: 'a-faithful', title: 'A · تنظيف أمين', alpha: 28, W: 450, Nu: 11, Nv: 10, seam: 1.1, round: 9, stem: 2.86, band: 2, topStroke: 2.5, // stem/band = φ: the CEO's own .26 stem, unrounded
+    why: 'لوجو الـCEO بنفس شخصيته (ميل 28°، أوجه 11:10)، على شبكة 11×10. عمود الـCEO المقاس (0.26 من الوش) بيدّي وزن عمودي ÷ أفقي = φ بالظبط، فاتثبّت عليه بدل ما يتقرّب لـ3 موديول.',
+    S: [[0, 0, 11, 2], [0, 2, 2.86, 4], [0, 4, 11, 6], [8.14, 6, 11, 8], [0, 8, 11, 10]],
+    E: [[0, 0, 11, 2], [0, 2, 2.86, 4], [0, 4, 8, 6], [0, 6, 2.86, 8], [0, 8, 11, 10]],
     G: [[0, 0, 11, 2.5], [0, 0, 2.5, 11], [8.5, 0, 11, 11], [0, 8.5, 6.5, 11], [4, 4.5, 6.5, 8.5]], accentIdx: -1
   },
   B: {
@@ -141,7 +142,7 @@ function nameRun(text, x, y, cap) {
 function nameBlock(layout, x, top, bot) {
   const span = bot - top;
   if (layout === 'line') {
-    const cap = span * 0.34, y = top + span / 2 + cap / 2;
+    const cap = span / (PHI_ * PHI_), y = top + span / 2 + cap / 2; // name cap = span/φ²
     const r = nameRun(NAME, x, y, cap); return { d: r.d, w: r.w };
   }
   // 'stack' = 3 lines; 'two' = «Standard Enterprise / Governance» (the signature: larger type per cube

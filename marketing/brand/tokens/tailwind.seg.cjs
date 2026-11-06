@@ -85,22 +85,21 @@ module.exports = {
   },
   "spacing": {
     "0": "0px",
-    "1": "4px",
+    "1": "5px",
     "2": "8px",
-    "3": "12px",
-    "4": "16px",
-    "5": "24px",
-    "6": "32px",
-    "7": "48px",
-    "8": "64px",
-    "9": "96px",
-    "10": "128px"
+    "3": "13px",
+    "4": "21px",
+    "5": "34px",
+    "6": "55px",
+    "7": "89px",
+    "8": "144px",
+    "9": "233px"
   },
   "borderRadius": {
-    "sm": "6px",
-    "md": "10px",
-    "lg": "14px",
-    "xl": "20px",
+    "sm": "5px",
+    "md": "8px",
+    "lg": "13px",
+    "xl": "21px",
     "pill": "999px"
   },
   "boxShadow": {
@@ -128,27 +127,27 @@ module.exports = {
       }
     ],
     "h-4": [
-      "25px",
+      "26px",
       {
         "lineHeight": "32px"
       }
     ],
     "h-3": [
-      "31px",
+      "33px",
       {
-        "lineHeight": "40px"
+        "lineHeight": "44px"
       }
     ],
     "h-2": [
-      "39px",
+      "42px",
       {
-        "lineHeight": "52px"
+        "lineHeight": "56px"
       }
     ],
     "h-1": [
-      "49px",
+      "53px",
       {
-        "lineHeight": "64px"
+        "lineHeight": "68px"
       }
     ]
   },

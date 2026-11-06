@@ -22,4 +22,21 @@ function lum(hex) {
 }
 const contrast = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
 
-module.exports = { ...T, legacy, contrast, lum, FILE };
+// φ: the proportion system (CEO, 7 Nov 2026). One source for every generator.
+//   SPACE  Fibonacci spacing 5 · 8 · 13 · 21 · 34 · 55 · 89 · 144 · 233 · 377 · 610
+//   TYPE   16 × √φ^n (n = −4…17): 6 … 752; two steps = φ (primary hierarchy levels)
+//   split(L) → [L/φ, L − L/φ];  points(w, h) → the four golden points of a frame
+const PHI = T.phi.ratio;
+const SPACE = T.phi.space;
+const TYPE = Array.from({ length: 22 }, (_, i) => Math.round(T.phi.typeBase * Math.pow(Math.sqrt(PHI), i - 4)));
+const nearest = (set, v) => set.reduce((a, b) => (Math.abs(b - v) < Math.abs(a - v) ? b : a));
+const phi = {
+  PHI, SPACE, TYPE,
+  space: (n) => SPACE[n], type: (n) => TYPE[n + 4],
+  snapSpace: (v) => nearest(SPACE, v), snapType: (v) => nearest(TYPE, v),
+  onScale: (set, v, tol = 1) => set.some((x) => Math.abs(x - v) <= tol),
+  split: (L) => [L / PHI, L - L / PHI],
+  points: (w, h) => [[w / PHI, h / PHI], [w - w / PHI, h / PHI], [w / PHI, h - h / PHI], [w - w / PHI, h - h / PHI]]
+};
+
+module.exports = { ...T, legacy, contrast, lum, FILE, phi };

@@ -14,6 +14,10 @@
 //      that writes «SEG» as a wordmark (fillText('SEG'…), <span class="lat">SEG…) must take its logo from
 //      the kit, and no generator may load the MFT mark (src/assets/logo/mft-mark-*) except on a line
 //      marked «qa-allow-mft-mark» (MFT's own company avatars)
+//   7. φ (CEO, 7 Nov 2026): in the HTML generators every literal px in margin / padding / gap / font-size /
+//      font is on the φ scale (Fibonacci spacing, √φ type) ±1 px; launch-concepts «px: N» and launch-images
+//      typePlan sizes are on the √φ type scale; no generator defines its own PHI. Positions (top / bottom /
+//      inset) follow platform safe zones and are not checked: readability and platform rules win.
 //   6. design tokens: brand colours and font files come from marketing/brand/tokens/seg-tokens.json
 //      (scripts/lib/brand-tokens.js), never typed per generator
 // Comment lines (// …) in generators are not scanned: they document what was withdrawn.
@@ -69,6 +73,24 @@ for (const g of GENERATORS) {
   });
 }
 
+// 7: φ
+const { phi } = require('./lib/brand-tokens.js');
+const CSSP = /(margin[a-z-]*|padding[a-z-]*|gap|row-gap|column-gap|font-size|font)\s*:\s*([^;`"}]*)/g, PXR = /(?<![\w.$])(\d+(?:\.\d+)?)px/g;
+let phiChecked = 0;
+for (const g of GENERATORS) {
+  const src = fs.readFileSync(path.join(ROOT, 'scripts', g + '.js'), 'utf8');
+  if (/^const PHI = /m.test(src)) problems.push(`scripts/${g}.js: defines its own PHI (use require('./lib/brand-tokens.js').phi)`);
+  if (['psych-ads', 'guerrilla-ads', 'launch-week-assets', 'golden-ads', 'reels-cinematic'].includes(g)) {
+    for (const m of src.matchAll(CSSP)) for (const px of m[2].matchAll(PXR)) {
+      const v = +px[1]; if (v <= 2) continue; phiChecked++;
+      const set = m[1].startsWith('font') ? phi.TYPE : phi.SPACE;
+      if (!phi.onScale(set, v)) problems.push(`scripts/${g}.js: ${m[1]} ${v}px is off the φ scale (nearest ${m[1].startsWith('font') ? phi.snapType(v) : phi.snapSpace(v)})`);
+    }
+  }
+  if (g === 'launch-concepts') for (const m of src.matchAll(/px: (\d+(?:\.\d+)?)(?![\d.])/g)) { phiChecked++; if (!phi.onScale(phi.TYPE, +m[1])) problems.push(`scripts/${g}.js: px ${m[1]} off the √φ type scale`); }
+  if (g === 'launch-images') { const a = src.indexOf('function typePlan'), b = src.indexOf('\n}\n', a); for (const m of src.slice(a, b).matchAll(/\b(eyebrow|heroText|title|support|cta|hero: C\.hero \?) ?:? ?(\d+)/g)) { phiChecked++; if (!phi.onScale(phi.TYPE, +m[2])) problems.push(`scripts/launch-images.js typePlan: ${m[1]} ${m[2]} off the √φ type scale`); } }
+}
+
 function walk(dir) {
   const out = [];
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -95,7 +117,7 @@ for (const base of ['marketing/designs', 'marketing/brand/assets']) {
   }
 }
 
-console.log(`checked ${GENERATORS.length} generators and ${images} images`);
+console.log(`checked ${GENERATORS.length} generators, ${phiChecked} φ sizes and ${images} images`);
 for (const [k, n] of Object.entries(bySpec).sort((a, b) => b[1] - a[1])) console.log(`  ${String(n).padStart(4)}  ${k}`);
 if (problems.length) { console.error(`\n${problems.length} problem(s):\n` + problems.join('\n')); process.exit(1); }
 console.log('design QA: clean');

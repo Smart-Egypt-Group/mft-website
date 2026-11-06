@@ -41,7 +41,7 @@ const { founding: FM } = require('../src/site.config.js');
 const { CLOSE, COPY: K, SIGN_CANVAS_SRC } = require('./lib/campaign.js');
 
 const { NAVY, CYAN, W } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
-const PHI = (1 + Math.sqrt(5)) / 2;
+const { PHI } = require('./lib/brand-tokens.js').phi; // one source for φ
 function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
 const f = (n) => +n.toFixed(1);
 
@@ -268,11 +268,11 @@ function scene(F, variant) {
 
 // ---- Type plan per kind (px at u = 1). The canvas fits each line to the text box. ----
 function typePlan(F, C) {
-  if (F.kind === 'strip') return { eyebrow: 26, hero: 0, heroText: 92, title: 34, support: 0, cta: 26, gap: 1 };
-  if (F.kind === 'land') return { eyebrow: 21, hero: C.hero ? 150 : 0, heroText: 104, title: 36, support: 24, cta: 22, gap: 1 };
-  if (F.h / F.w > 1.5) return { eyebrow: 32, hero: C.hero ? 300 : 0, heroText: 150, title: 60, support: 36, cta: 32, gap: 1.35 };
-  if (F.h / F.w > 1.2) return { eyebrow: 28, hero: C.hero ? 210 : 0, heroText: 128, title: 50, support: 32, cta: 28, gap: 1.15 };
-  return { eyebrow: 26, hero: C.hero ? 170 : 0, heroText: 116, title: 44, support: 28, cta: 26, gap: 1 };
+  if (F.kind === 'strip') return { eyebrow: 26, hero: 0, heroText: 86, title: 33, support: 6, cta: 26, gap: 1 };
+  if (F.kind === 'land') return { eyebrow: 20, hero: C.hero ? 139 : 0, heroText: 110, title: 33, support: 26, cta: 20, gap: 1 };
+  if (F.h / F.w > 1.5) return { eyebrow: 33, hero: C.hero ? 287 : 0, heroText: 139, title: 53, support: 33, cta: 33, gap: 1.35 };
+  if (F.h / F.w > 1.2) return { eyebrow: 26, hero: C.hero ? 226 : 0, heroText: 139, title: 53, support: 33, cta: 26, gap: 1.15 };
+  return { eyebrow: 26, hero: C.hero ? 177 : 0, heroText: 110, title: 42, support: 26, cta: 26, gap: 1 };
 }
 
 (async () => {

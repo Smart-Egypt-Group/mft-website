@@ -53,24 +53,26 @@ const STICKY = [
 const BASE_CSS = `
 @font-face{font-family:Cairo;src:url(data:font/woff2;base64,${CAIRO});font-weight:400 900}
 @font-face{font-family:Inter;src:url(data:font/woff2;base64,${INTER});font-weight:400 900}
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin: 0;padding: 0}
 html,body{width:100%;height:100%;overflow:hidden}
 body{position:relative;direction:rtl;font-family:Cairo,sans-serif;background:${NAVY};color:${W}}
 .layer{position:absolute;inset:0}
-.cta{position:absolute;right:64px;display:flex;align-items:center;gap:14px;padding:0 30px;border-radius:999px;
+.cta{position:absolute;right:64px;display:flex;align-items:center;gap: 13px;padding: 0 34px;border-radius:999px;
   background:${CYAN};color:${NAVY};font-weight:800;white-space:nowrap;box-shadow:0 8px 28px rgba(27,183,205,.35)}
 .cta b{font-family:Inter,sans-serif;font-weight:800}
-.mark{position:absolute;left:64px;display:flex;align-items:center;gap:12px;direction:ltr}
+.mark{position:absolute;left:64px;display:flex;align-items:center;gap: 13px;direction:ltr}
 .mark img{display:block}
-.mark span{font:800 1em Inter,sans-serif;letter-spacing:.15em;color:${W}}`;
+.mark span{font: 800 1em Inter,sans-serif;letter-spacing:.15em;color:${W}}`;
 
 const cta = (h, bottom) => {
-  const px = h === 1920 ? 30 : 25, ht = h === 1920 ? 68 : 56;
-  return `<div class="cta" style="bottom:${bottom}px;height:${ht}px;font-size:${px}px"><span>فحص مجاني في دقائق</span><i>·</i><b dir="ltr">seg-audit.com</b></div>`;
+  const px = h === 1920 ? 33 : 26, ht = h === 1920 ? 68 : 56; // √φ type scale
+  return `<div class="cta" style="bottom:${bottom}px;height:${ht}px;font-size: ${px}px"><span>فحص مجاني في دقائق</span><i>·</i><b dir="ltr">seg-audit.com</b></div>`;
 };
 const mark = (h, bottom) => {
   const s = h === 1920 ? 40 : 34;
-  return `<div class="mark" style="bottom:${bottom + 14}px;font-size:${s * 0.76}px">${signHTML(s + 4)}</div>`;
+  // stories: the signature gets its own row above the pill, on the start side (one 1080 px row cannot hold both)
+  const pos = h === 1920 ? `right:64px;left:auto;bottom:${bottom + 68 + 34}px` : `bottom:${bottom + 14}px`;
+  return `<div class="mark" style="${pos};font-size: ${s * 0.76}px">${signHTML(s + 4)}</div>`;
 };
 const page = (css, body, script = '') => `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><style>${BASE_CSS}${css}</style><body>${body}<script>${script}</script></body></html>`;
 
@@ -96,7 +98,7 @@ function graffiti(d, w, h) {
     }
   }
   const k = story ? 1.12 : 1, maxW = w - 150;
-  const lines = d.lines.map(([t, c, px]) => `<div class="ln"><span class="sp fit" data-max="${maxW}" style="color:${c};font-size:${px * k}px">${t}<i class="bl"></i></span></div>`).join('');
+  const lines = d.lines.map(([t, c, px]) => `<div class="ln"><span class="sp fit" data-max="${maxW}" style="color:${c};font-size: ${px * k}px">${t}<i class="bl"></i></span></div>`).join('');
   const css = `
 .wall{background:radial-gradient(ellipse at 55% 42%, #22346A 0%, #172852 45%, ${NAVY} 100%)}
 .copy{position:absolute;right:75px;left:75px;top:50%;transform:translateY(-${story ? 56 : 54}%) rotate(-3.5deg);text-align:center}
@@ -170,15 +172,15 @@ function palm(d, w, h) {
   const hw = story ? 870 : 560, hh = hw * 820 / 600, top = story ? 200 : 26;
   const capY = story ? 1500 : 830;
   const ink = d.latin
-    ? `font-family:'Bradley Hand',cursive;font-weight:700;direction:ltr;font-size:${hw * 0.115}px`
-    : `font-family:Farisi,Cairo,serif;font-size:${hw * 0.2}px`;
+    ? `font-family:'Bradley Hand',cursive;font-weight:700;direction:ltr;font-size: ${hw * 0.115}px`
+    : `font-family:Farisi,Cairo,serif;font-size: ${hw * 0.2}px`;
   const css = `
 .glow{background:radial-gradient(circle at 50% ${story ? 38 : 40}%, rgba(27,183,205,.28) 0%, rgba(27,183,205,0) 46%)}
 .hand{position:absolute;left:${(w - hw) / 2}px;top:${top}px;width:${hw}px;height:${hh}px}
 .ink{position:absolute;left:16%;right:12%;top:58%;transform:translateY(-50%) rotate(-9deg);text-align:center;white-space:nowrap}
 .ink span{display:inline-block;line-height:1.1;color:${NAVY};filter:url(#pen);${ink}}
-.ink u{display:block;margin:6px auto 0;width:62%;height:9px;border-radius:9px;background:${CYAN};filter:url(#pen);transform:rotate(1.5deg)}
-.cap{position:absolute;right:64px;left:64px;top:${capY}px;text-align:center;font-weight:800;font-size:${story ? 52 : 40}px;line-height:1.5}
+.ink u{display:block;margin: 5px auto 0;width:62%;height:9px;border-radius:9px;background:${CYAN};filter:url(#pen);transform:rotate(1.5deg)}
+.cap{position:absolute;right:64px;left:64px;top:${capY}px;text-align:center;font-weight:800;font-size: ${story ? 52 : 40}px;line-height:1.5}
 .cap em{font-style:normal;color:${CYAN}}
 .fade{position:absolute;left:0;right:0;top:${capY - (story ? 260 : 170)}px;height:${story ? 260 : 170}px;background:linear-gradient(to bottom, rgba(13,27,62,0), ${NAVY})}`;
   const [c1, c2] = CAPTION.split('. ');
@@ -204,15 +206,15 @@ function sticky(d, w, h) {
   const css = `
 .desk{background:radial-gradient(ellipse at 50% 30%, #1C2E5C 0%, ${NAVY} 70%)}
 .mon{position:absolute;left:${mx}px;top:${my}px;width:${mw}px;height:${mh}px;border-radius:26px;background:#08122B;
-  border:2px solid #22356A;box-shadow:0 40px 90px rgba(0,0,0,.5);padding:26px 26px 48px}
+  border:2px solid #22356A;box-shadow:0 40px 90px rgba(0,0,0,.5);padding: 21px 21px 55px}
 .mon::after{content:'';position:absolute;left:50%;bottom:18px;width:12px;height:12px;border-radius:50%;background:#22356A;transform:translateX(-50%)}
-.scr{width:100%;height:100%;border-radius:8px;background:#F5F7FA;padding:28px 34px;overflow:hidden}
-.bar{height:34px;border-radius:6px;background:${NAVY};margin-bottom:22px;display:flex;gap:10px;align-items:center;padding:0 14px}
+.scr{width:100%;height:100%;border-radius:8px;background:#F5F7FA;padding: 34px 34px;overflow:hidden}
+.bar{height:34px;border-radius:6px;background:${NAVY};margin-bottom: 21px;display:flex;gap: 8px;align-items:center;padding: 0 13px}
 .bar i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.35)}
-.row{display:flex;align-items:center;gap:22px;height:${mh * 0.068}px;border-bottom:2px solid #E6E9F0}
+.row{display:flex;align-items:center;gap: 21px;height:${mh * 0.068}px;border-bottom:2px solid #E6E9F0}
 .row i{display:block;height:10px;border-radius:5px;background:#3B4262;opacity:.55}
-.row b{display:block;margin-inline-start:auto;width:12%;height:10px;border-radius:5px;background:#3B4262;opacity:.35}
-.row b + b{margin-inline-start:0}
+.row b{display:block;margin-inline-start: auto;width:12%;height:10px;border-radius:5px;background:#3B4262;opacity:.35}
+.row b + b{margin-inline-start: 0}
 .row.hi{background:rgba(27,183,205,.14);border-radius:6px}
 .row.hi i,.row.hi b{background:${CYAN};opacity:1}
 .neck{position:absolute;left:${w / 2 - 50}px;top:${my + mh}px;width:100px;height:${story ? 150 : 110}px;background:linear-gradient(#0A1530,#22356A)}
@@ -220,19 +222,19 @@ function sticky(d, w, h) {
 .note{position:absolute;width:${nw}px;height:${nw}px;right:${mx - (story ? 0 : 30)}px;top:${my - (story ? 120 : 50)}px;transform:rotate(4.5deg);
   background:linear-gradient(160deg,#5ED2E1 0%,${CYAN} 55%,#16A6BB 100%);
   box-shadow:0 26px 40px rgba(0,0,0,.42), inset 0 -18px 30px rgba(13,27,62,.12);
-  border-radius:4px 4px 4px 60px/4px 4px 4px 30px;padding:${nw * 0.13}px ${nw * 0.09}px;color:${NAVY};text-align:center;
-  display:flex;flex-direction:column;justify-content:center;gap:${nw * 0.03}px}
+  border-radius:4px 4px 4px 60px/4px 4px 4px 30px;padding: ${nw * 0.13}px ${nw * 0.09}px;color:${NAVY};text-align:center;
+  display:flex;flex-direction:column;justify-content:center;gap: ${nw * 0.03}px}
 .tape{position:absolute;top:-26px;left:50%;width:46%;height:58px;transform:translateX(-50%) rotate(-3deg);background:rgba(255,255,255,.55);box-shadow:0 2px 6px rgba(0,0,0,.12)}
 .note p{display:inline-block;align-self:center;font-family:Waseem,Cairo,sans-serif;font-weight:700;line-height:1.15;white-space:nowrap;filter:url(#mk)}
-.note svg.u{display:block;margin:0 auto}`;
+.note svg.u{display:block;margin: 0 auto}`;
   const body = `
 <svg width="0" height="0" style="position:absolute"><filter id="mk"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="9" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="3"/></filter></svg>
 <div class="layer desk"></div>
 <div class="mon"><div class="scr"><div class="bar"><i></i><i></i><i></i></div>${rows}</div></div>
 <div class="neck"></div><div class="foot"></div>
 <div class="note"><span class="tape"></span>
-  <p class="fit" data-max="${nw * 0.82}" style="font-size:${nw * 0.17}px">${d.l1}</p>
-  <p class="fit" data-max="${nw * 0.82}" style="font-size:${nw * 0.17}px">${d.l2}</p>
+  <p class="fit" data-max="${nw * 0.82}" style="font-size: ${nw * 0.17}px">${d.l1}</p>
+  <p class="fit" data-max="${nw * 0.82}" style="font-size: ${nw * 0.17}px">${d.l2}</p>
   <svg class="u" width="${nw * 0.62}" height="30" viewBox="0 0 300 30" style="filter:url(#mk)"><path d="M6 18 C80 6 160 26 294 10" stroke="${NAVY}" stroke-width="7" stroke-linecap="round" fill="none"/></svg>
 </div>
 ${cta(h, 64)}${mark(h, 64)}`;
@@ -277,7 +279,7 @@ async function main() {
   if (!only) {
     const names = { graffiti: 'جرافيتي على حيطة', palm: 'مكتوب على راحة اليد', sticky: 'ورقة لاصقة على شاشة' };
     const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG guerrilla pack</title>
-<style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.6 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 12px}p{margin:0 0 16px;color:#3B4262}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;align-items:start}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto}figcaption{font-size:12px;margin-top:8px;word-break:break-all;direction:ltr;text-align:left}</style>
+<style>body{margin: 0;padding: 34px 13px;background:#F5F7FA;color:#0D1B3E;font: 16px/1.6 system-ui,sans-serif}h1{font-size: 26px;margin: 0 0 5px}h2{font-size: 16px;margin: 34px 0 13px}p{margin: 0 0 13px;color:#3B4262}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap: 21px;align-items:start}figure{margin: 0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding: 8px}img{display:block;width:100%;height:auto}figcaption{font-size: 13px;margin-top: 8px;word-break:break-all;direction:ltr;text-align:left}</style>
 <h1>Standard Enterprise Governance (SEG): حزمة جذب الانتباه</h1><p>تصاميم مولَّدة بالكود (stylized) عبر scripts/guerrilla-ads.js: navy وcyan وأبيض، بلا ذهبي، بلا أي شخص حقيقي. كل جملة بمقاسين: مربع 1080×1080 وستوري 1080×1920، بصيغتي JPG وWebP.</p>
 ${Object.keys(names).map((s) => `<h2>${names[s]}</h2><div class="g">${written.filter((x) => x.style === s).map((x) => `<figure><img loading="lazy" src="${s}/${x.base}.webp" alt="${x.base}"><figcaption>${s}/${x.base}.jpg · ${x.w}×${x.h}</figcaption></figure>`).join('')}</div>`).join('\n')}`;
     fs.writeFileSync(path.join(OUT, 'index.html'), html);

@@ -906,4 +906,48 @@ ${TAGS_IG}`, note: 'فيديو 8 ث صامت: أضف صوت من مكتبة Inst
   }
 ];
 
+
+// ── Completion pass (CEO, 7 Nov 2026): every day carries a design, a video and a story ──────────────
+// Stories for the 14 days that had none (one per day, each a different design, link sticker with UTM),
+// and a video on the 10 days that had none (TikTok / YouTube rows wait on account ownership, G8).
+const ST = (f) => `${f}_ar_story_1080x1920.jpg`;
+const STORY = {
+  demo: 'launch-week/launch-demo-report_ar_story_1080x1920.jpg', hemi: 'concepts/hemicycle/' + ST('hemicycle'),
+  errors: 'guerrilla/graffiti/' + ST('graffiti-02-errors'), select: 'psych/4-selectivity/' + ST('psych-4-selectivity'),
+  curiosity: 'psych/2-curiosity-gap/' + ST('psych-2-curiosity-gap'), self: 'concepts/self-audit/' + ST('self-audit'),
+  loss: 'psych/1-loss-aversion/' + ST('psych-1-loss-aversion'), nosource: 'concepts/no-source/' + ST('no-source'),
+  hawk: 'psych/8-hawk-eye/' + ST('psych-8-hawk-eye')
+};
+const story = (d, wk, asset, cta, hook, text, sticker, fmt = 'story-img') => ({ t: '13:00', ch: 'ig-story', fmt, asset, id: `${wk}-ig-s-9`, cta, hook, text, sticker: `${sticker} + ملصق رابط (${cta === 'apply' ? '«قدّم طلبك»، الرابط الحالي: الفحص' : '«افحص ميزانك»'}). نفس الإطار Facebook Story.` });
+const vid = (t, ch, asset, fmt, id, hook, text, extra = {}) => ({ t, ch, fmt, asset, id, cta: 'check', hook, text, cond: ch === 'tt' ? 'G8 ملكية حساب TikTok' : 'G8 ملكية قناة YouTube', note: 'فيديو 8 ث صامت: أضف صوت من مكتبة المنصة.', ...extra });
+const EXTRA = {
+  8: [vid('21:00', 'yt', 'ads/video/video-16x9_live-ar_1920x1080_8s.mp4', 'video-16x9', 'w1-d5-yt-a-1', 'المنصة اللي بتراجع نفسها… متاحة الآن.', `Standard Enterprise Governance (SEG): مراجعة مستمرة لدفاتر Odoo، ولكل ملاحظة دليلها. الفحص المجاني لميزان شركتك: {LINK}`, { title: 'SEG متاحة الآن: المراجعة المستمرة لدفاترك | Shorts' })],
+  10: [vid('21:30', 'tt', A.liveTTv, 'reel', 'w1-d7-tt-a-1', 'دفاترك بتتراجع مرة في السنة… والباقي؟', `الليلة 7 بث مباشر: هنقرا ميزان شركة نموذجية على الهوا (عرض توضيحي). الفحص المجاني في البايو. ${TAGS_TT}`)],
+  11: [story(11, 'w2-d1', STORY.demo, 'check', 'اللي فاتك في البث', 'شاشة تقرير SEG على شركة نموذجية (مثال توضيحي · داتا اختبارية).', 'ملصق نص «اللي فاتك في البث: ده التقرير» + ملصق صغير «مثال توضيحي · داتا اختبارية»')],
+  12: [story(12, 'w2-d2', STORY.hemi, 'apply', 'مقعدك في المجلس… لو اتقبلت', 'مجلس الأعضاء المؤسِّسين: بالطلب، وسعر المؤسِّس يُغلق 30 نوفمبر.', 'ملصق نص «ليه مش أي شركة؟» (نفس سؤال فيديو المؤسس)')],
+  13: [story(13, 'w2-d3', A.closeStory, 'check', left(13), 'تصميم الإغلاق + العدّ.', `ملصق نص «${left(13)}» + ملصق Countdown لـ30 نوفمبر 23:59`)],
+  15: [story(15, 'w3-d1', A.selectStoryV, 'apply', 'كل طلب بنقراه بنفسنا', 'فيديو الانتقاء 8 ث يوم نشر معايير القبول.', 'ملصق نص «4 أسئلة قبل ما نقبل أي طلب: في البوست»', 'story-video')],
+  16: [story(16, 'w3-d2', STORY.errors, 'check', 'دفاترك فيها أخطاء… وإنت لسه مش عارف', 'بداية مسلسل «تشريح شركة النموذج» (مثال توضيحي، داتا اختبارية).', 'ملصق نص «الحلقة 1 من 10 النهارده على LinkedIn»')],
+  17: [vid('21:00', 'tt', A.council, 'reel', 'w3-d3-tt-a-1', 'مقعدك في المجلس… لو اتقبلت.', `برنامج الأعضاء المؤسِّسين في SEG بالطلب، و${left(17)} على إغلاق سعر المؤسِّس. الفحص المجاني في البايو. ${TAGS_TT}`)],
+  18: [story(18, 'w3-d4', STORY.curiosity, 'check', '5 حاجات في دفاترك مش شايفها', 'الفحص المجاني بيكشف 3 منهم من ميزانك، و2 مع ربط Odoo.', 'ملصق سؤال «تفتكر دفاترك فيها كام واحدة؟»')],
+  19: [story(19, 'w3-d5', STORY.self, 'apply', 'المنصة التي تراجع نفسها', '9,900+ اختبار آلي قبل كل تحديث.', 'ملصق نص «قبل ما نراجع دفاترك، بنراجع نفسنا»')],
+  20: [story(20, 'w3-d6', STORY.loss, 'check', 'الخطأ اللي مش شايفه بيكبر', 'مثال توضيحي · داتا اختبارية: خطأ صغير بيكبر لحد الإقفال.', `ملصق نص «${left(20)}» + ملصق صغير «مثال توضيحي · داتا اختبارية»`),
+       vid('21:00', 'tt', A.closeTTv, 'reel', 'w3-d6-tt-a-1', 'فيه باب بيقفل يوم 30 نوفمبر… ومش أي حد هيدخل.', `${left(20)} ⏳ سعر المؤسِّس في SEG بيتقفل 30/11 الساعة 11:59 بالليل، والعضوية بالطلب. الفحص المجاني في البايو. ${TAGS_TT}`)],
+  21: shortsPair('21:00', 'round-manual', 'w3-d7-tt-r-1', 'w3-d7-yt-r-1'),
+  22: [story(22, 'w4-d1', STORY.nosource, 'check', 'رقم بلا مصدر؟ لا يدخل تقريرك.', 'كل رقم في تقارير SEG مرتبط بمصدره في الدفاتر (مثال توضيحي).', 'ملصق نص «الحلقة 5 النهارده: أرقام مدوّرة آخر الشهر» + ملصق صغير «مثال توضيحي»')],
+  23: [story(23, 'w4-d2', A.closeStory, 'apply', 'آخر أسبوع', 'إعلان أسبوع الإغلاق.', 'ملصق نص «آخر أسبوع لسعر المؤسِّس» + ملصق Countdown لـ30 نوفمبر 23:59')],
+  24: [story(24, 'w4-d3', STORY.select, 'apply', 'مش كل طلب بيتقبل', 'يوم «خطاب القبول: إيه اللي مكتوب فيه».', 'ملصق سؤال «إيه اللي تحب تعرفه عن خطاب القبول؟»')],
+  26: [story(26, 'w4-d5', STORY.demo, 'check', 'نفس المورّد… بحسابين', 'الحلقة 9: الملاحظة التالتة في التقرير (مثال توضيحي · داتا اختبارية).', 'ملصق نص «الحلقة 9 من 10» + ملصق صغير «مثال توضيحي · داتا اختبارية»'),
+       vid('21:00', 'yt', A.close169, 'video-16x9', 'w4-d5-yt-a-1', 'سعر المؤسِّس يُغلق 30 نوفمبر', `سعر المؤسِّس في برنامج الأعضاء المؤسِّسين بيتقفل الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة. العضوية بالطلب. الفحص المجاني: {LINK}`, { title: 'سعر المؤسِّس يُغلق 30 نوفمبر | SEG' })],
+  27: [story(27, 'w4-d6', STORY.hawk, 'apply', left(27), 'عين على دفاترك. كل يوم.', `ملصق نص «${left(27)}» + ملصق Countdown لـ30 نوفمبر 23:59`),
+       vid('21:00', 'tt', A.closeTTv, 'reel', 'w4-d6-tt-a-1', 'الباب بيقفل بعد 3 أيام.', `${left(27)} ⏳ سعر المؤسِّس في SEG بيتقفل 30/11 الساعة 11:59 بالليل، والعضوية بالطلب. الفحص المجاني في البايو. ${TAGS_TT}`)],
+  29: [story(29, 'w5-d1', A.closeStory, 'apply', 'بكرة آخر يوم', 'تصميم الإغلاق.', 'ملصق نص «بكرة آخر يوم» + ملصق Countdown لـ30 نوفمبر 23:59')]
+};
+for (const D of DAYS) {
+  if (EXTRA[D.d]) D.posts.push(...EXTRA[D.d]);
+  // two swaps to the animated version of the same design (the day already had the static one elsewhere)
+  if (D.d === 13) Object.assign(D.posts.find((p) => p.ch === 'ig'), { asset: A.daysV, fmt: 'video-4x5', note: 'فيديو ساعة الأيام 8 ث (Facebook عليه الصورة الثابتة). صامت: أضف موسيقى من مكتبة Instagram.' });
+  if (D.d === 29) Object.assign(D.posts.find((p) => p.ch === 'fb'), { asset: A.closeFeedV, fmt: 'video-4x5', note: 'فيديو الإغلاق 8 ث (Instagram عليه الصورة الثابتة). صامت: أضف موسيقى من مكتبة Facebook.' });
+}
+
 module.exports = { DAYS, A, R };
