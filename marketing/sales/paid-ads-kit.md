@@ -128,9 +128,10 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 | النسخة | Feed 4:5 | Feed 1:1 | Stories / Reels / TikTok 9:16 |
 |---|---|---|---|
 | **bait-ar** («متاح الآن» + الفحص المجاني) | `meta-feed-4x5_live-ar_1080x1350.jpg` | `meta-feed-1x1_live-ar_1080x1080.jpg` | `tiktok-9x16_live-ar_1080x1920.jpg` |
-| **close-ar** (الإغلاق، مؤقت حتى تصميم N1) | — | `../guerrilla/graffiti/graffiti-03-closing_ar_square_1080x1080.jpg` | `../guerrilla/graffiti/graffiti-03-closing_ar_story_1080x1920.jpg` |
+| **close-ar** (الإغلاق + الانتقاء، N1) | `meta-feed-4x5_close-ar_1080x1350.jpg` | `meta-feed-1x1_close-ar_1080x1080.jpg` | `tiktok-9x16_close-ar_1080x1920.jpg` |
+| **close-en** | `meta-feed-4x5_close-en_1080x1350.jpg` | `meta-feed-1x1_close-en_1080x1080.jpg` | `tiktok-9x16_close-en_1080x1920.jpg` |
 | **bait-en** | `meta-feed-4x5_live-en_1080x1350.jpg` | `meta-feed-1x1_live-en_1080x1080.jpg` | `tiktok-9x16_live-en_1080x1920.jpg` |
-| ~~seats-ar / seats-en~~ | ⛔ مسحوبة (تعرض 33/50) | ⛔ | ⛔ |
+| ~~seats-ar / seats-en~~ | ⛔ حُذفت من الريبو (6 نوفمبر)، وحلّت محلها `close-*` | | |
 
 **ملاحظات على التصاميم:**
 - ملف 9:16 نفسه يُستخدم لمواضع Stories وReels في Meta.
@@ -141,8 +142,8 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
   |---|---|
   | bait-ar | `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` |
   | bait-en | `ads/video/tiktok-9x16_live-en_1080x1920_8s.mp4` |
-  | ~~seats-ar~~ | ⛔ `ads/video/tiktok-9x16_seats-ar_1080x1920_8s.mp4` (مسحوب) |
-  | ~~seats-en~~ | ⛔ `ads/video/tiktok-9x16_seats-en_1080x1920_8s.mp4` (مسحوب) |
+  | close-ar | `ads/video/tiktok-9x16_close-ar_1080x1920_8s.mp4` (بديل seats-ar المحذوف) |
+  | close-en | `ads/video/tiktok-9x16_close-en_1080x1920_8s.mp4` |
 
   - **المواصفات:** 8 ثوانٍ، 1080×1920، 30 إطارًا/ثانية، H.264، بين 6 و7 ميجابايت.
   - **الحركة:** تقريب بطيء على التصميم، فالإطار الأول هو التصميم كاملًا ويصلح غلافًا.
@@ -192,7 +193,7 @@ TikTok ── SEG-FM | TikTok | Traffic | prospecting | ar | 2026-11          (�
 - **الوصف:** العضوية بالطلب · فحص مجاني أولًا
 - **زر الدعوة:** Sign up (التسجيل)
 - **الرابط:** `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=m-eg-close-ar`
-- **التصميم (مؤقت):** `guerrilla/graffiti/graffiti-03-closing_ar_square_1080x1080.jpg` · ستوري `graffiti-03-closing_ar_story_1080x1920.jpg`. **لا** `ads/*_seats-*` (⛔)
+- **التصميم (N1):** `ads/meta-feed-4x5_close-ar_1080x1350.jpg` · 1:1 `ads/meta-feed-1x1_close-ar_1080x1080.jpg` · ستوري `ads/tiktok-9x16_close-ar_1080x1920.jpg`. (`seats-*` حُذفت.)
 
 #### `m-sa-bait-ar` · مجموعة sa-finance · الطُعم
 

@@ -381,7 +381,7 @@
 - LinkedIn المؤسس: نصي، بلا صورة (أعلى وصول لنص شخصي).
 - Facebook وInstagram: `golden/3-hawk-eye/golden-3-hawk-eye_ar_4x5_1080x1350.jpg` («كل رقم بدليله»، مُعاد توليده بـ9,900).
 - ستوري: `launch-week/launch-live-invite_ar_story_1080x1920.jpg` + ملصق العدّ التنازلي.
-- **ممنوع:** `social/*_seats-*`، `concepts/hemicycle/*`، `golden/2-hourglass/*`، `psych/4-scarcity-proof/*` (كلها ⛔).
+- **بدائل الندرة الجاهزة (6 نوفمبر):** `ads/*_close-ar_*` و`social/*_close-ar_*` (N1)، `concepts/hemicycle/*` (صار «مجلس الأعضاء المؤسِّسين»)، `golden/2-days/*` (ساعة الأيام)، `psych/4-selectivity/*` («مش كل طلب بيتقبل»). الأصول القديمة (`seats`، `2-hourglass`، `4-scarcity-proof`) حُذفت من الريبو.
 
 ### LinkedIn · حساب المؤسس · `w1-d6-li-a-1` · 10:30
 

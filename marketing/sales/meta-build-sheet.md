@@ -81,7 +81,7 @@
 | الإعلان | الزاوية | Feed 4:5 (أساسي) | 1:1 (بديل) | الريل لـStories/Reels |
 |---|---|---|---|---|
 | `crack` | الخطأ المستخبي اللي بيكبر (Loss aversion) | `marketing/designs/golden/1-crack/golden-1-crack_ar_4x5_1080x1350.jpg`<br>https://www.seg-audit.com/assets/social/golden/golden-1-crack_ar_4x5_1080x1350.jpg | https://www.seg-audit.com/assets/social/golden/golden-1-crack_ar_1x1_1080x1080.jpg | `reel-suspense-account_ar` (حساب وسيط يكبر كل شهر)<br>https://www.seg-audit.com/assets/social/video/reel-suspense-account_ar_1080x1920.mp4 |
-| `close` | نافذة الإغلاق + الانتقائية («سعر المؤسِّس يُغلق 30 نوفمبر») | **مؤقت (لا 4:5):** `marketing/designs/guerrilla/graffiti/graffiti-03-closing_ar_square_1080x1080.jpg` («الإقفال جايّ. وفيه مفاجآت.») لكل مواضع الـFeed، إلى أن يجهز تصميم N1 من [`design-redo-list.md`](../strategy/design-redo-list.md) | نفس المربع | `reel-duplicate-payment_ar` (الريل الرئيسي)<br>https://www.seg-audit.com/assets/social/video/reel-duplicate-payment_ar_1080x1920.mp4 · أو ستوري `graffiti-03-closing_ar_story_1080x1920.jpg` |
+| `close` | نافذة الإغلاق + الانتقائية («سعر المؤسِّس يُغلق 30 نوفمبر») | **N1 (جاهز، 6 نوفمبر):** `marketing/designs/ads/meta-feed-4x5_close-ar_1080x1350.jpg` («30 نوفمبر · سعر المؤسِّس يُغلق نهائيًا» + «العضوية بالطلب، ومش كل طلب بيتقبل») | `marketing/designs/ads/meta-feed-1x1_close-ar_1080x1080.jpg` | `reel-duplicate-payment_ar` (الريل الرئيسي)<br>https://www.seg-audit.com/assets/social/video/reel-duplicate-payment_ar_1080x1920.mp4 · أو ستوري `ads/tiktok-9x16_close-ar_1080x1920.jpg` |
 | `hawk-eye` | «كل رقم بدليله» / «المنصة التي تراجع نفسها» (سلطة الثقة) | `marketing/designs/golden/3-hawk-eye/golden-3-hawk-eye_ar_4x5_1080x1350.jpg`<br>https://www.seg-audit.com/assets/social/golden/golden-3-hawk-eye_ar_4x5_1080x1350.jpg | https://www.seg-audit.com/assets/social/golden/golden-3-hawk-eye_ar_1x1_1080x1080.jpg | `reel-no-receipt_ar` (مصروف معتمد بلا مرفق = رقم بلا دليل)<br>https://www.seg-audit.com/assets/social/video/reel-no-receipt_ar_1080x1920.mp4 |
 | `lineup` | الصادم: «كل قيد تحت الاستجواب» | `marketing/designs/golden/4-lineup/golden-4-lineup_ar_4x5_1080x1350.jpg`<br>https://www.seg-audit.com/assets/social/golden/golden-4-lineup_ar_4x5_1080x1350.jpg | https://www.seg-audit.com/assets/social/golden/golden-4-lineup_ar_1x1_1080x1080.jpg | `reel-round-manual_ar` (قيود يدوية مدوّرة في آخر يومين من الشهر)<br>https://www.seg-audit.com/assets/social/video/reel-round-manual_ar_1080x1920.mp4 |
 
@@ -250,7 +250,7 @@
 - [ ] على `eg-crack` → **Duplicate** → نفس المجموعة → Duplicate (مرة واحدة).
 - [ ] عدّل النسخة إلى `eg-close`:
   - الاسم.
-  - الميديا: مربع `graffiti-03-closing_ar_square_1080x1080.jpg` للـFeed (مؤقتًا)، والريل `reel-duplicate-payment_ar`.
+  - الميديا: `meta-feed-4x5_close-ar_1080x1350.jpg` للـFeed (و`meta-feed-1x1_close-ar` كبديل)، و`tiktok-9x16_close-ar_1080x1920.jpg` للستوري، والريل `reel-duplicate-payment_ar`.
   - النصوص من §4 → `close`.
   - **End date للإعلان:** موعد الإغلاق (`founding.closesAt`).
   - الرابط: `eg-close`، وهو **بلا** `#fm-check`.

@@ -51,7 +51,7 @@ Response SLA: comments and DMs within **2 working hours**; sign-ups contacted wi
 | 1–2 | Onboarding session (30–45 min): every report running on their data | Call / screen-share | Activation |
 | 2 | Check-in: «ما أول ملاحظة فاجأتك؟» | WhatsApp | Value moment; testimonial raw material |
 | 3 | Testimonial or case study ask, with consent form (named / anonymous / no) | Call, then written consent by email | Proof for track A |
-| 3–4 | Referral ask: «المقاعد التأسيسية 50 فقط، بسعر مؤسِّس مدى الحياة. من تعرف يستفيد؟» (no remaining-seat number while the counter is off) | WhatsApp | Warm leads for track A |
+| 3–4 | Referral ask: «العضوية المؤسِّسة بالطلب، وسعر المؤسِّس بيتقفل 30 نوفمبر. مين تعرف يستفيد؟» (no remaining-seat number while the counter is off) | WhatsApp | Warm leads for track A |
 
 Track B status per member lives in the CRM (Odoo, erp.seg-audit.com) with one activity per touchpoint. Never post anything that identifies a member without written consent.
 

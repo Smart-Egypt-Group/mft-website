@@ -50,14 +50,14 @@ Base links:
 | `utm_source` | `linkedin`, `facebook`, `instagram`, `meta`, `x`, `youtube`, `tiktok`, `whatsapp`, `email`, `website`, `partner`, `phone` | The platform where the click happens, lowercase. `meta` = paid Meta ads across Facebook and Instagram placements (see `sales/paid-ads-kit.md`) |
 | `utm_medium` | `organic`, `paid`, `social-bio`, `owned`, `email`, `sales`, `referral` | `social-bio` = link in bio; `owned` = our website; `sales` = 1:1 messages from the team (WhatsApp, LinkedIn, outbound touches: `utm_content=ob-<sequence>-t<n>`); `referral` = a founding member's or a partner's own link (`utm_content=<partner-code>`); `email` = nurture sequences (`utm_content=n1-e2`) |
 | `utm_campaign` | `founding-members-2026` | One value for the whole launch; never change it mid-flight |
-| `utm_content` | The item ID: `w1-d1-li-a-1`, or for ads the asset name: `seats-ar-4x5` | Lets the report tie a seat back to one post or creative |
+| `utm_content` | The item ID: `w1-d1-li-a-1`, or for ads the asset name: `close-ar-4x5` | Lets the report tie a seat back to one post or creative |
 | `utm_term` | Paid only: audience short name: `eg-finance`, `sa-finance`, `odoo-stack`, `rt-30d`, `lal-1` | |
 
 Examples:
 
 ```
 https://app.seg-audit.com/ar/signup?utm_source=linkedin&utm_medium=organic&utm_campaign=founding-members-2026&utm_content=w1-d1-li-a-1
-https://app.seg-audit.com/ar/signup?utm_source=facebook&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=seats-ar-4x5&utm_term=eg-finance
+https://app.seg-audit.com/ar/signup?utm_source=facebook&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=close-ar-4x5&utm_term=eg-finance
 https://app.seg-audit.com/ar/signup?utm_source=whatsapp&utm_medium=referral&utm_campaign=founding-members-2026&utm_content=ref-<member-code>
 ```
 
