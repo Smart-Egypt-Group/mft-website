@@ -190,7 +190,7 @@ function authority(kind) {
     head: 'المنصة التي<br><em>تراجع نفسها.</em>',
     sub: `قبل ما تراجع دفاترك: +${TESTS} اختبار آلي قبل كل تحديث للمنصة، وكل تقرير يعتمده مراجع باسمه.`,
     visual: `<div class="seal"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" fill="rgba(27,183,205,.08)" stroke="rgba(27,183,205,.6)" stroke-width=".6"/><circle cx="50" cy="50" r="31" fill="none" stroke="rgba(255,255,255,.18)" stroke-width=".4" stroke-dasharray="1 1.6"/>${ticks}</svg>
-      <div class="in"><span class="big">+${TESTS}</span><span class="lbl">اختبار قبل كل تحديث</span><span class="src">من كود المنصة · ${ar(26)} أكتوبر ${ar(2026)}</span></div></div>`,
+      <div class="in"><span class="big">+${TESTS}</span><span class="lbl">اختبار قبل كل تحديث</span><span class="src">من كود المنصة · ${ar(+FACTS.measuredOn.slice(8))} ${['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'][+FACTS.measuredOn.slice(5,7)-1]} ${FACTS.measuredOn.slice(0,4).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d])}</span></div></div>`,
     css: `.seal{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
       .seal svg{height:100%;max-width:100%;aspect-ratio:1}
       .in{position:absolute;display:flex;flex-direction:column;align-items:center;gap:.6cqmin;text-align:center}

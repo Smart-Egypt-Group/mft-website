@@ -56,7 +56,7 @@ function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 10139
 const T = {
   ar: {
     cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com',
-    tb: { eb: 'Standard Enterprise Governance · الفحص المجاني', head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', sub: 'مؤشرات من ميزان المراجعة فقط. ليس تقرير مراجعة كاملًا.', cols: ['الحساب', 'مدين', 'دائن'], total: 'الإجمالي',
+    tb: { eb: 'Standard Enterprise Governance · الفحص المجاني', head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', sub: 'مؤشرات من الميزان؛ 01 و04 و05 بربط Odoo. ليست تقرير مراجعة.', cols: ['الحساب', 'مدين', 'دائن'], total: 'الإجمالي',
       acc: ['النقدية', 'حساب معلّق', 'العملاء', 'الموردون', 'الإيرادات', 'تكلفة المبيعات', 'المصروفات'],
       legend: ['حسابات معلّقة', 'أرصدة شاذة', 'عدم اتزان', 'قيود يدوية كثيفة', 'تواريخ رجعية'] },
     hook: { l1: 'مين بيراجع دفاترك', s1: 'مين بيراجع', s2: 'دفاترك باقي', pre: 'باقي', post: 'يوم؟', cap: 'مراجعة سنوية واحدة. والسنة 365 يومًا.' },
@@ -67,24 +67,24 @@ const T = {
       ? { eb: 'Standard Enterprise Governance · الأعضاء المؤسِّسون', title: `باقي ${LEFT} من ${FM.total} · ${FILLED} شركة انضمّت`, t1: `باقي ${LEFT} من ${FM.total}`, t2: `${FILLED} شركة انضمّت`, sub: 'احجز مقعدك قبل اكتمال العدد.', pill: 'احجز مقعدك  ·  app.seg-audit.com' }
       : { eb: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', title: `${FM.total} مقعد فقط · سعر المؤسِّس: 50% مدى الحياة`, t1: `${FM.total} مقعد فقط`, t2: 'سعر المؤسِّس: 50% مدى الحياة', sub: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', pill: 'احجز مقعدك  ·  app.seg-audit.com' },
     car: {
-      cover: { l1: 'أخطاء في دفاترك', l2: 'مش هتلاحظها', sub: 'وكلها باينة في ميزان المراجعة.', swipe: 'اسحب  ←' },
+      cover: { l1: 'أخطاء في دفاترك', l2: 'مش هتلاحظها', sub: 'ثلاثة منها تظهر بربط Odoo فقط', swipe: 'اسحب  ←' },
       // the five trial-balance indicators of the free check (CEO, 3 Nov 2026)
       items: [
-        { t: 'حسابات معلّقة', d: 'رصيد قاعد في حساب وسيط بقاله شهور ومحدش سوّاه.' },
+        { t: 'حسابات معلّقة', d: 'رصيد قاعد في حساب وسيط بقاله شهور ومحدش سوّاه. (يحتاج ربط Odoo)' },
         { t: 'أرصدة شاذة', d: 'حساب رصيده عكس طبيعته: نقدية برصيد دائن.' },
         { t: 'ميزان مش متزن', d: 'إجمالي المدين مش بيساوي إجمالي الدائن.' },
-        { t: 'قيود يدوية كثيفة', d: 'قيود يدوية كتير على حسابات حساسة.' },
-        { t: 'تواريخ رجعية', d: 'قيود اتسجلت النهارده بتاريخ قديم.' }
+        { t: 'قيود يدوية كثيفة', d: 'قيود يدوية كتير على حسابات حساسة. (يحتاج ربط Odoo)' },
+        { t: 'تواريخ رجعية', d: 'قيود اتسجلت النهارده بتاريخ قديم. (يحتاج ربط Odoo)' }
       ],
       foot: 'فحص الميزان المجاني بيكشفها في دقائق.',
-      end: { head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', line: 'مؤشرات من ميزان المراجعة فقط. ليس تقرير مراجعة كاملًا.', pill: 'افحص ميزانك مجانًا  ·  app.seg-audit.com' }
+      end: { head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', line: 'مؤشرات من ميزان المراجعة؛ 3 منها تحتاج ربط Odoo. ليس تقرير مراجعة كاملًا.', pill: 'افحص ميزانك مجانًا  ·  app.seg-audit.com' }
     },
     vid: { a2: 'مراجعة سنوية واحدة. والسنة 365 يومًا.', a3: 'SEG بيقرا دفاترك كل يوم.', a4: 'وكل ملاحظة معاها دليلها.', b1: 'دفاترك شكلها كده؟', b2: 'SEG بيراجع…', b3: 'ملاحظة حرجة واحدة. ومعها مصدرها.' },
     pov: { hook: 'ليه 50 شركة بس؟', name: 'أحمد أشرف', role: 'المؤسس والرئيس التنفيذي، MFT', pill: FM.showCount ? `باقي ${LEFT} من ${FM.total}` : `${FM.total} مقعدًا فقط · سعر المؤسِّس: 50% مدى الحياة`, ph: 'لقطة المؤسس هنا (POV)' }
   },
   en: {
     cta: 'Check your trial balance free  ·  app.seg-audit.com',
-    tb: { eb: 'STANDARD ENTERPRISE GOVERNANCE · THE FREE CHECK', head: 'A free check of your company’s trial balance that flags its risk points in minutes', sub: 'Trial-balance indicators only. Not a full audit report.', cols: ['Account', 'Debit', 'Credit'], total: 'Total',
+    tb: { eb: 'STANDARD ENTERPRISE GOVERNANCE · THE FREE CHECK', head: 'A free check of your company’s trial balance that flags its risk points in minutes', sub: 'Trial-balance indicators; 01, 04 and 05 need an Odoo connection. Not a full audit report.', cols: ['Account', 'Debit', 'Credit'], total: 'Total',
       acc: ['Cash', 'Suspense', 'Receivables', 'Payables', 'Revenue', 'Cost of sales', 'Expenses'],
       legend: ['Suspense accounts', 'Abnormal balances', 'Imbalance', 'Heavy manual entries', 'Backdated entries'] },
     hook: { l1: 'Who reviews your books', s1: 'Who reviews your', s2: 'books the other', pre: 'the other', post: 'days?', cap: 'One annual audit. A year has 365 days.' },
@@ -95,16 +95,16 @@ const T = {
       ? { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', title: `${LEFT} of ${FM.total} left · ${FILLED} seats reserved`, t1: `${LEFT} of ${FM.total} left`, t2: `${FILLED} seats reserved`, sub: 'Claim your seat before the count closes.', pill: 'Claim your seat  ·  app.seg-audit.com' }
       : { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', title: `Only ${FM.total} seats · Founder price: 50% off for life`, t1: `Only ${FM.total} seats`, t2: 'Founder price: 50% off for life', sub: 'Start with a free check of your company’s trial balance.', pill: 'Claim your seat  ·  app.seg-audit.com' },
     car: {
-      cover: { l1: 'mistakes in your books', l2: "you won't notice", sub: 'And every one shows in your trial balance.', swipe: 'Swipe  →' },
+      cover: { l1: 'mistakes in your books', l2: "you won't notice", sub: 'Three of them need an Odoo connection.', swipe: 'Swipe  →' },
       items: [
-        { t: 'Suspense accounts left open', d: 'A balance parked in a clearing account for months.' },
+        { t: 'Suspense accounts left open', d: 'A balance parked in a clearing account for months. (Needs an Odoo connection.)' },
         { t: 'Abnormal balances', d: 'An account against its nature: cash with a credit balance.' },
         { t: 'A trial balance that doesn’t balance', d: 'Total debits don’t equal total credits.' },
-        { t: 'Heavy manual entries', d: 'Too many manual entries on sensitive accounts.' },
-        { t: 'Backdated entries', d: 'Entries recorded today with an old date.' }
+        { t: 'Heavy manual entries', d: 'Too many manual entries on sensitive accounts. (Needs an Odoo connection.)' },
+        { t: 'Backdated entries', d: 'Entries recorded today with an old date. (Needs an Odoo connection.)' }
       ],
       foot: 'The free trial-balance check flags it in minutes.',
-      end: { head: 'A free check of your company’s trial balance that flags its risk points in minutes', line: 'Trial-balance indicators only. Not a full audit report.', pill: 'Check your trial balance free  ·  app.seg-audit.com' }
+      end: { head: 'A free check of your company’s trial balance that flags its risk points in minutes', line: 'Trial-balance indicators; three need an Odoo connection. Not a full audit report.', pill: 'Check your trial balance free  ·  app.seg-audit.com' }
     },
     vid: { a2: 'One annual audit. A year has 365 days.', a3: 'SEG reads your books every day.', a4: 'And every finding comes with its evidence.', b1: 'Do your books look like this?', b2: 'SEG is reviewing…', b3: 'One critical finding. With its source.' },
     pov: { hook: 'Why only 50 companies?', name: 'Ahmed Ashraf', role: 'Founder & CEO, MFT', pill: FM.showCount ? `${LEFT} of ${FM.total} left` : `Only ${FM.total} seats · Founder price: 50% off for life`, ph: 'Founder footage here (POV)' }
