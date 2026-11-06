@@ -39,8 +39,8 @@ const OUT = path.join(ROOT, 'marketing/designs/concepts');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
 const { MARK: SEG_MARK } = require('./lib/campaign.js');
 const MARK = { navy: SEG_MARK.navy, white: SEG_MARK.white }; // SEG cube (colour on light, white on dark)
-const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
-const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
+const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
+const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
 const { founding: FM } = require('../src/site.config.js');
 const FACTS = require('../src/content/platform-facts.js');
 const { CLOSE, COPY: K } = require('./lib/campaign.js');
@@ -50,7 +50,7 @@ const COUNCIL = 84, FILLED = 0;
 const HEADLINE = String(CLOSE.d);
 const TESTS = FACTS.testsFloor.toLocaleString('en-US');
 
-const NAVY = '#0D1B3E', CYAN = '#1BB7CD', W = '#FFFFFF';
+const { NAVY, CYAN, W } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
 const DIM = 'rgba(255,255,255,.78)', DIM2 = 'rgba(255,255,255,.55)';
 const PHI = (1 + Math.sqrt(5)) / 2;
 const f = (n) => +(+n).toFixed(1);

@@ -21,12 +21,12 @@ catch { console.error('playwright not found. npm i -D playwright, or set PLAYWRI
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/psych');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
-const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
+const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
+const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
 const { founding: FM } = require('../src/site.config.js');
 const FACTS = require('../src/content/platform-facts.js');
 
-const NAVY = '#0D1B3E', CYAN = '#1BB7CD', W = '#FFFFFF', RED = '#C0392B';
+const { NAVY, CYAN, W, RED } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
 const SIZES = { square: [1080, 1080], story: [1080, 1920], link: [1200, 630] };
 
 // Arabic-Indic digits with the Arabic thousands separator: 18747106 → ١٨٬٧٤٧٬١٠٦
@@ -410,6 +410,7 @@ async function main() {
     await p.setContent(d.fn(kind), { waitUntil: 'load' });
     await p.evaluate(() => document.fonts.ready);
     await p.waitForTimeout(150);
+    await p.screenshot({ type: 'png' }); // warm-up: Chrome 157 can return a half-painted first capture
     const png = (await p.screenshot({ type: 'png' })).toString('base64');
     await p.close();
     // Same encoders and qualities as scripts/launch-concepts.js.

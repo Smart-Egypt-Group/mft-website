@@ -13,6 +13,8 @@
 //      that writes «SEG» as a wordmark (fillText('SEG'…), <span class="lat">SEG…) must take its logo from
 //      the kit, and no generator may load the MFT mark (src/assets/logo/mft-mark-*) except on a line
 //      marked «qa-allow-mft-mark» (MFT's own company avatars)
+//   6. design tokens: brand colours and font files come from marketing/brand/tokens/seg-tokens.json
+//      (scripts/lib/brand-tokens.js), never typed per generator
 // Comment lines (// …) in generators are not scanned: they document what was withdrawn.
 const fs = require('fs');
 const path = require('path');
@@ -25,10 +27,10 @@ const SPECS = [
   [1080, 1080, 'IG/FB/LI square · Meta 1:1'], [1080, 1350, 'IG/FB/LI portrait 4:5 · Meta 4:5'], [1080, 1920, 'Story/Reel/TikTok/Shorts 9:16'],
   [1200, 630, 'LinkedIn/Facebook link'], [1600, 900, 'X post'], [1280, 720, 'YouTube thumbnail'], [1920, 1080, 'YouTube/LinkedIn 16:9 video frame'], [2560, 1440, 'YouTube banner'],
   [1128, 191, 'LinkedIn company cover'], [1584, 396, 'LinkedIn personal banner'], [1500, 500, 'X header'], [1640, 624, 'Facebook cover'],
-  [150, 150, 'YouTube watermark'], [2316, 1180, 'storyboard sheet'], [1860, 1180, 'storyboard sheet']
+  [150, 150, 'YouTube watermark'], [1240, 1754, 'A4 at 150 dpi'], [2316, 1180, 'storyboard sheet'], [1860, 1180, 'storyboard sheet']
 ];
 const AVATAR = /avatar_/; // avatars: each platform's own square size
-const LOGO_DIR = /brand\/assets\/logo\//; // logo masters: their own sizes
+const LOGO_DIR = /brand\/assets\/(logo|identity)\//; // logo masters and identity boards: their own sizes
 
 const problems = [];
 // 1 + 4: generator sources
@@ -54,6 +56,8 @@ for (const g of GENERATORS) {
   const usesKitLogo = /require\('\.\/lib\/campaign\.js'\)/.test(src) && /\bMARK\b|signHTML|SIGN_CANVAS_SRC|drawSign/.test(src);
   src.split('\n').forEach((l, i) => {
     if (/^\s*\/\//.test(l)) return;
+    if (/^const\s+(NAVY|CYAN|W|RED|DEEP|PAPER|CYAN_INK)\s*=\s*'#/.test(l)) problems.push(`scripts/${g}.js:${i + 1}: brand colour typed locally (read it from scripts/lib/brand-tokens.js → legacy)`);
+    if (/src\/assets\/fonts\/[a-z-]+\.woff2/.test(l)) problems.push(`scripts/${g}.js:${i + 1}: font path typed locally (read it from scripts/lib/brand-tokens.js → font)`);
     if (/mft-mark-/.test(l) && !/qa-allow-mft-mark/.test(l)) problems.push(`scripts/${g}.js:${i + 1}: loads the MFT mark (the SEG logo comes from scripts/lib/campaign.js → MARK)`);
     if (/fillText\('SEG'|class="lat">SEG|>SEG<\/(b|span)>/.test(l) && !usesKitLogo) problems.push(`scripts/${g}.js:${i + 1}: writes SEG as text without the SEG logo`);
   });

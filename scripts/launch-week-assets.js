@@ -21,9 +21,9 @@ const OUT = path.join(ROOT, 'marketing/designs/launch-week');
 const PUB = path.join(ROOT, 'src/assets/social');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
 const MARK = require('./lib/campaign.js').MARK.white; // SEG cube, white (app bar mock on navy)
-const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
-const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
-const NAVY = '#0D1B3E', CYAN = '#1BB7CD', RED = '#C0392B';
+const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
+const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
+const { NAVY, CYAN, RED } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
 const SIZES = { square: [1080, 1080], story: [1080, 1920] };
 const DEMO = 'عرض توضيحي · داتا اختبارية';
 
@@ -152,6 +152,7 @@ async function main() {
     await p.setContent(fn(kind), { waitUntil: 'load' });
     await p.evaluate(() => document.fonts.ready);
     await p.waitForTimeout(150);
+    await p.screenshot({ type: 'png' }); // warm-up: Chrome 157 can return a half-painted first capture
     const png = (await p.screenshot({ type: 'png' })).toString('base64');
     await p.close();
     const [webp, jpg] = await enc.evaluate(async (src) => {

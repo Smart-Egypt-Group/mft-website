@@ -35,12 +35,12 @@ const SITE_OUT = path.join(ROOT, 'src/assets/img/launch');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
 const { MARK: SEG_MARK } = require('./lib/campaign.js');
 const MARK_NAVY = SEG_MARK.navy, MARK_WHITE = SEG_MARK.white; // SEG cube: colour on the page, white on navy
-const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
-const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
+const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
+const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
 const { founding: FM } = require('../src/site.config.js');
 const { CLOSE, COPY: K, SIGN_CANVAS_SRC } = require('./lib/campaign.js');
 
-const NAVY = '#0D1B3E', CYAN = '#1BB7CD', W = '#FFFFFF';
+const { NAVY, CYAN, W } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
 const PHI = (1 + Math.sqrt(5)) / 2;
 function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
 const f = (n) => +n.toFixed(1);

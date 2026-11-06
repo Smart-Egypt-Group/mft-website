@@ -95,7 +95,7 @@ const MARK = { white: 'data:image/png;base64,' + b64(LOGO + 'seg-logo_sign-white
 MARK.color = MARK.navy; MARK.onDark = MARK.white; MARK.onLight = MARK.navy;
 const MARK_FILES = { white: LOGO + 'seg-logo_sign-white.png', color: LOGO + 'seg-logo_sign.png' };
 const MARK_RATIO = 262 / 256;
-const NAVY = '#0D1B3E', CYAN = '#1BB7CD';
+const { NAVY, CYAN } = require('./brand-tokens.js').legacy;
 
 // HTML signature (for the HTML/CSS generators). `h` = mark height in px; `onLight` = navy version.
 function signHTML(h, { onLight = false, style = '' } = {}) {

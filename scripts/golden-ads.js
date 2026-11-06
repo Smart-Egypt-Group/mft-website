@@ -38,12 +38,12 @@ const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/golden');
 const HOST = path.join(ROOT, 'src/assets/social/golden');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
-const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
+const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
+const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
 const { founding: FM } = require('../src/site.config.js');
 const FACTS = require('../src/content/platform-facts.js');
 
-const NAVY = '#0D1B3E', DEEP = '#081230', CYAN = '#1BB7CD', CYAN_INK = '#1497AA', W = '#FFFFFF', RED = '#C0392B', PAPER = '#F3F5F9';
+const { NAVY, DEEP, CYAN, CYAN_INK, W, RED, PAPER } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
 const PHI = (1 + Math.sqrt(5)) / 2;
 const FORMATS = { '1x1': [1080, 1080], '4x5': [1080, 1350] };
 const ar = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '٬').replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
@@ -468,6 +468,9 @@ async function main() {
     await p.evaluate(() => document.fonts.ready);
     await p.waitForTimeout(200);
     const meas = await p.evaluate(MEASURE);
+    // warm-up capture: with Chrome 157 the first screenshot of a fresh page can come back half-painted
+    // (the top band repeated at the bottom); the second one is the real frame
+    await p.screenshot({ type: 'png' });
     const png = (await p.screenshot({ type: 'png' })).toString('base64');
     await p.evaluate(() => document.body.classList.add('show-guides'));
     const gpng = (await p.screenshot({ type: 'png' })).toString('base64');

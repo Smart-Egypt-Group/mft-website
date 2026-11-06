@@ -34,10 +34,10 @@ const OUT = path.join(ROOT, 'marketing/designs/video');
 const PUB = path.join(ROOT, 'src/assets/social/video');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
 const MARK = require('./lib/campaign.js').MARK.white; // SEG cube, white (app bar mock on navy)
-const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
-const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
+const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
+const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
 const W = 1080, H = 1920, FPS = 30, TOTAL = 34;
-const NAVY = '#0D1B3E', CYAN = '#1BB7CD', RED = '#C0392B';
+const { NAVY, CYAN, RED } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
 // Scene windows (seconds)
 const T = { hook: [0, 5], why: [5, 12], ev: [12, 24], ctl: [24, 29], cta: [29, TOTAL] };
 
@@ -380,6 +380,7 @@ async function main() {
       window._enc.configure({ codec: 'avc1.640028', width: W, height: H, bitrate: 10e6, framerate: FPS, hardwareAcceleration: 'prefer-software', latencyMode: 'quality', avc: { format: 'avc' } });
     }, { W, H, FPS });
     const n = TOTAL * FPS;
+    await p.screenshot({ type: 'jpeg', quality: 92 }); // warm-up: Chrome 157 can return a half-painted first capture
     for (let i = 0; i < n; i++) {
       await p.evaluate((t) => window.setT(t), i / FPS);
       const jpg = (await p.screenshot({ type: 'jpeg', quality: 92 })).toString('base64');

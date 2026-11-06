@@ -25,10 +25,10 @@ const { signHTML } = require('./lib/campaign.js');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/guerrilla');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
-const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
+const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
+const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
 
-const NAVY = '#0D1B3E', CYAN = '#1BB7CD', W = '#FFFFFF';
+const { NAVY, CYAN, W } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
 const SIZES = { square: [1080, 1080], story: [1080, 1920] };
 const CAPTION = 'الحاجة المهمة بتتكتب عشان ماتتنساش. دفاترك أهم';
 
@@ -257,6 +257,7 @@ async function main() {
     await p.setContent(fn(d, w, h), { waitUntil: 'load' });
     await p.evaluate(() => document.fonts.ready);
     await p.waitForTimeout(150);
+    await p.screenshot({ type: 'png' }); // warm-up: Chrome 157 can return a half-painted first capture
     const png = (await p.screenshot({ type: 'png' })).toString('base64');
     await p.close();
     // Same encoders and qualities as scripts/launch-concepts.js.
