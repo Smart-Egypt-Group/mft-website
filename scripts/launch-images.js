@@ -47,8 +47,8 @@ const f = (n) => +n.toFixed(1);
 
 // ---- Copy (three levels + CTA), from scripts/lib/campaign.js. ----
 const COPY = {
-  'close-ar': { dir: 'rtl', eyebrow: `SEG · ${K.ar.program}`, hero: [String(CLOSE.d), CLOSE.arMonth], title: K.ar.closes, support: [`${K.ar.when}.`, K.ar.select], cta: `${K.ar.cta}  ·  ${K.ar.ctaUrl}`, motif: 'close' },
-  'close-en': { dir: 'ltr', eyebrow: `SEG · ${K.en.program.toUpperCase()}`, hero: [String(CLOSE.d), CLOSE.enMonth.slice(0, 3).toUpperCase()], title: K.en.closes, support: [`${K.en.when}.`, K.en.select], cta: `${K.en.cta}  ·  ${K.en.ctaUrl}`, motif: 'close' },
+  'close-ar': { dir: 'rtl', eyebrow: `SEG · ${K.ar.program}`, hero: [String(CLOSE.d), CLOSE.arMonth], title: K.ar.closes, support: [`${K.ar.when}.`, K.ar.select], cta: `${K.ar.cta}  ·  ${K.ar.ctaUrl}`, motif: 'close', dayLabel: `آخر يوم · ${CLOSE.arTime}` },
+  'close-en': { dir: 'ltr', eyebrow: `SEG · ${K.en.program.toUpperCase()}`, hero: [String(CLOSE.d), CLOSE.enMonth.slice(0, 3).toUpperCase()], title: K.en.closes, support: [`${K.en.when}.`, K.en.select], cta: `${K.en.cta}  ·  ${K.en.ctaUrl}`, motif: 'close', dayLabel: `Last day · ${CLOSE.enTime}` },
   'live-ar': { dir: 'rtl', eyebrow: 'Standard Enterprise Governance من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com', motif: 'live' },
   'live-en': { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'A free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Check your trial balance free  ·  app.seg-audit.com', motif: 'live' },
   // N8: YouTube thumbnail for the live recording (Tue 10 Nov), used from Wed 11
@@ -306,6 +306,17 @@ function typePlan(F, C) {
     if (j.G.close) {
       const cl = j.G.close; g.save(); g.direction = 'ltr'; g.textAlign = 'center'; g.fillStyle = '#0D1B3E';
       g.font = `900 ${cl.r * 1.02}px "Inter"`; g.fillText(String(j.day), cl.x, cl.y + cl.r * 0.37); g.restore();
+      // label the lit day in the empty cells beside it («آخر يوم · 11:59 مساءً»), navy on the page
+      if (C.dayLabel) {
+        const lrtl = C.dir === 'rtl', P = j.G.page, gap = cl.r + 26 * u;
+        const room = lrtl ? cl.x - gap - P.x : P.x + P.w - (cl.x + gap);
+        let px = Math.max(cl.r * 0.95, 22 * u);
+        g.save(); g.direction = C.dir; g.textAlign = lrtl ? 'right' : 'left'; g.fillStyle = '#0D1B3E';
+        const setL = () => { g.font = `800 ${px}px "Inter", "Cairo", sans-serif`; };
+        setL(); while (g.measureText(C.dayLabel).width > room && px > 12) { px -= 1; setL(); }
+        if (px >= 13) g.fillText(C.dayLabel, lrtl ? cl.x - gap : cl.x + gap, cl.y + px * 0.36);
+        g.restore();
+      }
     }
     if (!C.dir) return [c.toDataURL('image/webp', 0.9).split(',')[1], c.toDataURL('image/jpeg', 0.92).split(',')[1]];
 

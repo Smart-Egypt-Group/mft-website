@@ -36,22 +36,7 @@ for (const g of GENERATORS) {
   });
 }
 
-// image size from the file header (PNG, JPEG, WebP VP8/VP8L/VP8X)
-function size(file) {
-  const b = fs.readFileSync(file);
-  if (b.slice(1, 4).toString() === 'PNG') return [b.readUInt32BE(16), b.readUInt32BE(20)];
-  if (b[0] === 0xff && b[1] === 0xd8) {
-    let i = 2;
-    while (i < b.length) { if (b[i] !== 0xff) { i++; continue; } const m = b[i + 1], len = b.readUInt16BE(i + 2); if (m >= 0xc0 && m <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(m)) return [b.readUInt16BE(i + 7), b.readUInt16BE(i + 5)]; i += 2 + len; }
-  }
-  if (b.slice(0, 4).toString() === 'RIFF') {
-    const t = b.slice(12, 16).toString();
-    if (t === 'VP8X') return [1 + b.readUIntLE(24, 3), 1 + b.readUIntLE(27, 3)];
-    if (t === 'VP8L') { const v = b.readUInt32LE(21); return [(v & 0x3fff) + 1, ((v >> 14) & 0x3fff) + 1]; }
-    if (t === 'VP8 ') return [b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff];
-  }
-  return null;
-}
+const { imageSize: size } = require('./lib/media-info.js');
 function walk(dir) {
   const out = [];
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
