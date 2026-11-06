@@ -21,6 +21,7 @@ let chromium;
 try { ({ chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright')); }
 catch { console.error('playwright not found. npm i -D playwright, or set PLAYWRIGHT_PATH.'); process.exit(1); }
 
+const { signHTML } = require('./lib/campaign.js');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/guerrilla');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
@@ -70,7 +71,7 @@ const cta = (h, bottom) => {
 };
 const mark = (h, bottom) => {
   const s = h === 1920 ? 40 : 34;
-  return `<div class="mark" style="bottom:${bottom + 14}px;font-size:${s * 0.76}px"><img src="${MARK}" style="height:${s}px"><span>MFT</span></div>`;
+  return `<div class="mark" style="bottom:${bottom + 14}px;font-size:${s * 0.76}px">${signHTML(s + 4)}</div>`;
 };
 const page = (css, body, script = '') => `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><style>${BASE_CSS}${css}</style><body>${body}<script>${script}</script></body></html>`;
 

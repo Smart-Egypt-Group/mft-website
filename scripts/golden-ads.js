@@ -5,7 +5,8 @@
 //
 //   1-crack      loss aversion: a ledger page splits open. The crack widens by exactly φ every step,
 //                from a hair-line at one wrong entry to a chasm at the closing.
-//   2-hourglass  scarcity: an hourglass whose sand is seats. 33 still on top, 17 already fallen.
+//   2-days       scarcity as a closing window (6 Nov 2026; replaces the withdrawn seats hourglass): an
+//                hourglass whose sand is the days of the month; the neck is the close (founding.closesAt).
 //   3-hawk-eye   authority: a macro raptor eye, the hero, with the evidence chain in its gaze.
 //   4-lineup     the shock concept: every journal entry under interrogation, in a police lineup.
 //
@@ -22,7 +23,8 @@
 //
 // Brand: navy #0D1B3E, cyan #1BB7CD, white, muted alarm red #C0392B for small risk marks only.
 // No gold. Arabic RTL. Data rule: every ledger figure and code is test data marked «مثال توضيحي».
-// Seat numbers: src/site.config.js → founding. Test count: src/content/platform-facts.js.
+// Close date: src/site.config.js → founding.closesAt (via scripts/lib/campaign.js). Test count: platform-facts.js.
+// No seat numbers anywhere. Signature: mark + SEG + BY MFT (scripts/lib/campaign.js → signHTML).
 //
 //   PLAYWRIGHT_PATH=<path to playwright> node scripts/golden-ads.js [filter]
 const fs = require('fs');
@@ -47,7 +49,7 @@ const NAVY = '#0D1B3E', DEEP = '#081230', CYAN = '#1BB7CD', CYAN_INK = '#1497AA'
 const PHI = (1 + Math.sqrt(5)) / 2;
 const FORMATS = { '1x1': [1080, 1080], '4x5': [1080, 1350] };
 const ar = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '٬').replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
-const FILLED = FM.showCount ? FM.filled : 0, TOTAL = FM.total, LEFT = TOTAL - FILLED;
+const { CLOSE, COPY: K, signHTML } = require('./lib/campaign.js');
 const DEMO = 'مثال توضيحي · داتا اختبارية';
 const r1 = (v) => Math.round(v * 10) / 10;
 const rng = (seed) => { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); };
@@ -84,7 +86,7 @@ function geometry(Wd, Hd) {
 
 // ---------------------------------------------------------------- shared frame
 // scene: full-bleed HTML/SVG behind the frame. paper: light theme (design 1).
-function shell(G, { scene, head, headCss = '', css = '', eyebrowNote = '', paper = false, spiralFx = null, guidesExtra = '' }) {
+function shell(G, { scene, head, headCss = '', css = '', eyebrowNote = '', paper = false, spiralFx = null, guidesExtra = '', sub = 'فحص مجاني لميزان شركتك… <b>في دقائق</b>', cta = 'افحص مجانًا' }) {
   const { W: Wd, H: Hd, T, S, m, X1, X2, Y1, Y2 } = G;
   const sp = spiralFx === null ? null : G.spiral(spiralFx);
   const ink = paper ? NAVY : W, accent = paper ? CYAN_INK : CYAN;
@@ -132,9 +134,9 @@ ${scene(sp)}
 <div class="abs fade"></div>
 <div class="abs eyebrow" data-g="eyebrow"><span class="lat">Standard Enterprise Governance (SEG)</span>${eyebrowNote ? `<small>${eyebrowNote}</small>` : ''}</div>
 <h1 class="abs" data-g="headline">${head}</h1>
-<p class="abs sub" data-g="sub">فحص مجاني لميزان شركتك… <b>في دقائق</b></p>
-<div class="abs foot"><div class="cta" data-g="cta" data-a="left=${r1(X2)}"><span>افحص مجانًا</span><span>·</span><span class="lat">seg-audit.com</span></div>
-  <div class="mark"><img src="${paper ? MARK_N : MARK_W}" alt=""><span>MFT</span></div></div>
+<p class="abs sub" data-g="sub">${sub}</p>
+<div class="abs foot"><div class="cta" data-g="cta" data-a="left=${r1(X2)}"><span>${cta}</span><span>·</span><span class="lat">seg-audit.com</span></div>
+  <div class="mark">${signHTML(T[1], { onLight: paper })}</div></div>
 ${guides}</body></html>`;
 }
 const centred = (x, y) => `left:${r1(x)}px;top:${r1(y)}px;transform:translate(-50%,-50%)`;
@@ -211,7 +213,7 @@ function crack(G) {
   });
 }
 
-// ---------------------------------------------------------------- 2) the hourglass of seats (scarcity)
+// ---------------------------------------------------------------- 2) the hourglass of days (closing window)
 // The neck sits on the spiral's eye. The glass is a golden rectangle (height h, width h/φ) and the
 // neck divides its height at the golden section: top bulb h/φ, bottom bulb h/φ².
 function hourglass(G) {
@@ -227,7 +229,8 @@ function hourglass(G) {
   const edge = (side) => { const pts = []; for (let y = top; y <= bot + 0.1; y += 4) pts.push([nx + side * hw(y), y]); return pts; };
   const L = edge(-1), Rr = edge(1);
   const glass = 'M' + L.map(([a, b]) => `${r1(a)} ${r1(b)}`).join(' L') + ' L' + Rr.reverse().map(([a, b]) => `${r1(a)} ${r1(b)}`).join(' L') + 'Z';
-  // seats: s = T1, gap = S.xs/2. Top bulb: settled toward the neck, 32 + 1 falling. Bottom: a pile of 17.
+  // the sand is the month's days (s = T1, gap 6): every day but the close day settles in the top bulb; the
+  // close day is the cyan tile in the neck. The bottom bulb stays empty: nothing has been counted down.
   const s = T[1], g = 6, seats = [];
   const fill = (n, y0, dir, cls) => {
     let y = y0, left = n;
@@ -239,13 +242,14 @@ function hourglass(G) {
       left -= k; y += dir * (s + g);
     }
   };
-  fill(LEFT - 1, ny - neck - s, -1, 'av');               // top bulb, rows going up from the neck
-  fill(FILLED, bot - S.s - s / 2, -1, 'tk');             // bottom bulb, a pile from the floor up
-  const chair = (x, y, cls) => `<g transform="translate(${r1(x - s / 2)} ${r1(y - s / 2)}) scale(${s / 24})" class="${cls}"><path d="M5 3.5h14a2 2 0 0 1 2 2V13H3V5.5a2 2 0 0 1 2-2Z"/><path d="M2 13h20v3.5H2z"/><path d="M4.5 16.5V21M19.5 16.5V21" stroke-width="2.4" stroke-linecap="round" fill="none"/></g>`;
+  const DAYS = new Date(Date.UTC(CLOSE.y, CLOSE.mo, 0)).getUTCDate();
+  fill(DAYS - 1, ny - neck - s, -1, 'av');                // top bulb, rows going up from the neck
+  const chair = (x, y, cls) => `<g transform="translate(${r1(x - s / 2)} ${r1(y - s / 2)}) scale(${s / 24})" class="${cls}"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 8.5h18" stroke-width="2" fill="none"/></g>`;
   const fall = [nx, ny + s * 0.2];
   return shell(G, {
     spiralFx: true, eyebrowNote: 'الأعضاء المؤسِّسون',
-    head: `<span class="pre">باقي</span><b class="big" data-a="cy=${r1(ny)}">${ar(LEFT)}</b><span class="s">مقعدًا مؤسِّسًا من ${ar(TOTAL)}</span>`,
+    sub: `سعر المؤسِّس… <b>${K.ar.after}</b>`, cta: K.ar.cta,
+    head: `<span class="pre">يُغلق</span><b class="big" data-a="cy=${r1(ny)}">${ar(CLOSE.d)}</b><span class="s">${CLOSE.arMonth} · ${CLOSE.arTime.replace(/\d/g, (x) => '٠١٢٣٤٥٦٧٨٩'[x]).replace('مساءً', 'م')}</span>`,
     headCss: `h1{right:auto;left:${m}px;bottom:auto;top:${r1(top)}px;width:${r1(nx - m)}px;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1}
       h1 .pre{font-size:${T[3]}px;line-height:1.236}
       h1 .big{font-size:${T[6]}px;line-height:1;color:${CYAN};font-weight:900;margin:-${S.m}px 0 0}
@@ -264,15 +268,15 @@ function hourglass(G) {
         ${chair(fall[0], fall[1], 'fall')}
       </svg>
       <span class="abs" data-g="hero" data-a="cx=${r1(nx)};cy=${r1(ny)}" style="${centred(nx, ny)};width:${neck}px;height:${neck}px"></span>
-      <div class="abs legend" style="left:${m}px;top:${r1(bot - T[1])}px"><span><i class="tk"></i>انضمّت ${ar(FILLED)} شركة</span><span><i class="av"></i>متاح ${ar(LEFT)}</span></div>`,
+      <div class="abs legend" style="left:${m}px;top:${r1(bot - T[1])}px"><span><i class="av"></i>أيام ${CLOSE.arMonth}</span><span><i class="tk"></i>${K.ar.selectShort}</span></div>`,
     css: `.bg{inset:0;background:radial-gradient(circle at ${r1(nx)}px ${r1(ny)}px,#1C3068 0%,${NAVY} ${r1(G.W / PHI)}px,${DEEP} 100%)}
-      g.av path{fill:none;stroke:${CYAN};stroke-width:1.8} g.av path:last-child{stroke:${CYAN}}
+      g.av rect{fill:rgba(27,183,205,.08);stroke:${CYAN};stroke-width:1.8} g.av path{stroke:${CYAN}}
       g.tk path{fill:#fff;stroke:#fff;stroke-width:1} g.tk path:last-child{stroke:#fff}
-      g.fall path{fill:${CYAN};stroke:${CYAN};stroke-width:1.4} g.fall path:last-child{stroke:${CYAN}}
+      g.fall rect{fill:${CYAN};stroke:${CYAN};stroke-width:1.4} g.fall path{stroke:${NAVY}}
       .legend{display:flex;justify-content:center;gap:${S.s}px;font-size:${T[0]}px;font-weight:700;color:rgba(255,255,255,.8);white-space:nowrap}
       .legend span{display:flex;align-items:center;gap:${S.xs}px}
       .legend i{width:${S.xs}px;height:${S.xs}px;border-radius:3px;display:block}
-      .legend i.tk{background:#fff} .legend i.av{border:2px solid ${CYAN}}`
+      .legend i.tk{background:#fff;border-radius:50%} .legend i.av{border:2px solid ${CYAN}}`
   });
 }
 
@@ -401,9 +405,9 @@ const DESIGNS = [
   { slug: '1-crack', fn: crack, angle: 'الخطأ المستخبي اللي بيكبر (Loss aversion)',
     idea: 'صفحة دفتر يومية بتتشق. قيد واحد غلط النهارده شعرة، ويوم الإقفال شرخ بيقسم الصفحة.',
     phi: 'عرض الشرخ w(x) = T0·φ^((x0−x)/Δ): بيتضرب في φ كل Δ px بالظبط، فبيعدّي على عروض السُّلَّم ٢٣ ← ٣٧ ← ٦٠ ← ٩٧ ← ١٥٨ ← ٢٥٥. نقطة البداية الحمرا على عين الحلزون، وعلامات الزمن (أسبوع، شهر، ٦ أشهر) عند العروض T2 وT3 وT4. سطور الدفتر كل T1، والأعمدة على خطوط القسمة.' },
-  { slug: '2-hourglass', fn: hourglass, angle: `الندرة «باقي ${LEFT} من ${TOTAL}»`,
-    idea: `ساعة رملية رملها كراسي: ${LEFT} لسه فوق، و${FILLED} وقعوا تحت، وكرسي سماوي بيعدّي من الرقبة دلوقتي.`,
-    phi: 'الساعة مستطيل ذهبي (h × h/φ). الرقبة على عين الحلزون، وبتقسم الارتفاع عند القسمة الذهبية: الانتفاخ العلوي h/φ والسفلي h/φ². الكرسي T1، والرقم «٣٣» بأكبر درجة T6 (٤١٢ px)، وخط منتصفه على مستوى العين تقريبًا (القياس في الجدول).' },
+  { slug: '2-days', fn: hourglass, angle: `نافذة الإغلاق «الوقت، مش المقاعد» (${CLOSE.arShort})`,
+    idea: `ساعة رملية رملها أيام ${CLOSE.arMonth}، والرقبة هي لحظة الإغلاق: ${CLOSE.arFull}. يوم الإغلاق مربع سماوي في الرقبة، والانتفاخ السفلي فاضي (مفيش عدّ تنازلي يتقادم). حلّت محل ساعة المقاعد المسحوبة (6 نوفمبر 2026).`,
+    phi: 'الساعة مستطيل ذهبي (h × h/φ). الرقبة على عين الحلزون، وبتقسم الارتفاع عند القسمة الذهبية: الانتفاخ العلوي h/φ والسفلي h/φ². مربع اليوم T1، ورقم يوم الإغلاق بأكبر درجة T6 (٤١٢ px)، وخط منتصفه على مستوى العين تقريبًا (القياس في الجدول).' },
   { slug: '3-hawk-eye', fn: hawk, angle: '«كل رقم بدليله» / «المنصة التي تراجع نفسها»',
     idea: 'عين صقر ماكرو هي البطل: في قرنيتها انعكاس مستند عليه ✓، ونظرتها ممتدة لسلسلة الدليل (القيد ← فاتورة المورّد ← المرفق).',
     phi: 'البؤبؤ على عين الحلزون. نصف قطر القزحية T5 (٢٥٥)، والبؤبؤ T5/φ، ولمعة الضوء T5/φ³ وT5/φ⁵، والمستند المنعكس مستطيل ذهبي عرضه T5/φ². الريش متجه على مماس حلزون لوغاريتمي بخطوة الحلزون الذهبي (atan(2·ln φ/π) ≈ 0.3 rad).' },
@@ -418,6 +422,7 @@ const MEASURE = `(() => {
   const sizes = new Set(), overflow = [], anchors = [];
   for (const el of document.querySelectorAll('body *')) {
     if (el.closest('svg')) continue;
+    if (el.closest('.seg-sign')) continue; // the platform signature has its own fixed proportions
     const txt = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
     if (txt) sizes.add(Math.round(parseFloat(getComputedStyle(el).fontSize)));
     const b = box(el);
@@ -442,7 +447,7 @@ async function main() {
   const only = process.argv[2] || '';
   if (!only) { // v2 replaces the v1 pack
     for (const d of fs.existsSync(OUT) ? fs.readdirSync(OUT) : []) { const p = path.join(OUT, d); if (fs.statSync(p).isDirectory()) fs.rmSync(p, { recursive: true }); }
-    if (fs.existsSync(HOST)) fs.rmSync(HOST, { recursive: true });
+    // HOST (src/assets/social/golden) is a site folder: files are added or overwritten, never removed here.
   }
   fs.mkdirSync(HOST, { recursive: true });
   const browser = await chromium.launch({ channel: 'chrome', args: ['--disable-gpu'] });
@@ -477,7 +482,7 @@ async function main() {
     fs.writeFileSync(path.join(dir, `${base}_guides.webp`), g.webp);
     fs.copyFileSync(path.join(dir, `${base}.jpg`), path.join(HOST, `${base}.jpg`));
     const anchors = meas.anchors.map((a) => ({ ...a, dev: r1(a.got - a.target) }));
-    if (!['2-hourglass'].includes(d.slug)) anchors.push({ el: 'headline', key: 'bottom', target: r1(G.Y1), got: r1(meas.h1bottom), dev: r1(meas.h1bottom - G.Y1) });
+    if (!['2-days'].includes(d.slug)) anchors.push({ el: 'headline', key: 'bottom', target: r1(G.Y1), got: r1(meas.h1bottom), dev: r1(meas.h1bottom - G.Y1) });
     const off = meas.sizes.filter((s) => !G.T.includes(s));
     if (off.length) problems.push(`${base}: font sizes off the φ scale: ${off.join(', ')}`);
     if (meas.overflow.length) problems.push(`${base}: ${[...new Set(meas.overflow)].join(', ')}`);
@@ -505,8 +510,8 @@ ${DESIGNS.map((d) => `<h2>${d.slug} <span class="k">${d.angle}</span></h2><p cla
   md.push('# Standard Enterprise Governance (SEG): إبداعات حملة Meta، النسبة الذهبية φ (v2)', '');
   md.push('بريف الـCEO (5 نوفمبر 2026): «خارج الصندوق»، ٤ زوايا، نفس الطقم لمجموعتَي مصر والسعودية. يولّدها [`scripts/golden-ads.js`](../../../scripts/golden-ads.js)، والمعرض في [`index.html`](index.html)، والقياسات في [`metrics.json`](metrics.json). هذا الملف يكتبه السكربت. حلّت محل حزمة v1 (٧ زوايا).', '');
   md.push('**المقاسات:** Meta feed 1:1 (1080×1080) و4:5 (1080×1350)، JPG (للرفع) وWebP (للمعرض) ونسخة `_guides.webp` عليها خطوط φ.', '');
-  md.push('**البراند:** navy `#0D1B3E` وcyan `#1BB7CD` وأبيض، وأحمر إنذار خافت `#C0392B` للعلامات الصغيرة فقط. بلا ذهبي. عربي RTL، بصياغة يقرأها السوقان، وبلا رمز عملة لأن الطقم واحد لمصر والسعودية. في كل إعلان: «Standard Enterprise Governance (SEG)»، و«فحص مجاني لميزان شركتك… في دقائق»، وCTA «افحص مجانًا · seg-audit.com»، وعلامة MFT.', '');
-  md.push('**البيانات:** كل رقم وكود دفاتر داتا اختبارية معلَّمة «مثال توضيحي · داتا اختبارية». الاستثناءان: أرقام المقاعد (`site.config.js → founding`، حتى ' + FM.asOf + ') وعدد الاختبارات (`platform-facts.js`، ' + FACTS.measuredOn + ').', '');
+  md.push('**البراند:** navy `#0D1B3E` وcyan `#1BB7CD` وأبيض، وأحمر إنذار خافت `#C0392B` للعلامات الصغيرة فقط. بلا ذهبي. عربي RTL، بصياغة يقرأها السوقان، وبلا رمز عملة لأن الطقم واحد لمصر والسعودية. في كل إعلان: «Standard Enterprise Governance (SEG)»، و«فحص مجاني لميزان شركتك… في دقائق»، وCTA «افحص مجانًا · seg-audit.com» (أو «قدّم طلبك» في تصميم النافذة)، وتوقيع المنصة: العلامة + SEG + BY MFT. بلا أرقام مقاعد ولا سعر رقمي.', '');
+  md.push('**البيانات:** كل رقم وكود دفاتر داتا اختبارية معلَّمة «مثال توضيحي · داتا اختبارية». الاستثناءان: تاريخ الإغلاق (`site.config.js → founding.closesAt`: ' + CLOSE.arFull + ') وعدد الاختبارات (`platform-facts.js`، ' + FACTS.measuredOn + ').', '');
   md.push('## نظام φ المشترك', '');
   md.push('| العنصر | القاعدة | القيمة على 1080 px |', '|---|---|---|');
   md.push(`| سُلَّم الخط | T[k] = (W/φ⁸)·φᵏ، وكل نص درجة منه (السكربت يفشل لو لقى حجم برّه السُّلَّم) | ${G1.T.join(' · ')} |`);

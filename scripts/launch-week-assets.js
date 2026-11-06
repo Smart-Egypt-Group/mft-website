@@ -6,7 +6,7 @@
 //                 «عرض توضيحي · داتا اختبارية». Nothing from the production app.
 //   live-invite   the live broadcast invite: Tuesday 10 November 2026, 19:00 Cairo.
 // Brand: navy, cyan, white; alarm red #C0392B only for small risk marks (severity chips, the live dot).
-// No gold, no amber. Arabic RTL. CTA «فحص مجاني في دقائق · seg-audit.com» and the MFT mark.
+// No gold, no amber. Arabic RTL. CTA «فحص مجاني في دقائق · seg-audit.com» and the platform signature (mark + SEG + BY MFT).
 // Needs Playwright + Google Chrome:  PLAYWRIGHT_PATH=<path to playwright> node scripts/launch-week-assets.js [filter]
 const fs = require('fs');
 const path = require('path');
@@ -15,6 +15,7 @@ let chromium;
 try { ({ chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright')); }
 catch { console.error('playwright not found. npm i -D playwright, or set PLAYWRIGHT_PATH.'); process.exit(1); }
 
+const { signHTML, CLOSE, COPY: K } = require('./lib/campaign.js');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/launch-week');
 const PUB = path.join(ROOT, 'src/assets/social');
@@ -35,7 +36,7 @@ body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:#fff;bac
 .foot{position:absolute;inset-inline:64px;bottom:60px;display:flex;justify-content:space-between;align-items:center}
 .cta{display:flex;align-items:center;gap:14px;padding:0 28px;border-radius:999px;background:${CYAN};color:${NAVY};font-weight:800;white-space:nowrap}
 .cta b{font-family:Inter} .mark{display:flex;align-items:center;gap:12px;direction:ltr} .mark span{font:800 1em Inter;letter-spacing:.15em}`;
-const foot = (story) => `<div class="foot" style="font-size:${story ? 30 : 25}px"><div class="cta" style="height:${story ? 68 : 58}px"><span>فحص مجاني في دقائق</span><i>·</i><b>seg-audit.com</b></div><div class="mark"><img src="${MARK}" style="height:${story ? 40 : 34}px" alt=""><span>MFT</span></div></div>`;
+const foot = (story) => `<div class="foot" style="font-size:${story ? 30 : 25}px"><div class="cta" style="height:${story ? 68 : 58}px"><span>فحص مجاني في دقائق</span><i>·</i><b>seg-audit.com</b></div><div class="mark">${signHTML(story ? 44 : 38)}</div></div>`;
 
 // ---------------------------------------------------------------- demo report screen
 function demoReport(kind) {
@@ -117,16 +118,19 @@ h1{font-weight:900;font-size:${story ? 86 : 62}px;line-height:1.2} h1 em{font-st
 .list{display:flex;flex-direction:column;gap:${story ? 14 : 8}px;font-weight:700;font-size:${story ? 32 : 24}px}
 .list li{list-style:none;display:flex;gap:14px;align-items:center} .list li::before{content:'';width:12px;height:12px;border-radius:50%;background:${CYAN};flex:0 0 auto}
 .demo{align-self:flex-start;font-weight:800;font-size:${story ? 26 : 20}px;color:${CYAN};border:1.5px solid rgba(27,183,205,.7);border-radius:999px;padding:4px 18px}
+.close{font-weight:800;font-size:${story ? 30 : 23}px;color:${CYAN};border-inline-start:4px solid ${CYAN};padding-inline-start:16px;line-height:1.5}
+.lat{font-family:Inter}
 .reg{font-weight:800;font-size:${story ? 30 : 23}px;color:#fff}`;
   const body = `
 <div class="wrap">
   <span class="live"><i></i>بث مباشر</span>
-  <h1>ميزان المراجعة قبل الإقفال:<br><em>٥ نقاط خطر</em> تكشفها في دقائق.</h1>
+  <h1>ميزان المراجعة قبل الإقفال:<br><em>5 نقاط خطر</em> تكشفها في دقائق.</h1>
   <div class="when">
     <div class="cal"><div class="m">نوفمبر 2026</div><div class="d">10</div><div class="w">الثلاثاء</div></div>
-    <div class="info"><p class="t">٧ مساءً</p><p class="z">بتوقيت القاهرة · ٨ مساءً بتوقيت الرياض</p></div>
+    <div class="info"><p class="t"><span>7</span> مساءً بتوقيت القاهرة</p><p class="z"><span class="lat">8</span> مساءً بتوقيت الرياض</p></div>
   </div>
-  ${story ? `<ul class="list"><li>الحسابات المعلّقة والأرصدة الشاذة</li><li>القيود اليدوية الكثيفة والتواريخ الرجعية</li><li>إزاي تقرأ كل ملاحظة من دليلها</li></ul>` : ''}
+  <ul class="list"><li>الحسابات المعلّقة والأرصدة الشاذة</li><li>القيود اليدوية الكثيفة والتواريخ الرجعية</li><li>إزاي تقرأ كل ملاحظة من دليلها</li></ul>
+  <p class="close">${K.ar.closesOn}، ${CLOSE.arTime}. ${K.ar.select}</p>
   <span class="demo">عرض توضيحي على شركة نموذجية · داتا اختبارية</span>
   <p class="reg">سجّل من الحدث علشان يوصلك التذكير · الرابط في البايو</p>
 </div>

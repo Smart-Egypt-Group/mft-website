@@ -32,7 +32,7 @@ const SIZES = { square: [1080, 1080], story: [1080, 1920], link: [1200, 630] };
 
 // Arabic-Indic digits with the Arabic thousands separator: 18747106 → ١٨٬٧٤٧٬١٠٦
 const ar = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '٬').replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
-const FILLED = FM.showCount ? FM.filled : 0, TOTAL = FM.total, LEFT = TOTAL - FILLED;
+const { CLOSE, COPY: K, signHTML } = require('./lib/campaign.js');
 const TESTS = ar(FACTS.testsFloor);
 const DEMO = 'مثال توضيحي · داتا اختبارية';
 
@@ -80,9 +80,9 @@ function kindCss(kind) {
 const FIT_JS = `for (const el of document.querySelectorAll('.fit')) { let px = parseFloat(getComputedStyle(el).fontSize);
   const maxH = +el.dataset.maxH || Infinity; while ((el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > maxH) && px > 10) el.style.fontSize = (--px) + 'px'; }`;
 
-function page(kind, { eyebrow, head, sub, tag, visual, css = '', extra = '', script = '' }) {
+function page(kind, { eyebrow, head, sub, tag, visual, css = '', extra = '', script = '', cta = 'فحص مجاني في دقائق' }) {
   const copy = `${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ''}<h1 class="fit">${head}</h1>${sub ? `<p class="sub">${sub}</p>` : ''}${tag ? `<span class="tag">${tag}</span>` : ''}`;
-  const foot = `<div class="foot"><div class="cta"><span>فحص مجاني في دقائق</span><i>·</i><b>seg-audit.com</b></div><div class="mark"><img src="${MARK}" alt=""><span>MFT</span></div></div>`;
+  const foot = `<div class="foot"><div class="cta"><span>${cta}</span><i>·</i><b>seg-audit.com</b></div>${signHTML({ story: 44, link: 30, square: 38 }[kind] || 38)}</div>`;
   const inner = kind === 'link'
     ? `<div class="copy">${copy}</div><div class="visual">${visual}</div>${foot}`
     : `${copy}<div class="visual">${visual}</div>${foot}`;
@@ -163,21 +163,30 @@ function shock(kind) {
   });
 }
 
-// ---------------------------------------------------------------- 4) scarcity + social proof
-function scarcity(kind) {
-  const seats = Array.from({ length: TOTAL }, (_, i) => `<i class="${i < FILLED ? 'f' : i === FILLED ? 'nx' : ''}"></i>`).join('');
+// ---------------------------------------------------------------- 4) selectivity + closing window
+// Scarcity without a count (6 Nov 2026): the application itself is the visual. One application under
+// review, its lines blank (no invented applicant), a cyan review stamp, and the close date as a deadline
+// tab. No «accepted» stamp: nothing on an ad may imply an outcome or a number of members.
+function selectivity(kind) {
+  const rows = ['الشركة', 'النشاط', 'نظام المحاسبة', 'حجم القيود الشهري', 'ليه دلوقتي؟'];
   return page(kind, {
-    eyebrow: '<b>Standard Enterprise Governance</b> · الأعضاء المؤسِّسون',
-    head: `باقي <em>${ar(LEFT)}</em> من ${ar(TOTAL)}.`,
-    sub: `انضمّت ${ar(FILLED)} شركة. ${ar(LEFT)} مقعد بس فاضل. سعر المؤسِّس: 50% مدى الحياة.`,
-    visual: `<div class="seats">${seats}</div><div class="legend"><span><i class="f"></i>انضمّت</span><span><i class="nx"></i>مقعدك</span><span><i></i>متاح</span></div>`,
-    css: `.seats{position:absolute;inset:0 0 12% 0;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(5,1fr);gap:1.6cqmin;place-items:center;direction:rtl}
-      .seats i,.legend i{display:block;width:min(7.4cqw,14cqh);aspect-ratio:1;border-radius:50%;border:2px solid rgba(255,255,255,.45)}
-      .seats i.f,.legend i.f{background:#fff;border-color:#fff;box-shadow:0 0 1.4cqmin rgba(255,255,255,.35)}
-      .seats i.nx,.legend i.nx{background:${CYAN};border-color:${CYAN};box-shadow:0 0 0 1cqmin rgba(27,183,205,.2),0 0 3cqmin rgba(27,183,205,.7)}
-      .legend{position:absolute;inset-inline:0;bottom:0;height:9%;display:flex;justify-content:center;gap:5cqmin;font-weight:800;font-size:min(3.6cqmin,6cqh);color:rgba(255,255,255,.8)}
-      .legend span{display:flex;align-items:center;gap:1.2cqmin}
-      .legend i{width:1em}`
+    eyebrow: `<b>SEG</b> · ${K.ar.program}`,
+    head: 'مش كل طلب <em>بيتقبل</em>.',
+    sub: `${K.ar.review} و${K.ar.closesOn}.`,
+    tag: K.ar.selectShort,
+    cta: K.ar.cta,
+    visual: `<div class="app"><div class="tab"><span>آخر موعد</span><b>${CLOSE.arShort}</b><span>${CLOSE.arTime}</span></div>
+      <p class="t">طلب عضوية مؤسِّسة</p>
+      ${rows.map((r, i) => `<div class="row"><span>${r}</span><i style="width:${[58, 44, 36, 50, 66][i]}%"></i></div>`).join('')}
+      <div class="stamp"><b>قيد المراجعة</b><span>فريق MFT</span></div></div>`,
+    css: `.app{position:absolute;inset:2% 6% 4%;background:#F7F9FC;color:${NAVY};border-radius:2.4cqmin;padding:7cqmin 6cqmin 5cqmin;box-shadow:0 3cqmin 7cqmin rgba(0,0,0,.45);display:flex;flex-direction:column;gap:3.2cqmin;transform:rotate(-1.6deg)}
+      .app .t{font-weight:900;font-size:min(5.6cqmin,9cqh);margin-bottom:1cqmin}
+      .row{display:flex;align-items:center;gap:3cqmin;font-weight:700;font-size:min(3.4cqmin,6cqh);color:rgba(13,27,62,.7)}
+      .row span{flex:0 0 34%} .row i{display:block;height:1.6cqmin;border-radius:1cqmin;background:rgba(13,27,62,.14)}
+      .tab{position:absolute;top:-3.4cqmin;inset-inline-start:6cqmin;background:${NAVY};color:#fff;border:2px solid ${CYAN};border-radius:1.6cqmin;padding:1.4cqmin 3cqmin;display:flex;align-items:center;gap:2cqmin;font-weight:800;font-size:min(3.2cqmin,5.6cqh);white-space:nowrap}
+      .tab b{color:${CYAN};font-weight:900}
+      .stamp{position:absolute;inset-inline-end:5cqmin;bottom:5cqmin;width:min(30cqmin,46cqh);aspect-ratio:1;border-radius:50%;border:.9cqmin solid #1497AA;outline:.35cqmin solid #1497AA;outline-offset:.9cqmin;color:#1497AA;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-14deg);font-weight:900;font-size:min(4.6cqmin,8cqh);line-height:1.2;opacity:.92}
+      .stamp span{font-size:.62em;font-weight:800}`
   });
 }
 
@@ -272,7 +281,7 @@ body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:#fff;bac
 <div class="copy"><div class="ln"><span class="sp fit" style="color:#fff;font-size:${story ? 230 : 210}px">دفاترك فيها<i class="bl"></i></span></div><div class="ln"><span class="sp fit" style="color:${CYAN};font-size:${story ? 230 : 210}px">حاجة مش<i class="bl"></i></span></div><div class="ln"><span class="sp fit" style="color:#fff;font-size:${story ? 230 : 210}px">شايفها.<i class="bl"></i></span></div></div>
 <span class="alarm" id="alarm">!</span>
 <p class="demo">اكشفها قبل الإقفال</p>
-<div class="cta"><span>فحص مجاني في دقائق</span><i>·</i><b>seg-audit.com</b></div><div class="mark"><img src="${MARK}" alt=""><span>MFT</span></div>
+<div class="cta"><span>فحص مجاني في دقائق</span><i>·</i><b>seg-audit.com</b></div><div class="mark">${signHTML(story ? 44 : 38)}</div>
 <script>
 for (const el of document.querySelectorAll('.sp')) { let px = parseFloat(el.style.fontSize); while (el.offsetWidth > ${w - 150} && px > 20) el.style.fontSize = (--px) + 'px'; }
 let s = ${seed}; const r = () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296);
@@ -345,7 +354,7 @@ body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:#fff;bac
   <span class="l l1">راجع دفاترك</span><span class="l l2">قبل الإقفال</span><span class="under"></span></div></div>
 <div class="fade"></div>
 <p class="cap">الحاجة المهمة بتتكتب عشان ماتتنساش.<br><em>دفاترك أهم.</em></p>
-<div class="cta"><span>فحص مجاني في دقائق</span><i>·</i><b>seg-audit.com</b></div><div class="mark"><img src="${MARK}" alt=""><span>MFT</span></div>
+<div class="cta"><span>فحص مجاني في دقائق</span><i>·</i><b>seg-audit.com</b></div><div class="mark">${signHTML(story ? 44 : 38)}</div>
 </body></html>`;
   return html;
 }
@@ -380,7 +389,7 @@ const DESIGNS = [
   { slug: '1-loss-aversion', fn: loss, kinds: ['square', 'story', 'link'], principle: 'Loss aversion', note: 'الخسارة أثقل من المكسب: خطأ صغير اليوم يكبر حتى الإقفال. الدائرة تكبر مع الوقت، والأحمر نقطة البداية وشارة النهاية فقط. المبالغ مثال توضيحي.' },
   { slug: '2-curiosity-gap', fn: curiosity, kinds: ['square', 'story'], principle: 'Curiosity gap (Zeigarnik)', note: 'العقل لا يترك قائمة ناقصة: ٥ بنود، ٣ ظاهرة و٢ مموّهة، والكشف الوحيد هو الفحص المجاني. البنود هي مؤشرات الفحص الحقيقية، بلا أرقام.' },
   { slug: '3-shocking-specificity', fn: shock, kinds: ['square', 'story', 'link'], principle: 'Shocking specificity', note: 'رقم دقيق محدد يُصدَّق ويُتذكَّر أكثر من وصف عام: خزينة بالسالب −١٨٬٧٤٧٬١٠٦ ج.م، معلَّم «مثال توضيحي · داتا اختبارية». علامة السالب والنقطة فقط بالأحمر.' },
-  { slug: '4-scarcity-proof', fn: scarcity, kinds: ['square', 'story', 'link'], principle: 'Scarcity + social proof', note: `ندرة حقيقية مع دليل: باقي ${LEFT} من ${TOTAL}، وانضمّت ${FILLED} شركة (من site.config.js → founding، حتى ${FM.asOf}). المقاعد الممتلئة بيضاء، ومقعدك سماوي. أرقام العرض المعلن، لا بيانات دفاتر.` },
+  { slug: '4-selectivity', fn: selectivity, kinds: ['square', 'story', 'link'], principle: 'Selectivity + closing window', note: `ندرة بلا أرقام (6 نوفمبر 2026، بدل «باقي X من 50» المسحوب): طلب عضوية تحت المراجعة، سطوره فاضية (مفيش متقدّم وهمي)، وختم «قيد المراجعة · فريق MFT» لا «مقبول»، وآخر موعد ${CLOSE.arShort} من site.config.js → founding.closesAt.` },
   { slug: '5-meta-authority', fn: authority, kinds: ['square', 'story', 'link'], principle: 'Meta authority', note: `السلطة من الدليل لا من الادعاء: المنصة التي تراجع نفسها، +${TESTS} اختبار آلي قبل كل تحديث (من كود المنصة، ${FACTS.measuredOn}). استُخدمت الصياغة المعتمدة بدل «الوحيدة» لأنها ادعاء تفضيل مطلق بلا دليل.` },
   { slug: '6-anchoring', fn: anchoring, kinds: ['square', 'story', 'link'], principle: 'Anchoring', note: 'المرساة السعرية: تكلفة مفاجأة الإقفال (+٢٥٠٬٠٠٠ ج.م، مثال توضيحي) بجانب الفحص المجاني (٠ ج.م) فيبدو القرار بديهيًا.' },
   { slug: '7a-pattern-break-graffiti', fn: graffiti, kinds: ['square', 'story'], principle: 'Pattern break: graffiti v2', note: 'كسر النمط في الـfeed: جرافيتي على خرسانة بإضاءة علوية، ورذاذ ونقاط طلاء، وستنسل عين SEG، وعلامة «!» حمراء صغيرة.' },
@@ -422,7 +431,7 @@ async function main() {
   if (!only) {
     const html = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG persuasion pack</title>
 <style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.6 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 4px}.p{margin:0 0 12px;color:#3B4262;max-width:80ch}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;align-items:start}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto}figcaption{font-size:12px;margin-top:8px;word-break:break-all;direction:ltr;text-align:left}.k{display:inline-block;font-size:12px;font-weight:700;color:#0F7C91;direction:ltr}</style>
-<h1>Standard Enterprise Governance (SEG): حزمة علم نفس الإقناع</h1><p class="p">مولَّدة بالكود عبر scripts/psych-ads.js. navy وcyan وأبيض، وأحمر إنذار #C0392B لعلامات الخطر الصغيرة فقط، بلا ذهبي. كل الأرقام داتا اختبارية معلَّمة «مثال توضيحي»، ما عدا أرقام برنامج الأعضاء المؤسِّسين (العرض المعلن) وعدد الاختبارات (من كود المنصة).</p>
+<h1>Standard Enterprise Governance (SEG): حزمة علم نفس الإقناع</h1><p class="p">مولَّدة بالكود عبر scripts/psych-ads.js. navy وcyan وأبيض، وأحمر إنذار #C0392B لعلامات الخطر الصغيرة فقط، بلا ذهبي. كل الأرقام داتا اختبارية معلَّمة «مثال توضيحي»، ما عدا تاريخ إغلاق سعر المؤسِّس (site.config.js) وعدد الاختبارات (من كود المنصة). بلا أرقام مقاعد ولا سعر رقمي.</p>
 ${DESIGNS.map((d) => `<h2>${d.slug} <span class="k">${d.principle}</span></h2><p class="p">${d.note}</p><div class="g">${written.filter((x) => x.d === d).map((x) => `<figure><img loading="lazy" src="${d.slug}/${x.base}.webp" alt="${x.base}"><figcaption>${d.slug}/${x.base}.jpg · ${x.w}×${x.h}</figcaption></figure>`).join('')}</div>`).join('\n')}`;
     fs.writeFileSync(path.join(OUT, 'index.html'), html);
     console.log(`${written.length} designs × 2 formats`);

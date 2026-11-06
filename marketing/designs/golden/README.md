@@ -4,9 +4,9 @@
 
 **المقاسات:** Meta feed 1:1 (1080×1080) و4:5 (1080×1350)، JPG (للرفع) وWebP (للمعرض) ونسخة `_guides.webp` عليها خطوط φ.
 
-**البراند:** navy `#0D1B3E` وcyan `#1BB7CD` وأبيض، وأحمر إنذار خافت `#C0392B` للعلامات الصغيرة فقط. بلا ذهبي. عربي RTL، بصياغة يقرأها السوقان، وبلا رمز عملة لأن الطقم واحد لمصر والسعودية. في كل إعلان: «Standard Enterprise Governance (SEG)»، و«فحص مجاني لميزان شركتك… في دقائق»، وCTA «افحص مجانًا · seg-audit.com»، وعلامة MFT.
+**البراند:** navy `#0D1B3E` وcyan `#1BB7CD` وأبيض، وأحمر إنذار خافت `#C0392B` للعلامات الصغيرة فقط. بلا ذهبي. عربي RTL، بصياغة يقرأها السوقان، وبلا رمز عملة لأن الطقم واحد لمصر والسعودية. في كل إعلان: «Standard Enterprise Governance (SEG)»، و«فحص مجاني لميزان شركتك… في دقائق»، وCTA «افحص مجانًا · seg-audit.com» (أو «قدّم طلبك» في تصميم النافذة)، وتوقيع المنصة: العلامة + SEG + BY MFT. بلا أرقام مقاعد ولا سعر رقمي.
 
-**البيانات:** كل رقم وكود دفاتر داتا اختبارية معلَّمة «مثال توضيحي · داتا اختبارية». الاستثناءان: أرقام المقاعد (`site.config.js → founding`، حتى 2026-11-03) وعدد الاختبارات (`platform-facts.js`، 2026-11-05: 9,900).
+**البيانات:** كل رقم وكود دفاتر داتا اختبارية معلَّمة «مثال توضيحي · داتا اختبارية». الاستثناءان: تاريخ الإغلاق (`site.config.js → founding.closesAt`: الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة) وعدد الاختبارات (`platform-facts.js`، 2026-11-05).
 
 ## نظام φ المشترك
 
@@ -28,13 +28,11 @@
 
 **تطبيق φ:** عرض الشرخ w(x) = T0·φ^((x0−x)/Δ): بيتضرب في φ كل Δ px بالظبط، فبيعدّي على عروض السُّلَّم ٢٣ ← ٣٧ ← ٦٠ ← ٩٧ ← ١٥٨ ← ٢٥٥. نقطة البداية الحمرا على عين الحلزون، وعلامات الزمن (أسبوع، شهر، ٦ أشهر) عند العروض T2 وT3 وT4. سطور الدفتر كل T1، والأعمدة على خطوط القسمة.
 
-### `2-hourglass/` · الندرة «باقي 33 من 50» ⛔ مسحوب (6 نوفمبر 2026)
+### `2-days/` · نافذة الإغلاق «الوقت، مش المقاعد» (30 نوفمبر)
 
-> **لا يُستخدم.** أرقام 17/33 مسحوبة، والندرة الآن نافذة إغلاق + انتقائية. إعادة التصميم في [`../../strategy/design-redo-list.md`](../../strategy/design-redo-list.md).
+**الفكرة:** ساعة رملية رملها أيام نوفمبر، والرقبة هي لحظة الإغلاق: الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة. يوم الإغلاق مربع سماوي في الرقبة، والانتفاخ السفلي فاضي (مفيش عدّ تنازلي يتقادم). حلّت محل ساعة المقاعد المسحوبة (6 نوفمبر 2026).
 
-**الفكرة:** ساعة رملية رملها كراسي: 33 لسه فوق، و17 وقعوا تحت، وكرسي سماوي بيعدّي من الرقبة دلوقتي.
-
-**تطبيق φ:** الساعة مستطيل ذهبي (h × h/φ). الرقبة على عين الحلزون، وبتقسم الارتفاع عند القسمة الذهبية: الانتفاخ العلوي h/φ والسفلي h/φ². الكرسي T1، والرقم «٣٣» بأكبر درجة T6 (٤١٢ px)، وخط منتصفه على مستوى العين تقريبًا (القياس في الجدول).
+**تطبيق φ:** الساعة مستطيل ذهبي (h × h/φ). الرقبة على عين الحلزون، وبتقسم الارتفاع عند القسمة الذهبية: الانتفاخ العلوي h/φ والسفلي h/φ². مربع اليوم T1، ورقم يوم الإغلاق بأكبر درجة T6 (٤١٢ px)، وخط منتصفه على مستوى العين تقريبًا (القياس في الجدول).
 
 ### `3-hawk-eye/` · «كل رقم بدليله» / «المنصة التي تراجع نفسها»
 
@@ -68,14 +66,14 @@
 | `golden-1-crack_ar_4x5_1080x1350` | mk | cx | 108.4 | 108.391 | 0 |
 | `golden-1-crack_ar_4x5_1080x1350` | cta | left | 667.5 | 667.484 | 0 |
 | `golden-1-crack_ar_4x5_1080x1350` | headline | bottom | 515.7 | 515.7 | 0 |
-| `golden-2-hourglass_ar_1x1_1080x1080` | hero | cx | 781.8 | 781.797 | 0 |
-| `golden-2-hourglass_ar_1x1_1080x1080` | hero | cy | 596.8 | 596.797 | 0 |
-| `golden-2-hourglass_ar_1x1_1080x1080` | big | cy | 596.8 | 470.078 | -126.7 |
-| `golden-2-hourglass_ar_1x1_1080x1080` | cta | left | 667.5 | 667.484 | 0 |
-| `golden-2-hourglass_ar_4x5_1080x1350` | hero | cx | 781.8 | 781.797 | 0 |
-| `golden-2-hourglass_ar_4x5_1080x1350` | hero | cy | 866.8 | 866.797 | 0 |
-| `golden-2-hourglass_ar_4x5_1080x1350` | big | cy | 866.8 | 740.078 | -126.7 |
-| `golden-2-hourglass_ar_4x5_1080x1350` | cta | left | 667.5 | 667.484 | 0 |
+| `golden-2-days_ar_1x1_1080x1080` | hero | cx | 781.8 | 781.797 | 0 |
+| `golden-2-days_ar_1x1_1080x1080` | hero | cy | 596.8 | 596.797 | 0 |
+| `golden-2-days_ar_1x1_1080x1080` | big | cy | 596.8 | 470.078 | -126.7 |
+| `golden-2-days_ar_1x1_1080x1080` | cta | left | 667.5 | 667.484 | 0 |
+| `golden-2-days_ar_4x5_1080x1350` | hero | cx | 781.8 | 781.797 | 0 |
+| `golden-2-days_ar_4x5_1080x1350` | hero | cy | 866.8 | 866.797 | 0 |
+| `golden-2-days_ar_4x5_1080x1350` | big | cy | 866.8 | 740.078 | -126.7 |
+| `golden-2-days_ar_4x5_1080x1350` | cta | left | 667.5 | 667.484 | 0 |
 | `golden-3-hawk-eye_ar_1x1_1080x1080` | hero | cx | 298.2 | 298.188 | 0 |
 | `golden-3-hawk-eye_ar_1x1_1080x1080` | hero | cy | 596.8 | 596.797 | 0 |
 | `golden-3-hawk-eye_ar_1x1_1080x1080` | cta | left | 667.5 | 667.484 | 0 |
@@ -97,8 +95,8 @@
 
 - `golden-1-crack_ar_1x1_1080x1080.jpg`: https://www.seg-audit.com/assets/social/golden/golden-1-crack_ar_1x1_1080x1080.jpg
 - `golden-1-crack_ar_4x5_1080x1350.jpg`: https://www.seg-audit.com/assets/social/golden/golden-1-crack_ar_4x5_1080x1350.jpg
-- `golden-2-hourglass_ar_1x1_1080x1080.jpg`: https://www.seg-audit.com/assets/social/golden/golden-2-hourglass_ar_1x1_1080x1080.jpg
-- `golden-2-hourglass_ar_4x5_1080x1350.jpg`: https://www.seg-audit.com/assets/social/golden/golden-2-hourglass_ar_4x5_1080x1350.jpg
+- `golden-2-days_ar_1x1_1080x1080.jpg`: https://www.seg-audit.com/assets/social/golden/golden-2-days_ar_1x1_1080x1080.jpg
+- `golden-2-days_ar_4x5_1080x1350.jpg`: https://www.seg-audit.com/assets/social/golden/golden-2-days_ar_4x5_1080x1350.jpg
 - `golden-3-hawk-eye_ar_1x1_1080x1080.jpg`: https://www.seg-audit.com/assets/social/golden/golden-3-hawk-eye_ar_1x1_1080x1080.jpg
 - `golden-3-hawk-eye_ar_4x5_1080x1350.jpg`: https://www.seg-audit.com/assets/social/golden/golden-3-hawk-eye_ar_4x5_1080x1350.jpg
 - `golden-4-lineup_ar_1x1_1080x1080.jpg`: https://www.seg-audit.com/assets/social/golden/golden-4-lineup_ar_1x1_1080x1080.jpg

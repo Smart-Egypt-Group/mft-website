@@ -7,7 +7,7 @@
 // Motion: a slow ease-in-out push-in (1.00 → 1.04) on the design, so frame 0 is the full design
 // (a clean cover) and the 64 px design margins keep the CTA inside the frame throughout.
 // Encoding: Chrome's WebCodecs H.264 encoder (no ffmpeg needed); the MP4 container is written here.
-// Regenerate the source JPGs first (scripts/launch-images.js) whenever the seat count changes.
+// Regenerate the source JPGs first (scripts/launch-images.js) whenever the close date (founding.closesAt) or copy changes.
 // Needs Playwright + Google Chrome:  PLAYWRIGHT_PATH=<path to playwright> node scripts/tiktok-videos.js [filter]
 const fs = require('fs');
 const os = require('os');
@@ -22,7 +22,7 @@ const SRC = path.join(ROOT, 'marketing/designs/ads');
 const OUT = path.join(SRC, 'video');
 const W = 1080, H = 1920, FPS = 30, SECONDS = 8, ZOOM = 0.04, BITRATE = 8e6;
 const TIMESCALE = 15360, DELTA = TIMESCALE / FPS;
-const VARIANTS = ['live-ar', 'live-en', 'seats-ar', 'seats-en'];
+const VARIANTS = ['live-ar', 'live-en', 'close-ar', 'close-en']; // seats-* withdrawn 6 Nov 2026
 
 // ---------------------------------------------------------------- MP4 (ISO BMFF) writer
 const u8 = (n) => Buffer.from([n & 255]);

@@ -17,8 +17,9 @@
 //                   the report
 //   tb-check        the lead magnet: «فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق», a trial
 //                   balance with its five risk indicators marked 01–05 (not a full audit report)
-//   hemicycle       real scarcity: 50 seats as a hemicycle, the visitor's seat in cyan, «برنامج الأعضاء
-//                   المؤسِّسون — 50 مقعد فقط · سعر المؤسِّس: 50% مدى الحياة» (seats lit only with the real counter)
+//   hemicycle       «مجلس الأعضاء المؤسِّسين» (6 Nov 2026, replaces the withdrawn seat count): a dense,
+//                   decorative hemicycle, every seat open, one cyan seat = «مقعدك، لو اتقبلت», the close date
+//                   in the middle, «العضوية بالطلب، ومش كل طلب بيتقبل». The seat total is decorative, never a claim.
 //   carousel        «5 أخطاء في دفاترك مش هتلاحظها»: the five trial-balance indicators, 7 slides 4:5 + PDF
 //   video-*         storyboard frames 1080×1920 for two short videos (3-second hook first) and a
 //                   storyboard sheet per video
@@ -41,9 +42,11 @@ const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 const { founding: FM } = require('../src/site.config.js');
 const FACTS = require('../src/content/platform-facts.js');
-// No public counter unless site.config → founding.showCount: then FILLED seats are lit and LEFT is shown.
-const FILLED = FM.showCount ? FM.filled : 0, LEFT = FM.total - FILLED;
-const HEADLINE = FM.showCount ? String(LEFT) : String(FM.total); // the number in the hemicycle
+const { CLOSE, COPY: K } = require('./lib/campaign.js');
+// No seat counts on any design (6 Nov 2026). The hemicycle is decorative and dense (COUNCIL seats) so it
+// reads as a chamber, not a tally; nothing is lit as taken. The number in its middle is the close day.
+const COUNCIL = 84, FILLED = 0;
+const HEADLINE = String(CLOSE.d);
 const TESTS = FACTS.testsFloor.toLocaleString('en-US');
 
 const NAVY = '#0D1B3E', CYAN = '#1BB7CD', W = '#FFFFFF';
@@ -63,9 +66,7 @@ const T = {
     self: { eb: 'Standard Enterprise Governance · الثقة', head: 'المنصة التي تراجع نفسها.', sub: `قبل أن تراجع دفاترك: أكثر من ${TESTS} اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.` },
     ba: { before: 'قبل', after: 'بعد', head: 'من دفاتر لا يراها أحد، إلى تقرير تراه كاملًا.' },
     ns: { eb: 'Standard Enterprise Governance · صفر تخمين', head: 'رقم بلا مصدر؟ لا يدخل تقريرك.', sub: 'كل رقم في تقارير SEG مرتبط بمصدره في دفاترك.', tag: 'بلا مصدر', note: 'مثال توضيحي' },
-    hemi: FM.showCount
-      ? { eb: 'Standard Enterprise Governance · الأعضاء المؤسِّسون', title: `باقي ${LEFT} من ${FM.total} · ${FILLED} شركة انضمّت`, t1: `باقي ${LEFT} من ${FM.total}`, t2: `${FILLED} شركة انضمّت`, sub: 'احجز مقعدك قبل اكتمال العدد.', pill: 'احجز مقعدك  ·  app.seg-audit.com' }
-      : { eb: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', title: `${FM.total} مقعد فقط · سعر المؤسِّس: 50% مدى الحياة`, t1: `${FM.total} مقعد فقط`, t2: 'سعر المؤسِّس: 50% مدى الحياة', sub: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', pill: 'احجز مقعدك  ·  app.seg-audit.com' },
+    hemi: { eb: `SEG · ${K.ar.program}`, month: CLOSE.arMonth, title: 'مقعدك في المجلس، لو اتقبلت.', t1: 'مقعدك، لو اتقبلت.', t2: K.ar.select, sub: `${K.ar.select} ${K.ar.closesOn}.`, pill: `${K.ar.cta}  ·  ${K.ar.ctaUrl}` },
     car: {
       cover: { l1: 'أخطاء في دفاترك', l2: 'مش هتلاحظها', sub: 'ثلاثة منها تظهر بربط Odoo فقط', swipe: 'اسحب  ←' },
       // the five trial-balance indicators of the free check (CEO, 3 Nov 2026)
@@ -80,7 +81,7 @@ const T = {
       end: { head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', line: 'مؤشرات من ميزان المراجعة؛ 3 منها تحتاج ربط Odoo. ليس تقرير مراجعة كاملًا.', pill: 'افحص ميزانك مجانًا  ·  app.seg-audit.com' }
     },
     vid: { a2: 'مراجعة سنوية واحدة. والسنة 365 يومًا.', a3: 'SEG بيقرا دفاترك كل يوم.', a4: 'وكل ملاحظة معاها دليلها.', b1: 'دفاترك شكلها كده؟', b2: 'SEG بيراجع…', b3: 'ملاحظة حرجة واحدة. ومعها مصدرها.' },
-    pov: { hook: 'ليه 50 شركة بس؟', name: 'أحمد أشرف', role: 'المؤسس والرئيس التنفيذي، MFT', pill: FM.showCount ? `باقي ${LEFT} من ${FM.total}` : `${FM.total} مقعدًا فقط · سعر المؤسِّس: 50% مدى الحياة`, ph: 'لقطة المؤسس هنا (POV)' }
+    pov: { hook: 'ليه مش أي شركة؟', name: 'أحمد أشرف', role: 'المؤسس والرئيس التنفيذي، MFT', pill: K.ar.closesOn, ph: 'لقطة المؤسس هنا (POV)' }
   },
   en: {
     cta: 'Check your trial balance free  ·  app.seg-audit.com',
@@ -91,9 +92,7 @@ const T = {
     self: { eb: 'STANDARD ENTERPRISE GOVERNANCE · TRUST', head: 'The platform that reviews itself.', sub: `Before it reviews your books: ${TESTS}+ automated tests before every update, and a log nothing can change silently.` },
     ba: { before: 'Before', after: 'After', head: 'From books no one sees to a report you see in full.' },
     ns: { eb: 'STANDARD ENTERPRISE GOVERNANCE · ZERO GUESSWORK', head: 'A number with no source never reaches your report.', sub: 'Every number in an SEG report links to its source in your books.', tag: 'No source', note: 'Illustrative example' },
-    hemi: FM.showCount
-      ? { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', title: `${LEFT} of ${FM.total} left · ${FILLED} seats reserved`, t1: `${LEFT} of ${FM.total} left`, t2: `${FILLED} seats reserved`, sub: 'Claim your seat before the count closes.', pill: 'Claim your seat  ·  app.seg-audit.com' }
-      : { eb: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', title: `Only ${FM.total} seats · Founder price: 50% off for life`, t1: `Only ${FM.total} seats`, t2: 'Founder price: 50% off for life', sub: 'Start with a free check of your company’s trial balance.', pill: 'Claim your seat  ·  app.seg-audit.com' },
+    hemi: { eb: `SEG · ${K.en.program.toUpperCase()}`, month: CLOSE.enMonth.toUpperCase(), title: 'Your seat on the council, if accepted.', t1: 'Your seat, if accepted.', t2: K.en.select, sub: `By application. ${K.en.closesOn}.`, pill: `${K.en.cta}  ·  ${K.en.ctaUrl}` },
     car: {
       cover: { l1: 'mistakes in your books', l2: "you won't notice", sub: 'Three of them need an Odoo connection.', swipe: 'Swipe  →' },
       items: [
@@ -107,7 +106,7 @@ const T = {
       end: { head: 'A free check of your company’s trial balance that flags its risk points in minutes', line: 'Trial-balance indicators; three need an Odoo connection. Not a full audit report.', pill: 'Check your trial balance free  ·  app.seg-audit.com' }
     },
     vid: { a2: 'One annual audit. A year has 365 days.', a3: 'SEG reads your books every day.', a4: 'And every finding comes with its evidence.', b1: 'Do your books look like this?', b2: 'SEG is reviewing…', b3: 'One critical finding. With its source.' },
-    pov: { hook: 'Why only 50 companies?', name: 'Ahmed Ashraf', role: 'Founder & CEO, MFT', pill: FM.showCount ? `${LEFT} of ${FM.total} left` : `Only ${FM.total} seats · Founder price: 50% off for life`, ph: 'Founder footage here (POV)' }
+    pov: { hook: 'Why not just any company?', name: 'Ahmed Ashraf', role: 'Founder & CEO, MFT', pill: K.en.closesOn, ph: 'Founder footage here (POV)' }
   }
 };
 
@@ -172,9 +171,10 @@ function calendar(d, x, y, w, h, o = {}) {
   return { sp, r };
 }
 
-// Hemicycle of seats (parliament layout). Seats fill from the reading start: right in Arabic.
+// Hemicycle (parliament layout), decorative: COUNCIL open seats, the first at the reading start (right in
+// Arabic) lit cyan as the viewer's seat, if accepted.
 function hemicycle(d, cx, cy, R0, R1, lang, o = {}) {
-  const rows = 4, total = FM.total;
+  const rows = 5, total = COUNCIL;
   const rs = [...Array(rows)].map((_, i) => R0 + (R1 - R0) * i / (rows - 1));
   const sum = rs.reduce((a, b) => a + b);
   const ns = rs.map((r) => Math.round(total * r / sum)); ns[rows - 1] += total - ns.reduce((a, b) => a + b);
@@ -445,11 +445,12 @@ function hemi(w, h, lang, o = {}) {
     light(d, 840, 400, 300, 0.3);
     hemicycle(d, 840, 470, 190, 330, lang);
     text(d, { t: HEADLINE, x: 840, y: 452, px: 150, wt: 900, c: CYAN, glow: CYAN, al: 'center', dir: 'ltr' });
+    text(d, { t: C.month, x: 840, y: 318, px: 30, wt: 800, c: W, al: 'center', ls: A ? 0 : 4 });
     const a = st(lang, 64, 460);
     text(d, { t: C.eb, ...a, y: 150, px: 16, c: CYAN, ls: 2, maxW: 396, fit: true });
     text(d, { t: C.t1, ...a, y: 250, px: 64, maxW: 396, fit: true });
     text(d, { t: C.t2, ...a, y: 325, px: 40, c: DIM, maxW: 396, fit: true });
-    pill(d, { t: CTA, x: a.x, y: 380, h: 54, px: 21, al: a.al, padX: 24 });
+    pill(d, { t: C.pill, x: a.x, y: 380, h: 54, px: 21, al: a.al, padX: 24 });
     mark(d, 64, h - 40, 24, true);
     return d;
   }
@@ -459,6 +460,7 @@ function hemi(w, h, lang, o = {}) {
   light(d, w / 2, cy - 140 * u, 380 * u, 0.32);
   hemicycle(d, w / 2, cy, S.R0 * u, S.R1 * u, lang);
   text(d, { t: HEADLINE, x: w / 2, y: cy - 22 * u, px: S.R0 * 0.78 * u, wt: 900, c: CYAN, glow: CYAN, al: 'center', dir: 'ltr' });
+  text(d, { t: C.month, x: w / 2, y: cy - 22 * u - S.R0 * 0.62 * u, px: 36 * u, wt: 800, c: W, al: 'center', ls: A ? 0 : 5 * u });
   text(d, { t: C.eb, x: w / 2, y: S.eb * u, px: 26 * u, c: CYAN, al: 'center', ls: 3 * u });
   if (o.frame) return d;
   text(d, { t: C.title, x: w / 2, y: S.tt * u, px: (k === 'story' ? 62 : 54) * u, al: 'center', maxW: w - 160 * u, fit: true });
@@ -683,12 +685,12 @@ function videoFrames(lang) {
 }
 const SB = {
   ar: {
-    a: { title: 'فيديو قصير ١: «باقي 360 يوم» · 15 ثانية · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'الخطّاف: السؤال كامل على الشاشة، بلا كلام أول ثانية، ثم بصوت المؤسس'], ['0:03–0:06', 'التقويم: 365 نقطة، أسبوع عمل واحد مضيء'], ['0:06–0:10', 'النقاط تضيء سماويًا يومًا بعد يوم: SEG يقرأ كل يوم'], ['0:10–0:13', 'التقرير الأبيض: الملاحظة السماوية ومعها مصدرها'], ['0:13–0:15', 'الختام: 50 مقعد فقط · سعر المؤسِّس: 50% مدى الحياة · الرابط في البايو']] },
-    b: { title: 'فيديو قصير ٢: «قبل / بعد» · 12 ثانية', notes: [['0:00–0:03', 'الخطّاف: دفاتر مائلة متداخلة، والسؤال بخط ضخم'], ['0:03–0:06', 'خط المسح يمر من أعلى لأسفل: ما فوقه منظَّم وأبيض'], ['0:06–0:09', 'التقرير كاملًا: ملاحظة حرجة واحدة بالسماوي'], ['0:09–0:12', 'الختام: المقاعد · الرابط']] }
+    a: { title: 'فيديو قصير ١: «باقي 360 يوم» · 15 ثانية · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'الخطّاف: السؤال كامل على الشاشة، بلا كلام أول ثانية، ثم بصوت المؤسس'], ['0:03–0:06', 'التقويم: 365 نقطة، أسبوع عمل واحد مضيء'], ['0:06–0:10', 'النقاط تضيء سماويًا يومًا بعد يوم: SEG يقرأ كل يوم'], ['0:10–0:13', 'التقرير الأبيض: الملاحظة السماوية ومعها مصدرها'], ['0:13–0:15', `الختام: مجلس الأعضاء المؤسِّسين · ${K.ar.select} · ${K.ar.closesOn} · الرابط في البايو`]] },
+    b: { title: 'فيديو قصير ٢: «قبل / بعد» · 12 ثانية', notes: [['0:00–0:03', 'الخطّاف: دفاتر مائلة متداخلة، والسؤال بخط ضخم'], ['0:03–0:06', 'خط المسح يمر من أعلى لأسفل: ما فوقه منظَّم وأبيض'], ['0:06–0:09', 'التقرير كاملًا: ملاحظة حرجة واحدة بالسماوي'], ['0:09–0:12', `الختام: المجلس · بالطلب فقط · ${K.ar.closesOn} · الرابط`]] }
   },
   en: {
-    a: { title: 'Short video 1: "The other 360 days" · 15 s · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'Hook: the full question on screen, silent first second, then the founder’s voice'], ['0:03–0:06', 'The calendar: 365 dots, one working week lit'], ['0:06–0:10', 'Day by day the dots turn cyan: SEG reads every day'], ['0:10–0:13', 'The white report: the cyan finding with its source'], ['0:13–0:15', 'End card: only 50 seats · Founder price: 50% off for life · link in bio']] },
-    b: { title: 'Short video 2: "Before / After" · 12 s', notes: [['0:00–0:03', 'Hook: a tilted, overlapping ledger and the question in huge type'], ['0:03–0:06', 'The scan line sweeps down: above it, ordered and white'], ['0:06–0:09', 'The full report: one critical finding in cyan'], ['0:09–0:12', 'End card: the seats · the link']] }
+    a: { title: 'Short video 1: "The other 360 days" · 15 s · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'Hook: the full question on screen, silent first second, then the founder’s voice'], ['0:03–0:06', 'The calendar: 365 dots, one working week lit'], ['0:06–0:10', 'Day by day the dots turn cyan: SEG reads every day'], ['0:10–0:13', 'The white report: the cyan finding with its source'], ['0:13–0:15', `End card: the founding council · by application · ${K.en.closesOn} · link in bio`]] },
+    b: { title: 'Short video 2: "Before / After" · 12 s', notes: [['0:00–0:03', 'Hook: a tilted, overlapping ledger and the question in huge type'], ['0:03–0:06', 'The scan line sweeps down: above it, ordered and white'], ['0:06–0:09', 'The full report: one critical finding in cyan'], ['0:09–0:12', `End card: the council · by application · ${K.en.closesOn} · the link`]] }
   }
 };
 
@@ -790,8 +792,12 @@ async function openRenderer() {
       if (o.type === 'mark') {
         const mk = o.white ? marks.white : marks.navy, mw = o.h * mk.width / mk.height;
         g.drawImage(mk, o.x, o.y - o.h, mw, o.h);
-        g.fillStyle = o.white ? '#FFFFFF' : '#0D1B3E'; g.font = `800 ${o.h * 0.76}px "Inter"`; g.letterSpacing = `${o.h * 0.15}px`; g.direction = 'ltr'; g.textAlign = 'left';
-        g.fillText('MFT', o.x + mw + o.h * 0.38, o.y - o.h / 2 + o.h * 0.28);
+        // platform signature (scripts/lib/campaign.js): mark + SEG + BY MFT
+        g.save(); g.fillStyle = o.white ? '#FFFFFF' : '#0D1B3E'; g.direction = 'ltr'; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+        g.font = `800 ${o.h * 0.6}px "Inter"`; g.letterSpacing = `${o.h * 0.084}px`;
+        g.fillText('SEG', o.x + mw + o.h * 0.32, o.y - o.h * 0.47);
+        g.font = `600 ${o.h * 0.27}px "Inter"`; g.letterSpacing = `${o.h * 0.032}px`; g.globalAlpha = .72;
+        g.fillText('BY MFT', o.x + mw + o.h * 0.32, o.y - o.h * 0.1); g.restore();
       }
       if (o.type === 'img') {
         const im = await load(o.src); g.beginPath(); g.roundRect(o.x, o.y, o.w, o.h, o.r || 0); g.clip(); g.drawImage(im, o.x, o.y, o.w, o.h);

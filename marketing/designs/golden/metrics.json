@@ -157,7 +157,7 @@
       }
     ]
   },
-  "golden-2-hourglass_ar_1x1_1080x1080": {
+  "golden-2-days_ar_1x1_1080x1080": {
     "format": "1x1",
     "size": [
       1080,
@@ -215,7 +215,7 @@
       }
     ]
   },
-  "golden-2-hourglass_ar_4x5_1080x1350": {
+  "golden-2-days_ar_4x5_1080x1350": {
     "format": "4x5",
     "size": [
       1080,

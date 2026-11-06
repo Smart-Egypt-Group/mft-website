@@ -9,17 +9,17 @@
 //     portrait formats, so the copy always sits on navy and the page always carries the motif
 //   · a seam of light runs along the split; raw transactions drift across the navy field into a
 //     white light on the seam, on the golden line
-//   · the campaign motif is the 50-seat grid: open seats as navy rings (filled seats in navy only when
-//     the real counter is on), and the
-//     NEXT seat in glowing cyan, reached by the cyan exception line straight out of the seam light
-//     (it is the seat the viewer can take). The "now live" set uses a ledger with one cyan line.
+//   · the campaign motif (quality pass, 6 Nov 2026) is the closing window: the month as a calendar of
+//     navy day rings, the close day (src/site.config.js → founding.closesAt) in glowing cyan, reached by
+//     the cyan exception line straight out of the seam light. No seats, no counts. The "now live" set
+//     uses a ledger with one cyan line.
 //   · copy has three levels only (eyebrow, hero, support) plus one CTA pill to app.seg-audit.com
 //
-// Variants: seats-ar / seats-en ("only 50 seats · Founder price: 50% off for life"; "X of 50 left" only with the real counter), live-ar / live-en ("now live"), neutral-seats /
-// neutral-live (no words,
-// one file for both languages). Seat counts come from src/site.config.js → founding, so a rerun after
-// the counter (showCount) is off, so the seat designs carry «برنامج الأعضاء المؤسِّسون — 50 مقعد
-// فقط · سعر المؤسِّس: 50% مدى الحياة» and no count.
+// Variants: close-ar / close-en («سعر المؤسِّس يُغلق نهائيًا» + the date + «العضوية بالطلب، ومش كل طلب
+// بيتقبل»), live-ar / live-en ("now live"), neutral-close / neutral-live (no words, one file for both
+// languages). All campaign copy comes from scripts/lib/campaign.js. The seats-* variants were withdrawn
+// on 6 Nov 2026 (no seat numbers on any design). The founding-page og:image (src/assets/img/launch/) is
+// a site file and is only rendered with the filter argument `og` (a site decision; it is not touched here).
 //
 // Needs Playwright + Google Chrome:  PLAYWRIGHT_PATH=<path to playwright> node scripts/launch-images.js [name-filter]
 const fs = require('fs');
@@ -38,45 +38,40 @@ const MARK_WHITE = 'data:image/png;base64,' + b64('src/assets/logo/mft-mark-whit
 const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 const { founding: FM } = require('../src/site.config.js');
-// No public counter unless site.config → founding.showCount (then FILLED seats are drawn and counted).
-const FILLED = FM.showCount ? FM.filled : 0, LEFT = FM.total - FILLED;
-// The approved line «برنامج الأعضاء المؤسِّسون — 50 مقعد فقط · سعر المؤسِّس: 50% مدى الحياة» is set as eyebrow + title.
+const { CLOSE, COPY: K, SIGN_CANVAS_SRC } = require('./lib/campaign.js');
 
 const NAVY = '#0D1B3E', CYAN = '#1BB7CD', W = '#FFFFFF';
 const PHI = (1 + Math.sqrt(5)) / 2;
 function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
 const f = (n) => +n.toFixed(1);
 
-// ---- Copy (three levels + CTA). The AR seats headline is the approved campaign line, verbatim. ----
+// ---- Copy (three levels + CTA), from scripts/lib/campaign.js. ----
 const COPY = {
-  'seats-ar': FM.showCount
-    ? { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · الأعضاء المؤسِّسون', hero: [String(LEFT), `/${FM.total}`], title: `باقي ${LEFT} من ${FM.total}: الأعضاء المؤسِّسون`, support: `طلبات مقدَّمة ${FILLED}، والمتبقي ${LEFT} من ${FM.total}. قدّم طلبك قبل اكتمال العدد.`, cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' }
-    : { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', hero: [String(FM.total), ''], title: `${FM.total} مقعد فقط · سعر المؤسِّس: 50% مدى الحياة`, support: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'احجز مقعدك  ·  app.seg-audit.com', motif: 'seats' },
-  'seats-en': FM.showCount
-    ? { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS', hero: [String(LEFT), `/${FM.total}`], title: `${LEFT} of ${FM.total} seats left: Founding Members`, support: `${FILLED} applications received; ${LEFT} of ${FM.total} left. Apply before the count closes.`, cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' }
-    : { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', hero: [String(FM.total), ''], title: `Only ${FM.total} seats · Founder price: 50% off for life`, support: 'Start with a free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Claim your seat  ·  app.seg-audit.com', motif: 'seats' },
+  'close-ar': { dir: 'rtl', eyebrow: `SEG · ${K.ar.program}`, hero: [String(CLOSE.d), CLOSE.arMonth], title: K.ar.closes, support: [`${K.ar.when}.`, K.ar.select], cta: `${K.ar.cta}  ·  ${K.ar.ctaUrl}`, motif: 'close' },
+  'close-en': { dir: 'ltr', eyebrow: `SEG · ${K.en.program.toUpperCase()}`, hero: [String(CLOSE.d), CLOSE.enMonth.slice(0, 3).toUpperCase()], title: K.en.closes, support: [`${K.en.when}.`, K.en.select], cta: `${K.en.cta}  ·  ${K.en.ctaUrl}`, motif: 'close' },
   'live-ar': { dir: 'rtl', eyebrow: 'Standard Enterprise Governance من MFT', heroText: 'متاح الآن', title: 'منصة المراجعة المستمرة لدفاترك', support: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'افحص ميزانك مجانًا  ·  app.seg-audit.com', motif: 'live' },
   'live-en': { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE BY MFT', heroText: 'Now live', title: 'Continuous audit for your books', support: 'A free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Check your trial balance free  ·  app.seg-audit.com', motif: 'live' },
-  'neutral-seats': { motif: 'seats' },
+  'neutral-close': { motif: 'close' },
   'neutral-live': { motif: 'live' }
 };
-// No-count forms for the founding page og:image, used whatever showCount says (integrity register H1).
-COPY['og-seats-ar'] = { dir: 'rtl', eyebrow: 'Standard Enterprise Governance · برنامج الأعضاء المؤسِّسون', hero: [String(FM.total), ''], title: `${FM.total} مقعد فقط · سعر المؤسِّس: 50% مدى الحياة`, support: 'ابدأ بفحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق.', cta: 'قدّم طلبك  ·  app.seg-audit.com', motif: 'seats', noCount: true };
-COPY['og-seats-en'] = { dir: 'ltr', eyebrow: 'STANDARD ENTERPRISE GOVERNANCE · FOUNDING MEMBERS PROGRAMME', hero: [String(FM.total), ''], title: `Only ${FM.total} seats · Founder price: 50% off for life`, support: 'Start with a free check of your company’s trial balance that flags its risk points in minutes.', cta: 'Apply  ·  app.seg-audit.com', motif: 'seats', noCount: true };
+// Founding page og:image (site file; only with the `og` filter, and only after the site switches to the
+// closing window): the close card in each language.
+COPY['og-close-ar'] = { ...COPY['close-ar'] };
+COPY['og-close-en'] = { ...COPY['close-en'] };
 
 // ---- Formats. kind: land (vertical split), stack (horizontal split), strip (covers/banners). ----
 // safe: the area the platform never crops or covers (UI overlays, avatars, TV/mobile crops).
 const FORMATS = [
-  { dir: 'social', name: 'linkedin-facebook-link', w: 1200, h: 630, kind: 'land', variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en', 'neutral-seats', 'neutral-live'] },
-  { dir: 'social', name: 'x-post', w: 1600, h: 900, kind: 'land', variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en', 'neutral-seats', 'neutral-live'] },
-  { dir: 'social', name: 'instagram-square', w: 1080, h: 1080, kind: 'stack', variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en', 'neutral-seats', 'neutral-live'] },
+  { dir: 'social', name: 'linkedin-facebook-link', w: 1200, h: 630, kind: 'land', variants: ['close-ar', 'close-en', 'live-ar', 'live-en', 'neutral-close', 'neutral-live'] },
+  { dir: 'social', name: 'x-post', w: 1600, h: 900, kind: 'land', variants: ['close-ar', 'close-en', 'live-ar', 'live-en', 'neutral-close', 'neutral-live'] },
+  { dir: 'social', name: 'instagram-square', w: 1080, h: 1080, kind: 'stack', variants: ['close-ar', 'close-en', 'live-ar', 'live-en', 'neutral-close', 'neutral-live'] },
   // Story layout keeps TikTok's safe zone too (top 160, bottom 480, end 140), so it doubles as
   // Instagram/Facebook Stories, Reels cover, and Meta Stories/Reels ads.
-  { dir: 'social', name: 'story', w: 1080, h: 1920, kind: 'stack', safe: { t: 250, b: 480, s: 96, e: 150 }, variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en', 'neutral-seats', 'neutral-live'] },
-  { dir: 'social', name: 'youtube-thumbnail', w: 1280, h: 720, kind: 'land', variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en'] },
-  { dir: 'ads', name: 'meta-feed-4x5', w: 1080, h: 1350, kind: 'stack', variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en'] },
-  { dir: 'ads', name: 'meta-feed-1x1', w: 1080, h: 1080, kind: 'stack', variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en'] },
-  { dir: 'ads', name: 'tiktok-9x16', w: 1080, h: 1920, kind: 'stack', safe: { t: 250, b: 520, s: 96, e: 170 }, variants: ['seats-ar', 'seats-en', 'live-ar', 'live-en'] },
+  { dir: 'social', name: 'story', w: 1080, h: 1920, kind: 'stack', safe: { t: 250, b: 480, s: 96, e: 150 }, variants: ['close-ar', 'close-en', 'live-ar', 'live-en', 'neutral-close', 'neutral-live'] },
+  { dir: 'social', name: 'youtube-thumbnail', w: 1280, h: 720, kind: 'land', variants: ['close-ar', 'close-en', 'live-ar', 'live-en'] },
+  { dir: 'ads', name: 'meta-feed-4x5', w: 1080, h: 1350, kind: 'stack', variants: ['close-ar', 'close-en', 'live-ar', 'live-en'] },
+  { dir: 'ads', name: 'meta-feed-1x1', w: 1080, h: 1080, kind: 'stack', variants: ['close-ar', 'close-en', 'live-ar', 'live-en'] },
+  { dir: 'ads', name: 'tiktok-9x16', w: 1080, h: 1920, kind: 'stack', safe: { t: 250, b: 520, s: 96, e: 170 }, variants: ['close-ar', 'close-en', 'live-ar', 'live-en'] },
   // Profile covers: long-lived, so they carry the "now live" message, never a seat count.
   // YouTube: 2560×1440 canvas, everything that matters inside the 1546×423 all-devices safe area.
   { dir: 'covers', name: 'youtube-banner', w: 2560, h: 1440, kind: 'strip', safe: { x: 507, y: 508, w: 1546, h: 423 }, variants: ['live-ar', 'live-en', 'neutral-live'] },
@@ -101,7 +96,7 @@ function frame(F) {
   if (kind === 'stack') {
     const s = F.safe || { t: 0, b: 0, s: 0, e: 0 }, M = Math.round(w * 0.082);
     const top = Math.max(M, s.t), side = Math.max(M, s.s);
-    // With a platform safe zone the golden split is taken inside it, so copy and seats both stay
+    // With a platform safe zone the golden split is taken inside it, so copy and the calendar both stay
     // clear of the UI overlays; otherwise the whole canvas splits at the golden ratio.
     const sy = F.safe ? Math.round(top + (h - s.b - top) / PHI) : Math.round(h / PHI);
     return { u, axis: 'y', seam: sy, light: { x: Math.round(w / PHI), y: sy },
@@ -118,15 +113,24 @@ function frame(F) {
     mark: { x: sx + pad, y: S.y + S.h - pad * 0.35, onNavy: false } };
 }
 
-// Seat grid: columns × rows to fit the page box; returns seat centres and radius.
-function seatLayout(box, landscape) {
-  const cols = landscape ? 5 : 10, rows = FM.total / cols;
-  const cell = Math.min(box.w / cols, box.h / rows);
-  const r = cell * 0.34;
-  const gx = box.x + (box.w - cell * cols) / 2, gy = box.y + (box.h - cell * rows) / 2;
-  const seats = [];
-  for (let i = 0; i < FM.total; i++) seats.push({ x: gx + cell * (i % cols + 0.5), y: gy + cell * (Math.floor(i / cols) + 0.5) });
-  return { seats, r, cell };
+// Calendar of the close month: 7 columns (week starts Saturday in AR, Sunday in EN), days as rings.
+// Returns day centres (index 0 = day 1) and the ring radius. RTL calendars run right to left.
+function calLayout(box, rtl) {
+  const y = CLOSE.y, mo = CLOSE.mo, days = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+  const first = new Date(Date.UTC(y, mo - 1, 1)).getUTCDay(); // 0 = Sunday
+  const startCol = rtl ? (first + 1) % 7 : first; // AR week starts Saturday
+  const rows = Math.ceil((startCol + days) / 7);
+  const cell = Math.min(box.w / 7, box.h / (rows + 0.7));
+  const r = cell * 0.36;
+  const gx = box.x + (box.w - cell * 7) / 2, gy = box.y + (box.h - cell * (rows + 0.7)) / 2 + cell * 0.7;
+  const pts = [];
+  for (let i = 0; i < days; i++) {
+    const k = startCol + i, c = k % 7, row = Math.floor(k / 7);
+    const col = rtl ? 6 - c : c;
+    pts.push({ x: gx + cell * (col + 0.5), y: gy + cell * (row + 0.5), d: i + 1 });
+  }
+  const head = Array.from({ length: 7 }, (_, c) => ({ x: gx + cell * (c + 0.5), y: gy - cell * 0.42 }));
+  return { pts, r, cell, head };
 }
 
 function scene(F, variant) {
@@ -187,23 +191,21 @@ function scene(F, variant) {
   // ---- page motif ----
   let page = '', target;
   const P = G.page;
-  if (C.motif === 'seats') {
-    const landscape = G.axis === 'x';
-    const S = seatLayout(P, landscape);
-    const drawn = C.noCount ? 0 : FILLED; // og:image: no count, so no seat is drawn as taken
-    const next = drawn; // the visitor's seat: the first open one
-    target = S.seats[next];
-    S.seats.forEach((p, i) => {
-      if (i === next) return;
-      if (i < drawn) page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r)}" fill="${NAVY}"/>`;
-      else page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r - 1.25 * u)}" fill="none" stroke="${NAVY}" stroke-opacity=".55" stroke-width="${f(2.5 * u)}"/>`;
+  if (C.motif === 'close') {
+    // the month: weekday ticks, every day a quiet navy ring, the close day lit in cyan (no day is
+    // marked "gone": the asset runs all month, and a count of passed days would be a counter)
+    const S = calLayout(P, C.dir !== 'ltr');
+    S.head.forEach((p) => { page += `<rect x="${f(p.x - S.r * 0.5)}" y="${f(p.y - 2 * u)}" width="${f(S.r)}" height="${f(4 * u)}" rx="${f(2 * u)}" fill="${NAVY}" opacity=".35"/>`; });
+    const close = S.pts[CLOSE.d - 1];
+    target = close;
+    S.pts.forEach((p) => {
+      if (p === close) return;
+      page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r - 1.25 * u)}" fill="${W}" stroke="${NAVY}" stroke-opacity=".42" stroke-width="${f(2.2 * u)}"/>`;
     });
-    if (next != null) {
-      const p = S.seats[next];
-      page += `<g filter="url(#glow)"><circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r)}" fill="${CYAN}"/></g>`;
-      page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r + 9 * u)}" fill="none" stroke="${CYAN}" stroke-width="${f(2 * u)}"/>`;
-      page += `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="${f(S.r + 22 * u)}" fill="none" stroke="${CYAN}" stroke-opacity=".35" stroke-width="${f(1.5 * u)}"/>`;
-    }
+    page += `<g filter="url(#glow)"><circle cx="${f(close.x)}" cy="${f(close.y)}" r="${f(S.r * 1.12)}" fill="${CYAN}"/></g>`;
+    page += `<circle cx="${f(close.x)}" cy="${f(close.y)}" r="${f(S.r * 1.12 + 9 * u)}" fill="none" stroke="${CYAN}" stroke-width="${f(2 * u)}"/>`;
+    page += `<circle cx="${f(close.x)}" cy="${f(close.y)}" r="${f(S.r * 1.12 + 22 * u)}" fill="none" stroke="${CYAN}" stroke-opacity=".35" stroke-width="${f(1.5 * u)}"/>`;
+    G.days = S; G.close = { x: close.x, y: close.y, r: S.r * 1.12 };
   } else {
     // ledger: rows of navy bars, one cyan posted line ending on a cyan check
     const rows = G.axis === 'x' || F.kind === 'strip' ? 9 : 6;
@@ -290,14 +292,17 @@ function typePlan(F, C) {
     g.drawImage(bg, 0, 0, j.w, j.h);
     const u = j.G.u, T = j.G.text, C = j.C, P = j.plan;
     const FONT = '"Inter", "Cairo", sans-serif';
-    // MFT mark: navy on the page, bottom margin of the page column
+    // Platform signature (scripts/lib/campaign.js): mark + SEG + BY MFT, navy on the page, bottom margin
+    eval(j.signSrc);
     const mk = await load(j.G.mark.onNavy ? j.markWhite : j.markNavy);
-    const mh = (j.kind === 'strip' ? 24 : 34) * u * (j.kind === 'stack' ? 1.15 : 1), mw = mh * mk.width / mk.height;
-    const mx = j.G.mark.x, my = j.G.mark.y;
-    g.drawImage(mk, mx, my - mh, mw, mh);
-    g.fillStyle = j.G.mark.onNavy ? '#FFFFFF' : '#0D1B3E'; g.font = `800 ${mh * 0.76}px "Inter"`; g.letterSpacing = `${mh * 0.15}px`;
-    g.textAlign = 'left'; g.direction = 'ltr'; g.textBaseline = 'alphabetic';
-    g.fillText('MFT', mx + mw + mh * 0.38, my - mh / 2 + mh * 0.28);
+    const mh = (j.kind === 'strip' ? 26 : 38) * u * (j.kind === 'stack' ? 1.12 : 1);
+    const rtlSign = C.dir === 'rtl' && j.kind !== 'land';
+    await drawSign(g, mk, rtlSign ? j.G.page.x + j.G.page.w : j.G.mark.x, j.G.mark.y, mh, !j.G.mark.onNavy, rtlSign);
+    // the close day's number, white on the cyan day
+    if (j.G.close) {
+      const cl = j.G.close; g.save(); g.direction = 'ltr'; g.textAlign = 'center'; g.fillStyle = '#0D1B3E';
+      g.font = `900 ${cl.r * 1.02}px "Inter"`; g.fillText(String(j.day), cl.x, cl.y + cl.r * 0.37); g.restore();
+    }
     if (!C.dir) return [c.toDataURL('image/webp', 0.9).split(',')[1], c.toDataURL('image/jpeg', 0.92).split(',')[1]];
 
     const rtl = C.dir === 'rtl';
@@ -319,7 +324,7 @@ function typePlan(F, C) {
       items.push({ type: 'heroText', px: hp, h: hp * 1.0, after: 22 * k });
     }
     if (C.title) { const tp = fit(C.title, 800, P.title * u, T.w); items.push({ type: 'title', px: tp, h: tp * 1.25, after: 14 * k }); }
-    if (C.support && P.support) { set(500, P.support * u); const lines = wrap(C.support, T.w * 0.94); items.push({ type: 'support', px: P.support * u, lines, h: lines.length * P.support * u * 1.5, after: 30 * k }); }
+    if (C.support && P.support) { set(500, P.support * u); const lines = [].concat(C.support).flatMap((t) => wrap(t, T.w * 0.94)); items.push({ type: 'support', px: P.support * u, lines, h: lines.length * P.support * u * 1.5, after: 30 * k }); }
     const cp = P.cta * u; set(800, cp); const cw = Math.min(g.measureText(C.cta).width + cp * 2.2, T.w), chh = cp * 2.3;
     items.push({ type: 'cta', px: cp, h: chh, after: 0 });
     const total = items.reduce((a, it) => a + it.h + it.after, 0);
@@ -327,14 +332,18 @@ function typePlan(F, C) {
     for (const it of items) {
       if (it.type === 'eyebrow') { set(700, it.px, rtl ? 0 : 3 * u); g.fillStyle = '#1BB7CD'; g.fillText(C.eyebrow, X, y + it.px); }
       if (it.type === 'hero') {
-        // the seat count: big cyan number + muted "/50", always LTR digits
+        // the close date: big cyan day + the month in white. Digits LTR; in Arabic the month reads after
+        // the day, so it sits to the day's left (each run is drawn on its own: no bidi reordering)
         g.direction = 'ltr'; g.textAlign = 'left';
         set(800, it.px); const nW = g.measureText(C.hero[0]).width;
         set(800, it.px * 0.42); const dW = C.hero[1] ? g.measureText(C.hero[1]).width : 0;
-        const gapX = it.px * 0.06, full = nW + gapX + dW, x0 = rtl ? X - full : X;
+        const gapX = it.px * 0.12, full = nW + gapX + dW, x0 = rtl ? X - full : X;
+        const nX = rtl ? x0 + dW + gapX : x0, mX = rtl ? x0 : x0 + nW + gapX;
         g.shadowColor = 'rgba(27,183,205,.55)'; g.shadowBlur = 40 * u;
-        set(800, it.px); g.fillStyle = '#1BB7CD'; g.fillText(C.hero[0], x0, y + it.px * 0.76);
-        g.shadowBlur = 0; set(800, it.px * 0.42); g.fillStyle = 'rgba(255,255,255,.62)'; g.fillText(C.hero[1], x0 + nW + gapX, y + it.px * 0.76);
+        set(800, it.px); g.fillStyle = '#1BB7CD'; g.fillText(C.hero[0], nX, y + it.px * 0.76);
+        g.shadowBlur = 0; set(800, it.px * 0.42); g.fillStyle = '#FFFFFF';
+        if (rtl) { g.direction = 'rtl'; g.textAlign = 'left'; }
+        g.fillText(C.hero[1], mX, y + it.px * 0.76);
         g.direction = C.dir; g.textAlign = rtl ? 'right' : 'left';
       }
       if (it.type === 'heroText') { set(800, it.px); g.fillStyle = '#FFFFFF'; g.shadowColor = 'rgba(255,255,255,.35)'; g.shadowBlur = 28 * u; g.fillText(C.heroText, X, y + it.px * 0.86); g.shadowBlur = 0; }
@@ -358,20 +367,20 @@ function typePlan(F, C) {
   for (const F of FORMATS) {
     for (const v of F.variants) {
       const base = `${F.name}_${v}_${F.w}x${F.h}`;
-      if (only && !base.includes(only)) continue;
+      if (only && only !== 'og' && !base.includes(only)) continue;
+      if (only === 'og' && !(F.name === 'linkedin-facebook-link' && /^close-(ar|en)$/.test(v))) continue;
       const { svg, G } = scene(F, v);
-      const [webp, jpg] = await render({ svg, G, w: F.w, h: F.h, kind: F.kind, C: COPY[v], plan: typePlan(F, COPY[v]), markNavy: MARK_NAVY, markWhite: MARK_WHITE });
+      const [webp, jpg] = await render({ svg, G, w: F.w, h: F.h, kind: F.kind, C: COPY[v], plan: typePlan(F, COPY[v]), markNavy: MARK_NAVY, markWhite: MARK_WHITE, signSrc: SIGN_CANVAS_SRC, day: CLOSE.d });
       const dir = path.join(OUT, F.dir); fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(path.join(dir, base + '.webp'), Buffer.from(webp, 'base64'));
       fs.writeFileSync(path.join(dir, base + '.jpg'), Buffer.from(jpg, 'base64'));
       written.push({ dir: F.dir, base, w: F.w, h: F.h, variant: v, name: F.name });
-      // The founding page og:image is the 1200×630 seats card in each language, always in its
-      // no-count form: a share image is cached by every platform and never updates, so it must not
-      // carry a number that the live counter will contradict (integrity register H1).
-      if (F.name === 'linkedin-facebook-link' && /^seats-(ar|en)$/.test(v)) {
+      // The founding page og:image (a SITE file) is the 1200×630 close card, rendered only on request
+      // (filter `og`), when the site switches from the seat counter to the closing window.
+      if (only === 'og' && F.name === 'linkedin-facebook-link' && /^close-(ar|en)$/.test(v)) {
         const ogV = `og-${v}`;
         const og = scene(F, ogV);
-        const [, ogJpg] = await render({ svg: og.svg, G: og.G, w: F.w, h: F.h, kind: F.kind, C: COPY[ogV], plan: typePlan(F, COPY[ogV]), markNavy: MARK_NAVY, markWhite: MARK_WHITE });
+        const [, ogJpg] = await render({ svg: og.svg, G: og.G, w: F.w, h: F.h, kind: F.kind, C: COPY[ogV], plan: typePlan(F, COPY[ogV]), markNavy: MARK_NAVY, markWhite: MARK_WHITE, signSrc: SIGN_CANVAS_SRC, day: CLOSE.d });
         fs.mkdirSync(SITE_OUT, { recursive: true });
         fs.writeFileSync(path.join(SITE_OUT, `founding-og-${v.slice(-2)}.jpg`), Buffer.from(ogJpg, 'base64'));
       }
@@ -385,7 +394,7 @@ function typePlan(F, C) {
     const groups = [...new Set(written.map((x) => x.dir))];
     const html = `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEG launch designs</title>
 <style>body{margin:0;padding:32px 16px;background:#F5F7FA;color:#0D1B3E;font:15px/1.5 system-ui,sans-serif}h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 12px;text-transform:capitalize}p{margin:0 0 16px;color:#3B4262}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}figure{margin:0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding:10px}img{display:block;width:100%;height:auto;background:#0D1B3E}figcaption{font-size:12px;margin-top:8px;word-break:break-all}</style>
-<h1>Standard Enterprise Governance (SEG) launch: Founding Members</h1><p>Generated by scripts/launch-images.js. ${FM.total} founding seats${FM.showCount ? ` (${FILLED} filled)` : ', no public counter'}. Every file exists as .webp and .jpg.</p>
+<h1>Standard Enterprise Governance (SEG) launch: Founding Members</h1><p>Generated by scripts/launch-images.js. Founder pricing closes ${CLOSE.enFull} (src/site.config.js → founding.closesAt); no seat counts. Every file exists as .webp and .jpg.</p>
 ${groups.map((gname) => `<h2>${gname}</h2><div class="g">${written.filter((x) => x.dir === gname).map((x) => `<figure><img loading="lazy" src="${gname}/${x.base}.webp" alt="${x.name} ${x.variant}"><figcaption>${gname}/${x.base}.jpg · ${x.w}×${x.h}</figcaption></figure>`).join('')}</div>`).join('\n')}`;
     fs.writeFileSync(path.join(OUT, 'index.html'), html);
     console.log(`${written.length} designs × 2 formats`);

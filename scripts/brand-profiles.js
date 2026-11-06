@@ -76,7 +76,8 @@ function highlight(icon) {
   if (icon === 'platform') { spiral(d, cx - 260, cy - 160, 520, 520 / PHI, 7); return d; }
   if (icon === 'trust') { s += L(`M${cx} ${cy - 230} L${cx + 190} ${cy - 160} V${cy + 10} C${cx + 190} ${cy + 140} ${cx + 90} ${cy + 210} ${cx} ${cy + 250} C${cx - 90} ${cy + 210} ${cx - 190} ${cy + 140} ${cx - 190} ${cy + 10} V${cy - 160} Z`); d.svg += s + cyanCheck(cx, cy, 70, 3); return d; }
   if (icon === 'insights') { s += rect(cx - 170, cy - 230, 340, 460, 'none', { r: 30, stroke: W, sw: 22 }); [0, 1, 2].forEach((i) => { s += bar(cx - 100, cy - 90 + i * 90, [200, 150, 180][i], 22, W, 0.9); }); d.svg += s + `<g filter="url(#glow)">${bar(cx - 100, cy - 180, 120, 26, CYAN)}</g>`; return d; }
-  if (icon === 'seats') { for (let i = 0; i < 25; i++) { const x = cx - 240 + (i % 5) * 120, y = cy - 240 + Math.floor(i / 5) * 120; s += i < 12 ? circ(x, y, 34, W) : i === 12 ? '' : circ(x, y, 32, 'none', { stroke: W, sw: 6, so: 0.4 }); } d.svg += s + `<g filter="url(#glow)">${circ(cx, cy, 36, CYAN)}</g>`; return d; }
+  // founders (6 Nov 2026, replaces the withdrawn seat grid): a key, no count. The cyan bit = by application.
+  if (icon === 'founders') { s += `<circle cx="${cx - 120}" cy="${cy - 120}" r="120" fill="none" stroke="${W}" stroke-width="22"/>` + L(`M${cx - 35} ${cy - 35} L${cx + 230} ${cy + 230} M${cx + 120} ${cy + 120} L${cx + 50} ${cy + 190} M${cx + 185} ${cy + 185} L${cx + 125} ${cy + 245}`); d.svg += s + `<g filter="url(#glow)">${circ(cx - 120, cy - 120, 44, CYAN)}</g>`; return d; }
   if (icon === 'contact') { s += L(`M${cx - 230} ${cy - 170} H${cx + 230} V${cy + 110} H${cx - 40} L${cx - 150} ${cy + 220} V${cy + 110} H${cx - 230} Z`); d.svg += s + [-90, 0, 90].map((dx, i) => i === 1 ? `<g filter="url(#glow)">${circ(cx + dx, cy - 30, 26, CYAN)}</g>` : circ(cx + dx, cy - 30, 24, W)).join(''); return d; }
   return d;
 }
@@ -107,7 +108,7 @@ const COVERS = [
   // LinkedIn personal profile (founder): 1584×396; the photo overlaps the left.
   { name: 'linkedin-personal-banner', w: 1584, h: 396, safe: { x: 470, y: 40, w: 1070, h: 316 } }
 ];
-const HIGHLIGHTS = ['platform', 'seats', 'trust', 'insights', 'contact'];
+const HIGHLIGHTS = ['platform', 'founders', 'trust', 'insights', 'contact']; // highlight name for 02: «المؤسِّسون»
 
 (async () => {
   const { render, close } = await K.openRenderer();
