@@ -34,7 +34,7 @@ const OUT = path.join(ROOT, 'marketing/designs');
 const SITE_OUT = path.join(ROOT, 'src/assets/img/launch');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
 const { MARK: SEG_MARK } = require('./lib/campaign.js');
-const MARK_NAVY = SEG_MARK.navy, MARK_WHITE = SEG_MARK.white; // SEG cube: colour on the page, white on navy
+const MARK_NAVY = { seg: SEG_MARK.navy, mft: SEG_MARK.mftNavy, cube: SEG_MARK.cubeColor }, MARK_WHITE = { seg: SEG_MARK.white, mft: SEG_MARK.mftWhite, cube: SEG_MARK.cubeWhite }; // signature: SEG lockup | MFT logo
 const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
 const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
 const { founding: FM } = require('../src/site.config.js');
@@ -296,12 +296,12 @@ function typePlan(F, C) {
     g.drawImage(bg, 0, 0, j.w, j.h);
     const u = j.G.u, T = j.G.text, C = j.C, P = j.plan;
     const FONT = '"Inter", "Cairo", sans-serif';
-    // Platform signature (scripts/lib/campaign.js): mark + SEG + BY MFT, navy on the page, bottom margin
+    // Signature (scripts/lib/campaign.js): SEG lockup | MFT logo, navy on the page, bottom margin
     eval(j.signSrc);
-    const mk = await load(j.G.mark.onNavy ? j.markWhite : j.markNavy);
+    const ms = j.G.mark.onNavy ? j.markWhite : j.markNavy, mk = { seg: await load(ms.seg), mft: await load(ms.mft), cube: await load(ms.cube) };
     const mh = (j.kind === 'strip' ? 26 : 38) * u * (j.kind === 'stack' ? 1.12 : 1);
     const rtlSign = C.dir === 'rtl' && j.kind !== 'land';
-    await drawSign(g, mk, rtlSign ? j.G.page.x + j.G.page.w : j.G.mark.x, j.G.mark.y, mh, !j.G.mark.onNavy, rtlSign);
+    await drawSign(g, mk, rtlSign ? j.G.page.x + j.G.page.w : j.G.mark.x, j.G.mark.y, mh, !j.G.mark.onNavy, rtlSign, j.kind === 'strip');
     // the close day's number, white on the cyan day
     if (j.G.close) {
       const cl = j.G.close; g.save(); g.direction = 'ltr'; g.textAlign = 'center'; g.fillStyle = '#0D1B3E';

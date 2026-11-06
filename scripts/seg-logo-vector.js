@@ -1,238 +1,253 @@
 #!/usr/bin/env node
-// SEG logo, vector track (6 Nov 2026): three refinement directions of the S-E-G cube, redrawn from
-// geometry (not traced), for the CEO to choose from. Nothing here replaces the logo on the designs: the
-// designs use the CEO's file (scripts/seg-logo-raster.js) until a direction is approved.
-//
+// SEG logo system: the S-E-G cube on a declared geometric grid (3 directions for the CEO) and the official
+// lockup «cube + Standard Enterprise Governance» (CEO decision, 6 Nov 2026).
 //   PLAYWRIGHT_PATH=<path to playwright> node scripts/seg-logo-vector.js
+// Module use (the brand book draws its construction pages from the same geometry):
+//   require('./seg-logo-vector.js') → { DIRS, frame, cubeSVG, construction, weights, nameRun, lockupSVG, … }
 //
-// Construction. The cube is three faces around one vertex: top (G), left (S), right (E). Each face is a
-// parallelogram with its own edge vectors; every letter is a set of bars drawn in the face's own
-// (u, v) square and mapped onto the face, so all three letters share one grid and one stroke. The
-// proportions of direction A were measured from the CEO's file by flattening each face back to a
-// square (5 horizontal bands per letter, stems ≈ 0.26 of the face, slope ≈ 0.53, faces 0.91 as tall as
-// they are wide, seams ≈ 10% of the face). Colours: the darkest / mid / lightest blues of the file.
-//
-// Directions
-//   A · faithful: the CEO's cube, cleaned: same bars, same per-face gradients, soft corners.
-//   B · small sizes: chunkier bars (3 × 0.24) and wider slots, flat 3-tone faces, wider seams, square
-//       corners: stays readable at 16–32 px (favicon, avatars, app icon).
-//   C · alternative: same cube and letters, re-coloured into the campaign system: faces run navy →
-//       SEG blue, the G's inner bar is the campaign cyan (the «exception» light of the designs).
-// Each: colour (light bg), on-dark, mono white, mono black, horizontal lockup (light / dark), square icon
-// (light / dark), as SVG + PNG, a sheet per direction and one comparison board.
+// ── Construction ────────────────────────────────────────────────────────────────────────────────
+// Frame. Three faces around one vertex C: top (G), left (S), right (E). Each face is a parallelogram
+// with edge vectors U, V; the side faces' U rises at the projection angle α, their V is vertical.
+// Module. m = W / Nu (W = a face's horizontal projection, Nu its width in modules). Every stroke,
+// counter and seam is a whole or half number of modules.
+// Optical rules (each measured and printed by this script):
+//   1. Stroke parity. A bar on a side face is sheared: its perpendicular weight is band·(H/Nv)·cos α;
+//      a stem's is stem·m. Type practice makes verticals 5–12 % heavier than horizontals so both read
+//      equal. B and C sit in that window; A keeps the CEO's heavier stems on purpose (faithful).
+//   2. Equal seams. Vertical and diagonal seams get one perpendicular width s: side faces move ±s/2
+//      sideways, and a·sin α + (b + c)·cos α = s splits the diagonals between top and sides.
+//   3. Rounding compensation. A round stroke-join of width r rounds outer corners and grows each
+//      shape by r/2, so seams are drawn r wider and keep their declared width.
+//   4. Top-face strokes are equal both ways: both of its axes are foreshortened alike.
+//   5. Counters ≥ seams. A letter's slot must be at least as wide as the seam between faces, or the
+//      letters close up before the faces separate when the logo gets small.
+//   6. Lockup alignment. The name spans the left face's outer vertical edge (its top and bottom
+//      corners), not the cube's pointed extremes, which overshoot and would make the type look small.
+// Name. «Standard Enterprise Governance» in IBM Plex Sans Bold, as outlines (the brand's Latin face:
+// see scripts/brand-type-metrics.js for why Plex Sans pairs best with Cairo). Native kerning, no
+// tracking: the face's own spacing is drawn for this weight.
+// ────────────────────────────────────────────────────────────────────────────────────────────────
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
-const OUT = path.join(ROOT, 'marketing/brand/assets/logo/directions');
+const OUT = path.join(ROOT, 'marketing/brand/assets/logo');
 const T = require('./lib/brand-tokens.js');
-
-const f = (n) => Math.round(n * 100) / 100;
-const pt = (o, U, V, u, v) => [o[0] + U[0] * u + V[0] * v, o[1] + U[1] * u + V[1] * v];
-const poly = (pts) => 'M' + pts.map((p) => `${f(p[0])} ${f(p[1])}`).join(' L') + ' Z';
-
-// bars per letter, in face (u, v): [u0, v0, u1, v1]
-const LETTERS = {
-  A: {
-    S: [[0, 0, 1, 0.2], [0, 0.2, 0.26, 0.4], [0, 0.4, 1, 0.62], [0.69, 0.62, 1, 0.78], [0, 0.78, 1, 1]],
-    E: [[0, 0, 1, 0.2], [0, 0.2, 0.26, 0.4], [0, 0.4, 0.74, 0.6], [0, 0.6, 0.26, 0.78], [0, 0.78, 1, 1]],
-    G: [[0, 0, 1, 0.2], [0, 0, 0.24, 1], [0.8, 0, 1, 1], [0, 0.7, 0.6, 1], [0.72, 0.7, 1, 1], [0.4, 0.4, 0.6, 0.7]]
-  },
-  B: {
-    S: [[0, 0, 1, 0.24], [0, 0.24, 0.3, 0.38], [0, 0.38, 1, 0.62], [0.7, 0.62, 1, 0.76], [0, 0.76, 1, 1]],
-    E: [[0, 0, 1, 0.24], [0, 0.24, 0.3, 0.38], [0, 0.38, 0.72, 0.62], [0, 0.62, 0.3, 0.76], [0, 0.76, 1, 1]],
-    G: [[0, 0, 1, 0.24], [0, 0, 0.3, 1], [0.76, 0, 1, 1], [0, 0.7, 0.56, 1], [0.72, 0.7, 1, 1], [0.38, 0.42, 0.56, 0.7]]
-  }
-};
-
-// cube geometry in a 1000 × 1000 box
-function faces({ W = 450, k = 0.53, H = 410, g = 44, C = [500, 520] } = {}) {
-  const gx = g / 2, a = g / 2, b = g * 0.86 - gx * k; // seams: vertical = g, diagonal ≈ g
-  const L = [-W, -W * k], R = [W, -W * k], D = [0, H];
-  const top = { o: [C[0] + L[0], C[1] + L[1] - a], U: [W, -W * k], V: [W, W * k] };
-  const left = { o: [C[0] + L[0] - gx, C[1] + L[1] + b], U: [W, W * k], V: D };
-  const right = { o: [C[0] + gx, C[1] + b], U: R, V: D };
-  return { top, left, right };
-}
-function letterPath(face, bars) {
-  return bars.map(([u0, v0, u1, v1]) => poly([pt(face.o, face.U, face.V, u0, v0), pt(face.o, face.U, face.V, u1, v0), pt(face.o, face.U, face.V, u1, v1), pt(face.o, face.U, face.V, u0, v1)])).join(' ');
-}
-// per-face linear gradient along the face's U edge (dark at the start, light at the end)
-function grad(id, face, stops) {
-  const a = pt(face.o, face.U, face.V, 0, 0.5), b = pt(face.o, face.U, face.V, 1, 0.5);
-  return `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${f(a[0])}" y1="${f(a[1])}" x2="${f(b[0])}" y2="${f(b[1])}">${stops.map(([o, c]) => `<stop offset="${o}" stop-color="${c}"/>`).join('')}</linearGradient>`;
-}
-
 const C = T.color;
-// paint sets per direction × background. Each face: [stops] (gradient) or a single colour.
-const PAINT = {
+const FONTKIT = process.env.FONTKIT || '/Users/mac/seg-audit/portal/node_modules/next/dist/compiled/@next/font/dist/fontkit';
+const f = (n) => Math.round(n * 100) / 100;
+const rad = (d) => (d * Math.PI) / 180;
+const NAME = 'Standard Enterprise Governance';
+
+const DIRS = {
   A: {
-    light: { left: [[0, C.seg900], [1, C.seg600]], top: [[0, C.seg700], [1, C.seg500]], right: [[0, C.seg900], [1, C.seg500]] },
-    dark: { left: [[0, C.seg500], [1, C.seg300]], top: [[0, C.seg400], [1, C.seg200]], right: [[0, C.seg500], [1, C.seg200]] }
+    key: 'a', name: 'a-faithful', title: 'A · تنظيف أمين', alpha: 28, W: 450, Nu: 11, Nv: 10, seam: 1.1, round: 9, stem: 3, band: 2, topStroke: 2.5,
+    why: 'لوجو الـCEO بنفس شخصيته (ميل 28°، أوجه 11:10، أعمدة تقيلة)، على شبكة 11×10 موديول: كل خط عدد صحيح من الموديول، والفواصل متساوية، وقطر الحواف ثابت.',
+    S: [[0, 0, 11, 2], [0, 2, 3, 4], [0, 4, 11, 6], [8, 6, 11, 8], [0, 8, 11, 10]],
+    E: [[0, 0, 11, 2], [0, 2, 3, 4], [0, 4, 8, 6], [0, 6, 3, 8], [0, 8, 11, 10]],
+    G: [[0, 0, 11, 2.5], [0, 0, 2.5, 11], [8.5, 0, 11, 11], [0, 8.5, 6.5, 11], [4, 4.5, 6.5, 8.5]], accentIdx: -1
   },
   B: {
-    light: { left: C.seg900, top: C.seg500, right: C.seg700 },
-    dark: { left: C.seg500, top: C.seg200, right: C.seg300 }
+    key: 'b', name: 'b-small', title: 'B · للمقاسات الصغيرة', alpha: 28, W: 450, Nu: 9, Nv: 8, seam: 0.8, round: 0, stem: 2, band: 2, topStroke: 2,
+    why: 'نفس الحروف على شبكة أخشن 9×8: 3 أشرطة وفتحتين بنسبة 2:1، وأعمدة معدّلة لتوازن الوزن، و3 درجات مسطّحة من غير تدرّج يضيع في الصغير، وزوايا حادة تلمّ على البكسل.',
+    S: [[0, 0, 9, 2], [0, 2, 2, 3], [0, 3, 9, 5], [7, 5, 9, 6], [0, 6, 9, 8]],
+    E: [[0, 0, 9, 2], [0, 2, 2, 3], [0, 3, 7, 5], [0, 5, 2, 6], [0, 6, 9, 8]],
+    G: [[0, 0, 9, 2], [0, 0, 2, 9], [7, 0, 9, 9], [0, 7, 5.5, 9], [3.5, 4, 5.5, 7]], accentIdx: -1
   },
   C: {
-    light: { left: [[0, C.navy], [1, C.seg800]], top: [[0, C.seg700], [1, C.seg500]], right: [[0, C.seg800], [1, C.seg600]], accent: C.cyan },
-    dark: { left: [[0, C.seg700], [1, C.seg500]], top: [[0, C.seg500], [1, C.seg200]], right: [[0, C.seg600], [1, C.seg400]], accent: C.cyan }
+    key: 'c', name: 'c-alternative', title: 'C · مكعّب متساوي + سماوي', alpha: 30, W: 450, Nu: 10, Nv: 10, equal: true, seam: 0.9, round: 12, stem: 2.2, band: 2, topStroke: 2.1,
+    why: 'مكعّب أيزومتري حقيقي (30° وأحرف متساوية): الموديول واحد في كل الاتجاهات، فالوزن متوازن بطبيعته. والعمود اللي جوّه الـG سماوي، نفس «ضوء الاستثناء» في كل تصاميم الحملة.',
+    S: [[0, 0, 10, 2], [0, 2, 2.2, 4], [0, 4, 10, 6], [7.8, 6, 10, 8], [0, 8, 10, 10]],
+    E: [[0, 0, 10, 2], [0, 2, 2.2, 4], [0, 4, 7.4, 6], [0, 6, 2.2, 8], [0, 8, 10, 10]],
+    G: [[0, 0, 10, 2.1], [0, 0, 2.1, 10], [7.9, 0, 10, 10], [0, 7.9, 5.8, 10], [3.8, 4.2, 5.8, 7.9]], accentIdx: 4
   }
 };
-const DIR = {
-  A: { name: 'a-faithful', title: 'A · تنظيف أمين', letters: 'A', geo: {}, round: 10 },
-  B: { name: 'b-small', title: 'B · للمقاسات الصغيرة', letters: 'B', geo: { g: 60 }, round: 0 },
-  C: { name: 'c-alternative', title: 'C · اتجاه بديل (كحلي + سماوي)', letters: 'B', geo: { g: 34 }, round: 16 }
+const PAINT = {
+  A: { light: { left: [[0, 'seg900'], [1, 'seg600']], top: [[0, 'seg700'], [1, 'seg500']], right: [[0, 'seg900'], [1, 'seg500']] },
+       dark: { left: [[0, 'seg500'], [1, 'seg300']], top: [[0, 'seg400'], [1, 'seg200']], right: [[0, 'seg500'], [1, 'seg200']] } },
+  B: { light: { left: 'seg900', top: 'seg500', right: 'seg700' }, dark: { left: 'seg500', top: 'seg200', right: 'seg300' } },
+  C: { light: { left: [[0, 'navy'], [1, 'seg800']], top: [[0, 'seg700'], [1, 'seg500']], right: [[0, 'seg800'], [1, 'seg600']], accent: 'cyan' },
+       dark: { left: [[0, 'seg700'], [1, 'seg500']], top: [[0, 'seg500'], [1, 'seg200']], right: [[0, 'seg600'], [1, 'seg400']], accent: 'cyan' } }
 };
 
-// the cube as an SVG group. mode: light | dark | white | black
-function cube(dk, mode, idp = '') {
-  const D = DIR[dk], F = faces(D.geo), L = LETTERS[D.letters];
-  const P = mode === 'light' || mode === 'dark' ? PAINT[dk][mode] : null;
+// ---- geometry ----
+function frame(D) {
+  const a = rad(D.alpha), W = D.W, rise = W * Math.tan(a);
+  const H = D.equal ? W / Math.cos(a) : W * D.Nv / D.Nu;
+  const m = W / D.Nu, s = D.seam * m + D.round;
+  const ax = s / 2, bc = (s - ax * Math.sin(a)) / Math.cos(a), b = bc / 2, c = bc / 2;
+  return { a, W, H, rise, m, s, faces: {
+    top: { o: [-W, -rise - c], U: [W, -rise], V: [W, rise], nu: D.Nu, nv: D.Nu },
+    left: { o: [-W - ax, -rise + b], U: [W, rise], V: [0, H], nu: D.Nu, nv: D.Nv },
+    right: { o: [ax, b], U: [W, -rise], V: [0, H], nu: D.Nu, nv: D.Nv } } };
+}
+const P = (F, u, v) => [F.o[0] + F.U[0] * u / F.nu + F.V[0] * v / F.nv, F.o[1] + F.U[1] * u / F.nu + F.V[1] * v / F.nv];
+const quad = (F, [u0, v0, u1, v1]) => [P(F, u0, v0), P(F, u1, v0), P(F, u1, v1), P(F, u0, v1)];
+const d = (pts) => 'M' + pts.map((p) => `${f(p[0])} ${f(p[1])}`).join(' L') + ' Z';
+function weights(D) {
+  const G = frame(D), mv = G.H / D.Nv;
+  const stem = D.stem * G.m, band = D.band * mv * Math.cos(G.a);
+  const gap = ((D.Nv - 3 * D.band) / 2) * mv * Math.cos(G.a);
+  return { m: f(G.m), stemPerp: f(stem), bandPerp: f(band), ratio: f(stem / band), counterPerp: f(gap), seam: f(G.s - D.round), round: D.round, HtoW: f(G.H / G.W) };
+}
+function bbox(D) {
+  const G = frame(D), pts = [];
+  for (const [k, L] of [['top', 'G'], ['left', 'S'], ['right', 'E']]) for (const r of D[L]) pts.push(...quad(G.faces[k], r));
+  const pad = D.round / 2, xs = pts.map((p) => p[0]), ys = pts.map((p) => p[1]);
+  return { x: Math.min(...xs) - pad, y: Math.min(...ys) - pad, w: Math.max(...xs) - Math.min(...xs) + 2 * pad, h: Math.max(...ys) - Math.min(...ys) + 2 * pad, G };
+}
+function cubeSVG(dk, mode, idp = '') {
+  const D = DIRS[dk], G = frame(D), Pn = mode === 'light' || mode === 'dark' ? PAINT[dk][mode] : null;
   const mono = mode === 'white' ? '#FFFFFF' : mode === 'black' ? '#000000' : null;
   let defs = '', g = '';
-  const paint = (name) => {
+  const paint = (face) => {
     if (mono) return mono;
-    const p = P[name];
-    if (Array.isArray(p)) { defs += grad(`${idp}${dk}${name}`, F[name], p); return `url(#${idp}${dk}${name})`; }
-    return p;
+    const p = Pn[face]; if (!Array.isArray(p)) return C[p];
+    const F = G.faces[face], s0 = P(F, 0, F.nv / 2), s1 = P(F, F.nu, F.nv / 2), id = `${idp}${dk}${face}`;
+    defs += `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${f(s0[0])}" y1="${f(s0[1])}" x2="${f(s1[0])}" y2="${f(s1[1])}">${p.map(([o, c]) => `<stop offset="${o}" stop-color="${C[c]}"/>`).join('')}</linearGradient>`;
+    return `url(#${id})`;
   };
-  const rnd = D.round ? ` stroke-linejoin="round" stroke-width="${D.round}"` : '';
-  for (const [name, letter] of [['top', 'G'], ['left', 'S'], ['right', 'E']]) {
-    let bars = L[letter];
-    let accent = '';
-    if (dk === 'C' && letter === 'G' && !mono) { accent = letterPath(F.top, [bars[5]]); bars = bars.slice(0, 5); }
-    const fill = paint(name);
-    g += `<path d="${letterPath(F[name], bars)}" fill="${fill}"${rnd ? ` stroke="${fill}"${rnd}` : ''}/>`;
-    if (accent) g += `<path d="${accent}" fill="${P.accent}"${rnd ? ` stroke="${P.accent}"${rnd}` : ''}/>`;
+  const rj = D.round ? ` stroke-width="${D.round}" stroke-linejoin="round"` : '';
+  for (const [face, L] of [['top', 'G'], ['left', 'S'], ['right', 'E']]) {
+    let bars = D[L], acc = null;
+    if (L === 'G' && D.accentIdx >= 0 && !mono) { acc = bars[D.accentIdx]; bars = bars.filter((_, i) => i !== D.accentIdx); }
+    const fill = paint(face);
+    g += `<path d="${bars.map((r) => d(quad(G.faces[face], r))).join(' ')}" fill="${fill}"${rj ? ` stroke="${fill}"${rj}` : ''}/>`;
+    if (acc) g += `<path d="${d(quad(G.faces[face], acc))}" fill="${C[Pn.accent]}"${rj ? ` stroke="${C[Pn.accent]}"${rj}` : ''}/>`;
   }
-  return { defs, g };
+  return { defs, g, box: bbox(D) };
 }
 
-// ---- wordmark: S E G / B Y M F T built from bars on a 3 × 5 grid (pure paths, no font) ----
-const GLYPH = {
-  S: { w: 3, r: [[0, 0, 3, 1], [0, 0, 1, 3], [0, 2, 3, 1], [2, 2, 1, 3], [0, 4, 3, 1]] },
-  E: { w: 3, r: [[0, 0, 3, 1], [0, 0, 1, 5], [0, 2, 2.4, 1], [0, 4, 3, 1]] },
-  G: { w: 3, r: [[0, 0, 3, 1], [0, 0, 1, 5], [0, 4, 3, 1], [2, 2, 1, 3], [1.6, 2, 1.4, 1]] },
-  B: { w: 3, r: [[0, 0, 1, 5], [0, 0, 2.3, 1], [0, 2, 2.3, 1], [0, 4, 2.3, 1], [2, 0.6, 1, 1.6], [2, 2.6, 1, 1.8]] },
-  Y: { w: 3, r: [[0, 0, 1, 2.6], [2, 0, 1, 2.6], [0, 2, 3, 1], [1, 2, 1, 3]] },
-  M: { w: 5, r: [[0, 0, 1, 5], [4, 0, 1, 5], [0, 0, 5, 1], [2, 0, 1, 3]] },
-  F: { w: 3, r: [[0, 0, 1, 5], [0, 0, 3, 1], [0, 2, 2.4, 1]] },
-  T: { w: 3, r: [[0, 0, 3, 1], [1, 0, 1, 5]] },
-  ' ': { w: 1.2, r: [] }
-};
-function word(text, x, y, unit, track = 1) {
-  let d = '', cx = x;
-  for (const ch of text) {
-    const gl = GLYPH[ch];
-    for (const [rx, ry, rw, rh] of gl.r) d += `M${f(cx + rx * unit)} ${f(y + ry * unit)} h${f(rw * unit)} v${f(rh * unit)} h${f(-rw * unit)} Z `;
-    cx += (gl.w + track) * unit;
+// ---- the name, as IBM Plex Sans Bold outlines ----
+let FONT = null;
+function font() {
+  if (!FONT) FONT = require(FONTKIT).default(fs.readFileSync(path.join(ROOT, 'marketing/brand/fonts/IBMPlexSansArabic-Bold.ttf')));
+  return FONT;
+}
+// one line at baseline y; cap = cap height in drawing units. Returns { d, w }.
+function nameRun(text, x, y, cap) {
+  const F = font(), s = cap / F.capHeight, run = F.layout(text);
+  let cx = 0, dd = '';
+  run.glyphs.forEach((g, i) => {
+    const p = run.positions[i], ox = x + (cx + p.xOffset) * s, oy = y - p.yOffset * s;
+    for (const c of g.path.commands) {
+      const a = c.args.map((v, k) => (k % 2 === 0 ? ox + v * s : oy - v * s)).map(f);
+      dd += c.command === 'moveTo' ? `M${a}` : c.command === 'lineTo' ? `L${a}` : c.command === 'quadraticCurveTo' ? `Q${a}` : c.command === 'bezierCurveTo' ? `C${a}` : 'Z';
+    }
+    cx += p.xAdvance;
+  });
+  return { d: dd, w: cx * s, descender: -F.descent * s };
+}
+// name block: 'line' = one line centred on the cube's vertical span; 'stack' = 3 lines spanning it
+function nameBlock(layout, x, top, bot) {
+  const span = bot - top;
+  if (layout === 'line') {
+    const cap = span * 0.34, y = top + span / 2 + cap / 2;
+    const r = nameRun(NAME, x, y, cap); return { d: r.d, w: r.w };
   }
-  return { d, w: cx - x - track * unit };
+  // 'stack' = 3 lines; 'two' = «Standard Enterprise / Governance» (the signature: larger type per cube
+  // height, so the name stays legible at footer sizes). Either way cap + (n−1)·leading = the edge span.
+  const lines = layout === 'two' ? ['Standard Enterprise', 'Governance'] : NAME.split(' ');
+  const cap = span / (1 + 1.32 * (lines.length - 1)), lead = cap * 1.32;
+  let dd = '', w = 0;
+  lines.forEach((word, i) => { const r = nameRun(word, x, top + cap + i * lead, cap); dd += r.d; w = Math.max(w, r.w); });
+  return { d: dd, w, cap };
 }
 
-const svg = (w, h, body, defs = '', bg = '') => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">${defs ? `<defs>${defs}</defs>` : ''}${bg}${body}</svg>\n`;
-const CUBE_BOX = [40, 30, 920, 940]; // the cube's bounds inside its 1000 box (trimmed viewBox)
-
-function files(dk) {
-  const out = {};
-  const vb = (body, defs) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${CUBE_BOX.join(' ')}" width="${CUBE_BOX[2]}" height="${CUBE_BOX[3]}">${defs ? `<defs>${defs}</defs>` : ''}${body}</svg>\n`;
-  for (const mode of ['light', 'dark', 'white', 'black']) {
-    const c = cube(dk, mode);
-    const name = { light: 'color', dark: 'color-on-dark', white: 'mono-white', black: 'mono-black' }[mode];
-    out[`seg-logo-${dk.toLowerCase()}_${name}.svg`] = vb(c.g, c.defs);
+const svgDoc = (vb, body, defs) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb.map(f).join(' ')}" width="${f(vb[2])}" height="${f(vb[3])}">${defs ? `<defs>${defs}</defs>` : ''}${body}</svg>\n`;
+const INK = { light: C.navy, dark: '#FFFFFF', white: '#FFFFFF', black: '#000000' };
+function lockupSVG(dk, mode, layout = 'line', idp = 'lk') {
+  const c = cubeSVG(dk, mode, idp + layout), B = c.box, G = B.G, F = G.faces.left;
+  const top = P(F, 0, 0)[1], bot = P(F, 0, F.nv)[1];
+  const x0 = B.x + B.w + G.m * 2; // gap = 2 modules
+  const n = nameBlock(layout, x0, top, bot);
+  return svgDoc([B.x, B.y, x0 + n.w - B.x + G.m * 0.5, B.h], `${c.g}<path d="${n.d}" fill="${INK[mode]}"/>`, c.defs);
+}
+function iconSVG(dk, mode) {
+  const c = cubeSVG(dk, mode, 'ic'), B = c.box, S = 1024, sc = (S * 0.66) / Math.max(B.w, B.h);
+  const ox = (S - B.w * sc) / 2 - B.x * sc, oy = (S - B.h * sc) / 2 - B.y * sc;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S} ${S}" width="${S}" height="${S}">${c.defs ? `<defs>${c.defs}</defs>` : ''}<rect width="${S}" height="${S}" rx="${S * 0.225}" fill="${mode === 'light' ? '#FFFFFF' : C.navy}"/><g transform="translate(${f(ox)} ${f(oy)}) scale(${f(sc)})">${c.g}</g></svg>\n`;
+}
+function build(dk) {
+  const out = {}, p = `seg-logo-${DIRS[dk].key}_`;
+  for (const [mode, n] of [['light', 'color'], ['dark', 'color-on-dark'], ['white', 'mono-white'], ['black', 'mono-black']]) {
+    const c = cubeSVG(dk, mode); out[p + n + '.svg'] = svgDoc([c.box.x, c.box.y, c.box.w, c.box.h], c.g, c.defs);
   }
-  // horizontal lockups: cube + SEG + BY MFT
-  for (const mode of ['light', 'dark']) {
-    const c = cube(dk, mode, 'lk');
-    const ink = mode === 'light' ? C.navy : '#FFFFFF', sub = mode === 'light' ? C.seg700 : C.seg200;
-    const ch = 600, s = ch / 1000, cx = 0, cy = 0; // cube 600 tall
-    const u = ch * 0.42 / 5, x0 = cx + CUBE_BOX[2] * s + 70;
-    const seg = word('SEG', x0, cy + ch * 0.2, u, 1.1);
-    const by = word('BY MFT', x0 + 4, cy + ch * 0.2 + 5 * u + u * 1.6, u * 0.36, 1.2);
-    const W = Math.ceil(x0 + Math.max(seg.w, by.w) + 20), H = ch;
-    const body = `<g transform="translate(${-CUBE_BOX[0] * s} ${-CUBE_BOX[1] * s}) scale(${s})">${c.g}</g><path d="${seg.d}" fill="${ink}"/><path d="${by.d}" fill="${sub}"/>`;
-    out[`seg-logo-${dk.toLowerCase()}_lockup-${mode}.svg`] = svg(W, H, body, c.defs);
-  }
-  // square icons (rounded square, cube at 68%)
-  for (const mode of ['light', 'dark']) {
-    const c = cube(dk, mode, 'ic');
-    const S = 1024, sc = (S * 0.68) / CUBE_BOX[3], ox = (S - CUBE_BOX[2] * sc) / 2 - CUBE_BOX[0] * sc, oy = (S - CUBE_BOX[3] * sc) / 2 - CUBE_BOX[1] * sc;
-    const bg = `<rect width="${S}" height="${S}" rx="${S * 0.22}" fill="${mode === 'light' ? '#FFFFFF' : C.navy}"/>`;
-    out[`seg-logo-${dk.toLowerCase()}_icon-${mode}.svg`] = svg(S, S, `<g transform="translate(${f(ox)} ${f(oy)}) scale(${f(sc)})">${c.g}</g>`, c.defs, bg);
-  }
+  for (const L of ['line', 'stack', 'two']) for (const mode of ['light', 'dark']) out[`${p}lockup-${L}-${mode}.svg`] = lockupSVG(dk, mode, L);
+  out[p + 'icon-light.svg'] = iconSVG(dk, 'light'); out[p + 'icon-dark.svg'] = iconSVG(dk, 'dark');
   return out;
 }
 
-(async () => {
+// ---- the official lockup on the CEO's own cube (raster, cleaned: seg-logo-raster.js) ----
+// The cube image is 520 × 508; its left face's outer vertical edge runs y 178 → 400 (measured on the
+// flattened face), so the name aligns to that span exactly as in the vector lockups (rule 6).
+const RASTER = { w: 520, h: 508, top: 178, bot: 400, m: 41 };
+function officialSVG(mode, layout) {
+  const file = mode === 'dark' ? 'seg-logo_white.png' : 'seg-logo_full.png';
+  const img = 'data:image/png;base64,' + fs.readFileSync(path.join(OUT, file)).toString('base64');
+  const x0 = RASTER.w + RASTER.m * 2, n = nameBlock(layout, x0, RASTER.top, RASTER.bot);
+  const W = x0 + n.w + RASTER.m * 0.5;
+  return svgDoc([0, 0, W, RASTER.h], `<image href="${img}" x="0" y="0" width="${RASTER.w}" height="${RASTER.h}"/><path d="${n.d}" fill="${INK[mode]}"/>`);
+}
+
+// construction drawing (inline SVG for the brand book)
+function construction(dk) {
+  const D = DIRS[dk], c = cubeSVG(dk, 'light', 'cs' + dk), B = c.box, G = B.G;
+  let s = `<g opacity=".22">${c.g}</g>`;
+  for (const F of Object.values(G.faces)) {
+    for (let u = 0; u <= F.nu; u++) s += `<path d="M${P(F, u, 0).map(f)} L${P(F, u, F.nv).map(f)}" stroke="${C.cyanDeep}" stroke-width="${u % F.nu ? 0.9 : 1.8}" opacity=".75"/>`;
+    for (let v = 0; v <= F.nv; v++) s += `<path d="M${P(F, 0, v).map(f)} L${P(F, F.nu, v).map(f)}" stroke="${C.cyanDeep}" stroke-width="${v % F.nv ? 0.9 : 1.8}" opacity=".75"/>`;
+  }
+  for (const [k, L] of [['top', 'G'], ['left', 'S'], ['right', 'E']]) for (const r of D[L]) s += `<path d="${d(quad(G.faces[k], r))}" fill="none" stroke="${C.navy}" stroke-width="2.2"/>`;
+  const L0 = P(G.faces.left, 0, 0), R = 95;
+  s += `<path d="M${f(L0[0])} ${f(L0[1])} h${R * 1.7}" stroke="${C.danger}" stroke-width="2" stroke-dasharray="7 5"/>`;
+  s += `<path d="M${f(L0[0] + R)} ${f(L0[1])} A${R} ${R} 0 0 1 ${f(L0[0] + R * Math.cos(G.a))} ${f(L0[1] + R * Math.sin(G.a))}" fill="none" stroke="${C.danger}" stroke-width="3"/>`;
+  s += `<text x="${f(L0[0] + R + 14)}" y="${f(L0[1] + 34)}" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="30" fill="${C.danger}">α = ${D.alpha}°</text>`;
+  const q = G.m * 2; // clear space = 2 modules
+  s += `<rect x="${f(B.x - q)}" y="${f(B.y - q)}" width="${f(B.w + 2 * q)}" height="${f(B.h + 2 * q)}" fill="none" stroke="${C.seg600}" stroke-width="2.4" stroke-dasharray="12 9"/>`;
+  const pad = G.m * 3;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${f(B.x - pad)} ${f(B.y - pad)} ${f(B.w + 2 * pad)} ${f(B.h + 2 * pad)}">${c.defs ? `<defs>${c.defs}</defs>` : ''}${s}</svg>`;
+}
+
+module.exports = { DIRS, PAINT, frame, bbox, cubeSVG, lockupSVG, officialSVG, iconSVG, build, construction, weights, nameRun, NAME, RASTER };
+
+if (require.main === module) (async () => {
   const { chromium } = require(process.env.PLAYWRIGHT_PATH);
   const browser = await chromium.launch({ channel: 'chrome' });
   const page = await browser.newPage();
-  // SVG → PNG on a canvas (exact pixels, transparent unless bg)
   await page.goto('about:blank');
-  const png = async (svgText, file, w, h, bg) => {
-    const data = await page.evaluate(async ({ src, w, h, bg }) => {
+  const png = async (svgText, file, w, h) => {
+    const data = await page.evaluate(async ({ src, w, h }) => {
       const i = new Image(); i.src = src; await i.decode();
       const c = document.createElement('canvas'); c.width = w; c.height = h; const g = c.getContext('2d');
-      if (bg) { g.fillStyle = bg; g.fillRect(0, 0, w, h); }
-      g.imageSmoothingQuality = 'high'; g.drawImage(i, 0, 0, w, h);
-      return c.toDataURL('image/png').split(',')[1];
-    }, { src: 'data:image/svg+xml;base64,' + Buffer.from(svgText).toString('base64'), w, h, bg });
+      g.imageSmoothingQuality = 'high'; g.drawImage(i, 0, 0, w, h); return c.toDataURL('image/png').split(',')[1];
+    }, { src: 'data:image/svg+xml;base64,' + Buffer.from(svgText).toString('base64'), w, h });
     fs.writeFileSync(file, Buffer.from(data, 'base64'));
   };
-  const made = [];
-  const sheets = {};
-  for (const dk of ['A', 'B', 'C']) {
-    const dir = path.join(OUT, DIR[dk].name);
-    fs.mkdirSync(dir, { recursive: true });
-    const F = files(dk);
-    for (const [n, s] of Object.entries(F)) {
-      fs.writeFileSync(path.join(dir, n), s); made.push(path.join(dir, n));
-      const m = s.match(/viewBox="([\d.\s-]+)"/)[1].split(/\s+/).map(Number);
-      const target = n.includes('icon') ? 1024 : n.includes('lockup') ? 600 : 1024;
-      const scale = n.includes('lockup') ? target / m[3] : target / Math.max(m[2], m[3]);
-      const out = path.join(dir, n.replace('.svg', '.png'));
-      await png(s, out, Math.round(m[2] * scale), Math.round(m[3] * scale)); made.push(out);
-    }
-    // favicon-size proofs of the light icon
-    for (const z of [16, 32, 48, 180]) { const out = path.join(dir, `seg-logo-${dk.toLowerCase()}_icon-light_${z}.png`); await png(F[`seg-logo-${dk.toLowerCase()}_icon-light.svg`], out, z, z); made.push(out); }
-    sheets[dk] = F;
+  const vbOf = (s) => s.match(/viewBox="([^"]+)"/)[1].split(' ').map(Number);
+  let n = 0;
+  // official lockups (used by every campaign design's signature)
+  const off = path.join(OUT, 'official'); fs.mkdirSync(off, { recursive: true });
+  for (const L of ['line', 'stack', 'two']) for (const mode of ['light', 'dark']) {
+    const s = officialSVG(mode, L), vb = vbOf(s), name = `seg-lockup-official_${L}-${mode}`;
+    fs.writeFileSync(path.join(off, name + '.svg'), s);
+    const H = 512; await png(s, path.join(off, name + '.png'), Math.round(H * vb[2] / vb[3]), H); n += 2;
   }
-  // ---- comparison board (preview for the CEO) ----
-  const b64 = (s) => 'data:image/svg+xml;base64,' + Buffer.from(s).toString('base64');
-  const fontCSS = `@font-face{font-family:Cairo;src:url(data:font/woff2;base64,${fs.readFileSync(path.join(ROOT, 'src/assets/fonts/cairo-arabic-var.woff2')).toString('base64')})}@font-face{font-family:Inter;src:url(data:font/woff2;base64,${fs.readFileSync(path.join(ROOT, 'src/assets/fonts/inter-latin-var.woff2')).toString('base64')})}`;
-  const src = 'data:image/png;base64,' + fs.readFileSync(path.join(ROOT, 'marketing/brand/assets/logo/seg-logo_full.png')).toString('base64');
-  const row = (dk) => {
-    const F = sheets[dk], p = `seg-logo-${dk.toLowerCase()}_`;
-    const cell = (s, bg, w = 180, h = 180, lab = '') => `<div class="c" style="background:${bg}"><img src="${b64(s)}" style="max-width:${w}px;max-height:${h}px"><span style="color:${bg === '#FFFFFF' || bg === '#F4F6FB' ? '#5B6478' : '#AEB8D0'}">${lab}</span></div>`;
-    const sizes = [16, 24, 32, 48].map((z) => `<img src="${b64(F[p + 'icon-light.svg'])}" style="width:${z}px;height:${z}px">`).join('');
-    // real small-size pixels, shown ×4 (nearest neighbour) so the reader judges what a 16 / 32 px favicon shows
-    const zoom = [16, 32].map((z) => `<img src="data:image/png;base64,${fs.readFileSync(path.join(OUT, DIR[dk].name, `seg-logo-${dk.toLowerCase()}_icon-light_${z}.png`)).toString('base64')}" style="width:${z * 4}px;height:${z * 4}px;image-rendering:pixelated">`).join('');
-    return `<section><h2>${DIR[dk].title}</h2><div class="g">
-      ${cell(F[p + 'color.svg'], '#FFFFFF', 180, 180, 'ملوّن · فاتح')}
-      ${cell(F[p + 'color-on-dark.svg'], C.navy, 180, 180, 'ملوّن · غامق')}
-      ${cell(F[p + 'mono-black.svg'], '#FFFFFF', 180, 180, 'أحادي أسود')}
-      ${cell(F[p + 'mono-white.svg'], C.navy, 180, 180, 'أحادي أبيض')}
-      ${cell(F[p + 'lockup-light.svg'], '#FFFFFF', 300, 120, 'Lockup · فاتح')}
-      ${cell(F[p + 'lockup-dark.svg'], C.navy, 300, 120, 'Lockup · غامق')}
-      ${cell(F[p + 'icon-light.svg'], '#F4F6FB', 150, 150, 'أيقونة')}
-      ${cell(F[p + 'icon-dark.svg'], '#F4F6FB', 150, 150, 'أيقونة · غامق')}
-      <div class="c" style="background:#FFFFFF"><div class="z">${sizes}</div><span style="color:#5B6478">16 · 24 · 32 · 48 px</span></div>
-      <div class="c" style="background:#FFFFFF"><div class="z">${zoom}</div><span style="color:#5B6478">16 و32 px مكبّرين ×4</span></div>
-    </div></section>`;
-  };
-  const board = `<html dir="rtl"><head><style>${fontCSS}body{margin:0;background:#E9EDF5;font-family:Cairo,Inter,sans-serif;padding:40px;width:1520px}h1{margin:0 0 6px;font-size:40px;color:${C.navy}}p.s{margin:0 0 28px;color:#46506A;font-size:20px}
-  section{background:#fff;border-radius:20px;padding:24px 28px;margin-bottom:24px}h2{margin:0 0 16px;font-size:28px;color:${C.navy}}.g{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;direction:ltr}
-  .c{border-radius:12px;height:250px;padding:14px;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px solid #DDE3EE}.c span{font-size:15px;direction:rtl}.z{display:flex;gap:14px;align-items:end}
-  .src{display:flex;gap:24px;align-items:center;background:#fff;border-radius:20px;padding:20px 28px;margin-bottom:24px}.src img{height:120px}</style></head><body>
-  <h1>لوجو SEG: 3 اتجاهات للاعتماد</h1><p class="s">إعادة رسم vector من هندسة المكعّب (مش تتبّع صورة). الألوان مستخرجة من ملف الـCEO. الاختيار للـCEO قبل التعميم على الأصول.</p>
-  <div class="src"><img src="${src}"><div><b style="font-size:22px;color:${C.navy}">الأصل (ملف الـCEO، 180×180 px)</b><br><span style="color:#46506A;font-size:18px">ده المستخدم دلوقتي في التوقيع على كل التصاميم، لحد اعتماد اتجاه.</span></div></div>
-  ${row('A')}${row('B')}${row('C')}</body></html>`;
-  await page.setViewportSize({ width: 1600, height: 1000 });
-  await page.setContent(board);
-  await page.waitForTimeout(400);
-  const boardFile = path.join(OUT, 'seg-logo-directions_board.png');
-  await page.screenshot({ path: boardFile, fullPage: true });
-  made.push(boardFile);
+  // the three vector directions
+  const dirRoot = path.join(OUT, 'directions');
+  for (const dk of Object.keys(DIRS)) {
+    const dir = path.join(dirRoot, DIRS[dk].name);
+    fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir, { recursive: true });
+    const F = build(dk);
+    for (const [name, s] of Object.entries(F)) {
+      fs.writeFileSync(path.join(dir, name), s); n++;
+      const vb = vbOf(s), H = name.includes('lockup') ? 512 : 1024;
+      await png(s, path.join(dir, name.replace('.svg', '.png')), Math.round(H * vb[2] / vb[3]), H); n++;
+    }
+    for (const z of [16, 32, 48, 180]) { await png(F[`seg-logo-${DIRS[dk].key}_icon-light.svg`], path.join(dir, `seg-logo-${DIRS[dk].key}_icon-light_${z}.png`), z, z); n++; }
+    const w = weights(DIRS[dk]);
+    if (w.counterPerp < w.seam) throw new Error(`${dk}: counter ${w.counterPerp} < seam ${w.seam} (rule 5)`);
+    console.log(dk, JSON.stringify(w));
+  }
   await browser.close();
-  console.log(`wrote ${made.length} files under ${path.relative(ROOT, OUT)}`);
+  console.log(`wrote ${n} files under ${path.relative(ROOT, OUT)}/official and /directions`);
 })();

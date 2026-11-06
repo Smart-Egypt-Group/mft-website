@@ -20,7 +20,7 @@ const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/launch-week');
 const PUB = path.join(ROOT, 'src/assets/social');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const MARK = require('./lib/campaign.js').MARK.white; // SEG cube, white (app bar mock on navy)
+const MARK = require('./lib/campaign.js').MARK.cubeWhite; // SEG cube alone, white (app-bar mock on navy)
 const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
 const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
 const { NAVY, CYAN, RED } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
@@ -33,10 +33,10 @@ const BASE = `
 *{box-sizing:border-box;margin:0;padding:0} html,body{width:100%;height:100%;overflow:hidden}
 body{position:relative;direction:rtl;font-family:Cairo,sans-serif;color:#fff;background:radial-gradient(ellipse at 70% 10%, #1C2F63 0%, ${NAVY} 55%, #081230 100%)}
 .lat{font-family:Inter;direction:ltr;unicode-bidi:isolate}
-.foot{position:absolute;inset-inline:64px;bottom:60px;display:flex;justify-content:space-between;align-items:center}
+.foot{position:absolute;inset-inline:64px;bottom:60px;display:flex;justify-content:space-between;align-items:center;gap:36px}
 .cta{display:flex;align-items:center;gap:14px;padding:0 28px;border-radius:999px;background:${CYAN};color:${NAVY};font-weight:800;white-space:nowrap}
 .cta b{font-family:Inter} .mark{display:flex;align-items:center;gap:12px;direction:ltr} .mark span{font:800 1em Inter;letter-spacing:.15em}`;
-const foot = (story) => `<div class="foot" style="font-size:${story ? 30 : 25}px"><div class="cta" style="height:${story ? 68 : 58}px"><span>فحص مجاني في دقائق</span><i>·</i><b>seg-audit.com</b></div><div class="mark">${signHTML(story ? 44 : 38)}</div></div>`;
+const foot = (story) => `<div class="foot" style="font-size:${story ? 26 : 24}px"><div class="cta" style="height:${story ? 64 : 56}px"><span>فحص مجاني في دقائق</span><i>·</i><b>seg-audit.com</b></div><div class="mark">${signHTML(story ? 44 : 38)}</div></div>`;
 
 // ---------------------------------------------------------------- demo report screen
 function demoReport(kind) {

@@ -33,7 +33,7 @@ const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/video');
 const PUB = path.join(ROOT, 'src/assets/social/video');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
-const MARK = require('./lib/campaign.js').MARK.white; // SEG cube, white (app bar mock on navy)
+const MARK = require('./lib/campaign.js').MARK.cubeWhite; // SEG cube alone, white (app-bar mock on navy)
 const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
 const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
 const W = 1080, H = 1920, FPS = 30, TOTAL = 34;
@@ -265,7 +265,7 @@ ${scene('ev', `<p class="evh kin" data-at="${T.ev[0] + 0.25}">${U.ev}</p>${evide
 ${scene('ctl', `<h2 class="kin" data-at="${T.ctl[0] + 0.35}">${U.ctl}</h2><ul class="ctl">${S.ctl.map((c, i) => `<li data-at="${T.ctl[0] + 1.0 + i * 0.9}" data-tick>${c}</li>`).join('')}</ul><div class="demoTag"><span>${U.demo}</span></div>`)}
 <section class="sc cta" data-from="${T.cta[0]}" data-to="${T.cta[1] + 1}">
   <div class="m" data-at="${T.cta[0] + 0.3}">${signHTML(112)}</div>
-  <p class="e1 kin" data-at="${T.cta[0] + 0.7}" dir="ltr">${E[0]}</p><div class="rule grow-x" data-at="${T.cta[0] + 1.2}"></div><p class="e2 kin" data-at="${T.cta[0] + 1.3}">${E[1]}</p>
+  <!-- the full name is in the signature lockup above; not repeated as text --><div class="rule grow-x" data-at="${T.cta[0] + 1.2}"></div><p class="e2 kin" data-at="${T.cta[0] + 1.3}">${E[1]}</p>
   <p class="l1 kin" data-at="${T.cta[0] + 2.2}">${U.cta1} ${U.cta2}</p><p class="pill pop" data-at="${T.cta[0] + 2.9}">seg-audit.com</p>
   <p class="cl kin" data-at="${T.cta[0] + 3.6}">${KC[rtl ? 'ar' : 'en'].closesOn} · ${KC[rtl ? 'ar' : 'en'].selectShort}</p></section>
 </div>

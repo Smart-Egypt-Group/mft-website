@@ -38,7 +38,7 @@ const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'marketing/designs/concepts');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
 const { MARK: SEG_MARK } = require('./lib/campaign.js');
-const MARK = { navy: SEG_MARK.navy, white: SEG_MARK.white }; // SEG cube (colour on light, white on dark)
+const MARK = { navy: SEG_MARK.navy, white: SEG_MARK.white, mftNavy: SEG_MARK.mftNavy, mftWhite: SEG_MARK.mftWhite, sign: require('./lib/campaign.js').SIGN_CANVAS_SRC }; // signature: SEG lockup | MFT logo
 const INTER = b64(require('./lib/brand-tokens.js').font.latin.file);
 const CAIRO = b64(require('./lib/brand-tokens.js').font.arabic.file);
 const { founding: FM } = require('../src/site.config.js');
@@ -144,7 +144,8 @@ const cyanCheck = (cx, cy, r, u) => `<g filter="url(#glow)">${circ(cx, cy, r, CY
 const text = (d, o) => d.ops.push({ type: 'text', wt: 800, c: W, al: 'left', ...o });
 const runs = (d, o) => d.ops.push({ type: 'runs', al: 'left', ...o });
 const pill = (d, o) => d.ops.push({ type: 'pill', bg: CYAN, fg: NAVY, ...o });
-const mark = (d, x, y, h, white = true) => d.ops.push({ type: 'mark', x, y, h, white });
+// signature unit (scripts/lib/campaign.js): x is its start edge, or its end edge when end = true
+const mark = (d, x, y, h, white = true, end = false) => d.ops.push({ type: 'mark', x, y, h, white, end });
 // start-aligned anchor for a box: right edge in Arabic, left edge in English
 const st = (lang, x0, x1) => (lang === 'ar' ? { x: x1, al: 'right' } : { x: x0, al: 'left' });
 const en = (lang, x0, x1) => (lang === 'ar' ? { x: x0, al: 'left' } : { x: x1, al: 'right' });
@@ -550,8 +551,8 @@ function tbCheck(w, h, lang) {
   text(d, { t: C.sub, ...a, y: L.sb * u, px: 26 * u, wt: 500, c: DIM, maxW: w - 2 * m, wrap: true, lh: 1.5 });
   tbTable(d, m, L.tb * u, w - 2 * m - (k === 'story' ? 60 : 0), L.rh * u, lang, L.s * u);
   tbLegend(d, m, L.lg * u, w - 2 * m - (k === 'story' ? 60 : 0), lang, u, 3);
-  pill(d, { t: T[lang].cta, ...en(lang, m, w - m), y: L.pl * u, h: 64 * u, px: 24 * u, padX: 28 * u, maxW: w - 2 * m - 220 * u });
-  mark(d, A ? w - m - 110 * u : m, (L.pl + 46) * u, 28 * u, true);
+  pill(d, { t: T[lang].cta, ...en(lang, m, w - m), y: L.pl * u, h: 64 * u, px: 24 * u, padX: 28 * u, maxW: w - 2 * m - 400 * u }); // leaves the signature row free
+  mark(d, A ? w - m : m, (L.pl + 46) * u, 28 * u, true, A);
   return d;
 }
 
@@ -638,8 +639,8 @@ function carouselSlide(i, lang) {
     text(d, { t: '05/11', x: X(10), y: cy + 70, px: 26, wt: 800, c: NAVY, al: 'center', dir: 'ltr' });
     text(d, { t: '28/10', x: X(2), y: cy + 70, px: 26, wt: 800, c: '#0E7C8C', al: 'center', dir: 'ltr' });
   }
-  text(d, { t: C.foot, ...a, y: 1255, px: 30, c: CYAN });
-  mark(d, A ? m : w - m - 110, 1290, 28, true);
+  text(d, { t: C.foot, ...a, y: 1196, px: 30, c: CYAN }); // above the signature row
+  mark(d, A ? m : w - m, 1290, 28, true, !A);
   return d;
 }
 
@@ -662,7 +663,7 @@ function founderPov(lang, mock) {
   const a = st(lang, lx + 40, lx + lw - 40);
   text(d, { t: C.name, ...a, y: ly + 78, px: 50 });
   text(d, { t: C.role, ...a, y: ly + 130, px: 28, wt: 600, c: DIM });
-  mark(d, A ? lx + 34 : lx + lw - 120, ly + 150, 28, true);
+  mark(d, A ? lx + lw : lx, ly - 30, 28, true, A); // above the card, aligned to its start edge
   return d;
 }
 
@@ -739,7 +740,8 @@ async function openRenderer() {
     const c = document.createElement('canvas'); c.width = w; c.height = h;
     const g = c.getContext('2d');
     g.drawImage(await load('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg)), 0, 0, w, h);
-    const marks = { navy: await load(mark.navy), white: await load(mark.white) };
+    const marks = { navy: await load(mark.navy), white: await load(mark.white), mftNavy: await load(mark.mftNavy), mftWhite: await load(mark.mftWhite) };
+    eval(mark.sign); // drawSign (scripts/lib/campaign.js)
     const font = (o, px) => { g.font = `${o.wt || 800} ${px}px "Inter","Cairo",sans-serif`; g.letterSpacing = o.ls && !AR.test(o.t) ? `${o.ls}px` : '0px'; };
     const wrapLines = (t, maxW) => { const ws = t.split(' '), out = []; let cur = ''; for (const x of ws) { const n = cur ? cur + ' ' + x : x; if (g.measureText(n).width > maxW && cur) { out.push(cur); cur = x; } else cur = n; } if (cur) out.push(cur); return out; };
     const leftOf = (al, x, wd) => (al === 'left' ? x : al === 'right' ? x - wd : x - wd / 2);
@@ -791,14 +793,8 @@ async function openRenderer() {
         g.fillStyle = o.fg; g.fillText(o.t, x + o.padX, o.y + o.h / 2 + o.px * 0.36);
       }
       if (o.type === 'mark') {
-        const mk = o.white ? marks.white : marks.navy, mw = o.h * mk.width / mk.height;
-        g.drawImage(mk, o.x, o.y - o.h, mw, o.h);
-        // platform signature (scripts/lib/campaign.js): SEG logo + SEG + BY MFT
-        g.save(); g.fillStyle = o.white ? '#FFFFFF' : '#0D1B3E'; g.direction = 'ltr'; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
-        g.font = `800 ${o.h * 0.6}px "Inter"`; g.letterSpacing = `${o.h * 0.084}px`;
-        g.fillText('SEG', o.x + mw + o.h * 0.32, o.y - o.h * 0.47);
-        g.font = `600 ${o.h * 0.27}px "Inter"`; g.letterSpacing = `${o.h * 0.032}px`; g.globalAlpha = .72;
-        g.fillText('BY MFT', o.x + mw + o.h * 0.32, o.y - o.h * 0.1); g.restore();
+        // signature (scripts/lib/campaign.js): SEG lockup | MFT logo; white = on a dark field
+        await drawSign(g, { seg: o.white ? marks.white : marks.navy, mft: o.white ? marks.mftWhite : marks.mftNavy }, o.x, o.y, o.h, !o.white, !!o.end);
       }
       if (o.type === 'img') {
         const im = await load(o.src); g.beginPath(); g.roundRect(o.x, o.y, o.w, o.h, o.r || 0); g.clip(); g.drawImage(im, o.x, o.y, o.w, o.h);

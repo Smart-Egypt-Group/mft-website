@@ -4,12 +4,14 @@
 //   1. the close date in words, from src/site.config.js → founding.closesAt (change it there only)
 //   2. the campaign copy: scarcity = a closing window + selectivity. No seat numbers, no counts, no numeric
 //      price or discount, no «مدى الحياة» (it belongs in the acceptance letter, not on an ad)
-//   3. the platform signature: the official SEG logo (the S-E-G cube the CEO sent on 6 Nov 2026,
-//      marketing/brand/assets/logo/, cleaned by scripts/seg-logo-raster.js) + the «SEG» wordmark +
-//      «BY MFT», one per design, bottom-start margin, same proportions everywhere (logo height = H;
-//      word = 0.6 H, 800, tracking .14em; «BY MFT» = 0.27 H, 600). Colour cube on light backgrounds;
-//      the white cube on dark ones (the cube's dark blue is ≈1.3:1 on navy, below the 3:1 a logo needs).
-//      The MFT mark (src/assets/logo/mft-mark-*.png) stays for MFT's own company profiles only.
+//   3. the signature (CEO decision, 6 Nov 2026): the SEG lockup (the CEO's cube + «Standard Enterprise /
+//      Governance», marketing/brand/assets/logo/official/, built by scripts/seg-logo-vector.js) | a hairline
+//      divider | the full MFT logo (eagle + MODERN FINTECH: src/assets/logo/mft-lockup-*.png, cut from the
+//      official 5906 px pack). One endorsed unit, SEG first, never mirrored in RTL layouts. H = the cube's
+//      height; divider 0.7 H; MFT logo 0.5 H; gaps 0.42 H. Minimum H = 54 px on a 1080 px design, so the
+//      name's capitals stay ≥ 10 px. Navy ink on light backgrounds, white on dark (the cube's dark blue is
+//      ≈1.3:1 on navy). Compact variant (cube + MFT logo, no name) only where the name cannot reach
+//      10 px (strip covers 1128×191 etc.). The MFT mark alone (mft-mark-*) stays for MFT's own company profiles.
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..', '..');
@@ -90,39 +92,45 @@ const FORBIDDEN = [
 // ---- the signature ----
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
 const LOGO = 'marketing/brand/assets/logo/';
-// navy key = for light backgrounds (the colour cube); white key = for dark backgrounds
-const MARK = { white: 'data:image/png;base64,' + b64(LOGO + 'seg-logo_sign-white.png'), navy: 'data:image/png;base64,' + b64(LOGO + 'seg-logo_sign.png') };
-MARK.color = MARK.navy; MARK.onDark = MARK.white; MARK.onLight = MARK.navy;
-const MARK_FILES = { white: LOGO + 'seg-logo_sign-white.png', color: LOGO + 'seg-logo_sign.png' };
-const MARK_RATIO = 262 / 256;
+const OFFICIAL = LOGO + 'official/';
+const uri = (f) => 'data:image/png;base64,' + b64(f);
+// navy key = for light backgrounds, white key = for dark backgrounds (names kept for the generators)
+const MARK = {
+  navy: uri(OFFICIAL + 'seg-lockup-official_two-light.png'), white: uri(OFFICIAL + 'seg-lockup-official_two-dark.png'),
+  mftNavy: uri('src/assets/logo/mft-lockup-navy.png'), mftWhite: uri('src/assets/logo/mft-lockup-white.png'),
+  cubeColor: uri(LOGO + 'seg-logo_sign.png'), cubeWhite: uri(LOGO + 'seg-logo_sign-white.png') // the cube alone (app-bar mocks)
+};
+const MARK_FILES = { segLight: OFFICIAL + 'seg-lockup-official_two-light.png', segDark: OFFICIAL + 'seg-lockup-official_two-dark.png', mftNavy: 'src/assets/logo/mft-lockup-navy.png', mftWhite: 'src/assets/logo/mft-lockup-white.png' };
+const SIGN = { segRatio: 1940 / 512, mftRatio: 2000 / 683, minH: 54, gap: 0.42, div: 0.7, mft: 0.5 };
+const MARK_RATIO = SIGN.segRatio;
 const { NAVY, CYAN } = require('./brand-tokens.js').legacy;
 
-// HTML signature (for the HTML/CSS generators). `h` = mark height in px; `onLight` = navy version.
+// HTML signature. `h` = the cube's height in px (raised to SIGN.minH); `onLight` = navy ink.
 function signHTML(h, { onLight = false, style = '' } = {}) {
-  const c = onLight ? NAVY : '#FFFFFF';
-  return `<div class="seg-sign" style="display:flex;align-items:center;gap:${Math.round(h * 0.32)}px;direction:ltr;line-height:1;${style}">`
-    + `<img src="${onLight ? MARK.navy : MARK.white}" alt="" style="display:block;height:${h}px;width:auto">`
-    + `<span style="display:flex;flex-direction:column;gap:${Math.round(h * 0.06)}px">`
-    + `<b style="font:800 ${Math.round(h * 0.6)}px/1 Inter,sans-serif;letter-spacing:.14em;color:${c}">SEG</b>`
-    + `<i style="font:600 ${Math.round(h * 0.27)}px/1 Inter,sans-serif;font-style:normal;letter-spacing:.12em;color:${c};opacity:.72">BY MFT</i>`
-    + `</span></div>`;
+  const H = Math.max(h, SIGN.minH), c = onLight ? NAVY : '#FFFFFF', r = Math.round;
+  return `<div class="seg-sign" style="display:flex;align-items:center;gap:${r(H * SIGN.gap)}px;direction:ltr;line-height:0;${style}">`
+    + `<img src="${onLight ? MARK.navy : MARK.white}" alt="Standard Enterprise Governance" style="display:block;height:${H}px;width:auto">`
+    + `<i style="display:block;width:${Math.max(1, r(H * 0.02))}px;height:${r(H * SIGN.div)}px;background:${c};opacity:.32"></i>`
+    + `<img src="${onLight ? MARK.mftNavy : MARK.mftWhite}" alt="Modern Fintech" style="display:block;height:${r(H * SIGN.mft)}px;width:auto">`
+    + `</div>`;
 }
 
-// Canvas signature (for the canvas generators). Runs inside page.evaluate: pass SIGN_CANVAS_SRC and eval it,
-// or copy the same proportions. Kept as a string so both worlds share one definition.
-const SIGN_CANVAS_SRC = `async function drawSign(g, img, x, y, h, onLight, rtlEnd) {
-  const c = onLight ? '${NAVY}' : '#FFFFFF', mw = h * img.width / img.height, gap = h * 0.32;
-  g.save(); g.direction = 'ltr'; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
-  g.font = '800 ' + (h * 0.6) + 'px "Inter"'; g.letterSpacing = (h * 0.084) + 'px';
-  const ww = g.measureText('SEG').width;
-  const total = mw + gap + ww;
-  const x0 = rtlEnd ? x - total : x;
-  g.drawImage(img, x0, y - h, mw, h);
-  g.fillStyle = c; g.fillText('SEG', x0 + mw + gap, y - h * 0.47);
-  g.font = '600 ' + (h * 0.27) + 'px "Inter"'; g.letterSpacing = (h * 0.032) + 'px'; g.globalAlpha = .72;
-  g.fillText('BY MFT', x0 + mw + gap, y - h * 0.1);
+// Canvas signature: runs inside page.evaluate (eval SIGN_CANVAS_SRC). imgs = { seg, mft } loaded images;
+// (x, y) = start and bottom of the unit; rtlEnd = x is the right end. Returns the unit's width.
+// compact = the small-space variant (strip covers): cube alone + MFT logo, no name, no minimum size;
+// used only where the name could not reach legible size (imgs.cube must be loaded).
+const SIGN_CANVAS_SRC = `async function drawSign(g, imgs, x, y, h, onLight, rtlEnd, compact) {
+  const S = ${JSON.stringify(SIGN)}, H = compact ? h : Math.max(h, S.minH);
+  if (compact) imgs = { seg: imgs.cube, mft: imgs.mft };
+  const segW = H * imgs.seg.width / imgs.seg.height, mftH = H * S.mft, mftW = mftH * imgs.mft.width / imgs.mft.height;
+  const gap = H * S.gap, dw = Math.max(1, H * 0.02), total = segW + gap + dw + gap + mftW;
+  const x0 = rtlEnd ? x - total : x, top = y - H;
+  g.save();
+  g.drawImage(imgs.seg, x0, top, segW, H);
+  g.globalAlpha = .32; g.fillStyle = onLight ? '${NAVY}' : '#FFFFFF'; g.fillRect(x0 + segW + gap, top + H * (1 - S.div) / 2, dw, H * S.div); g.globalAlpha = 1;
+  g.drawImage(imgs.mft, x0 + segW + gap + dw + gap, top + (H - mftH) / 2, mftW, mftH);
   g.restore();
   return total;
 }`;
 
-module.exports = { CLOSE, COPY, FORBIDDEN, MARK, MARK_FILES, MARK_RATIO, signHTML, SIGN_CANVAS_SRC, words, parts, DAYS_AR, DAYS_EN, MONTHS_AR, MONTHS_EN, founding };
+module.exports = { CLOSE, COPY, FORBIDDEN, MARK, MARK_FILES, MARK_RATIO, SIGN, signHTML, SIGN_CANVAS_SRC, words, parts, DAYS_AR, DAYS_EN, MONTHS_AR, MONTHS_EN, founding };

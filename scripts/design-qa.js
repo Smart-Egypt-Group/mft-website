@@ -9,7 +9,8 @@
 //   3. any image whose pixel size is not the size in its file name, or whose size is not a known
 //      platform spec (Instagram, Facebook, LinkedIn, TikTok, YouTube, X)
 //   4. a generator that draws the old «MFT» text signature instead of the shared SEG signature
-//   5. the SEG logo: the shared kit (scripts/lib/campaign.js) must load the SEG cube files; a generator
+//   5. the signature: the shared kit (scripts/lib/campaign.js) must load the SEG lockup (cube + «Standard
+//      Enterprise Governance») and the full MFT logo; a generator
 //      that writes «SEG» as a wordmark (fillText('SEG'…), <span class="lat">SEG…) must take its logo from
 //      the kit, and no generator may load the MFT mark (src/assets/logo/mft-mark-*) except on a line
 //      marked «qa-allow-mft-mark» (MFT's own company avatars)
@@ -30,7 +31,7 @@ const SPECS = [
   [150, 150, 'YouTube watermark'], [1240, 1754, 'A4 at 150 dpi'], [2316, 1180, 'storyboard sheet'], [1860, 1180, 'storyboard sheet']
 ];
 const AVATAR = /avatar_/; // avatars: each platform's own square size
-const LOGO_DIR = /brand\/assets\/(logo|identity)\//; // logo masters and identity boards: their own sizes
+const LOGO_DIR = /brand\/assets\/(logo|identity|book)\//; // logo masters, identity samples, brand-book pages: their own sizes
 
 const problems = [];
 // 1 + 4: generator sources
@@ -46,9 +47,14 @@ for (const g of GENERATORS) {
 const { imageSize: size } = require('./lib/media-info.js');
 // 5: the SEG logo
 const KIT = fs.readFileSync(path.join(ROOT, 'scripts/lib/campaign.js'), 'utf8');
-for (const f of ['seg-logo_sign.png', 'seg-logo_sign-white.png']) {
-  if (!KIT.includes(f)) problems.push(`scripts/lib/campaign.js: signature does not load the SEG logo (${f})`);
+// the signature = SEG lockup (cube + «Standard Enterprise Governance») + the full MFT logo
+for (const f of ['official/seg-lockup-official_two-light.png', 'official/seg-lockup-official_two-dark.png']) {
+  if (!KIT.includes(path.basename(f))) problems.push(`scripts/lib/campaign.js: signature does not load the SEG lockup (${f})`);
   if (!fs.existsSync(path.join(ROOT, 'marketing/brand/assets/logo', f))) problems.push(`marketing/brand/assets/logo/${f}: missing`);
+}
+for (const f of ['src/assets/logo/mft-lockup-navy.png', 'src/assets/logo/mft-lockup-white.png']) {
+  if (!KIT.includes(f)) problems.push(`scripts/lib/campaign.js: signature does not load the MFT logo (${f})`);
+  if (!fs.existsSync(path.join(ROOT, f))) problems.push(`${f}: missing`);
 }
 if (/mft-mark-/.test(KIT.replace(/^\s*\/\/.*$/gm, ''))) problems.push('scripts/lib/campaign.js: signature still loads the MFT mark');
 for (const g of GENERATORS) {
