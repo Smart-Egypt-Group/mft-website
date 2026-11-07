@@ -70,7 +70,7 @@
 
 ---
 
-## 4. الإعلانات الأربعة (نفس الطقم في المجموعتين)
+## 4. الإعلانات الخمسة المرشّحة (نفس الطقم في المجموعتين)
 
 ### الميديا لكل إعلان
 
@@ -83,6 +83,7 @@
 | `crack` | الخطأ المستخبي اللي بيكبر (Loss aversion) | `marketing/designs/golden/1-crack/golden-1-crack_ar_4x5_1080x1350.jpg`<br>https://www.seg-audit.com/assets/social/golden/golden-1-crack_ar_4x5_1080x1350.jpg | https://www.seg-audit.com/assets/social/golden/golden-1-crack_ar_1x1_1080x1080.jpg | `reel-suspense-account_ar` (حساب وسيط يكبر كل شهر)<br>https://www.seg-audit.com/assets/social/video/reel-suspense-account_ar_1080x1920.mp4 |
 | `close` | نافذة الإغلاق + الانتقائية («سعر المؤسِّس يُغلق 30 نوفمبر») | **N1 (جاهز، 6 نوفمبر):** `marketing/designs/ads/meta-feed-4x5_close-ar_1080x1350.jpg` («30 نوفمبر · سعر المؤسِّس يُغلق نهائيًا» + «العضوية بالطلب، ومش كل طلب بيتقبل») | `marketing/designs/ads/meta-feed-1x1_close-ar_1080x1080.jpg` | `reel-duplicate-payment_ar` (الريل الرئيسي)<br>https://www.seg-audit.com/assets/social/video/reel-duplicate-payment_ar_1080x1920.mp4 · أو ستوري `ads/tiktok-9x16_close-ar_1080x1920.jpg` |
 | `hawk-eye` | «كل رقم بدليله» / «المنصة التي تراجع نفسها» (سلطة الثقة) | `marketing/designs/golden/3-hawk-eye/golden-3-hawk-eye_ar_4x5_1080x1350.jpg`<br>https://www.seg-audit.com/assets/social/golden/golden-3-hawk-eye_ar_4x5_1080x1350.jpg | https://www.seg-audit.com/assets/social/golden/golden-3-hawk-eye_ar_1x1_1080x1080.jpg | `reel-no-receipt_ar` (مصروف معتمد بلا مرفق = رقم بلا دليل)<br>https://www.seg-audit.com/assets/social/video/reel-no-receipt_ar_1080x1920.mp4 |
+| `ghost-vendor` (جديد، 7 نوفمبر) | درس «3 علامات تكشف المورد الوهمي» (أيمن أشرف): قيمة أولًا، «العلامة ≠ دليل… لكنها بداية الفحص» | — (فيديو 9:16 فقط: **Stories وReels**؛ لا يُستخدم في Feed 4:5) | — | `marketing/designs/ads/video/ghost-vendor-ayman_ad_1080x1920.mp4` (1080×1920، 44.7 ث، كابشن محروق، -14 LUFS، توقيع A + كارت ختام بالفحص المجاني)<br>https://www.seg-audit.com/assets/social/video/ghost-vendor-ayman_ad_1080x1920.mp4 |
 | `lineup` | الصادم: «كل قيد تحت الاستجواب» | `marketing/designs/golden/4-lineup/golden-4-lineup_ar_4x5_1080x1350.jpg`<br>https://www.seg-audit.com/assets/social/golden/golden-4-lineup_ar_4x5_1080x1350.jpg | https://www.seg-audit.com/assets/social/golden/golden-4-lineup_ar_1x1_1080x1080.jpg | `reel-round-manual_ar` (قيود يدوية مدوّرة في آخر يومين من الشهر)<br>https://www.seg-audit.com/assets/social/video/reel-round-manual_ar_1080x1920.mp4 |
 
 ### النصوص
@@ -92,7 +93,7 @@
 - **لا أرقام مقاعد** (17/33 مسحوبة). المسموح: تاريخ الإغلاق من `founding.closesAt`، وحقائق المنصة (388 فحصًا، و22 تقريرًا، و+9,900 اختبار، من [`platform-facts.js`](../../src/content/platform-facts.js)).
 - لا أرقام دفاتر في النصوص. أرقام الدفاتر على التصاميم فقط، ومعلَّمة «مثال توضيحي».
 - الطُعم بالصياغة المعتمدة. لا «تقرير مجاني» ولا «تقرير مراجعة».
-- **زر CTA في الأربعة: «اعرف المزيد» (Learn more).**
+- **زر CTA في الخمسة: «اعرف المزيد» (Learn more).**
 
 #### `crack` · الخطأ المستخبي اللي بيكبر
 
@@ -144,11 +145,24 @@
 - **الوصف:** فحص مجاني · مؤشرات من الميزان فقط
 - **CTA:** اعرف المزيد
 
+#### `ghost-vendor` · درس المورد الوهمي (Stories/Reels)
+
+- **النص الأساسي:**
+  > ثلاث علامات تكشف المورد الوهمي في دفاترك: بيانات ناقصة، وتطابق مع بيانات موظف، وفواتير بأرقام متسلسلة.
+  >
+  > العلامة ليست دليلًا… لكنها بداية الفحص. Standard Enterprise Governance (SEG) يقرأ دفاتر Odoo بصلاحية قراءة فقط، ويضع كل ملاحظة أمامك بدليلها.
+  >
+  > ابدأ بفحص مجاني لميزان شركتك… في دقائق. مؤشرات من الميزان، لا تقرير مراجعة.
+- **العنوان:** 3 علامات تكشف المورد الوهمي
+- **الوصف:** فحص مجاني أولًا · قراءة فقط
+- **CTA:** اعرف المزيد
+- **ملاحظة:** الأسماء والأرقام في الفيديو معلَّمة «مثال توضيحي». العلامات مؤشرات للمراجعة، لا اتهام.
+
 ### روابط الوجهة (Website URL) بالـUTM كاملًا
 
 **قواعد الروابط:**
 - الصق الرابط كما هو في خانة **Website URL**، واترك خانة **URL parameters** فارغة حتى لا يتكرر الـUTM.
-- إعلانات الطُعم (`crack` و`hawk-eye` و`lineup`) تفتح على قسم الفحص المجاني `#fm-check`، وإعلان المقاعد يفتح على أول الصفحة.
+- إعلانات الطُعم (`crack` و`hawk-eye` و`lineup` و`ghost-vendor`) تفتح على قسم الفحص المجاني `#fm-check`، وإعلان المقاعد يفتح على أول الصفحة.
 - **الموقع يمرّر الـUTM لزر التسجيل تلقائيًا** (بوابة G2، متحقق).
 
 | الإعلان | الرابط |
@@ -157,10 +171,13 @@
 | `eg-close` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=eg-close` |
 | `eg-hawk-eye` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=eg-hawk-eye#fm-check` |
 | `eg-lineup` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=eg-lineup#fm-check` |
+| `eg-ghost-vendor` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=eg-ghost-vendor#fm-check` |
 | `sa-crack` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=sa-crack#fm-check` |
 | `sa-close` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=sa-close` |
 | `sa-hawk-eye` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=sa-hawk-eye#fm-check` |
 | `sa-lineup` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=sa-lineup#fm-check` |
+
+| `sa-ghost-vendor` | `https://www.seg-audit.com/ar/founding-members/?utm_source=meta&utm_medium=paid&utm_campaign=founding-members-2026&utm_content=sa-ghost-vendor#fm-check` |
 
 **Display link** (اختياري): `seg-audit.com`
 

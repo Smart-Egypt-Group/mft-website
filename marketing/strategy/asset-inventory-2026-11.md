@@ -92,6 +92,7 @@
 | `marketing/designs/ads/tiktok-9x16_live-en_1080x1920` | jpg+webp | story / 9:16 | 1080×1920 | TikTok Ads | ✅ جاهز |
 | `marketing/designs/ads/tiktok-9x16_seats-ar_1080x1920` | jpg+webp | story / 9:16 | 1080×1920 | TikTok Ads | ⛔ يناقض الندرة الجديدة (يعرض 33/50 أو مقاعد ممتلئة) |
 | `marketing/designs/ads/tiktok-9x16_seats-en_1080x1920` | jpg+webp | story / 9:16 | 1080×1920 | TikTok Ads | ⛔ يناقض الندرة الجديدة (يعرض 33/50 أو مقاعد ممتلئة) |
+| `marketing/designs/ads/video/ghost-vendor-ayman_ad_1080x1920` | mp4 | video | 1080×1920 | Meta Ads Stories/Reels (`ghost-vendor`) · درس أيمن أشرف، توقيع A + CTA الفحص المجاني، -14 LUFS · رابط عام: https://www.seg-audit.com/assets/social/video/ghost-vendor-ayman_ad_1080x1920.mp4 | ✅ جاهز (7 نوفمبر) |
 | `marketing/designs/ads/video/tiktok-9x16_live-ar_1080x1920_8s` | mp4 | video | 1080×1920 | TikTok Ads | ✅ جاهز |
 | `marketing/designs/ads/video/tiktok-9x16_live-en_1080x1920_8s` | mp4 | video | 1080×1920 | TikTok Ads | ✅ جاهز |
 | `marketing/designs/ads/video/tiktok-9x16_seats-ar_1080x1920_8s` | mp4 | video | 1080×1920 | TikTok Ads | ⛔ يناقض الندرة الجديدة (يعرض 33/50 أو مقاعد ممتلئة) |
