@@ -16,7 +16,7 @@
 // Copy rules (checked by daily-packs.js): no seat counts, no numeric price or discount, no «مدى الحياة»;
 // «باقي N» must match the post's date; every illustrative company is labelled «مثال توضيحي».
 // Facts allowed: 9,900+ automated tests · 388 checks in 22 reports · 14 days to hold an accepted seat ·
-// 50 companies as a cap (supporting line only) · the close date.
+// the close date. No cap number of any kind (adversarial review, 7 Nov 2026).
 
 const A = {
   reel: (n) => `video/reel-${n}_ar_1080x1920.mp4`,
@@ -47,8 +47,8 @@ const A = {
   loss: 'psych/1-loss-aversion/psych-1-loss-aversion_ar_square_1080x1080.jpg',
   hawk8: 'psych/8-hawk-eye/psych-8-hawk-eye_ar_square_1080x1080.jpg',
   beforeAfter: 'concepts/before-after/before-after_ar_link_1200x630.jpg',
-  palm: 'guerrilla/palm/palm-02-who-reviews-you_ar_square_1080x1080.jpg',
-  palmStory: 'guerrilla/palm/palm-02-who-reviews-you_ar_story_1080x1920.jpg',
+  // day 8 partners: before-after square (the palm family was withdrawn on 7 Nov 2026, adversarial review)
+  palm: 'concepts/before-after/before-after_ar_square_1080x1080.jpg',
   ytRec: 'social/youtube-thumbnail_live-recording-ar_1280x720.jpg'
 };
 
@@ -244,7 +244,7 @@ ${TAGS_IG}`,
       { t: '10:30', ch: 'li-founder', fmt: 'text', id: 'w1-d6-li-a-1', cta: 'apply', hook: 'مش هنقبل كل طلب في برنامج الأعضاء المؤسِّسين.',
         text: `مش هنقبل كل طلب في برنامج الأعضاء المؤسِّسين.
 
-ده مش تسويق. كل عضو مؤسِّس بيشتغل مع فريقنا مباشرة في الإعداد والمتابعة، وده وقت مراجعين حقيقيين. علشان كده كل طلب بيعدّي على فريق MFT بنفسه قبل ما يتقبل، والسقف 50 شركة كحد أقصى.
+ده مش تسويق. كل عضو مؤسِّس بيشتغل مع فريقنا مباشرة في الإعداد والمتابعة، وده وقت مراجعين حقيقيين. علشان كده كل طلب بيعدّي على فريق MFT بنفسه قبل ما يتقبل.
 
 بنسأل أسئلة بسيطة: مين المسؤول المالي اللي هيتابع؟ دفاترك على Odoo ولا هتبعت ميزان؟ مستعد لجلسة إعداد؟
 

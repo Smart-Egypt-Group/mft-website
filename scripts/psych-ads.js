@@ -29,8 +29,8 @@ const FACTS = require('../src/content/platform-facts.js');
 const { NAVY, CYAN, W, RED } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
 const SIZES = { square: [1080, 1080], story: [1080, 1920], link: [1200, 630] };
 
-// Arabic-Indic digits with the Arabic thousands separator: 18747106 → ١٨٬٧٤٧٬١٠٦
-const ar = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '٬').replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
+// Western digits everywhere (one system, as on the site, platform and reports): 18747106 → 18,747,106
+const ar = (n) => Number(n).toLocaleString('en-US'); // Western digits in all Arabic creative (review, 7 Nov 2026)
 const { CLOSE, COPY: K, signHTML } = require('./lib/campaign.js');
 const TESTS = ar(FACTS.testsFloor);
 const DEMO = 'مثال توضيحي · داتا اختبارية';
@@ -91,7 +91,7 @@ function page(kind, { eyebrow, head, sub, tag, visual, css = '', extra = '', scr
 // ---------------------------------------------------------------- 1) loss aversion
 // One small wrong entry, four moments in time, the circle grows. Red stays a dot (the origin) and a badge.
 function loss(kind) {
-  const steps = [['اليوم', 2400], ['بعد شهر', 18000], ['بعد ٦ شهور', 135000], ['عند الإقفال', 980000]];
+  const steps = [['اليوم', 2400], ['بعد شهر', 18000], ['بعد 6 شهور', 135000], ['عند الإقفال', 980000]];
   const vertical = kind === 'story';
   const sizes = [16, 26, 40, 62]; // % of the visual's short side
   const nodes = steps.map(([when, amt], i) => `<div class="node n${i}">
@@ -121,8 +121,8 @@ function curiosity(kind) {
   const rows = [['حسابات معلّقة بقالها شهور', 1], ['أرصدة عكس طبيعتها', 1], ['قيود يدوية كثيفة على حسابات حساسة', 1], ['ميزان مش متزن', 0], ['قيود بتاريخ رجعي بعد الإقفال', 0]];
   return page(kind, {
     eyebrow: '<b>Standard Enterprise Governance</b> · فحص الميزان',
-    head: '<em>٥</em> حاجات في دفاترك<br>مش شايفها.',
-    sub: '٣ منهم قدامك… والاتنين الباقيين في ميزانك.',
+    head: '<em>5</em> حاجات في دفاترك<br>مش شايفها.',
+    sub: '3 منهم قدامك… والاتنين الباقيين في ميزانك.',
     visual: `<div class="card">${rows.map(([t, shown], i) => `<div class="r${shown ? '' : ' hid'}"><span class="n">${ar(i + 1)}</span><span class="t">${t}</span>${shown ? '<span class="red-dot"></span>' : ''}</div>`).join('')}
       <div class="lock"><svg viewBox="0 0 24 24" width="1em" height="1em"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="${NAVY}" stroke-width="2.4" stroke-linecap="round"/><rect x="4.5" y="10" width="15" height="11" rx="2.5" fill="${NAVY}"/></svg><span>اكشف الاتنين بالفحص المجاني</span></div></div>`,
     css: `.card{position:absolute;inset:0;background:#fff;color:${NAVY};border-radius:2.4cqmin;padding: 3.5cqmin 4cqmin;display:flex;flex-direction:column;justify-content:space-around;box-shadow:0 3cqmin 7cqmin rgba(0,0,0,.35)}
@@ -198,7 +198,7 @@ function authority(kind) {
     head: 'المنصة التي<br><em>تراجع نفسها.</em>',
     sub: `قبل ما تراجع دفاترك: +${TESTS} اختبار آلي قبل كل تحديث للمنصة، وكل تقرير يعتمده مراجع باسمه.`,
     visual: `<div class="seal"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" fill="rgba(27,183,205,.08)" stroke="rgba(27,183,205,.6)" stroke-width=".6"/><circle cx="50" cy="50" r="31" fill="none" stroke="rgba(255,255,255,.18)" stroke-width=".4" stroke-dasharray="1 1.6"/>${ticks}</svg>
-      <div class="in"><span class="big">+${TESTS}</span><span class="lbl">اختبار قبل كل تحديث</span><span class="src">من كود المنصة · ${ar(+FACTS.measuredOn.slice(8))} ${['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'][+FACTS.measuredOn.slice(5,7)-1]} ${FACTS.measuredOn.slice(0,4).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d])}</span></div></div>`,
+      <div class="in"><span class="big">+${TESTS}</span><span class="lbl">اختبار قبل كل تحديث</span><span class="src">من كود المنصة · ${ar(+FACTS.measuredOn.slice(8))} ${['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'][+FACTS.measuredOn.slice(5,7)-1]} ${FACTS.measuredOn.slice(0,4).replace(/\d/g, (d) => '0123456789'[d])}</span></div></div>`,
     css: `.seal{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
       .seal svg{height:100%;max-width:100%;aspect-ratio:1}
       .in{position:absolute;display:flex;flex-direction:column;align-items:center;gap: .6cqmin;text-align:center}
@@ -217,9 +217,9 @@ function anchoring(kind) {
     sub: 'اعرف نقاط الخطر في ميزانك قبل ما تبقى قيود تصحيح وأسابيع تسويات.',
     visual: `<div class="cmp">
         <div class="c bad"><p class="h">مفاجأة الإقفال السنوي</p><ul><li><span class="red-dot"></span>قيود تصحيح</li><li><span class="red-dot"></span>أسابيع تسويات</li><li><span class="red-dot"></span>أسئلة المراجع</li></ul>
-          <p class="price">+${ar(250000)} <small>ج.م</small></p><p class="demo">${DEMO}</p></div>
+          <p class="price">أسابيع</p><p class="demo">شغل فريقك بعد ما السنة تتقفل</p></div>
         <div class="vs">مقابل</div>
-        <div class="c good"><p class="h">الفحص المجاني</p><ul><li>ميزان آخر شهر مقفول</li><li>٥ مؤشرات خطر</li><li>في دقائق</li></ul>
+        <div class="c good"><p class="h">الفحص المجاني</p><ul><li>ميزان آخر شهر مقفول</li><li>5 مؤشرات خطر</li><li>في دقائق</li></ul>
           <p class="price">مجانًا</p><p class="demo">بلا بطاقة ولا التزام</p></div>
       </div>`,
     css: `.cmp{position:absolute;inset:0;display:flex;flex-direction:${vertical ? 'column' : 'row'};gap: 2.4cqmin;align-items:stretch}
@@ -386,13 +386,13 @@ function eye(kind) {
 // ---------------------------------------------------------------- catalogue
 const DESIGNS = [
   { slug: '1-loss-aversion', fn: loss, kinds: ['square', 'story', 'link'], principle: 'Loss aversion', note: 'الخسارة أثقل من المكسب: خطأ صغير اليوم يكبر حتى الإقفال. الدائرة تكبر مع الوقت، والأحمر نقطة البداية وشارة النهاية فقط. المبالغ مثال توضيحي.' },
-  { slug: '2-curiosity-gap', fn: curiosity, kinds: ['square', 'story'], principle: 'Curiosity gap (Zeigarnik)', note: 'العقل لا يترك قائمة ناقصة: ٥ بنود، ٣ ظاهرة و٢ مموّهة، والكشف الوحيد هو الفحص المجاني. البنود هي مؤشرات الفحص الحقيقية، بلا أرقام.' },
-  { slug: '3-shocking-specificity', fn: shock, kinds: ['square', 'story', 'link'], principle: 'Shocking specificity', note: 'رقم دقيق محدد يُصدَّق ويُتذكَّر أكثر من وصف عام: خزينة بالسالب −١٨٬٧٤٧٬١٠٦ ج.م، معلَّم «مثال توضيحي · داتا اختبارية». علامة السالب والنقطة فقط بالأحمر.' },
+  { slug: '2-curiosity-gap', fn: curiosity, kinds: ['square', 'story'], principle: 'Curiosity gap (Zeigarnik)', note: 'العقل لا يترك قائمة ناقصة: 5 بنود، 3 ظاهرة و2 مموّهة، والكشف الوحيد هو الفحص المجاني. البنود هي مؤشرات الفحص الحقيقية، بلا أرقام.' },
+  { slug: '3-shocking-specificity', fn: shock, kinds: ['square', 'story', 'link'], principle: 'Shocking specificity', note: 'رقم دقيق محدد يُصدَّق ويُتذكَّر أكثر من وصف عام: خزينة بالسالب −18,747,106 ج.م، معلَّم «مثال توضيحي · داتا اختبارية». علامة السالب والنقطة فقط بالأحمر.' },
   { slug: '4-selectivity', fn: selectivity, kinds: ['square', 'story', 'link'], principle: 'Selectivity + closing window', note: `ندرة بلا أرقام (6 نوفمبر 2026، بدل «باقي X من 50» المسحوب): طلب عضوية تحت المراجعة، سطوره فاضية (مفيش متقدّم وهمي)، وختم «قيد المراجعة · فريق MFT» لا «مقبول»، وآخر موعد ${CLOSE.arShort} من site.config.js → founding.closesAt.` },
   { slug: '5-meta-authority', fn: authority, kinds: ['square', 'story', 'link'], principle: 'Meta authority', note: `السلطة من الدليل لا من الادعاء: المنصة التي تراجع نفسها، +${TESTS} اختبار آلي قبل كل تحديث (من كود المنصة، ${FACTS.measuredOn}). استُخدمت الصياغة المعتمدة بدل «الوحيدة» لأنها ادعاء تفضيل مطلق بلا دليل.` },
-  { slug: '6-anchoring', fn: anchoring, kinds: ['square', 'story', 'link'], principle: 'Anchoring', note: 'المرساة السعرية: تكلفة مفاجأة الإقفال (+٢٥٠٬٠٠٠ ج.م، مثال توضيحي) بجانب الفحص المجاني (٠ ج.م) فيبدو القرار بديهيًا.' },
+  { slug: '6-anchoring', fn: anchoring, kinds: ['square', 'story', 'link'], principle: 'Anchoring', note: 'المرساة السعرية: تكلفة مفاجأة الإقفال (+250,000 ج.م، مثال توضيحي) بجانب الفحص المجاني (0 ج.م) فيبدو القرار بديهيًا.' },
   { slug: '7a-pattern-break-graffiti', fn: graffiti, kinds: ['square', 'story'], principle: 'Pattern break: graffiti v2', note: 'كسر النمط في الـfeed: جرافيتي على خرسانة بإضاءة علوية، ورذاذ ونقاط طلاء، وستنسل عين SEG، وعلامة «!» حمراء صغيرة.' },
-  { slug: '7b-pattern-break-palm', fn: palm, kinds: ['square', 'story'], principle: 'Pattern break: palm v2', note: 'كسر النمط: يد مرسومة بظل وعمق وكُم navy بخط سماوي، و«راجع دفاترك قبل الإقفال» بخط قلم، ودائرة قلم حمراء صغيرة حول «!».' },
+  // 7b-pattern-break-palm withdrawn 7 Nov 2026 (adversarial review): same clip-art hand as guerrilla/palm
   { slug: '8-hawk-eye', fn: eye, kinds: ['square', 'story', 'link'], principle: 'Vigilance: the hawk’s eye', note: 'عين الصقر (رمز MFT) كعنصر رقابة: قيود الدفتر منعكسة في القزحية، ونقطة حمراء صغيرة رصدتها العين. «عين على دفاترك. كل يوم.»' }
 ];
 

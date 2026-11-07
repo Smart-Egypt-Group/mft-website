@@ -53,11 +53,11 @@ const UI = {
 const SC = {
   'duplicate-payment': {
     ar: { hook: 'نفس فاتورة المورّد<br><em>اتدفعت مرتين.</em>', hookSub: 'ومحدش لاحظ.',
-      why: ['المراجعة السنوية بتختبر عيّنة من الدفعات، مش كلها.', 'الدفعة التانية برقم مرجع مختلف شوية: <b>INV-2210</b> و <b>INV2210-A</b>.', 'بين الدفعتين ١٩ يوم، في فترتين محاسبيتين.'],
+      why: ['المراجعة السنوية بتختبر عيّنة من الدفعات، مش كلها.', 'الدفعة التانية برقم مرجع مختلف شوية: <b>INV-2210</b> و <b>INV2210-A</b>.', 'بين الدفعتين 19 يوم، في فترتين محاسبيتين.'],
       ev: { title: 'دفعة مكررة لنفس المورّد', sev: ['c', 'حرجة'], kind: 'table', cols: ['الدفعة', 'التاريخ', 'المرجع', 'المبلغ'],
         rows: [['PAY-0332', '12 أكتوبر', 'INV-2210', '46,800'], ['PAY-0359', '31 أكتوبر', 'INV2210-A', '46,800']], hi: [2, 3],
         chips: ['نفس المورّد: V-118', 'نفس المبلغ', 'مرجع متطابق 92%'], foot: 'الدليل: المورّد V-118 · الفاتورة BILL-2210 · قيدا السداد' },
-      ctl: ['منع تكرار رقم فاتورة المورّد في Odoo.', 'مطابقة ثلاثية قبل الصرف: أمر الشراء والاستلام والفاتورة.', 'استرداد الدفعة الزائدة، ومراجعة دفعات المورّد آخر ١٢ شهر.'] },
+      ctl: ['منع تكرار رقم فاتورة المورّد في Odoo.', 'مطابقة ثلاثية قبل الصرف: أمر الشراء والاستلام والفاتورة.', 'استرداد الدفعة الزائدة، ومراجعة دفعات المورّد آخر 12 شهر.'] },
     en: { hook: 'The same supplier bill<br><em>was paid twice.</em>', hookSub: 'And nobody noticed.',
       why: ['The annual audit tests a sample of payments, not all of them.', 'The second payment carries a slightly different reference: <b>INV-2210</b> and <b>INV2210-A</b>.', 'The two payments are 19 days apart, in two accounting periods.'],
       ev: { title: 'Duplicate payment to one supplier', sev: ['c', 'Critical'], kind: 'table', cols: ['Payment', 'Date', 'Reference', 'Amount'],
@@ -84,7 +84,7 @@ const SC = {
       why: ['رصيده صغير جنب إجمالي الميزانية، فمش بيلفت النظر.', 'الحركات بتقابل بعضها، فالصافي شكله طبيعي.', 'محدش بيحلّل أعمار الأرصدة جوّه الحساب.'],
       ev: { title: 'حساب وسيط بلا تسوية', sev: ['h', 'عالية'], kind: 'bars', bars: [['يونيو', 12400], ['يوليو', 29800], ['أغسطس', 47100], ['سبتمبر', 63900], ['أكتوبر', 86250]],
         chips: ['متراكم 5 شهور', '71% أقدم من 90 يوم', 'أقدم بند: 30 يونيو'], foot: 'الدليل: حساب 2190 · 37 حركة بلا تسوية' },
-      ctl: ['تسوية شهرية للحساب الوسيط، وبحد أقصى ٣٠ يوم لكل بند.', 'مسؤول باسمه عن كل بند مفتوح.', 'أي رصيد أقدم من ٦٠ يوم يوصل للمدير المالي.'] },
+      ctl: ['تسوية شهرية للحساب الوسيط، وبحد أقصى 30 يوم لكل بند.', 'مسؤول باسمه عن كل بند مفتوح.', 'أي رصيد أقدم من 60 يوم يوصل للمدير المالي.'] },
     en: { hook: 'A suspense account<br><em>that grows every month.</em>', hookSub: 'And every difference hides in it.',
       why: ['Its balance looks small next to the balance sheet total.', 'Movements offset each other, so the net looks normal.', 'Nobody ages the items inside the account.'],
       ev: { title: 'Uncleared suspense account', sev: ['h', 'High'], kind: 'bars', bars: [['Jun', 12400], ['Jul', 29800], ['Aug', 47100], ['Sep', 63900], ['Oct', 86250]],

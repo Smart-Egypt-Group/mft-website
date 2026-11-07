@@ -66,6 +66,7 @@ for (const g of GENERATORS) {
   const usesKitLogo = /require\('\.\/lib\/campaign\.js'\)/.test(src) && /\bMARK\b|signHTML|SIGN_CANVAS_SRC|drawSign/.test(src);
   src.split('\n').forEach((l, i) => {
     if (/^\s*\/\//.test(l)) return;
+    if (/[٠-٩٬]/.test(l)) problems.push(`scripts/${g}.js:${i + 1}: Arabic-Indic digits (Arabic creative uses Western digits, one system)`);
     if (/^const\s+(NAVY|CYAN|W|RED|DEEP|PAPER|CYAN_INK)\s*=\s*'#/.test(l)) problems.push(`scripts/${g}.js:${i + 1}: brand colour typed locally (read it from scripts/lib/brand-tokens.js → legacy)`);
     if (/src\/assets\/fonts\/[a-z-]+\.woff2/.test(l)) problems.push(`scripts/${g}.js:${i + 1}: font path typed locally (read it from scripts/lib/brand-tokens.js → font)`);
     if (/mft-mark-/.test(l) && !/qa-allow-mft-mark/.test(l)) problems.push(`scripts/${g}.js:${i + 1}: loads the MFT mark (the SEG logo comes from scripts/lib/campaign.js → MARK)`);
@@ -104,7 +105,8 @@ const bySpec = {};
 for (const base of ['marketing/designs', 'marketing/brand/assets']) {
   for (const f of walk(path.join(ROOT, base))) {
     const rel = path.relative(ROOT, f);
-    if (/seats|hourglass|scarcity-proof/.test(path.basename(f))) problems.push(`${rel}: withdrawn asset still present`);
+    if (/seats|hourglass|scarcity-proof|palm-0|pattern-break-palm/.test(path.basename(f))) problems.push(`${rel}: withdrawn asset still present`);
+    if (/_guides\./.test(f) && !/\/_qa\//.test(rel)) problems.push(`${rel}: φ guide overlay outside marketing/designs/_qa/ (never ship guides as art)`);
     if (!/\.(png|jpe?g|webp)$/i.test(f)) continue;
     const s = size(f); images++;
     if (!s) { problems.push(`${rel}: unreadable image header`); continue; }

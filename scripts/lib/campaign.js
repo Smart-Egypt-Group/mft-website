@@ -85,6 +85,7 @@ const COPY = {
 const FORBIDDEN = [
   [/باقي\s*\S*\s*من\s*\S*\s*مقعد|مقعد(ًا)?\s*فقط|\d+\s*مقعد|٥٠\s*مقعد|احجز مقعدك|اكتمال العدد/, 'seat count / seat language (AR)'],
   [/\bseats? left\b|Only \$\{?[A-Z.]*\}? seats|Claim your seat|\d+ seats|seats reserved/i, 'seat count / seat language (EN)'],
+  [/\d+\s*شركة\s*(كحد|بحد|فقط|بس)|(كحد|بحد)\s*أقصى\s*\d+\s*(شركة|عضو|مقعد)|السقف\s*\d+|\b\d+\s*companies\s*(max|only)|ليه\s*\d+\s*شركة/i, 'member cap number (no cap of any kind)'],
   [/مدى الحياة|for life/i, '«for life» is for the acceptance letter, not designs'],
   [/50%\s*(off|مدى|خصم)|خصم\s*50|50٪/, 'numeric discount on a design']
 ];

@@ -9,7 +9,7 @@ Brand: navy `#0D1B3E`, cyan `#1BB7CD`, white, no gold. Arabic RTL. Each frame ca
 | Style | Folder | Lines |
 |---|---|---|
 | Graffiti on a wall: spray paint on navy-painted concrete | `graffiti/` | «مين بيراجع دفاترك؟» · «دفاترك فيها أخطاء… وإنت لسه مش عارف.» · «الإقفال جايّ. وفيه مفاجآت.» · «٣٦٥ يوم بلا مراجعة = خطر مستخبي.» |
-| Written on the palm: pen on an illustrated open hand, with the caption «الحاجة المهمة بتتكتب عشان ماتتنساش. دفاترك أهم» | `palm/` | «راجع دفاترك» · «مين بيراجعك؟» · «seg-audit.com» |
+| Written on the palm: pen on an illustrated open hand, with the caption «الحاجة المهمة بتتكتب عشان ماتتنساش. دفاترك أهم» | `palm/` | «راجع دفاترك» · «مين بيراجعك؟» · «seg-audit.com» | **⛔ مسحوب 7 نوفمبر 2026** (مراجعة عدائية: مستوى clip-art، وسماوي بحجم العناوين). الملفات اتشالت ومش بتتولّد.
 | Sticky note on a screen: the note is cyan, not yellow (no gold) | `sticky/` | «ماتنساش… الخزينة مش مظبوطة» · «الذمم المدينة محتاجة مراجعة» |
 
 **Fonts.** The hand lettering uses fonts that ship with macOS: Waseem for the spray and marker, Farisi for the pen, and Bradley Hand for the Latin domain. The UI type is Cairo. On another OS the hand lettering falls back to different fonts, so render on a Mac:

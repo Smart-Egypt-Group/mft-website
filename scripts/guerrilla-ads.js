@@ -37,7 +37,7 @@ const GRAFFITI = [
   { slug: '01-who-reviews', lines: [['مين بيراجع', W, 250], ['دفاترك؟', CYAN, 330]] },
   { slug: '02-errors', lines: [['دفاترك فيها أخطاء…', W, 200], ['وإنت لسه مش عارف.', CYAN, 200]] },
   { slug: '03-closing', lines: [['الإقفال جايّ.', W, 240], ['وفيه مفاجآت.', CYAN, 240]] },
-  { slug: '04-365', tally: true, lines: [['٣٦٥ يوم', CYAN, 300], ['بلا مراجعة', W, 200], ['= خطر مستخبي.', W, 200]] }
+  { slug: '04-365', tally: true, lines: [['365 يوم', CYAN, 300], ['بلا مراجعة', W, 200], ['= خطر مستخبي.', W, 200]] }
 ];
 const PALM = [
   { slug: '01-review-your-books', t: 'راجع دفاترك' },
@@ -249,7 +249,8 @@ async function main() {
   const written = [];
   const jobs = [
     ...GRAFFITI.map((d) => ['graffiti', d, graffiti]),
-    ...PALM.map((d) => ['palm', d, palm]),
+    // palm withdrawn 7 Nov 2026 (adversarial review): clip-art level below the set, and cyan at headline size
+    // breaks «cyan = signal». The function stays for reference; nothing is rendered from it.
     ...STICKY.map((d) => ['sticky', d, sticky])
   ];
   for (const [style, d, fn] of jobs) for (const [kind, [w, h]] of Object.entries(SIZES)) {

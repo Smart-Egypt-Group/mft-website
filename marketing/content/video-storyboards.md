@@ -38,7 +38,7 @@ Overlay: `marketing/designs/concepts/founder-pov/founder-pov_{ar,en}_overlay_108
 | Element | Spec |
 |---|---|
 | Shot | Phone on a tripod at eye level, vertical, founder centred on the golden line (the mock shows the guides), office or plain wall behind, window light from the side |
-| Hook | Burned in from frame 1: «ليه 50 شركة بس؟». The founder says it in the first second |
+| Hook | Burned in from frame 1: «ليه مش أي شركة؟». The founder says it in the first second |
 | Lower third | On from 0:02 to 0:07, then off (keep the overlay version without it for the rest, or mask it) |
 | Script | TikTok day 6 in [`week-1/tiktok.md`](week-1/tiktok.md); the founder edits it to his own words |
 | End | Cut to `video/video-a_*_frame-5` (hemicycle) for the last 2 seconds |

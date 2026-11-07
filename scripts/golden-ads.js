@@ -46,7 +46,7 @@ const FACTS = require('../src/content/platform-facts.js');
 const { NAVY, DEEP, CYAN, CYAN_INK, W, RED, PAPER } = require('./lib/brand-tokens.js').legacy; // marketing/brand/tokens/seg-tokens.json
 const { PHI } = require('./lib/brand-tokens.js').phi; // one source for φ
 const FORMATS = { '1x1': [1080, 1080], '4x5': [1080, 1350] };
-const ar = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '٬').replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
+const ar = (n) => Number(n).toLocaleString('en-US'); // Western digits in all Arabic creative (review, 7 Nov 2026)
 const { CLOSE, COPY: K, signHTML } = require('./lib/campaign.js');
 const DEMO = 'مثال توضيحي · داتا اختبارية';
 const r1 = (v) => Math.round(v * 10) / 10;
@@ -165,7 +165,7 @@ function crack(G) {
     }
   }
   const poly = [...top, ...bot.reverse()].map(([a, b]) => `${r1(a)},${r1(b)}`).join(' ');
-  const marks = [[2, 'بعد أسبوع', 6500], [3, 'بعد شهر', 18000], [4, 'بعد ٦ أشهر', 135000]].map(([k, when, amt]) => {
+  const marks = [[2, 'بعد أسبوع', 6500], [3, 'بعد شهر', 18000], [4, 'بعد 6 أشهر', 135000]].map(([k, when, amt]) => {
     const x = x0 - k * dx;
     return `<div class="abs mk" data-a="cx=${r1(x)}" style="left:${r1(x)}px;top:${r1(ey + width(x) / 2 + S.l)}px;transform:translateX(-50%)"><b>${when}</b><span>${ar(amt)}</span></div>
       <svg class="abs" style="left:0;top:0;overflow:visible" width="1" height="1"><line x1="${r1(x)}" y1="${r1(ey + width(x) / 2 + S.xs)}" x2="${r1(x)}" y2="${r1(ey + width(x) / 2 + S.l - S.xs)}" stroke="${NAVY}" stroke-width="1.5" stroke-dasharray="3 4" opacity=".55"/></svg>`;
@@ -247,7 +247,7 @@ function hourglass(G) {
   return shell(G, {
     spiralFx: true, eyebrowNote: 'الأعضاء المؤسِّسون',
     sub: `سعر المؤسِّس… <b>${K.ar.after}</b>`, cta: K.ar.cta,
-    head: `<span class="pre">يُغلق</span><b class="big" data-a="cy=${r1(ny)}">${ar(CLOSE.d)}</b><span class="s">${CLOSE.arMonth} · ${CLOSE.arTime.replace(/\d/g, (x) => '٠١٢٣٤٥٦٧٨٩'[x]).replace('مساءً', 'م')}</span>`,
+    head: `<span class="pre">يُغلق</span><b class="big" data-a="cy=${r1(ny)}">${ar(CLOSE.d)}</b><span class="s">${CLOSE.arMonth} · ${CLOSE.arTime.replace(/\d/g, (x) => '0123456789'[x]).replace('مساءً', 'م')}</span>`,
     headCss: `h1{right:auto;left:${m}px;bottom:auto;top:${r1(top)}px;width:${r1(nx - m)}px;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1}
       h1 .pre{font-size: ${T[3]}px;line-height:1.236}
       h1 .big{font-size: ${T[6]}px;line-height:1;color:${CYAN};font-weight:900;margin: -${S.m}px 0 0}
@@ -377,7 +377,7 @@ function lineup(G) {
       <div class="abs card lit" data-g="hero" data-a="cx=${r1(cx)};ratio=${r1(PHI * 1000) / 1000}" style="left:${r1(cx - cw / 2)}px;top:${r1(floor - ch)}px;width:${r1(cw)}px;height:${r1(ch)}px">
         <span class="k">قيد يومية</span><span class="lat code">JE/2026/10/0412</span>
         <span class="k2">مصروفات متنوعة</span><b>${ar(48500)}</b>
-        <span class="k2">٣١ أكتوبر · ١١:٥٨ م</span>
+        <span class="k2">31 أكتوبر · 11:58 م</span>
         <span class="flag"><span class="dot"></span>بلا مرفق</span>
         <span class="flag"><span class="dot"></span>المنشئ = المعتمِد</span></div>
       <div class="abs qs" style="left:${qLeft}px;width:${r1(qRight - qLeft)}px;top:${r1(vz.top)}px;height:${r1(ch)}px">${qs.map((q, i) => `<span style="opacity:${r1(1 - i * 0.12)}">${q}</span>`).join('')}</div>
@@ -402,13 +402,13 @@ function lineup(G) {
 const DESIGNS = [
   { slug: '1-crack', fn: crack, angle: 'الخطأ المستخبي اللي بيكبر (Loss aversion)',
     idea: 'صفحة دفتر يومية بتتشق. قيد واحد غلط النهارده شعرة، ويوم الإقفال شرخ بيقسم الصفحة.',
-    phi: 'عرض الشرخ w(x) = T0·φ^((x0−x)/Δ): بيتضرب في φ كل Δ px بالظبط، فبيعدّي على عروض السُّلَّم ٢٣ ← ٣٧ ← ٦٠ ← ٩٧ ← ١٥٨ ← ٢٥٥. نقطة البداية الحمرا على عين الحلزون، وعلامات الزمن (أسبوع، شهر، ٦ أشهر) عند العروض T2 وT3 وT4. سطور الدفتر كل T1، والأعمدة على خطوط القسمة.' },
+    phi: 'عرض الشرخ w(x) = T0·φ^((x0−x)/Δ): بيتضرب في φ كل Δ px بالظبط، فبيعدّي على عروض السُّلَّم 23 ← 37 ← 60 ← 97 ← 158 ← 255. نقطة البداية الحمرا على عين الحلزون، وعلامات الزمن (أسبوع، شهر، 6 أشهر) عند العروض T2 وT3 وT4. سطور الدفتر كل T1، والأعمدة على خطوط القسمة.' },
   { slug: '2-days', fn: hourglass, angle: `نافذة الإغلاق «الوقت، مش المقاعد» (${CLOSE.arShort})`,
     idea: `ساعة رملية رملها أيام ${CLOSE.arMonth}، والرقبة هي لحظة الإغلاق: ${CLOSE.arFull}. يوم الإغلاق مربع سماوي في الرقبة، والانتفاخ السفلي فاضي (مفيش عدّ تنازلي يتقادم). حلّت محل ساعة المقاعد المسحوبة (6 نوفمبر 2026).`,
-    phi: 'الساعة مستطيل ذهبي (h × h/φ). الرقبة على عين الحلزون، وبتقسم الارتفاع عند القسمة الذهبية: الانتفاخ العلوي h/φ والسفلي h/φ². مربع اليوم T1، ورقم يوم الإغلاق بأكبر درجة T6 (٤١٢ px)، وخط منتصفه على مستوى العين تقريبًا (القياس في الجدول).' },
+    phi: 'الساعة مستطيل ذهبي (h × h/φ). الرقبة على عين الحلزون، وبتقسم الارتفاع عند القسمة الذهبية: الانتفاخ العلوي h/φ والسفلي h/φ². مربع اليوم T1، ورقم يوم الإغلاق بأكبر درجة T6 (412 px)، وخط منتصفه على مستوى العين تقريبًا (القياس في الجدول).' },
   { slug: '3-hawk-eye', fn: hawk, angle: '«كل رقم بدليله» / «المنصة التي تراجع نفسها»',
     idea: 'عين صقر ماكرو هي البطل: في قرنيتها انعكاس مستند عليه ✓، ونظرتها ممتدة لسلسلة الدليل (القيد ← فاتورة المورّد ← المرفق).',
-    phi: 'البؤبؤ على عين الحلزون. نصف قطر القزحية T5 (٢٥٥)، والبؤبؤ T5/φ، ولمعة الضوء T5/φ³ وT5/φ⁵، والمستند المنعكس مستطيل ذهبي عرضه T5/φ². الريش متجه على مماس حلزون لوغاريتمي بخطوة الحلزون الذهبي (atan(2·ln φ/π) ≈ 0.3 rad).' },
+    phi: 'البؤبؤ على عين الحلزون. نصف قطر القزحية T5 (255)، والبؤبؤ T5/φ، ولمعة الضوء T5/φ³ وT5/φ⁵، والمستند المنعكس مستطيل ذهبي عرضه T5/φ². الريش متجه على مماس حلزون لوغاريتمي بخطوة الحلزون الذهبي (atan(2·ln φ/π) ≈ 0.3 rad).' },
   { slug: '4-lineup', fn: lineup, angle: 'الصادم: «كل قيد تحت الاستجواب»',
     idea: 'طابور تعرّف في قسم شرطة: قيود يومية قدام لوحة الأطوال، والمتهم تحت اللمبة: بلا مرفق، والمنشئ هو المعتمِد، وآخر دقيقة في الشهر.',
     phi: 'القيد المتهم مستطيل ذهبي (h × h/φ) مركزه على الخط x = W/φ تحت مخروط الضوء، والقيد اللي جنبه 1/φ من حجمه، والأسئلة في المساحة اللي قبل خط القسمة. خطوط لوحة الأطوال كل T1. مفيش حلزون هنا: التركيب مبني على القسمة والمستطيلات.' }
@@ -480,7 +480,9 @@ async function main() {
     const f = await toFiles(png), g = await toFiles(gpng);
     fs.writeFileSync(path.join(dir, `${base}.webp`), f.webp);
     fs.writeFileSync(path.join(dir, `${base}.jpg`), f.jpg);
-    fs.writeFileSync(path.join(dir, `${base}_guides.webp`), g.webp);
+    // φ guide overlays are QA material, never shippable art: marketing/designs/_qa/ (review, 7 Nov 2026)
+    const qa = path.join(OUT, '..', '_qa', 'golden', d.slug); fs.mkdirSync(qa, { recursive: true });
+    fs.writeFileSync(path.join(qa, `${base}_guides.webp`), g.webp);
     fs.copyFileSync(path.join(dir, `${base}.jpg`), path.join(HOST, `${base}.jpg`));
     const anchors = meas.anchors.map((a) => ({ ...a, dev: r1(a.got - a.target) }));
     if (!['2-days'].includes(d.slug)) anchors.push({ el: 'headline', key: 'bottom', target: r1(G.Y1), got: r1(meas.h1bottom), dev: r1(meas.h1bottom - G.Y1) });
@@ -503,14 +505,14 @@ async function main() {
 .g{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap: 21px;align-items:start}figure{margin: 0;background:#fff;border:1px solid #E6E9F0;border-radius:6px;padding: 8px}img{display:block;width:100%;height:auto}
 figcaption{font-size: 13px;margin-top: 8px;direction:ltr;text-align:left}figcaption a{color:#0F7C91}.k{font-size: 13px;font-weight:700;color:#0F7C91}code{direction:ltr;unicode-bidi:isolate}</style>
 <h1>Standard Enterprise Governance (SEG): إبداعات حملة Meta، النسبة الذهبية φ (v2)</h1>
-<p class="p">٤ مفاهيم × مقاسي Meta feed (1:1 و4:5)، نفس الطقم لمجموعتَي مصر والسعودية. مولَّدة بالكود عبر <code>scripts/golden-ads.js</code>. بجانب كل إعلان نسخة guides: خطوط القسمة بالأصفر، والحلزون بالأخضر، والعين والهامش بالبنفسجي. القياسات في <code>metrics.json</code>.</p>
-${DESIGNS.map((d) => `<h2>${d.slug} <span class="k">${d.angle}</span></h2><p class="p"><b>الفكرة:</b> ${d.idea}</p><p class="p"><b>φ:</b> ${d.phi}</p><div class="g">${written.filter((x) => x.d === d).map((x) => `<figure><img loading="lazy" src="${d.slug}/${x.base}.webp" alt="${x.base}"><figcaption>${x.fmt} · ${x.w}×${x.h} · <a href="${url(x.base)}">JPG</a></figcaption></figure><figure><img loading="lazy" src="${d.slug}/${x.base}_guides.webp" alt="${x.base} guides"><figcaption>${x.fmt} · guides</figcaption></figure>`).join('')}</div>`).join('\n')}`;
+<p class="p">4 مفاهيم × مقاسي Meta feed (1:1 و4:5)، نفس الطقم لمجموعتَي مصر والسعودية. مولَّدة بالكود عبر <code>scripts/golden-ads.js</code>. بجانب كل إعلان نسخة guides: خطوط القسمة بالأصفر، والحلزون بالأخضر، والعين والهامش بالبنفسجي. القياسات في <code>metrics.json</code>.</p>
+${DESIGNS.map((d) => `<h2>${d.slug} <span class="k">${d.angle}</span></h2><p class="p"><b>الفكرة:</b> ${d.idea}</p><p class="p"><b>φ:</b> ${d.phi}</p><div class="g">${written.filter((x) => x.d === d).map((x) => `<figure><img loading="lazy" src="${d.slug}/${x.base}.webp" alt="${x.base}"><figcaption>${x.fmt} · ${x.w}×${x.h} · <a href="${url(x.base)}">JPG</a></figcaption></figure><figure><img loading="lazy" src="../_qa/golden/${d.slug}/${x.base}_guides.webp" alt="${x.base} guides"><figcaption>${x.fmt} · guides</figcaption></figure>`).join('')}</div>`).join('\n')}`;
   fs.writeFileSync(path.join(OUT, 'index.html'), html);
 
   const md = [];
   md.push('# Standard Enterprise Governance (SEG): إبداعات حملة Meta، النسبة الذهبية φ (v2)', '');
-  md.push('بريف الـCEO (5 نوفمبر 2026): «خارج الصندوق»، ٤ زوايا، نفس الطقم لمجموعتَي مصر والسعودية. يولّدها [`scripts/golden-ads.js`](../../../scripts/golden-ads.js)، والمعرض في [`index.html`](index.html)، والقياسات في [`metrics.json`](metrics.json). هذا الملف يكتبه السكربت. حلّت محل حزمة v1 (٧ زوايا).', '');
-  md.push('**المقاسات:** Meta feed 1:1 (1080×1080) و4:5 (1080×1350)، JPG (للرفع) وWebP (للمعرض) ونسخة `_guides.webp` عليها خطوط φ.', '');
+  md.push('بريف الـCEO (5 نوفمبر 2026): «خارج الصندوق»، 4 زوايا، نفس الطقم لمجموعتَي مصر والسعودية. يولّدها [`scripts/golden-ads.js`](../../../scripts/golden-ads.js)، والمعرض في [`index.html`](index.html)، والقياسات في [`metrics.json`](metrics.json). هذا الملف يكتبه السكربت. حلّت محل حزمة v1 (7 زوايا).', '');
+  md.push('**المقاسات:** Meta feed 1:1 (1080×1080) و4:5 (1080×1350)، JPG (للرفع) وWebP (للمعرض) ونسخة `_guides.webp` عليها خطوط φ في `marketing/designs/_qa/golden/` (للمراجعة بس، مش للنشر).', '');
   md.push('**البراند:** navy `#0D1B3E` وcyan `#1BB7CD` وأبيض، وأحمر إنذار خافت `#C0392B` للعلامات الصغيرة فقط. بلا ذهبي. عربي RTL، بصياغة يقرأها السوقان، وبلا رمز عملة لأن الطقم واحد لمصر والسعودية. في كل إعلان: «Standard Enterprise Governance (SEG)»، و«فحص مجاني لميزان شركتك… في دقائق»، وCTA «افحص مجانًا · seg-audit.com» (أو «قدّم طلبك» في تصميم النافذة)، وتوقيع المنصة: العلامة + SEG + BY MFT. بلا أرقام مقاعد ولا سعر رقمي.', '');
   md.push('**البيانات:** كل رقم وكود دفاتر داتا اختبارية معلَّمة «مثال توضيحي · داتا اختبارية». الاستثناءان: تاريخ الإغلاق (`site.config.js → founding.closesAt`: ' + CLOSE.arFull + ') وعدد الاختبارات (`platform-facts.js`، ' + FACTS.measuredOn + ').', '');
   md.push('## نظام φ المشترك', '');
@@ -521,7 +523,7 @@ ${DESIGNS.map((d) => `<h2>${d.slug} <span class="k">${d.angle}</span></h2><p cla
   md.push(`| خطوط القسمة | x = W/φ² و W/φ، y = H/φ² و H/φ | x: ${r1(G1.X1)} · ${r1(G1.X2)}؛ y 1:1: ${r1(G1.Y1)} · ${r1(G1.Y2)}؛ y 4:5: ${r1(G4.Y1)} · ${r1(G4.Y2)} |`);
   md.push('| العنوان | آخر سطر على y = H/φ² (ما عدا الساعة الرملية: الرقم العملاق هو العنوان) | |');
   md.push(`| الـCTA | طرفه الأيسر على x = W/φ، وارتفاعه T2، ونصه T0 | |`);
-  md.push(`| الحلزون الذهبي | مستطيل W × W/φ على الحافة السفلية، مقسوم لحد ما يتقارب؛ عينه تثبّت البطل في التصميمات ١ إلى ٣ | العين 1:1: (${G1.spiral(false).eye.map(r1).join('، ')}) أو (${G1.spiral(true).eye.map(r1).join('، ')})؛ 4:5: (${G4.spiral(false).eye.map(r1).join('، ')}) أو (${G4.spiral(true).eye.map(r1).join('، ')}) |`, '');
+  md.push(`| الحلزون الذهبي | مستطيل W × W/φ على الحافة السفلية، مقسوم لحد ما يتقارب؛ عينه تثبّت البطل في التصميمات 1 إلى 3 | العين 1:1: (${G1.spiral(false).eye.map(r1).join('، ')}) أو (${G1.spiral(true).eye.map(r1).join('، ')})؛ 4:5: (${G4.spiral(false).eye.map(r1).join('، ')}) أو (${G4.spiral(true).eye.map(r1).join('، ')}) |`, '');
   md.push('## المفاهيم', '');
   DESIGNS.forEach((d) => { md.push(`### \`${d.slug}/\` · ${d.angle}`, '', `**الفكرة:** ${d.idea}`, '', `**تطبيق φ:** ${d.phi}`, ''); });
   md.push('## القياس بعد الرندر', '', 'انحراف كل عنصر مُثبَّت عن هدفه الذهبي، بالـpx (ratio بدون وحدة). مقاس من صندوق العنصر في المتصفح بعد تحميل الخطوط.', '');

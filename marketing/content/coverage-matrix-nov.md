@@ -471,7 +471,7 @@
 | اليوم | المنصة · الخانة | النص | الأصل |
 |---|---|---|---|
 | سبت 7 | كل المنصات | [`daily/2026-11-07-ready.md`](daily/2026-11-07-ready.md) (نصوصه نهائية) | كما في الملف |
-| أحد 8 | LI/FB/IG · F | شركاء: `launch-week.md` ي5 · الدعوة: C-IG-S1 بأصل `launch-live-invite` | `before-after_ar_link`، `palm-02`، `launch-live-invite_ar_*` |
+| أحد 8 | LI/FB/IG · F | شركاء: `launch-week.md` ي5 · الدعوة: C-IG-S1 بأصل `launch-live-invite` | `before-after_ar_link`، `before-after_ar_square`، `launch-live-invite_ar_*` |
 | إثنين 9 | LI المؤسس · C-LI-F2 · FB/IG · C-FB-F3 / C-IG-F1 · ستوري C-IG-S3 | الانتقاء | `psych-4-selectivity_ar_square` · `council-story_ar_8s` |
 | ثلاثاء 10 | FB/IG · C-FB-F1 / C-IG-F1 (نسخة «الليلة البث») · ستوري C-IG-S1 | — | `graffiti-03-closing` · `launch-live-invite_ar_story` |
 | أربعاء 11 | LI · C-LI-V (N6) · YT · C-YT-V2 · FB/IG · C-FB-V1 / C-IG-V1 | قصاصة البث | 🔴 N6 · ✅ N8 |

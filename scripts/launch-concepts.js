@@ -63,7 +63,7 @@ const T = {
     tb: { eb: 'Standard Enterprise Governance · الفحص المجاني', head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', sub: 'مؤشرات من الميزان؛ 01 و04 و05 بربط Odoo. ليست تقرير مراجعة.', cols: ['الحساب', 'مدين', 'دائن'], total: 'الإجمالي',
       acc: ['النقدية', 'حساب معلّق', 'العملاء', 'الموردون', 'الإيرادات', 'تكلفة المبيعات', 'المصروفات'],
       legend: ['حسابات معلّقة', 'أرصدة شاذة', 'عدم اتزان', 'قيود يدوية كثيفة', 'تواريخ رجعية'] },
-    hook: { l1: 'مين بيراجع دفاترك', s1: 'مين بيراجع', s2: 'دفاترك باقي', pre: 'باقي', post: 'يوم؟', cap: 'مراجعة سنوية واحدة. والسنة 365 يومًا.' },
+    hook: { l1: 'مين بيراجع دفاترك', s1: 'مين بيراجع', s2: 'دفاترك باقي', pre: 'باقي', post: 'يوم؟', cap: 'السنة 365 يوم − 5 أيام مراجعة سنوية (مثال) = 360 يوم بلا مراجعة.' },
     self: { eb: 'Standard Enterprise Governance · الثقة', head: 'المنصة التي تراجع نفسها.', sub: `قبل أن تراجع دفاترك: أكثر من ${TESTS} اختبار آلي قبل كل تحديث، وسجل لا يُعدَّل بصمت.` },
     ba: { before: 'قبل', after: 'بعد', head: 'من دفاتر لا يراها أحد، إلى تقرير تراه كاملًا.' },
     ns: { eb: 'Standard Enterprise Governance · صفر تخمين', head: 'رقم بلا مصدر؟ لا يدخل تقريرك.', sub: 'كل رقم في تقارير SEG مرتبط بمصدره في دفاترك.', tag: 'بلا مصدر', note: 'مثال توضيحي' },
@@ -81,7 +81,7 @@ const T = {
       foot: 'فحص الميزان المجاني بيكشفها في دقائق.',
       end: { head: 'فحص مجاني لميزان شركتك يكشف نقاط الخطر في دقائق', line: 'مؤشرات من ميزان المراجعة؛ 3 منها تحتاج ربط Odoo. ليس تقرير مراجعة كاملًا.', pill: 'افحص ميزانك مجانًا  ·  app.seg-audit.com' }
     },
-    vid: { a2: 'مراجعة سنوية واحدة. والسنة 365 يومًا.', a3: 'SEG بيقرا دفاترك كل يوم.', a4: 'وكل ملاحظة معاها دليلها.', b1: 'دفاترك شكلها كده؟', b2: 'SEG بيراجع…', b3: 'ملاحظة حرجة واحدة. ومعها مصدرها.' },
+    vid: { a2: 'السنة 365 يوم. المراجعة السنوية بتغطّي أيام منها (هنا 5 كمثال).', a3: 'SEG بيقرا دفاترك كل يوم.', a4: 'وكل ملاحظة معاها دليلها.', b1: 'دفاترك شكلها كده؟', b2: 'SEG بيراجع…', b3: 'ملاحظة حرجة واحدة. ومعها مصدرها.' },
     pov: { hook: 'ليه مش أي شركة؟', name: 'أحمد أشرف', role: 'المؤسس والرئيس التنفيذي، MFT', pill: K.ar.closesOn, ph: 'لقطة المؤسس هنا (POV)' }
   },
   en: {
@@ -89,7 +89,7 @@ const T = {
     tb: { eb: 'STANDARD ENTERPRISE GOVERNANCE · THE FREE CHECK', head: 'A free check of your company’s trial balance that flags its risk points in minutes', sub: 'Trial-balance indicators; 01, 04 and 05 need an Odoo connection. Not a full audit report.', cols: ['Account', 'Debit', 'Credit'], total: 'Total',
       acc: ['Cash', 'Suspense', 'Receivables', 'Payables', 'Revenue', 'Cost of sales', 'Expenses'],
       legend: ['Suspense accounts', 'Abnormal balances', 'Imbalance', 'Heavy manual entries', 'Backdated entries'] },
-    hook: { l1: 'Who reviews your books', s1: 'Who reviews your', s2: 'books the other', pre: 'the other', post: 'days?', cap: 'One annual audit. A year has 365 days.' },
+    hook: { l1: 'Who reviews your books', s1: 'Who reviews your', s2: 'books the other', pre: 'the other', post: 'days?', cap: '365 days a year − 5 days of annual audit (example) = 360 unreviewed.' },
     self: { eb: 'STANDARD ENTERPRISE GOVERNANCE · TRUST', head: 'The platform that reviews itself.', sub: `Before it reviews your books: ${TESTS}+ automated tests before every update, and a log nothing can change silently.` },
     ba: { before: 'Before', after: 'After', head: 'From books no one sees to a report you see in full.' },
     ns: { eb: 'STANDARD ENTERPRISE GOVERNANCE · ZERO GUESSWORK', head: 'A number with no source never reaches your report.', sub: 'Every number in an SEG report links to its source in your books.', tag: 'No source', note: 'Illustrative example' },
@@ -106,7 +106,7 @@ const T = {
       foot: 'The free trial-balance check flags it in minutes.',
       end: { head: 'A free check of your company’s trial balance that flags its risk points in minutes', line: 'Trial-balance indicators; three need an Odoo connection. Not a full audit report.', pill: 'Check your trial balance free  ·  app.seg-audit.com' }
     },
-    vid: { a2: 'One annual audit. A year has 365 days.', a3: 'SEG reads your books every day.', a4: 'And every finding comes with its evidence.', b1: 'Do your books look like this?', b2: 'SEG is reviewing…', b3: 'One critical finding. With its source.' },
+    vid: { a2: '365 days a year. The annual audit covers a few (5 here, as an example).', a3: 'SEG reads your books every day.', a4: 'And every finding comes with its evidence.', b1: 'Do your books look like this?', b2: 'SEG is reviewing…', b3: 'One critical finding. With its source.' },
     pov: { hook: 'Why not just any company?', name: 'Ahmed Ashraf', role: 'Founder & CEO, MFT', pill: K.en.closesOn, ph: 'Founder footage here (POV)' }
   }
 };
@@ -318,7 +318,7 @@ function hook360(w, h, lang, o = {}) {
   }
   if (!o.noCal) {
     calendar(d, S.m, S.cal[0] * (k === 'square' ? 1 : 1), w - 2 * S.m, S.cal[1] * u, { lit });
-    text(d, { t: C.cap, ...a, y: S.cap - (k === 'story' ? 60 : 0), px: 33 * u, wt: 600, c: DIM });
+    text(d, { t: C.cap, ...a, y: S.cap - (k === 'story' ? 60 : 0), px: 33 * u, wt: 600, c: DIM, maxW: w - 2 * S.m, fit: true }); // the subtraction is spelled out (review, 7 Nov)
   }
   if (!o.frame) {
     const by = k === 'story' ? 1640 : h - 90 * u;
@@ -687,8 +687,8 @@ function videoFrames(lang) {
 }
 const SB = {
   ar: {
-    a: { title: 'فيديو قصير ١: «باقي 360 يوم» · 15 ثانية · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'الخطّاف: السؤال كامل على الشاشة، بلا كلام أول ثانية، ثم بصوت المؤسس'], ['0:03–0:06', 'التقويم: 365 نقطة، أسبوع عمل واحد مضيء'], ['0:06–0:10', 'النقاط تضيء سماويًا يومًا بعد يوم: SEG يقرأ كل يوم'], ['0:10–0:13', 'التقرير الأبيض: الملاحظة السماوية ومعها مصدرها'], ['0:13–0:15', `الختام: مجلس الأعضاء المؤسِّسين · ${K.ar.select} · ${K.ar.closesOn} · الرابط في البايو`]] },
-    b: { title: 'فيديو قصير ٢: «قبل / بعد» · 12 ثانية', notes: [['0:00–0:03', 'الخطّاف: دفاتر مائلة متداخلة، والسؤال بخط ضخم'], ['0:03–0:06', 'خط المسح يمر من أعلى لأسفل: ما فوقه منظَّم وأبيض'], ['0:06–0:09', 'التقرير كاملًا: ملاحظة حرجة واحدة بالسماوي'], ['0:09–0:12', `الختام: المجلس · بالطلب فقط · ${K.ar.closesOn} · الرابط`]] }
+    a: { title: 'فيديو قصير 1: «باقي 360 يوم» · 15 ثانية · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'الخطّاف: السؤال كامل على الشاشة، بلا كلام أول ثانية، ثم بصوت المؤسس'], ['0:03–0:06', 'التقويم: 365 نقطة، أسبوع عمل واحد مضيء'], ['0:06–0:10', 'النقاط تضيء سماويًا يومًا بعد يوم: SEG يقرأ كل يوم'], ['0:10–0:13', 'التقرير الأبيض: الملاحظة السماوية ومعها مصدرها'], ['0:13–0:15', `الختام: مجلس الأعضاء المؤسِّسين · ${K.ar.select} · ${K.ar.closesOn} · الرابط في البايو`]] },
+    b: { title: 'فيديو قصير 2: «قبل / بعد» · 12 ثانية', notes: [['0:00–0:03', 'الخطّاف: دفاتر مائلة متداخلة، والسؤال بخط ضخم'], ['0:03–0:06', 'خط المسح يمر من أعلى لأسفل: ما فوقه منظَّم وأبيض'], ['0:06–0:09', 'التقرير كاملًا: ملاحظة حرجة واحدة بالسماوي'], ['0:09–0:12', `الختام: المجلس · بالطلب فقط · ${K.ar.closesOn} · الرابط`]] }
   },
   en: {
     a: { title: 'Short video 1: "The other 360 days" · 15 s · Reels / TikTok / Shorts', notes: [['0:00–0:03', 'Hook: the full question on screen, silent first second, then the founder’s voice'], ['0:03–0:06', 'The calendar: 365 dots, one working week lit'], ['0:06–0:10', 'Day by day the dots turn cyan: SEG reads every day'], ['0:10–0:13', 'The white report: the cyan finding with its source'], ['0:13–0:15', `End card: the founding council · by application · ${K.en.closesOn} · link in bio`]] },
