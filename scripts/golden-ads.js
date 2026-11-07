@@ -305,6 +305,10 @@ function hawk(G) {
   const colLeft = ex + R + S.s, colW = Wd - m - colLeft;
   const chain = [['القيد', 'JE/2026/10/0412'], ['فاتورة المورّد', 'BILL/2026/0389'], ['المرفق', 'bill-0389.pdf']];
   const cy0 = vz.top + S.l;
+  // chips start under the proof block's real height (figure + line at line-height 1.236) plus a φ gap; a fixed
+  // T[3] offset let the line run into the first chip (CEO, 7 Nov 2026)
+  // square frames have less height under the headline: the stack steps down one φ gap (S.s → S.xs)
+  const gap = Hd / Wd < 1.1 ? S.xs : S.s, chip0 = cy0 + Math.ceil((T[2] + T[0]) * 1.236) + gap;
   return shell(G, {
     spiralFx: false, eyebrowNote: 'الثقة',
     head: 'كل رقم <em>بدليله.</em><span class="s">المنصة التي تراجع نفسها</span>',
@@ -335,12 +339,12 @@ function hawk(G) {
         </g>
         <path d="M${r1(ex - R * 1.32)} ${r1(ey - R * .22)} Q ${r1(ex - R * .2)} ${r1(ey - R * 1.32)} ${r1(ex + R * 1.25)} ${r1(ey - R * .62)} Q ${r1(ex + R * .3)} ${r1(ey - R * 1.05)} ${r1(ex - R * 1.32)} ${r1(ey - R * .22)}Z" fill="#0A1533"/>
         <path d="M${r1(ex - R * 1.32)} ${r1(ey - R * .22)} Q ${r1(ex - R * .2)} ${r1(ey - R * 1.32)} ${r1(ex + R * 1.25)} ${r1(ey - R * .62)}" fill="none" stroke="${CYAN}" stroke-width="2" opacity=".35"/>
-        ${chain.map((_, i) => { const y = cy0 + T[3] + i * (T[2] + S.s) + T[2] / 2; return `<path d="M${r1(ex + pr * .9)} ${r1(ey - pr * .2 + i * pr * .2)} C ${r1(ex + R * 1.1)} ${r1(ey)} ${r1(colLeft - S.l)} ${r1(y)} ${r1(colLeft - S.xs)} ${r1(y)}" fill="none" stroke="${CYAN}" stroke-width="1.5" stroke-dasharray="2 6" opacity=".7"/>`; }).join('')}
+        ${chain.map((_, i) => { const y = chip0 + i * (T[2] + gap) + T[2] / 2; return `<path d="M${r1(ex + pr * .9)} ${r1(ey - pr * .2 + i * pr * .2)} C ${r1(ex + R * 1.1)} ${r1(ey)} ${r1(colLeft - S.l)} ${r1(y)} ${r1(colLeft - S.xs)} ${r1(y)}" fill="none" stroke="${CYAN}" stroke-width="1.5" stroke-dasharray="2 6" opacity=".7"/>`; }).join('')}
       </svg>
       <span class="abs" data-g="hero" data-a="cx=${r1(ex)};cy=${r1(ey)}" style="${centred(ex, ey)};width:${r1(pr * 2)}px;height:${r1(pr * 2)}px;border-radius:50%"></span>
       <div class="abs proof" style="left:${r1(colLeft)}px;width:${r1(colW)}px;top:${r1(cy0)}px"><b>+${ar(FACTS.testsFloor)}</b><span>اختبار آلي قبل كل تحديث للمنصة</span></div>
-      ${chain.map(([k, v], i) => `<div class="abs chip" style="right:${m}px;top:${r1(cy0 + T[3] + i * (T[2] + S.s))}px;height:${T[2]}px"><span class="ok">✓</span><span>${k}</span><span class="lat v">${v}</span></div>`).join('')}
-      <span class="abs tag" style="right:${m}px;top:${r1(cy0 + T[3] + 3 * (T[2] + S.s))}px">${DEMO}</span>`,
+      ${chain.map(([k, v], i) => `<div class="abs chip" style="right:${m}px;top:${r1(chip0 + i * (T[2] + gap))}px;height:${T[2]}px"><span class="ok">✓</span><span>${k}</span><span class="lat v">${v}</span></div>`).join('')}
+      <span class="abs tag" style="right:${m}px;top:${r1(chip0 + 3 * (T[2] + gap))}px">${DEMO}</span>`,
     css: `.proof{display:flex;flex-direction:column;align-items:flex-start;line-height:1.236;color:#fff}
       .proof b{font-size: ${T[2]}px;font-weight:900;color:${CYAN}}
       .proof span{font-size: ${T[0]}px;font-weight:700;color:rgba(255,255,255,.75);white-space:nowrap}
@@ -430,6 +434,11 @@ const MEASURE = `(() => {
     const r = document.createRange(); r.selectNodeContents(el); const t = r.getBoundingClientRect(), b = box(el);
     if (t.width > b.width + 2) overflow.push('text>' + (el.className || el.tagName));
   }
+  // no two text blocks may overlap (proof, chips, tags, sub, cta)
+  const blocks = [...document.querySelectorAll('.proof,.chip,.tag,.sub,.cta,h1')].map((e) => [e, box(e)]);
+  for (let i = 0; i < blocks.length; i++) for (let j = i + 1; j < blocks.length; j++) { const [ea, a] = blocks[i], [eb2, b] = blocks[j];
+    if (ea.contains(eb2) || eb2.contains(ea)) continue;
+    if (a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1) overflow.push('overlap:' + (ea.className || ea.tagName) + '×' + (eb2.className || eb2.tagName)); }
   const eb = box(document.querySelector('.eyebrow')), hr = document.createRange(); hr.selectNodeContents(document.querySelector('h1 .pre') || document.querySelector('h1'));
   if (hr.getBoundingClientRect().top < eb.bottom + 14) overflow.push('headline hits eyebrow');
   for (const el of document.querySelectorAll('[data-a]')) {
