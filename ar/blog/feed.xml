@@ -2,279 +2,279 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>المقالات | Modern Financial Technology</title>
-    <link>https://PENDING-DOMAIN.example/ar/blog/</link>
-    <atom:link href="https://PENDING-DOMAIN.example/ar/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <link>https://www.seg-audit.com/ar/blog/</link>
+    <atom:link href="https://www.seg-audit.com/ar/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>كتابات عملية من MFT عن المراجعة الداخلية والأهمية النسبية والامتثال لهيئة الزكاة والضريبة والجمارك السعودية والفوترة الإلكترونية المصرية وتشغيل Odoo كنظام مالي.</description>
     <language>ar</language>
-    <lastBuildDate>Sat, 07 Nov 2026 14:10:51 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 14:24:27 GMT</lastBuildDate>
     <item>
       <title>الذكاء الاصطناعي في المحاسبة: دليل عملي لفرق المالية في 2026</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/ai-in-accounting-guide-2026/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/ai-in-accounting-guide-2026/</guid>
+      <link>https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>الذكاء الاصطناعي في المحاسبة 2026: دوره في القيود والتسوية البنكية والإقفال والمراجعة، والضوابط الرقابية اللازمة، ومن أين يبدأ الفريق المالي.</description>
       <category>الذكاء الاصطناعي في المحاسبة</category>
     </item>
     <item>
       <title>أتمتة قيود اليومية والتسوية البنكية بالذكاء الاصطناعي دون فقدان الرقابة</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/ai-journal-entries-bank-reconciliation/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/ai-journal-entries-bank-reconciliation/</guid>
+      <link>https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>كيف يؤتمت الذكاء الاصطناعي قيود اليومية والتسوية البنكية: منطق المطابقة، وتغييرات Odoo 20، وما يصلح للأتمتة، والضوابط التي تحفظ مسار التدقيق.</description>
       <category>الذكاء الاصطناعي في المحاسبة</category>
     </item>
     <item>
       <title>كشف الاحتيال المالي بالذكاء الاصطناعي: المؤشرات والنماذج والحدود</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/ai-financial-fraud-detection/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/ai-financial-fraud-detection/</guid>
+      <link>https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>كيف يعمل كشف الاحتيال المالي بالذكاء الاصطناعي في المحاسبة: المؤشرات التي تفحصها النماذج، والضوابط التي تقف خلفها، ولماذا التنبيه بداية فحص لا دليل إدانة.</description>
       <category>الذكاء الاصطناعي في المحاسبة</category>
     </item>
     <item>
       <title>الذكاء الاصطناعي في الإقفال الشهري والتقارير المالية: ماذا تؤتمت؟</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/ai-month-end-close-financial-reporting/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/ai-month-end-close-financial-reporting/</guid>
+      <link>https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>كيف تستخدم الذكاء الاصطناعي في الإقفال الشهري والتقارير المالية: ما المهام التي تؤتمتها، وما الذي يبقى للمراجعة، وقواعد الاعتماد التي تحمي الأرقام.</description>
       <category>الذكاء الاصطناعي في المحاسبة</category>
     </item>
     <item>
       <title>المراجعة المستمرة بالذكاء الاصطناعي والمراجعة التقليدية: مقارنة جنبًا إلى جنب</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/continuous-auditing-ai-vs-traditional-audit/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/continuous-auditing-ai-vs-traditional-audit/</guid>
+      <link>https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>مقارنة عملية بين المراجعة المستمرة بالذكاء الاصطناعي والمراجعة التقليدية: التوقيت والتغطية والأدلة والأدوار والمخاطر، وخطة بداية واقعية للإدارة المالية.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>من العينة إلى اختبار المجتمع الكامل بالذكاء الاصطناعي: دليل عملي للمراجعين</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/full-population-testing-ai-vs-sampling/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/full-population-testing-ai-vs-sampling/</guid>
+      <link>https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>اختبار المجتمع الكامل بالذكاء الاصطناعي مقابل العينة وفق ISA 530: ما الذي يتغير، وما المخاطر الباقية، وإجراء عملي لاختبار كل فواتير المورّدين.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>الذكاء الاصطناعي والفصل بين المهام: الوكيل مستخدم داخل الضوابط الرقابية</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/ai-segregation-of-duties-internal-controls/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/ai-segregation-of-duties-internal-controls/</guid>
+      <link>https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>كيف يغيّر الذكاء الاصطناعي الفصل بين المهام والضوابط الرقابية: عامل كل وكيل كمستخدم، وارسم تعارضاته، واختبر الفصل على كل المعاملات لا على عينة منها.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>مسار التدقيق في الذكاء الاصطناعي: قاعدة الدليل أو الصمت</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/ai-audit-trail-zero-hallucination/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/ai-audit-trail-zero-hallucination/</guid>
+      <link>https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>كيف تبني مسار تدقيق للذكاء الاصطناعي يعتمد عليه المراجع: ربط كل مخرج بمعرّفات السجلات، وقاعدة الدليل أو الصمت، واختبار إعادة أداء لكل ملاحظة.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>ميزات الذكاء الاصطناعي في Odoo 20 للمحاسبة: خريطة ميزة بميزة</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-features-accounting/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-features-accounting/</guid>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>خريطة لميزات الذكاء الاصطناعي في Odoo 20 للمحاسبة: ماذا تفعل كل ميزة، وأيها يستهلك رصيد IAP، وما الضوابط التي تتغير حين يبدأ الذكاء الاصطناعي بإعداد القيود.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>ربط الذكاء الاصطناعي بـOdoo للمراجعة المستمرة: الوصول والدليل والاعتماد</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/connect-ai-to-odoo-continuous-audit/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/connect-ai-to-odoo-continuous-audit/</guid>
+      <link>https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>كيف تربط الذكاء الاصطناعي بـ Odoo للمراجعة المستمرة: وصول عبر API أو MCP، ومستخدم للقراءة فقط، وموضع البيانات، ودليل يرجع إلى السجلات، ومعتمِد مسمّى.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>اعتمادات المشتريات في Odoo 20: أتمتة المصفوفة دون التفريط في الرقابة</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/odoo-20-purchase-approvals-automation/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/odoo-20-purchase-approvals-automation/</guid>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>كيف تؤتمت اعتمادات المشتريات في Odoo 20 بمصفوفة اعتماد وحد لاعتماد أمر الشراء وتطبيق الموافقات وقواعد الأتمتة، مع قصر وكلاء الذكاء الاصطناعي على إعداد المسودات.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>المحاسبة بالذكاء الاصطناعي على Odoo 20 خطوة بخطوة: خطة 90 يومًا ببوابات</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-accounting-step-by-step/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-accounting-step-by-step/</guid>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/</guid>
       <pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate>
       <description>خطة عملية لتطبيق المحاسبة بالذكاء الاصطناعي على Odoo 20 في ثلاث مراحل من 30 يومًا، ببوابات قابلة للقياس ومعتمِدين مسمّين ودليل محفوظ قبل أن يعدّ الوكلاء القيود.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>Odoo 20 لفرق المالية: ما الذي يتغير، وما الذي يمكن تجاهله، وما الذي يجب اختباره</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/odoo-20-whats-new-for-finance-teams/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/odoo-20-whats-new-for-finance-teams/</guid>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/</guid>
       <pubDate>Tue, 06 Oct 2026 09:00:00 GMT</pubDate>
       <description>ما الذي يغيّره Odoo 20 لفرق المالية في مصر والسعودية: قيود البنك، وسداد فواتير الموردين، وكشف التكرار، وتقييم المخزون، والمساعد الذكي، وما يجب اختباره.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>وكلاء الذكاء الاصطناعي في Odoo 20 للمالية: مفيدون، بتكلفة، ويحتاجون إلى معتمِد</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-agents-finance-controls/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-agents-finance-controls/</guid>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/</guid>
       <pubDate>Mon, 05 Oct 2026 09:00:00 GMT</pubDate>
       <description>ما الذي يستطيعه وكلاء الذكاء الاصطناعي في Odoo 20 للمالية، وتكلفتهم برصيد IAP، وكيف تحكمهم: الوكيل يعدّ المسودة، وشخص مسمّى يعتمد، وسجلات التشغيل تُحفظ.</description>
       <category>MFT Intelligence</category>
     </item>
     <item>
       <title>التسوية البنكية وسداد فواتير الموردين في Odoo 20: القواعد الجديدة والضوابط التي تحتاجها</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/</guid>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/</guid>
       <pubDate>Sun, 04 Oct 2026 09:00:00 GMT</pubDate>
       <description>التسوية البنكية وسداد الفواتير في Odoo 20: قيود تنشأ من معاملات البنك، وتقرير ملخص التسوية، وقواعد المطابقة، والدفع عبر PISP، وتحذيرات التكرار، والضوابط.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>قائمة إقفال شهري في Odoo يستطيع المراجع أن يوقّع عليها</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/month-end-close-checklist-odoo/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/month-end-close-checklist-odoo/</guid>
+      <link>https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/</guid>
       <pubDate>Sat, 03 Oct 2026 09:00:00 GMT</pubDate>
       <description>قائمة عملية للإقفال الشهري في Odoo: التسويات البنكية، وأعمار العملاء والموردين، والمستحقات، وتقييم المخزون، والاستهلاك، والضريبة، والمراجعة، وتواريخ القفل.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>هل تنتقل إلى Odoo 20؟ خطة للشركات على الإصدارات 17 و18 و19</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/odoo-20-upgrade-plan-17-18-19/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/odoo-20-upgrade-plan-17-18-19/</guid>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/</guid>
       <pubDate>Sat, 03 Oct 2026 09:00:00 GMT</pubDate>
       <description>متى تنتقل إلى Odoo 20 من 17 أو 18 أو 19، ومخاطر تخطي الإصدارات، وخطة اختبار تبدأ بالمالية: مطابقة الأرصدة والضرائب والفوترة الإلكترونية وإقفال شهر موازٍ.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>تغييرات تقييم المخزون في Odoo 20: ماذا تعني لتكلفة المبيعات وهامش الربح</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/odoo-20-inventory-valuation-changes/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/odoo-20-inventory-valuation-changes/</guid>
+      <link>https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/</guid>
       <pubDate>Fri, 02 Oct 2026 09:00:00 GMT</pubDate>
       <description>تغييرات تقييم المخزون في Odoo 20 وأثرها على تكلفة المبيعات والهامش: استحقاقات الإقفال، والتكلفة بأثر رجعي، وتكاليف الشحن، وتقادم المخزون، ورقابة نهاية الشهر.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>FIFO أم متوسط التكلفة في Odoo: اختيار طريقة تقييم تستطيع التعايش معها</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/odoo-inventory-valuation-fifo-avco/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/odoo-inventory-valuation-fifo-avco/</guid>
+      <link>https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/</guid>
       <pubDate>Wed, 30 Sep 2026 09:00:00 GMT</pubDate>
       <description>FIFO أم متوسط التكلفة في Odoo: أثر كل منهما على تكلفة المبيعات والهامش، وأهمية التقييم الآلي المستمر، والتكاليف الإضافية، ومخاطر تغيير الطريقة خلال السنة.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>كيف تبني توقعات تدفق نقدي لمدة 13 أسبوعًا من دفترك</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/thirteen-week-cash-flow-forecast/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/thirteen-week-cash-flow-forecast/</guid>
+      <link>https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/</guid>
       <pubDate>Wed, 30 Sep 2026 09:00:00 GMT</pubDate>
       <description>كيف تبني توقعات تدفق نقدي لمدة 13 أسبوعًا من الدفتر بالطريقة المباشرة: المقبوضات والمدفوعات، والتحديث الأسبوعي المتدحرج، ومراجعة الانحرافات مقابل الفعلي.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>مدير مالي افتراضي أم مدير مالي متفرغ: كيف تعرف أيهما تحتاج</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/virtual-cfo-vs-full-time-cfo/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/virtual-cfo-vs-full-time-cfo/</guid>
+      <link>https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/</guid>
       <pubDate>Mon, 28 Sep 2026 09:00:00 GMT</pubDate>
       <description>متى يكون المدير المالي الافتراضي هو الخيار الصحيح ومتى تعيّن مديرًا ماليًا متفرغًا: النطاق والإيقاع والمخرجات المتوقعة، والعلامات التحذيرية في كلا النموذجين.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>مراحل تنفيذ المحاسبة على Odoo، والأخطاء الأعلى كلفة</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/odoo-accounting-implementation-steps/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/odoo-accounting-implementation-steps/</guid>
+      <link>https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/</guid>
       <pubDate>Sun, 27 Sep 2026 09:00:00 GMT</pubDate>
       <description>مراحل تنفيذ المحاسبة على Odoo بشكل سليم، من دليل الحسابات والضرائب إلى الأرصدة الافتتاحية والتشغيل المتوازي والتشغيل الفعلي، والأخطاء الأعلى كلفة.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>التسوية البنكية ضابط رقابي، لا عبء روتيني</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/bank-reconciliation-controls/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/bank-reconciliation-controls/</guid>
+      <link>https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/</guid>
       <pubDate>Sat, 26 Sep 2026 09:00:00 GMT</pubDate>
       <description>التسوية البنكية كضابط رقابة داخلية: كم مرة تُجرى، وكيف تُعالج البنود المعلّقة والفروق غير المفسَّرة، ونماذج التسوية في Odoo، ومن يراجع التسوية ويوقّعها.</description>
       <category>Odoo</category>
     </item>
     <item>
       <title>الزكاة أم ضريبة الدخل في السعودية: من يدفع ماذا، وما الذي يجب أن يُظهره دفتر الأستاذ</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/zakat-vs-corporate-income-tax-saudi/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/zakat-vs-corporate-income-tax-saudi/</guid>
+      <link>https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/</guid>
       <pubDate>Thu, 24 Sep 2026 09:00:00 GMT</pubDate>
       <description>الفرق بين الزكاة وضريبة دخل الشركات في السعودية: من يخضع لكل منهما حسب الملكية، وما الذي يقيسه كل نظام، وما الذي يجب أن يدعمه دفتر الأستاذ طوال السنة.</description>
       <category>الامتثال</category>
     </item>
     <item>
       <title>المطابقة الثلاثية: ضابط المشتريات الذي يمنعك من الدفع مقابل ما لم يصل</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/three-way-match-purchase-controls/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/three-way-match-purchase-controls/</guid>
+      <link>https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/</guid>
       <pubDate>Thu, 24 Sep 2026 09:00:00 GMT</pubDate>
       <description>كيف تعمل المطابقة الثلاثية بين أمر الشراء واستلام البضاعة وفاتورة المورد، وكيف تُحدَّد حدود التسامح، وكيف يعالج Odoo التوريد الجزئي والمرتجعات وفروق السعر.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>الفصل بين المهام في Odoo: من لا ينبغي أن يحمل المفتاحين معًا</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/segregation-of-duties-odoo/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/segregation-of-duties-odoo/</guid>
+      <link>https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/</guid>
       <pubDate>Tue, 22 Sep 2026 09:00:00 GMT</pubDate>
       <description>شرح الفصل بين المهام: الأزواج المتعارضة المعروفة، وكيف تُفرض بمجموعات الصلاحيات والاعتمادات في Odoo، والضوابط التعويضية حين يكون فريق المالية صغيرًا جدًا.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>منظومة الإيصال الإلكتروني في مصر: ما الذي يتغير للتجزئة، وما الذي تحتاجه نقاط البيع في Odoo</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/egypt-e-receipt-b2c/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/egypt-e-receipt-b2c/</guid>
+      <link>https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/</guid>
       <pubDate>Mon, 21 Sep 2026 09:00:00 GMT</pubDate>
       <description>ما منظومة الإيصال الإلكتروني المصرية للبيع للمستهلكين، وكيف تختلف عن الفاتورة الإلكترونية بين الشركات، وما الذي يحتاجه إعداد نقاط البيع وOdoo قبل التشغيل.</description>
       <category>الامتثال</category>
     </item>
     <item>
       <title>ما المراجعة الداخلية، وماذا تحصل عليه الشركة المتوسطة منها فعلًا؟</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/what-is-internal-audit/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/what-is-internal-audit/</guid>
+      <link>https://www.seg-audit.com/ar/blog/what-is-internal-audit/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/what-is-internal-audit/</guid>
       <pubDate>Sun, 20 Sep 2026 09:00:00 GMT</pubDate>
       <description>ما المراجعة الداخلية، وكيف تختلف عن المراجعة الخارجية، وكيف يصوغها معهد المراجعين الداخليين IIA، وما الذي تتوقعه منها الشركة الصغيرة أو المتوسطة فعلًا.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>إعداد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo، بلا جدول بيانات</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/egypt-vat-return-odoo/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/egypt-vat-return-odoo/</guid>
+      <link>https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/</guid>
       <pubDate>Fri, 18 Sep 2026 09:00:00 GMT</pubDate>
       <description>كيف تعد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo: ربط الضرائب بشبكات التقرير، وضريبة المدخلات والمخرجات، ومطابقته مع دفتر الأستاذ والفواتير الإلكترونية.</description>
       <category>الامتثال</category>
     </item>
     <item>
       <title>الأهمية النسبية منهج، لا رقم مدوّر</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/materiality-isa-320-threshold/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/materiality-isa-320-threshold/</guid>
+      <link>https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/</guid>
       <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
       <description>دليل عملي لتحديد حد الأهمية النسبية وفق ISA 320 للمراجعة الداخلية والمراجعة المستمرة: المقاييس، والمعايرة، وكيف تطبّقه MFT داخل Odoo.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>المرحلة الثانية من ZATCA داخل Odoo: ما يجب أن يكون صحيحًا قبل التشغيل</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/zatca-phase-two-odoo-checklist/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/zatca-phase-two-odoo-checklist/</guid>
+      <link>https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/</guid>
       <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
       <description>قائمة MFT للمرحلة الثانية من الفوترة الإلكترونية ZATCA في Odoo: تسجيل الجهاز، الإجازة مقابل الإبلاغ، حقول الفاتورة، اختبار البيئة التجريبية، ومسألة إقامة البيانات.</description>
       <category>الامتثال</category>
     </item>
     <item>
       <title>الفوترة الإلكترونية المصرية في Odoo: سبعة أخطاء إعداد تمنع الإرسال</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/egypt-eta-einvoicing-odoo-mistakes/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/egypt-eta-einvoicing-odoo-mistakes/</guid>
+      <link>https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/</guid>
       <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
       <description>أخطاء إعداد Odoo السبعة الأكثر تكرارًا خلف رفض الفواتير الإلكترونية من مصلحة الضرائب المصرية، وكيف يُعالَج كل منها من المصدر.</description>
       <category>الامتثال</category>
     </item>
     <item>
       <title>الأشهر الأحد عشر التي لا تراها مراجعتك السنوية</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/continuous-audit-eleven-months/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/continuous-audit-eleven-months/</guid>
+      <link>https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/</guid>
       <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
       <description>لماذا تترك العينة السنوية أغلب السنة بلا تغطية، وما الذي تجده المراجعة الداخلية المستمرة عمليًا (مدفوعات مكررة، موردون شبه مكررين، فصل زمني)، وكيف تكمّل المراجعة الخارجية.</description>
       <category>المراجعة الداخلية</category>
     </item>
     <item>
       <title>الوكلاء يُعدّون المسودة. البشر يعتمدون. لماذا بنيناها هكذا.</title>
-      <link>https://PENDING-DOMAIN.example/ar/blog/agents-draft-people-approve/</link>
-      <guid isPermaLink="true">https://PENDING-DOMAIN.example/ar/blog/agents-draft-people-approve/</guid>
+      <link>https://www.seg-audit.com/ar/blog/agents-draft-people-approve/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/agents-draft-people-approve/</guid>
       <pubDate>Wed, 16 Sep 2026 09:00:00 GMT</pubDate>
       <description>كيف تنفّذ MFT Intelligence بعد الاعتماد: الوكلاء يُعدّون مسودات القيود التصحيحية والتسويات، ومعتمِدون مسجّلون بالاسم يوقّعونها حسب مستوى الأهمية النسبية، والتصحيحات قيود عكسية لا حذف.</description>
       <category>MFT Intelligence</category>

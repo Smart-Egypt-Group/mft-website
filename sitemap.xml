@@ -1,583 +1,583 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/"/>
+    <loc>https://www.seg-audit.com/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/services/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/"/>
+    <loc>https://www.seg-audit.com/ar/services/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/services/odoo-erp/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/odoo-erp/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/odoo-erp/"/>
+    <loc>https://www.seg-audit.com/ar/services/odoo-erp/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/odoo-erp/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/odoo-erp/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/services/tax-solutions/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/tax-solutions/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/tax-solutions/"/>
+    <loc>https://www.seg-audit.com/ar/services/tax-solutions/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/tax-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/tax-solutions/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/services/internal-audit/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/internal-audit/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/internal-audit/"/>
+    <loc>https://www.seg-audit.com/ar/services/internal-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/internal-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/internal-audit/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/services/virtual-cfo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/virtual-cfo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/virtual-cfo/"/>
+    <loc>https://www.seg-audit.com/ar/services/virtual-cfo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/virtual-cfo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/virtual-cfo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/services/financial-consulting/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/financial-consulting/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/financial-consulting/"/>
+    <loc>https://www.seg-audit.com/ar/services/financial-consulting/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/financial-consulting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/financial-consulting/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/services/business-analysis/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/business-analysis/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/business-analysis/"/>
+    <loc>https://www.seg-audit.com/ar/services/business-analysis/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/business-analysis/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/business-analysis/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/services/claude-team/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/claude-team/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/claude-team/"/>
+    <loc>https://www.seg-audit.com/ar/services/claude-team/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/claude-team/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/claude-team/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/industries/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/industries/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/industries/"/>
+    <loc>https://www.seg-audit.com/ar/industries/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/industries/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/industries/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/intelligence/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/intelligence/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/intelligence/"/>
+    <loc>https://www.seg-audit.com/ar/intelligence/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/intelligence/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/intelligence/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/intelligence/auditor/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/intelligence/auditor/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/intelligence/auditor/"/>
+    <loc>https://www.seg-audit.com/ar/intelligence/auditor/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/intelligence/auditor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/intelligence/auditor/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/intelligence/virtual-cfo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/intelligence/virtual-cfo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/intelligence/virtual-cfo/"/>
+    <loc>https://www.seg-audit.com/ar/intelligence/virtual-cfo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/intelligence/virtual-cfo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/intelligence/virtual-cfo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/request-quote/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/request-quote/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/request-quote/"/>
+    <loc>https://www.seg-audit.com/ar/request-quote/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/request-quote/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/request-quote/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/"/>
+    <loc>https://www.seg-audit.com/ar/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/materiality-isa-320-threshold/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/materiality-isa-320-threshold/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/materiality-isa-320-threshold/"/>
+    <loc>https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/materiality-isa-320-threshold/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/zatca-phase-two-odoo-checklist/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/zatca-phase-two-odoo-checklist/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/zatca-phase-two-odoo-checklist/"/>
+    <loc>https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/zatca-phase-two-odoo-checklist/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/egypt-eta-einvoicing-odoo-mistakes/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
+    <loc>https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/continuous-audit-eleven-months/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/continuous-audit-eleven-months/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/continuous-audit-eleven-months/"/>
+    <loc>https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/continuous-audit-eleven-months/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/agents-draft-people-approve/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/agents-draft-people-approve/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/agents-draft-people-approve/"/>
+    <loc>https://www.seg-audit.com/ar/blog/agents-draft-people-approve/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/agents-draft-people-approve/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/agents-draft-people-approve/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/egypt-vat-return-odoo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/egypt-vat-return-odoo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/egypt-vat-return-odoo/"/>
+    <loc>https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/egypt-e-receipt-b2c/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/egypt-e-receipt-b2c/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/egypt-e-receipt-b2c/"/>
+    <loc>https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-e-receipt-b2c/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/zakat-vs-corporate-income-tax-saudi/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/zakat-vs-corporate-income-tax-saudi/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/zakat-vs-corporate-income-tax-saudi/"/>
+    <loc>https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/zakat-vs-corporate-income-tax-saudi/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/odoo-accounting-implementation-steps/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-accounting-implementation-steps/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-accounting-implementation-steps/"/>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/odoo-inventory-valuation-fifo-avco/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-inventory-valuation-fifo-avco/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-inventory-valuation-fifo-avco/"/>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/month-end-close-checklist-odoo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/month-end-close-checklist-odoo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/month-end-close-checklist-odoo/"/>
+    <loc>https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/month-end-close-checklist-odoo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/what-is-internal-audit/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/what-is-internal-audit/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/what-is-internal-audit/"/>
+    <loc>https://www.seg-audit.com/ar/blog/what-is-internal-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/what-is-internal-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/what-is-internal-audit/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/segregation-of-duties-odoo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/segregation-of-duties-odoo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/segregation-of-duties-odoo/"/>
+    <loc>https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/segregation-of-duties-odoo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/three-way-match-purchase-controls/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/three-way-match-purchase-controls/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/three-way-match-purchase-controls/"/>
+    <loc>https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/three-way-match-purchase-controls/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/bank-reconciliation-controls/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/bank-reconciliation-controls/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/bank-reconciliation-controls/"/>
+    <loc>https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/bank-reconciliation-controls/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/virtual-cfo-vs-full-time-cfo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/virtual-cfo-vs-full-time-cfo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/virtual-cfo-vs-full-time-cfo/"/>
+    <loc>https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/virtual-cfo-vs-full-time-cfo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/thirteen-week-cash-flow-forecast/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/thirteen-week-cash-flow-forecast/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/thirteen-week-cash-flow-forecast/"/>
+    <loc>https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/thirteen-week-cash-flow-forecast/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/odoo-20-whats-new-for-finance-teams/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-whats-new-for-finance-teams/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-whats-new-for-finance-teams/"/>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-agents-finance-controls/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-agents-finance-controls/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-agents-finance-controls/"/>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-agents-finance-controls/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/odoo-20-upgrade-plan-17-18-19/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-upgrade-plan-17-18-19/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-upgrade-plan-17-18-19/"/>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-upgrade-plan-17-18-19/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/odoo-20-inventory-valuation-changes/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-inventory-valuation-changes/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-inventory-valuation-changes/"/>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/ai-in-accounting-guide-2026/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-in-accounting-guide-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-in-accounting-guide-2026/"/>
+    <loc>https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-in-accounting-guide-2026/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/ai-journal-entries-bank-reconciliation/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-journal-entries-bank-reconciliation/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-journal-entries-bank-reconciliation/"/>
+    <loc>https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-journal-entries-bank-reconciliation/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/ai-financial-fraud-detection/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-financial-fraud-detection/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-financial-fraud-detection/"/>
+    <loc>https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-financial-fraud-detection/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/ai-month-end-close-financial-reporting/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-month-end-close-financial-reporting/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-month-end-close-financial-reporting/"/>
+    <loc>https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-month-end-close-financial-reporting/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/continuous-auditing-ai-vs-traditional-audit/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/continuous-auditing-ai-vs-traditional-audit/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/continuous-auditing-ai-vs-traditional-audit/"/>
+    <loc>https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/continuous-auditing-ai-vs-traditional-audit/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/full-population-testing-ai-vs-sampling/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/full-population-testing-ai-vs-sampling/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/full-population-testing-ai-vs-sampling/"/>
+    <loc>https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/full-population-testing-ai-vs-sampling/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/ai-segregation-of-duties-internal-controls/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-segregation-of-duties-internal-controls/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-segregation-of-duties-internal-controls/"/>
+    <loc>https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/ai-audit-trail-zero-hallucination/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-audit-trail-zero-hallucination/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-audit-trail-zero-hallucination/"/>
+    <loc>https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-features-accounting/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-features-accounting/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-features-accounting/"/>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-features-accounting/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/connect-ai-to-odoo-continuous-audit/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/connect-ai-to-odoo-continuous-audit/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/connect-ai-to-odoo-continuous-audit/"/>
+    <loc>https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/odoo-20-purchase-approvals-automation/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-purchase-approvals-automation/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-purchase-approvals-automation/"/>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-purchase-approvals-automation/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-accounting-step-by-step/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-accounting-step-by-step/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-accounting-step-by-step/"/>
+    <loc>https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-accounting-step-by-step/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/egypt/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/egypt/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/egypt/"/>
+    <loc>https://www.seg-audit.com/ar/egypt/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/egypt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/egypt/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/saudi-arabia/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/saudi-arabia/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/saudi-arabia/"/>
+    <loc>https://www.seg-audit.com/ar/saudi-arabia/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/saudi-arabia/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/saudi-arabia/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/about/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/about/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/about/"/>
+    <loc>https://www.seg-audit.com/ar/about/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/about/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/contact/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/contact/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/contact/"/>
+    <loc>https://www.seg-audit.com/ar/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/contact/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/privacy/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/privacy/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/privacy/"/>
+    <loc>https://www.seg-audit.com/ar/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/privacy/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/trust/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/trust/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/trust/"/>
+    <loc>https://www.seg-audit.com/ar/trust/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/trust/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/trust/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/partners/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/partners/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/partners/"/>
+    <loc>https://www.seg-audit.com/ar/partners/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/partners/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/partners/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/founding-members/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/founding-members/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/founding-members/"/>
+    <loc>https://www.seg-audit.com/ar/founding-members/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/founding-members/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/founding-members/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/ar/founding-members/apply/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/founding-members/apply/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/founding-members/apply/"/>
+    <loc>https://www.seg-audit.com/ar/founding-members/apply/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/founding-members/apply/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/founding-members/apply/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/"/>
+    <loc>https://www.seg-audit.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/services/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/"/>
+    <loc>https://www.seg-audit.com/en/services/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/services/odoo-erp/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/odoo-erp/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/odoo-erp/"/>
+    <loc>https://www.seg-audit.com/en/services/odoo-erp/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/odoo-erp/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/odoo-erp/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/services/tax-solutions/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/tax-solutions/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/tax-solutions/"/>
+    <loc>https://www.seg-audit.com/en/services/tax-solutions/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/tax-solutions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/tax-solutions/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/services/internal-audit/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/internal-audit/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/internal-audit/"/>
+    <loc>https://www.seg-audit.com/en/services/internal-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/internal-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/internal-audit/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/services/virtual-cfo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/virtual-cfo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/virtual-cfo/"/>
+    <loc>https://www.seg-audit.com/en/services/virtual-cfo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/virtual-cfo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/virtual-cfo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/services/financial-consulting/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/financial-consulting/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/financial-consulting/"/>
+    <loc>https://www.seg-audit.com/en/services/financial-consulting/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/financial-consulting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/financial-consulting/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/services/business-analysis/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/business-analysis/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/business-analysis/"/>
+    <loc>https://www.seg-audit.com/en/services/business-analysis/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/business-analysis/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/business-analysis/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/services/claude-team/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/services/claude-team/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/services/claude-team/"/>
+    <loc>https://www.seg-audit.com/en/services/claude-team/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/services/claude-team/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/services/claude-team/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/industries/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/industries/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/industries/"/>
+    <loc>https://www.seg-audit.com/en/industries/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/industries/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/industries/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/intelligence/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/intelligence/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/intelligence/"/>
+    <loc>https://www.seg-audit.com/en/intelligence/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/intelligence/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/intelligence/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/intelligence/auditor/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/intelligence/auditor/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/intelligence/auditor/"/>
+    <loc>https://www.seg-audit.com/en/intelligence/auditor/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/intelligence/auditor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/intelligence/auditor/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/intelligence/virtual-cfo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/intelligence/virtual-cfo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/intelligence/virtual-cfo/"/>
+    <loc>https://www.seg-audit.com/en/intelligence/virtual-cfo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/intelligence/virtual-cfo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/intelligence/virtual-cfo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/request-quote/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/request-quote/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/request-quote/"/>
+    <loc>https://www.seg-audit.com/en/request-quote/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/request-quote/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/request-quote/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/"/>
+    <loc>https://www.seg-audit.com/en/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/materiality-isa-320-threshold/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/materiality-isa-320-threshold/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/materiality-isa-320-threshold/"/>
+    <loc>https://www.seg-audit.com/en/blog/materiality-isa-320-threshold/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/materiality-isa-320-threshold/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/zatca-phase-two-odoo-checklist/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/zatca-phase-two-odoo-checklist/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/zatca-phase-two-odoo-checklist/"/>
+    <loc>https://www.seg-audit.com/en/blog/zatca-phase-two-odoo-checklist/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/zatca-phase-two-odoo-checklist/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/egypt-eta-einvoicing-odoo-mistakes/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
+    <loc>https://www.seg-audit.com/en/blog/egypt-eta-einvoicing-odoo-mistakes/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-eta-einvoicing-odoo-mistakes/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/continuous-audit-eleven-months/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/continuous-audit-eleven-months/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/continuous-audit-eleven-months/"/>
+    <loc>https://www.seg-audit.com/en/blog/continuous-audit-eleven-months/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/continuous-audit-eleven-months/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/agents-draft-people-approve/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/agents-draft-people-approve/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/agents-draft-people-approve/"/>
+    <loc>https://www.seg-audit.com/en/blog/agents-draft-people-approve/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/agents-draft-people-approve/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/agents-draft-people-approve/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/egypt-vat-return-odoo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/egypt-vat-return-odoo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/egypt-vat-return-odoo/"/>
+    <loc>https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/egypt-e-receipt-b2c/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/egypt-e-receipt-b2c/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/egypt-e-receipt-b2c/"/>
+    <loc>https://www.seg-audit.com/en/blog/egypt-e-receipt-b2c/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/egypt-e-receipt-b2c/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/zakat-vs-corporate-income-tax-saudi/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/zakat-vs-corporate-income-tax-saudi/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/zakat-vs-corporate-income-tax-saudi/"/>
+    <loc>https://www.seg-audit.com/en/blog/zakat-vs-corporate-income-tax-saudi/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/zakat-vs-corporate-income-tax-saudi/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/odoo-accounting-implementation-steps/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-accounting-implementation-steps/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-accounting-implementation-steps/"/>
+    <loc>https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/odoo-inventory-valuation-fifo-avco/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-inventory-valuation-fifo-avco/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-inventory-valuation-fifo-avco/"/>
+    <loc>https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/month-end-close-checklist-odoo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/month-end-close-checklist-odoo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/month-end-close-checklist-odoo/"/>
+    <loc>https://www.seg-audit.com/en/blog/month-end-close-checklist-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/month-end-close-checklist-odoo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/what-is-internal-audit/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/what-is-internal-audit/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/what-is-internal-audit/"/>
+    <loc>https://www.seg-audit.com/en/blog/what-is-internal-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/what-is-internal-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/what-is-internal-audit/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/segregation-of-duties-odoo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/segregation-of-duties-odoo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/segregation-of-duties-odoo/"/>
+    <loc>https://www.seg-audit.com/en/blog/segregation-of-duties-odoo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/segregation-of-duties-odoo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/three-way-match-purchase-controls/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/three-way-match-purchase-controls/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/three-way-match-purchase-controls/"/>
+    <loc>https://www.seg-audit.com/en/blog/three-way-match-purchase-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/three-way-match-purchase-controls/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/bank-reconciliation-controls/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/bank-reconciliation-controls/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/bank-reconciliation-controls/"/>
+    <loc>https://www.seg-audit.com/en/blog/bank-reconciliation-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/bank-reconciliation-controls/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/virtual-cfo-vs-full-time-cfo/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/virtual-cfo-vs-full-time-cfo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/virtual-cfo-vs-full-time-cfo/"/>
+    <loc>https://www.seg-audit.com/en/blog/virtual-cfo-vs-full-time-cfo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/virtual-cfo-vs-full-time-cfo/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/thirteen-week-cash-flow-forecast/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/thirteen-week-cash-flow-forecast/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/thirteen-week-cash-flow-forecast/"/>
+    <loc>https://www.seg-audit.com/en/blog/thirteen-week-cash-flow-forecast/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/thirteen-week-cash-flow-forecast/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/odoo-20-whats-new-for-finance-teams/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-whats-new-for-finance-teams/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-whats-new-for-finance-teams/"/>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-agents-finance-controls/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-agents-finance-controls/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-agents-finance-controls/"/>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-ai-agents-finance-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-agents-finance-controls/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/odoo-20-bank-reconciliation-and-bill-payments/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-bank-reconciliation-and-bill-payments/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-bank-reconciliation-and-bill-payments/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/odoo-20-upgrade-plan-17-18-19/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-upgrade-plan-17-18-19/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-upgrade-plan-17-18-19/"/>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-upgrade-plan-17-18-19/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-upgrade-plan-17-18-19/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/odoo-20-inventory-valuation-changes/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-inventory-valuation-changes/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-inventory-valuation-changes/"/>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/ai-in-accounting-guide-2026/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-in-accounting-guide-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-in-accounting-guide-2026/"/>
+    <loc>https://www.seg-audit.com/en/blog/ai-in-accounting-guide-2026/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-in-accounting-guide-2026/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/ai-journal-entries-bank-reconciliation/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-journal-entries-bank-reconciliation/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-journal-entries-bank-reconciliation/"/>
+    <loc>https://www.seg-audit.com/en/blog/ai-journal-entries-bank-reconciliation/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-journal-entries-bank-reconciliation/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/ai-financial-fraud-detection/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-financial-fraud-detection/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-financial-fraud-detection/"/>
+    <loc>https://www.seg-audit.com/en/blog/ai-financial-fraud-detection/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-financial-fraud-detection/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/ai-month-end-close-financial-reporting/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-month-end-close-financial-reporting/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-month-end-close-financial-reporting/"/>
+    <loc>https://www.seg-audit.com/en/blog/ai-month-end-close-financial-reporting/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-month-end-close-financial-reporting/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/continuous-auditing-ai-vs-traditional-audit/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/continuous-auditing-ai-vs-traditional-audit/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/continuous-auditing-ai-vs-traditional-audit/"/>
+    <loc>https://www.seg-audit.com/en/blog/continuous-auditing-ai-vs-traditional-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/continuous-auditing-ai-vs-traditional-audit/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/full-population-testing-ai-vs-sampling/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/full-population-testing-ai-vs-sampling/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/full-population-testing-ai-vs-sampling/"/>
+    <loc>https://www.seg-audit.com/en/blog/full-population-testing-ai-vs-sampling/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/full-population-testing-ai-vs-sampling/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/ai-segregation-of-duties-internal-controls/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-segregation-of-duties-internal-controls/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-segregation-of-duties-internal-controls/"/>
+    <loc>https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/ai-audit-trail-zero-hallucination/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/ai-audit-trail-zero-hallucination/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/ai-audit-trail-zero-hallucination/"/>
+    <loc>https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-features-accounting/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-features-accounting/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-features-accounting/"/>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-ai-features-accounting/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-features-accounting/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/connect-ai-to-odoo-continuous-audit/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/connect-ai-to-odoo-continuous-audit/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/connect-ai-to-odoo-continuous-audit/"/>
+    <loc>https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/odoo-20-purchase-approvals-automation/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-purchase-approvals-automation/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-purchase-approvals-automation/"/>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-purchase-approvals-automation/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-purchase-approvals-automation/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-accounting-step-by-step/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-accounting-step-by-step/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-accounting-step-by-step/"/>
+    <loc>https://www.seg-audit.com/en/blog/odoo-20-ai-accounting-step-by-step/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/odoo-20-ai-accounting-step-by-step/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/egypt/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/egypt/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/egypt/"/>
+    <loc>https://www.seg-audit.com/en/egypt/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/egypt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/egypt/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/saudi-arabia/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/saudi-arabia/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/saudi-arabia/"/>
+    <loc>https://www.seg-audit.com/en/saudi-arabia/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/saudi-arabia/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/saudi-arabia/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/about/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/about/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/about/"/>
+    <loc>https://www.seg-audit.com/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/about/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/contact/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/contact/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/contact/"/>
+    <loc>https://www.seg-audit.com/en/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/contact/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/privacy/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/privacy/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/privacy/"/>
+    <loc>https://www.seg-audit.com/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/privacy/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/trust/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/trust/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/trust/"/>
+    <loc>https://www.seg-audit.com/en/trust/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/trust/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/trust/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/partners/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/partners/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/partners/"/>
+    <loc>https://www.seg-audit.com/en/partners/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/partners/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/partners/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/founding-members/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/founding-members/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/founding-members/"/>
+    <loc>https://www.seg-audit.com/en/founding-members/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/founding-members/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/founding-members/"/>
   </url>
   <url>
-    <loc>https://PENDING-DOMAIN.example/en/founding-members/apply/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://PENDING-DOMAIN.example/ar/founding-members/apply/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://PENDING-DOMAIN.example/en/founding-members/apply/"/>
+    <loc>https://www.seg-audit.com/en/founding-members/apply/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/founding-members/apply/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/founding-members/apply/"/>
   </url>
 </urlset>
