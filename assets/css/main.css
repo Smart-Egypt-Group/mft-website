@@ -853,6 +853,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .founding-band-count { margin: 0; font-size: var(--fs-display); font-weight: 800; line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .founding-band-count span:first-child { color: var(--cyan); }
 .founding-band-count span:last-child { color: var(--on-navy-3); font-size: .55em; }
+.founding-band-count.founding-band-date { direction: inherit; font-size: clamp(2rem, 1.5rem + 2vw, 3rem); }
+.founding-band-date span:first-child { color: var(--cyan); font-size: 1em; }
+.close-date { margin: 0 0 8px; font-size: clamp(2.5rem, 1.75rem + 3vw, 4.25rem); font-weight: 800; line-height: 1.1; color: var(--cyan); }
+.close-panel .seat-caption { margin: 0 0 12px; }
 .founding-band h2 { font-size: var(--fs-body); }
 .founding-band p { margin: 6px 0 0; color: var(--on-navy-2); }
 .founding-band-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
