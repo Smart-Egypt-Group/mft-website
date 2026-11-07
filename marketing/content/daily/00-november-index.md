@@ -1,6 +1,6 @@
 # حزم النشر اليومية: 7 → 30 نوفمبر 2026
 
-> اتولّدت بـ`node scripts/daily-packs.js` (7 نوفمبر 2026، 16:06) من `scripts/lib/daily-nov.js`. **مفيش حاجة منشورة أو مجدولة.**
+> اتولّدت بـ`node scripts/daily-packs.js` (7 نوفمبر 2026، 16:07) من `scripts/lib/daily-nov.js`. **مفيش حاجة منشورة أو مجدولة.**
 > **اتفحص:** 24 يوم · 126 منشور · 50 أصل مختلف موجود على الديسك بمقاسه الصحيح ومولَّد بعد قرار التوقيع (لوكاب SEG + شعار MFT) · النصوص نظيفة. قبل كل يوم: `node scripts/daily-packs.js --check`.
 > المصادر: [`november-calendar.md`](../november-calendar.md) (الخطة) · [`coverage-matrix-nov.md`](../coverage-matrix-nov.md) (الخانات والنبرة) · [`voiceover-scripts-nov.md`](../voiceover-scripts-nov.md) (الصوت).
 

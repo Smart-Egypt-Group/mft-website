@@ -800,7 +800,7 @@ ${TAGS_IG}` }
     paid: 'لا تغيير.',
     posts: [
       { t: '13:00', ch: 'ig-story', fmt: 'story-img', asset: A.stickyStory, id: 'w4-d7-ig-s-1', cta: 'apply', hook: left(28), text: '«ماتنساش…» + العدّ.', sticker: `ملصق نص «${left(28)}» + ملصق Countdown لـ30 نوفمبر 23:59 + ملصق رابط «قدّم طلبك».` },
-      { t: '20:00', ch: 'fb', fmt: 'video-4x5', asset: A.closeFeedV, id: 'w4-d7-fb-a-1', cta: 'apply', hook: `${left(28)}.`,
+      { t: '20:00', ch: 'fb', fmt: 'video-4x5', asset: A.daysV, id: 'w4-d7-fb-a-1', cta: 'apply', hook: `${left(28)}.`,
         text: `${left(28)} ⏳
 سعر المؤسِّس في SEG بيتقفل الإثنين 30 نوفمبر، 11:59 مساءً بتوقيت القاهرة. وبعدها ما بيرجعش.
 
