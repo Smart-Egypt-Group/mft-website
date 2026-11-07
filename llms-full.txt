@@ -5,7 +5,7 @@
 ## Arabic insights
 
 ### الأهمية النسبية منهج، لا رقم مدوّر
-URL: https://www.seg-audit.com/ar/blog/materiality-isa-320-threshold/
+URL: https://PENDING-DOMAIN.example/ar/blog/materiality-isa-320-threshold/
 Published: 2026-09-16
 
 الأهمية النسبية وفق ISA 320 هي حجم الخطأ الذي يُعقل أن يؤثر في قرارات من يقرؤون القوائم المالية. وتُحدَّد باختيار مقياس يعكس كيف يُحكم على الشركة، كالربح قبل الضريبة أو الإيراد، ثم تطبيق نسبة تعكس مخاطرها، ووضع أهمية نسبية للأداء أدنى منها.
@@ -49,7 +49,7 @@ Q: كم مرة ينبغي مراجعة حد الأهمية النسبية؟
 A: توثّقه MFT عند التهيئة، وتعيد حسابه في نهاية كل سنة أو عند تغيّر الأساس، مثل تغيّر كبير في الإيراد أو الربح، حتى يبقى الحد متسقًا مع الشركة.
 
 ### المرحلة الثانية من ZATCA داخل Odoo: ما يجب أن يكون صحيحًا قبل التشغيل
-URL: https://www.seg-audit.com/ar/blog/zatca-phase-two-odoo-checklist/
+URL: https://PENDING-DOMAIN.example/ar/blog/zatca-phase-two-odoo-checklist/
 Published: 2026-09-16
 
 قبل تشغيل المرحلة الثانية من ZATCA في Odoo تأكد أن بيانات الكيان والفروع تطابق بوابة الهيئة، وأن وحدة إصدار الفواتير مسجّلة بشهادة إنتاج، وأن الفواتير القياسية تُجاز والمبسطة تُبلَّغ خلال أربع وعشرين ساعة، وأن الحقول الإلزامية وإشارات إشعارات الدائن صحيحة، وأن كل نوع فاتورة اجتاز البيئة التجريبية للهيئة.
@@ -88,7 +88,7 @@ Q: لماذا تُرفض إشعارات الدائن لدى ZATCA؟
 A: من الأسباب الشائعة للرفض إشعار دائن أو مدين لا يشير إلى الفاتورة الأصلية أو لا يحمل سبب التعديل.
 
 ### الفوترة الإلكترونية المصرية في Odoo: سبعة أخطاء إعداد تمنع الإرسال
-URL: https://www.seg-audit.com/ar/blog/egypt-eta-einvoicing-odoo-mistakes/
+URL: https://PENDING-DOMAIN.example/ar/blog/egypt-eta-einvoicing-odoo-mistakes/
 Published: 2026-09-16
 
 أغلب حالات رفض مصلحة الضرائب المصرية للفواتير الإلكترونية الصادرة من Odoo سببها البيانات الأساسية لا الضريبة: منتجات بلا كود صنف معتمد، وعملاء بنوع تعريف خاطئ، وعناوين فروع تخالف التسجيل، ووحدات قياس خارج القائمة، وخصومات في المستوى الخطأ، وأسعار صرف ناقصة، وإشعارات دائن بلا المعرّف الفريد للمستند الأصلي.
@@ -130,7 +130,7 @@ Q: هل ينطبق إلزام الإيصال الإلكتروني إلى جان�
 A: لقطاعات التجزئة والأغذية والمشروبات يضيف إلزام الإيصال الإلكتروني للمستهلك مسارًا ثانيًا بتسجيل جهاز خاص وتوقيت خاص، إلى جانب الفوترة الإلكترونية.
 
 ### الأشهر الأحد عشر التي لا تراها مراجعتك السنوية
-URL: https://www.seg-audit.com/ar/blog/continuous-audit-eleven-months/
+URL: https://PENDING-DOMAIN.example/ar/blog/continuous-audit-eleven-months/
 Published: 2026-09-16
 
 المراجعة الداخلية المستمرة تفحص مجتمع المعاملات كله طوال السنة بدل عينة مرة في السنة. وتكشف ما ليست المراجعة السنوية مصممة لالتقاطه في وقته، كالمدفوعات المكررة والموردين شبه المكررين والاعتمادات خارج المصفوفة وأخطاء الفصل الزمني، وتختصر المراجعة الخارجية لأنها تترك أثر أدلة جاهزًا.
@@ -170,7 +170,7 @@ Q: ما الذي تجده المراجعة المستمرة عادة؟
 A: من الملاحظات الشائعة المدفوعات المكررة وشبه المكررة، والاعتمادات خارج مصفوفة الصلاحيات، وأخطاء الفصل الزمني، وانحراف تقييم المخزون، والقيود اليدوية المتأخرة في آخر الشهر بمبالغ مدوّرة.
 
 ### الوكلاء يُعدّون المسودة. البشر يعتمدون. لماذا بنيناها هكذا.
-URL: https://www.seg-audit.com/ar/blog/agents-draft-people-approve/
+URL: https://PENDING-DOMAIN.example/ar/blog/agents-draft-people-approve/
 Published: 2026-09-16
 
 في MFT Intelligence لا يرحّل وكلاء الذكاء الاصطناعي أي قيد إلى الدفتر. إنهم يُعدّون مسودات القيود التصحيحية والتسويات مرفقة بأدلتها، ويعتمدها أشخاص مسجّلون بالاسم حسب مستوى الأهمية النسبية: معتمِد واحد تحت حد ISA 320، وثانٍ عنده أو فوقه. والتصحيح يكون بقيود عكسية لا بالحذف، وكل خطوة مسجّلة.
@@ -212,7 +212,7 @@ Q: كيف تُصحَّح القيود الخاطئة في MFT Intelligence؟
 A: لا يُحذف شيء. يُصحَّح القيد الخاطئ بقيد عكسي جديد يشير إلى الأصل ويُعتمد بنفس المستويات.
 
 ### إعداد إقرار ضريبة القيمة المضافة المصري الشهري من Odoo، بلا جدول بيانات
-URL: https://www.seg-audit.com/ar/blog/egypt-vat-return-odoo/
+URL: https://PENDING-DOMAIN.example/ar/blog/egypt-vat-return-odoo/
 Published: 2026-09-18
 
 أعدّه من تقرير الضرائب في Odoo لا من جدول بيانات: اربط كل ضريبة مستخدمة بالشبكة الضريبية الصحيحة، وطابق ضريبة المخرجات والمدخلات في التقرير مع حسابات الضريبة في دفتر الأستاذ، وقارن المبيعات والمشتريات بالفواتير الإلكترونية المقبولة على منظومة مصلحة الضرائب، ثم قدّمه في الموعد القانوني واضبط تاريخ قفل الضرائب.
@@ -275,7 +275,7 @@ Q: لماذا لا يطابق تقرير الضرائب دفتر الأستاذ 
 A: غالبًا لأن قيدًا يدويًا رُحّل إلى حساب ضريبة دون ضريبة، أو لأن ضريبة معدّة لترحّل إلى الحساب الخطأ. تتبّع الفرق إلى البنود وأصلح الإعداد، لا القيد وحده.
 
 ### منظومة الإيصال الإلكتروني في مصر: ما الذي يتغير للتجزئة، وما الذي تحتاجه نقاط البيع في Odoo
-URL: https://www.seg-audit.com/ar/blog/egypt-e-receipt-b2c/
+URL: https://PENDING-DOMAIN.example/ar/blog/egypt-e-receipt-b2c/
 Published: 2026-09-21
 
 تُلزم منظومة الإيصال الإلكتروني في مصر الشركات التي تبيع للمستهلكين بإصدار كل إيصال إلكترونيًا وإرساله إلى مصلحة الضرائب، بمعرّف فريد ورمز QR. وبخلاف الفاتورة الإلكترونية بين الشركات، تعمل المنظومة عند نقطة البيع وبأحجام كبيرة، فيجب تسجيل كل جهاز نقطة بيع وربطه، ومطابقة الإيصالات مع الدفاتر يوميًا.
@@ -333,7 +333,7 @@ Q: متى يجب أن تنضم شركتي إلى منظومة الإيصال ا�
 A: طبّقت مصلحة الضرائب المنظومة على مراحل حسب مجموعات الممولين. راجع إعلانات المصلحة الحالية وأي إخطار موجّه لشركتك لمعرفة الموعد الذي يخصك.
 
 ### الزكاة أم ضريبة الدخل في السعودية: من يدفع ماذا، وما الذي يجب أن يُظهره دفتر الأستاذ
-URL: https://www.seg-audit.com/ar/blog/zakat-vs-corporate-income-tax-saudi/
+URL: https://PENDING-DOMAIN.example/ar/blog/zakat-vs-corporate-income-tax-saudi/
 Published: 2026-09-24
 
 في السعودية تخضع حصة الشركة المملوكة لسعوديين ولمواطني دول مجلس التعاون الخليجي للزكاة عمومًا، بنسبة اثنين ونصف بالمئة من الوعاء الزكوي، بينما تخضع حصة المساهمين غير السعوديين لضريبة دخل الشركات بسعر أساسي قدره عشرون بالمئة من الربح الخاضع. والشركات مختلطة الملكية تدفع الاثنين، مقسّمين حسب الملكية.
@@ -393,7 +393,7 @@ Q: ما سعر ضريبة دخل الشركات في السعودية؟
 A: السعر الأساسي عشرون بالمئة من الربح الخاضع المنسوب إلى الملكية غير السعودية، ولبعض القطاعات كالنفط والمواد الهيدروكربونية أسعار مختلفة.
 
 ### مراحل تنفيذ المحاسبة على Odoo، والأخطاء الأعلى كلفة
-URL: https://www.seg-audit.com/ar/blog/odoo-accounting-implementation-steps/
+URL: https://PENDING-DOMAIN.example/ar/blog/odoo-accounting-implementation-steps/
 Published: 2026-09-27
 
 يمر تنفيذ المحاسبة السليم على Odoo بمراحل: تصميم دليل الحسابات، وإعداد الضرائب واليوميات، وضبط الصلاحيات والاعتمادات، وتحميل الأرصدة الافتتاحية ومطابقتها، ثم تشغيل Odoo بالتوازي مع النظام القديم لفترة مُقفلة واحدة على الأقل، ثم التشغيل الفعلي مع ضبط تواريخ القفل. وتخطّي التشغيل المتوازي هو الخطأ الأعلى كلفة.
@@ -456,7 +456,7 @@ Q: ما التشغيل المتوازي في تنفيذ أنظمة تخطيط ا
 A: فترة تُسجَّل فيها المعاملات في النظامين القديم والجديد ويُقفل كلاهما، حتى تُقارن النتائج وتُكتشف أخطاء الإعداد قبل التشغيل الفعلي.
 
 ### FIFO أم متوسط التكلفة في Odoo: اختيار طريقة تقييم تستطيع التعايش معها
-URL: https://www.seg-audit.com/ar/blog/odoo-inventory-valuation-fifo-avco/
+URL: https://PENDING-DOMAIN.example/ar/blog/odoo-inventory-valuation-fifo-avco/
 Published: 2026-09-30
 
 اختر FIFO عندما تتحرك أسعار الشراء وتحتاج أن تعكس تكلفة المبيعات الطبقات الفعلية المستهلكة، واختر متوسط التكلفة عندما تكون الأصناف متماثلة وتريد هوامش أكثر سلاسة. وفي Odoo اضبط الطريقة والتقييم الآلي على فئة المنتج قبل بدء المعاملات، لأن تغييرها خلال السنة يعيد تقييم المخزون ويُفقد المقارنات اتساقها.
@@ -517,7 +517,7 @@ Q: هل تعمل التكاليف الإضافية مع السعر المعيا�
 A: لا. في Odoo 17 و18 تتطلب التكاليف الإضافية طريقة FIFO أو متوسط التكلفة مع التقييم الآلي للمخزون (وقد تغيّر التقييم في Odoo 20، فتحقّق على نسختك).
 
 ### قائمة إقفال شهري في Odoo يستطيع المراجع أن يوقّع عليها
-URL: https://www.seg-audit.com/ar/blog/month-end-close-checklist-odoo/
+URL: https://PENDING-DOMAIN.example/ar/blog/month-end-close-checklist-odoo/
 Published: 2026-10-03
 
 يجب أن يطابق الإقفال الشهري في Odoo كل يومية بنك وخزينة، ويراجع أعمار العملاء والموردين، ويرحّل المستحقات والمؤجلات، ويطابق تقييم المخزون مع الدفاتر، ويرحّل الاستهلاك، ويطابق ضريبة القيمة المضافة، ثم يراجع ميزان المراجعة وتقارير الإدارة، وبعد ذلك فقط يضبط تاريخ القفل حتى لا تتغير الفترة المقفلة إلا بقرار مسجّل.
@@ -582,7 +582,7 @@ Q: لماذا لا يطابق تقرير تقييم المخزون حساب ال
 A: غالبًا بسبب قيد يومية يدوي على حساب مخزون، أو فئة منتجات معدّة بحسابات تقييم خطأ. وفي التقييم الآلي يجب أن يتطابقا تمامًا.
 
 ### ما المراجعة الداخلية، وماذا تحصل عليه الشركة المتوسطة منها فعلًا؟
-URL: https://www.seg-audit.com/ar/blog/what-is-internal-audit/
+URL: https://PENDING-DOMAIN.example/ar/blog/what-is-internal-audit/
 Published: 2026-09-20
 
 المراجعة الداخلية وظيفة مستقلة وموضوعية تختبر هل تعمل إدارة المخاطر والرقابة والحوكمة في الشركة فعلًا، وترفع ملاحظاتها وتوصياتها إلى مجلس الإدارة أو الملّاك. وعلى خلاف المراجعة الخارجية التي تُبدي رأيًا في القوائم المالية السنوية لمستخدمين من خارج الشركة، تعمل المراجعة الداخلية لصالح المنشأة طوال السنة وتنظر إلى الأمام.
@@ -642,7 +642,7 @@ Q: كم مرة ينبغي أن ترفع المراجعة الداخلية تقا
 A: أغلب البرامج تُصدر تقريرًا بعد كل مراجعة، وتقدّم للمجلس أو الملّاك ملخصًا دوريًا، ربع سنوي غالبًا، بالملاحظات وحالة الإجراءات المتفق عليها. وينبغي أن يتبع التكرار تقييم المخاطر لا تقويمًا ثابتًا.
 
 ### الفصل بين المهام في Odoo: من لا ينبغي أن يحمل المفتاحين معًا
-URL: https://www.seg-audit.com/ar/blog/segregation-of-duties-odoo/
+URL: https://PENDING-DOMAIN.example/ar/blog/segregation-of-duties-odoo/
 Published: 2026-09-22
 
 الفصل بين المهام يعني ألا يتحكم شخص واحد في كل مراحل المعاملة: اعتمادها، وتسجيلها، وحيازة الأصل، وتسوية النتيجة. وفي Odoo يُفرض بإسناد المستخدمين إلى مجموعات صلاحيات تفصل المهام المتعارضة وبإضافة خطوات اعتماد. وحين يكون الفريق أصغر من ذلك، تعوّض عنه مراجعة مستقلة للتغييرات والتسويات.
@@ -706,7 +706,7 @@ Q: ما الضوابط التعويضية؟
 A: هي فحوص يجريها شخص مستقل عن المعاملة، كأن يراجع المالك التسويات البنكية أو التغييرات على الموردين، لتكشف ما كان الفصل بين المهام سيمنعه. وتُستخدم حين يكون الفريق أصغر من أن تُفصل فيه المهام المتعارضة.
 
 ### المطابقة الثلاثية: ضابط المشتريات الذي يمنعك من الدفع مقابل ما لم يصل
-URL: https://www.seg-audit.com/ar/blog/three-way-match-purchase-controls/
+URL: https://PENDING-DOMAIN.example/ar/blog/three-way-match-purchase-controls/
 Published: 2026-09-24
 
 المطابقة الثلاثية مقارنة بين أمر الشراء واستلام البضاعة وفاتورة المورد قبل اعتماد الدفع. يجب أن تتفق الكميات والأسعار في الفاتورة مع ما طُلب وما استُلم فعلًا، في حدود تسامح متفق عليها. والفروق تُحجز للمراجعة بدل أن تُدفع، فلا تدفع الشركة إلا مقابل بضاعة طلبتها واستلمتها.
@@ -769,7 +769,7 @@ Q: ما حد التسامح المناسب في المطابقة الثلاثي�
 A: لا يوجد رقم قياسي. ينبغي أن يكون الحد صغيرًا، ومكتوبًا في سياسة المشتريات للكمية والسعر كلٌّ على حدة، ومعتمدًا من المالية، وخاضعًا للمراجعة حتى لا تتراكم الفروق المتكررة إلى مبلغ جوهري.
 
 ### التسوية البنكية ضابط رقابي، لا عبء روتيني
-URL: https://www.seg-audit.com/ar/blog/bank-reconciliation-controls/
+URL: https://PENDING-DOMAIN.example/ar/blog/bank-reconciliation-controls/
 Published: 2026-09-26
 
 التسوية البنكية ضابط رقابي لأنها تثبت أن كل حركة في كشف البنك مسجّلة في الدفتر، وأن كل دفعة مسجّلة مرت فعلًا عبر البنك. ولكي تعمل كضابط تُجرى شهريًا على الأقل، مع تفسير البنود المعلّقة وتتبّع أعمارها، وعدم ترحيل أي فرق غير مفسَّر، ومراجعة من شخص لا يُجري المدفوعات.
@@ -826,7 +826,7 @@ Q: من ينبغي أن يراجع التسوية البنكية؟
 A: شخص لا يُنشئ المدفوعات ولا يُصدرها، غالبًا المالك أو المدير العام أو المدير المالي. يطابق المراجِع الأرصدة، ويسأل عن البنود المعلّقة القديمة أو غير المعتادة، ويوقّع التسوية ويؤرخها.
 
 ### مدير مالي افتراضي أم مدير مالي متفرغ: كيف تعرف أيهما تحتاج
-URL: https://www.seg-audit.com/ar/blog/virtual-cfo-vs-full-time-cfo/
+URL: https://PENDING-DOMAIN.example/ar/blog/virtual-cfo-vs-full-time-cfo/
 Published: 2026-09-28
 
 يكون المدير المالي الافتراضي مناسبًا حين تحتاج الشركة حكمًا ماليًا رفيعًا في التخطيط والنقدية والتقارير والضوابط، لكن ليس كل يوم، وهذا حال الشركة النامية أو التي يديرها ملّاكها ولديها محاسب أو فريق صغير. أما المدير المالي المتفرغ فهو الخيار الأفضل حين تنشأ قرارات مالية مهمة يوميًا، أو يحتاج الفريق قائدًا حاضرًا، أو يطلبه المستثمرون والمقرضون.
@@ -891,7 +891,7 @@ Q: متى ينبغي للشركة أن تعيّن مديرًا ماليًا مت
 A: عادة حين تنشأ قرارات مالية مهمة يوميًا، أو يحتاج فريق المالية قائدًا حاضرًا، أو يتوقع المستثمرون والمقرضون مسؤولًا ماليًا تنفيذيًا متفرغًا. وكثير من الشركات تعيّنه بعد أن يبني مدير مالي افتراضي تقارير وضوابط موثوقة.
 
 ### كيف تبني توقعات تدفق نقدي لمدة 13 أسبوعًا من دفترك
-URL: https://www.seg-audit.com/ar/blog/thirteen-week-cash-flow-forecast/
+URL: https://PENDING-DOMAIN.example/ar/blog/thirteen-week-cash-flow-forecast/
 Published: 2026-09-30
 
 توقعات التدفق النقدي لمدة 13 أسبوعًا تُسقط المقبوضات والمدفوعات النقدية أسبوعًا بأسبوع للربع القادم بالطريقة المباشرة. تبدأ من الرصيد البنكي المسوّى، وتبني المقبوضات من أرصدة العملاء المفتوحة والمبيعات المتوقعة، والمدفوعات من الموردين والرواتب والضرائب وخدمة الدين. وتُحدَّث كل أسبوع وتُقارن بالنتائج الفعلية.
@@ -948,7 +948,7 @@ Q: كم مرة ينبغي تحديث توقعات التدفق النقدي لم
 A: أسبوعيًا. كل أسبوع يُستبدل الأسبوع المنقضي بالفعلي، ويُضاف أسبوع جديد في النهاية، وتُقارن التوقعات بالنتائج الفعلية لتحسين الافتراضات.
 
 ### Odoo 20 لفرق المالية: ما الذي يتغير، وما الذي يمكن تجاهله، وما الذي يجب اختباره
-URL: https://www.seg-audit.com/ar/blog/odoo-20-whats-new-for-finance-teams/
+URL: https://PENDING-DOMAIN.example/ar/blog/odoo-20-whats-new-for-finance-teams/
 Published: 2026-10-06
 
 بحسب ملاحظات إصدار Odoo 20، أهم التغييرات المالية في البنك والدائنين: قيود حسابات البنك يجب أن تنشأ من معاملات بنكية، ويمكن سداد فواتير الموردين عبر خدمة بدء الدفع حيث يسمح البنك والدولة، وتظهر تحذيرات حمراء وصفراء للفواتير المكررة. يليها مساعد ذكي. وأعد اختبار الفوترة الإلكترونية لدى ETA وZATCA بعد الترقية.
@@ -1018,7 +1018,7 @@ Q: هل يغيّر Odoo 20 الفوترة الإلكترونية لدى ETA ال
 A: تذكر ملاحظات الإصدار تغييرات في التوطين: مزامنة ETA في معالج الإرسال ووضعًا تجريبيًا لمصر؛ وللسعودية تاريخ الفاتورة تاريخَ إصدار لدى ZATCA والتقريب على مستوى المستند ومعالجة انتهاء المهلة. أعد اختبار الفوترة الإلكترونية في بيئة تجريبية أو بيئة ما قبل الإنتاج بعد أي ترقية، قبل إصدار فواتير حقيقية.
 
 ### وكلاء الذكاء الاصطناعي في Odoo 20 للمالية: مفيدون، بتكلفة، ويحتاجون إلى معتمِد
-URL: https://www.seg-audit.com/ar/blog/odoo-20-ai-agents-finance-controls/
+URL: https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-agents-finance-controls/
 Published: 2026-10-05
 
 بحسب ملاحظات إصدار Odoo 20، وكلاء الذكاء الاصطناعي سجلات لها تعليمات ومهارات ومصادر معرفة ومحفزات، وملاحظات الإصدار لا تحدد النسخ التي تتضمن وكلاء الذكاء الاصطناعي، فتأكّد من Odoo لنسختك وباقتك. يستطيعون إنشاء السجلات وتعديلها والعمل داخل الإجراءات الآلية والمجدولة، وكل تشغيل يُسجَّل. وميزات الذكاء الاصطناعي تحتاج رصيد IAP. احكمهم كموظف جديد: الوكيل يعدّ المسودة، وشخص مسمّى يعتمد.
@@ -1078,7 +1078,7 @@ Q: هل يستطيع وكيل في Odoo 20 ترحيل قيود محاسبية د
 A: يستطيع الوكلاء إنشاء السجلات وتعديلها في حدود الصلاحيات الممنوحة لهم. أما اشتراط الاعتماد لتغييرات دفتر الأستاذ فضابط تصممه أنت: أبقِ مخرجات الوكيل مسودة واشترط معتمِدًا مسمّى.
 
 ### التسوية البنكية وسداد فواتير الموردين في Odoo 20: القواعد الجديدة والضوابط التي تحتاجها
-URL: https://www.seg-audit.com/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/
+URL: https://PENDING-DOMAIN.example/ar/blog/odoo-20-bank-reconciliation-and-bill-payments/
 Published: 2026-10-04
 
 بحسب ملاحظات إصدار Odoo 20، كل قيد يومية يمس حساب البنك يجب أن ينشأ من معاملة بنكية، ويعرض تقرير ملخص البنود المسوّاة وغير المسوّاة في نهاية الفترة، ويمكن سداد فواتير الموردين عبر خدمة بدء الدفع حيث يسمح البنك والدولة. اقرن ذلك باعتماد قبل الدفع، وعدد محدود ممن يبدؤون الدفعات، ومراجعة موثّقة للتكرار.
@@ -1136,7 +1136,7 @@ Q: ما الفرق بين تحذير التكرار الأحمر والأصفر�
 A: الأحمر يعلّم فاتورة مكررة على الأرجح يجب تصحيحها، والأصفر يعلّم احتمال تكرار يجب فحصه قبل الترحيل.
 
 ### هل تنتقل إلى Odoo 20؟ خطة للشركات على الإصدارات 17 و18 و19
-URL: https://www.seg-audit.com/ar/blog/odoo-20-upgrade-plan-17-18-19/
+URL: https://PENDING-DOMAIN.example/ar/blog/odoo-20-upgrade-plan-17-18-19/
 Published: 2026-10-03
 
 يتوقف ذلك على إصدارك الحالي. على Odoo 17 كان الدعم القياسي مقررًا أن ينتهي في سبتمبر 2026، فخطّط للترقية الآن. على 18 نفّذها خلال الاثني عشر شهرًا القادمة. وعلى 19 انتقل حين تغطي ميزة محددة في Odoo 20 تكلفتها. وأيًّا كان التوقيت، اختبر دفتر الأستاذ والضرائب والفوترة الإلكترونية قبل التشغيل.
@@ -1201,7 +1201,7 @@ Q: هل نحتاج إلى إعادة اختبار الفوترة الإلكتر�
 A: نعم. بعد أي ترقية، أعد اختبار ربط الفوترة الإلكترونية في البيئة التجريبية أو بيئة ما قبل الإنتاج لدى الجهة، بما في ذلك الإشعارات الدائنة والرفض، قبل التشغيل.
 
 ### تغييرات تقييم المخزون في Odoo 20: ماذا تعني لتكلفة المبيعات وهامش الربح
-URL: https://www.seg-audit.com/ar/blog/odoo-20-inventory-valuation-changes/
+URL: https://PENDING-DOMAIN.example/ar/blog/odoo-20-inventory-valuation-changes/
 Published: 2026-10-02
 
 وفقًا لملاحظات إصدار Odoo 20، يمكن ترحيل استحقاقات التقييم مباشرة إلى حساب تقييم المخزون، وتُحدَّث تكلفة المبيعات بأثر رجعي إذا تغيرت التكلفة بعد التسليم، وتُخصَّص تكاليف الشحن والجمارك لمنتجات بعينها، ويُعرض المخزون في تاريخ سابق. يصبح الهامش أدق، فتحتاج تغييرات التكلفة وقفل الفترات إلى رقابة أشد.
@@ -1263,7 +1263,7 @@ Q: كيف نتأكد من صحة تقييم المخزون في نهاية ال�
 A: طابِق تقرير تقييم المخزون مع حساب تقييم المخزون في دفتر الأستاذ العام، وفسّر كل فرق، ثم اقفل الفترة. ويساعد عرض المخزون في تاريخ سابق في فحص التواريخ الماضية.
 
 ### الذكاء الاصطناعي في المحاسبة: دليل عملي لفرق المالية في 2026
-URL: https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/
+URL: https://PENDING-DOMAIN.example/ar/blog/ai-in-accounting-guide-2026/
 Published: 2026-10-14
 
 الذكاء الاصطناعي في المحاسبة هو استخدام تعلم الآلة والنماذج اللغوية لإعداد السجلات المحاسبية ومطابقتها وتصنيفها واختبارها: اقتراح بنود فواتير الموردين، ومطابقة الحركات البنكية، وكشف التكرار، وتقييم مخاطر كل معاملة. هو يسرّع الإعداد ويوسّع نطاق الفحص، لكن شخصًا مسمّى يظل يعتمد ما يُعدّه، ويجب أن يرتبط كل ناتج بسجلات مصدره.
@@ -1385,7 +1385,7 @@ Sources:
 - مجلس معايير المراجعة والتأكيد الدولية، "Project update: ISA 500, Audit Evidence" (مسودات عرض، أغسطس 2026): https://www.iaasb.org/publications/project-update-isa-500-audit-evidence
 
 ### أتمتة قيود اليومية والتسوية البنكية بالذكاء الاصطناعي دون فقدان الرقابة
-URL: https://www.seg-audit.com/ar/blog/ai-journal-entries-bank-reconciliation/
+URL: https://PENDING-DOMAIN.example/ar/blog/ai-journal-entries-bank-reconciliation/
 Published: 2026-10-14
 
 يؤتمت الذكاء الاصطناعي قيود اليومية والتسوية البنكية بتوقع التوجيه المحاسبي للمستندات، ومطابقة الحركات البنكية مع الفواتير والمدفوعات المفتوحة، وإعداد مسودات القيود للمراجعة. يناسب البنود الكثيفة الواضحة الأدلة كمتحصلات العملاء وعمولات البنك، بينما يعتمد شخص مسمّى القيود التقديرية، ويملك حدود التسامح في المطابقة، ويراجع كل فرق غير مطابق أو مشطوب.
@@ -1499,7 +1499,7 @@ Sources:
 - أودو، "Odoo 20 Release Notes" (سبتمبر 2026): https://www.odoo.com/odoo-20-release-notes
 
 ### كشف الاحتيال المالي بالذكاء الاصطناعي: المؤشرات والنماذج والحدود
-URL: https://www.seg-audit.com/ar/blog/ai-financial-fraud-detection/
+URL: https://PENDING-DOMAIN.example/ar/blog/ai-financial-fraud-detection/
 Published: 2026-10-14
 
 يقيّم كشف الاحتيال المالي بالذكاء الاصطناعي كل معاملة في الدفتر مقابل أنماط معروفة بارتباطها بالاحتيال أو الخطأ، مثل المدفوعات المكررة، والموردين المتشابهين، والاعتمادات خارج مصفوفة الصلاحيات، والقيود اليدوية بأرقام مقرّبة في آخر الشهر، ثم يرفع الأعلى خطرًا إلى شخص مسؤول. والتنبيه بداية فحص بالأدلة، لا دليل احتيال ولا تحريف.
@@ -1620,7 +1620,7 @@ Sources:
 - Odoo، "Odoo 20 Release Notes" (سبتمبر 2026): https://www.odoo.com/odoo-20-release-notes
 
 ### الذكاء الاصطناعي في الإقفال الشهري والتقارير المالية: ماذا تؤتمت؟
-URL: https://www.seg-audit.com/ar/blog/ai-month-end-close-financial-reporting/
+URL: https://PENDING-DOMAIN.example/ar/blog/ai-month-end-close-financial-reporting/
 Published: 2026-10-14
 
 يساعد الذكاء الاصطناعي في الإقفال الشهري بتولي المطابقة والتسويات وفحص الانحرافات والمسودة الأولى للتعليق المالي، وهي ما يستهلك معظم أيام الإقفال، وباختبار كل قيد قبل قفل الفترة. ودوره أن يُعدّ مسودات الاستحقاقات والتسويات والتفسيرات ليعتمدها شخص مسمّى، لا أن يرحّلها، وأن يعود كل رقم في التقرير إلى سجلات مذكورة.
@@ -1745,7 +1745,7 @@ Sources:
 - Odoo، "Odoo 20 Release Notes" (سبتمبر 2026): https://www.odoo.com/odoo-20-release-notes
 
 ### المراجعة المستمرة بالذكاء الاصطناعي والمراجعة التقليدية: مقارنة جنبًا إلى جنب
-URL: https://www.seg-audit.com/ar/blog/continuous-auditing-ai-vs-traditional-audit/
+URL: https://PENDING-DOMAIN.example/ar/blog/continuous-auditing-ai-vs-traditional-audit/
 Published: 2026-10-14
 
 المراجعة المستمرة بالذكاء الاصطناعي تختبر كل معاملة وفق قواعد محددة بعد ترحيلها بوقت قصير، بدلًا من اختبار عينة من فترة مقفلة بعد شهور. فهي تقلّص المدة بين وقوع الخطأ واكتشافه وتمد التغطية إلى المجتمع الكامل. لكنها لا تحل محل رأي المراجع الخارجي ولا الحكم المهني ولا المعتمِد البشري المسمّى لكل ملاحظة.
@@ -1857,7 +1857,7 @@ Sources:
 - مجلس معايير المراجعة والتأكيد الدولية، "Project update: ISA 500, Audit Evidence" (مسودات عرض صدرت في أغسطس 2026): https://www.iaasb.org/publications/project-update-isa-500-audit-evidence
 
 ### من العينة إلى اختبار المجتمع الكامل بالذكاء الاصطناعي: دليل عملي للمراجعين
-URL: https://www.seg-audit.com/ar/blog/full-population-testing-ai-vs-sampling/
+URL: https://PENDING-DOMAIN.example/ar/blog/full-population-testing-ai-vs-sampling/
 Published: 2026-10-14
 
 اختبار المجتمع الكامل بالذكاء الاصطناعي يعني تطبيق إجراء المراجعة على كل معاملة في مجتمع محدد بدلًا من عينة إحصائية أو حكمية. وهو يلغي خطر العينة في الخصائص المختبرة، لكنه لا يلغي الحاجة إلى إثبات اكتمال البيانات، وتصميم الاختبار الصحيح، وتقييم شخص مسؤول لكل استثناء مقابل الدليل.
@@ -1964,7 +1964,7 @@ Sources:
 - جمعية فاحصي الاحتيال المعتمدين، تقرير "Occupational Fraud 2024: A Report to the Nations" (2024): https://www.acfe.com/en-us/-/media/files/acfe/pdfs/rttn/2024/2024-report-to-the-nations.pdf
 
 ### الذكاء الاصطناعي والفصل بين المهام: الوكيل مستخدم داخل الضوابط الرقابية
-URL: https://www.seg-audit.com/ar/blog/ai-segregation-of-duties-internal-controls/
+URL: https://PENDING-DOMAIN.example/ar/blog/ai-segregation-of-duties-internal-controls/
 Published: 2026-10-14
 
 يغيّر الذكاء الاصطناعي الفصل بين المهام لأن الوكيل القادر على إنشاء القيود والسجلات المحاسبية أو تعديلها يُعد مستخدمًا من منظور الرقابة. لذلك يجب أن يظهر في مصفوفة الفصل بين المهام بدور ومالك وأدنى صلاحيات ممكنة، وأن تبقى مخرجاته مسودات يعتمدها شخص مسمّى، مع استخدام الذكاء الاصطناعي نفسه لاختبار التعارضات على كل المعاملات.
@@ -2071,7 +2071,7 @@ Sources:
 - جمعية فاحصي الاحتيال المعتمدين، تقرير الاحتيال المهني: "Occupational Fraud 2026: A Report to the Nations" (بيان صحفي، 19 مايو 2026): https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=report-to-the-
 
 ### مسار التدقيق في الذكاء الاصطناعي: قاعدة الدليل أو الصمت
-URL: https://www.seg-audit.com/ar/blog/ai-audit-trail-zero-hallucination/
+URL: https://PENDING-DOMAIN.example/ar/blog/ai-audit-trail-zero-hallucination/
 Published: 2026-10-14
 
 مسار التدقيق في الذكاء الاصطناعي يربط كل مخرج بالسجلات المحددة التي استرجعها، وبالتعليمات والتشغيل اللذين أنتجاه، وبالشخص الذي راجعه. والمخرج بلا دليل يُرفض، لا يُترك للأمل: وفق قاعدة الدليل أو الصمت، تُرفض كل ملاحظة لا تستشهد بسجل، أو تتضمن رقمًا غير موجود في السجلات التي استشهدت بها، ولا تُعرض كحقيقة.
@@ -2177,7 +2177,7 @@ Sources:
 - مجلس معايير المراجعة والتأكيد الدولية، تحديث مشروع أدلة المراجعة: "Project update: ISA 500, Audit Evidence" (مسودات عرض، أغسطس 2026): https://www.iaasb.org/publications/project-update-isa-500-audit-evidence
 
 ### ميزات الذكاء الاصطناعي في Odoo 20 للمحاسبة: خريطة ميزة بميزة
-URL: https://www.seg-audit.com/ar/blog/odoo-20-ai-features-accounting/
+URL: https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-features-accounting/
 Published: 2026-10-14
 
 ميزات الذكاء الاصطناعي في Odoo 20 للمحاسبة هي: الرؤى المالية المدعومة بالذكاء الاصطناعي، ووكلاء ينشئون السجلات ويعدّلونها داخل الإجراءات الآلية والمجدولة، والاتصال بقاعدة البيانات عبر MCP، والاختيار الآلي للنموذج، وكلها تُحتسب لكل طلب برصيد IAP. وبجانبها توقّع بنود فواتير الموردين وكشف التكرار. وكل ميزة تحتاج إلى مالك وصلاحيات محدودة ومعتمِد مسمّى.
@@ -2291,7 +2291,7 @@ Sources:
 - Odoo، ملاحظات الإصدار الرسمية "Odoo 20 Release Notes" (سبتمبر 2026): https://www.odoo.com/odoo-20-release-notes
 
 ### ربط الذكاء الاصطناعي بـOdoo للمراجعة المستمرة: الوصول والدليل والاعتماد
-URL: https://www.seg-audit.com/ar/blog/connect-ai-to-odoo-continuous-audit/
+URL: https://PENDING-DOMAIN.example/ar/blog/connect-ai-to-odoo-continuous-audit/
 Published: 2026-10-14
 
 لربط الذكاء الاصطناعي بـOdoo للمراجعة المستمرة، امنح طبقة التحليل مستخدمًا مخصصًا بصلاحية قراءة فقط، عبر واجهة API الخارجية أو اتصال MCP الوارد في ملاحظات إصدار Odoo 20. أبقِ بيانات العميل على نظامه، واجعل كل ملاحظة تذكر أرقام السجلات التي قرأتها، ووجّه أي تصحيح مقترح إلى معتمِد مسمّى.
@@ -2412,7 +2412,7 @@ Sources:
 - مجلس معايير المراجعة والتأكيد الدولية (IAASB)، "Project update: ISA 500 Audit Evidence"، مسودات عرض لتعديل ISA 500 وISA 330 وISA 520 (أغسطس 2026): https://www.iaasb.org/publications/project-update-isa-500-audit-evidence
 
 ### اعتمادات المشتريات في Odoo 20: أتمتة المصفوفة دون التفريط في الرقابة
-URL: https://www.seg-audit.com/ar/blog/odoo-20-purchase-approvals-automation/
+URL: https://PENDING-DOMAIN.example/ar/blog/odoo-20-purchase-approvals-automation/
 Published: 2026-10-14
 
 لأتمتة اعتمادات المشتريات في Odoo 20 اكتب مصفوفة الاعتماد أولًا، ثم اربط كل سطر فيها بآلية: إعداد اعتماد أمر الشراء لحدود القيمة، وتطبيق الموافقات للفئات وتعدد المعتمِدين، وقواعد الأتمتة مع خطط الأنشطة لتغييرات بيانات الموردين. واجعل وكلاء الذكاء الاصطناعي يعدّون المسودات فقط، واختبر شهريًا تجزئة الأوامر والالتفاف على الاعتماد.
@@ -2534,7 +2534,7 @@ Sources:
 - جمعية فاحصي الاحتيال المعتمدين، تقرير الاحتيال المهني 2026 ("Occupational Fraud 2026: A Report to the Nations", press release, 19 May 2026): https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=report-to-the-
 
 ### المحاسبة بالذكاء الاصطناعي على Odoo 20 خطوة بخطوة: خطة 90 يومًا ببوابات
-URL: https://www.seg-audit.com/ar/blog/odoo-20-ai-accounting-step-by-step/
+URL: https://PENDING-DOMAIN.example/ar/blog/odoo-20-ai-accounting-step-by-step/
 Published: 2026-10-14
 
 لتطبيق المحاسبة بالذكاء الاصطناعي على Odoo 20 قسّم التشغيل إلى ثلاث مراحل، كل منها 30 يومًا، تفصل بينها بوابات: أولًا الميزات المساعدة مثل التنبؤ ببنود الفاتورة والتحليلات المالية، ثم الذكاء الاصطناعي في التسوية البنكية، ثم وكلاء يعدّون القيود مسودةً للاعتماد. ولا تُفتح مرحلة قبل قياس الأخطاء وتسمية المعتمِدين وحفظ الدليل.
@@ -2651,7 +2651,7 @@ Sources:
 ## English insights
 
 ### Materiality is a method, not a round number
-URL: https://www.seg-audit.com/en/blog/materiality-isa-320-threshold/
+URL: https://PENDING-DOMAIN.example/en/blog/materiality-isa-320-threshold/
 Published: 2026-09-16
 
 Under ISA 320, materiality is the size of misstatement that could reasonably influence the decisions of people who read the financial statements. It is set by choosing a benchmark that reflects how the business is judged, such as profit before tax or revenue, applying a percentage that reflects its risk, and setting a lower performance materiality beneath it.
@@ -2695,7 +2695,7 @@ Q: How often should the materiality threshold be reviewed?
 A: MFT documents it at onboarding and recomputes it at each year-end or when the basis changes, for example after a large change in revenue or profit, so the threshold stays aligned with the business.
 
 ### ZATCA phase two inside Odoo: what must be right before go-live
-URL: https://www.seg-audit.com/en/blog/zatca-phase-two-odoo-checklist/
+URL: https://PENDING-DOMAIN.example/en/blog/zatca-phase-two-odoo-checklist/
 Published: 2026-09-16
 
 Before going live with ZATCA phase two in Odoo, confirm that entity and branch details match the ZATCA portal, the EGS unit is onboarded with a production CSID, standard invoices clear and simplified invoices report within 24 hours, mandatory invoice fields and credit note references are correct, and every invoice type passes the ZATCA sandbox.
@@ -2734,7 +2734,7 @@ Q: Why are ZATCA credit notes rejected?
 A: A common cause of rejection is a credit or debit note that does not reference the original invoice or does not carry the reason for the adjustment.
 
 ### Egyptian e-invoicing in Odoo: seven configuration mistakes that block submissions
-URL: https://www.seg-audit.com/en/blog/egypt-eta-einvoicing-odoo-mistakes/
+URL: https://PENDING-DOMAIN.example/en/blog/egypt-eta-einvoicing-odoo-mistakes/
 Published: 2026-09-16
 
 Most Egyptian Tax Authority e-invoice rejections from Odoo come from master data, not tax: products without an approved item code, customers with the wrong identification type, branch addresses that differ from the registration, unlisted units of measure, discounts at the wrong level, missing exchange rates, and credit notes without the original document’s UUID.
@@ -2776,7 +2776,7 @@ Q: Does the e-receipt mandate apply alongside e-invoicing?
 A: For retail and food and beverage businesses, the B2C receipt mandate adds a second stream with its own device registration and its own timing, alongside e-invoicing.
 
 ### The eleven months your annual audit does not see
-URL: https://www.seg-audit.com/en/blog/continuous-audit-eleven-months/
+URL: https://PENDING-DOMAIN.example/en/blog/continuous-audit-eleven-months/
 Published: 2026-09-16
 
 Continuous internal audit reviews the whole population of transactions throughout the year instead of a sample once a year. It surfaces issues the annual audit is not designed to catch in time, such as duplicate payments, near-duplicate vendors, approvals outside the matrix and cut-off errors, and it shortens the external audit by leaving a ready evidence trail.
@@ -2816,7 +2816,7 @@ Q: What does continuous audit typically find?
 A: Common findings include duplicate and near-duplicate payments, approvals outside the approval matrix, cut-off errors, inventory valuation drift, and manual journal entries posted late at month-end in round amounts.
 
 ### Agents draft. People approve. Why we built it that way.
-URL: https://www.seg-audit.com/en/blog/agents-draft-people-approve/
+URL: https://PENDING-DOMAIN.example/en/blog/agents-draft-people-approve/
 Published: 2026-09-16
 
 In MFT Intelligence, AI agents never post to the ledger. They draft correcting entries and adjustments with the evidence attached, and named, registered people approve them by materiality tier: one approver below the ISA 320 threshold, a second at or above it. Corrections are made by reversing entries, never deletions, and every step is logged.
@@ -2858,7 +2858,7 @@ Q: How are wrong entries corrected in MFT Intelligence?
 A: Nothing is deleted. A wrong entry is corrected by a new reversing entry that references the original and is approved by the same tiers.
 
 ### Preparing Egypt’s monthly VAT return from Odoo, without the spreadsheet
-URL: https://www.seg-audit.com/en/blog/egypt-vat-return-odoo/
+URL: https://PENDING-DOMAIN.example/en/blog/egypt-vat-return-odoo/
 Published: 2026-09-18
 
 Prepare it from Odoo’s tax report, not a spreadsheet. Map every tax in use to the correct tax grid, reconcile output and input VAT on the report to the VAT accounts in the general ledger, compare sales and purchases with the e-invoices accepted on the ETA portal, then file by the statutory deadline and set the tax lock date.
@@ -2921,7 +2921,7 @@ Q: Why does my VAT report not match the general ledger?
 A: Usually because a manual journal entry was posted to a VAT account without a tax, or a tax posts to the wrong account. Trace the difference to individual journal items and fix the configuration, not just the entry.
 
 ### Egypt’s e-receipt system: what changes for retail, and what Odoo POS needs
-URL: https://www.seg-audit.com/en/blog/egypt-e-receipt-b2c/
+URL: https://PENDING-DOMAIN.example/en/blog/egypt-e-receipt-b2c/
 Published: 2026-09-21
 
 Egypt’s e-receipt system requires businesses selling to consumers to issue each receipt electronically and transmit it to the Egyptian Tax Authority, with a unique identifier and a QR code. Unlike B2B e-invoicing, it runs at the point of sale in high volumes, so every POS terminal must be registered and integrated, and receipts reconciled to the ledger daily.
@@ -2979,7 +2979,7 @@ Q: When does my company have to join the e-receipt system?
 A: The Egyptian Tax Authority has rolled the system out in phases by groups of taxpayers. Check the current ETA announcements and any notification addressed to your company for the date that applies to you.
 
 ### Zakat or corporate income tax in Saudi Arabia: who pays which, and what the ledger must show
-URL: https://www.seg-audit.com/en/blog/zakat-vs-corporate-income-tax-saudi/
+URL: https://PENDING-DOMAIN.example/en/blog/zakat-vs-corporate-income-tax-saudi/
 Published: 2026-09-24
 
 In Saudi Arabia, the share of a company owned by Saudi and GCC nationals is generally subject to Zakat, at 2.5% of the zakat base, while the share owned by non-Saudi shareholders is subject to corporate income tax, at a standard 20% of taxable profit. Companies with mixed ownership pay both, split by ownership.
@@ -3039,7 +3039,7 @@ Q: What is the corporate income tax rate in Saudi Arabia?
 A: The standard rate is 20% of the taxable profit attributable to non-Saudi ownership. Some sectors, such as oil and hydrocarbons, are taxed at different rates.
 
 ### The phases of an Odoo accounting implementation, and the mistakes that cost the most
-URL: https://www.seg-audit.com/en/blog/odoo-accounting-implementation-steps/
+URL: https://PENDING-DOMAIN.example/en/blog/odoo-accounting-implementation-steps/
 Published: 2026-09-27
 
 A sound Odoo accounting implementation runs in phases: design the chart of accounts, configure taxes and journals, set access rights and approvals, load and reconcile opening balances, run Odoo in parallel with the old system for at least one closed period, then go live with lock dates set. Skipping the parallel run is the costliest mistake.
@@ -3102,7 +3102,7 @@ Q: What is a parallel run in an ERP implementation?
 A: It is a period in which transactions are recorded in both the old and the new system and both are closed, so the results can be compared and configuration errors found before go-live.
 
 ### FIFO or average cost in Odoo: choosing a valuation method you can live with
-URL: https://www.seg-audit.com/en/blog/odoo-inventory-valuation-fifo-avco/
+URL: https://PENDING-DOMAIN.example/en/blog/odoo-inventory-valuation-fifo-avco/
 Published: 2026-09-30
 
 Choose FIFO when purchase costs move and you need cost of goods sold to reflect the actual layers consumed; choose average cost (AVCO) when items are interchangeable and you want smoother margins. In Odoo, set the method and automated valuation on the product category before transactions begin, because changing it mid-year revalues stock and breaks comparability.
@@ -3163,7 +3163,7 @@ Q: Do landed costs work with standard price in Odoo?
 A: No. In Odoo 17 and 18, landed costs require FIFO or average cost with automated inventory valuation (valuation changed in Odoo 20, so check your version).
 
 ### A month-end close checklist for Odoo that a reviewer can sign
-URL: https://www.seg-audit.com/en/blog/month-end-close-checklist-odoo/
+URL: https://PENDING-DOMAIN.example/en/blog/month-end-close-checklist-odoo/
 Published: 2026-10-03
 
 A month-end close in Odoo should reconcile every bank and cash journal, review receivable and payable ageing, post accruals and deferrals, reconcile inventory valuation to the ledger, post depreciation, reconcile VAT, review the trial balance and management accounts, and only then set the lock date, so the closed period cannot change without a logged decision.
@@ -3228,7 +3228,7 @@ Q: Why does the stock valuation report not match the inventory account?
 A: Usually because of a manual journal entry on an inventory account, or a product category configured with the wrong valuation accounts. Under automated valuation, the two should agree exactly.
 
 ### What is internal audit, and what does a mid-sized company actually get from it?
-URL: https://www.seg-audit.com/en/blog/what-is-internal-audit/
+URL: https://PENDING-DOMAIN.example/en/blog/what-is-internal-audit/
 Published: 2026-09-20
 
 Internal audit is an independent, objective function that tests whether a company’s risk management, controls and governance actually work, and reports findings and recommendations to the board or owners. Unlike an external audit, which gives an opinion on the annual financial statements for outside users, internal audit works for the organisation throughout the year and looks forward.
@@ -3288,7 +3288,7 @@ Q: How often should internal audit report?
 A: Most programmes report after each review and give the board or owners a periodic summary, often quarterly, of findings and the status of agreed actions. The frequency should follow the risk assessment rather than a fixed calendar.
 
 ### Segregation of duties in Odoo: who should never hold both keys
-URL: https://www.seg-audit.com/en/blog/segregation-of-duties-odoo/
+URL: https://PENDING-DOMAIN.example/en/blog/segregation-of-duties-odoo/
 Published: 2026-09-22
 
 Segregation of duties means no single person controls every stage of a transaction: authorising it, recording it, holding the asset and reconciling the result. In Odoo it is enforced by assigning users to access groups that separate incompatible tasks and by adding approval steps. Where the team is too small, independent review of changes and reconciliations compensates.
@@ -3352,7 +3352,7 @@ Q: What are compensating controls?
 A: They are checks performed by someone independent of the transaction, such as an owner reviewing bank reconciliations or vendor changes, that detect what segregation of duties would otherwise have prevented. They are used when the team is too small to separate conflicting duties.
 
 ### Three-way match: the purchase control that stops paying for what never arrived
-URL: https://www.seg-audit.com/en/blog/three-way-match-purchase-controls/
+URL: https://PENDING-DOMAIN.example/en/blog/three-way-match-purchase-controls/
 Published: 2026-09-24
 
 A three-way match compares the purchase order, the goods receipt and the vendor bill before a payment is approved. Quantities and prices on the bill must agree with what was ordered and what was actually received, within agreed tolerances. Differences are held for review instead of being paid, so the company pays only for goods it ordered and received.
@@ -3415,7 +3415,7 @@ Q: What tolerance should a three-way match allow?
 A: There is no standard figure. The tolerance should be small, written in the purchasing policy separately for quantity and price, approved by finance, and reviewed so that repeated differences cannot add up to a material amount.
 
 ### Bank reconciliation is a control, not a chore
-URL: https://www.seg-audit.com/en/blog/bank-reconciliation-controls/
+URL: https://PENDING-DOMAIN.example/en/blog/bank-reconciliation-controls/
 Published: 2026-09-26
 
 A bank reconciliation is a control because it proves that every movement on the bank statement is recorded in the ledger and every recorded payment actually went through the bank. To work as a control it is done at least monthly, with reconciling items explained and aged, no unexplained difference carried forward, and review by someone who makes no payments.
@@ -3472,7 +3472,7 @@ Q: Who should review the bank reconciliation?
 A: Someone who does not create or release payments, often the owner, general manager or finance manager. The reviewer agrees the balances, questions old or unusual reconciling items, and signs and dates the reconciliation.
 
 ### Virtual CFO or full-time CFO: how to tell which one you need
-URL: https://www.seg-audit.com/en/blog/virtual-cfo-vs-full-time-cfo/
+URL: https://PENDING-DOMAIN.example/en/blog/virtual-cfo-vs-full-time-cfo/
 Published: 2026-09-28
 
 A Virtual CFO makes sense when a company needs senior finance judgement on planning, cash, reporting and controls, but not every day, typically a growing or owner-managed business with a bookkeeper or small team. A full-time CFO is the better choice when significant finance decisions arise daily, the team needs an on-site leader, or investors and lenders expect one.
@@ -3537,7 +3537,7 @@ Q: When should a company hire a full-time CFO?
 A: Usually when significant finance decisions arise daily, the finance team needs an on-site leader, or investors and lenders expect a dedicated finance executive. Many companies make the hire after a Virtual CFO has built reliable reporting and controls.
 
 ### How to build a 13-week cash flow forecast from your ledger
-URL: https://www.seg-audit.com/en/blog/thirteen-week-cash-flow-forecast/
+URL: https://PENDING-DOMAIN.example/en/blog/thirteen-week-cash-flow-forecast/
 Published: 2026-09-30
 
 A 13-week cash flow forecast projects cash receipts and payments week by week for the next quarter using the direct method. It starts from the reconciled bank balance, builds receipts from open receivables and expected sales, and payments from payables, payroll, tax and debt service. It is rolled forward every week and compared with actual results.
@@ -3594,7 +3594,7 @@ Q: How often should a 13-week cash flow forecast be updated?
 A: Weekly. Each week the past week is replaced with actuals, a new week is added at the end, and the forecast is compared with actual results to improve the assumptions.
 
 ### Odoo 20 for finance teams: what changes, what to ignore, what to test
-URL: https://www.seg-audit.com/en/blog/odoo-20-whats-new-for-finance-teams/
+URL: https://PENDING-DOMAIN.example/en/blog/odoo-20-whats-new-for-finance-teams/
 Published: 2026-10-06
 
 According to the Odoo 20 release notes, the finance changes that matter are in the bank and payables: bank entries must originate from bank transactions, bills can be paid through bank payment initiation where bank and country allow, and duplicate bills get red or yellow warnings. An AI assistant follows. Re-test ETA and ZATCA e-invoicing after upgrading.
@@ -3664,7 +3664,7 @@ Q: Does Odoo 20 change Egyptian ETA or Saudi ZATCA e-invoicing?
 A: The release notes list localization changes: ETA synchronisation in the send wizard and a test mode for Egypt; for Saudi Arabia, the invoice date as the ZATCA issue date, document-level rounding and timeout handling. Re-test e-invoicing in a sandbox or pre-production environment after any upgrade, before production invoices are issued.
 
 ### Odoo 20 AI agents in finance: useful, billable, and in need of an approver
-URL: https://www.seg-audit.com/en/blog/odoo-20-ai-agents-finance-controls/
+URL: https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-agents-finance-controls/
 Published: 2026-10-05
 
 According to the Odoo 20 release notes, AI agents are records with instructions, skills, knowledge sources and triggers; the release notes do not say which editions include AI agents, so confirm with Odoo for your edition and plan. They can create and update records, run in automated and scheduled actions, and every run is logged. AI features need IAP credits. Govern them like a new team member: the agent drafts, a named person approves.
@@ -3724,7 +3724,7 @@ Q: Can an Odoo 20 agent post accounting entries without approval?
 A: Agents can create and update records within the rights they are given. Whether ledger changes need approval is a control you design: keep agent output in draft and require a named approver.
 
 ### Odoo 20 bank reconciliation and bill payments: the new rules and the controls they need
-URL: https://www.seg-audit.com/en/blog/odoo-20-bank-reconciliation-and-bill-payments/
+URL: https://PENDING-DOMAIN.example/en/blog/odoo-20-bank-reconciliation-and-bill-payments/
 Published: 2026-10-04
 
 According to the Odoo 20 release notes, every journal entry affecting a bank account must originate from a bank transaction, a summary report shows reconciled and unreconciled items at period end, and bills can be paid through payment initiation where bank and country allow. Pair these with approval before payment, few payment initiators and a reviewed duplicate queue.
@@ -3782,7 +3782,7 @@ Q: What is the difference between red and yellow duplicate warnings?
 A: Red marks a highly likely duplicate that should be corrected. Yellow marks a potential duplicate that should be investigated before posting.
 
 ### Should you upgrade to Odoo 20? A plan for companies on 17, 18 and 19
-URL: https://www.seg-audit.com/en/blog/odoo-20-upgrade-plan-17-18-19/
+URL: https://PENDING-DOMAIN.example/en/blog/odoo-20-upgrade-plan-17-18-19/
 Published: 2026-10-03
 
 It depends on your current version. On Odoo 17, standard support was planned to end in September 2026, so plan the upgrade now. On 18, upgrade within the next twelve months. On 19, upgrade when a specific Odoo 20 feature pays for itself. Whatever the timing, test the ledger, taxes and e-invoicing before go-live.
@@ -3847,7 +3847,7 @@ Q: Do we need to re-test ETA or ZATCA e-invoicing after upgrading?
 A: Yes. After any upgrade, re-test the e-invoicing integration in the authority’s sandbox or pre-production environment, including credit notes and rejections, before you go live.
 
 ### Odoo 20 inventory valuation changes: what they mean for COGS and margin
-URL: https://www.seg-audit.com/en/blog/odoo-20-inventory-valuation-changes/
+URL: https://PENDING-DOMAIN.example/en/blog/odoo-20-inventory-valuation-changes/
 Published: 2026-10-02
 
 According to the Odoo 20 release notes, valuation accruals can post directly to the inventory valuation account, COGS updates retroactively when a cost changes after delivery, landed costs can target individual products, and inventory can be reported at a past date. Margins become more accurate, so cost changes and period locks need tighter control.
@@ -3909,7 +3909,7 @@ Q: How do we confirm inventory valuation is correct at month end?
 A: Reconcile the stock valuation report to the inventory valuation account in the general ledger, explain every difference, and only then lock the period. Inventory at a past date helps for prior dates.
 
 ### AI in accounting: a practical 2026 guide for finance teams
-URL: https://www.seg-audit.com/en/blog/ai-in-accounting-guide-2026/
+URL: https://PENDING-DOMAIN.example/en/blog/ai-in-accounting-guide-2026/
 Published: 2026-10-14
 
 AI in accounting is the use of machine learning and language models to draft, match, classify and test accounting records: suggesting bill lines, matching bank transactions, flagging duplicates and scoring every transaction for risk. It speeds preparation and widens review coverage, but a named person must still approve what it drafts, and every output must trace to source records.
@@ -4031,7 +4031,7 @@ Sources:
 - IAASB, "Project update: ISA 500, Audit Evidence" (exposure drafts, Aug 2026): https://www.iaasb.org/publications/project-update-isa-500-audit-evidence
 
 ### AI for journal entries and bank reconciliation: automate it safely
-URL: https://www.seg-audit.com/en/blog/ai-journal-entries-bank-reconciliation/
+URL: https://PENDING-DOMAIN.example/en/blog/ai-journal-entries-bank-reconciliation/
 Published: 2026-10-14
 
 AI automates journal entries and bank reconciliation by predicting how documents should be coded, matching bank transactions to open invoices, bills and payments, and drafting entries for review. It should handle high-volume, well-evidenced items such as customer receipts and bank charges, while a named person approves judgemental entries, owns matching tolerances and reviews every unmatched or written-off difference.
@@ -4145,7 +4145,7 @@ Sources:
 - Odoo, "Odoo 20 Release Notes" (Sept 2026): https://www.odoo.com/odoo-20-release-notes
 
 ### AI financial fraud detection: red flags, models and limits
-URL: https://www.seg-audit.com/en/blog/ai-financial-fraud-detection/
+URL: https://PENDING-DOMAIN.example/en/blog/ai-financial-fraud-detection/
 Published: 2026-10-14
 
 AI financial fraud detection scores every transaction in the ledger against red-flag patterns, such as duplicate payments, near-duplicate vendors, approvals outside the matrix and round manual entries posted late at month-end, and routes the highest scores to a person. A flag is a lead to investigate with evidence, never proof of fraud or of a misstatement.
@@ -4266,7 +4266,7 @@ Sources:
 - Odoo, "Odoo 20 Release Notes" (September 2026): https://www.odoo.com/odoo-20-release-notes
 
 ### AI in the month-end close and financial reporting: what to automate
-URL: https://www.seg-audit.com/en/blog/ai-month-end-close-financial-reporting/
+URL: https://PENDING-DOMAIN.example/en/blog/ai-month-end-close-financial-reporting/
 Published: 2026-10-14
 
 AI helps the month-end close by doing the matching, reconciling, variance scanning and first-draft commentary that consume most of the close calendar, and by testing every entry before the period is locked. It should draft accruals, adjustments and explanations for a named person to approve, never post them, and every reported number must trace to cited records.
@@ -4391,7 +4391,7 @@ Sources:
 - Odoo, "Odoo 20 Release Notes" (September 2026): https://www.odoo.com/odoo-20-release-notes
 
 ### Continuous auditing with AI vs traditional audit: side by side
-URL: https://www.seg-audit.com/en/blog/continuous-auditing-ai-vs-traditional-audit/
+URL: https://PENDING-DOMAIN.example/en/blog/continuous-auditing-ai-vs-traditional-audit/
 Published: 2026-10-14
 
 Continuous auditing with AI tests every transaction against defined rules shortly after it is posted, instead of testing a sample of a closed period months later. It shortens the time between an error and its detection and extends coverage to the whole population. It does not replace the external auditor’s opinion, professional judgement, or a named approver for each finding.
@@ -4503,7 +4503,7 @@ Sources:
 - IAASB, "Project update: ISA 500, Audit Evidence" (exposure drafts issued August 2026): https://www.iaasb.org/publications/project-update-isa-500-audit-evidence
 
 ### Full-population testing with AI vs audit sampling: a practical guide
-URL: https://www.seg-audit.com/en/blog/full-population-testing-ai-vs-sampling/
+URL: https://PENDING-DOMAIN.example/en/blog/full-population-testing-ai-vs-sampling/
 Published: 2026-10-14
 
 Full-population testing with AI means running an audit procedure on every transaction in a defined population instead of a statistical or judgemental sample. It removes sampling risk for the attributes tested, but it does not remove the need to prove the data is complete, design the right tests, and have a person evaluate each exception against evidence.
@@ -4610,7 +4610,7 @@ Sources:
 - ACFE, "Occupational Fraud 2024: A Report to the Nations" (report, 2024): https://www.acfe.com/en-us/-/media/files/acfe/pdfs/rttn/2024/2024-report-to-the-nations.pdf
 
 ### AI and segregation of duties: internal controls when agents are users
-URL: https://www.seg-audit.com/en/blog/ai-segregation-of-duties-internal-controls/
+URL: https://PENDING-DOMAIN.example/en/blog/ai-segregation-of-duties-internal-controls/
 Published: 2026-10-14
 
 AI changes segregation of duties because an AI agent that can create or update accounting records is, for control purposes, a user. It must sit in the SoD matrix with a role, an owner and minimum rights. Keep its output in draft for a named person to approve, and use AI to test conflicts across every transaction.
@@ -4717,7 +4717,7 @@ Sources:
 - ACFE, "Occupational Fraud 2026: A Report to the Nations" (press release, 19 May 2026): https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=report-to-the-
 
 ### AI audit trail: the evidence-or-silence rule
-URL: https://www.seg-audit.com/en/blog/ai-audit-trail-zero-hallucination/
+URL: https://PENDING-DOMAIN.example/en/blog/ai-audit-trail-zero-hallucination/
 Published: 2026-10-14
 
 An AI audit trail links every AI output to the specific records it retrieved, the instruction and run that produced it, and the person who reviewed it. Output without evidence is rejected, not hoped away: under the evidence-or-silence rule, a finding that cites no record, or a number absent from its cited records, is rejected.
@@ -4823,7 +4823,7 @@ Sources:
 - IAASB, "Project update: ISA 500, Audit Evidence" (exposure drafts, August 2026): https://www.iaasb.org/publications/project-update-isa-500-audit-evidence
 
 ### Odoo 20 AI features for accounting: a feature-by-feature map
-URL: https://www.seg-audit.com/en/blog/odoo-20-ai-features-accounting/
+URL: https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-features-accounting/
 Published: 2026-10-14
 
 Odoo 20’s AI features for accounting are AI-powered financial insights, agents that create and update records inside automated and scheduled actions, a database connection through MCP, and automatic model selection, all through IAP credits. Bill line prediction and duplicate detection sit beside them. Each needs an owner, scoped access rights and a named approver.
@@ -4937,7 +4937,7 @@ Sources:
 - Odoo, "Odoo 20 Release Notes" (official release notes, September 2026): https://www.odoo.com/odoo-20-release-notes
 
 ### Connecting AI to Odoo for continuous auditing: access, evidence and approvals
-URL: https://www.seg-audit.com/en/blog/connect-ai-to-odoo-continuous-audit/
+URL: https://PENDING-DOMAIN.example/en/blog/connect-ai-to-odoo-continuous-audit/
 Published: 2026-10-14
 
 To connect AI to Odoo for continuous auditing, give the analysis layer its own dedicated user with read access only, through the external API or the MCP connection listed in Odoo’s 20 release notes. Keep client data on the client’s system, make every finding cite the record ids it read, and route any proposed correction to a named approver.
@@ -5058,7 +5058,7 @@ Sources:
 - IAASB, "Project update: ISA 500 Audit Evidence" (exposure drafts on ISA 500, ISA 330 and ISA 520, August 2026): https://www.iaasb.org/publications/project-update-isa-500-audit-evidence
 
 ### Odoo 20 purchase approvals: automate the matrix, keep the control
-URL: https://www.seg-audit.com/en/blog/odoo-20-purchase-approvals-automation/
+URL: https://PENDING-DOMAIN.example/en/blog/odoo-20-purchase-approvals-automation/
 Published: 2026-10-14
 
 To automate purchase approvals in Odoo 20, write the approval matrix first, then map each row to a mechanism: the Purchase Order Approval setting for order thresholds, the Approvals app for categories and several approvers, and automation rules with activity plans for vendor changes. Let AI agents draft records only, and test every month for split orders and bypasses.
@@ -5178,7 +5178,7 @@ Sources:
 - ACFE, "Occupational Fraud 2026: A Report to the Nations" (press release, 19 May 2026): https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=report-to-the-
 
 ### AI accounting on Odoo 20, step by step: a 90-day rollout with gates
-URL: https://www.seg-audit.com/en/blog/odoo-20-ai-accounting-step-by-step/
+URL: https://PENDING-DOMAIN.example/en/blog/odoo-20-ai-accounting-step-by-step/
 Published: 2026-10-14
 
 To apply AI accounting on Odoo 20, roll it out in three 30-day phases with a gate between each: first assistive features such as bill line prediction and financial insights, then AI in bank reconciliation, then agents that draft entries for approval. Each gate requires measured error rates, named approvers and retained evidence before the next phase starts.

@@ -16,4 +16,4 @@ User-agent: Bingbot
 Allow: /
 Disallow: /*/_preview/
 
-Sitemap: https://www.seg-audit.com/sitemap.xml
+Sitemap: https://PENDING-DOMAIN.example/sitemap.xml
