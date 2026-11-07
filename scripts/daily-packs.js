@@ -22,7 +22,7 @@ const DESIGNS = path.join(ROOT, 'marketing/designs');
 const OUT = path.join(ROOT, 'marketing/content/daily');
 const { FORBIDDEN, DAYS_AR } = require('./lib/campaign.js');
 const { imageSize, mp4Info } = require('./lib/media-info.js');
-const { DAYS } = require('./lib/daily-nov.js');
+const { DAYS, VALUE, ACADEMY } = require('./lib/daily-nov.js');
 const CHECK_ONLY = process.argv.includes('--check');
 // every asset must be rendered after the CEO's signature decision went in (6 Nov 2026, 22:15 Cairo):
 // SEG lockup (cube + «Standard Enterprise Governance») | the full MFT logo
@@ -182,6 +182,8 @@ for (const D of DAYS) {
   days.push({ D, wd, rows, state, stateShort, condNote, needs, conds, has });
 }
 
+for (const [d, v] of Object.entries(VALUE)) checkCopy(v, `${d} Nov value`, +d);
+if (DAYS.some((D) => !VALUE[D.d])) problems.push('a day without its customer value (VALUE)');
 if (problems.length) { console.error(`${problems.length} problem(s):\n` + problems.join('\n')); process.exit(1); }
 const nAssets = new Set([...cache.values()].map((r) => r.rel)).size;
 const nPosts = days.reduce((s, x) => s + x.rows.length, 0);
@@ -281,3 +283,37 @@ ix += `\n## الشروط العامة (على كل الأيام)\n\n` + GLOBAL.m
 ix += `\n## الأصول المستخدمة (اتفحصت كلها)\n\n| الأصل | الفحص |\n|---|---|\n` + [...new Map([...cache.values()].map((r) => [r.rel, r])).values()].sort((a, b) => a.rel.localeCompare(b.rel)).map((r) => `| \`${r.rel}\` | ${r.info} |`).join('\n') + '\n';
 fs.writeFileSync(path.join(OUT, '00-november-index.md'), ix);
 console.log(`wrote ${days.length} day files + 00-november-index.md`);
+// ---- the calendar (november-calendar.md, between CAL markers): one source with the packs ----
+const PLAT = { 'li-page': 'LinkedIn', 'li-founder': 'LinkedIn', fb: 'Facebook', ig: 'Instagram', 'ig-story': 'Instagram', tt: 'TikTok', yt: 'YouTube', 'yt-community': 'YouTube' };
+const TYPE = (f) => ({ text: 'نص', 'img-4x5': 'بوست', 'img-1x1': 'بوست', 'img-link': 'بوست', 'story-img': 'ستوري', 'story-video': 'ستوري فيديو', reel: 'ريل / فيديو 9:16', 'video-4x5': 'فيديو', 'video-16x9': 'فيديو 16:9', 'yt-long': 'فيديو طويل', carousel: 'كاروسيل', event: 'حدث', 'event-comment': 'تعليق', 'pinned-comment': 'تعليق مثبّت', live: 'بث' }[f] || f);
+const WEEKS = [[7, 10, 'الأسبوع 1 (تكملة) · 7–10', 'الإطلاق: أول إعلان للتاريخ + الشركاء + البث'], [11, 14, 'الأسبوع 2 · 11–14', 'ما بعد البث: قيمة البث لمن فاته + الانتقاء'], [15, 21, 'الأسبوع 3 · 15–21', 'المسلسل التعليمي «تشريح شركة النموذج» + معايير القبول'], [22, 30, 'الأسبوع 4 · 22–30', 'أسبوع الإغلاق: عدّ للتاريخ + ختام المسلسل + الذروة 30']];
+let cmd = `<!-- CAL:START — اتولّد بـ\`node scripts/daily-packs.js\` من \`scripts/lib/daily-nov.js\` (نفس مصدر الحزم). ما يتعدّلش باليد. -->\n\n`;
+cmd += `## الملخّص أسبوع بأسبوع\n\n| الأسبوع | التيمة | LinkedIn | Facebook | Instagram | TikTok* | YouTube* | الأكاديمية | أهم الهوكات |\n|---|---|---|---|---|---|---|---|---|\n`;
+for (const [a, b, name, theme] of WEEKS) {
+  const ds = days.filter((X) => X.D.d >= a && X.D.d <= b), rs = ds.flatMap((X) => X.rows);
+  const n = (pl) => rs.filter((r) => PLAT[r.p.ch] === pl).length;
+  const seen = new Set(), key = (h) => h.replace(/[^\u0600-\u06FF0-9a-z\s]/gi, '').trim().split(/\s+/).slice(0, 2).join(' ');
+  const hooks = rs.filter((r) => ['li-page', 'li-founder'].includes(r.p.ch) && !/comment|event/.test(r.p.fmt)).map((r) => r.p.hook).filter((h) => !seen.has(key(h)) && seen.add(key(h))).slice(0, 3).map((h) => `«${cell(h)}»`).join(' · ');
+  cmd += `| ${name} | ${theme} | ${n('LinkedIn')} | ${n('Facebook')} | ${n('Instagram')} | ${n('TikTok')} | ${n('YouTube')} | ${ACADEMY.filter((x) => x.d >= a && x.d <= b).length} خانة | ${hooks} |\n`;
+}
+const tot = (pl) => days.flatMap((X) => X.rows).filter((r) => PLAT[r.p.ch] === pl).length;
+cmd += `| **الإجمالي 7–30** | | **${tot('LinkedIn')}** | **${tot('Facebook')}** | **${tot('Instagram')}** | **${tot('TikTok')}** | **${tot('YouTube')}** | **${ACADEMY.length}** | |\n\n`;
+cmd += `\\* TikTok وYouTube مشروطين بتأكيد ملكية الحسابات (G8). الأعداد بتشمل الستوري والتعليقات المثبّتة. كل يوم فيه تصميم + فيديو + ستوري، وكل منشور له كابشن نهائي في ملف يومه.\n\n`;
+for (const [a, b, name, theme] of WEEKS) {
+  cmd += `## ${name} نوفمبر: ${theme}\n\n`;
+  for (const X of days.filter((Y) => Y.D.d >= a && Y.D.d <= b)) {
+    const dd = String(X.D.d).padStart(2, '0'), star = X.D.d === 30 && !X.D.angle.includes('★') ? '★ ' : '';
+    cmd += `### ${star}${X.wd} ${X.D.d} نوفمبر · ${X.D.angle}\n\n**القيمة للعميل:** ${VALUE[X.D.d]}  \n**الحالة:** ${X.stateShort} · الحزمة الكاملة (الكابشن، والأصل بمساره، والروابط): [\`daily/2026-11-${dd}-ready.md\`](daily/2026-11-${dd}-ready.md)\n\n| الوقت | المنصة | النوع | الهوك | CTA | UTM (\`utm_content\`) | |\n|---|---|---|---|---|---|---|\n`;
+    const slots = ACADEMY.filter((x) => x.d === X.D.d).map((x) => ({ t: x.t, html: `| ${x.t} | ${x.ch} | تعليمي | **[تُملأ بحلقة الأكاديمية التعليمية لاحقاً]** | — | \`w-academy-${dd}\` | ⬜ |` }));
+    const lines = X.rows.map((r) => ({ t: r.p.t, html: `| ${r.p.t} | ${r.ch.name} | ${TYPE(r.p.fmt)} | ${cell(r.p.hook)} | ${CTA_NAME[r.p.cta]} | \`${r.p.id}\` | ${r.status} |` }));
+    cmd += [...lines, ...slots].sort((x, y) => x.t.localeCompare(y.t)).map((x) => x.html).join('\n') + '\n\n';
+  }
+}
+cmd += `**المفتاح:** ✅ جاهز · 🔴 محتاج إدخال بشري (والبديل الجاهز في ملف اليوم) · 🟡 مشروط (ملكية TikTok/YouTube أو Opt-in) · ⬜ خانة محجوزة للأكاديمية. «الطلب\\*» = الفحص لحد إطفاء العدّاد.\n\n<!-- CAL:END -->`;
+const CAL = path.join(ROOT, 'marketing/content/november-calendar.md');
+let calSrc = fs.readFileSync(CAL, 'utf8');
+if (calSrc.includes('<!-- CAL:START')) calSrc = calSrc.replace(/<!-- CAL:START[\s\S]*?<!-- CAL:END -->/, cmd);
+else { const a = calSrc.indexOf('## الأسبوع 1'), b = calSrc.indexOf('## المدفوع'); calSrc = calSrc.slice(0, a) + cmd + '\n\n' + calSrc.slice(b); }
+fs.writeFileSync(CAL, calSrc);
+console.log('wrote november-calendar.md (days 7–30 + weekly summary)');
+
