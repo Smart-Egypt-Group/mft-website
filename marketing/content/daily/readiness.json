@@ -402,7 +402,8 @@
       "uploaded": false
     },
     "w4-d2-yt-a-1": {
-      "reviewed": true,
+      "audioPending": true,
+      "reviewed": false,
       "uploaded": false
     },
     "w4-d2-ig-s-9": {
@@ -526,8 +527,7 @@
       "uploaded": false
     },
     "w5-d2-ig-s-1": {
-      "audioPending": true,
-      "reviewed": false,
+      "reviewed": true,
       "uploaded": false
     },
     "w5-d2-ig-s-2": {

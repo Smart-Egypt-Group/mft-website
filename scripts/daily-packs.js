@@ -64,7 +64,7 @@ const FMT = {
   live: { label: 'على الهوا' }
 };
 const BASE = { check: 'https://app.seg-audit.com/ar/signup', apply: 'https://www.seg-audit.com/ar/founding-members/apply/', partners: 'https://www.seg-audit.com/ar/partners/' };
-const CTA_NAME = { check: 'الفحص', apply: 'الطلب*', partners: 'الشركاء', live: 'البث', comment: 'التعليق', none: '—' };
+const CTA_NAME = { check: 'الفحص', apply: 'الطلب', partners: 'الشركاء', live: 'البث', comment: 'التعليق', none: '—' };
 const url = (base, ch, id) => `${base}?utm_source=${ch.src}&utm_medium=${ch.medium}&utm_campaign=founding-members-2026&utm_content=${id}`;
 const LIVE_LINK = '«رابط حدث البث»';
 const ILLUSTRATIVE = /reel-|launch-demo-report|tb-check|golden-4-lineup|loss-aversion/;
@@ -92,6 +92,8 @@ function verify(rel, fmtKey, where) {
     if (!m) { problems.push(`${where}: unreadable MP4 ${rel}`); res.info = '❌ MP4 تالف'; cache.set(rel + fmtKey, res); return res; }
     ({ w, h } = m); extra = ` · ${m.sec.toFixed(1)} ث · ${m.audio ? 'صوت ✓' : 'صامت'}`;
     res.sec = m.sec; res.audio = m.audio;
+    const cap = path.join(DESIGNS, 'captions', path.basename(rel, '.mp4') + '.srt');
+    if (!fs.existsSync(cap)) problems.push(`${where}: ${rel} has no caption file (node scripts/video-captions.js)`); else { res.caption = `captions/${path.basename(cap)}`; extra += ' · كابشن ✓'; }
   } else if (/\.(png|jpe?g|webp)$/i.test(rel)) {
     const s = imageSize(file); if (!s) { problems.push(`${where}: unreadable image ${rel}`); } else [w, h] = s;
   } else if (/\.pdf$/i.test(rel)) { w = h = 0; extra = ' · PDF'; }
@@ -116,13 +118,13 @@ function links(p, ch) {
   const out = { now: '', after: '', where: ch.link };
   if (p.cta === 'check') out.now = url(BASE.check, ch, p.id);
   if (p.cta === 'partners') out.now = url(BASE.partners, ch, p.id);
-  if (p.cta === 'apply') { out.now = url(BASE.check, ch, p.id); out.after = url(BASE.apply, ch, p.id); }
+  if (p.cta === 'apply') out.now = url(BASE.apply, ch, p.id); // counter off (7 Nov 2026): straight to the apply page
   if (p.cta === 'live') out.now = LIVE_LINK;
   return out;
 }
 function body(text, L, cta) {
   if (!text.includes('{LINK}')) return text;
-  return text.replace('{LINK}', L.now + (cta === 'apply' ? '\n(ابدأ بالفحص المجاني، وفريقنا بيتواصل معاك للطلب.)' : ''));
+  return text.replace('{LINK}', L.now);
 }
 const quote = (t) => t.split('\n').map((l) => (l ? `> ${l}` : '>')).join('\n');
 const cell = (t) => String(t || '—').replace(/\|/g, '\\|').replace(/\n/g, ' ');
@@ -199,7 +201,7 @@ const stamp = `${now.getUTCDate()} نوفمبر ${now.getUTCFullYear()}، ${Stri
 const GLOBAL = [
   '`node scripts/close-date.js --check` و`node scripts/design-qa.js` و`node scripts/daily-packs.js --check` يطلعوا نظاف.',
   '**تاريخ الإغلاق مؤكد من الـCEO** (قرار 1). كل نصوص الحزمة مكتوبة على 30 نوفمبر 11:59 م.',
-  '**روابط «الطلب\\*»:** الرابط المكتوب دلوقتي هو **الفحص** (صفحة الطلب لسه بتعرض العدّاد). بعد إطفاء العدّاد (`showCount: false`، قرار منفصل) استبدله برابط «بعد إطفاء العدّاد» المكتوب تحت كل منشور.',
+  '**روابط «الطلب»:** بتروح على صفحة الطلب مباشرة (العدّاد اتطفى: `showCount: false`، 7 نوفمبر).',
   '**TikTok وYouTube:** بعد تأكيد إن الحسابات ملك MFT (G8). لحد كده الصفوف دي 🟡 ومتتنشرش.',
   'بعد النشر: سجّل الرابط الفعلي في `marketing/workflow/templates/content-log.csv`.'
 ];
@@ -222,7 +224,7 @@ for (const X of days) {
     const info = r.checked.length ? fmtInfo(r.checked) : r.alt && r.alt.checked && r.alt.checked.length ? `البديل: ${fmtInfo(r.alt.checked)}` : '—';
     md += `| ${i + 1} | ${r.p.t} | ${r.ch.name} | ${r.fm.label} | ${cell(asset)} | ${cell(info)} | ${cell(r.p.hook)} | ${CTA_NAME[r.p.cta]} | \`${r.p.id}\` | ${r.status} |\n`;
   });
-  md += `\n\\* «الطلب»: الرابط الحالي هو الفحص لحد إطفاء العدّاد.\n\n## المنشورات\n`;
+  md += `\n## المنشورات\n`;
   X.rows.forEach((r, i) => {
     const p = r.p;
     md += `\n### ${i + 1} · ${p.t} · ${r.ch.name} · \`${p.id}\` ${r.status}\n\n`;
@@ -231,6 +233,7 @@ for (const X of days) {
     md += `- **الفورمات:** ${r.fm.label}${r.fm.dims ? ` (${r.fm.dims.join('×')})` : ''}\n`;
     if (r.checked.length) md += r.checked.map((c, k) => `- **الأصل${r.checked.length > 1 ? ` ${k + 1}` : ''}:** \`marketing/designs/${c.rel}\` · ${c.info}`).join('\n') + '\n';
     else if (p.need && p.fmt !== 'text') md += `- **الأصل:** 🔴 مش موجود لسه (${p.need.split(':')[0]})\n`;
+    for (const c of r.checked.filter((c) => c.caption)) md += `- **الكابشن (SRT، يترفع مع الفيديو):** \`marketing/designs/${c.caption}\`\n`;
     if (r.support.length) md += r.support.map((c) => `- **أصل مساعد جاهز:** \`marketing/designs/${c.rel}\` · ${c.info}`).join('\n') + '\n';
     md += `- **الهوك:** ${p.hook}\n`;
     if (p.title) md += `- **العنوان:** ${p.title}\n`;
@@ -238,7 +241,7 @@ for (const X of days) {
     if (p.cta === 'apply' || p.cta === 'check' || p.cta === 'partners' || p.cta === 'live') {
       const L = r.L;
       if (L.where === 'comment') {
-        const lead = p.comment || (p.cta === 'apply' ? 'ابدأ بالفحص المجاني، وفريقنا بيتواصل معاك للطلب:' : p.cta === 'live' ? 'سجّل في الحدث:' : 'الفحص المجاني لميزان شركتك:');
+        const lead = p.comment || (p.cta === 'apply' ? 'قدّم طلبك:' : p.cta === 'live' ? 'سجّل في الحدث:' : 'الفحص المجاني لميزان شركتك:');
         md += `- **أول تعليق:** ${lead} ${L.now}\n`;
         if (L.after) md += `- **بعد إطفاء العدّاد (أول تعليق):** قدّم طلبك: ${L.after}\n`;
       } else if (L.where === 'bio') {
@@ -309,14 +312,19 @@ const OBS = {
   feature: { t: 'خاصية منصة غير مؤكدة', fix: 'التأكد من تفعيل الخاصية للقناة قبل الموعد' },
   rule: { t: 'قيد المنصة', fix: null }
 };
+// resolved observation types (7 Nov 2026): before → fix → evidence, written into the log
+const RESOLVED = [
+  ['apply', 'رابط «الطلب» = الفحص مؤقتًا', { LinkedIn: 13, Facebook: 8, Instagram: 20 }, 'العدّاد اتطفى (`src/site.config.js → founding.showCount: false`)، وكل رابط «الطلب» بقى على صفحة الطلب مباشرة بالـUTM، واتشالت بوابة «بعد إطفاء العدّاد»', '`grep founding-members/apply` في ملفات الأيام؛ `node build.js` + `scripts/check.js` نظاف'],
+  ['silent', 'فيديو صامت', { LinkedIn: 0, Facebook: 0, Instagram: 5, YouTube: 2 }, 'كابشن عربي/إنجليزي SRT لكل الـ28 فيديو من سكربتات التعليق الصوتي (أو النص اللي على الشاشة)، وبيتعرض على كل منشور فيديو؛ الصوت نفسه في مسار الصوت (`audioPending`)', '`marketing/designs/captions/*.srt` (28)؛ `node scripts/video-captions.js --check`'],
+  ['reuse', 'تكرار أصل خلال 7 أيام على نفس المنصة', { LinkedIn: 2, Facebook: 3, Instagram: 9 }, 'أصول بديلة من نفس العائلات (hook-360، live، graffiti-04، sticky، hemicycle، before-after، ساعة الأيام)؛ الفحص بيطلّع أي تكرار جديد تلقائيًا', 'عمود «ملاحظات» في الجدول: صفر تكرار'],
+  ['feature', 'خاصية منصة غير مؤكدة', { YouTube: 1 }, 'منشور YouTube Community (23 نوفمبر) اتبدّل بـShort لفيديو الإغلاق، والقناة مربوطة بـComposio', 'ملف يوم 23: `w4-d2-yt-a-1` فيديو 9:16 + SRT']
+];
 const RULE = { 'li-page': 'الرابط في أول تعليق (المنشور اللي فيه رابط بيوصل أقل)', 'li-founder': 'الرابط في أول تعليق؛ بصوت المؤسس ومراجعته', fb: 'الرابط جوّه النص', ig: 'الرابط في البايو (يتغيّر الصبح)', 'ig-story': 'ملصق رابط؛ الملصقات بين 250 px فوق و480 px تحت', yt: 'عنوان + وصف + الرابط في الوصف', 'yt-community': 'Community: صورة + نص' };
 const lastUse = {};
 const obsOf = (d, p) => {
   const o = [];
   if (p.need) o.push(['missing', p.asset || NO_ASSET.includes(p.fmt) || p.fmt === 'text' ? 'input' : 'missing', p.need].slice(1));
   if (p.cond && !/TikTok/.test(p.cond)) o.push(['feature', p.cond]);
-  if (p.note && /صامت/.test(p.note)) o.push(['silent', 'أضف صوت قبل الرفع']);
-  if (p.cta === 'apply') o.push(['apply', 'الرابط الحالي = الفحص']);
   for (const a of [].concat(p.asset || [])) { const k = PLAT[p.ch] + a, prev = lastUse[k]; if (prev && d - prev < 7) o.push(['reuse', `نفس الأصل اتنشر ${prev} نوف`]); lastUse[k] = d; }
   if (RULE[p.ch]) o.push(['rule', RULE[p.ch]]);
   return o;
@@ -365,7 +373,7 @@ for (const [a, b, name, theme] of WEEKS) {
 const pend = all.filter((x) => !ACTIVE(x.r) && x.r.p.ch !== 'live');
 cmd += `## مُعلّق: TikTok (لحد ما يكتمل الربط) + قنوات يدوية\n\nمش مجدول. الأصول والنصوص جاهزة في حزم الأيام، وتتجدول أول ما الربط يكتمل وتتأكد ملكية الحساب (G8).\n\n| اليوم | الوقت | القناة | النوع | الهوك | \`utm_content\` | الأصل مُنتَج | النص جاهز |\n|---|---|---|---|---|---|---|---|\n`;
 cmd += pend.map((x) => `| ${x.r.p.id.match(/w\d-d\d/) ? view.find((v) => v.rows.includes(x)).X.D.d : ''} | ${x.r.p.t} | ${x.r.ch.name} | ${TYPE(x.r.p.fmt)} | ${cell(x.r.p.hook)} | \`${x.r.p.id}\` | ${x.produced} | ${x.copy} |`).join('\n') + '\n\n';
-cmd += `**المفتاح:** ✅ تم · ⬜ لسه · 🔴 ناقص (مكتوب السبب في «ملاحظات») · 🟡 قرار معلّق والبديل جاهز. «الطلب\\*» = الفحص لحد إطفاء العدّاد. سجل الملاحظات لكل منصة: [\`platform-observations.md\`](platform-observations.md).\n\n<!-- CAL:END -->`;
+cmd += `**المفتاح:** ✅ تم · ⬜ لسه · 🔴 ناقص (مكتوب السبب في «ملاحظات») · 🟡 قرار معلّق والبديل جاهز. سجل الملاحظات لكل منصة: [\`platform-observations.md\`](platform-observations.md).\n\n<!-- CAL:END -->`;
 const CAL = path.join(ROOT, 'marketing/content/november-calendar.md');
 let calSrc = fs.readFileSync(CAL, 'utf8');
 calSrc = calSrc.replace(/<!-- CAL:START[\s\S]*?<!-- CAL:END -->/, cmd);
@@ -384,8 +392,12 @@ for (const pl of PL) {
   lg += `\n## ${pl}\n\n**قيود المنصة الثابتة:** ${[...new Set(L.filter((x) => x.k === 'rule').map((x) => x.txt))].join(' · ')}\n\n| النوع | العدد | التحسين المقترح |\n|---|---|---|\n`;
   const byK = {}; L.filter((x) => x.k !== 'rule').forEach((x) => { byK[x.k] = (byK[x.k] || 0) + 1; });
   lg += Object.entries(byK).sort((a, b) => b[1] - a[1]).map(([k, n]) => `| ${OBS[k].t} | ${n} | ${OBS[k].fix} |`).join('\n') + '\n\n| اليوم | الساعة | `utm_content` | النوع | الملاحظة | الحالة |\n|---|---|---|---|---|---|\n';
-  lg += L.filter((x) => x.k !== 'rule').map((x) => `| ${x.d} نوف | ${x.t} | \`${x.id}\` | ${OBS[x.k].t} | ${cell(x.txt)} | ${x.done || 'مفتوحة'} |`).join('\n') + '\n';
+  lg += L.filter((x) => x.k !== 'rule').map((x) => `| ${x.d} نوف | ${x.t} | \`${x.id}\` | ${OBS[x.k].t} | ${cell(x.txt)} | ${x.done || (['missing', 'input'].includes(x.k) ? '⏳ محتاج قرار بشري' : 'مفتوحة')} |`).join('\n') + '\n';
 }
+lg += `\n## سجل المعالجة (7 نوفمبر 2026)\n\n| المنصة | الملاحظة | العدد قبل | الحل | الدليل | الحالة |\n|---|---|---|---|---|---|\n`;
+for (const [k, t, before, fix, ev] of RESOLVED) for (const [pl, nb] of Object.entries(before)) if (nb) lg += `| ${pl} | ${t} | ${nb} | ${fix} | ${ev} | ✅ تم الحل (المتبقي: ${LOG.filter((x) => x.plat === pl && x.k === k).length}) |\n`;
+lg += `\n### ⚠ ملاحظة جديدة بعد إطفاء العدّاد: صفحة الهبوط (كل المنصات)\n\n| المنصة | الملاحظة | الحالة |\n|---|---|---|\n| كل المنصات (رابط «الطلب») | صفحة المؤسِّسين وصفحة الطلب على الموقع لسه نصّها «50 مقعدًا فقط، سعر المؤسِّس: 50%» (العنوان، والوصف، والأسئلة الشائعة «لماذا 50 مقعدًا فقط؟»، عربي وإنجليزي في \`src/content/ar.js\` و\`en.js\`). ده بيعارض اتجاه الحملة (لا سقف، لا خصم رقمي) | ⏳ **قرار الـCEO:** إعادة صياغة شروط العرض على الموقع. ما اتعدّلتش لأنها شروط تجارية |\n`;
+lg += `\n**الملاحظات اللي فاضلة كلها إدخال أو قرار بشري** (تصوير، أو رابط البث، أو اعتماد): حالتها «محتاج قرار بشري» لحد ما تتسجّل في \`readiness.json → obs\`.\n`;
 fs.writeFileSync(path.join(ROOT, 'marketing/content/platform-observations.md'), lg);
 console.log(`wrote november-calendar.md + platform-observations.md · ${cnt.total} posts on connected platforms: ${cnt.uploadReady} ready to upload now, ${cnt.audio} videos pending audio, ${cnt.prodReady} produced + copy ready, ${cnt.needs} need production/input, ${cnt.uploaded} uploaded, ${cnt.reviewed} reviewed, ${cnt.full} fully ready · TikTok/manual pending ${pend.length}`);
 

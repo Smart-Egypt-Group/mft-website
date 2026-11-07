@@ -1,0 +1,19 @@
+1
+00:00:00,200 --> 00:00:04,800
+There's one account in your books… that grows every month. And every difference hides in it.
+
+2
+00:00:05,300 --> 00:00:11,800
+Why nobody sees it: it looks small next to the balance sheet. Movements offset. And nobody ages the items.
+
+3
+00:00:12,200 --> 00:00:24,000
+SEG opens the account and ages every item. Five months building, most of it older than ninety days. Thirty-seven uncleared movements. Illustrative test data.
+
+4
+00:00:24,300 --> 00:00:28,800
+The control: clear it monthly, with a named owner for every open item.
+
+5
+00:00:29,300 --> 00:00:34,000
+Standard Enterprise Governance, the platform that audits itself. Free trial-balance check at seg-audit.com.

@@ -1,0 +1,19 @@
+1
+00:00:00,200 --> 00:00:04,800
+Approved expenses… and not one receipt. Hospitality, travel, commissions.
+
+2
+00:00:05,300 --> 00:00:11,800
+Why they slip: each claim is small, spread across people and accounts, and the annual sample rarely picks them.
+
+3
+00:00:12,200 --> 00:00:24,000
+SEG checks every approved claim for an attachment. Thirty-one of forty-two with no document. A medium finding; the evidence is the claims themselves in Odoo. Illustrative test data.
+
+4
+00:00:24,300 --> 00:00:28,800
+The control: an attachment before approval, and a clear cap for claims without a receipt.
+
+5
+00:00:29,300 --> 00:00:34,000
+Standard Enterprise Governance, the platform that audits itself. seg-audit.com.

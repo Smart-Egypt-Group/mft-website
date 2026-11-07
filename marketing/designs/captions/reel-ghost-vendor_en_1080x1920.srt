@@ -1,0 +1,19 @@
+1
+00:00:00,200 --> 00:00:04,800
+This supplier's bank account… is one of your employees'. An indicator to review, not an accusation.
+
+2
+00:00:05,300 --> 00:00:11,800
+Why it slips: suppliers and employees sit in separate files. Audits test payments, not master data. And the bank details changed a week before the payments.
+
+3
+00:00:12,200 --> 00:00:24,000
+SEG matches supplier accounts against payroll. Same IBAN, ending four-four-one-seven. Changed seven days before three payments. The change log is the evidence. Illustrative test data.
+
+4
+00:00:24,300 --> 00:00:28,800
+The control: two-person approval for any supplier bank change, and segregation of duties.
+
+5
+00:00:29,300 --> 00:00:34,000
+Standard Enterprise Governance, the platform that audits itself. seg-audit.com.

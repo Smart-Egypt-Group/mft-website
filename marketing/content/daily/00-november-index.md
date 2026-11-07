@@ -1,7 +1,7 @@
 # حزم النشر اليومية: 7 → 30 نوفمبر 2026
 
-> اتولّدت بـ`node scripts/daily-packs.js` (7 نوفمبر 2026، 16:01) من `scripts/lib/daily-nov.js`. **مفيش حاجة منشورة أو مجدولة.**
-> **اتفحص:** 24 يوم · 126 منشور · 45 أصل مختلف موجود على الديسك بمقاسه الصحيح ومولَّد بعد قرار التوقيع (لوكاب SEG + شعار MFT) · النصوص نظيفة. قبل كل يوم: `node scripts/daily-packs.js --check`.
+> اتولّدت بـ`node scripts/daily-packs.js` (7 نوفمبر 2026، 16:06) من `scripts/lib/daily-nov.js`. **مفيش حاجة منشورة أو مجدولة.**
+> **اتفحص:** 24 يوم · 126 منشور · 50 أصل مختلف موجود على الديسك بمقاسه الصحيح ومولَّد بعد قرار التوقيع (لوكاب SEG + شعار MFT) · النصوص نظيفة. قبل كل يوم: `node scripts/daily-packs.js --check`.
 > المصادر: [`november-calendar.md`](../november-calendar.md) (الخطة) · [`coverage-matrix-nov.md`](../coverage-matrix-nov.md) (الخانات والنبرة) · [`voiceover-scripts-nov.md`](../voiceover-scripts-nov.md) (الصوت).
 
 ## حالة كل يوم
@@ -24,7 +24,7 @@
 | [الجمعة 20](2026-11-20-ready.md) | باقي 10 أيام: إيه اللي بيحصل بعد 30 نوفمبر؟ | 5 | ✓ · ✓ · ✓ | ✅ جاهز كامل | — | G8 ملكية حساب TikTok |
 | [السبت 21](2026-11-21-ready.md) | لغز #2 + ستوري أسئلة | 4 | ✓ · ✓ · ✓ | ✅ جاهز كامل | — | G8 ملكية حساب TikTok |
 | [الأحد 22](2026-11-22-ready.md) | الحلقة 5 + «سألتونا» + حل لغز #2 | 4 | ✓ · ✓ · ✓ | ✅ جاهز كامل | — | — |
-| [الإثنين 23](2026-11-23-ready.md) | الحلقة 6 + إعلان أسبوع الإغلاق (N1) | 7 | ✓ · ✓ · ✓ | ✅ جاهز كامل | — | G8 ملكية حساب TikTok · خاصية Community متاحة للقناة |
+| [الإثنين 23](2026-11-23-ready.md) | الحلقة 6 + إعلان أسبوع الإغلاق (N1) | 7 | ✓ · ✓ · ✓ | ✅ جاهز كامل | — | G8 ملكية حساب TikTok |
 | [الثلاثاء 24](2026-11-24-ready.md) | الحلقة 7 (مؤشر، لا اتهام) + «خطاب القبول: إيه اللي مكتوب فيه» | 3 | ✓ · ✓ · ✓ | ✅ جاهز كامل | — | — |
 | [الأربعاء 25](2026-11-25-ready.md) | الحلقة 8: المنشئ هو المعتمِد + باقي 5 أيام | 4 | ✓ · ✓ · ✓ | ✅ جاهز كامل | — | — |
 | [الخميس 26](2026-11-26-ready.md) | الحلقة 9: مورّد باسمين + رسالة للشركاء | 4 | ✓ · ✓ · ✓ | ✅ جاهز كامل | — | — |
@@ -53,7 +53,7 @@
 
 - `node scripts/close-date.js --check` و`node scripts/design-qa.js` و`node scripts/daily-packs.js --check` يطلعوا نظاف.
 - **تاريخ الإغلاق مؤكد من الـCEO** (قرار 1). كل نصوص الحزمة مكتوبة على 30 نوفمبر 11:59 م.
-- **روابط «الطلب\*»:** الرابط المكتوب دلوقتي هو **الفحص** (صفحة الطلب لسه بتعرض العدّاد). بعد إطفاء العدّاد (`showCount: false`، قرار منفصل) استبدله برابط «بعد إطفاء العدّاد» المكتوب تحت كل منشور.
+- **روابط «الطلب»:** بتروح على صفحة الطلب مباشرة (العدّاد اتطفى: `showCount: false`، 7 نوفمبر).
 - **TikTok وYouTube:** بعد تأكيد إن الحسابات ملك MFT (G8). لحد كده الصفوف دي 🟡 ومتتنشرش.
 - بعد النشر: سجّل الرابط الفعلي في `marketing/workflow/templates/content-log.csv`.
 
@@ -62,19 +62,21 @@
 | الأصل | الفحص |
 |---|---|
 | `ads/meta-feed-4x5_close-ar_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 15:58 |
-| `ads/video/council-story_ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · 7 نوف 11:15 |
-| `ads/video/days-4x5_ar_1080x1350_8s.mp4` | ✓ 1080×1350 · 8.0 ث · صامت · 7 نوف 11:16 |
-| `ads/video/meta-feed-4x5_close-ar_1080x1350_8s.mp4` | ✓ 1080×1350 · 8.0 ث · صامت · 7 نوف 11:15 |
-| `ads/video/selectivity-story_ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · 7 نوف 11:16 |
-| `ads/video/tiktok-9x16_close-ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · 7 نوف 11:15 |
-| `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · 7 نوف 11:15 |
-| `ads/video/video-16x9_close-ar_1920x1080_8s.mp4` | ✓ 1920×1080 · 8.0 ث · صامت · 7 نوف 11:15 |
-| `ads/video/video-16x9_live-ar_1920x1080_8s.mp4` | ✓ 1920×1080 · 8.0 ث · صامت · 7 نوف 11:15 |
+| `ads/video/council-story_ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
+| `ads/video/days-4x5_ar_1080x1350_8s.mp4` | ✓ 1080×1350 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:16 |
+| `ads/video/meta-feed-4x5_close-ar_1080x1350_8s.mp4` | ✓ 1080×1350 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
+| `ads/video/selectivity-story_ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:16 |
+| `ads/video/tiktok-9x16_close-ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
+| `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
+| `ads/video/video-16x9_close-ar_1920x1080_8s.mp4` | ✓ 1920×1080 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
+| `ads/video/video-16x9_live-ar_1920x1080_8s.mp4` | ✓ 1920×1080 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
 | `concepts/before-after/before-after_ar_link_1200x630.jpg` | ✓ 1200×630 · 7 نوف 16:00 |
+| `concepts/before-after/before-after_ar_portrait_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:00 |
 | `concepts/before-after/before-after_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:00 |
 | `concepts/founder-pov/founder-pov_ar_overlay_1080x1920.png` | ✓ 1080×1920 · 7 نوف 16:00 |
 | `concepts/hemicycle/hemicycle_ar_portrait_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:00 |
 | `concepts/hemicycle/hemicycle_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:00 |
+| `concepts/hook-360/hook-360_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:00 |
 | `concepts/no-source/no-source_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:00 |
 | `concepts/self-audit/self-audit_ar_link_1200x630.jpg` | ✓ 1200×630 · 7 نوف 16:00 |
 | `concepts/self-audit/self-audit_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:00 |
@@ -86,6 +88,8 @@
 | `guerrilla/graffiti/graffiti-02-errors_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
 | `guerrilla/graffiti/graffiti-03-closing_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:59 |
 | `guerrilla/graffiti/graffiti-03-closing_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
+| `guerrilla/graffiti/graffiti-04-365_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
+| `guerrilla/sticky/sticky-01-cash_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
 | `launch-week/launch-demo-report_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:59 |
 | `launch-week/launch-demo-report_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
 | `launch-week/launch-live-invite_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:59 |
@@ -99,10 +103,11 @@
 | `psych/8-hawk-eye/psych-8-hawk-eye_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
 | `social/instagram-square_close-ar_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:58 |
 | `social/story_close-ar_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:58 |
+| `social/story_live-ar_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:58 |
 | `social/youtube-thumbnail_live-recording-ar_1280x720.jpg` | ✓ 1280×720 · 7 نوف 15:58 |
-| `video/reel-duplicate-payment_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · 7 نوف 12:57 |
-| `video/reel-ghost-vendor_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · 7 نوف 11:30 |
-| `video/reel-no-receipt_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · 7 نوف 11:37 |
-| `video/reel-post-close-entry_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · 7 نوف 11:23 |
-| `video/reel-round-manual_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · 7 نوف 11:33 |
-| `video/reel-suspense-account_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · 7 نوف 11:27 |
+| `video/reel-duplicate-payment_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 12:57 |
+| `video/reel-ghost-vendor_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 11:30 |
+| `video/reel-no-receipt_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 11:37 |
+| `video/reel-post-close-entry_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 11:23 |
+| `video/reel-round-manual_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 11:33 |
+| `video/reel-suspense-account_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 11:27 |

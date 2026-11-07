@@ -1,0 +1,19 @@
+1
+00:00:00,200 --> 00:00:04,800
+An entry dated September… created in October. After the statements were approved.
+
+2
+00:00:05,300 --> 00:00:11,800
+Why it slips: the statements were already signed off. Auditors see balances, not creation dates. And a user outside finance posted it.
+
+3
+00:00:12,200 --> 00:00:24,000
+SEG checks every entry date against its creation date in the Odoo log. Three days after close, backdated. A high-severity finding, with the log as evidence. Illustrative test data.
+
+4
+00:00:24,300 --> 00:00:28,800
+The control: a lock date on every approved period, and manual entries for accountants only.
+
+5
+00:00:29,300 --> 00:00:34,000
+Standard Enterprise Governance, the platform that audits itself. Free trial-balance check at seg-audit.com.

@@ -19,6 +19,11 @@
 // the close date. No cap number of any kind (adversarial review, 7 Nov 2026).
 
 const A = {
+  // variety pass (7 Nov 2026): alternatives so no platform repeats an asset within 7 days
+  hookStory: 'concepts/hook-360/hook-360_ar_story_1080x1920.jpg', liveStory: 'social/story_live-ar_1080x1920.jpg',
+  g365Story: 'guerrilla/graffiti/graffiti-04-365_ar_story_1080x1920.jpg', stickyStory: 'guerrilla/sticky/sticky-01-cash_ar_story_1080x1920.jpg',
+  hemiStory: 'concepts/hemicycle/hemicycle_ar_story_1080x1920.jpg', hemiSquare: 'concepts/hemicycle/hemicycle_ar_square_1080x1080.jpg',
+  baPortrait: 'concepts/before-after/before-after_ar_portrait_1080x1350.jpg',
   reel: (n) => `video/reel-${n}_ar_1080x1920.mp4`,
   closeFeed: 'ads/meta-feed-4x5_close-ar_1080x1350.jpg',
   closeFeedV: 'ads/video/meta-feed-4x5_close-ar_1080x1350_8s.mp4',
@@ -253,7 +258,7 @@ ${TAGS_IG}`,
 وفيه تاريخ واحد مش هيتغيّر: ${CLOSE_LINE}
 
 لو مش متأكد إن الموضوع يستاهل، ابدأ بالفحص المجاني على ميزانك. الرابط في أول تعليق.` },
-      { t: '13:00', ch: 'ig-story', fmt: 'story-video', asset: [A.inviteStory, A.council], id: 'w1-d6-ig-s-1', cta: 'live', hook: 'بكرة 7 بالليل · مقعدك في المجلس… لو اتقبلت', text: 'إطار 1: الدعوة («بكرة 7 بالليل»). إطار 2: فيديو المجلس 8 ث.', sticker: 'إطار 1: ملصق العدّ التنازلي نفسه بتاع يوم 8 (Instagram بيسمح تعيد مشاركته) + ملصق رابط حدث البث. إطار 2: ملصق رابط «قدّم طلبك» (الرابط الحالي: الفحص).', need: LIVE_NEED },
+      { t: '13:00', ch: 'ig-story', fmt: 'story-video', asset: A.council, id: 'w1-d6-ig-s-1', cta: 'live', hook: 'بكرة 7 بالليل · مقعدك في المجلس… لو اتقبلت', text: 'فيديو المجلس 8 ث + إعادة مشاركة ملصق العدّ التنازلي بتاع يوم 8 («بكرة 7 بالليل»).', sticker: 'إعادة مشاركة ملصق العدّ التنازلي بتاع يوم 8 (Instagram بيسمح بيها) + ملصق رابط حدث البث + ملصق رابط «قدّم طلبك».', need: LIVE_NEED },
       { t: '20:00', ch: 'fb', fmt: 'img-1x1', asset: A.select, id: 'w1-d6-fb-a-1', cta: 'apply', hook: 'مش أي شركة هتدخل برنامج الأعضاء المؤسِّسين.',
         text: `مش أي شركة هتدخل برنامج الأعضاء المؤسِّسين في Standard Enterprise Governance (SEG).
 كل طلب بيراجعه فريق MFT بنفسه، ومش كل طلب بيتقبل.
@@ -277,7 +282,7 @@ ${TAGS_IG}` },
     gates: ['البيانات على الهوا: حساب تجريبي وداتا اختبارية بس، وعلى الشاشة طول البث «عرض توضيحي · داتا اختبارية». لا بيانات MFT ولا أي عميل.', '**سجّل البث** (مصدر N6 قصاصات بكرة، والنسخة الكاملة لـYouTube).', 'آخر 5 دقايق: التاريخ + الانتقاء + معايير القبول (**مسودة**؛ متتقالش كمعايير نهائية قبل اعتماد الـCEO، قرار 3).'],
     paid: 'C3 LinkedIn (اختبار 300$): Document Ad بالكاروسيل المُصحَّح، **بقرار الـCEO**.',
     posts: [
-      { t: '10:00', ch: 'li-page', fmt: 'img-1x1', asset: A.invite, id: 'w1-d7-li-a-1', cta: 'live', hook: 'الإقفال جايّ. وفيه مفاجآت.', need: LIVE_NEED,
+      { t: '10:00', ch: 'li-page', fmt: 'img-1x1', asset: A.graffiti, id: 'w1-d7-li-a-1', cta: 'live', hook: 'الإقفال جايّ. وفيه مفاجآت.', need: LIVE_NEED,
         text: `الإقفال جايّ. وفيه مفاجآت.
 
 الليلة الساعة 7 بتوقيت القاهرة، بث مباشر:
@@ -304,14 +309,14 @@ ${TAGS_IG}` },
 بث مباشر الليلة الساعة 7 بتوقيت القاهرة: نقرا ميزان مراجعة لشركة نموذجية على الهوا (عرض توضيحي، داتا اختبارية) ونطلّع 5 نقاط خطر في دقائق.
 
 سجّل في الحدث واتفكّر بالموعد: {LINK}` },
-      { t: '13:00', ch: 'ig-story', fmt: 'story-img', asset: A.graffitiStory, id: 'w1-d7-ig-s-1', cta: 'live', hook: 'الليلة 7', text: 'الإقفال جايّ + ملصق العدّ التنازلي للبث.', sticker: 'ملصق العدّ التنازلي بتاع يوم 8 + ملصق رابط الحدث.', need: LIVE_NEED },
+      { t: '13:00', ch: 'ig-story', fmt: 'story-img', asset: A.hookStory, id: 'w1-d7-ig-s-1', cta: 'live', hook: 'الليلة 7', text: 'تصميم «مين بيراجع دفاترك؟» (hook-360) + ملصق العدّ التنازلي للبث.', sticker: 'ملصق العدّ التنازلي بتاع يوم 8 + ملصق رابط الحدث.', need: LIVE_NEED },
       { t: '17:00', ch: 'ig', fmt: 'img-1x1', asset: A.graffiti, id: 'w1-d7-ig-a-1', cta: 'live', hook: 'الإقفال جايّ. وفيه مفاجآت.', need: LIVE_NEED,
         text: `الإقفال جايّ. وفيه مفاجآت.
 بث مباشر الليلة · 7 مساءً بتوقيت القاهرة.
 فعّل التذكير من الستوري، والرابط في البايو.
 
 ${TAGS_IG}` },
-      { t: '19:00', ch: 'ig-story', fmt: 'story-img', asset: A.inviteStory, id: 'w1-d7-ig-s-2', cta: 'live', hook: 'مباشر الآن', text: '«مباشر الآن» على بطاقة الدعوة.', sticker: 'ملصق نص «مباشر الآن 🔴» + ملصق رابط البث.', need: LIVE_NEED },
+      { t: '19:00', ch: 'ig-story', fmt: 'story-img', asset: A.liveStory, id: 'w1-d7-ig-s-2', cta: 'live', hook: 'مباشر الآن', text: '«مباشر الآن» على تصميم «متاح الآن».', sticker: 'ملصق نص «مباشر الآن 🔴» + ملصق رابط البث.', need: LIVE_NEED },
       { t: '19:55', ch: 'live', fmt: 'live', id: 'live-close', cta: 'apply', hook: 'اللي هنا النهارده سمعها الأول',
         text: `آخر 5 دقايق في البث (على الهوا، مش منشور):
 «قبل ما نقفل: برنامج الأعضاء المؤسِّسين في SEG. ${CLOSE_LINE} العضوية بالطلب، وفريق MFT بيراجع كل طلب بنفسه، ومش كل طلب بيتقبل. وبنفكّر في أربع حاجات قبل ما نقبل أي طلب: مين المسؤول المالي اللي هيتابع، والدفاتر على Odoo أو ميزان شهري، وجلسة إعداد خلال 14 يوم، ورأيك لفريق المنتج في أول 3 شهور. (دي مسودة، والمعايير النهائية هننشرها الأحد.)»
@@ -513,7 +518,7 @@ ${TAGS_IG}`,
       { t: '10:00', ch: 'li-page', fmt: 'img-4x5', asset: A.tbPortrait, id: 'w3-d3-li-a-1', cta: 'check', hook: 'الحلقة 2 من 10: نقدية برصيد دائن',
         text: episode(2, { seen: 'رصيد الخزينة دائن، يعني عكس طبيعته', why: 'الميزان بيتوازن، فالرصيد الغلط بيستخبى جوه الإجمالي', how: 'بيقارن كل رصيد بطبيعة حسابه، ويطلّع أي حساب عكس طبيعته (من الميزان مباشرة)', control: 'جرد يومي للخزينة ومطابقته مع الدفاتر' }),
         note: 'الأصل اتغيّر من `launch-demo-report` (في التقويم) لـ`tb-check_ar_portrait`: الميزان اللي عليه الخزينة برصيد دائن، فهو دليل الحلقة نفسها. `launch-demo-report` محجوز للحلقتين 9 و10.' },
-      { t: '13:00', ch: 'ig-story', fmt: 'story-img', asset: A.closeStory, id: 'w3-d3-ig-s-1', cta: 'apply', hook: left(17), text: 'تصميم الإغلاق + العدّ.', sticker: `ملصق نص «${left(17)}» + ملصق **Countdown** من Instagram لـ30 نوفمبر 23:59 بعنوان «سعر المؤسِّس يُغلق» + ملصق رابط «قدّم طلبك» (الرابط الحالي: الفحص).` }
+      { t: '13:00', ch: 'ig-story', fmt: 'story-img', asset: A.g365Story, id: 'w3-d3-ig-s-1', cta: 'apply', hook: left(17), text: 'تصميم الإغلاق + العدّ.', sticker: `ملصق نص «${left(17)}» + ملصق **Countdown** من Instagram لـ30 نوفمبر 23:59 بعنوان «سعر المؤسِّس يُغلق» + ملصق رابط «قدّم طلبك».` }
     ]
   },
   {
@@ -684,7 +689,7 @@ ${TAGS_LI}` },
 #محاسبة #مراجعة #Odoo #SEG` },
       { t: '21:00', ch: 'tt', fmt: 'reel', asset: A.closeTTv, id: 'w4-d2-tt-a-1', cta: 'check', hook: 'فيه باب بيقفل يوم 30 نوفمبر… ومش أي حد هيدخل.', cond: 'G8 ملكية حساب TikTok',
         text: `سعر المؤسِّس بيتقفل 30/11 الساعة 11:59 بالليل ⏳ والعضوية بالطلب. الفحص المجاني في البايو. #محاسبة #Odoo #مراجعة_داخلية`, note: 'الفيديو صامت (8 ث): أضف صوت من مكتبة TikTok التجارية، أو VO من سكربت T3.' },
-      { t: '21:00', ch: 'yt-community', fmt: 'img-1x1', asset: A.closeSquare, id: 'w4-d2-yt-a-1', cta: 'check', hook: 'آخر أسبوع لسعر المؤسِّس.', cond: 'خاصية Community متاحة للقناة',
+      { t: '21:00', ch: 'yt', fmt: 'reel', asset: A.closeTTv, id: 'w4-d2-yt-a-1', cta: 'check', hook: 'آخر أسبوع لسعر المؤسِّس.', title: 'آخر أسبوع: سعر المؤسِّس يُغلق 30 نوفمبر | SEG #Shorts', note: 'Short بدل Community post (الخاصية مش مؤكدة للقناة). الكابشن SRT جاهز.',
         text: `آخر أسبوع: ${CLOSE_LINE} العضوية بالطلب. الفحص المجاني لميزانك: {LINK}` }
     ]
   },
@@ -717,7 +722,7 @@ ${CLOSE_LINE}
     posts: [
       { t: '10:00', ch: 'li-page', fmt: 'img-1x1', asset: A.lineup11, id: 'w4-d4-li-a-1', cta: 'check', hook: 'الحلقة 8 من 10: مين أنشأه؟ ومين اعتمده؟ نفس الشخص.',
         text: episode(8, { seen: 'قيود يدوية نفس الشخص أنشأها واعتمدها', why: 'في الفرق الصغيرة الصلاحيات بتتجمّع في إيد واحدة، ومحدش بيلاحظ', how: 'بيقرا سجل كل قيد: مين أنشأه ومين اعتمده (مع ربط Odoo)', control: 'فصل صلاحية الإنشاء عن صلاحية الاعتماد في Odoo' }) },
-      { t: '11:00', ch: 'fb', fmt: 'img-4x5', asset: A.closeFeed, id: 'w4-d4-fb-a-1', cta: 'apply', hook: `${left(25)}.`,
+      { t: '11:00', ch: 'fb', fmt: 'img-4x5', asset: A.days, id: 'w4-d4-fb-a-1', cta: 'apply', hook: `${left(25)}.`,
         text: `${left(25)} ⏳
 سعر المؤسِّس في SEG بيتقفل الإثنين 30 نوفمبر، 11:59 مساءً بتوقيت القاهرة.
 
@@ -725,7 +730,7 @@ ${CLOSE_LINE}
 
 ابدأ من هنا 👇
 {LINK}` },
-      { t: '13:00', ch: 'ig-story', fmt: 'story-video', asset: A.selectStoryV, id: 'w4-d4-ig-s-1', cta: 'apply', hook: left(25), text: 'فيديو الانتقاء 8 ث + العدّ.', sticker: `ملصق نص «${left(25)}» + ملصق Countdown لـ30 نوفمبر 23:59 + ملصق رابط «قدّم طلبك» (الرابط الحالي: الفحص).` },
+      { t: '13:00', ch: 'ig-story', fmt: 'story-video', asset: A.selectStoryV, id: 'w4-d4-ig-s-1', cta: 'apply', hook: left(25), text: 'فيديو الانتقاء 8 ث + العدّ.', sticker: `ملصق نص «${left(25)}» + ملصق Countdown لـ30 نوفمبر 23:59 + ملصق رابط «قدّم طلبك».` },
       { t: '20:00', ch: 'ig', fmt: 'video-4x5', asset: A.daysV, id: 'w4-d4-ig-a-1', cta: 'apply', hook: `${left(25)}.`,
         text: `${left(25)}.
 مش بنعدّ مقاعد. بنعدّ أيام.
@@ -794,7 +799,7 @@ ${TAGS_IG}` }
     gates: [],
     paid: 'لا تغيير.',
     posts: [
-      { t: '13:00', ch: 'ig-story', fmt: 'story-img', asset: A.closeStory, id: 'w4-d7-ig-s-1', cta: 'apply', hook: left(28), text: 'تصميم الإغلاق + العدّ.', sticker: `ملصق نص «${left(28)}» + ملصق Countdown لـ30 نوفمبر 23:59 + ملصق رابط «قدّم طلبك» (الرابط الحالي: الفحص).` },
+      { t: '13:00', ch: 'ig-story', fmt: 'story-img', asset: A.stickyStory, id: 'w4-d7-ig-s-1', cta: 'apply', hook: left(28), text: '«ماتنساش…» + العدّ.', sticker: `ملصق نص «${left(28)}» + ملصق Countdown لـ30 نوفمبر 23:59 + ملصق رابط «قدّم طلبك».` },
       { t: '20:00', ch: 'fb', fmt: 'video-4x5', asset: A.closeFeedV, id: 'w4-d7-fb-a-1', cta: 'apply', hook: `${left(28)}.`,
         text: `${left(28)} ⏳
 سعر المؤسِّس في SEG بيتقفل الإثنين 30 نوفمبر، 11:59 مساءً بتوقيت القاهرة. وبعدها ما بيرجعش.
@@ -810,7 +815,7 @@ ${TAGS_IG}` }
     gates: ['رسالة واتساب/بريد: **فقط** لمن وافق صراحةً على التواصل (Opt-in) وسجّل الفحص أو البث ولم يقدّم.'],
     paid: 'لا تغيير.',
     posts: [
-      { t: '10:00', ch: 'li-page', fmt: 'img-1x1', asset: A.demo, id: 'w5-d1-li-a-1', cta: 'apply', hook: '10 ملاحظات. تقرير واحد. معتمد باسم مراجع.',
+      { t: '10:00', ch: 'li-page', fmt: 'img-4x5', asset: A.baPortrait, id: 'w5-d1-li-a-1', cta: 'apply', hook: '10 ملاحظات. تقرير واحد. معتمد باسم مراجع.',
         text: `الحلقة 10 من 10 (الختام) · تشريح شركة النموذج للتوزيع (مثال توضيحي: اسم وهمي، داتا اختبارية).
 
 10 ملاحظات طلعت على مدار المسلسل: حساب وسيط بيكبر، ونقدية برصيد دائن، ودفعة مكررة، وقيد بعد الإقفال، وأرقام مدوّرة آخر الشهر، ومصروف من غير مرفق، وتطابق بنكي يستاهل سؤال، ومنشئ هو نفسه المعتمِد، ومورّد باسمين.
@@ -881,7 +886,7 @@ ${SELECT_LINE}
 
 ابدأ من هنا 👇
 {LINK}` },
-      { t: '13:00', ch: 'ig-story', fmt: 'story-video', asset: A.selectStoryV, id: 'w5-d2-ig-s-1', cta: 'apply', hook: 'النهارده 11:59 م', text: 'فيديو الانتقاء + العدّ.', sticker: 'ملصق نص «النهارده 11:59 م» + ملصق Countdown لـ23:59 + ملصق رابط «قدّم طلبك» (الرابط الحالي: الفحص).' },
+      { t: '13:00', ch: 'ig-story', fmt: 'story-img', asset: A.graffitiStory, id: 'w5-d2-ig-s-1', cta: 'apply', hook: 'النهارده 11:59 م', text: '«الإقفال جايّ» + العدّ.', sticker: 'ملصق نص «النهارده 11:59 م» + ملصق Countdown لـ23:59 + ملصق رابط «قدّم طلبك».' },
       { t: '17:00', ch: 'ig-story', fmt: 'story-img', asset: A.closeStory, id: 'w5-d2-ig-s-2', cta: 'apply', hook: 'باقي 7 ساعات', text: 'تصميم الإغلاق + العدّ بالساعات.', sticker: 'ملصق نص «باقي 7 ساعات» + ملصق رابط. **وFacebook Story بنفس الإطار** (`w5-d2-fb-s-1`).' },
       { t: '20:00', ch: 'ig', fmt: 'reel', asset: A.closeTTv, id: 'w5-d2-ig-r-1', cta: 'apply', hook: 'باقي 4 ساعات.',
         text: `باقي 4 ساعات.
@@ -894,7 +899,7 @@ ${TAGS_IG}`, note: 'فيديو 8 ث صامت: أضف صوت من مكتبة Inst
         text: `الباب بيقفل الليلة 11:59 ⏳ سعر المؤسِّس في SEG، والعضوية بالطلب. الرابط في البايو. ${TAGS_TT}` },
       { t: '20:00', ch: 'yt', fmt: 'reel', asset: A.closeTTv, id: 'w5-d2-yt-r-1', cta: 'check', hook: 'آخر يوم لسعر المؤسِّس', title: 'سعر المؤسِّس يُغلق الليلة 11:59 | SEG #Shorts',
         text: `سعر المؤسِّس في برنامج الأعضاء المؤسِّسين بيتقفل الليلة، الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة. العضوية بالطلب. الفحص المجاني: {LINK}` },
-      { t: '22:00', ch: 'ig-story', fmt: 'story-video', asset: A.council, id: 'w5-d2-ig-s-3', cta: 'apply', hook: 'ساعتين', text: 'فيديو المجلس + «ساعتين».', sticker: 'ملصق نص «ساعتين» + ملصق رابط «قدّم طلبك» (الرابط الحالي: الفحص).' }
+      { t: '22:00', ch: 'ig-story', fmt: 'story-video', asset: A.council, id: 'w5-d2-ig-s-3', cta: 'apply', hook: 'ساعتين', text: 'فيديو المجلس + «ساعتين».', sticker: 'ملصق نص «ساعتين» + ملصق رابط «قدّم طلبك».' }
     ],
     after: `## صباح الثلاثاء 1 ديسمبر 09:00 (خارج نطاق الحزمة، للتذكير)
 
@@ -918,13 +923,13 @@ const STORY = {
   loss: 'psych/1-loss-aversion/' + ST('psych-1-loss-aversion'), nosource: 'concepts/no-source/' + ST('no-source'),
   hawk: 'psych/8-hawk-eye/' + ST('psych-8-hawk-eye')
 };
-const story = (d, wk, asset, cta, hook, text, sticker, fmt = 'story-img') => ({ t: '13:00', ch: 'ig-story', fmt, asset, id: `${wk}-ig-s-9`, cta, hook, text, sticker: `${sticker} + ملصق رابط (${cta === 'apply' ? '«قدّم طلبك»، الرابط الحالي: الفحص' : '«افحص ميزانك»'}). نفس الإطار Facebook Story.` });
+const story = (d, wk, asset, cta, hook, text, sticker, fmt = 'story-img') => ({ t: '13:00', ch: 'ig-story', fmt, asset, id: `${wk}-ig-s-9`, cta, hook, text, sticker: `${sticker} + ملصق رابط (${cta === 'apply' ? '«قدّم طلبك»' : '«افحص ميزانك»'}). نفس الإطار Facebook Story.` });
 const vid = (t, ch, asset, fmt, id, hook, text, extra = {}) => ({ t, ch, fmt, asset, id, cta: 'check', hook, text, cond: ch === 'tt' ? 'G8 ملكية حساب TikTok' : undefined, note: 'فيديو 8 ث صامت: أضف صوت من مكتبة المنصة.', ...extra });
 const EXTRA = {
   8: [vid('21:00', 'yt', 'ads/video/video-16x9_live-ar_1920x1080_8s.mp4', 'video-16x9', 'w1-d5-yt-a-1', 'المنصة اللي بتراجع نفسها… متاحة الآن.', `Standard Enterprise Governance (SEG): مراجعة مستمرة لدفاتر Odoo، ولكل ملاحظة دليلها. الفحص المجاني لميزان شركتك: {LINK}`, { title: 'SEG متاحة الآن: المراجعة المستمرة لدفاترك | Shorts' })],
   10: [vid('21:30', 'tt', A.liveTTv, 'reel', 'w1-d7-tt-a-1', 'دفاترك بتتراجع مرة في السنة… والباقي؟', `الليلة 7 بث مباشر: هنقرا ميزان شركة نموذجية على الهوا (عرض توضيحي). الفحص المجاني في البايو. ${TAGS_TT}`)],
   11: [story(11, 'w2-d1', STORY.demo, 'check', 'اللي فاتك في البث', 'شاشة تقرير SEG على شركة نموذجية (مثال توضيحي · داتا اختبارية).', 'ملصق نص «اللي فاتك في البث: ده التقرير» + ملصق صغير «مثال توضيحي · داتا اختبارية»')],
-  12: [story(12, 'w2-d2', STORY.hemi, 'apply', 'مقعدك في المجلس… لو اتقبلت', 'مجلس الأعضاء المؤسِّسين: بالطلب، وسعر المؤسِّس يُغلق 30 نوفمبر.', 'ملصق نص «ليه مش أي شركة؟» (نفس سؤال فيديو المؤسس)')],
+  12: [story(12, 'w2-d2', STORY.select, 'apply', 'مقعدك في المجلس… لو اتقبلت', 'مش كل طلب بيتقبل: بالطلب، وسعر المؤسِّس يُغلق 30 نوفمبر.', 'ملصق نص «ليه مش أي شركة؟» (نفس سؤال فيديو المؤسس)')],
   13: [story(13, 'w2-d3', A.closeStory, 'check', left(13), 'تصميم الإغلاق + العدّ.', `ملصق نص «${left(13)}» + ملصق Countdown لـ30 نوفمبر 23:59`)],
   15: [story(15, 'w3-d1', A.selectStoryV, 'apply', 'كل طلب بنقراه بنفسنا', 'فيديو الانتقاء 8 ث يوم نشر معايير القبول.', 'ملصق نص «4 أسئلة قبل ما نقبل أي طلب: في البوست»', 'story-video')],
   16: [story(16, 'w3-d2', STORY.errors, 'check', 'دفاترك فيها أخطاء… وإنت لسه مش عارف', 'بداية مسلسل «تشريح شركة النموذج» (مثال توضيحي، داتا اختبارية).', 'ملصق نص «الحلقة 1 من 10 النهارده على LinkedIn»')],
@@ -941,7 +946,7 @@ const EXTRA = {
        vid('21:00', 'yt', A.close169, 'video-16x9', 'w4-d5-yt-a-1', 'سعر المؤسِّس يُغلق 30 نوفمبر', `سعر المؤسِّس في برنامج الأعضاء المؤسِّسين بيتقفل الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة. العضوية بالطلب. الفحص المجاني: {LINK}`, { title: 'سعر المؤسِّس يُغلق 30 نوفمبر | SEG' })],
   27: [story(27, 'w4-d6', STORY.hawk, 'apply', left(27), 'عين على دفاترك. كل يوم.', `ملصق نص «${left(27)}» + ملصق Countdown لـ30 نوفمبر 23:59`),
        vid('21:00', 'tt', A.closeTTv, 'reel', 'w4-d6-tt-a-1', 'الباب بيقفل بعد 3 أيام.', `${left(27)} ⏳ سعر المؤسِّس في SEG بيتقفل 30/11 الساعة 11:59 بالليل، والعضوية بالطلب. الفحص المجاني في البايو. ${TAGS_TT}`)],
-  29: [story(29, 'w5-d1', A.closeStory, 'apply', 'بكرة آخر يوم', 'تصميم الإغلاق.', 'ملصق نص «بكرة آخر يوم» + ملصق Countdown لـ30 نوفمبر 23:59')]
+  29: [story(29, 'w5-d1', A.hemiStory, 'apply', 'بكرة آخر يوم', 'مجلس الأعضاء المؤسِّسين.', 'ملصق نص «بكرة آخر يوم» + ملصق Countdown لـ30 نوفمبر 23:59')]
 };
 for (const D of DAYS) {
   if (EXTRA[D.d]) D.posts.push(...EXTRA[D.d]);

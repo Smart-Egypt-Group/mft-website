@@ -78,7 +78,7 @@ module.exports = {
   founding: {
     enabled: true,
     total: 50,
-    showCount: true,
+    showCount: false, // off (CEO, 7 Nov 2026): scarcity = the close window + selectivity, no counter
     filled: 17,
     asOf: '2026-11-03',
     // Founder-price close (working assumption, 6 Nov 2026; the CEO confirms). The ONE place the date

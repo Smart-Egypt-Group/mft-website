@@ -1,0 +1,19 @@
+1
+00:00:00,200 --> 00:00:04,800
+Fifty thousand. A hundred thousand. Twenty-five thousand. Very neat. All in the last two days of the month.
+
+2
+00:00:05,300 --> 00:00:11,800
+Why they don't stand out: manual entries are few. Round figures look like estimates. And the audit comes months later.
+
+3
+00:00:12,200 --> 00:00:24,000
+SEG isolates manual entries and looks at timing and amounts. Three round entries, last two days, no document attached. Sixty-eight percent of manual-entry value. Illustrative test data.
+
+4
+00:00:24,300 --> 00:00:28,800
+The control: a supporting document above a threshold, and senior approval for closing entries.
+
+5
+00:00:29,300 --> 00:00:34,000
+Standard Enterprise Governance, the platform that audits itself. seg-audit.com.
