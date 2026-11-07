@@ -3,7 +3,7 @@
 // (founding.api.seats) via main.js; the form logic is in scripts/apply.js. Contract: seg-audit
 // docs/api/founding-applications.md. Without JS, or before the counter answers, the numbers are
 // the last known count from site.config (founding.filled / asOf).
-const { t, esc, plain, url, seats, seatsHtml } = require('../html');
+const { t, esc, plain, url, seats, seatsHtml, windowPanel } = require('../html');
 const { seeAlso } = require('./services');
 
 module.exports = function foundingApply(ctx) {
@@ -45,12 +45,12 @@ module.exports = function foundingApply(ctx) {
       <h1 id="ap-title">${t(A.headline)}</h1>
       <p class="lead">${t(A.intro)}</p>
     </div>
-    <div class="seat-panel apply-counter" data-seats-hide="off" aria-live="polite">
+    ${F.showCount ? `<div class="seat-panel apply-counter" data-seats-hide="off" aria-live="polite">
       <p class="seat-count"><span class="seat-left lat" data-seats="left">${F.total - filled}</span><span class="seat-total lat">/<span data-seats="total">${F.total}</span></span></p>
       <p class="seat-caption">${s(A.counter.caption)}</p>
       <p class="seat-stale" data-seats-stale hidden>${t(A.counter.asOf)} · <span class="lat" data-seats="asof">${esc(F.asOf || '')}</span></p>
       <p class="seat-note" data-seats-show="full" hidden>${t(A.counter.full)}</p>
-    </div>
+    </div>` : windowPanel(ctx, ' apply-counter')}
   </div>
 </section>`;
 

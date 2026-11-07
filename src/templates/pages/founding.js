@@ -1,9 +1,9 @@
-// Founding Members: the launch page of the platform, Standard Enterprise Governance (SEG). Scarcity is the fixed cap (50 seats; founder price: 50% off
-// for life). A live counter (seats filled / left) exists but stays off until site.config → founding
-// .showCount is true; copy from content/<lang>.js → founding (counter copy in founding.counter).
+// Founding Members: the launch page of the platform, Standard Enterprise Governance (SEG). Scarcity is the close
+// window (site.config → founding.closesAt) and selection by application; no seat number, no discount figure.
+// A live counter (seats filled / left) exists but stays off until site.config → founding.showCount is true; copy from content/<lang>.js → founding (counter copy in founding.counter).
 // "Claim your seat" CTAs go to the application form (founding-members/apply/); the free check goes
 // to the app sign-up with a UTM tag per placement.
-const { t, esc, plain, url, seats, fm, fmh, signupUrl } = require('../html');
+const { t, esc, plain, url, seats, fm, fmh, windowPanel, signupUrl } = require('../html');
 const { faqBlock, faqSchema, seeAlso } = require('./services');
 
 // 50 seats as a grid: the visitor's seat highlighted, the rest open; with the counter on, filled seats
@@ -40,7 +40,7 @@ module.exports = function founding(ctx) {
       </div>
       <ul class="hero-assurance">${P.hero.assurance.map((x) => `<li>${t(x)}</li>`).join('')}</ul>
     </div>
-    <div class="seat-panel" data-seats-hide="off">
+    ${F.showCount ? `<div class="seat-panel" data-seats-hide="off">
       <p class="seat-count"><span class="seat-left lat" data-seats="left">${F.showCount ? F.total - F.filled : F.total}</span>${F.showCount ? `<span class="seat-total lat">/<span data-seats="total">${F.total}</span></span>` : ''}</p>
       <p class="seat-caption">${fmh(ctx, 'hero.meterCaption')}</p>
       ${seatGrid(ctx)}
@@ -49,7 +49,7 @@ module.exports = function founding(ctx) {
         <li><span class="seat seat-next" aria-hidden="true"></span>${s(P.hero.legend.next)}</li>
         <li><span class="seat" aria-hidden="true"></span>${s(P.hero.legend.open)}</li>
       </ul>
-    </div>
+    </div>` : windowPanel(ctx)}
   </div>
 </section>`;
 

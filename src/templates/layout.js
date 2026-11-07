@@ -5,7 +5,7 @@ const { esc, t, plain, url, link, btn, fmh } = require('./html');
 // Live seats counter (main.js): the platform endpoint and the last known count it falls back to.
 function seatsAttrs(ctx) {
   const F = ctx.config.founding;
-  if (!F || !F.enabled || !F.api || !F.api.seats) return '';
+  if (!F || !F.enabled || !F.showCount || !F.api || !F.api.seats) return ''; // counter off: no live seats
   const filled = F.showCount ? F.filled : 0;
   return ` data-seats-api="${esc(F.api.seats)}" data-seats-left="${F.total - filled}" data-seats-total="${F.total}" data-seats-asof="${esc(F.asOf || '')}"`;
 }
