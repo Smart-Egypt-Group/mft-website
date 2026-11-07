@@ -283,37 +283,103 @@ ix += `\n## الشروط العامة (على كل الأيام)\n\n` + GLOBAL.m
 ix += `\n## الأصول المستخدمة (اتفحصت كلها)\n\n| الأصل | الفحص |\n|---|---|\n` + [...new Map([...cache.values()].map((r) => [r.rel, r])).values()].sort((a, b) => a.rel.localeCompare(b.rel)).map((r) => `| \`${r.rel}\` | ${r.info} |`).join('\n') + '\n';
 fs.writeFileSync(path.join(OUT, '00-november-index.md'), ix);
 console.log(`wrote ${days.length} day files + 00-november-index.md`);
-// ---- the calendar (november-calendar.md, between CAL markers): one source with the packs ----
-const PLAT = { 'li-page': 'LinkedIn', 'li-founder': 'LinkedIn', fb: 'Facebook', ig: 'Instagram', 'ig-story': 'Instagram', tt: 'TikTok', yt: 'YouTube', 'yt-community': 'YouTube' };
+// ---- the calendar (november-calendar.md, between CAL markers) + platform observation log ----
+// One source with the packs. Platforms = those connected through Composio (Facebook, Instagram,
+// LinkedIn page + founder, YouTube). TikTok is listed apart until its connection is complete.
+// Readiness chain per post: asset produced → uploaded → reviewed → copy ready. Produced and copy-ready
+// come from the files and checks; uploaded / reviewed from marketing/content/daily/readiness.json.
+const RD = JSON.parse(fs.readFileSync(path.join(OUT, 'readiness.json'), 'utf8'));
+const rd = (id) => RD.posts[id] || {};
+const PLAT = { 'li-page': 'LinkedIn', 'li-founder': 'LinkedIn', fb: 'Facebook', ig: 'Instagram', 'ig-story': 'Instagram', yt: 'YouTube', 'yt-community': 'YouTube', tt: 'TikTok', wa: 'يدوي', live: 'يدوي' };
 const TYPE = (f) => ({ text: 'نص', 'img-4x5': 'بوست', 'img-1x1': 'بوست', 'img-link': 'بوست', 'story-img': 'ستوري', 'story-video': 'ستوري فيديو', reel: 'ريل / فيديو 9:16', 'video-4x5': 'فيديو', 'video-16x9': 'فيديو 16:9', 'yt-long': 'فيديو طويل', carousel: 'كاروسيل', event: 'حدث', 'event-comment': 'تعليق', 'pinned-comment': 'تعليق مثبّت', live: 'بث' }[f] || f);
+const NO_ASSET = ['text', 'event-comment', 'pinned-comment', 'live'];
+// deadline: produced assets need upload + review the day before (18:00); human inputs get their own
+const DEADLINE = [[/^N6/, '11 نوف 13:00 (تقطيع + مراجعة بعد بث 10)'], [/^N7/, '11 نوف 20:00 (تصوير + مونتاج)'], [/^N3/, '14 نوف 18:00 (بعد اعتماد المعايير)'], [/رابط حدث البث/, '8 نوف 12:30 (بعد إنشاء الحدث)'], [/قرار منصة البث/, '8 نوف 11:00'], [/قرار الـCEO 2/, '26 نوف 18:00']];
+const deadline = (d, p) => { const m = p.need && DEADLINE.find(([re]) => re.test(p.need)); return m ? m[1] : `${d - 1} نوف 18:00`; };
+// observations: derived, typed, so they can be counted per platform and tracked to resolution
+const OBS = {
+  missing: { t: 'أصل ناقص (تصوير / إنتاج)', fix: 'تثبيت التصوير والمونتاج قبل يومين من النشر، والبديل الجاهز جاهز للنشر لو اتأخر' },
+  input: { t: 'إدخال / قرار بشري', fix: 'الحسم قبل الموعد المكتوب في «جاهز قبل»، وإلا يتنشر البديل' },
+  silent: { t: 'فيديو صامت', fix: 'صوت من مكتبة المنصة الآن، وتسجيل VO من السكربتات الجاهزة (voiceover-scripts-nov.md)' },
+  apply: { t: 'رابط «الطلب» = الفحص مؤقتًا', fix: 'إطفاء العدّاد في صفحة الطلب، ثم تبديل الرابط المكتوب تحت كل منشور (G10)' },
+  reuse: { t: 'تكرار أصل خلال 7 أيام على نفس المنصة', fix: 'بديل من نفس العائلة أو قص مختلف، علشان ما يبانش متكرر للمتابع' },
+  feature: { t: 'خاصية منصة غير مؤكدة', fix: 'التأكد من تفعيل الخاصية للقناة قبل الموعد' },
+  rule: { t: 'قيد المنصة', fix: null }
+};
+const RULE = { 'li-page': 'الرابط في أول تعليق (المنشور اللي فيه رابط بيوصل أقل)', 'li-founder': 'الرابط في أول تعليق؛ بصوت المؤسس ومراجعته', fb: 'الرابط جوّه النص', ig: 'الرابط في البايو (يتغيّر الصبح)', 'ig-story': 'ملصق رابط؛ الملصقات بين 250 px فوق و480 px تحت', yt: 'عنوان + وصف + الرابط في الوصف', 'yt-community': 'Community: صورة + نص' };
+const lastUse = {};
+const obsOf = (d, p) => {
+  const o = [];
+  if (p.need) o.push(['missing', p.asset || NO_ASSET.includes(p.fmt) || p.fmt === 'text' ? 'input' : 'missing', p.need].slice(1));
+  if (p.cond && !/TikTok/.test(p.cond)) o.push(['feature', p.cond]);
+  if (p.note && /صامت/.test(p.note)) o.push(['silent', 'أضف صوت قبل الرفع']);
+  if (p.cta === 'apply') o.push(['apply', 'الرابط الحالي = الفحص']);
+  for (const a of [].concat(p.asset || [])) { const k = PLAT[p.ch] + a, prev = lastUse[k]; if (prev && d - prev < 7) o.push(['reuse', `نفس الأصل اتنشر ${prev} نوف`]); lastUse[k] = d; }
+  if (RULE[p.ch]) o.push(['rule', RULE[p.ch]]);
+  return o;
+};
+const ok = (v) => (v === true ? '✅' : v === false ? '⬜' : v);
 const WEEKS = [[7, 10, 'الأسبوع 1 (تكملة) · 7–10', 'الإطلاق: أول إعلان للتاريخ + الشركاء + البث'], [11, 14, 'الأسبوع 2 · 11–14', 'ما بعد البث: قيمة البث لمن فاته + الانتقاء'], [15, 21, 'الأسبوع 3 · 15–21', 'المسلسل التعليمي «تشريح شركة النموذج» + معايير القبول'], [22, 30, 'الأسبوع 4 · 22–30', 'أسبوع الإغلاق: عدّ للتاريخ + ختام المسلسل + الذروة 30']];
-let cmd = `<!-- CAL:START — اتولّد بـ\`node scripts/daily-packs.js\` من \`scripts/lib/daily-nov.js\` (نفس مصدر الحزم). ما يتعدّلش باليد. -->\n\n`;
-cmd += `## الملخّص أسبوع بأسبوع\n\n| الأسبوع | التيمة | LinkedIn | Facebook | Instagram | TikTok* | YouTube* | الأكاديمية | أهم الهوكات |\n|---|---|---|---|---|---|---|---|---|\n`;
+const ACTIVE = (r) => ['LinkedIn', 'Facebook', 'Instagram', 'YouTube'].includes(PLAT[r.p.ch]);
+const LOG = [];
+const view = days.map((X) => ({ X, rows: X.rows.map((r) => {
+  const p = r.p, produced = NO_ASSET.includes(p.fmt) ? '—' : p.need && /^N[367]/.test(p.need) && r.checked.length ? '🔴 (المساعد ✅)' : (r.checked.length ? '✅' : (r.alt && r.alt.checked && r.alt.checked.length ? '🔴 (بديل ✅)' : '🔴'));
+  const copy = p.need && (NO_ASSET.includes(p.fmt) || p.fmt === 'text' || /رابط|قرار/.test(p.need)) ? (r.alt ? '🟡 (بديل ✅)' : '🔴') : '✅';
+  const obs = obsOf(X.D.d, p);
+  for (const [k, txt] of obs) LOG.push({ plat: PLAT[r.p.ch], d: X.D.d, t: p.t, id: p.id, k, txt, done: (RD.obs || {})[`${p.id}:${k}`] });
+  const full = (produced === '✅' || produced === '—') && copy === '✅' && rd(p.id).uploaded === true && rd(p.id).reviewed === true;
+  const prodReady = (produced === '✅' || produced === '—') && copy === '✅';
+  return { r, produced, uploaded: ok(rd(p.id).uploaded === true), reviewed: ok(rd(p.id).reviewed === true), copy, full, prodReady, dl: deadline(X.D.d, p), obs };
+}) }));
+const all = view.flatMap((v) => v.rows), act = all.filter((x) => ACTIVE(x.r));
+const cnt = { total: act.length, full: act.filter((x) => x.full).length, prodReady: act.filter((x) => x.prodReady).length, needs: act.filter((x) => !x.prodReady).length, uploaded: act.filter((x) => x.uploaded === '✅').length, reviewed: act.filter((x) => x.reviewed === '✅').length };
+let cmd = `<!-- CAL:START — اتولّد بـ\`node scripts/daily-packs.js\` من \`scripts/lib/daily-nov.js\` + \`daily/readiness.json\`. ما يتعدّلش باليد. -->\n\n`;
+cmd += `## المنصات\n\n**مجدولة (مربوطة بـComposio):** Facebook · Instagram · LinkedIn (الصفحة + حساب المؤسس) · YouTube. **TikTok: مُعلّق لحد ما يكتمل الربط** (قسم في الآخر، مش مجدول). واتساب/البريد يدوي خارج الربط.\n\n`;
+cmd += `## الجاهزية الإجمالية (${act.length} منشور على المنصات المربوطة)\n\n| الخطوة | العدد | |\n|---|---|---|\n| الأصل مُنتَج + النص جاهز (جاهز للرفع) | **${cnt.prodReady}** | الأصل موجود ومفحوص على الديسك، أو نص بلا أصل |\n| محتاج إنتاج أو إدخال بشري | **${cnt.needs}** | تصوير (N6/N7)، كاروسيل المعايير (N3)، رابط البث، قرار 2 — ولكل واحد بديل جاهز إلا المكتوب 🔴 |\n| مرفوع على الجدولة | **${cnt.uploaded}** | يتحدّث في \`daily/readiness.json\` |\n| مُراجَع (اعتماد) | **${cnt.reviewed}** | يتحدّث في \`daily/readiness.json\` |\n| **جاهز بالكامل** (الأربع خطوات) | **${cnt.full}** | |\n\n`;
+cmd += `> **تنبيه:** الأصول الحالية عليها التوقيع السابق. بعد اعتماد المرحلة 2 (اللوجو A) بتتولّد تاني بنفس المسارات قبل الرفع (حوالي ساعتين رندر). **خطوة «جاهز قبل»** = آخر موعد لاكتمال الجاهزية: اليوم السابق 18:00 للرفع والمراجعة، ومواعيد خاصة للتصوير والقرارات.\n\n`;
+cmd += `## الملخّص أسبوع بأسبوع\n\n| الأسبوع | التيمة | LinkedIn | Facebook | Instagram | YouTube | TikTok (معلّق) | الأكاديمية | جاهز للرفع / الإجمالي | أهم الهوكات |\n|---|---|---|---|---|---|---|---|---|---|\n`;
 for (const [a, b, name, theme] of WEEKS) {
-  const ds = days.filter((X) => X.D.d >= a && X.D.d <= b), rs = ds.flatMap((X) => X.rows);
-  const n = (pl) => rs.filter((r) => PLAT[r.p.ch] === pl).length;
-  const seen = new Set(), key = (h) => h.replace(/[^\u0600-\u06FF0-9a-z\s]/gi, '').trim().split(/\s+/).slice(0, 2).join(' ');
-  const hooks = rs.filter((r) => ['li-page', 'li-founder'].includes(r.p.ch) && r.p.cta !== 'none' && !/comment|event/.test(r.p.fmt)).map((r) => r.p.hook).filter((h) => !seen.has(key(h)) && seen.add(key(h))).slice(0, 3).map((h) => `«${cell(h)}»`).join(' · ');
-  cmd += `| ${name} | ${theme} | ${n('LinkedIn')} | ${n('Facebook')} | ${n('Instagram')} | ${n('TikTok')} | ${n('YouTube')} | ${ACADEMY.filter((x) => x.d >= a && x.d <= b).length} خانة | ${hooks} |\n`;
+  const ws = view.filter((v) => v.X.D.d >= a && v.X.D.d <= b).flatMap((v) => v.rows), n = (pl) => ws.filter((x) => PLAT[x.r.p.ch] === pl).length, wa = ws.filter((x) => ACTIVE(x.r));
+  const seen = new Set(), key = (h) => h.replace(/[^؀-ۿ0-9a-z\s]/gi, '').trim().split(/\s+/).slice(0, 2).join(' ');
+  const hooks = ws.filter((x) => ['li-page', 'li-founder'].includes(x.r.p.ch) && x.r.p.cta !== 'none' && !/comment|event/.test(x.r.p.fmt)).map((x) => x.r.p.hook).filter((h) => !seen.has(key(h)) && seen.add(key(h))).slice(0, 3).map((h) => `«${cell(h)}»`).join(' · ');
+  cmd += `| ${name} | ${theme} | ${n('LinkedIn')} | ${n('Facebook')} | ${n('Instagram')} | ${n('YouTube')} | ${n('TikTok')} | ${ACADEMY.filter((x) => x.d >= a && x.d <= b).length} | ${wa.filter((x) => x.prodReady).length} / ${wa.length} | ${hooks} |\n`;
 }
-const tot = (pl) => days.flatMap((X) => X.rows).filter((r) => PLAT[r.p.ch] === pl).length;
-cmd += `| **الإجمالي 7–30** | | **${tot('LinkedIn')}** | **${tot('Facebook')}** | **${tot('Instagram')}** | **${tot('TikTok')}** | **${tot('YouTube')}** | **${ACADEMY.length}** | |\n\n`;
-cmd += `\\* TikTok وYouTube مشروطين بتأكيد ملكية الحسابات (G8). الأعداد بتشمل الستوري والتعليقات المثبّتة. كل يوم فيه تصميم + فيديو + ستوري، وكل منشور له كابشن نهائي في ملف يومه.\n\n`;
+const tot = (pl) => all.filter((x) => PLAT[x.r.p.ch] === pl).length;
+cmd += `| **الإجمالي** | | **${tot('LinkedIn')}** | **${tot('Facebook')}** | **${tot('Instagram')}** | **${tot('YouTube')}** | ${tot('TikTok')} | **${ACADEMY.length}** | **${cnt.prodReady} / ${cnt.total}** | |\n\n`;
 for (const [a, b, name, theme] of WEEKS) {
   cmd += `## ${name} نوفمبر: ${theme}\n\n`;
-  for (const X of days.filter((Y) => Y.D.d >= a && Y.D.d <= b)) {
-    const dd = String(X.D.d).padStart(2, '0'), star = X.D.d === 30 && !X.D.angle.includes('★') ? '★ ' : '';
-    cmd += `### ${star}${X.wd} ${X.D.d} نوفمبر · ${X.D.angle}\n\n**القيمة للعميل:** ${VALUE[X.D.d]}  \n**الحالة:** ${X.stateShort} · الحزمة الكاملة (الكابشن، والأصل بمساره، والروابط): [\`daily/2026-11-${dd}-ready.md\`](daily/2026-11-${dd}-ready.md)\n\n| الوقت | المنصة | النوع | الهوك | CTA | UTM (\`utm_content\`) | |\n|---|---|---|---|---|---|---|\n`;
-    const slots = ACADEMY.filter((x) => x.d === X.D.d).map((x) => ({ t: x.t, html: `| ${x.t} | ${x.ch} | تعليمي | **[تُملأ بحلقة الأكاديمية التعليمية لاحقاً]** | — | \`w-academy-${dd}\` | ⬜ |` }));
-    const lines = X.rows.map((r) => ({ t: r.p.t, html: `| ${r.p.t} | ${r.ch.name} | ${TYPE(r.p.fmt)} | ${cell(r.p.hook)} | ${CTA_NAME[r.p.cta]} | \`${r.p.id}\` | ${r.status} |` }));
+  for (const v of view.filter((y) => y.X.D.d >= a && y.X.D.d <= b)) {
+    const X = v.X, dd = String(X.D.d).padStart(2, '0'), star = X.D.d === 30 && !X.D.angle.includes('★') ? '★ ' : '';
+    cmd += `### ${star}${X.wd} ${X.D.d} نوفمبر · ${X.D.angle}\n\n**القيمة للعميل:** ${VALUE[X.D.d]}  \n**الحزمة الكاملة** (الكابشن، والأصل بمساره، والروابط): [\`daily/2026-11-${dd}-ready.md\`](daily/2026-11-${dd}-ready.md)\n\n| الوقت | المنصة | النوع | الهوك | CTA | \`utm_content\` | الأصل مُنتَج | مرفوع | مُراجَع | النص جاهز | جاهز قبل | ملاحظات |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n`;
+    const lines = v.rows.filter((x) => ACTIVE(x.r) || x.r.p.ch === 'live').map((x) => ({ t: x.r.p.t, html: `| ${x.r.p.t} | ${x.r.ch.name} | ${TYPE(x.r.p.fmt)} | ${cell(x.r.p.hook)} | ${CTA_NAME[x.r.p.cta]} | \`${x.r.p.id}\` | ${x.produced} | ${x.uploaded} | ${x.reviewed} | ${x.copy} | ${x.dl} | ${cell(x.obs.map(([k, t]) => (k === 'rule' ? t : `**${OBS[k].t}:** ${t}`)).join(' · '))} |` }));
+    const slots = ACADEMY.filter((x) => x.d === X.D.d).map((x) => ({ t: x.t, html: `| ${x.t} | ${x.ch} | تعليمي | **[تُملأ بحلقة الأكاديمية التعليمية لاحقاً]** | — | \`w-academy-${dd}\` | ⬜ | ⬜ | ⬜ | ⬜ | ${X.D.d - 2} نوف 18:00 | خانة محجوزة؛ إنتاجها يبدأ قبل يومين |` }));
     cmd += [...lines, ...slots].sort((x, y) => x.t.localeCompare(y.t)).map((x) => x.html).join('\n') + '\n\n';
   }
 }
-cmd += `**المفتاح:** ✅ جاهز · 🔴 محتاج إدخال بشري (والبديل الجاهز في ملف اليوم) · 🟡 مشروط (ملكية TikTok/YouTube أو Opt-in) · ⬜ خانة محجوزة للأكاديمية. «الطلب\\*» = الفحص لحد إطفاء العدّاد.\n\n<!-- CAL:END -->`;
+const pend = all.filter((x) => !ACTIVE(x.r) && x.r.p.ch !== 'live');
+cmd += `## مُعلّق: TikTok (لحد ما يكتمل الربط) + قنوات يدوية\n\nمش مجدول. الأصول والنصوص جاهزة في حزم الأيام، وتتجدول أول ما الربط يكتمل وتتأكد ملكية الحساب (G8).\n\n| اليوم | الوقت | القناة | النوع | الهوك | \`utm_content\` | الأصل مُنتَج | النص جاهز |\n|---|---|---|---|---|---|---|---|\n`;
+cmd += pend.map((x) => `| ${x.r.p.id.match(/w\d-d\d/) ? view.find((v) => v.rows.includes(x)).X.D.d : ''} | ${x.r.p.t} | ${x.r.ch.name} | ${TYPE(x.r.p.fmt)} | ${cell(x.r.p.hook)} | \`${x.r.p.id}\` | ${x.produced} | ${x.copy} |`).join('\n') + '\n\n';
+cmd += `**المفتاح:** ✅ تم · ⬜ لسه · 🔴 ناقص (مكتوب السبب في «ملاحظات») · 🟡 قرار معلّق والبديل جاهز. «الطلب\\*» = الفحص لحد إطفاء العدّاد. سجل الملاحظات لكل منصة: [\`platform-observations.md\`](platform-observations.md).\n\n<!-- CAL:END -->`;
 const CAL = path.join(ROOT, 'marketing/content/november-calendar.md');
 let calSrc = fs.readFileSync(CAL, 'utf8');
-if (calSrc.includes('<!-- CAL:START')) calSrc = calSrc.replace(/<!-- CAL:START[\s\S]*?<!-- CAL:END -->/, cmd);
-else { const a = calSrc.indexOf('## الأسبوع 1'), b = calSrc.indexOf('## المدفوع'); calSrc = calSrc.slice(0, a) + cmd + '\n\n' + calSrc.slice(b); }
+calSrc = calSrc.replace(/<!-- CAL:START[\s\S]*?<!-- CAL:END -->/, cmd);
 fs.writeFileSync(CAL, calSrc);
-console.log('wrote november-calendar.md (days 7–30 + weekly summary)');
+// ---- per-platform observation log ----
+let lg = `# سجل الملاحظات لكل منصة · نوفمبر 2026\n\n> اتولّد بـ\`node scripts/daily-packs.js\` من نفس بيانات الجدول. كل ملاحظة مربوطة باليوم والساعة والمنصة والـ\`utm_content\`. **الحالة** بتتحدّث في \`daily/readiness.json → obs\` (المفتاح \`<utm_content>:<النوع>\` = \`"معالجة"\`)، فالتحسّن بيتقاس لكل منصة مع الوقت.\n\n## الملخّص\n\n| المنصة | ملاحظات (من غير قيود المنصة) | مفتوحة | معالجة | أكتر نوع متكرر |\n|---|---|---|---|---|\n`;
+const PL = ['LinkedIn', 'Facebook', 'Instagram', 'YouTube'];
+for (const pl of PL) {
+  const L = LOG.filter((x) => x.plat === pl && x.k !== 'rule'), open = L.filter((x) => !x.done).length;
+  const byK = {}; L.forEach((x) => { byK[x.k] = (byK[x.k] || 0) + 1; });
+  const top = Object.entries(byK).sort((a, b) => b[1] - a[1])[0];
+  lg += `| ${pl} | ${L.length} | ${open} | ${L.length - open} | ${top ? `${OBS[top[0]].t} (${top[1]})` : '—'} |\n`;
+}
+for (const pl of PL) {
+  const L = LOG.filter((x) => x.plat === pl);
+  lg += `\n## ${pl}\n\n**قيود المنصة الثابتة:** ${[...new Set(L.filter((x) => x.k === 'rule').map((x) => x.txt))].join(' · ')}\n\n| النوع | العدد | التحسين المقترح |\n|---|---|---|\n`;
+  const byK = {}; L.filter((x) => x.k !== 'rule').forEach((x) => { byK[x.k] = (byK[x.k] || 0) + 1; });
+  lg += Object.entries(byK).sort((a, b) => b[1] - a[1]).map(([k, n]) => `| ${OBS[k].t} | ${n} | ${OBS[k].fix} |`).join('\n') + '\n\n| اليوم | الساعة | `utm_content` | النوع | الملاحظة | الحالة |\n|---|---|---|---|---|---|\n';
+  lg += L.filter((x) => x.k !== 'rule').map((x) => `| ${x.d} نوف | ${x.t} | \`${x.id}\` | ${OBS[x.k].t} | ${cell(x.txt)} | ${x.done || 'مفتوحة'} |`).join('\n') + '\n';
+}
+fs.writeFileSync(path.join(ROOT, 'marketing/content/platform-observations.md'), lg);
+console.log(`wrote november-calendar.md + platform-observations.md · ${cnt.total} posts on connected platforms: ${cnt.prodReady} ready to upload, ${cnt.needs} need production/input, ${cnt.uploaded} uploaded, ${cnt.reviewed} reviewed, ${cnt.full} fully ready · TikTok/manual pending ${pend.length}`);
 

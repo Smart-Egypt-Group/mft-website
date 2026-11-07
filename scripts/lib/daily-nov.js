@@ -114,7 +114,7 @@ function shortsPair(t, k, idTT, idYT) {
   const y = reelYT(k);
   return [
     { t, ch: 'tt', fmt: 'reel', asset: A.reel(k), id: idTT, cta: 'check', hook: R[k].hook, text: reelTT(k), cond: 'G8 ملكية حساب TikTok', note: 'الصوت: الموسيقى المولَّدة في الريل؛ لو اتسجّل الـVO (voiceover-scripts-nov.md) ارفع النسخة الممكسجة.' },
-    { t, ch: 'yt', fmt: 'reel', asset: A.reel(k), id: idYT, cta: 'check', hook: R[k].hook, title: y.title, text: y.text, cond: 'G8 ملكية قناة YouTube' }
+    { t, ch: 'yt', fmt: 'reel', asset: A.reel(k), id: idYT, cta: 'check', hook: R[k].hook, title: y.title, text: y.text }
   ];
 }
 // countdown line: days left to the close (30 Nov)
@@ -324,7 +324,7 @@ ${TAGS_IG}` },
     gates: ['**N6:** يتقطع تسجيل البث في CapCut: 3 قصاصات 60 ث (9:16) + النسخة الكاملة 16:9. الشاشة طول الوقت «عرض توضيحي · داتا اختبارية».'],
     paid: 'إعلان `close` في المجموعتين (End date = `closesAt`) + C2 retargeting (قصاصة البث + `close`)، بشرط **التاريخ مؤكد**.',
     posts: [
-      { t: '10:00', ch: 'li-page', fmt: 'reel', asset: null, id: 'w2-d1-li-a-1', cta: 'check', hook: 'اللي فاتك في البث: 5 نقاط خطر في ميزان شركة نموذجية', need: 'N6: قصاصة البث 60 ث (9:16) من التسجيل',
+      { t: '16:00', ch: 'li-page', fmt: 'reel', asset: null, id: 'w2-d1-li-a-1', cta: 'check', hook: 'اللي فاتك في البث: 5 نقاط خطر في ميزان شركة نموذجية', need: 'N6: قصاصة البث 60 ث (9:16) من التسجيل',
         text: `اللي فاتك في البث: 5 نقاط خطر في ميزان شركة نموذجية (عرض توضيحي، داتا اختبارية).
 
 في دقيقة: إزاي الحسابات المعلّقة، والأرصدة اللي عكس طبيعتها، والقيود اليدوية الكثيفة، والتواريخ الرجعية بتبان من الميزان، وكل واحدة ومعاها دليلها.
@@ -333,7 +333,7 @@ ${TAGS_IG}` },
 
 ${TAGS_LI}`,
         alt: { asset: A.demo, fmt: 'img-1x1', hook: 'اللي فاتك في البث: شوف SEG بيكشف إيه في دفاتر شركة نموذجية', note: 'لو القصاصة مش جاهزة 10:00: نفس النص بالصورة دي، والقصاصة تتنشر بكرة بنفس الـutm.', text: 'نفس النص، وأول سطر: «اللي فاتك في البث: ده شكل التقرير اللي طلع من ميزان شركة نموذجية (عرض توضيحي، داتا اختبارية).»' } },
-      { t: '12:00', ch: 'yt', fmt: 'yt-long', asset: A.ytRec, id: 'w2-d1-yt-a-1', cta: 'check', hook: 'ميزان المراجعة قبل الإقفال (عرض توضيحي)', need: 'N6: التسجيل الكامل 16:9 + فصول الفيديو بعد التقطيع (الصورة المصغّرة جاهزة)', cond: 'G8 ملكية قناة YouTube',
+      { t: '21:00', ch: 'yt', fmt: 'yt-long', asset: A.ytRec, id: 'w2-d1-yt-a-1', cta: 'check', hook: 'ميزان المراجعة قبل الإقفال (عرض توضيحي)', need: 'N6: التسجيل الكامل 16:9 + فصول الفيديو بعد التقطيع (الصورة المصغّرة جاهزة)',
         title: 'ميزان المراجعة قبل الإقفال: 5 نقاط خطر في ميزان شركة نموذجية (عرض توضيحي)',
         text: `عرض توضيحي على شركة نموذجية بداتا اختبارية. الفحص المجاني لميزان شركتك بيطلّع مؤشرات (3 منها مع ربط Odoo)، ومش تقرير مراجعة.
 
@@ -342,7 +342,7 @@ ${TAGS_LI}`,
 الفحص: {LINK}
 
 الفصول: 00:00 المقدمة · (تتكتب بعد التقطيع)`, note: 'الصورة المصغّرة جاهزة (N8). + Short واحد من أقوى قصاصة.' },
-      { t: '11:00', ch: 'fb', fmt: 'reel', asset: null, id: 'w2-d1-fb-a-1', cta: 'check', hook: 'سعر المؤسِّس يُغلق 30 نوفمبر. ولا استثناءات.', need: 'N6: نفس القصاصة',
+      { t: '18:00', ch: 'fb', fmt: 'reel', asset: null, id: 'w2-d1-fb-a-1', cta: 'check', hook: 'سعر المؤسِّس يُغلق 30 نوفمبر. ولا استثناءات.', need: 'N6: نفس القصاصة',
         text: `سعر المؤسِّس يُغلق 30 نوفمبر. ولا استثناءات.
 
 وده اللي فاتك في البث: 5 نقاط خطر بتبان من ميزان شركة نموذجية في دقائق (عرض توضيحي، داتا اختبارية).
@@ -684,7 +684,7 @@ ${TAGS_LI}` },
 #محاسبة #مراجعة #Odoo #SEG` },
       { t: '21:00', ch: 'tt', fmt: 'reel', asset: A.closeTTv, id: 'w4-d2-tt-a-1', cta: 'check', hook: 'فيه باب بيقفل يوم 30 نوفمبر… ومش أي حد هيدخل.', cond: 'G8 ملكية حساب TikTok',
         text: `سعر المؤسِّس بيتقفل 30/11 الساعة 11:59 بالليل ⏳ والعضوية بالطلب. الفحص المجاني في البايو. #محاسبة #Odoo #مراجعة_داخلية`, note: 'الفيديو صامت (8 ث): أضف صوت من مكتبة TikTok التجارية، أو VO من سكربت T3.' },
-      { t: '21:00', ch: 'yt-community', fmt: 'img-1x1', asset: A.closeSquare, id: 'w4-d2-yt-a-1', cta: 'check', hook: 'آخر أسبوع لسعر المؤسِّس.', cond: 'G8 ملكية قناة YouTube + خاصية Community متاحة',
+      { t: '21:00', ch: 'yt-community', fmt: 'img-1x1', asset: A.closeSquare, id: 'w4-d2-yt-a-1', cta: 'check', hook: 'آخر أسبوع لسعر المؤسِّس.', cond: 'خاصية Community متاحة للقناة',
         text: `آخر أسبوع: ${CLOSE_LINE} العضوية بالطلب. الفحص المجاني لميزانك: {LINK}` }
     ]
   },
@@ -892,7 +892,7 @@ ${SELECT_LINE}
 ${TAGS_IG}`, note: 'فيديو 8 ث صامت: أضف صوت من مكتبة Instagram. ونفس الفيديو Reel على Facebook (`w5-d2-fb-r-1`) بنفس النص والرابط في النص.' },
       { t: '20:00', ch: 'tt', fmt: 'reel', asset: A.closeTTv, id: 'w5-d2-tt-r-1', cta: 'check', hook: 'الباب بيقفل الليلة.', cond: 'G8 ملكية حساب TikTok',
         text: `الباب بيقفل الليلة 11:59 ⏳ سعر المؤسِّس في SEG، والعضوية بالطلب. الرابط في البايو. ${TAGS_TT}` },
-      { t: '20:00', ch: 'yt', fmt: 'reel', asset: A.closeTTv, id: 'w5-d2-yt-r-1', cta: 'check', hook: 'آخر يوم لسعر المؤسِّس', cond: 'G8 ملكية قناة YouTube', title: 'سعر المؤسِّس يُغلق الليلة 11:59 | SEG #Shorts',
+      { t: '20:00', ch: 'yt', fmt: 'reel', asset: A.closeTTv, id: 'w5-d2-yt-r-1', cta: 'check', hook: 'آخر يوم لسعر المؤسِّس', title: 'سعر المؤسِّس يُغلق الليلة 11:59 | SEG #Shorts',
         text: `سعر المؤسِّس في برنامج الأعضاء المؤسِّسين بيتقفل الليلة، الإثنين 30 نوفمبر 2026، 11:59 مساءً بتوقيت القاهرة. العضوية بالطلب. الفحص المجاني: {LINK}` },
       { t: '22:00', ch: 'ig-story', fmt: 'story-video', asset: A.council, id: 'w5-d2-ig-s-3', cta: 'apply', hook: 'ساعتين', text: 'فيديو المجلس + «ساعتين».', sticker: 'ملصق نص «ساعتين» + ملصق رابط «قدّم طلبك» (الرابط الحالي: الفحص).' }
     ],
@@ -919,7 +919,7 @@ const STORY = {
   hawk: 'psych/8-hawk-eye/' + ST('psych-8-hawk-eye')
 };
 const story = (d, wk, asset, cta, hook, text, sticker, fmt = 'story-img') => ({ t: '13:00', ch: 'ig-story', fmt, asset, id: `${wk}-ig-s-9`, cta, hook, text, sticker: `${sticker} + ملصق رابط (${cta === 'apply' ? '«قدّم طلبك»، الرابط الحالي: الفحص' : '«افحص ميزانك»'}). نفس الإطار Facebook Story.` });
-const vid = (t, ch, asset, fmt, id, hook, text, extra = {}) => ({ t, ch, fmt, asset, id, cta: 'check', hook, text, cond: ch === 'tt' ? 'G8 ملكية حساب TikTok' : 'G8 ملكية قناة YouTube', note: 'فيديو 8 ث صامت: أضف صوت من مكتبة المنصة.', ...extra });
+const vid = (t, ch, asset, fmt, id, hook, text, extra = {}) => ({ t, ch, fmt, asset, id, cta: 'check', hook, text, cond: ch === 'tt' ? 'G8 ملكية حساب TikTok' : undefined, note: 'فيديو 8 ث صامت: أضف صوت من مكتبة المنصة.', ...extra });
 const EXTRA = {
   8: [vid('21:00', 'yt', 'ads/video/video-16x9_live-ar_1920x1080_8s.mp4', 'video-16x9', 'w1-d5-yt-a-1', 'المنصة اللي بتراجع نفسها… متاحة الآن.', `Standard Enterprise Governance (SEG): مراجعة مستمرة لدفاتر Odoo، ولكل ملاحظة دليلها. الفحص المجاني لميزان شركتك: {LINK}`, { title: 'SEG متاحة الآن: المراجعة المستمرة لدفاترك | Shorts' })],
   10: [vid('21:30', 'tt', A.liveTTv, 'reel', 'w1-d7-tt-a-1', 'دفاترك بتتراجع مرة في السنة… والباقي؟', `الليلة 7 بث مباشر: هنقرا ميزان شركة نموذجية على الهوا (عرض توضيحي). الفحص المجاني في البايو. ${TAGS_TT}`)],

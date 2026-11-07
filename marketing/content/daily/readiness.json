@@ -1,0 +1,4 @@
+{
+  "$about": "Readiness tracker for the November schedule (7 Nov 2026). Keyed by utm_content. Set uploaded=true when the asset + caption are loaded in the scheduler (Composio), reviewed=true when the CEO / reviewer approved the post. scripts/daily-packs.js reads it into the calendar. Asset-produced and copy-ready are computed from the files and the pack checks, never typed here.",
+  "posts": {}
+}
