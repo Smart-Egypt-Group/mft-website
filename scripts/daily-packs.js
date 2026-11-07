@@ -293,7 +293,7 @@ for (const [a, b, name, theme] of WEEKS) {
   const ds = days.filter((X) => X.D.d >= a && X.D.d <= b), rs = ds.flatMap((X) => X.rows);
   const n = (pl) => rs.filter((r) => PLAT[r.p.ch] === pl).length;
   const seen = new Set(), key = (h) => h.replace(/[^\u0600-\u06FF0-9a-z\s]/gi, '').trim().split(/\s+/).slice(0, 2).join(' ');
-  const hooks = rs.filter((r) => ['li-page', 'li-founder'].includes(r.p.ch) && !/comment|event/.test(r.p.fmt)).map((r) => r.p.hook).filter((h) => !seen.has(key(h)) && seen.add(key(h))).slice(0, 3).map((h) => `«${cell(h)}»`).join(' · ');
+  const hooks = rs.filter((r) => ['li-page', 'li-founder'].includes(r.p.ch) && r.p.cta !== 'none' && !/comment|event/.test(r.p.fmt)).map((r) => r.p.hook).filter((h) => !seen.has(key(h)) && seen.add(key(h))).slice(0, 3).map((h) => `«${cell(h)}»`).join(' · ');
   cmd += `| ${name} | ${theme} | ${n('LinkedIn')} | ${n('Facebook')} | ${n('Instagram')} | ${n('TikTok')} | ${n('YouTube')} | ${ACADEMY.filter((x) => x.d >= a && x.d <= b).length} خانة | ${hooks} |\n`;
 }
 const tot = (pl) => days.flatMap((X) => X.rows).filter((r) => PLAT[r.p.ch] === pl).length;
