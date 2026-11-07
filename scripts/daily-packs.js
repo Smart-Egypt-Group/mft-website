@@ -27,12 +27,12 @@ const CHECK_ONLY = process.argv.includes('--check');
 // every asset must be rendered after the CEO's signature decision went in (6 Nov 2026, 22:15 Cairo):
 // SEG lockup (cube + «Standard Enterprise Governance») | the full MFT logo
 // φ pass (CEO, 7 Nov 2026 00:31 Cairo): spacing/type on the φ scale, signature on φ — every asset after it
-// phase 2 (CEO approved logo A, 7 Nov 2026 15:57 Cairo): every image after it. Videos keep the φ-pass time:
-// they wait on the audio track (readiness.json → audioPending) and get logo A in the audio re-render.
+// phase 2 (CEO approved logo A, 7 Nov 2026 15:57 Cairo): every image after it.
+// music-only pass (CEO, 7 Nov 2026: no voice-over): every video re-rendered after 18:00 Cairo with music +
+// SFX at -14 LUFS, burned-in captions and logo A (readiness.json → musicOnly)
 const QUALITY_PASS = new Date('2026-11-07T15:57:00+02:00');
-const VIDEO_PASS = new Date('2026-11-07T00:31:00+02:00');
-// reels: after the end card stopped repeating the name under the lockup (6 Nov 2026, 23:38 Cairo)
-const REEL_PASS = new Date('2026-11-07T00:31:00+02:00');
+const VIDEO_PASS = new Date('2026-11-07T18:00:00+02:00');
+const REEL_PASS = VIDEO_PASS;
 
 const CH = {
   'li-page': { name: 'LinkedIn · صفحة الشركة', src: 'linkedin', medium: 'organic', link: 'comment' },
@@ -315,7 +315,7 @@ const OBS = {
 // resolved observation types (7 Nov 2026): before → fix → evidence, written into the log
 const RESOLVED = [
   ['apply', 'رابط «الطلب» = الفحص مؤقتًا', { LinkedIn: 13, Facebook: 8, Instagram: 20 }, 'العدّاد اتطفى (`src/site.config.js → founding.showCount: false`)، وكل رابط «الطلب» بقى على صفحة الطلب مباشرة بالـUTM، واتشالت بوابة «بعد إطفاء العدّاد»', '`grep founding-members/apply` في ملفات الأيام؛ `node build.js` + `scripts/check.js` نظاف'],
-  ['silent', 'فيديو صامت', { LinkedIn: 0, Facebook: 0, Instagram: 5, YouTube: 2 }, 'كابشن عربي/إنجليزي SRT لكل الـ28 فيديو من سكربتات التعليق الصوتي (أو النص اللي على الشاشة)، وبيتعرض على كل منشور فيديو؛ الصوت نفسه في مسار الصوت (`audioPending`)', '`marketing/designs/captions/*.srt` (28)؛ `node scripts/video-captions.js --check`'],
+  ['silent', 'فيديو صامت', { LinkedIn: 0, Facebook: 0, Instagram: 5, YouTube: 2 }, 'كابشن عربي/إنجليزي SRT لكل الـ28 فيديو من سكربتات التعليق الصوتي (أو النص اللي على الشاشة)، وبيتعرض على كل منشور فيديو؛ ومن 7 نوفمبر كل فيديو مستخدم موسيقى + مؤثرات (-14 LUFS) بكابشن عربي محروق، بلا تعليق صوتي (قرار الـCEO)', '`marketing/designs/captions/*.srt` (28)؛ `node scripts/video-captions.js --check`'],
   ['reuse', 'تكرار أصل خلال 7 أيام على نفس المنصة', { LinkedIn: 2, Facebook: 3, Instagram: 9 }, 'أصول بديلة من نفس العائلات (hook-360، live، graffiti-04، sticky، hemicycle، before-after، ساعة الأيام)؛ الفحص بيطلّع أي تكرار جديد تلقائيًا', 'عمود «ملاحظات» في الجدول: صفر تكرار'],
   ['feature', 'خاصية منصة غير مؤكدة', { YouTube: 1 }, 'منشور YouTube Community (23 نوفمبر) اتبدّل بـShort لفيديو الإغلاق، والقناة مربوطة بـComposio', 'ملف يوم 23: `w4-d2-yt-a-1` فيديو 9:16 + SRT']
 ];
@@ -348,7 +348,7 @@ const cnt = { uploadReady: act.filter((x) => x.uploadReady).length, audio: act.f
 let cmd = `<!-- CAL:START — اتولّد بـ\`node scripts/daily-packs.js\` من \`scripts/lib/daily-nov.js\` + \`daily/readiness.json\`. ما يتعدّلش باليد. -->\n\n`;
 cmd += `## المنصات\n\n**مجدولة (مربوطة بـComposio):** Facebook · Instagram · LinkedIn (الصفحة + حساب المؤسس) · YouTube. **TikTok: مُعلّق لحد ما يكتمل الربط** (قسم في الآخر، مش مجدول). واتساب/البريد يدوي خارج الربط.\n\n`;
 cmd += `## الجاهزية الإجمالية (${act.length} منشور على المنصات المربوطة)\n\n| الخطوة | العدد | |\n|---|---|---|\n| **جاهز للرفع الآن** (مُنتَج باللوجو A + مُراجَع + النص جاهز) | **${cnt.uploadReady}** | باقي خطوة الرفع بس |
-| فيديو معلّق على مسار الصوت (VO / هندسة صوتية) | **${cnt.audio}** | \`audioPending\` في readiness.json؛ بيتعاد رندره باللوجو A مع الصوت |
+| فيديو معلّق على مسار الصوت | **${cnt.audio}** | الفيديوهات موسيقى فقط بلا تعليق صوتي (قرار الـCEO، 7 نوفمبر): اتنتجت كلها — \`musicOnly\` في readiness.json |
 | الأصل مُنتَج + النص جاهز | **${cnt.prodReady}** | الأصل موجود ومفحوص على الديسك، أو نص بلا أصل |\n| محتاج إنتاج أو إدخال بشري | **${cnt.needs}** | تصوير (N6/N7)، كاروسيل المعايير (N3)، رابط البث، قرار 2 — ولكل واحد بديل جاهز إلا المكتوب 🔴 |\n| مرفوع على الجدولة | **${cnt.uploaded}** | يتحدّث في \`daily/readiness.json\` |\n| مُراجَع (اعتماد) | **${cnt.reviewed}** | يتحدّث في \`daily/readiness.json\` |\n| **جاهز بالكامل** (الأربع خطوات) | **${cnt.full}** | |\n\n`;
 cmd += `> **المرحلة 2 (اعتماد الـCEO، 7 نوفمبر):** كل الصور والستوريز والأغلفة اتولّدت باللوجو A. الفيديوهات معلّقة على مسار الصوت. **خطوة «جاهز قبل»** = آخر موعد لاكتمال الجاهزية: اليوم السابق 18:00 للرفع والمراجعة، ومواعيد خاصة للتصوير والقرارات.\n\n`;
 cmd += `## الملخّص أسبوع بأسبوع\n\n| الأسبوع | التيمة | LinkedIn | Facebook | Instagram | YouTube | TikTok (معلّق) | الأكاديمية | جاهز للرفع / الإجمالي | أهم الهوكات |\n|---|---|---|---|---|---|---|---|---|---|\n`;

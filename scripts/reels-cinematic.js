@@ -15,8 +15,10 @@
 // review, never an accusation); gl_integrity round manual entries; expenses without an attachment.
 // Data rule (CEO): every name, code and figure is test data on a model company, marked
 // «مثال توضيحي · داتا اختبارية».
-// Encoding: Chrome WebCodecs (no ffmpeg on this machine); loudness normalised in code to -16 LUFS
-// (EBU R128 gating) with a -1.5 dBFS peak ceiling; MP4 written by scripts/tiktok-videos.js → mp4().
+// Music-only (CEO, 7 Nov 2026): no voice-over; the captions (scripts/lib/captions.js, the same cues as
+// marketing/designs/captions/*.srt) are burned in above the bottom safe zone.
+// Encoding: Chrome WebCodecs (no ffmpeg on this machine); mastered in code to -14 LUFS
+// (EBU R128 gating) under a -1 dBFS peak limiter (reels-audio.js → master()); MP4 written by scripts/tiktok-videos.js → mp4().
 // Needs Playwright + Google Chrome:  PLAYWRIGHT_PATH=<path to playwright> node scripts/reels-cinematic.js [filter]
 const fs = require('fs');
 const os = require('os');
@@ -26,7 +28,9 @@ let chromium;
 try { ({ chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright')); }
 catch { console.error('playwright not found. npm i -D playwright, or set PLAYWRIGHT_PATH.'); process.exit(1); }
 const { mp4 } = require('./tiktok-videos.js');
-const { synth, SR } = require('./reels-audio.js');
+const { synth, master, SR } = require('./reels-audio.js');
+const { cuesFor } = require('./lib/captions.js');
+const BPM = 124; // music-only cut (CEO, 7 Nov 2026): no voice-over, a driving beat under the bed
 
 const { signHTML, COPY: KC } = require('./lib/campaign.js');
 const ROOT = path.join(__dirname, '..');
@@ -253,11 +257,14 @@ dt{color:#5A6483;font-weight:700} dd{font-weight:900}
 .cta .cl{margin-top: 34px;font-weight:800;font-size: ${rtl ? 40 : 34}px;color:${CYAN};text-align:center;max-width:860px;line-height:1.45}
 .cta .pill{margin-top: 13px;font: 800 53px Inter;color:${NAVY};background:${CYAN};border-radius:999px;padding: 21px 55px;box-shadow:0 0 60px rgba(27,183,205,.55)}
 .w{display:inline-block;white-space:pre}
+#cap{position:absolute;inset-inline:64px;bottom:233px;display:flex;justify-content:center;z-index:8;pointer-events:none}
+#cap p{max-width:100%;padding: 13px 34px;border-radius:21px;background:rgba(6,14,36,.88);border-inline-start:8px solid ${CYAN};font-weight:800;font-size: 42px;line-height:1.45;text-align:center;white-space:pre-line;opacity:0}
 </style><body>
 <div id="bg0"></div><div id="bg1"></div><div class="orb" id="o1"></div><div class="orb" id="o2"></div>
 <svg id="grain" width="${W}" height="${H}"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
 <div class="sweep" id="sweep"></div>
 <div class="chap" id="chap">${chapters}</div>
+<div id="cap"><p></p></div>
 <div id="stage">
 ${scene('hook', `<p class="brandline" data-at="0.25">${U.brand}</p><h1 class="kin" data-at="0.45"><span class="dot"></span>${S.hook}</h1><p class="hooksub kin" data-at="1.7">${S.hookSub}</p><div class="key" data-impact="2.6"><b style="font-size: ${K[0].length > 11 ? 92 : 124}px">${K[0]}</b><span>${K[1]}</span></div><div class="demoTag" data-at="3.0"><span>${U.demo}</span></div>`)}
 ${scene('why', `<h2 class="kin" data-at="${T.why[0] + 0.35}">${U.why}</h2><ul class="why">${S.why.map((w, i) => `<li data-at="${T.why[0] + 1.3 + i * 1.7}" data-tick><span class="n">${i + 1}</span><span>${w}</span></li>`).join('')}</ul>`)}
@@ -291,7 +298,10 @@ const bounds=[${T.why[0]},${T.ev[0]},${T.ctl[0]},${T.cta[0]}];
 window.CUES=[{t:0.05,type:'whoosh'},...bounds.map(b=>({t:b-0.3,type:'whoosh'})),{t:+key.dataset.impact,type:'impact'},
   ...hls.map(e=>({t:+e.dataset.hl,type:'tick'})),...[...document.querySelectorAll('[data-tick]')].map(e=>({t:+e.dataset.at+0.05,type:'tick'})),{t:${T.cta[0]}+2.9,type:'resolve'}];
 let zoomOrigin=null;
+const CAPS=${JSON.stringify(cuesFor(`reel-${id}_${lang}_1080x1920`)[0] || [])}, capP=document.querySelector('#cap p');
 window.setT=(t)=>{
+  { const q=CAPS.find((k)=>t>=k[0]&&t<k[1]); if (!q) capP.style.opacity=0; else { if (capP.textContent!==q[2]) capP.textContent=q[2];
+      const a=expo(clamp((t-q[0])/0.22)), o=Math.min(a, clamp((q[1]-t)/0.18)); capP.style.opacity=o.toFixed(3); capP.style.transform='translateY('+((1-a)*14).toFixed(1)+'px)'; } }
   // camera drift + parallax
   const drift=Math.sin(t*0.35)*6, push=1+0.012*Math.sin(t*0.18);
   stage.style.transform='translate('+(drift*0.6).toFixed(2)+'px,'+(Math.cos(t*0.27)*5).toFixed(2)+'px) scale('+push.toFixed(4)+')';
@@ -330,21 +340,6 @@ window.setT(0);
 </script></body></html>`;
 }
 
-// ---------------------------------------------------------------- loudness (EBU R128 integrated, gated)
-function biquad(b0, b1, b2, a1, a2) { let x1 = 0, x2 = 0, y1 = 0, y2 = 0; return (x) => { const y = b0 * x + b1 * x1 + b2 * x2 - a1 * y1 - a2 * y2; x2 = x1; x1 = x; y2 = y1; y1 = y; return y; }; }
-function lufs(L, R) { // K-weighting coefficients for 48 kHz (ITU-R BS.1770)
-  const kw = () => { const s = biquad(1.53512485958697, -2.69169618940638, 1.19839281085285, -1.69065929318241, 0.73248077421585), h = biquad(1, -2, 1, -1.99004745483398, 0.99007225036621); return (x) => h(s(x)); };
-  const fl = kw(), fr = kw(), n = L.length, kl = new Float32Array(n), kr = new Float32Array(n);
-  for (let i = 0; i < n; i++) { kl[i] = fl(L[i]); kr[i] = fr(R[i]); }
-  const blk = Math.floor(0.4 * SR), hop = Math.floor(0.1 * SR), z = [];
-  for (let s = 0; s + blk <= n; s += hop) { let a = 0; for (let i = s; i < s + blk; i++) a += kl[i] * kl[i] + kr[i] * kr[i]; z.push(a / blk); }
-  const L_ = (m) => -0.691 + 10 * Math.log10(m);
-  const abs = z.filter((m) => L_(m) > -70); if (!abs.length) return -70;
-  const rel = L_(abs.reduce((a, b) => a + b, 0) / abs.length) - 10;
-  const g = abs.filter((m) => L_(m) > rel);
-  return L_(g.reduce((a, b) => a + b, 0) / g.length);
-}
-
 // ---------------------------------------------------------------- render + encode
 async function main() {
   const only = process.argv[2] || '';
@@ -363,13 +358,10 @@ async function main() {
     await p.evaluate(() => document.fonts.ready);
     const cues = await p.evaluate(() => window.CUES);
 
-    // soundtrack: synthesise, normalise to -16 LUFS, cap peaks at -1.5 dBFS
-    const audio = synth({ total: TOTAL, cues, rtl: UI[lang].dir === 'rtl', seed: id.length * 31 + lang.length });
-    const loud = lufs(audio.L, audio.R), gain = Math.pow(10, (-16 - loud) / 20), ceil = Math.pow(10, -1.5 / 20);
-    let peak = 0; for (let i = 0; i < audio.L.length; i++) peak = Math.max(peak, Math.abs(audio.L[i] * gain), Math.abs(audio.R[i] * gain));
-    const g = peak > ceil ? gain * (ceil / peak) : gain;
-    for (let i = 0; i < audio.L.length; i++) { audio.L[i] *= g; audio.R[i] *= g; }
-    const finalLufs = lufs(audio.L, audio.R);
+    // soundtrack: bed + 124 bpm beat + effects, mastered to -14 LUFS under a -1 dBFS limiter
+    const audio = synth({ total: TOTAL, cues, rtl: UI[lang].dir === 'rtl', seed: id.length * 31 + lang.length, bpm: BPM });
+    const finalLufs = master(audio).lufs;
+    if (process.env.FRAME) { for (const t of process.env.FRAME.split(',')) { await p.evaluate((x) => window.setT(x), +t); await p.screenshot({ path: path.join(process.env.FRAME_DIR || os.tmpdir(), `${name}_t${t}.png`) }); } await p.close(); console.log('frames', name, process.env.FRAME); continue; }
 
     await enc.evaluate(({ W, H, FPS }) => {
       window._v = []; window._desc = null; window._fail = null;

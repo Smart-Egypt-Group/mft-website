@@ -1,6 +1,6 @@
 # حزم النشر اليومية: 7 → 30 نوفمبر 2026
 
-> اتولّدت بـ`node scripts/daily-packs.js` (7 نوفمبر 2026، 16:07) من `scripts/lib/daily-nov.js`. **مفيش حاجة منشورة أو مجدولة.**
+> اتولّدت بـ`node scripts/daily-packs.js` (7 نوفمبر 2026، 18:33) من `scripts/lib/daily-nov.js`. **مفيش حاجة منشورة أو مجدولة.**
 > **اتفحص:** 24 يوم · 126 منشور · 50 أصل مختلف موجود على الديسك بمقاسه الصحيح ومولَّد بعد قرار التوقيع (لوكاب SEG + شعار MFT) · النصوص نظيفة. قبل كل يوم: `node scripts/daily-packs.js --check`.
 > المصادر: [`november-calendar.md`](../november-calendar.md) (الخطة) · [`coverage-matrix-nov.md`](../coverage-matrix-nov.md) (الخانات والنبرة) · [`voiceover-scripts-nov.md`](../voiceover-scripts-nov.md) (الصوت).
 
@@ -61,53 +61,53 @@
 
 | الأصل | الفحص |
 |---|---|
-| `ads/meta-feed-4x5_close-ar_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 15:58 |
-| `ads/video/council-story_ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
-| `ads/video/days-4x5_ar_1080x1350_8s.mp4` | ✓ 1080×1350 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:16 |
-| `ads/video/meta-feed-4x5_close-ar_1080x1350_8s.mp4` | ✓ 1080×1350 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
-| `ads/video/selectivity-story_ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:16 |
-| `ads/video/tiktok-9x16_close-ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
-| `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
-| `ads/video/video-16x9_close-ar_1920x1080_8s.mp4` | ✓ 1920×1080 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
-| `ads/video/video-16x9_live-ar_1920x1080_8s.mp4` | ✓ 1920×1080 · 8.0 ث · صامت · كابشن ✓ · 7 نوف 11:15 |
-| `concepts/before-after/before-after_ar_link_1200x630.jpg` | ✓ 1200×630 · 7 نوف 16:00 |
-| `concepts/before-after/before-after_ar_portrait_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:00 |
-| `concepts/before-after/before-after_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:00 |
-| `concepts/founder-pov/founder-pov_ar_overlay_1080x1920.png` | ✓ 1080×1920 · 7 نوف 16:00 |
-| `concepts/hemicycle/hemicycle_ar_portrait_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:00 |
-| `concepts/hemicycle/hemicycle_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:00 |
-| `concepts/hook-360/hook-360_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:00 |
-| `concepts/no-source/no-source_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:00 |
-| `concepts/self-audit/self-audit_ar_link_1200x630.jpg` | ✓ 1200×630 · 7 نوف 16:00 |
-| `concepts/self-audit/self-audit_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:00 |
-| `concepts/tb-check/tb-check_ar_portrait_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:00 |
-| `concepts/tb-check/tb-check_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:00 |
-| `golden/2-days/golden-2-days_ar_4x5_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 15:59 |
-| `golden/4-lineup/golden-4-lineup_ar_1x1_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:59 |
-| `golden/4-lineup/golden-4-lineup_ar_4x5_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 15:59 |
-| `guerrilla/graffiti/graffiti-02-errors_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
-| `guerrilla/graffiti/graffiti-03-closing_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:59 |
-| `guerrilla/graffiti/graffiti-03-closing_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
-| `guerrilla/graffiti/graffiti-04-365_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
-| `guerrilla/sticky/sticky-01-cash_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
-| `launch-week/launch-demo-report_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:59 |
-| `launch-week/launch-demo-report_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
-| `launch-week/launch-live-invite_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:59 |
-| `launch-week/launch-live-invite_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
-| `psych/1-loss-aversion/psych-1-loss-aversion_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:58 |
-| `psych/1-loss-aversion/psych-1-loss-aversion_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:58 |
-| `psych/2-curiosity-gap/psych-2-curiosity-gap_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:58 |
-| `psych/4-selectivity/psych-4-selectivity_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:58 |
-| `psych/4-selectivity/psych-4-selectivity_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:58 |
-| `psych/8-hawk-eye/psych-8-hawk-eye_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:59 |
-| `psych/8-hawk-eye/psych-8-hawk-eye_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:59 |
-| `social/instagram-square_close-ar_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 15:58 |
-| `social/story_close-ar_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:58 |
-| `social/story_live-ar_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 15:58 |
-| `social/youtube-thumbnail_live-recording-ar_1280x720.jpg` | ✓ 1280×720 · 7 نوف 15:58 |
-| `video/reel-duplicate-payment_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 12:57 |
-| `video/reel-ghost-vendor_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 11:30 |
-| `video/reel-no-receipt_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 11:37 |
-| `video/reel-post-close-entry_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 11:23 |
-| `video/reel-round-manual_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 11:33 |
-| `video/reel-suspense-account_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 11:27 |
+| `ads/meta-feed-4x5_close-ar_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:08 |
+| `ads/video/council-story_ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:11 |
+| `ads/video/days-4x5_ar_1080x1350_8s.mp4` | ✓ 1080×1350 · 8.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:11 |
+| `ads/video/meta-feed-4x5_close-ar_1080x1350_8s.mp4` | ✓ 1080×1350 · 8.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:10 |
+| `ads/video/selectivity-story_ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:11 |
+| `ads/video/tiktok-9x16_close-ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:10 |
+| `ads/video/tiktok-9x16_live-ar_1080x1920_8s.mp4` | ✓ 1080×1920 · 8.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:10 |
+| `ads/video/video-16x9_close-ar_1920x1080_8s.mp4` | ✓ 1920×1080 · 8.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:11 |
+| `ads/video/video-16x9_live-ar_1920x1080_8s.mp4` | ✓ 1920×1080 · 8.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:10 |
+| `concepts/before-after/before-after_ar_link_1200x630.jpg` | ✓ 1200×630 · 7 نوف 16:08 |
+| `concepts/before-after/before-after_ar_portrait_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:08 |
+| `concepts/before-after/before-after_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:08 |
+| `concepts/founder-pov/founder-pov_ar_overlay_1080x1920.png` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `concepts/hemicycle/hemicycle_ar_portrait_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:08 |
+| `concepts/hemicycle/hemicycle_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `concepts/hook-360/hook-360_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `concepts/no-source/no-source_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `concepts/self-audit/self-audit_ar_link_1200x630.jpg` | ✓ 1200×630 · 7 نوف 16:08 |
+| `concepts/self-audit/self-audit_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `concepts/tb-check/tb-check_ar_portrait_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:08 |
+| `concepts/tb-check/tb-check_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `golden/2-days/golden-2-days_ar_4x5_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:08 |
+| `golden/4-lineup/golden-4-lineup_ar_1x1_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:08 |
+| `golden/4-lineup/golden-4-lineup_ar_4x5_1080x1350.jpg` | ✓ 1080×1350 · 7 نوف 16:08 |
+| `guerrilla/graffiti/graffiti-02-errors_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `guerrilla/graffiti/graffiti-03-closing_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:08 |
+| `guerrilla/graffiti/graffiti-03-closing_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `guerrilla/graffiti/graffiti-04-365_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `guerrilla/sticky/sticky-01-cash_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `launch-week/launch-demo-report_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:08 |
+| `launch-week/launch-demo-report_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `launch-week/launch-live-invite_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:08 |
+| `launch-week/launch-live-invite_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `psych/1-loss-aversion/psych-1-loss-aversion_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:08 |
+| `psych/1-loss-aversion/psych-1-loss-aversion_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `psych/2-curiosity-gap/psych-2-curiosity-gap_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `psych/4-selectivity/psych-4-selectivity_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:08 |
+| `psych/4-selectivity/psych-4-selectivity_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `psych/8-hawk-eye/psych-8-hawk-eye_ar_square_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:08 |
+| `psych/8-hawk-eye/psych-8-hawk-eye_ar_story_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `social/instagram-square_close-ar_1080x1080.jpg` | ✓ 1080×1080 · 7 نوف 16:08 |
+| `social/story_close-ar_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `social/story_live-ar_1080x1920.jpg` | ✓ 1080×1920 · 7 نوف 16:08 |
+| `social/youtube-thumbnail_live-recording-ar_1280x720.jpg` | ✓ 1280×720 · 7 نوف 16:08 |
+| `video/reel-duplicate-payment_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:15 |
+| `video/reel-ghost-vendor_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:26 |
+| `video/reel-no-receipt_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:29 |
+| `video/reel-post-close-entry_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:19 |
+| `video/reel-round-manual_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:33 |
+| `video/reel-suspense-account_ar_1080x1920.mp4` | ✓ 1080×1920 · 34.0 ث · صوت ✓ · كابشن ✓ · 7 نوف 18:22 |

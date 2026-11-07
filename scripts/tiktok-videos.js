@@ -1,11 +1,14 @@
 #!/usr/bin/env node
-// SEG Audit paid ads: TikTok-ready MP4s (8 s, 1080×1920, 30 fps, H.264, no audio) rendered from
-// the static 9:16 ad designs in marketing/designs/ads/ into marketing/designs/ads/video/.
-// TikTok's own placements need video; the music is added in TikTok Ads Manager from the
-// Commercial Music Library, so the files carry no audio track.
+// SEG Audit 8 s videos (9:16, 4:5, 16:9 and stories), 30 fps, H.264 + AAC, rendered from the static
+// designs into marketing/designs/ads/video/.
+// Music-only cut (CEO, 7 Nov 2026: no voice-over): a synthesised, license-free soundtrack at 124 bpm
+// (scripts/reels-audio.js: bed + beat + whoosh / tick / resolve effects) mastered to -14 LUFS, -1 dBFS
+// peak; and the captions (scripts/lib/captions.js, the same cues as marketing/designs/captions/*.srt)
+// burned into the picture, in a zone of each design that holds no copy (CAP below).
 //
-// Motion: a slow ease-in-out push-in (1.00 → 1.04) on the design, so frame 0 is the full design
-// (a clean cover) and the 64 px design margins keep the CTA inside the frame throughout.
+// Motion: an ease-in-out push-in (1.00 → 1.04) on the design, so frame 0 is the full design (a clean
+// cover), with a short punch on each caption change to keep the rhythm.
+//   FRAME=<s> node scripts/tiktok-videos.js [filter]   writes one PNG per job at that time (layout check)
 // Encoding: Chrome's WebCodecs H.264 encoder (no ffmpeg needed); the MP4 container is written here.
 // Regenerate the source JPGs first (scripts/launch-images.js) whenever the close date (founding.closesAt) or copy changes.
 // Needs Playwright + Google Chrome:  PLAYWRIGHT_PATH=<path to playwright> node scripts/tiktok-videos.js [filter]
@@ -20,7 +23,19 @@ catch { console.error('playwright not found. npm i -D playwright, or set PLAYWRI
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'marketing/designs/ads');
 const OUT = path.join(SRC, 'video');
-let W = 1080, H = 1920; const FPS = 30, SECONDS = 8, ZOOM = 0.04, BITRATE = 8e6;
+let W = 1080, H = 1920; const FPS = 30, SECONDS = 8, ZOOM = 0.04, BITRATE = 8e6, BPM = 124;
+const { synth, master, SR } = require('./reels-audio.js');
+const { cuesFor } = require('./lib/captions.js');
+const FONTS = ['cairo-arabic-var', 'inter-latin-var'].map((f) => fs.readFileSync(path.join(__dirname, '../src/assets/fonts', `${f}.woff2`)).toString('base64'));
+// caption zone per design family, as fractions of the frame: centre y, x from–to, font size (px)
+const CAP = {
+  'tiktok-9x16': { y: 0.80, x0: 0.07, x1: 0.93, fs: 46 },
+  'meta-feed-4x5': { y: 0.05, x0: 0.02, x1: 0.98, fs: 33 },
+  'video-16x9': { y: 0.905, x0: 0.03, x1: 0.60, fs: 38 },
+  'council-story': { y: 0.79, x0: 0.08, x1: 0.92, fs: 44 },
+  'selectivity-story': { y: 0.585, x0: 0.08, x1: 0.92, fs: 40 },
+  'days-4x5': { y: 0.205, x0: 0.04, x1: 0.53, fs: 38 }
+};
 const TIMESCALE = 15360, DELTA = TIMESCALE / FPS;
 const VARIANTS = ['live-ar', 'live-en', 'close-ar', 'close-en']; // seats-* withdrawn 6 Nov 2026
 // Every motion job (coverage pass, 6 Nov 2026): the 9:16 ads, plus 4:5 feed video (Facebook/Instagram/
@@ -101,6 +116,24 @@ function mp4(samples, avcC, audio = null, options = {}) {
   return Buffer.concat([ftyp, moov(vOff, aOff), u32(8 + vData.length + aData.length), str('mdat'), vData, aData]);
 }
 
+// ---------------------------------------------------------------- AAC-LC 192 kb/s via WebCodecs
+async function aac(page, audio) {
+  const frames = audio.L.length, inter = new Float32Array(frames * 2);
+  inter.set(audio.L, 0); inter.set(audio.R, frames); // planar: L then R
+  const out = await page.evaluate(async ({ pcm, frames, SR }) => {
+    const raw = Uint8Array.from(atob(pcm), (ch) => ch.charCodeAt(0)), f32 = new Float32Array(raw.buffer);
+    const ach = []; let adesc = null, fail = null;
+    const ae = new AudioEncoder({ output: (ch, meta) => { if (meta && meta.decoderConfig && meta.decoderConfig.description) adesc = new Uint8Array(meta.decoderConfig.description); const b = new Uint8Array(ch.byteLength); ch.copyTo(b); ach.push(b); }, error: (e) => { fail = String(e); } });
+    ae.configure({ codec: 'mp4a.40.2', sampleRate: SR, numberOfChannels: 2, bitrate: 192000 });
+    for (let s = 0; s < frames; s += 4800) { const len = Math.min(4800, frames - s), d = new Float32Array(len * 2); d.set(f32.subarray(s, s + len), 0); d.set(f32.subarray(frames + s, frames + s + len), len);
+      ae.encode(new AudioData({ format: 'f32-planar', sampleRate: SR, numberOfFrames: len, numberOfChannels: 2, timestamp: Math.round((s / SR) * 1e6), data: d })); }
+    await ae.flush(); ae.close(); if (fail) throw new Error(fail);
+    const b64 = (u) => { let s = ''; for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(s); };
+    return { asc: b64(adesc), a: ach.map(b64) };
+  }, { pcm: Buffer.from(inter.buffer).toString('base64'), frames, SR });
+  return { samples: out.a.map((x) => Buffer.from(x, 'base64')), asc: Buffer.from(out.asc, 'base64'), sampleRate: SR, channels: 2 };
+}
+
 // ---------------------------------------------------------------- render + encode in Chrome
 async function main() {
   const only = process.argv[2] || '';
@@ -117,9 +150,33 @@ async function main() {
     if (only && !name.includes(only)) continue;
     W = job.w; H = job.h;
     const jpg = fs.readFileSync(job.src).toString('base64');
-    const out = await page.evaluate(async ({ jpg, W, H, FPS, SECONDS, ZOOM, BITRATE }) => {
+    const [cues] = cuesFor(`${name}_8s`);
+    if (!cues) throw new Error(`no caption cues for ${name}`);
+    const cap = CAP[name.split('_')[0]];
+    const rtl = /_ar|-ar/.test(name), FRAME = process.env.FRAME;
+    const out = await page.evaluate(async ({ jpg, W, H, FPS, SECONDS, ZOOM, BITRATE, cues, cap, rtl, FONTS, FRAME }) => {
+      if (!window._fonts) { for (const [fam, b64] of [['Cairo', FONTS[0]], ['Inter', FONTS[1]]]) { const f = new FontFace(fam, `url(data:font/woff2;base64,${b64})`, { weight: '400 900' }); await f.load(); document.fonts.add(f); } window._fonts = 1; }
       const img = new Image(); img.src = 'data:image/jpeg;base64,' + jpg; await img.decode();
-      const c = new OffscreenCanvas(W, H), g = c.getContext('2d');
+      const c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d');
+      // caption layout: wrap each cue's lines to the zone width
+      const fsz = cap.fs, lh = Math.round(fsz * 1.45), padX = Math.round(fsz * 0.7), padY = Math.round(fsz * 0.38), maxW = (cap.x1 - cap.x0) * W - 2 * padX;
+      g.font = `800 ${fsz}px Cairo, Inter`; g.direction = rtl ? 'rtl' : 'ltr';
+      const wrap = (txt) => txt.split('\n').flatMap((para) => { const out = []; let line = ''; for (const w of para.split(' ')) { const tryL = line ? line + ' ' + w : w; if (g.measureText(tryL).width > maxW && line) { out.push(line); line = w; } else line = tryL; } if (line) out.push(line); return out; });
+      const laid = cues.map(([a, b, txt]) => ({ a, b, lines: wrap(txt) }));
+      const easeOut = (x) => 1 - Math.pow(1 - Math.max(0, Math.min(1, x)), 3);
+      const drawCaption = (t) => {
+        const q = laid.find((k) => t >= k.a && t < k.b); if (!q) return;
+        const inK = easeOut((t - q.a) / 0.22), outK = Math.max(0, Math.min(1, (q.b - t) / 0.18)), o = Math.min(inK, outK);
+        g.font = `800 ${fsz}px Cairo, Inter`; g.direction = rtl ? 'rtl' : 'ltr'; g.textAlign = 'center'; g.textBaseline = 'middle';
+        const tw = Math.max(...q.lines.map((l) => g.measureText(l).width)), bw = tw + 2 * padX, bh = q.lines.length * lh + 2 * padY;
+        const cx = ((cap.x0 + cap.x1) / 2) * W, cy = cap.y * H + (1 - inK) * 14;
+        g.save(); g.globalAlpha = o;
+        g.fillStyle = 'rgba(6,14,36,0.88)'; g.beginPath(); g.roundRect(cx - bw / 2, cy - bh / 2, bw, bh, Math.round(fsz * 0.45)); g.fill();
+        g.fillStyle = '#1BB7CD'; g.fillRect(rtl ? cx + bw / 2 - 6 : cx - bw / 2, cy - bh / 2 + padY, 6, bh - 2 * padY); // accent on the reading start
+        g.fillStyle = '#FFFFFF';
+        q.lines.forEach((l, i) => g.fillText(l, cx, cy - bh / 2 + padY + lh * (i + 0.5) + 1));
+        g.restore();
+      };
       const chunks = []; let desc = null, fail = null;
       const enc = new VideoEncoder({
         output: (chunk, meta) => {
@@ -131,9 +188,15 @@ async function main() {
       });
       enc.configure({ codec: W * H > 1080 * 1920 ? 'avc1.42E032' : 'avc1.42E028', width: W, height: H, bitrate: BITRATE, framerate: FPS, hardwareAcceleration: 'prefer-software', latencyMode: 'quality', avc: { format: 'avc' } });
       const n = FPS * SECONDS, ease = (t) => 0.5 - 0.5 * Math.cos(Math.PI * t);
-      for (let i = 0; i < n; i++) {
-        const s = 1 + ZOOM * ease(i / (n - 1)), dw = W * s, dh = H * s;
+      const frameAt = (i) => {
+        const t = i / FPS, punch = laid.reduce((p, k) => { const d = t - k.a; return d >= 0 && d < 0.35 ? Math.max(p, 0.012 * (1 - d / 0.35) ** 2) : p; }, 0);
+        const s = 1 + ZOOM * ease(i / (n - 1)) + punch, dw = W * s, dh = H * s;
         g.drawImage(img, (W - dw) / 2, (H - dh) * 0.42, dw, dh); // pushes in slightly above centre, toward the headline
+        drawCaption(t);
+      };
+      if (FRAME != null) { frameAt(Math.round(+FRAME * FPS)); return { png: c.toDataURL('image/png').split(',')[1] }; }
+      for (let i = 0; i < n; i++) {
+        frameAt(i);
         const frame = new VideoFrame(c, { timestamp: Math.round((i * 1e6) / FPS), duration: Math.round(1e6 / FPS) });
         enc.encode(frame, { keyFrame: i % (FPS * 2) === 0 });
         frame.close();
@@ -144,12 +207,17 @@ async function main() {
       const b64 = (u) => { let s = ''; for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(s); };
       chunks.sort((a, b) => a.ts - b.ts);
       return { avcC: b64(desc), samples: chunks.map((x) => ({ key: x.key, data: b64(x.data) })) };
-    }, { jpg, W, H, FPS, SECONDS, ZOOM, BITRATE });
+    }, { jpg, W, H, FPS, SECONDS, ZOOM, BITRATE, cues, cap, rtl, FONTS, FRAME });
+    if (FRAME != null) { const f = path.join(process.env.FRAME_DIR || os.tmpdir(), `${name}_t${FRAME}.png`); fs.writeFileSync(f, Buffer.from(out.png, 'base64')); console.log('frame', f); continue; }
+    // soundtrack: whoosh in, a tick on every caption, the resolve chord into the end; 124 bpm beat; -14 LUFS
+    const audio = synth({ total: SECONDS, cues: [{ t: 0.05, type: 'whoosh' }, ...cues.slice(1).map((k) => ({ t: k[0], type: 'tick' })), { t: SECONDS - 2.6, type: 'resolve' }], rtl, seed: name.length * 17, bpm: BPM });
+    const m = master(audio);
+    const au = await aac(page, audio);
     const samples = out.samples.map((s) => ({ key: s.key, data: Buffer.from(s.data, 'base64') }));
     const file = path.join(OUT, `${name}_8s.mp4`);
-    fs.writeFileSync(file, mp4(samples, Buffer.from(out.avcC, 'base64'), null, { width: W, height: H }));
+    fs.writeFileSync(file, mp4(samples, Buffer.from(out.avcC, 'base64'), au, { width: W, height: H }));
     written.push(file);
-    console.log('wrote', path.relative(ROOT, file), `${samples.length} frames`, `${(fs.statSync(file).size / 1e6).toFixed(1)} MB`);
+    console.log('wrote', path.relative(ROOT, file), `${samples.length} frames`, `${(fs.statSync(file).size / 1e6).toFixed(1)} MB`, `audio ${m.lufs.toFixed(1)} LUFS peak ${m.peakDb.toFixed(1)} dBFS`, `${cues.length} captions`);
   }
   await browser.close();
   return written;

@@ -2,37 +2,37 @@
   "$about": "Readiness tracker for the November schedule. Keyed by utm_content. reviewed=true: approved by the CEO (7 Nov 2026, phase 2: logo A, all assets, content and schedule). audioPending=true: a video waiting on voice-over / sound engineering (audio track), not reviewed until its audio is done. uploaded=true once loaded in the scheduler (Composio). Asset-produced and copy-ready are computed from the files and checks, never typed here.",
   "posts": {
     "w1-d4-li-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w1-d4-li-a-2": {
       "reviewed": true,
       "uploaded": false
     },
     "w1-d4-fb-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w1-d4-ig-s-1": {
       "reviewed": true,
       "uploaded": false
     },
     "w1-d4-ig-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w1-d4-tt-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w1-d4-yt-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w1-d3-li-a-2": {
       "reviewed": true,
@@ -63,18 +63,18 @@
       "uploaded": false
     },
     "w1-d5-yt-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w1-d6-li-a-1": {
       "reviewed": true,
       "uploaded": false
     },
     "w1-d6-ig-s-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w1-d6-fb-a-1": {
       "reviewed": true,
@@ -117,9 +117,9 @@
       "uploaded": false
     },
     "w1-d7-tt-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w2-d1-li-a-1": {
       "reviewed": true,
@@ -146,24 +146,24 @@
       "uploaded": false
     },
     "w2-d2-ig-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w2-d2-fb-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w2-d2-tt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w2-d2-yt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w2-d2-ig-s-9": {
       "reviewed": true,
@@ -178,9 +178,9 @@
       "uploaded": false
     },
     "w2-d3-ig-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w2-d3-ig-s-9": {
       "reviewed": true,
@@ -195,19 +195,19 @@
       "uploaded": false
     },
     "w2-d4-ig-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w2-d4-tt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w2-d4-yt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d1-li-a-1": {
       "reviewed": true,
@@ -226,34 +226,34 @@
       "uploaded": false
     },
     "w3-d1-ig-s-9": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d2-li-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d2-ig-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d2-fb-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d2-tt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d2-yt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d2-ig-s-9": {
       "reviewed": true,
@@ -268,14 +268,14 @@
       "uploaded": false
     },
     "w3-d3-tt-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d4-li-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d4-fb-a-1": {
       "reviewed": true,
@@ -290,33 +290,33 @@
       "uploaded": false
     },
     "w3-d5-li-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d5-li-a-2": {
       "reviewed": true,
       "uploaded": false
     },
     "w3-d5-ig-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d5-fb-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d5-tt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d5-yt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d5-ig-s-9": {
       "reviewed": true,
@@ -339,9 +339,9 @@
       "uploaded": false
     },
     "w3-d6-tt-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d7-fb-a-1": {
       "reviewed": true,
@@ -352,37 +352,37 @@
       "uploaded": false
     },
     "w3-d7-tt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w3-d7-yt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d1-li-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d1-li-a-2": {
       "reviewed": true,
       "uploaded": false
     },
     "w4-d1-fb-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d1-ig-s-9": {
       "reviewed": true,
       "uploaded": false
     },
     "w4-d2-li-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d2-li-a-2": {
       "reviewed": true,
@@ -397,23 +397,23 @@
       "uploaded": false
     },
     "w4-d2-tt-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d2-yt-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d2-ig-s-9": {
       "reviewed": true,
       "uploaded": false
     },
     "w4-d3-li-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d3-li-a-2": {
       "reviewed": true,
@@ -432,14 +432,14 @@
       "uploaded": false
     },
     "w4-d4-ig-s-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d4-ig-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d5-li-a-1": {
       "reviewed": true,
@@ -454,9 +454,9 @@
       "uploaded": false
     },
     "w4-d5-yt-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d6-li-a-1": {
       "reviewed": true,
@@ -475,18 +475,18 @@
       "uploaded": false
     },
     "w4-d6-tt-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w4-d7-ig-s-1": {
       "reviewed": true,
       "uploaded": false
     },
     "w4-d7-fb-a-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w5-d1-li-a-1": {
       "reviewed": true,
@@ -497,9 +497,9 @@
       "uploaded": false
     },
     "w5-d1-fb-a-2": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w5-d1-ig-a-2": {
       "reviewed": true,
@@ -518,9 +518,9 @@
       "uploaded": false
     },
     "w5-d2-li-a-2": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w5-d2-fb-a-1": {
       "reviewed": true,
@@ -535,29 +535,36 @@
       "uploaded": false
     },
     "w5-d2-ig-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w5-d2-tt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w5-d2-yt-r-1": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     },
     "w5-d2-ig-s-3": {
-      "audioPending": true,
-      "reviewed": false,
-      "uploaded": false
+      "reviewed": true,
+      "uploaded": false,
+      "musicOnly": true
     }
   },
   "approved": {
     "by": "CEO",
     "date": "2026-11-07",
     "scope": "logo A + all assets, content and schedule, except videos pending audio"
+  },
+  "musicOnly": {
+    "by": "CEO",
+    "date": "2026-11-07",
+    "decision": "videos are music-only, no voice-over: music + SFX + burned-in Arabic captions + visuals, -14 LUFS",
+    "produced": "2026-11-07 (Cairo), scripts/reels-cinematic.js + scripts/tiktok-videos.js",
+    "review": "renderer checks (LUFS/peak per file, header size/duration/audio track) + caption-placement frame review; the CEO approved the direction, not each cut"
   }
 }

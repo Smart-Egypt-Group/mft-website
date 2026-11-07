@@ -9,7 +9,11 @@
 //   tick     soft two-partial ping (1.76 + 3.52 kHz) with a 90 ms decay, for each revealed finding
 //   impact   sub drop 92 → 44 Hz with a low-passed noise thump, on the key number
 //   resolve  A major add9 bell chord with a 3 s decay, on the call to action
+//   beat     (music-only cut, CEO 7 Nov 2026: no voice-over) a driving pulse at `bpm`: sine kick 130 → 45 Hz on
+//            every beat, a high-passed noise hat on the off-beats, an eighth-note bass on the chord root
 // The bed is ducked under the effects (up to -6 dB, 0.45 s release) so they stay clear.
+// master(): EBU R128 integrated loudness to a target (-14 LUFS, the social-platform reference) under a
+// -1 dBFS peak ceiling, with a smooth peak limiter (instant attack, 80 ms release) so the target is reached.
 const fs = require('fs');
 
 const SR = 48000;
@@ -30,7 +34,7 @@ function bandpass() {
   };
 }
 
-function synth({ total, cues, rtl = true, seed = 7 }) {
+function synth({ total, cues, rtl = true, seed = 7, bpm = 0 }) {
   const n = Math.ceil(total * SR), L = new Float32Array(n), R = new Float32Array(n);
   const noise = rng(seed);
 
@@ -55,6 +59,19 @@ function synth({ total, cues, rtl = true, seed = 7 }) {
     const swell = 0.75 + 0.25 * Math.sin(2 * Math.PI * (t / 8));
     const fade = Math.min(1, t / 1.5, (total - t) / 2.0);
     L[i] = lpl(l) * 0.055 * swell * fade; R[i] = lpr(r) * 0.055 * swell * fade;
+  }
+
+  // ---- beat (music-only cut): kick on the beat, hat off the beat, eighth-note bass on the chord root
+  if (bpm) {
+    const beat = 60 / bpm, hp = (() => { let px = 0, py = 0; return (x) => (py = 0.86 * (py + x - px), px = x, py); })();
+    const intro = Math.min(0.5, total * 0.05), outro = total - 0.6;
+    for (let b = intro; b < outro; b += beat / 2) {
+      const on = Math.round((b - intro) / (beat / 2)) % 2 === 0, s = Math.floor(b * SR);
+      if (on) { let ph = 0; for (let k = 0; k < 0.26 * SR; k++) { const t = k / SR, f = 45 + 85 * Math.exp(-t / 0.035); ph += (2 * Math.PI * f) / SR; const v = Math.sin(ph) * Math.exp(-t / 0.11) * 0.42; if (s + k < n) { L[s + k] += v; R[s + k] += v; } } }
+      else { for (let k = 0; k < 0.05 * SR; k++) { const v = hp(noise()) * Math.exp(-(k / SR) / 0.012) * 0.05; if (s + k < n) { L[s + k] += v * 0.8; R[s + k] += v; } } }
+      const c = Math.min(chords.length - 1, Math.floor(b / seg)), f = midi(chords[c][0] - 24), len = Math.floor((beat / 2) * 0.9 * SR);
+      for (let k = 0; k < len; k++) { const t = k / SR, v = (Math.sin(2 * Math.PI * f * t) + 0.25 * Math.sin(4 * Math.PI * f * t)) * Math.min(1, t / 0.005) * Math.exp(-t / 0.18) * 0.16; if (s + k < n) { L[s + k] += v; R[s + k] += v; } }
+    }
   }
 
   // ---- ducking envelope from the cue times
@@ -122,4 +139,34 @@ function writeWav(file, { L, R }) {
   fs.writeFileSync(file, Buffer.concat([h, data]));
 }
 
-module.exports = { synth, writeWav, SR };
+// ---- loudness (EBU R128 / ITU-R BS.1770 integrated, gated; K-weighting for 48 kHz)
+function biquad(b0, b1, b2, a1, a2) { let x1 = 0, x2 = 0, y1 = 0, y2 = 0; return (x) => { const y = b0 * x + b1 * x1 + b2 * x2 - a1 * y1 - a2 * y2; x2 = x1; x1 = x; y2 = y1; y1 = y; return y; }; }
+function lufs(L, R) {
+  const kw = () => { const s = biquad(1.53512485958697, -2.69169618940638, 1.19839281085285, -1.69065929318241, 0.73248077421585), h = biquad(1, -2, 1, -1.99004745483398, 0.99007225036621); return (x) => h(s(x)); };
+  const fl = kw(), fr = kw(), n = L.length, kl = new Float32Array(n), kr = new Float32Array(n);
+  for (let i = 0; i < n; i++) { kl[i] = fl(L[i]); kr[i] = fr(R[i]); }
+  const blk = Math.floor(0.4 * SR), hop = Math.floor(0.1 * SR), z = [];
+  for (let s = 0; s + blk <= n; s += hop) { let a = 0; for (let i = s; i < s + blk; i++) a += kl[i] * kl[i] + kr[i] * kr[i]; z.push(a / blk); }
+  const L_ = (m) => -0.691 + 10 * Math.log10(m);
+  const abs = z.filter((m) => L_(m) > -70); if (!abs.length) return -70;
+  const rel = L_(abs.reduce((a, b) => a + b, 0) / abs.length) - 10;
+  const g = abs.filter((m) => L_(m) > rel);
+  return L_(g.reduce((a, b) => a + b, 0) / g.length);
+}
+// gain to the target, then a peak limiter; repeated until the integrated loudness is within 0.2 LU
+function master(audio, { target = -14, ceilDb = -1 } = {}) {
+  const { L, R } = audio, n = L.length, ceil = Math.pow(10, ceilDb / 20), rel = Math.exp(-1 / (0.08 * SR));
+  for (let pass = 0; pass < 6; pass++) {
+    const now = lufs(L, R); if (Math.abs(now - target) < 0.2 && pass) break;
+    const g = Math.pow(10, (target - now) / 20); let env = 1;
+    for (let i = 0; i < n; i++) {
+      const l = L[i] * g, r = R[i] * g, pk = Math.max(Math.abs(l), Math.abs(r)), need = pk > ceil ? ceil / pk : 1;
+      env = need < env ? need : 1 - (1 - env) * rel; if (env > 1) env = 1;
+      L[i] = l * env; R[i] = r * env;
+    }
+  }
+  let peak = 0; for (let i = 0; i < n; i++) peak = Math.max(peak, Math.abs(L[i]), Math.abs(R[i]));
+  return { lufs: lufs(L, R), peakDb: 20 * Math.log10(peak) };
+}
+
+module.exports = { synth, writeWav, master, lufs, SR };
