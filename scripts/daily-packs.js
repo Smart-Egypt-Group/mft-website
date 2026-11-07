@@ -27,7 +27,10 @@ const CHECK_ONLY = process.argv.includes('--check');
 // every asset must be rendered after the CEO's signature decision went in (6 Nov 2026, 22:15 Cairo):
 // SEG lockup (cube + «Standard Enterprise Governance») | the full MFT logo
 // φ pass (CEO, 7 Nov 2026 00:31 Cairo): spacing/type on the φ scale, signature on φ — every asset after it
-const QUALITY_PASS = new Date('2026-11-07T00:31:00+02:00');
+// phase 2 (CEO approved logo A, 7 Nov 2026 15:57 Cairo): every image after it. Videos keep the φ-pass time:
+// they wait on the audio track (readiness.json → audioPending) and get logo A in the audio re-render.
+const QUALITY_PASS = new Date('2026-11-07T15:57:00+02:00');
+const VIDEO_PASS = new Date('2026-11-07T00:31:00+02:00');
 // reels: after the end card stopped repeating the name under the lockup (6 Nov 2026, 23:38 Cairo)
 const REEL_PASS = new Date('2026-11-07T00:31:00+02:00');
 
@@ -80,7 +83,7 @@ function verify(rel, fmtKey, where) {
   const st = fs.statSync(file);
   const when = new Date(st.mtime.getTime() + 2 * 3600e3); // Cairo
   const stamp = `${when.getUTCDate()} ${MONTHS[when.getUTCMonth()] || when.getUTCMonth() + 1} ${String(when.getUTCHours()).padStart(2, '0')}:${String(when.getUTCMinutes()).padStart(2, '0')}`;
-  const pass = /^video\/reel-/.test(rel) ? REEL_PASS : QUALITY_PASS;
+  const pass = /\.mp4$/i.test(rel) ? VIDEO_PASS : QUALITY_PASS;
   if (st.mtime < pass) problems.push(`${where}: ${rel} predates the current signature (${st.mtime.toISOString()})`);
   const want = FMT[fmtKey] && FMT[fmtKey].dims;
   let w, h, extra = '';
@@ -323,20 +326,23 @@ const WEEKS = [[7, 10, 'الأسبوع 1 (تكملة) · 7–10', 'الإطلا�
 const ACTIVE = (r) => ['LinkedIn', 'Facebook', 'Instagram', 'YouTube'].includes(PLAT[r.p.ch]);
 const LOG = [];
 const view = days.map((X) => ({ X, rows: X.rows.map((r) => {
-  const p = r.p, produced = NO_ASSET.includes(p.fmt) ? '—' : p.need && /^N[367]/.test(p.need) && r.checked.length ? '🔴 (المساعد ✅)' : (r.checked.length ? '✅' : (r.alt && r.alt.checked && r.alt.checked.length ? '🔴 (بديل ✅)' : '🔴'));
+  const p = r.p, produced = rd(p.id).audioPending ? '🎙 صوت معلّق' : NO_ASSET.includes(p.fmt) ? '—' : p.need && /^N[367]/.test(p.need) && r.checked.length ? '🔴 (المساعد ✅)' : (r.checked.length ? '✅' : (r.alt && r.alt.checked && r.alt.checked.length ? '🔴 (بديل ✅)' : '🔴'));
   const copy = p.need && (NO_ASSET.includes(p.fmt) || p.fmt === 'text' || /رابط|قرار/.test(p.need)) ? (r.alt ? '🟡 (بديل ✅)' : '🔴') : '✅';
   const obs = obsOf(X.D.d, p);
   for (const [k, txt] of obs) LOG.push({ plat: PLAT[r.p.ch], d: X.D.d, t: p.t, id: p.id, k, txt, done: (RD.obs || {})[`${p.id}:${k}`] });
   const full = (produced === '✅' || produced === '—') && copy === '✅' && rd(p.id).uploaded === true && rd(p.id).reviewed === true;
   const prodReady = (produced === '✅' || produced === '—') && copy === '✅';
-  return { r, produced, uploaded: ok(rd(p.id).uploaded === true), reviewed: ok(rd(p.id).reviewed === true), copy, full, prodReady, dl: deadline(X.D.d, p), obs };
+  const uploadReady = prodReady && rd(p.id).reviewed === true; // produced + reviewed + copy: only the upload is left
+  return { r, uploadReady, produced, uploaded: ok(rd(p.id).uploaded === true), reviewed: ok(rd(p.id).reviewed === true), copy, full, prodReady, dl: deadline(X.D.d, p), obs };
 }) }));
 const all = view.flatMap((v) => v.rows), act = all.filter((x) => ACTIVE(x.r));
-const cnt = { total: act.length, full: act.filter((x) => x.full).length, prodReady: act.filter((x) => x.prodReady).length, needs: act.filter((x) => !x.prodReady).length, uploaded: act.filter((x) => x.uploaded === '✅').length, reviewed: act.filter((x) => x.reviewed === '✅').length };
+const cnt = { uploadReady: act.filter((x) => x.uploadReady).length, audio: act.filter((x) => rd(x.r.p.id).audioPending).length, total: act.length, full: act.filter((x) => x.full).length, prodReady: act.filter((x) => x.prodReady).length, needs: act.filter((x) => !x.prodReady).length, uploaded: act.filter((x) => x.uploaded === '✅').length, reviewed: act.filter((x) => x.reviewed === '✅').length };
 let cmd = `<!-- CAL:START — اتولّد بـ\`node scripts/daily-packs.js\` من \`scripts/lib/daily-nov.js\` + \`daily/readiness.json\`. ما يتعدّلش باليد. -->\n\n`;
 cmd += `## المنصات\n\n**مجدولة (مربوطة بـComposio):** Facebook · Instagram · LinkedIn (الصفحة + حساب المؤسس) · YouTube. **TikTok: مُعلّق لحد ما يكتمل الربط** (قسم في الآخر، مش مجدول). واتساب/البريد يدوي خارج الربط.\n\n`;
-cmd += `## الجاهزية الإجمالية (${act.length} منشور على المنصات المربوطة)\n\n| الخطوة | العدد | |\n|---|---|---|\n| الأصل مُنتَج + النص جاهز (جاهز للرفع) | **${cnt.prodReady}** | الأصل موجود ومفحوص على الديسك، أو نص بلا أصل |\n| محتاج إنتاج أو إدخال بشري | **${cnt.needs}** | تصوير (N6/N7)، كاروسيل المعايير (N3)، رابط البث، قرار 2 — ولكل واحد بديل جاهز إلا المكتوب 🔴 |\n| مرفوع على الجدولة | **${cnt.uploaded}** | يتحدّث في \`daily/readiness.json\` |\n| مُراجَع (اعتماد) | **${cnt.reviewed}** | يتحدّث في \`daily/readiness.json\` |\n| **جاهز بالكامل** (الأربع خطوات) | **${cnt.full}** | |\n\n`;
-cmd += `> **تنبيه:** الأصول الحالية عليها التوقيع السابق. بعد اعتماد المرحلة 2 (اللوجو A) بتتولّد تاني بنفس المسارات قبل الرفع (حوالي ساعتين رندر). **خطوة «جاهز قبل»** = آخر موعد لاكتمال الجاهزية: اليوم السابق 18:00 للرفع والمراجعة، ومواعيد خاصة للتصوير والقرارات.\n\n`;
+cmd += `## الجاهزية الإجمالية (${act.length} منشور على المنصات المربوطة)\n\n| الخطوة | العدد | |\n|---|---|---|\n| **جاهز للرفع الآن** (مُنتَج باللوجو A + مُراجَع + النص جاهز) | **${cnt.uploadReady}** | باقي خطوة الرفع بس |
+| فيديو معلّق على مسار الصوت (VO / هندسة صوتية) | **${cnt.audio}** | \`audioPending\` في readiness.json؛ بيتعاد رندره باللوجو A مع الصوت |
+| الأصل مُنتَج + النص جاهز | **${cnt.prodReady}** | الأصل موجود ومفحوص على الديسك، أو نص بلا أصل |\n| محتاج إنتاج أو إدخال بشري | **${cnt.needs}** | تصوير (N6/N7)، كاروسيل المعايير (N3)، رابط البث، قرار 2 — ولكل واحد بديل جاهز إلا المكتوب 🔴 |\n| مرفوع على الجدولة | **${cnt.uploaded}** | يتحدّث في \`daily/readiness.json\` |\n| مُراجَع (اعتماد) | **${cnt.reviewed}** | يتحدّث في \`daily/readiness.json\` |\n| **جاهز بالكامل** (الأربع خطوات) | **${cnt.full}** | |\n\n`;
+cmd += `> **المرحلة 2 (اعتماد الـCEO، 7 نوفمبر):** كل الصور والستوريز والأغلفة اتولّدت باللوجو A. الفيديوهات معلّقة على مسار الصوت. **خطوة «جاهز قبل»** = آخر موعد لاكتمال الجاهزية: اليوم السابق 18:00 للرفع والمراجعة، ومواعيد خاصة للتصوير والقرارات.\n\n`;
 cmd += `## الملخّص أسبوع بأسبوع\n\n| الأسبوع | التيمة | LinkedIn | Facebook | Instagram | YouTube | TikTok (معلّق) | الأكاديمية | جاهز للرفع / الإجمالي | أهم الهوكات |\n|---|---|---|---|---|---|---|---|---|---|\n`;
 for (const [a, b, name, theme] of WEEKS) {
   const ws = view.filter((v) => v.X.D.d >= a && v.X.D.d <= b).flatMap((v) => v.rows), n = (pl) => ws.filter((x) => PLAT[x.r.p.ch] === pl).length, wa = ws.filter((x) => ACTIVE(x.r));
@@ -381,5 +387,5 @@ for (const pl of PL) {
   lg += L.filter((x) => x.k !== 'rule').map((x) => `| ${x.d} نوف | ${x.t} | \`${x.id}\` | ${OBS[x.k].t} | ${cell(x.txt)} | ${x.done || 'مفتوحة'} |`).join('\n') + '\n';
 }
 fs.writeFileSync(path.join(ROOT, 'marketing/content/platform-observations.md'), lg);
-console.log(`wrote november-calendar.md + platform-observations.md · ${cnt.total} posts on connected platforms: ${cnt.prodReady} ready to upload, ${cnt.needs} need production/input, ${cnt.uploaded} uploaded, ${cnt.reviewed} reviewed, ${cnt.full} fully ready · TikTok/manual pending ${pend.length}`);
+console.log(`wrote november-calendar.md + platform-observations.md · ${cnt.total} posts on connected platforms: ${cnt.uploadReady} ready to upload now, ${cnt.audio} videos pending audio, ${cnt.prodReady} produced + copy ready, ${cnt.needs} need production/input, ${cnt.uploaded} uploaded, ${cnt.reviewed} reviewed, ${cnt.full} fully ready · TikTok/manual pending ${pend.length}`);
 

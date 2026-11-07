@@ -26,7 +26,8 @@ const LOGO = {
   lineLight: png('marketing/brand/assets/logo/official/seg-lockup-official_line-light.png'), lineDark: png('marketing/brand/assets/logo/official/seg-lockup-official_line-dark.png'),
   stackLight: png('marketing/brand/assets/logo/official/seg-lockup-official_stack-light.png'), stackDark: png('marketing/brand/assets/logo/official/seg-lockup-official_stack-dark.png'),
   twoLight: png('marketing/brand/assets/logo/official/seg-lockup-official_two-light.png'), twoDark: png('marketing/brand/assets/logo/official/seg-lockup-official_two-dark.png'),
-  cube: png('marketing/brand/assets/logo/seg-logo_full.png'), cubeWhite: png('marketing/brand/assets/logo/seg-logo_white.png'),
+  // direction A (approved 7 Nov 2026): the official vector cube
+  cube: png('marketing/brand/assets/logo/official/seg-cube-official_color.png'), cubeWhite: png('marketing/brand/assets/logo/official/seg-cube-official_mono-white.png'), cubeDark: png('marketing/brand/assets/logo/official/seg-cube-official_color-on-dark.png'),
   mftNavy: png('src/assets/logo/mft-lockup-navy.png'), mftWhite: png('src/assets/logo/mft-lockup-white.png')
 };
 const FONTS = `@font-face{font-family:Cairo;font-weight:200 1000;src:url(data:font/woff2;base64,${b64(T.font.arabic.file)})}`
@@ -294,7 +295,7 @@ const a4 = `<div style="width:1240px;height:1754px;position:relative;overflow:hi
   <div style="position:absolute;right:110px;left:110px;bottom:100px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid ${C.line};padding-top:24px;direction:ltr">
    <div style="display:flex;align-items:center;gap:23px"><img src="${LOGO.twoLight}" style="height:54px"><i style="width:1px;height:38px;background:${C.navy};opacity:.32"></i><img src="${LOGO.mftNavy}" style="height:27px"></div>
    <span style="font-size:20px;color:${C.muted};direction:rtl">معتمد من: مراجع MFT (الاسم)</span></div></div>`;
-const avatar = `<div style="width:1080px;height:1080px;background:${grad(T.gradient.night)};display:flex;align-items:center;justify-content:center"><img src="${LOGO.cubeWhite}" style="height:560px"></div>`;
+const avatar = `<div style="width:1080px;height:1080px;background:${grad(T.gradient.night)};display:flex;align-items:center;justify-content:center"><img src="${LOGO.cubeDark}" style="height:560px"></div>`;
 const banner = `<div style="width:1584px;height:396px;position:relative;overflow:hidden;background:${grad(T.gradient.depth)};color:#fff;font-family:${T.font.stack}">
   <div style="position:absolute;inset:0;overflow:hidden"><img src="${LOGO.cubeWhite}" style="position:absolute;left:-60px;top:-140px;height:680px;opacity:.06"></div>
   <img src="${LOGO.lineDark}" style="position:absolute;left:120px;top:150px;height:96px">
@@ -328,7 +329,7 @@ page('apps-screen', 'تطبيقات: شاشة المنصة (فاتح وغامق)
   <p style="font-size:14px">أساس العرض: <span class="lat">seg-audit/portal</span> بيستخدم Tajawal + Cairo دلوقتي؛ الشاشة دي مقترح، مش لقطة من المنصة.</p>`);
 
 page('decisions', 'القرارات المطلوبة من الـCEO', `<table style="margin-top:14px;font-size:17px"><tr><th>#</th><th>القرار</th><th>توصيتي</th><th>بيأثر على</th></tr>
-  <tr><td>1</td><td>اتجاه المكعّب: <bdi>A</bdi> أو <bdi>B</bdi> أو <bdi>C</bdi></td><td>A أساسي + B تحت 48 px</td><td>كل الأصول (التوقيع حاليًا على ملف الـCEO)</td></tr>
+  <tr><td>1</td><td>اتجاه المكعّب</td><td>✅ <b>A اعتُمد</b> (7 نوفمبر) وعُمّم على كل الصور والستوريز والأغلفة</td><td>الفيديوهات بتاخد A مع مسار الصوت</td></tr>
   <tr><td>2</td><td>ملف أصلي من المصمم (SVG/AI/PDF) لو موجود</td><td>يحسم الأبعاد بدل القياس من 180 px</td><td>الإنشاء</td></tr>
   <tr><td>3</td><td>الخط اللاتيني: IBM Plex Sans بدل Inter</td><td>نعم (أقرب قياس + أرقام جدولية + خط التقارير)</td><td>الموقع، والحملة، والمنصة</td></tr>
   <tr><td>4</td><td>توحيد خط المنصة (Tajawal + Cairo ← Cairo + Plex)</td><td>نعم، بعد 30 نوفمبر</td><td>seg-audit/portal</td></tr>
