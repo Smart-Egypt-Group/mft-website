@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// SEG logo system: the S-E-G cube on a declared geometric grid (3 directions for the CEO) and the official
-// lockup «cube + Standard Enterprise Governance» (CEO decision, 6 Nov 2026).
+// SEG logo system: the S-E-G cube on a declared geometric grid, and the official lockup «cube + Standard
+// Enterprise Governance» (CEO, 6 Nov 2026). Direction A is the approved logo (CEO, 7 Nov 2026); B and C
+// stay in directions/ as the record of the choice.
 //   PLAYWRIGHT_PATH=<path to playwright> node scripts/seg-logo-vector.js
 // Module use (the brand book draws its construction pages from the same geometry):
 //   require('./seg-logo-vector.js') → { DIRS, frame, cubeSVG, construction, weights, nameRun, lockupSVG, … }
@@ -229,9 +230,14 @@ if (require.main === module) (async () => {
   // official lockups (used by every campaign design's signature)
   const off = path.join(OUT, 'official'); fs.mkdirSync(off, { recursive: true });
   for (const L of ['line', 'stack', 'two']) for (const mode of ['light', 'dark']) {
-    const s = officialSVG(mode, L), vb = vbOf(s), name = `seg-lockup-official_${L}-${mode}`;
+    // CEO approved direction A (7 Nov 2026): the official lockup is A's vector cube + the name, all paths
+    const s = lockupSVG('A', mode, L, 'of'), vb = vbOf(s), name = `seg-lockup-official_${L}-${mode}`;
     fs.writeFileSync(path.join(off, name + '.svg'), s);
     const H = 512; await png(s, path.join(off, name + '.png'), Math.round(H * vb[2] / vb[3]), H); n += 2;
+  }
+  for (const [mode, nm] of [['light', 'color'], ['dark', 'color-on-dark'], ['white', 'mono-white']]) {
+    const c = cubeSVG('A', mode, 'oc'), sv = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${[c.box.x, c.box.y, c.box.w, c.box.h].map(f).join(' ')}">${c.defs ? `<defs>${c.defs}</defs>` : ''}${c.g}</svg>\n`;
+    fs.writeFileSync(path.join(off, `seg-cube-official_${nm}.svg`), sv); await png(sv, path.join(off, `seg-cube-official_${nm}.png`), Math.round(512 * c.box.w / c.box.h), 512); n += 2;
   }
   // the three vector directions
   const dirRoot = path.join(OUT, 'directions');

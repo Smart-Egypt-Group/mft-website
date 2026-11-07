@@ -4,7 +4,7 @@
 //   1. the close date in words, from src/site.config.js → founding.closesAt (change it there only)
 //   2. the campaign copy: scarcity = a closing window + selectivity. No seat numbers, no counts, no numeric
 //      price or discount, no «مدى الحياة» (it belongs in the acceptance letter, not on an ad)
-//   3. the signature (CEO decision, 6 Nov 2026): the SEG lockup (the CEO's cube + «Standard Enterprise /
+//   3. the signature (CEO decision, 6 Nov 2026; logo direction A approved 7 Nov): the SEG lockup (A's cube + «Standard Enterprise /
 //      Governance», marketing/brand/assets/logo/official/, built by scripts/seg-logo-vector.js) | a hairline
 //      divider | the full MFT logo (eagle + MODERN FINTECH: src/assets/logo/mft-lockup-*.png, cut from the
 //      official 5906 px pack). One endorsed unit, SEG first, never mirrored in RTL layouts. H = the cube's
@@ -99,7 +99,8 @@ const uri = (f) => 'data:image/png;base64,' + b64(f);
 const MARK = {
   navy: uri(OFFICIAL + 'seg-lockup-official_two-light.png'), white: uri(OFFICIAL + 'seg-lockup-official_two-dark.png'),
   mftNavy: uri('src/assets/logo/mft-lockup-navy.png'), mftWhite: uri('src/assets/logo/mft-lockup-white.png'),
-  cubeColor: uri(LOGO + 'seg-logo_sign.png'), cubeWhite: uri(LOGO + 'seg-logo_sign-white.png') // the cube alone (app-bar mocks)
+  // the cube alone (compact signature, app-bar mocks): direction A; on dark its lifted ramp (≥ 3:1 on navy)
+  cubeColor: uri(OFFICIAL + 'seg-cube-official_color.png'), cubeWhite: uri(OFFICIAL + 'seg-cube-official_color-on-dark.png')
 };
 const MARK_FILES = { segLight: OFFICIAL + 'seg-lockup-official_two-light.png', segDark: OFFICIAL + 'seg-lockup-official_two-dark.png', mftNavy: 'src/assets/logo/mft-lockup-navy.png', mftWhite: 'src/assets/logo/mft-lockup-white.png' };
 // φ proportions (CEO, 7 Nov 2026): divider and MFT logo = H/φ, gaps = H/φ², minimum H = 55 (Fibonacci)
