@@ -25,7 +25,7 @@
   var status = form.querySelector('.form-status');
   var btn = form.querySelector('button[type="submit"]');
 
-  var EMAIL = /^[^@\s]{1,64}@[A-Za-z0-9.-]{1,253}\.[A-Za-z]{2,24}$/;   // the engine's _EMAIL
+  var EMAIL = /^[A-Za-z0-9.!#$%&'*+\/=?^_`{|}~-]{1,64}@[A-Za-z0-9.-]{1,253}\.[A-Za-z]{2,24}$/;   // the engine's _EMAIL
   var PHONE = /^\+?[0-9 ()-]{6,32}$/;                                   // the engine's _PHONE
   var INTS = ['companies', 'branches'];
   var CHOICES = ['employees', 'je_monthly', 'revenue', 'erp', 'hosting', 'sector', 'auditor', 'role'];
