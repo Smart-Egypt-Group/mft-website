@@ -7,6 +7,7 @@
      Lead      click on a [data-track="lead"] CTA: the free trial-balance check (Meta "Lead",
                TikTok "ClickButton"); and a founding application received (apply.js → 'mft:lead',
                Meta "Lead" content_name founding-application, TikTok "SubmitForm")
+     Contact   click on any WhatsApp link (wa.me) (Meta "Contact", TikTok "Contact"), 8 Nov 2026
    A browser that opted out under the short-lived notice bar (localStorage mft-consent = 'denied')
    stays opted out. */
 (function () {
@@ -19,18 +20,22 @@
     var c = JSON.parse(window.localStorage.getItem('mft-consent') || 'null');
     if (c && c.v === 'denied') return;
   } catch (e) { /* storage blocked: load as normal */ }
-  var metaId = me.getAttribute('data-meta-pixel') || '';
+  /* data-meta-pixel may hold several space-separated IDs (business dataset + legacy pixel): each is
+     initialised, and every fbq('track') below then reaches all of them. */
+  var metaIds = (me.getAttribute('data-meta-pixel') || '').split(/\s+/).filter(Boolean);
   var tiktokId = me.getAttribute('data-tiktok-pixel') || '';
 
   /* ---------- Meta Pixel (standard base code, as a file instead of inline) ---------- */
-  if (metaId) {
+  if (metaIds.length) {
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
       t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
     }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-    window.fbq('set', 'autoConfig', false, metaId); // no automatic button/form scraping: only the events below
-    window.fbq('init', metaId);
+    metaIds.forEach(function (id) {
+      window.fbq('set', 'autoConfig', false, id); // no automatic button/form scraping: only the events below
+      window.fbq('init', id);
+    });
     window.fbq('track', 'PageView');
   }
 
@@ -64,6 +69,15 @@
     } catch (err) { /* storage blocked */ }
     if (window.fbq) window.fbq('track', 'Lead', params);
     if (window.ttq && tiktokId) window.ttq.track('SubmitForm', { content_name: params.content_name });
+  });
+
+  /* ---------- Contact: a click on any WhatsApp link (wa.me). These open in a new tab, so no delay is needed.
+     Only the fact of the click is sent, never the number or a message (privacy notice). ---------- */
+  document.addEventListener('click', function (e) {
+    var w = e.target.closest && e.target.closest('a[href^="https://wa.me/"]');
+    if (!w) return;
+    if (window.fbq) window.fbq('track', 'Contact', { content_name: 'whatsapp' });
+    if (window.ttq && tiktokId) window.ttq.track('Contact', { content_name: 'whatsapp' });
   });
 
   /* ---------- Lead: the free-check CTA. Same-tab clicks wait a moment so the event leaves before the page does ---------- */
