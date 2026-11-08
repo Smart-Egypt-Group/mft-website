@@ -144,7 +144,11 @@ module.exports = {
   analytics: {
     gtmId: '',        // e.g. 'GTM-XXXXXXX'
     plausibleDomain: '',
-    metaPixelId: '501774495051160', // Meta Pixel (web): PageView on every page, Lead on the free-check CTA
+    // Meta Pixel (web): PageView on every page, Lead on the free-check CTA, Contact on WhatsApp clicks.
+    // Space-separated IDs; every event goes to each (8 Nov 2026):
+    //   775138718613961  business-owned dataset (Business Manager 1914332548951730), the one ads optimise on
+    //   501774495051160  "Ahmed Ashraf's Pixel" (personal, 2022), kept until it is retired so no history is lost
+    metaPixelId: '775138718613961 501774495051160',
     tiktokPixelId: '',              // TikTok Pixel: PLACEHOLDER, paste the ID here when it is ready (same events)
     pixelHosts: ['www.seg-audit.com', 'seg-audit.com']
   }
