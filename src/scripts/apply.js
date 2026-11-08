@@ -1,14 +1,17 @@
-/* Founding seat application (founding-members/apply/). Progressive enhancement: posts JSON to the
-   platform's public endpoint. Contract: seg-audit docs/api/founding-applications.md.
-     202  always the same, whatever happened: one neutral "received" message (never "created")
+/* Founding membership application (founding-members/apply/). Progressive enhancement: posts JSON to
+   the platform's public endpoint. Contract: seg-audit docs/api/founding-applications.md.
+     202  {received:true, seats:{open, deadline}}: always the same, whatever happened: one neutral
+          "received, MFT will reply by e-mail" message (never "created"). There is no confirmation
+          e-mail step (decision, 8 Nov 2026): the application goes straight to MFT's review queue.
+     410  {closed:true, deadline?, detail}: applications are closed (past the deadline, or the offer
+          switched off) → the page switches to its "applications closed" card (main.js)
      422  {detail:[{loc:["body",field],msg}]}: mark those fields
      429  Retry-After: "try again in a little while"
      400  with the captcha on: the Turnstile check failed → reset the widget, ask to retry
      else / network / CORS: "could not send now", with the e-mail fallback
    The page validates first with the contract's own rules, so a 422 should be rare.
    On 202 a 'mft:lead' event fires; pixel.js sends it to Meta as Lead with the visit's UTMs only
-   (never the form's contents). The 202 message asks the applicant to confirm their e-mail: an
-   application reaches MFT only once its e-mailed link is confirmed (contract). UTMs go with the application only once site.config →
+   (never the form's contents). UTMs go with the application only once site.config →
    founding.api.utmField names a field the platform accepts (unknown fields are a 422). */
 (function () {
   'use strict';
@@ -21,7 +24,6 @@
   var utmField = form.getAttribute('data-utm-field');
   var status = form.querySelector('.form-status');
   var btn = form.querySelector('button[type="submit"]');
-  var state = 'open';
 
   var EMAIL = /^[^@\s]{1,64}@[A-Za-z0-9.-]{1,253}\.[A-Za-z]{2,24}$/;   // the engine's _EMAIL
   var PHONE = /^\+?[0-9 ()-]{6,32}$/;                                   // the engine's _PHONE
@@ -164,14 +166,15 @@
   form.addEventListener('input', function (e) { if (e.target.name) unmark(e.target.name); });
   form.addEventListener('change', function (e) { if (e.target.name) unmark(e.target.name); });
 
-  // Seats state from main.js: full → waitlist wording on the button. main.js may have settled
-  // already (cached answer), so read the current state too.
-  function onState(st) {
-    state = st || 'open';
-    if (!btn.disabled) btn.textContent = btn.getAttribute(state === 'full' ? 'data-label-full' : 'data-label-open');
+  // 410: applications are closed. main.js hides the form and shows the "closed" card (with the
+  // platform's deadline, if it sent one); without main.js the message goes in the form's status.
+  function closed(body) {
+    try { document.dispatchEvent(new CustomEvent('mft:founding-closed', { detail: { deadline: body && body.deadline } })); } catch (e) { /* old browser */ }
+    var card = document.getElementById('ap-closed');
+    if (document.documentElement.getAttribute('data-seats-state') === 'closed' && card && !card.hidden) { card.focus(); return; }
+    setStatus('err', M.closed);
+    status.focus();
   }
-  document.addEventListener('mft:seats', function (e) { onState(e.detail && e.detail.state); });
-  if (document.documentElement.getAttribute('data-seats-state')) onState(document.documentElement.getAttribute('data-seats-state'));
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -201,16 +204,15 @@
       })
       .then(function (res) {
         if (res.status === 202) {
-          var seats = res.body && res.body.seats;
-          var full = state === 'full' || (seats && seats.left === 0);
           form.reset();
           captchaReset();
           form.classList.add('is-sent');
-          setStatus('ok', full ? M.successWaitlist : M.success);
+          setStatus('ok', M.success);
           status.focus();
-          try { document.dispatchEvent(new CustomEvent('mft:lead', { detail: { name: 'founding-application', waitlist: !!full } })); } catch (err) { /* old browser */ }
+          try { document.dispatchEvent(new CustomEvent('mft:lead', { detail: { name: 'founding-application' } })); } catch (err) { /* old browser */ }
           return;
         }
+        if (res.status === 410) { closed(res.body); return; }
         if (res.status === 422 && res.body && Array.isArray(res.body.detail)) {
           var list = [];
           res.body.detail.forEach(function (d) {

@@ -101,9 +101,9 @@ module.exports = function home(ctx, opts = {}) {
   // Founding Members band, straight under the hero: scarcity + social proof + the app CTA.
   const FM = ctx.config.founding;
   const founding = FM && FM.enabled && c.founding
-    ? `<section class="founding-band" aria-labelledby="fm-band-title" data-seats-hide="off">
+    ? `<section class="founding-band" aria-labelledby="fm-band-title" data-seats-hide="off closed">
   <div class="container founding-band-inner">
-    ${FM.showCount ? `<p class="founding-band-count" aria-hidden="true"><span class="lat">${FM.total - FM.filled}</span><span class="lat">/${FM.total}</span></p>` : `<p class="founding-band-count founding-band-date" aria-hidden="true"><span>${t(seats(ctx, c.founding.hero.window.date))}</span></p>`}
+    <p class="founding-band-count founding-band-date" aria-hidden="true"><span>${t(seats(ctx, c.founding.hero.window.date))}</span></p>
     <div>
       <h2 id="fm-band-title">${fmh(ctx, 'homeBand.title')}</h2>
       <p>${fmh(ctx, 'homeBand.body')}</p>

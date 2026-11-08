@@ -1,15 +1,14 @@
-// Founding seat application: the public form on founding-members/apply/. It posts JSON to the
-// platform (site.config → founding.api.apply) and shows the live seats counter
-// (founding.api.seats) via main.js; the form logic is in scripts/apply.js. Contract: seg-audit
-// docs/api/founding-applications.md. Without JS, or before the counter answers, the numbers are
-// the last known count from site.config (founding.filled / asOf).
-const { t, esc, plain, url, seats, seatsHtml, windowPanel } = require('../html');
+// Founding membership application: the public form on founding-members/apply/. It posts JSON to the
+// platform (site.config → founding.api.apply); the form logic is in scripts/apply.js. Contract: seg-audit
+// docs/api/founding-applications.md. Applications close at site.config → founding.closesAt, or at the
+// platform's own deadline (founding.api.seats, read by main.js). Past it main.js hides the form and
+// shows the "applications closed" card; with the offer switched off it shows the "paused" card.
+const { t, esc, plain, url, seats, closeHtml, windowPanel, signupUrl } = require('../html');
 const { seeAlso } = require('./services');
 
 module.exports = function foundingApply(ctx) {
   const P = ctx.c.founding, A = P.apply, F = ctx.config.founding, L = A.fields;
-  const filled = F.showCount ? F.filled : 0;
-  const s = (x) => seatsHtml(ctx, x);
+  const s = (x) => closeHtml(ctx, x);
   // Text with [[path/|label]] links (the consent line points to the privacy notice).
   const tl = (x) => t(x).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (m, href, label) => `<a href="${esc(url(ctx, href))}">${label}</a>`);
   const req = '<span class="req" aria-hidden="true">*</span>';
@@ -31,8 +30,8 @@ module.exports = function foundingApply(ctx) {
   // Messages for apply.js, resolved here so the script stays language-free.
   const i18n = {
     errors: A.errors,
-    submit: plain(A.submit), submitWaitlist: plain(A.submitWaitlist), sending: plain(A.sending),
-    success: plain(seats(ctx, A.success)), successWaitlist: plain(seats(ctx, A.successWaitlist)),
+    submit: plain(A.submit), sending: plain(A.sending),
+    success: plain(seats(ctx, A.success)), closed: plain(seats(ctx, A.state.closed)),
     rateLimited: plain(A.rateLimited), captchaFailed: plain(A.captchaFailed), failed: plain(A.failed).replace('{email}', ctx.config.contact.email)
   };
   for (const k in i18n.errors) i18n.errors[k] = plain(i18n.errors[k]);
@@ -45,24 +44,25 @@ module.exports = function foundingApply(ctx) {
       <h1 id="ap-title">${t(A.headline)}</h1>
       <p class="lead">${t(A.intro)}</p>
     </div>
-    ${F.showCount ? `<div class="seat-panel apply-counter" data-seats-hide="off" aria-live="polite">
-      <p class="seat-count"><span class="seat-left lat" data-seats="left">${F.total - filled}</span><span class="seat-total lat">/<span data-seats="total">${F.total}</span></span></p>
-      <p class="seat-caption">${s(A.counter.caption)}</p>
-      <p class="seat-stale" data-seats-stale hidden>${t(A.counter.asOf)} · <span class="lat" data-seats="asof">${esc(F.asOf || '')}</span></p>
-      <p class="seat-note" data-seats-show="full" hidden>${t(A.counter.full)}</p>
-    </div>` : windowPanel(ctx, ' apply-counter')}
+    ${windowPanel(ctx, ' apply-counter')}
   </div>
 </section>`;
 
   const off = `<div class="apply-off card" data-seats-show="off" hidden>
-      <p>${t(A.counter.off)}</p>
-      <p><a class="btn btn-primary" href="${url(ctx, 'contact/')}">${t(A.counter.offCta)}</a></p>
+      <p>${t(A.state.off)}</p>
+      <p><a class="btn btn-primary" href="${url(ctx, 'contact/')}">${t(A.state.offCta)}</a></p>
+    </div>`;
+  // Past the deadline (main.js, or a 410 from the platform via apply.js): the form gives way to this.
+  const closed = `<div class="apply-off card" id="ap-closed" data-seats-show="closed" hidden tabindex="-1">
+      <p>${s(A.state.closed)}</p>
+      <p><a class="btn btn-primary" href="${esc(signupUrl(ctx, 'apply-closed'))}" data-track="lead">${t(P.check.cta)}</a></p>
     </div>`;
 
   const form = `<section class="section" aria-labelledby="ap-form-title">
   <div class="container contact-grid apply-grid">
     ${off}
-    <form class="lead-form card apply-form" id="founding-form" method="post" action="${esc(F.api.apply)}" novalidate data-seats-hide="off"
+    ${closed}
+    <form class="lead-form card apply-form" id="founding-form" method="post" action="${esc(F.api.apply)}" novalidate data-seats-hide="off closed"
           data-endpoint="${esc(F.api.apply)}" data-utm-field="${esc(F.api.utmField || '')}" data-lang="${ctx.lang}" aria-labelledby="ap-form-title">
       <h2 id="ap-form-title" class="visually-hidden">${t(A.eyebrow)}</h2>
       <script type="application/json" id="apply-i18n">${JSON.stringify(i18n).replace(/</g, '\\u003c')}</script>
@@ -104,9 +104,9 @@ module.exports = function foundingApply(ctx) {
       <div class="hp" aria-hidden="true"><label for="ap-website">${t(L.honeypot)}</label><input id="ap-website" name="website" type="text" tabindex="-1" autocomplete="off" value=""></div>
 
       <p class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
-      <button class="btn btn-primary btn-lg" type="submit" data-label-open="${esc(plain(A.submit))}" data-label-full="${esc(plain(A.submitWaitlist))}">${t(A.submit)}</button>
+      <button class="btn btn-primary btn-lg" type="submit">${t(A.submit)}</button>
     </form>
-    <aside class="contact-details apply-aside" aria-labelledby="ap-next-title">
+    <aside class="contact-details apply-aside" aria-labelledby="ap-next-title" data-seats-hide="closed">
       <h2 id="ap-next-title">${t(A.aside.title)}</h2>
       <ol class="num-list">${A.aside.steps.map((x, i) => `<li><span class="num lat" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span><span>${s(x)}</span></li>`).join('')}</ol>
       <p class="field-hint">${t(A.aside.note)}</p>

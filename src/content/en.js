@@ -822,15 +822,13 @@ module.exports = {
   // per activity come from seg-audit (analysis/odoo_best_practice.py → FAMILY_RULES, ISIC mapping).
   // Ready-made module packages and their Odoo App Store listing are not built yet: marked "soon".
   // Commission and resale margin are not decided: "set in the partner agreement", no figures.
-  // Founding Members (Standard Enterprise Governance (SEG) launch, November 2026). Seat numbers come from site.config → founding:
-  // {left} remaining, {filled} reserved (applications submitted), {total} seats. Never type the numbers here.
-  // PENDING (Ahmed): the "Founding terms" benefit and the "after 50" FAQ are commercial commitments;
-  // approve or remove before merge.
+  // Founding Members (Standard Enterprise Governance (SEG) launch, November 2026). Decision (8 Nov 2026):
+  // applications close at site.config → founding.closesAt instead of a 50-seat cap, and there is no
+  // confirmation e-mail: an application goes straight to the MFT team. No seat numbers anywhere.
   founding: {
     // Approved direction (CEO, 7 Nov 2026): the founder-price window closes at site.config → founding.closesAt
     // ({closeDay} {closeMonth}), and membership is by application and selection. Never here: a seat number,
     // «for life» (said in the acceptance letter only), or any discount figure or price (pricing not approved).
-    // Counter copy lives in founding.counter below and shows only when site.config → founding.showCount is true.
     title: 'Standard Enterprise Governance (SEG) Founding Members | By application and selection. The founder-price window closes {closeDay} {closeMonth}',
     description: 'The Standard Enterprise Governance (SEG) Founding Members programme: membership is by application and selection, and not every application is accepted. The founder-price window closes {closeDay} {closeMonth}. Start with a free check of your company’s trial balance at app.seg-audit.com.',
     ogAlt: 'Founding Members: by application and selection. The founder-price window closes {closeDay} {closeMonth}',
@@ -842,10 +840,8 @@ module.exports = {
       cta: 'Apply now',
       secondary: 'How to join',
       assurance: ['Read-only access to your system', 'Evidence behind every finding', 'Reports in Arabic and English'],
-      // The close-window panel (in place of the seats panel while the counter is off)
-      window: { label: 'The founder-price window closes', date: '{closeDay} {closeMonth}', time: 'at {closeTime} Cairo time', note: 'By application and selection. Not every application is accepted.' },
-      meterCaption: 'seats open',
-      legend: { next: 'Yours', open: 'Open' }
+      // The close-window panel. Past the deadline (main.js) closedLabel replaces label and the note hides.
+      window: { label: 'The founder-price window closes', closedLabel: 'Applications closed on', date: '{closeDay} {closeMonth}', time: 'at {closeTime} Cairo time', note: 'By application and selection. Not every application is accepted.' }
     },
     homeBand: {
       title: 'Founding Members: the founder-price window closes {closeDay} {closeMonth}',
@@ -855,22 +851,6 @@ module.exports = {
     final: {
       title: 'The founder-price window closes {closeDay} {closeMonth}.',
       body: 'Start with a free trial-balance check, and apply before the window closes. Not every application is accepted.'
-    },
-    // The counter (off, CEO, 7 Nov 2026): replaces the matching copy above only when showCount is true.
-    // {filled} reads «applications received», not «reserved»: an application is not a confirmed subscription. {total} is the cap from site.config.
-    counter: {
-      title: 'Standard Enterprise Governance (SEG) Founding Members | {left} of {total} seats left',
-      description: 'The Standard Enterprise Governance (SEG) Founding Members programme: {total} seats; {filled} applications received, {left} left.',
-      ogAlt: '{left} of {total} seats left: Standard Enterprise Governance (SEG) Founding Members',
-      bar: 'SEG Founding Members: {left} of {total} seats left. Learn more',
-      'hero.headline': '{left} of {total} seats left: Standard Enterprise Governance (SEG) {accent}Founding Members{/accent}',
-      'hero.subhead': 'SEG is the governance platform from MFT, with its continuous audit product SEG Audit. {filled} applications received so far; {left} of {total} seats left.',
-      'hero.meterCaption': 'seats left of {total}',
-      'hero.legend.filled': 'Applications received: {filled}',
-      'homeBand.title': 'Founding Members: {left} of {total} seats left',
-      'homeBand.body': '{filled} applications received so far; {left} of {total} seats left. The cap is {total}; a seat opens only if an application’s approval window expires or it is declined.',
-      'final.title': '{left} of {total} seats left.',
-      'final.body': 'Every application counts against the seats left. Apply before the count closes.'
     },
     // The lead magnet (CEO, 3 Nov 2026): trial-balance indicators only, not a full audit report.
     check: {
@@ -921,12 +901,11 @@ module.exports = {
       eyebrow: 'Founding membership application',
       headline: 'Apply to join the {accent}Founding Members{/accent}',
       intro: 'Two minutes of your time. The MFT team reviews every application by hand, and not every one is accepted. If yours is, you receive the acceptance letter with the founder price, then sign up on the platform with the same e-mail you applied with. Acceptance stays valid for 14 days; if you have not signed up and connected Odoo by then, it lapses.',
-      counter: {
-        caption: 'seats left of {total}',
-        asOf: 'Last known count',
-        full: 'Founding membership is full for now. Apply and we will put you on the waitlist.',
+      // off: the platform switched the offer off. closed: past the deadline (or a 410 from the platform).
+      state: {
         off: 'Founding membership applications are paused for now. Get in touch and we will tell you if they reopen.',
-        offCta: 'Contact us'
+        offCta: 'Contact us',
+        closed: 'Founding membership applications closed on {closeDay} {closeMonth}. The platform stays open for sign-up, without the founder price.'
       },
       sections: { business: 'Your company', system: 'Your system', fit: 'Audit and role', contact: 'Contact details', commit: 'Participation and commitment' },
       fields: {
@@ -984,17 +963,14 @@ module.exports = {
         server: 'Please check the highlighted fields.'
       },
       submit: 'Send application',
-      submitWaitlist: 'Join the waitlist',
       sending: 'Sending…',
-      success: 'Application received, thank you. Check your e-mail and confirm your application from the link we sent (valid for 72 hours); it does not reach the MFT team until it is confirmed. The team then reviews every application by hand and will contact you.',
-      successWaitlist: 'Application received, thank you. Check your e-mail and confirm your application from the link we sent (valid for 72 hours). Once confirmed your application goes on the waitlist, and we will contact you.',
+      success: 'Application received, thank you. The MFT team reviews every application by hand and will reply to you by e-mail.',
       captchaFailed: 'The check that you are not a robot did not complete. Please try again.',
       rateLimited: 'Too many attempts in a short time. Please try again in a little while.',
       failed: 'The application could not be sent right now. Please try again shortly, or e-mail us at {email}.',
       aside: {
         title: 'What happens after you apply',
         steps: [
-          'You confirm your e-mail from the link you receive; the application does not reach the team before that.',
           'The MFT team reviews your application by hand.',
           'If accepted, you receive the acceptance letter with the founder price; acceptance stays valid for 14 days.',
           'You sign up on the platform with the same e-mail and connect Odoo, and your company joins the Founding Members.'

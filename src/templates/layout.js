@@ -1,13 +1,14 @@
 // Page shell: <head>, header, footer. Every page template returns { title,
 // description, body } and this wraps it.
-const { esc, t, plain, url, link, btn, fmh } = require('./html');
+const { esc, t, plain, url, link, btn, fmh, MONTHS } = require('./html');
 
-// Live seats counter (main.js): the platform endpoint and the last known count it falls back to.
+// Founding applications state (main.js): the platform endpoint, the close date from site.config
+// (used when the platform gives none) and the month names to write a platform deadline in this language.
 function seatsAttrs(ctx) {
   const F = ctx.config.founding;
-  if (!F || !F.enabled || !F.showCount || !F.api || !F.api.seats) return ''; // counter off: no live seats
-  const filled = F.showCount ? F.filled : 0;
-  return ` data-seats-api="${esc(F.api.seats)}" data-seats-left="${F.total - filled}" data-seats-total="${F.total}" data-seats-asof="${esc(F.asOf || '')}"`;
+  if (!F || !F.enabled || !F.api || !F.api.seats) return '';
+  const months = (MONTHS[ctx.lang] || MONTHS.en).join('|');
+  return ` data-seats-api="${esc(F.api.seats)}" data-founding-deadline="${esc(F.closesAt || '')}" data-founding-months="${esc(months)}"`;
 }
 
 function head(ctx, page) {
@@ -122,7 +123,7 @@ function header(ctx) {
   // Founding Members bar: one line above the header on every page except the launch page itself.
   const F = ctx.config.founding;
   const bar = F && F.enabled && c.founding && !/^founding-members\//.test(ctx.path)
-    ? `<p class="launch-bar" data-seats-hide="off"><a href="/${ctx.lang}/founding-members/"><span class="live-dot" aria-hidden="true"></span><span>${fmh(ctx, 'bar')}</span></a></p>`
+    ? `<p class="launch-bar" data-seats-hide="off closed"><a href="/${ctx.lang}/founding-members/"><span class="live-dot" aria-hidden="true"></span><span>${fmh(ctx, 'bar')}</span></a></p>`
     : '';
   return `<a class="skip-link" href="#main">${t(c.ui.skip)}</a>
 ${bar}
