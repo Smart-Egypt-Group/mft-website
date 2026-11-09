@@ -31,7 +31,7 @@ Naming: `SEG-FM | <platform> | <objective> | <audience> | <lang> | <yyyy-mm>`; a
 
 | Campaign | Objective | Ad sets | Creatives | Share of B |
 |---|---|---|---|---|
-| **FM-Prospecting** | Leads (Instant Form) in phase 1; Sales/Leads optimised for `CompleteRegistration` in phase 2 | (1) Egypt: finance and accounting job interests + business owners, 28–60; (2) KSA: same; (3) Odoo / ERP interest stack (both countries) | `ads/meta-feed-4x5_seats-ar`, `ads/meta-feed-1x1_seats-ar`, `social/story_seats-ar` (Stories/Reels), `live-ar` set as the second angle; EN only in a separate ad set for KSA expat finance roles | 60% |
+| **FM-Prospecting** | Leads (Instant Form) in phase 1; Sales/Leads optimised for `CompleteRegistration` in phase 2 | (1) Egypt: finance and accounting job interests + business owners, 28–60; (2) KSA: same; (3) Odoo / ERP interest stack (both countries) | `ads/meta-feed-4x5_close-ar`, `ads/meta-feed-1x1_close-ar`, `social/story_close-ar` (Stories/Reels), `live-ar` set as the second angle; EN only in a separate ad set for KSA expat finance roles | 60% |
 | **FM-Retargeting** | Same objective | Website + app visitors 30 days, page/profile engagers 60 days, video viewers 50%+ | `close` (closing window + selectivity) and the live-session clip; testimonial creative when one is approved | 25% |
 | **FM-Lookalike** (phase 2, after 100+ sign-ups) | Same | 1–3% lookalike of sign-ups (hashed, with consent per the privacy policy) | Best two creatives from prospecting | 15% (until then, add to prospecting) |
 
@@ -72,7 +72,7 @@ Placements: Advantage+ placements, with the 4:5 asset for feeds and the 9:16 ass
 - Daily spend of the account > 1.3 × (B / 7) → find the cause, cap the campaign budgets.
 - Landing page or sign-up broken → pause everything that links there until fixed.
 - Close date changed before publication → new ads with the new date (never edit a live ad's date).
-- All 50 seats filled **or the close date (`founding.closesAt`) reached** → pause every Founding Members campaign the same minute.
+- **The close date (`founding.closesAt`) reached** (no seat cap since 6 Nov 2026) → pause every Founding Members campaign the same minute.
 
 Every change goes into `templates/ad-change-log.csv` with date, platform, object, old → new, rule applied, and who made it.
 
