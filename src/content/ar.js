@@ -822,9 +822,11 @@ module.exports = {
   // العمولة وهامش إعادة البيع لم يُحسما: «تُحدَّد في اتفاقية الشراكة»، بلا أرقام.
   // الأعضاء المؤسِّسون (إطلاق Standard Enterprise Governance (SEG)، نوفمبر 2026). الاتجاه المعتمد (الـCEO، 7 نوفمبر 2026):
   // نافذة سعر المؤسِّس تُغلق في site.config → founding.closesAt ({closeDay} {closeMonth} {closeTime})، والعضوية بالتقديم والانتقاء.
+  // Decision (8 Nov 2026): applications close at the same moment (instead of a 50-seat cap), and there is no
+  // confirmation e-mail: an application goes straight to the MFT team.
   // ممنوع هنا: أي عدد مقاعد، و«مدى الحياة» (يُقال في خطاب القبول فقط)، وأي نسبة خصم أو سعر رقمي (التسعير لم يُعتمد).
   founding: {
-    // الندرة = نافذة الإغلاق + الانتقاء، بلا عدّاد (showCount = false). نص العدّاد في founding.counter لا يظهر إلا لو فُعِّل.
+    // Scarcity = the close window + selection, no counter.
     title: 'الأعضاء المؤسِّسون في Standard Enterprise Governance (SEG) | بالتقديم والانتقاء، ونافذة سعر المؤسِّس تُغلق {lat}{closeDay}{/lat} {closeMonth}',
     description: 'برنامج الأعضاء المؤسِّسين في Standard Enterprise Governance (SEG)، منصة الحوكمة والمراجعة المستمرة من MFT: العضوية بالتقديم والانتقاء، وليس كل طلب يُقبل. نافذة سعر المؤسِّس تُغلق {lat}{closeDay}{/lat} {closeMonth}. ابدأ بفحص مجاني لميزان شركتك على app.seg-audit.com.',
     ogAlt: 'الأعضاء المؤسِّسون: بالتقديم والانتقاء، ونافذة سعر المؤسِّس تُغلق {lat}{closeDay}{/lat} {closeMonth}',
@@ -836,10 +838,8 @@ module.exports = {
       cta: 'قدّم طلبك الآن',
       secondary: 'كيف تنضم',
       assurance: ['قراءة فقط من نظامك', 'لكل ملاحظة دليلها', 'تقارير بالعربية'],
-      // لوحة نافذة الإغلاق (بدل لوحة المقاعد ما دام العدّاد مطفأً)
-      window: { label: 'نافذة سعر المؤسِّس تُغلق', date: '{lat}{closeDay}{/lat} {closeMonth}', time: 'الساعة {lat}{closeTime}{/lat} بتوقيت القاهرة', note: 'بالتقديم والانتقاء. ليس كل طلب يُقبل.' },
-      meterCaption: 'مقعدًا متاحًا',
-      legend: { next: 'طلبك', open: 'متاح' }
+      // The close-window panel. Past the deadline (main.js) closedLabel replaces label and the note hides.
+      window: { label: 'نافذة سعر المؤسِّس تُغلق', closedLabel: 'أُغلق باب التقديم في', date: '{lat}{closeDay}{/lat} {closeMonth}', time: 'الساعة {lat}{closeTime}{/lat} بتوقيت القاهرة', note: 'بالتقديم والانتقاء. ليس كل طلب يُقبل.' }
     },
     homeBand: {
       title: 'الأعضاء المؤسِّسون: نافذة سعر المؤسِّس تُغلق {lat}{closeDay}{/lat} {closeMonth}',
@@ -849,22 +849,6 @@ module.exports = {
     final: {
       title: 'نافذة سعر المؤسِّس تُغلق {lat}{closeDay}{/lat} {closeMonth}.',
       body: 'ابدأ بفحص مجاني لميزان شركتك، وقدّم طلبك قبل إغلاق النافذة. ليس كل طلب يُقبل.'
-    },
-    // العدّاد (مطفأ بقرار الـCEO، 7 نوفمبر 2026): يُستخدم بدل النصوص المقابلة أعلاه فقط عند showCount = true.
-    // {filled} «طلبات مقدَّمة» لا «محجوز»: الطلب ليس اشتراكًا مؤكَّدًا. {left} المتبقي، {total} السقف من site.config.
-    counter: {
-      title: 'الأعضاء المؤسِّسون في Standard Enterprise Governance (SEG) | باقي {left} من {total} مقعدًا',
-      description: 'برنامج الأعضاء المؤسِّسين في Standard Enterprise Governance (SEG): {total} مقعدًا؛ طلبات مقدَّمة {filled}، وباقي {left}.',
-      ogAlt: 'باقي {left} من {total}: الأعضاء المؤسِّسون في Standard Enterprise Governance (SEG)',
-      bar: 'الأعضاء المؤسِّسون في {lat}SEG{/lat}: باقي {lat}{left}{/lat} من {lat}{total}{/lat} مقعدًا. اعرف أكثر',
-      'hero.headline': 'باقي {lat}{left}{/lat} من {lat}{total}{/lat}: {accent}الأعضاء المؤسِّسون{/accent} في {lat}Standard Enterprise Governance (SEG){/lat}',
-      'hero.subhead': 'منصة {lat}SEG{/lat} للحوكمة من {lat}MFT{/lat}، ومعها منتج المراجعة المستمرة {lat}SEG Audit{/lat}. طلبات مقدَّمة حتى الآن: {lat}{filled}{/lat}، والمتبقي {lat}{left}{/lat} من {lat}{total}{/lat} مقعدًا.',
-      'hero.meterCaption': 'مقعدًا متبقيًا من {lat}{total}{/lat}',
-      'hero.legend.filled': 'طلبات مقدَّمة: {lat}{filled}{/lat}',
-      'homeBand.title': 'الأعضاء المؤسِّسون: باقي {lat}{left}{/lat} من {lat}{total}{/lat} مقعدًا',
-      'homeBand.body': 'طلبات مقدَّمة حتى الآن: {lat}{filled}{/lat}، والمتبقي {lat}{left}{/lat} من {lat}{total}{/lat}. السقف {lat}{total}{/lat} مقعدًا، ولا يُتاح مقعد إلا إذا انتهت مهلة اعتماد طلب أو رُفض.',
-      'final.title': 'باقي {lat}{left}{/lat} مقعدًا من {lat}{total}{/lat}.',
-      'final.body': 'كل طلب انضمام يُحتسب من المقاعد المتبقية. قدّم طلبك قبل أن يكتمل العدد.'
     },
     // الطُعم (قرار الـCEO، 3 نوفمبر 2026): «مؤشرات الميزان فقط»، لا تقرير مراجعة كامل.
     check: {
@@ -915,12 +899,11 @@ module.exports = {
       eyebrow: 'طلب العضوية التأسيسية',
       headline: 'قدّم طلبك للانضمام إلى {accent}الأعضاء المؤسِّسين{/accent}',
       intro: 'دقيقتان من وقتك. يراجع فريق {lat}MFT{/lat} كل طلب يدويًا، وليس كل طلب يُقبل. إن قُبل طلبك يصلك خطاب القبول بتفاصيل سعر المؤسِّس، ثم تسجّل على المنصة بالبريد نفسه الذي قدّمت به. يبقى القبول ساريًا {lat}14{/lat} يومًا؛ إن لم تسجّل وتربط {lat}Odoo{/lat} خلالها ينتهي.',
-      counter: {
-        caption: 'المقاعد المتبقية من {lat}{total}{/lat}',
-        asOf: 'آخر رقم معروف',
-        full: 'اكتملت العضوية التأسيسية حاليًا. قدّم طلبك وسنضعك في قائمة الانتظار.',
+      // off: the platform switched the offer off. closed: past the deadline (or a 410 from the platform).
+      state: {
         off: 'التقديم على العضوية التأسيسية متوقف حاليًا. تواصل معنا وسنبلغك إن فُتح من جديد.',
-        offCta: 'تواصل معنا'
+        offCta: 'تواصل معنا',
+        closed: 'أُغلق باب التقديم على العضوية التأسيسية في {lat}{closeDay}{/lat} {closeMonth}. تبقى المنصة متاحة للتسجيل، لكن من غير سعر المؤسِّس.'
       },
       sections: { business: 'عن شركتك', system: 'نظامك', fit: 'المراجعة والدور', contact: 'بيانات التواصل', commit: 'المشاركة والالتزام' },
       fields: {
@@ -978,17 +961,14 @@ module.exports = {
         server: 'راجع الحقول المعلَّمة.'
       },
       submit: 'أرسل الطلب',
-      submitWaitlist: 'انضم إلى قائمة الانتظار',
       sending: 'جارٍ الإرسال…',
-      success: 'وصلنا طلبك، شكرًا لك. افتح بريدك وأكّد الطلب من الرابط الذي وصلك (صالح {lat}72{/lat} ساعة)؛ لا يصل الطلب إلى فريق {lat}MFT{/lat} قبل التأكيد. بعدها يراجع الفريق كل طلب يدويًا ويتواصل معك.',
-      successWaitlist: 'وصلنا طلبك، شكرًا لك. افتح بريدك وأكّد الطلب من الرابط الذي وصلك (صالح {lat}72{/lat} ساعة). ويدخل طلبك بعد تأكيده قائمة الانتظار، ونتواصل معك.',
+      success: 'وصلنا طلبك، شكرًا لك. يراجع فريق {lat}MFT{/lat} كل طلب يدويًا، وسيردّ عليك بالبريد الإلكتروني.',
       captchaFailed: 'لم يكتمل التحقق من أنك لست برنامجًا آليًا. أعد المحاولة.',
       rateLimited: 'محاولات كثيرة في وقت قصير. حاول بعد شوية.',
       failed: 'تعذّر إرسال الطلب الآن. حاول مرة أخرى بعد قليل، أو راسلنا على {email}.',
       aside: {
         title: 'ماذا يحدث بعد التقديم',
         steps: [
-          'تؤكد بريدك من الرابط الذي يصلك؛ لا يصل الطلب إلى الفريق قبل التأكيد.',
           'يراجع فريق {lat}MFT{/lat} طلبك يدويًا.',
           'إن قُبل طلبك يصلك خطاب القبول بتفاصيل سعر المؤسِّس، ويبقى القبول ساريًا {lat}14{/lat} يومًا.',
           'تسجّل على المنصة بالبريد نفسه وتربط {lat}Odoo{/lat}، فتنضم شركتك إلى الأعضاء المؤسِّسين.'

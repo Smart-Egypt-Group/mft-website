@@ -172,9 +172,10 @@ const noSocial = Object.entries(siteCfg.contact.social || {}).filter(([, v]) => 
 if (noSocial.length) console.log(`  ! social profile URL not set (not rendered): ${noSocial.join(', ')}`);
 const fm = siteCfg.founding;
 if (fm && fm.enabled) {
-  // The public counter needs a confirmed subscription count and a date; without it the site shows no count.
-  if (fm.showCount && !(Number.isInteger(fm.filled) && fm.filled >= 0 && fm.filled < fm.total && fm.asOf)) fail(`founding counter on without a confirmed count: filled=${fm.filled}, asOf=${fm.asOf}`);
-  if (!fm.showCount) ok('founding: no public counter (showCount off)');
+  // Applications close at a deadline (8 Nov 2026): a valid close date with its own offset, and no seat count.
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?[+-]\d{2}:\d{2}$/.test(fm.closesAt || '') || isNaN(Date.parse(fm.closesAt))) fail(`founding.closesAt is not an ISO date with an offset: ${fm.closesAt}`);
+  else ok(`founding: applications close ${fm.closesAt}`);
+  if ('total' in fm || 'showCount' in fm) fail('founding: seat cap/counter settings are withdrawn (8 Nov 2026)');
   for (const l of siteCfg.languages) if (!fs.existsSync(path.join(DIST, 'assets/img/launch', `founding-og-${l}.jpg`))) fail(`founding og:image missing for ${l} (run scripts/launch-images.js)`);
 }
 

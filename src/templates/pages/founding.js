@@ -1,30 +1,20 @@
-// Founding Members: the launch page of the platform, Standard Enterprise Governance (SEG). Scarcity is the close
-// window (site.config → founding.closesAt) and selection by application; no seat number, no discount figure.
-// A live counter (seats filled / left) exists but stays off until site.config → founding.showCount is true; copy from content/<lang>.js → founding (counter copy in founding.counter).
-// "Claim your seat" CTAs go to the application form (founding-members/apply/); the free check goes
+// Founding Members: the launch page of the platform, Standard Enterprise Governance (SEG). Applications
+// close at site.config → founding.closesAt (decision, 8 Nov 2026: a deadline instead of 50 seats; no
+// seat number anywhere) and membership is by application and selection; no discount figure.
+// Copy from content/<lang>.js → founding. Past the deadline main.js marks the page closed: the close
+// panel says "applications closed on <date>" and the apply CTAs hide.
+// "Apply" CTAs go to the application form (founding-members/apply/); the free check goes
 // to the app sign-up with a UTM tag per placement.
-const { t, esc, plain, url, seats, fm, fmh, windowPanel, signupUrl } = require('../html');
+const { t, esc, plain, url, seats, closeHtml, fm, fmh, windowPanel, signupUrl } = require('../html');
 const { faqBlock, faqSchema, seeAlso } = require('./services');
-
-// 50 seats as a grid: the visitor's seat highlighted, the rest open; with the counter on, filled seats
-// first. Decorative; the numbers are stated in text right next to it.
-function seatGrid(ctx) {
-  const F = ctx.config.founding, filled = F.showCount ? F.filled : 0;
-  let cells = '';
-  for (let i = 0; i < F.total; i++) {
-    const cls = i < filled ? 'seat seat-filled' : i === filled ? 'seat seat-next' : 'seat';
-    cells += `<li class="${cls}"></li>`;
-  }
-  return `<ol class="seat-grid" aria-hidden="true" data-seats-grid>${cells}</ol>`;
-}
 
 module.exports = function founding(ctx) {
   const P = ctx.c.founding;
-  const F = ctx.config.founding;
-  const s = (x) => t(seats(ctx, x));
-  // Claiming a seat = the application form (approval reserves the seat); the free check = sign-up.
+  const s = (x) => closeHtml(ctx, x);
+  // Applying = the application form; the free check = sign-up.
   const apply = (where) => `${url(ctx, 'founding-members/apply/')}?from=${encodeURIComponent(where)}`;
-  const cta = (where, cls = 'btn btn-primary btn-lg') => `<a class="${cls}" href="${esc(apply(where))}">${s(P.hero.cta)}</a>`;
+  // Hidden once applications are closed (or the offer is off): see main.js.
+  const cta = (where, cls = 'btn btn-primary btn-lg') => `<a class="${cls}" href="${esc(apply(where))}" data-seats-hide="off closed">${s(P.hero.cta)}</a>`;
   const checkCta = (where, cls = 'btn btn-primary btn-lg') => `<a class="${cls}" href="${esc(signupUrl(ctx, where))}" data-track="lead">${t(P.check.cta)}</a>`;
 
   const hero = `<section class="founding-hero" aria-labelledby="fm-title">
@@ -40,16 +30,7 @@ module.exports = function founding(ctx) {
       </div>
       <ul class="hero-assurance">${P.hero.assurance.map((x) => `<li>${t(x)}</li>`).join('')}</ul>
     </div>
-    ${F.showCount ? `<div class="seat-panel" data-seats-hide="off">
-      <p class="seat-count"><span class="seat-left lat" data-seats="left">${F.showCount ? F.total - F.filled : F.total}</span>${F.showCount ? `<span class="seat-total lat">/<span data-seats="total">${F.total}</span></span>` : ''}</p>
-      <p class="seat-caption">${fmh(ctx, 'hero.meterCaption')}</p>
-      ${seatGrid(ctx)}
-      <ul class="seat-legend">
-        ${F.showCount ? `<li><span class="seat seat-filled" aria-hidden="true"></span>${fmh(ctx, 'hero.legend.filled')}</li>` : ''}
-        <li><span class="seat seat-next" aria-hidden="true"></span>${s(P.hero.legend.next)}</li>
-        <li><span class="seat" aria-hidden="true"></span>${s(P.hero.legend.open)}</li>
-      </ul>
-    </div>` : windowPanel(ctx)}
+    ${windowPanel(ctx)}
   </div>
 </section>`;
 
