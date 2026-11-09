@@ -142,85 +142,89 @@
     });
   })();
 
-  /* ---------- Founding seats, live ----------
-     The platform's public counter (contract: seg-audit docs/api/founding-applications.md):
-       200 {open:true,  total, left}  open: update every [data-seats] number
-       200 {open:false, total, left}  full: waitlist wording ([data-seats-show="full"])
-       200 {open:false}               offer off: hide [data-seats-hide="off"], show [data-seats-show="off"]
-       anything else / network / CORS failure: keep the last known count, quietly
-     Last known = the last good answer this browser saw (localStorage), else the count rendered
-     from site.config. [data-seats-stale] (the apply page only) then shows its date.
-     The state is published on <html data-seats-state> and as a 'mft:seats' event for apply.js. */
+  /* ---------- Founding applications: open, closed or off ----------
+     Decision (8 Nov 2026): applications close at a deadline; there is no seat count. The platform's
+     public endpoint (contract: seg-audit docs/api/founding-applications.md):
+       200 {open:true,  deadline}  open until the deadline
+       200 {open:false, deadline}  the deadline passed: applications closed
+       200 {open:false}            the offer is switched off
+     The older answer {open, total, left} works too: only `open` and an optional `deadline` are read;
+     without a deadline the one from site.config applies (data-founding-deadline). Past the deadline
+     by this browser's clock the state is 'closed' as well.
+     anything else / network / CORS failure: the last good answer this browser saw (localStorage),
+     else site.config's deadline, quietly.
+     States: open | closed | off, on <html data-seats-state>. [data-seats-hide="off closed"] hides an
+     element in those states, [data-seats-show="closed"] shows it only then. A platform deadline is
+     written into every [data-close="day|month|time"] span in Cairo time, whatever its UTC offset.
+     apply.js reports a 410 (applications closed) with a 'mft:founding-closed' event. */
   (function () {
     var me = document.querySelector('script[data-seats-api]');
     if (!me) return;
     var api = me.getAttribute('data-seats-api');
-    var KEY = 'mft-seats', TTL = 60 * 1000;
-    var built = {
-      open: true,
-      total: parseInt(me.getAttribute('data-seats-total'), 10),
-      left: parseInt(me.getAttribute('data-seats-left'), 10),
-      at: Date.parse(me.getAttribute('data-seats-asof') || '') || 0
-    };
+    // v2: the answer is now {open, deadline}; the old 'mft-seats' cache held seat counts.
+    var KEY = 'mft-founding-v2', TTL = 60 * 1000;
+    var MONTHS = (me.getAttribute('data-founding-months') || '').split('|');
+    var built = { open: true, deadline: me.getAttribute('data-founding-deadline') || '', at: 0 };
+    var timer = null;
+    try { window.localStorage.removeItem('mft-seats'); window.sessionStorage.removeItem('mft-seats'); } catch (e) { /* storage blocked */ }
     function read(store) { try { return JSON.parse(window[store].getItem(KEY) || 'null'); } catch (e) { return null; } }
     function write(store, v) { try { window[store].setItem(KEY, JSON.stringify(v)); } catch (e) { /* storage blocked */ } }
     function valid(d) { return d && typeof d.open === 'boolean'; }
-    function counted(d) { return typeof d.total === 'number' && typeof d.left === 'number' && d.total > 0 && d.left >= 0 && d.left <= d.total; }
+    function when(iso) { var t = Date.parse(iso || ''); return isNaN(t) ? null : t; }
 
     function each(sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
-    // Cap (CEO, 5 Nov 2026): the seat total is 50, set in site.config (data-seats-total), and the
-    // platform's `left` (= 50 − applications submitted) is clamped to it. A `total` from the API
-    // that differs from the cap is ignored, so the site never shows 49 (or any other ceiling).
-    var CAP = built.total;
-    function capped(d) {
-      if (!counted(d) || !(CAP > 0)) return d;
-      return { open: d.open, total: CAP, left: Math.max(0, Math.min(d.left, CAP)), at: d.at };
+    // The deadline as Cairo wall-clock parts, e.g. 2026-11-30T21:59:59+00:00 → 30, November, 23:59.
+    function cairo(t) {
+      var o = {};
+      try {
+        new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Cairo', year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+          .formatToParts(new Date(t)).forEach(function (p) { o[p.type] = p.value; });
+      } catch (e) { return null; }
+      if (!o.day || !o.month || !MONTHS[+o.month - 1]) return null;
+      return { day: String(+o.day), month: MONTHS[+o.month - 1], time: ('0' + (+o.hour % 24)).slice(-2) + ':' + o.minute };
     }
-    function apply(d, stale) {
-      d = capped(d);
-      var state = !d.open && !counted(d) ? 'off' : !d.open || d.left === 0 ? 'full' : 'open';
+    // d = {open, deadline}: the platform's answer, or the fallback.
+    function apply(d, fromPlatform) {
+      var given = when(d.deadline), end = given !== null ? given : when(built.deadline);
+      var state = !d.open ? (given !== null ? 'closed' : 'off') : end !== null && Date.now() >= end ? 'closed' : 'open';
       document.documentElement.setAttribute('data-seats-state', state);
-      if (counted(d)) {
-        var filled = d.total - d.left;
-        each('[data-seats="left"]', function (el) { el.textContent = d.left; });
-        each('[data-seats="total"]', function (el) { el.textContent = d.total; });
-        each('[data-seats="filled"]', function (el) { el.textContent = filled; });
-        each('[data-seats-grid]', function (g) {
-          Array.prototype.forEach.call(g.children, function (c, i) {
-            c.className = i < filled ? 'seat seat-filled' : i === filled ? 'seat seat-next' : 'seat';
-          });
-        });
+      if (given !== null) {
+        var c = cairo(given);
+        if (c) each('[data-close]', function (el) { var k = el.getAttribute('data-close'); if (c[k]) el.textContent = c[k]; });
       }
       each('[data-seats-hide]', function (el) { el.hidden = el.getAttribute('data-seats-hide').split(' ').indexOf(state) !== -1; });
       each('[data-seats-show]', function (el) { el.hidden = el.getAttribute('data-seats-show').split(' ').indexOf(state) === -1; });
-      each('[data-seats-stale]', function (el) {
-        el.hidden = !stale;
-        var at = el.querySelector('[data-seats="asof"]');
-        if (at && stale && d.at) at.textContent = new Date(d.at).toISOString().slice(0, 10);
-      });
-      try { document.dispatchEvent(new CustomEvent('mft:seats', { detail: { state: state, seats: d, stale: !!stale } })); } catch (e) { /* old browser */ }
+      // Still open with the deadline less than a day away: flip to closed at the deadline itself.
+      if (timer) clearTimeout(timer);
+      if (state === 'open' && end !== null && end - Date.now() < 864e5) timer = setTimeout(function () { apply(d, fromPlatform); }, end - Date.now() + 1000);
+      try { document.dispatchEvent(new CustomEvent('mft:seats', { detail: { state: state, deadline: given !== null ? d.deadline : built.deadline, stale: !fromPlatform } })); } catch (e) { /* old browser */ }
     }
     function fallback() {
       var last = read('localStorage');
-      apply(valid(last) && last.at > built.at ? last : built, true);
+      apply(valid(last) ? last : built, false);
     }
+    // apply.js: the platform answered 410 (closed) to an application.
+    document.addEventListener('mft:founding-closed', function (e) {
+      var dl = e.detail && e.detail.deadline;
+      apply({ open: false, deadline: when(dl) !== null ? dl : built.deadline }, true);
+    });
 
     var cached = read('sessionStorage');
-    if (valid(cached) && Date.now() - cached.at < TTL) { apply(cached, false); return; }
+    if (valid(cached) && Date.now() - cached.at < TTL) { apply(cached, true); return; }
     if (!window.fetch) { fallback(); return; }
     var ctl = window.AbortController ? new AbortController() : null;
-    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 6000);
+    var abort = setTimeout(function () { if (ctl) ctl.abort(); }, 6000);
     fetch(api, { credentials: 'omit', cache: 'no-store', signal: ctl ? ctl.signal : undefined })
       .then(function (r) { if (r.status !== 200) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function (d) {
-        if (!valid(d) || (d.open && !counted(d))) throw new Error('bad body');
-        d = { open: d.open, total: d.total, left: d.left, at: Date.now() };
+        if (!valid(d)) throw new Error('bad body');
+        d = { open: d.open, deadline: typeof d.deadline === 'string' ? d.deadline : '', at: Date.now() };
         write('sessionStorage', d);
-        if (counted(d)) write('localStorage', d);
-        apply(d, false);
+        write('localStorage', d);
+        apply(d, true);
       })
       .catch(fallback)
-      .then(function () { clearTimeout(timer); });
+      .then(function () { clearTimeout(abort); });
   })();
 
   /* ---------- Lead form ---------- */
