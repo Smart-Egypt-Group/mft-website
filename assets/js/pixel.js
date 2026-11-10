@@ -4,8 +4,10 @@
    The right to object is exercised by email (privacy@seg-audit.com), as the notice says.
    IDs come from site.config.js → analytics, rendered onto this script tag as data attributes.
      PageView  every page (Meta) / page() (TikTok)
-     Lead      click on a [data-track="lead"] CTA: the free trial-balance check (Meta "Lead",
-               TikTok "ClickButton"); and a founding application received (apply.js → 'mft:lead',
+     CTAClick  click on a [data-track="lead"] CTA: the free trial-balance check (Meta custom
+               "CTAClick", TikTok "ClickButton"). A click is intent, not a conversion: it is NOT a
+               Lead (11 Nov 2026) — the free-check Lead fires on the SEG platform after sign-up.
+     Lead      a founding application received (apply.js → 'mft:lead',
                Meta "Lead" content_name founding-application, TikTok "SubmitForm")
      Contact   click on any WhatsApp link (wa.me) (Meta "Contact", TikTok "Contact"), 8 Nov 2026
    A browser that opted out under the short-lived notice bar (localStorage mft-consent = 'denied')
@@ -80,11 +82,11 @@
     if (window.ttq && tiktokId) window.ttq.track('Contact', { content_name: 'whatsapp' });
   });
 
-  /* ---------- Lead: the free-check CTA. Same-tab clicks wait a moment so the event leaves before the page does ---------- */
+  /* ---------- CTAClick: the free-check CTA (intent only, not a Lead). Same-tab clicks wait a moment so the event leaves before the page does ---------- */
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[data-track="lead"]');
     if (!a) return;
-    if (window.fbq) window.fbq('track', 'Lead', { content_name: 'free-trial-balance-check' });
+    if (window.fbq) window.fbq('trackCustom', 'CTAClick', { content_name: 'free-trial-balance-check' });
     if (window.ttq && tiktokId) window.ttq.track('ClickButton', { content_name: 'free-trial-balance-check' });
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank') return;
     e.preventDefault();
