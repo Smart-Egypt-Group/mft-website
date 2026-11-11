@@ -53,7 +53,7 @@ const blog = require('./src/templates/pages/blog');
 function loadBlog(lang) {
   const b = require(`./src/content/blog.${lang}.js`);
   const opt = (f) => (fs.existsSync(path.join(ROOT, 'src', 'content', f)) ? require(`./src/content/${f}`) : null);
-  for (const f of ['blog-posts-a.js', 'blog-posts-b.js', 'blog-posts-c.js', 'blog-posts-d.js', 'blog-posts-ai.js']) { const m = opt(f); if (m) b.posts = b.posts.concat(m[lang]); }
+  for (const f of ['blog-posts-a.js', 'blog-posts-b.js', 'blog-posts-c.js', 'blog-posts-d.js', 'blog-posts-ai.js', 'blog-posts-academy.js']) { const m = opt(f); if (m) b.posts = b.posts.concat(m[lang]); }
   const aeo = opt('blog-aeo-existing.js');
   if (aeo) b.posts = b.posts.map((p) => (aeo[lang][p.slug] ? { ...aeo[lang][p.slug], ...p } : p));
   const seen = new Set();
@@ -134,6 +134,10 @@ function build() {
     for (const page of pageList(c)) {
       const altPaths = {};
       for (const l of config.languages) altPaths[l] = page.path;
+      // A blog post that exists in one language only (the Arabic SEG Academy): no hreflang to a missing page,
+      // and the language switch goes to the other language's blog index.
+      const slug = (page.path.match(/^blog\/([^/]+)\/$/) || [])[1];
+      if (slug) for (const l of config.languages) if (!contents[l].blog.posts.some((x) => x.slug === slug)) altPaths[l] = null;
       const ctx = { lang, c, config, path: page.path, altPaths, buildId, gsapVersion, markPlaceholders };
       const rendered = page.render(ctx);
       let html = layout(ctx, rendered);
