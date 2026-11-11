@@ -6,7 +6,71 @@
     <atom:link href="https://www.seg-audit.com/ar/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>كتابات عملية من MFT عن المراجعة الداخلية والأهمية النسبية والامتثال لهيئة الزكاة والضريبة والجمارك السعودية والفوترة الإلكترونية المصرية وتشغيل Odoo كنظام مالي.</description>
     <language>ar</language>
-    <lastBuildDate>Tue, 10 Nov 2026 22:59:14 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 20:16:40 GMT</lastBuildDate>
+    <item>
+      <title>تقرير دورة البيع والتحصيل (O2C): 6 أماكن بيتسرّب منها الإيراد</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-order-to-cash/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-order-to-cash/</guid>
+      <pubDate>Wed, 11 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير دورة البيع والتحصيل في SEG: أوامر بيع ما اتفوترتش، فواتير مكررة، سعر أقل من أمر البيع، حد ائتمان متعدّي، وإشعارات دائنة من غير مرتجع بضاعة.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير مراجعة القوائم المالية: 6 أسئلة قبل ما توقّع على الأرقام</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-financial-statements-review/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-financial-statements-review/</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير مراجعة القوائم المالية في SEG: توازن الميزانية، مجمل الربح السالب، الإهلاك الناقص، مخصص الضريبة، الربح اللي مابقاش فلوس، والانحرافات التحليلية.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير أعمار الذمم: 6 حاجات في أرصدة العملاء والموردين تستاهل وقفة</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-aging-analysis/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-aging-analysis/</guid>
+      <pubDate>Sun, 08 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير أعمار الذمم في SEG بيقرا أرصدة العملاء والموردين في Odoo حسب أيام التأخير، وبيكشف الأرصدة العكسية والدفعات غير المطبّقة والبيع لعميل متعثّر.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير حدود الفترة: القطع (Cut-off) والأحداث اللاحقة في 6 فحوص</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-period-cut-off/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-period-cut-off/</guid>
+      <pubDate>Sat, 07 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير حدود الفترة في SEG بيفحص القطع والأحداث اللاحقة في Odoo: قيود بتاريخ رجعي بعد الإقفال، وفواتير قبل التسليم، وإشعارات دائنة بعد نهاية الفترة.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير صلاحيات الوصول وفصل المهام: مين يقدر يعمل إيه في Odoo؟</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-access-and-sod/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-access-and-sod/</guid>
+      <pubDate>Thu, 05 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير صلاحيات الوصول وفصل المهام في SEG بيفحص الحسابات الخاملة والأسماء العامة ومديري النظام وتعارض المهام بين الفاتورة والدفع في Odoo، بدليل كل ملاحظة.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير دورة الشراء والصرف (P2P): 6 ثغرات بين أمر الشراء والدفع</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-procure-to-pay/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-procure-to-pay/</guid>
+      <pubDate>Wed, 04 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير دورة الشراء والصرف P2P في SEG بيفحص تغيير حساب المورد البنكي قبل الدفع وتجاوز سقف الاعتماد والفواتير المكررة والدفع بلا فاتورة في Odoo.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير التسوية البنكية والبنود المفتوحة: 6 حاجات بتستخبى في البنك</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-bank-reconciliation/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-bank-reconciliation/</guid>
+      <pubDate>Mon, 02 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير التسوية البنكية والبنود المفتوحة في SEG بيفحص الأرصدة السالبة والبنود القديمة والمسودات والسطور المكررة في كشوف البنك على Odoo، ولكل ملاحظة دليلها.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير سلامة الدفتر والقيود اليومية: 6 علامات تقراها قبل الإقفال</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-ledger-integrity/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-ledger-integrity/</guid>
+      <pubDate>Sun, 01 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير سلامة الدفتر والقيود اليومية في SEG بيفحص القيود غير المتوازنة والأرقام الناقصة والقيود اليدوية والترحيل بعد الإقفال في Odoo، ولكل ملاحظة دليلها.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
     <item>
       <title>الذكاء الاصطناعي في المحاسبة: دليل عملي لفرق المالية في 2026</title>
       <link>https://www.seg-audit.com/ar/blog/ai-in-accounting-guide-2026/</link>
