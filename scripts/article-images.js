@@ -35,6 +35,9 @@ const INTER = b64('src/assets/fonts/inter-latin-var.woff2');
 const CAIRO = b64('src/assets/fonts/cairo-arabic-var.woff2');
 // SEG Academy (Nov 2026): the art reuses a motif and carries the article's hook on the navy field (RTL, Cairo).
 const ACADEMY = require('../src/content/academy-hooks.js');
+// Academy art is signed with the campaign signature (SEG two-line lockup | rule | full MFT logo), scripts/lib/campaign.js.
+const { SIGN_CANVAS_SRC, MARK_FILES } = require('./lib/campaign.js');
+const SIGN_IMGS = { seg: 'data:image/png;base64,' + b64(MARK_FILES.segLight), mft: 'data:image/png;base64,' + b64(MARK_FILES.mftNavy) };
 
 const NAVY = '#0D1B3E', CYAN = '#1BB7CD', W = '#FFFFFF';
 function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
@@ -618,7 +621,7 @@ function scene(slug) {
   // Rasterise on a canvas and encode with Chrome's own WebP / JPEG encoders (headless page capture
   // fails on this machine, and this path needs no native image tooling). The MFT wordmark is set on
   // the canvas in the site's Inter.
-  const render = async (svg, w, h, type, q, hook) => Buffer.from(await page.evaluate(async ({ svg, mark, w, h, type, q, GRID, hook }) => {
+  const render = async (svg, w, h, type, q, hook) => Buffer.from(await page.evaluate(async ({ svg, mark, w, h, type, q, GRID, hook, signSrc, signImgs }) => {
     const load = async (src) => { const i = new Image(); i.src = src; await i.decode(); return i; };
     const bg = await load('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg)), mk = await load(mark);
     const c = document.createElement('canvas'); c.width = w; c.height = h;
@@ -627,9 +630,14 @@ function scene(slug) {
     g.setTransform(sc, 0, 0, sc, (w - 1600 * sc) / 2, (h - 900 * sc) / 2);
     g.drawImage(bg, 0, 0, 1600, 900);
     const mh = 34, mw = mh * mk.width / mk.height, x = GRID.C2, yb = 900 - GRID.M;
-    g.drawImage(mk, x, yb - mh, mw, mh);
-    g.fillStyle = '#0D1B3E'; g.font = '800 26px "Inter"'; g.letterSpacing = '5px';
-    g.fillText('MFT', x + mw + 13, yb - mh / 2 + 9.5);
+    if (hook) { // official signature, right-aligned on the page margin
+      const drawSign = (0, eval)('(' + signSrc + ')');
+      await drawSign(g, { seg: await load(signImgs.seg), mft: await load(signImgs.mft) }, 1600 - GRID.M, yb, 55, true, true);
+    } else {
+      g.drawImage(mk, x, yb - mh, mw, mh);
+      g.fillStyle = '#0D1B3E'; g.font = '800 26px "Inter"'; g.letterSpacing = '5px';
+      g.fillText('MFT', x + mw + 13, yb - mh / 2 + 9.5);
+    }
     if (hook) { // RTL hook on the navy field, right edge 55 px inside the seam, above the orb's outer ring (y 412)
       const sh = g.createLinearGradient(0, 60, 0, 400); sh.addColorStop(0, 'rgba(5,11,32,.78)'); sh.addColorStop(.7, 'rgba(5,11,32,.55)'); sh.addColorStop(1, 'rgba(5,11,32,0)');
       g.fillStyle = sh; g.fillRect(0, 0, 989, 400);
@@ -641,7 +649,7 @@ function scene(slug) {
       const s2 = fit(hook[1], 700, Math.min(56, s1)); g.fillStyle = '#FFFFFF'; g.globalAlpha = .82; g.fillText(hook[1], xr, 150 + 22 + s1 + 22 + s2); g.globalAlpha = 1;
     }
     return c.toDataURL(type, q).split(',')[1];
-  }, { svg, mark: MARK, w, h, type, q, GRID, hook }), 'base64');
+  }, { svg, mark: MARK, w, h, type, q, GRID, hook, signSrc: SIGN_CANVAS_SRC, signImgs: SIGN_IMGS }), 'base64');
   for (const slug of slugs) {
     const svg = scene(slug), hook = ACADEMY[slug] ? ACADEMY[slug].hook : null;
     fs.writeFileSync(path.join(OUT, `${slug}-1600.webp`), await render(svg, 1600, 900, 'image/webp', 0.9, hook));
