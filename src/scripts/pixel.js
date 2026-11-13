@@ -27,6 +27,34 @@
   var metaIds = (me.getAttribute('data-meta-pixel') || '').split(/\s+/).filter(Boolean);
   var tiktokId = me.getAttribute('data-tiktok-pixel') || '';
 
+  /* ---------- fbc coverage (13 Nov 2026): Meta's click cookies, first-party, before the pixel.
+     fbevents.js writes _fbc only after it loads and only for this host, so a visitor who moves on to the
+     SEG platform (app.seg-audit.com) to sign up arrived there without it. Written here on the parent
+     domain, from this landing's fbclid, in Meta's own format (fb.1.<ms>.<fbclid>), 90 days; the first
+     landing of a click keeps its timestamp. Only where the pixel itself runs (the checks above). ---------- */
+  function readCookie(n) {
+    var m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function writeCookie(n, v) {
+    var h = window.location.hostname, dom = /(^|\.)seg-audit\.com$/.test(h) ? '; Domain=.seg-audit.com' : '';
+    document.cookie = n + '=' + v + '; Max-Age=' + (90 * 86400) + '; Path=/' + dom + '; SameSite=Lax' +
+      (window.location.protocol === 'https:' ? '; Secure' : '');
+  }
+  if (metaIds.length) {
+    try {
+      var now = Date.now();
+      var clk = new URLSearchParams(window.location.search).get('fbclid');
+      if (clk && /^[A-Za-z0-9_-]{1,480}$/.test(clk)) {
+        var have = /^fb\.\d\.\d{10,16}\.([A-Za-z0-9_-]+)$/.exec(readCookie('_fbc'));
+        if (!have || have[1] !== clk) writeCookie('_fbc', 'fb.1.' + now + '.' + clk);
+      }
+      if (!/^fb\.\d\.\d{10,16}\.\d{1,32}$/.test(readCookie('_fbp'))) {
+        writeCookie('_fbp', 'fb.1.' + now + '.' + Math.floor(Math.random() * 1e10));
+      }
+    } catch (err) { /* cookies blocked: the pixel runs as before */ }
+  }
+
   /* ---------- Meta Pixel (standard base code, as a file instead of inline) ---------- */
   if (metaIds.length) {
     !function (f, b, e, v, n, t, s) {
