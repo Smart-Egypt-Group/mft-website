@@ -6,7 +6,23 @@
     <atom:link href="https://www.seg-audit.com/ar/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>كتابات عملية من MFT عن المراجعة الداخلية والأهمية النسبية والامتثال لهيئة الزكاة والضريبة والجمارك السعودية والفوترة الإلكترونية المصرية وتشغيل Odoo كنظام مالي.</description>
     <language>ar</language>
-    <lastBuildDate>Wed, 11 Nov 2026 20:50:54 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 19:48:51 GMT</lastBuildDate>
+    <item>
+      <title>تقرير المخزون: التقييم والحركة، 6 مؤشرات قبل ما تعتمد رقم المخزون</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-inventory-valuation/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-inventory-valuation/</guid>
+      <pubDate>Fri, 13 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير المخزون: التقييم والحركة في SEG: كميات سالبة، تقييم سالب، حركات بتكلفة صفر، مخزون راكد من غير مخصص، حركات بتاريخ رجعي، وحركات من غير مستند في Odoo.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير السيولة والاستمرارية: هل شركتك تقدر تكمّل تدفع التزاماتها؟</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-liquidity-going-concern/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-liquidity-going-concern/</guid>
+      <pubDate>Thu, 12 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير السيولة والاستمرارية في SEG: حقوق ملكية سالبة، عجز رأس المال العامل، خسائر نص رأس المال، شهور النقدية، تركّز المدينين، ونماذج التعثّر.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
     <item>
       <title>تقرير دورة البيع والتحصيل (O2C): 6 أماكن بيتسرّب منها الإيراد</title>
       <link>https://www.seg-audit.com/ar/blog/academy-order-to-cash/</link>

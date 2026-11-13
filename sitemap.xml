@@ -286,6 +286,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/academy-order-to-cash/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/blog/academy-liquidity-going-concern/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/academy-liquidity-going-concern/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/academy-liquidity-going-concern/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/academy-inventory-valuation/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/academy-inventory-valuation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/academy-inventory-valuation/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/ar/egypt/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/egypt/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/egypt/"/>
