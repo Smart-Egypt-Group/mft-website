@@ -139,7 +139,7 @@ module.exports = {
     // One dataset only (CEO decision, 9 Nov 2026): 775138718613961 = business-owned dataset (Business Manager 1914332548951730).
     // The personal legacy pixel 501774495051160 was retired on 9 Nov 2026 and no longer fires.
     metaPixelId: '775138718613961',
-    tiktokPixelId: '',              // TikTok Pixel: PLACEHOLDER, paste the ID here when it is ready (same events)
+    tiktokPixelId: 'DBSBSCRC77UC811K5M10',              // TikTok Pixel: PLACEHOLDER, paste the ID here when it is ready (same events)
     pixelHosts: ['www.seg-audit.com', 'seg-audit.com']
   }
 };

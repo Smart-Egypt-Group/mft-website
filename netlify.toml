@@ -28,4 +28,4 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://www.facebook.com; font-src 'self'; style-src 'self'; script-src 'self' https://connect.facebook.net; connect-src 'self' https://erp.seg-audit.com https://www.facebook.com https://connect.facebook.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://erp.seg-audit.com"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://www.facebook.com https://analytics.tiktok.com; font-src 'self'; style-src 'self'; script-src 'self' https://connect.facebook.net https://analytics.tiktok.com; connect-src 'self' https://erp.seg-audit.com https://www.facebook.com https://connect.facebook.net https://analytics.tiktok.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://erp.seg-audit.com"
