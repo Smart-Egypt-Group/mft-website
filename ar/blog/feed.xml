@@ -6,7 +6,15 @@
     <atom:link href="https://www.seg-audit.com/ar/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>كتابات عملية من MFT عن المراجعة الداخلية والأهمية النسبية والامتثال لهيئة الزكاة والضريبة والجمارك السعودية والفوترة الإلكترونية المصرية وتشغيل Odoo كنظام مالي.</description>
     <language>ar</language>
-    <lastBuildDate>Sat, 14 Nov 2026 21:06:23 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 15:25:51 GMT</lastBuildDate>
+    <item>
+      <title>تقرير الامتثال الضريبي (مصر): الفاتورة الإلكترونية والقيمة المضافة</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-egypt-tax-compliance/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-egypt-tax-compliance/</guid>
+      <pubDate>Sun, 15 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير الامتثال الضريبي لمصر في SEG: الفاتورة الإلكترونية ETA، كود الصنف، نسبة القيمة المضافة، مطابقة الإقرار بالدفاتر، والخصم والإضافة تحت حساب الضريبة.</description>
+      <category>الامتثال</category>
+    </item>
     <item>
       <title>تقرير المخزون: التقييم والحركة، 6 مؤشرات قبل ما تعتمد رقم المخزون</title>
       <link>https://www.seg-audit.com/ar/blog/academy-inventory-valuation/</link>
