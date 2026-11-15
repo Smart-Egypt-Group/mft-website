@@ -812,10 +812,10 @@ module.exports = {
     }
   },
 
-  // مركز الثقة: كل بند هنا مُطبَّق في كود seg-audit أو مقيس في مراجعة داخلية موثّقة.
-  // المصادر: connector/guards.py، analysis/integrity.py، crypto/vault.py، سجل التدقيق المسلسل،
-  // TRUST_MATRIX.md (أغسطس 2026)، docs/security/01-security-posture.md. ما لم يُنجز بعد
-  // مذكور صراحةً في «ما لا ندّعيه بعد»؛ لا يُنقل منه شيء إلى الضمانات قبل أن يُنجز فعلًا.
+  // Trust centre: every item is enforced in the seg-audit code or measured in a documented
+  // internal review. Sources: connector/guards.py, analysis/integrity.py, crypto/vault.py,
+  // the hash-chained audit ledger, TRUST_MATRIX.md (Aug 2026), docs/security/01-security-posture.md.
+  // Nothing that is not done yet is listed as a guarantee.
   // الشركاء: البرنامج لشركاء تنفيذ Odoo ومكاتب المحاسبة. الضوابط لكل نشاط مأخوذة من
   // seg-audit (analysis/odoo_best_practice.py → FAMILY_RULES، وتصنيف ISIC للأنشطة).
   // باقات الموديولات الجاهزة وطرحها على Odoo App Store لم تُبنَ بعد: معلَّمة «قريبًا».
@@ -1114,11 +1114,11 @@ module.exports = {
 
   trustCenter: {
     title: 'الثقة والأمان | Standard Enterprise Governance (SEG) من MFT',
-    description: 'ما تضمنه منصة SEG وكيف يُفرض كل ضمان في الكود: قراءة فقط، أرقام بلا تخمين، سجل مترابط للتقارير والاعتمادات، وعزل كامل بين العملاء. ومعه ما لا ندّعيه بعد.',
+    description: 'ما تضمنه منصة SEG وكيف يُفرض كل ضمان في الكود: قراءة فقط، أرقام بلا تخمين، سجل مترابط للتقارير والاعتمادات، وعزل كامل بين العملاء.',
     page: {
       eyebrow: 'الثقة والأمان',
-      title: 'ما نضمنه، وكيف يُفرض، وما لا ندّعيه بعد.',
-      intro: 'كل ضمان في هذه الصفحة مبني داخل منصة {lat}Standard Enterprise Governance (SEG){/lat}، مفروض في الكود ويُثبته اختبار أو فحص موثّق في الإنتاج، لا سطر في سياسة. وفي آخر الصفحة ما لم نُنجزه بعد، مكتوبًا بالوضوح نفسه.'
+      title: 'ما نضمنه، وكيف يُفرض.',
+      intro: 'كل ضمان في هذه الصفحة مبني داخل منصة {lat}Standard Enterprise Governance (SEG){/lat}، مفروض في الكود ويُثبته اختبار أو فحص موثّق في الإنتاج، لا سطر في سياسة.'
     },
     groups: [
       {
@@ -1197,15 +1197,6 @@ module.exports = {
         ]
       }
     ],
-    notYet: {
-      title: 'ما لا ندّعيه بعد',
-      intro: 'نكتبه هنا لأن المشتري المحترف سيسأل عنه، ولأن الثقة تبدأ من عدم المبالغة.',
-      items: [
-        'لم يُجرَ على المنصة اختبار اختراق مستقل من جهة خارجية حتى الآن.',
-        'لا نحمل شهادة {lat}SOC 2{/lat} ولا {lat}ISO 27001{/lat}.',
-        'اتفاقية معالجة البيانات ({lat}DPA{/lat}) وقائمة المعالجين الفرعيين قيد الصياغة القانونية، وتُنشر هنا حين تصبح سارية.'
-      ]
-    },
     report: {
       title: 'وجدت ثغرة؟',
       body: 'راسلنا على {email} ولا تنشرها علنًا. نسعى للرد خلال {lat}72{/lat} ساعة عمل.'

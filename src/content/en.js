@@ -817,7 +817,7 @@ module.exports = {
   // Trust centre: every item is enforced in the seg-audit code or measured in a documented
   // internal review. Sources: connector/guards.py, analysis/integrity.py, crypto/vault.py,
   // the hash-chained audit ledger, TRUST_MATRIX.md (Aug 2026), docs/security/01-security-posture.md.
-  // What is not done yet is listed under notYet; nothing moves to the guarantees until it is done.
+  // Nothing that is not done yet is listed as a guarantee.
   // Partners: the programme for Odoo implementation partners and accounting firms. Controls
   // per activity come from seg-audit (analysis/odoo_best_practice.py → FAMILY_RULES, ISIC mapping).
   // Ready-made module packages and their Odoo App Store listing are not built yet: marked "soon".
@@ -1100,11 +1100,11 @@ module.exports = {
 
   trustCenter: {
     title: 'Trust & security | Standard Enterprise Governance (SEG) by MFT',
-    description: 'What the SEG platform guarantees and how each guarantee is enforced in code: read-only access, no guessed numbers, a hash-chained record of reports and approvals, full client isolation. Plus what we do not claim yet.',
+    description: 'What the SEG platform guarantees and how each guarantee is enforced in code: read-only access, no guessed numbers, a hash-chained record of reports and approvals, full client isolation.',
     page: {
       eyebrow: 'Trust & security',
-      title: 'What we guarantee, how it is enforced, and what we do not claim yet.',
-      intro: 'Every guarantee on this page is built into the Standard Enterprise Governance (SEG) platform, enforced in code and verified by a test or a documented production check, not a line in a policy. At the end of the page: what we have not done yet, written just as plainly.'
+      title: 'What we guarantee, and how it is enforced.',
+      intro: 'Every guarantee on this page is built into the Standard Enterprise Governance (SEG) platform, enforced in code and verified by a test or a documented production check, not a line in a policy.'
     },
     groups: [
       {
@@ -1183,15 +1183,6 @@ module.exports = {
         ]
       }
     ],
-    notYet: {
-      title: 'What we do not claim yet',
-      intro: 'We list it here because a professional buyer will ask, and because trust starts with not overstating.',
-      items: [
-        'The platform has not yet had an independent penetration test by an outside firm.',
-        'We do not hold a SOC 2 or ISO 27001 certification.',
-        'The data processing agreement (DPA) and the sub-processor list are being drafted with legal counsel and will be published here once in force.'
-      ]
-    },
     report: {
       title: 'Found a vulnerability?',
       body: 'Email {email} and please do not disclose it publicly. We aim to reply within 72 business hours.'
