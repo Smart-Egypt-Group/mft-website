@@ -1,5 +1,5 @@
-// Trust centre: what seg-audit guarantees, how each guarantee is enforced, and what we
-// do not claim yet. Copy lives in content/<lang>.js → trustCenter; platform figures in
+// Trust centre: what seg-audit guarantees and how each guarantee is enforced.
+// Copy lives in content/<lang>.js → trustCenter; platform figures in
 // content/platform-facts.js (generated from the seg-audit code).
 const { t, esc, url } = require('../html');
 const { pageHeader, seeAlso } = require('./services');
@@ -27,14 +27,6 @@ module.exports = function trust(ctx) {
     )
     .join('\n');
 
-  const notYet = `<section class="section" aria-labelledby="trust-not-yet">
-  <div class="container narrow prose">
-    <h2 id="trust-not-yet">${t(T.notYet.title)}</h2>
-    <p>${t(T.notYet.intro)}</p>
-    <ul>${T.notYet.items.map((x) => `<li>${t(x)}</li>`).join('')}</ul>
-  </div>
-</section>`;
-
   const report = `<section class="section section-navy" aria-labelledby="trust-report">
   <div class="container narrow prose">
     <h2 id="trust-report">${t(T.report.title)}</h2>
@@ -45,7 +37,6 @@ module.exports = function trust(ctx) {
 
   const body = `${pageHeader(ctx, T.page, [{ label: ctx.c.ui.breadcrumbHome, href: '' }, { label: T.page.eyebrow }])}
 ${groups}
-${notYet}
 ${report}
 ${seeAlso(ctx, [
   { label: ctx.c.privacy.page.eyebrow, href: 'privacy/' },
