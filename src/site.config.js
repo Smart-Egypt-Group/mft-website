@@ -140,6 +140,10 @@ module.exports = {
     // The personal legacy pixel 501774495051160 was retired on 9 Nov 2026 and no longer fires.
     metaPixelId: '775138718613961',
     tiktokPixelId: 'DBSBSCRC77UC811K5M10',              // TikTok Pixel: PLACEHOLDER, paste the ID here when it is ready (same events)
+    // LinkedIn Insight Tag (brief 074, 22 Nov 2026, Campaign Manager): a page view on every page and one
+    // conversion, "founding application received" (the 202 from /api/public/founding-applications).
+    linkedinPartnerId: '11376257',
+    linkedinLeadConversionId: 33059177,
     pixelHosts: ['www.seg-audit.com', 'seg-audit.com']
   }
 };

@@ -15,6 +15,9 @@
 
 # Meta Pixel (site.config.js → analytics.metaPixelId) needs connect.facebook.net and www.facebook.com in the CSP.
 # When the TikTok Pixel ID is set, add https://analytics.tiktok.com to script-src and connect-src.
+# LinkedIn Insight Tag (brief 074): snap.licdn.com in script-src; px.ads.linkedin.com and www.linkedin.com
+# (its cookie-sync redirect) in img-src. No connect-src: only its Website Actions module uses fetch, and
+# pixel.js keeps that module off. The live site is on GitHub Pages, which does not send these headers.
 # Long cache for fingerprinted-by-query assets; HTML always revalidates.
 [[headers]]
   for = "/assets/*"
@@ -28,4 +31,4 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://www.facebook.com https://analytics.tiktok.com; font-src 'self'; style-src 'self'; script-src 'self' https://connect.facebook.net https://analytics.tiktok.com; connect-src 'self' https://erp.seg-audit.com https://www.facebook.com https://connect.facebook.net https://analytics.tiktok.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://erp.seg-audit.com"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://www.facebook.com https://analytics.tiktok.com https://px.ads.linkedin.com https://www.linkedin.com; font-src 'self'; style-src 'self'; script-src 'self' https://connect.facebook.net https://analytics.tiktok.com https://snap.licdn.com; connect-src 'self' https://erp.seg-audit.com https://www.facebook.com https://connect.facebook.net https://analytics.tiktok.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://erp.seg-audit.com"

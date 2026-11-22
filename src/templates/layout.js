@@ -25,8 +25,8 @@ function head(ctx, page) {
     ? `<script defer data-domain="${esc(config.analytics.plausibleDomain)}" src="https://plausible.io/js/script.js"></script>`
     : '';
   const A = config.analytics;
-  const pixels = A.metaPixelId || A.tiktokPixelId
-    ? `<script src="/assets/js/pixel.js?v=${ctx.buildId}" async data-meta-pixel="${esc(A.metaPixelId)}" data-tiktok-pixel="${esc(A.tiktokPixelId)}" data-hosts="${esc(A.pixelHosts.join(' '))}"></script>`
+  const pixels = A.metaPixelId || A.tiktokPixelId || A.linkedinPartnerId
+    ? `<script src="/assets/js/pixel.js?v=${ctx.buildId}" async data-meta-pixel="${esc(A.metaPixelId)}" data-tiktok-pixel="${esc(A.tiktokPixelId)}" data-linkedin-partner="${esc(A.linkedinPartnerId || '')}" data-linkedin-lead="${esc(A.linkedinLeadConversionId || '')}" data-hosts="${esc(A.pixelHosts.join(' '))}"></script>`
     : '';
   return `<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
