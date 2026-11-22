@@ -8,8 +8,13 @@
                "CTAClick", TikTok "ClickButton"). A click is intent, not a conversion: it is NOT a
                Lead (11 Nov 2026) — the free-check Lead fires on the SEG platform after sign-up.
      Lead      a founding application received (apply.js → 'mft:lead',
-               Meta "Lead" content_name founding-application, TikTok "SubmitForm")
+               Meta "Lead" content_name founding-application, TikTok "SubmitForm",
+               LinkedIn conversion data-linkedin-lead)
      Contact   click on any WhatsApp link (wa.me) (Meta "Contact", TikTok "Contact"), 8 Nov 2026
+   LinkedIn Insight Tag (22 Nov 2026, brief 074): its own page view when it loads, and one
+     conversion (data-linkedin-lead) on 'mft:lead' only. Nothing on CTAClick or WhatsApp clicks.
+     Its "Website Actions" module (automatic click, button-text and page-visit capture) is
+     switched off before the tag loads, like Meta's autoConfig below.
    A browser that opted out under the short-lived notice bar (localStorage mft-consent = 'denied')
    stays opted out. */
 (function () {
@@ -26,6 +31,9 @@
      initialised, and every fbq('track') below then reaches all of them. */
   var metaIds = (me.getAttribute('data-meta-pixel') || '').split(/\s+/).filter(Boolean);
   var tiktokId = me.getAttribute('data-tiktok-pixel') || '';
+  /* LinkedIn: digits only, else off (a typo must never load the tag with a broken id). */
+  var linkedinId = /^\d{1,20}$/.test(me.getAttribute('data-linkedin-partner') || '') ? me.getAttribute('data-linkedin-partner') : '';
+  var linkedinLead = /^\d{1,20}$/.test(me.getAttribute('data-linkedin-lead') || '') ? Number(me.getAttribute('data-linkedin-lead')) : 0;
 
   /* ---------- fbc coverage (13 Nov 2026): Meta's click cookies, first-party, before the pixel.
      fbevents.js writes _fbc only after it loads and only for this host, so a visitor who moves on to the
@@ -88,6 +96,28 @@
     }(window, document, 'ttq');
   }
 
+  /* ---------- LinkedIn Insight Tag (standard base code, as a file instead of inline).
+     Before the tag loads, its "Website Actions" module is marked as already started, so it never
+     starts: insight.min.js (checked 22 Nov 2026) skips that module when window.ORIBILI already holds
+     scriptInitializedPending. That module would otherwise record every click (link, button text, page
+     elements), which the privacy notice does not cover: Meta's equivalent (autoConfig) is off too.
+     The page view and the conversion below go through the base tag (px.ads.linkedin.com/collect). ---------- */
+  if (linkedinId) {
+    window.ORIBILI = window.ORIBILI || {};
+    window.ORIBILI.scriptInitializedPending = true;
+    window._linkedin_partner_id = linkedinId;
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(linkedinId);
+    (function (l) {
+      if (!l) { window.lintrk = function (a, b) { window.lintrk.q.push([a, b]); }; window.lintrk.q = []; }
+      var s = document.getElementsByTagName('script')[0];
+      var b = document.createElement('script');
+      b.type = 'text/javascript'; b.async = true;
+      b.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);
+  }
+
   /* ---------- Lead: a founding seat application received (202), fired by apply.js. Only the
      event name and this visit's UTMs: never what was typed in the form (privacy notice). ---------- */
   document.addEventListener('mft:lead', function (e) {
@@ -99,6 +129,8 @@
     } catch (err) { /* storage blocked */ }
     if (window.fbq) window.fbq('track', 'Lead', params);
     if (window.ttq && tiktokId) window.ttq.track('SubmitForm', { content_name: params.content_name });
+    /* LinkedIn: the conversion id only, no UTMs or other parameter. */
+    if (window.lintrk && linkedinId && linkedinLead) window.lintrk('track', { conversion_id: linkedinLead });
   });
 
   /* ---------- Contact: a click on any WhatsApp link (wa.me). These open in a new tab, so no delay is needed.
