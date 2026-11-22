@@ -1198,7 +1198,7 @@ module.exports = {
     page: {
       eyebrow: 'Privacy',
       title: 'What we collect, and why.',
-      intro: 'This website is a marketing site. We collect what you type into the contact form, and we use cookies and advertising pixels (Meta Pixel), described below.'
+      intro: 'This website is a marketing site. We collect what you type into the contact form, and we use cookies and advertising pixels (Meta Pixel, LinkedIn Insight Tag), described below.'
     },
     sections: [
       {
@@ -1212,8 +1212,10 @@ module.exports = {
           { k: 'Essential', v: 'your browser keeps the visit source (utm) for the session, which is passed to the sign-up link on SEG so we know which ad or post brought you. It is not sent to a third party.' },
           { k: 'Advertising', v: 'the Meta Pixel from Meta Platforms loads when the page opens, for three purposes: advertising, conversion measurement and retargeting (showing our ads to people who visited the site).' },
           { k: 'What is sent to Meta', v: 'the page address and the previous page, the time of the visit, browser and device type, your IP address, clicks on the free-check button and on WhatsApp buttons (the click only, not the number or any message), the fact that a Founding seat application was sent (not its contents), and a cookie identifier. It sets the _fbp cookie (up to 90 days), and _fbc when you arrive from an ad. We do not send what you type into forms.' },
+          { k: 'Advertising (LinkedIn)', v: 'the LinkedIn Insight Tag from LinkedIn loads when the page opens, for the same three purposes: advertising, conversion measurement and retargeting.' },
+          { k: 'What is sent to LinkedIn', v: 'the page address and the previous page, the time of the visit, browser and device type, your IP address, the fact that a Founding seat application was sent (not its contents), and a cookie identifier. It sets LinkedIn’s own cookies. We do not send what you type into forms.' },
           { k: 'Later', v: 'we may add the TikTok Pixel for the same purposes and under the same rules, after this notice is updated.' },
-          { k: 'Your right to object and withdraw consent', v: 'you may object to this processing or withdraw your consent at any time, under Egypt’s Personal Data Protection Law No. 151 of 2020 and Saudi Arabia’s Personal Data Protection Law, by writing to privacy@seg-audit.com. You can also block third-party cookies in your browser, or manage what reached Meta in your account’s ad settings.' }
+          { k: 'Your right to object and withdraw consent', v: 'you may object to this processing or withdraw your consent at any time, under Egypt’s Personal Data Protection Law No. 151 of 2020 and Saudi Arabia’s Personal Data Protection Law, by writing to privacy@seg-audit.com. You can also block third-party cookies in your browser, or manage what reached Meta or LinkedIn in your account’s ad settings.' }
         ]
       },
       {
@@ -1223,7 +1225,7 @@ module.exports = {
           { k: 'Website hosting', v: 'GitHub Pages by GitHub, Inc., which may log IP addresses for security.' },
           { k: 'Forms', v: 'the MFT customer system on Odoo (erp.seg-audit.com).' },
           { k: 'Founding seat applications', v: 'the SEG platform operated by MFT (app.seg-audit.com), where the MFT team reviews each application.' },
-          { k: 'Advertising', v: 'Meta Platforms (Meta Pixel), and later TikTok (TikTok Pixel).' }
+          { k: 'Advertising', v: 'Meta Platforms (Meta Pixel), LinkedIn (LinkedIn Insight Tag), and later TikTok (TikTok Pixel).' }
         ]
       },
       {
