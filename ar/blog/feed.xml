@@ -6,7 +6,55 @@
     <atom:link href="https://www.seg-audit.com/ar/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>كتابات عملية من MFT عن المراجعة الداخلية والأهمية النسبية والامتثال لهيئة الزكاة والضريبة والجمارك السعودية والفوترة الإلكترونية المصرية وتشغيل Odoo كنظام مالي.</description>
     <language>ar</language>
-    <lastBuildDate>Sun, 15 Nov 2026 15:25:51 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 07:42:07 GMT</lastBuildDate>
+    <item>
+      <title>تقرير نقاط البيع: اللي بيحصل على الكاشير ومابيظهرش في القيد</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-pos-sales/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-pos-sales/</guid>
+      <pubDate>Mon, 23 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير نقاط البيع بيقرا طلبات وجلسات نقطة البيع في أودو: طلبات ما اترحّلتش، فروق صندوق، خصومات فوق السياسة، مرتجعات عالية، ومبيعات من غير عميل.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير الزكاة: وعاء محسوب من دفاترك قبل ما تطابقه بالإقرار</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-zakat/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-zakat/</guid>
+      <pubDate>Sun, 22 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير الزكاة للشركات السعودية بيحسب وعاء الزكاة من أرصدة أودو بالطريقة غير المباشرة، ويطابقه بالمُقرّ، ويرفع بنود الحسم والحد الأدنى للمراجعة.</description>
+      <category>الامتثال</category>
+    </item>
+    <item>
+      <title>تقرير المعالجة المحاسبية والأصول الثابتة: 6 أسئلة قبل ما تعتمد الأرقام</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-accounting-treatment-fixed-assets/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-accounting-treatment-fixed-assets/</guid>
+      <pubDate>Fri, 20 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير المعالجة المحاسبية والأصول الثابتة بيقرا أودو: أرصدة في الاتجاه العكسي، حسابات معلّقة بتكبر، مصروف مقدّم ما اتحمّلش، إهلاك غايب، ومصروف اترسمل.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير الأطراف ذات العلاقة: علاقات بتبان في بيانات الشركاء قبل الإفصاح</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-related-parties/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-related-parties/</guid>
+      <pubDate>Thu, 19 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير الأطراف ذات العلاقة بيقرا بيانات الشركاء في أودو: حساب بنكي مشترك، رقم ضريبي مكرر، تعاملات الشركات الشقيقة، وحسابات جاري الشركاء قبل الإفصاح.</description>
+      <category>المراجعة الداخلية</category>
+    </item>
+    <item>
+      <title>تقرير جاهزية الملف الضريبي: 5 حاجات تقفلها قبل ما الفحص يبدأ</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-tax-file-readiness/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-tax-file-readiness/</guid>
+      <pubDate>Tue, 17 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير جاهزية الملف الضريبي قبل الفحص بيقرا أودو: رقم تسجيل الشركة، فجوات تسلسل فواتير البيع، المسودات، تواريخ القفل، وأرقام تسجيل العملاء في مصر والسعودية.</description>
+      <category>الامتثال</category>
+    </item>
+    <item>
+      <title>تقرير الامتثال الضريبي (السعودية): فاتورة والقيمة المضافة والاستقطاع</title>
+      <link>https://www.seg-audit.com/ar/blog/academy-saudi-tax-compliance/</link>
+      <guid isPermaLink="true">https://www.seg-audit.com/ar/blog/academy-saudi-tax-compliance/</guid>
+      <pubDate>Mon, 16 Nov 2026 09:00:00 GMT</pubDate>
+      <description>تقرير الامتثال الضريبي للسعودية في SEG: الربط بمنصة فاتورة، فواتير من غير UUID، سلسلة الـhash، نسبة 15%، مطابقة الإقرار، واستقطاع غير المقيمين.</description>
+      <category>الامتثال</category>
+    </item>
     <item>
       <title>تقرير الامتثال الضريبي (مصر): الفاتورة الإلكترونية والقيمة المضافة</title>
       <link>https://www.seg-audit.com/ar/blog/academy-egypt-tax-compliance/</link>

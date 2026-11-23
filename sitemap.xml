@@ -301,6 +301,36 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/academy-egypt-tax-compliance/"/>
   </url>
   <url>
+    <loc>https://www.seg-audit.com/ar/blog/academy-saudi-tax-compliance/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/academy-saudi-tax-compliance/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/academy-saudi-tax-compliance/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/academy-tax-file-readiness/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/academy-tax-file-readiness/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/academy-tax-file-readiness/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/academy-related-parties/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/academy-related-parties/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/academy-related-parties/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/academy-accounting-treatment-fixed-assets/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/academy-accounting-treatment-fixed-assets/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/academy-accounting-treatment-fixed-assets/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/academy-zakat/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/academy-zakat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/academy-zakat/"/>
+  </url>
+  <url>
+    <loc>https://www.seg-audit.com/ar/blog/academy-pos-sales/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/blog/academy-pos-sales/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/blog/academy-pos-sales/"/>
+  </url>
+  <url>
     <loc>https://www.seg-audit.com/ar/egypt/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.seg-audit.com/ar/egypt/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.seg-audit.com/en/egypt/"/>
