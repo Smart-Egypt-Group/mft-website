@@ -84,6 +84,15 @@ Slugs (`services.items[].slug`, `industries.items[].slug`) are shared between la
 `PENDING-DECISIONS.md` lists the three open decisions and exactly where each lands in the code.
 The pricing section is written but hidden (`site.config.js → showPricingSlot: false`) until packages are approved; `npm run dev` marks it with a yellow tag when shown.
 
+## Published figures
+
+Two facts files feed every number on the site; copy never types a figure.
+
+- `src/content/platform-facts.js`: generated from the seg-audit code by `scripts/platform-facts.js` (checks, reports, tests).
+- `src/content/practice-facts.js`: MFT's own client work (clients, confirmed engagements, hours, projects, tasks done), measured read-only from the firm's Odoo. Method, filters and counting rules: `PRACTICE-FACTS.md`. Re-measure all values together and update `measuredOn`.
+
+The home "Why MFT" band shows counted figures only and links to `numbers/` (AR/EN), which lists every published figure with how it is counted, its source and its date. `npm run check` fails if a practice figure is not a positive whole number, if the published hours are not a floor of the measured hours, or if a content file stops reading the facts file. No client name and no client amount is published. This repository is public: keep only the method and the published figures here, never client names, amounts or working notes.
+
 ## Blog (Insights)
 
 `src/content/blog.en.js` and `blog.ar.js` hold the articles as block arrays (`h2`, `p`, `ul`, `quote`) with shared slugs, so hreflang and the language switch work per article. `src/templates/pages/blog.js` renders the index (`blog/`), each article (`blog/<slug>/`, with author box, related articles, `Article` schema carrying `author` as a `Person` with `jobTitle` and `worksFor`), an RSS 2.0 feed per language (`/<lang>/blog/feed.xml`, autodiscovery link in every page head) and the home page "Latest insights" block. Reading time is computed from word count. Authors live in `blog.<lang>.js → authors`; the founder is the initial author. New article: add one object to each language file; everything else (index, feed, sitemap, llms.txt, related) follows.

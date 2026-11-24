@@ -9,6 +9,8 @@ const ROOT = __dirname;
 const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
 const config = require('./src/site.config.js');
+// Practice figures (clients, engagements, hours): measured from MFT's own ERP, see PRACTICE-FACTS.md.
+const practice = require('./src/content/practice-facts.js');
 // Preview/CI overrides (never edit site.config.js for a temporary deploy):
 //   SITE_URL       canonical origin, e.g. https://smart-egypt-group.github.io/mft-website-preview
 //   BASE_PATH      sub-path the site is served from, e.g. /mft-website-preview  (default: none)
@@ -41,6 +43,7 @@ const contact = require('./src/templates/pages/contact');
 const notFound = require('./src/templates/pages/notfound');
 const privacy = require('./src/templates/pages/privacy');
 const trust = require('./src/templates/pages/trust');
+const numbers = require('./src/templates/pages/numbers');
 const partners = require('./src/templates/pages/partners');
 const founding = require('./src/templates/pages/founding');
 const foundingApply = require('./src/templates/pages/founding-apply');
@@ -100,6 +103,7 @@ function pageList(c) {
     { path: 'contact/', render: (ctx) => contact(ctx) },
     { path: 'privacy/', render: (ctx) => privacy(ctx) },
     { path: 'trust/', render: (ctx) => trust(ctx) },
+    { path: 'numbers/', render: (ctx) => numbers(ctx) },
     { path: 'partners/', render: (ctx) => partners(ctx) },
     ...(config.founding && config.founding.enabled ? [{ path: 'founding-members/', render: (ctx) => founding(ctx) }, { path: 'founding-members/apply/', render: (ctx) => foundingApply(ctx) }] : []),
     { path: '404.html', render: (ctx) => notFound(ctx), file: true, noindex: true },
@@ -215,6 +219,7 @@ function build() {
     '',
     '## Facts',
     '- Led by a registered chartered accountant (registration no. 57986); Odoo implementation experts led by accountants; Egypt and Saudi Arabia, expanding to the US.',
+    `- Practice figures measured ${practice.measuredOn} from MFT's own ERP: ${practice.clients} clients served, ${practice.engagements} confirmed engagements, more than ${practice.hoursFloor.toLocaleString('en-US')} professional hours on client work. How each figure is counted: ${config.siteUrl}/en/numbers/`,
     '- Agents draft only; every action needs a named human approval (two above ISA 320 materiality); corrections by reversal, never deletion.',
     '- AI governance policy enforced in code; AI run log retained 7 years by default; agents read only the records a run needs, and the run log records the model provider of each run.',
     '',
