@@ -1,4 +1,4 @@
-const { t, esc, url, btn, sectionHead, phTag, pad2, seats, fm, fmh } = require('../html');
+const { t, esc, url, btn, sectionHead, phTag, pad2, figure, seats, fm, fmh } = require('../html');
 const { faqBlock, faqSchema, seeAlso, reviewSchema } = require('./services');
 const { latestBlock } = require('./blog');
 const { heroA, heroB, heroC } = require('../partials/hero');
@@ -36,9 +36,7 @@ module.exports = function home(ctx, opts = {}) {
   const facts = H.proof.facts
     .map((f, i) => {
       if (isLive(f)) return `<li class="fact reveal" style="--i:${i}"${liveAttrs(ctx)}><span class="fact-value lat">${countSpan(ctx)}</span><span class="fact-label">${t(f.label)}</span></li>`;
-      const m = String(f.value).match(/^(\d+)(\+?)$/);
-      const val = m ? `<span class="count" data-count="${m[1]}">${m[1]}</span>${m[2]}` : esc(f.value);
-      return `<li class="fact reveal" style="--i:${i}"><span class="fact-value lat">${val}</span><span class="fact-label">${t(f.label)}</span></li>`;
+      return `<li class="fact reveal" style="--i:${i}"><span class="fact-value lat">${figure(f.value)}</span><span class="fact-label">${t(f.label)}</span></li>`;
     })
     .join('');
 
@@ -167,6 +165,8 @@ ${trust}
   <div class="container">
     <div class="section-head"><p class="eyebrow">${t(H.proof.eyebrow)}</p><h2 id="proof-title">${t(H.proof.title)}</h2></div>
     <ul class="grid grid-4 facts">${facts}</ul>
+    ${H.proof.note ? `<p class="proof-note">${t(H.proof.note)}</p>` : ''}
+    ${H.proof.more ? `<p class="section-foot"><a class="btn btn-link" href="${url(ctx, H.proof.more.href)}">${t(H.proof.more.label)}</a></p>` : ''}
   </div>
 </section>
 
