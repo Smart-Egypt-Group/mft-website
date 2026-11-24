@@ -15,7 +15,6 @@ function head(ctx, page) {
   const { c, config } = ctx;
   const canonical = `${config.siteUrl}/${ctx.lang}/${ctx.path}`;
   const alternates = config.languages
-    .filter((l) => ctx.altPaths[l] != null)
     .map((l) => `<link rel="alternate" hreflang="${l}" href="${config.siteUrl}/${l}/${ctx.altPaths[l]}">`)
     .join('\n  ');
   const title = plain(page.title || c.meta.siteName);
@@ -34,7 +33,7 @@ function head(ctx, page) {
   <meta name="description" content="${esc(desc)}">
   <link rel="canonical" href="${canonical}">
   ${alternates}
-  ${ctx.altPaths[config.defaultLang] == null ? '' : `<link rel="alternate" hreflang="x-default" href="${config.siteUrl}/${config.defaultLang}/${ctx.altPaths[config.defaultLang]}">`}
+  <link rel="alternate" hreflang="x-default" href="${config.siteUrl}/${config.defaultLang}/${ctx.altPaths[config.defaultLang]}">
   <meta property="og:type" content="${page.ogType || 'website'}">
   <meta property="og:site_name" content="${esc(c.meta.siteName)}">
   <meta property="og:title" content="${esc(title)}">
@@ -139,7 +138,7 @@ ${bar}
     <nav id="site-nav" class="site-nav" aria-label="${esc(c.ui.menu)}">
       <ul>${items}</ul>
       <div class="nav-actions">
-        <a class="lang-switch" href="/${alt}/${ctx.altPaths[alt] == null ? 'blog/' : ctx.altPaths[alt]}" lang="${alt}" hreflang="${alt}" dir="${alt === 'ar' ? 'rtl' : 'ltr'}">${esc(c.switchLabel)}</a>
+        <a class="lang-switch" href="/${alt}/${ctx.altPaths[alt]}" lang="${alt}" hreflang="${alt}" dir="${alt === 'ar' ? 'rtl' : 'ltr'}">${esc(c.switchLabel)}</a>
         ${btn(ctx, c.nav.cta, 'btn btn-primary btn-sm')}
       </div>
     </nav>
