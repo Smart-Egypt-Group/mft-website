@@ -63,6 +63,14 @@ const phTag = (ctx) =>
 
 const pad2 = (n) => String(n).padStart(2, '0');
 
+// A published figure. '2400+' or '388' becomes a counter span (thousands separators, counted up by
+// motion.js) plus its suffix; anything else is plain text. The value itself always comes from
+// content/platform-facts.js or content/practice-facts.js, never typed into copy.
+const figure = (v) => {
+  const m = String(v).match(/^(\d+)(\+?)$/);
+  return m ? `<span class="count" data-count="${m[1]}">${m[1].replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>${m[2]}` : esc(v);
+};
+
 // Founding Members: applications close at site.config → founding.closesAt (decision, 8 Nov 2026: a
 // deadline instead of 50 seats, so no seat number anywhere).
 // The close date: {closeDay} {closeMonth} {closeTime} from site.config → founding.closesAt (its own
@@ -111,4 +119,4 @@ const fmh = (ctx, key) => closeHtml(ctx, key.split('.').reduce((o, k) => o && o[
 const signupUrl = (ctx, content) =>
   `${ctx.config.founding.signup[ctx.lang]}?utm_source=website&utm_medium=owned&utm_campaign=founding-members-2026&utm_content=${encodeURIComponent(content)}`;
 
-module.exports = { esc, t, plain, url, attrs, link, btn, eyebrow, sectionHead, phTag, pad2, MONTHS, seats, closeHtml, fm, fmh, windowPanel, signupUrl };
+module.exports = { esc, t, plain, url, attrs, link, btn, eyebrow, sectionHead, phTag, pad2, figure, MONTHS, seats, closeHtml, fm, fmh, windowPanel, signupUrl };
