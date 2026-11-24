@@ -345,6 +345,29 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .risk-medium .risk-num { color: var(--sev-medium); }
 .risk-medium .risk-label { color: var(--sev-medium-text); }
 .risk-caption { margin: 16px 0 0; font-size: var(--fs-small); color: var(--on-navy-3); }
+/* Hero stats panel: real counted figures beside the headline (CEO, 24 Nov 2026). The numerals are
+   deliberately larger than --fs-display: the one place the page goes above its three sizes. White
+   and cyan on navy only (both checked pairs); the live item carries the pulsing dot. The
+   illustrative check result sits in the .sample section right under the hero. */
+.stats-panel { width: 100%; max-width: 520px; justify-self: end; padding: 26px 24px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--navy-line); border-radius: 10px; }
+[dir="rtl"] .stats-panel { justify-self: start; }
+.stats-title { margin: 0 0 24px; font-size: var(--fs-small); font-weight: 700; color: var(--cyan); }
+.stats-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 20px; }
+.stat { display: flex; flex-direction: column; gap: 10px; }
+.stat-num { font-size: clamp(2.25rem, 1rem + 2.3vw, 3.1rem); font-weight: 800; line-height: 1; color: var(--white); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stat-num .count-suffix, .stat-live .stat-num { color: var(--cyan); }
+.stat-label { font-size: var(--fs-small); font-weight: 600; line-height: 1.45; color: var(--on-navy-2); }
+[dir="rtl"] .stat-label { line-height: 1.7; }
+.stat-live .stat-label { display: flex; align-items: baseline; gap: 8px; }
+.stats-foot { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin: 28px 0 0; padding-top: 18px; border-top: 1px solid var(--navy-line); font-size: var(--fs-small); color: var(--on-navy-3); }
+.hero-c .stats-foot .btn-link { color: var(--cyan); }
+.sample-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
+.sample .section-head { margin-bottom: 0; }
+@media (max-width: 899px) {
+  .stats-panel, [dir="rtl"] .stats-panel { justify-self: stretch; max-width: none; padding: 22px 20px; }
+  .stats-grid { gap: 26px 16px; }
+  .sample-inner { grid-template-columns: 1fr; }
+}
 /* Hero hook: live-check strip, one-line assurances, and a scan that surfaces findings one by one.
    Static state (no JS, reduced motion, hero already seen this session) = finished scan, all findings shown. */
 .hero-live { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 20px; padding: 6px 14px; border: 1px solid var(--navy-line); border-radius: 999px; background: rgba(27, 183, 205, 0.08); color: var(--on-navy); font-size: var(--fs-small); font-weight: 700; }
@@ -468,9 +491,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .fact { display: flex; flex-direction: column; gap: 6px; padding-top: 18px; border-top: 2px solid var(--navy); }
 .fact-value { font-size: var(--fs-display); font-weight: 800; line-height: 1; color: var(--navy); font-variant-numeric: tabular-nums; }
 .fact-label { font-size: var(--fs-small); font-weight: 700; color: var(--navy); }
-/* Facts band foot (home) and the numbers/ page: the dated source note, the link to the definitions. */
-.proof-note { margin-top: 24px; font-size: var(--fs-small); color: var(--navy); max-width: 62ch; }
-.section-cyan .btn-link { color: var(--navy); }
+/* The numbers/ page: the definitions list under each group of figures. */
 .numbers-how { margin: clamp(32px, 4vw, 48px) 0 16px; }
 .numbers-updated { padding-top: 24px; padding-bottom: 0; }
 
