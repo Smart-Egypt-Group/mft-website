@@ -1,8 +1,8 @@
 // Home hero. Variant C = single navy surface with the risk-dashboard hook (live, Ahmed's approved
 // concept, 14 Sep 2026). A = trust-strip hero and B = split dashboard stay as /_preview/ pages.
 // Switch in site.config.js.
-const { t, esc, plain, btn } = require('../html');
-const { isLive, liveAttrs, liveText } = require('../live-reports');
+const { t, esc, plain, url, btn, figure } = require('../html');
+const { isLive, liveAttrs, liveText, countSpan } = require('../live-reports');
 
 function heroA(ctx) {
   const h = ctx.c.home.hero;
@@ -76,11 +76,13 @@ function heroB(ctx) {
 </section>`;
 }
 
-// Variant C: navy hero + risk panel. Counters are content-driven (home.heroRisk.risk.counters) and
-// animate with the existing countUp (main.js runs every `.hero [data-count]` on load).
-function heroC(ctx) {
-  const h = ctx.c.home.heroRisk;
-  const r = h.risk;
+// Variant C: navy hero. With home.heroRisk.stats the panel beside the headline carries REAL counted
+// figures (CEO, 24 Nov 2026: the hero hooks with real counters), and the illustrative check result
+// moves to its own section right under the hero (sampleSection). Without stats, the hero keeps the
+// illustrative risk panel as before. Counters animate with the existing countUp (main.js runs every
+// `.hero [data-count]` on load).
+function riskPanel(ctx, extra = '') {
+  const r = ctx.c.home.heroRisk.risk;
   const counters = r.counters
     .map(
       (k, i) => `<li class="risk-card risk-${esc(k.level)}" style="--i:${i}"><span class="risk-num lat"><span class="count" data-count="${esc(k.value)}">${esc(k.value)}</span></span><span class="risk-label">${t(k.label)}</span></li>`
@@ -90,6 +92,35 @@ function heroC(ctx) {
     ? `<ul class="risk-findings" aria-hidden="true">${r.findings.map((f, i) => `<li class="sev-${esc(f.level)}" style="--i:${i}"><span>${t(f.text)}</span><span class="finding-tag">${t(f.tag)}</span></li>`).join('')}</ul>`
     : '';
   const panelLabel = `${plain(r.title)} ${r.counters.map((k) => `${k.value} ${plain(k.label)}`).join(', ')}. ${(r.findings || []).map((f) => `${plain(f.text)} (${plain(f.tag)})`).join('. ')}. ${plain(r.caption)}`;
+  return `<div class="risk-panel${extra}" role="img" aria-label="${esc(panelLabel)}">
+      <div class="risk-head"><p class="risk-title">${t(r.title)}</p><span class="risk-badge">${t(r.badge)}</span></div>
+      ${r.scanning ? `<div class="scan-status" aria-hidden="true"><span class="scan-label scan-running">${t(r.scanning)}</span><span class="scan-label scan-done">${t(r.done)}</span><span class="scan-track"><span class="scan-fill"></span></span></div>` : ''}
+      <ul class="risk-row" aria-hidden="true">${counters}</ul>
+      ${findings}
+      <p class="risk-caption" aria-hidden="true">${t(r.caption)}</p>
+    </div>`;
+}
+
+// Real counted figures. Every value comes from a facts file through figure(), or is the live
+// reports counter, which hides itself when the platform gives no number: nothing is claimed.
+function statsPanel(ctx) {
+  const S = ctx.c.home.heroRisk.stats;
+  const items = S.items
+    .map((x, i) =>
+      isLive(x)
+        ? `<li class="stat stat-live" style="--i:${i}"${liveAttrs(ctx)}><span class="stat-num lat">${countSpan(ctx)}</span><span class="stat-label"><span class="live-dot" aria-hidden="true"></span><span>${t(x.label)}</span></span></li>`
+        : `<li class="stat" style="--i:${i}"><span class="stat-num lat">${figure(x.value)}</span><span class="stat-label">${t(x.label)}</span></li>`
+    )
+    .join('');
+  return `<div class="stats-panel rise" style="--i:2">
+      <p class="stats-title">${t(S.title)}</p>
+      <ul class="stats-grid">${items}</ul>
+      <p class="stats-foot"><span>${t(S.asOf)}</span>${S.more ? `<a class="btn btn-link" href="${url(ctx, S.more.href)}">${t(S.more.label)}</a>` : ''}</p>
+    </div>`;
+}
+
+function heroC(ctx) {
+  const h = ctx.c.home.heroRisk;
   return `<section class="hero hero-c" aria-labelledby="hero-title">
   <div class="container hero-c-inner">
     <div class="hero-copy">
@@ -99,15 +130,22 @@ function heroC(ctx) {
       <div class="cta-row rise" style="--i:3">${btn(ctx, h.cta, 'btn btn-primary btn-lg')}${btn(ctx, h.secondary, 'btn btn-ghost btn-lg')}</div>
       ${h.assurance ? `<ul class="hero-assurance rise" style="--i:4">${h.assurance.map((a) => `<li>${t(a)}</li>`).join('')}</ul>` : ''}
     </div>
-    <div class="risk-panel rise" style="--i:2" role="img" aria-label="${esc(panelLabel)}">
-      <div class="risk-head"><p class="risk-title">${t(r.title)}</p><span class="risk-badge">${t(r.badge)}</span></div>
-      ${r.scanning ? `<div class="scan-status" aria-hidden="true"><span class="scan-label scan-running">${t(r.scanning)}</span><span class="scan-label scan-done">${t(r.done)}</span><span class="scan-track"><span class="scan-fill"></span></span></div>` : ''}
-      <ul class="risk-row" aria-hidden="true">${counters}</ul>
-      ${findings}
-      <p class="risk-caption" aria-hidden="true">${t(r.caption)}</p>
-    </div>
+    ${h.stats ? statsPanel(ctx) : riskPanel(ctx, ' rise" style="--i:2')}
   </div>
 </section>`;
 }
 
-module.exports = { heroA, heroB, heroC };
+// The illustrative check result, in its own section right under the hero, when the hero panel
+// carries the real figures. Clearly a sample: its own badge and copy say so.
+function sampleSection(ctx) {
+  const h = ctx.c.home.heroRisk;
+  if (!h.stats || !h.sample) return '';
+  return `<section class="section section-navy sample" aria-labelledby="sample-title">
+  <div class="container sample-inner">
+    <div class="section-head"><p class="eyebrow">${t(h.sample.eyebrow)}</p><h2 id="sample-title">${t(h.sample.title)}</h2><p class="lead">${t(h.sample.body)}</p></div>
+    ${riskPanel(ctx)}
+  </div>
+</section>`;
+}
+
+module.exports = { heroA, heroB, heroC, sampleSection };
