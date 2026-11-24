@@ -170,6 +170,25 @@ module.exports = {
       assurance: ['قراءة فقط', 'لا نعدّل شيئًا في نظامك', 'لا رقم من غير دليل'],
       cta: { label: 'افحص ميزانك مجانًا', href: SIGNUP },
       secondary: { label: 'تعرّف على الخدمات', href: 'services/' },
+      // Real counted figures in the hero panel (CEO, 24 Nov 2026: the hero hooks with real counters).
+      // Every value is read from a facts file or the live reports counter, never typed here; how each
+      // one is counted is on the numbers/ page. The illustrative check result moves to `sample` below.
+      stats: {
+        title: 'أرقام حقيقية معدودة، لا أمثلة.',
+        items: [
+          { value: `${F.testsFloor}+`, label: 'اختبار آلي قبل كل تحديث للمنصة' },
+          { value: `${P.hoursFloor}+`, label: 'ساعة عمل مهني على أعمال العملاء' },
+          { value: String(F.checks), label: `فحصًا على دفاترك في {lat}${F.reports}{/lat} تقريرًا` },
+          { live: 'reports', label: 'تقريرًا أصدرتها منصة {lat}SEG{/lat}، مباشر' }
+        ],
+        asOf: `قيست في {lat}${P.measuredOn}{/lat} من نظامنا، وفي {lat}${F.measuredOn}{/lat} من كود المنصة.`,
+        more: { label: 'كيف يُعدّ كل رقم', href: 'numbers/' }
+      },
+      sample: {
+        eyebrow: 'نموذج نتيجة',
+        title: 'هذه الشاشة التي تراها على دفاترك.',
+        body: 'الملاحظات مرتبة حسب خطورتها، وكل ملاحظة مربوطة بقيدها المصدر. أرقام هذا النموذج توضيحية، وليست بيانات عميل.'
+      },
       risk: {
         title: 'نموذج توضيحي لنتيجة فحص. سترى الشاشة نفسها على بياناتك.',
         badge: 'مثال توضيحي',
@@ -289,16 +308,12 @@ module.exports = {
     proof: {
       eyebrow: 'لماذا {lat}MFT{/lat}',
       title: 'اعتمادات يمكنك التحقق منها. أرقام يمكنك مراجعتها.',
-      // The band carries counted figures only (CEO, 24 Nov 2026). Every value is read from a facts
-      // file; how each one is counted is on the numbers/ page.
       facts: [
         { live: 'reports', label: 'تقارير أصدرتها منصة {lat}SEG{/lat} حتى الآن' },
-        { value: `${P.hoursFloor}+`, label: 'ساعة عمل مهني مسجّلة على أعمال العملاء' },
-        { value: String(P.engagements), label: `تعاقدًا مؤكدًا مع {lat}${P.clients}{/lat} عميلًا` },
-        { value: String(F.checks), label: `فحصًا آليًا في {lat}${F.reports}{/lat} تقريرًا` }
-      ],
-      note: `أرقام العمل مقيسة من نظامنا نفسه ({lat}${P.measuredOn}{/lat})، وأرقام المنصة مقروءة من كودها ({lat}${F.measuredOn}{/lat}).`,
-      more: { label: 'كيف يُعدّ كل رقم', href: 'numbers/' }
+        { value: 'قيد 57986', label: 'بقيادة محاسب قانوني مقيّد' },
+        { value: 'Odoo', label: 'خبراء تنفيذ يقودهم محاسبون' },
+        { value: '2', label: 'سوقان: مصر والسعودية، والتوسع في الولايات المتحدة' }
+      ]
     },
 
     stories: {

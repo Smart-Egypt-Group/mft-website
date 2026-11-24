@@ -170,6 +170,25 @@ module.exports = {
       assurance: ['Read-only', 'We change nothing in your system', 'No number without evidence'],
       cta: { label: 'Check your trial balance free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
+      // Real counted figures in the hero panel (CEO, 24 Nov 2026: the hero hooks with real counters).
+      // Every value is read from a facts file or the live reports counter, never typed here; how each
+      // one is counted is on the numbers/ page. The illustrative check result moves to `sample` below.
+      stats: {
+        title: 'Real figures, counted. Not samples.',
+        items: [
+          { value: `${F.testsFloor}+`, label: 'automated tests before every platform update' },
+          { value: `${P.hoursFloor}+`, label: 'professional hours on client work' },
+          { value: String(F.checks), label: `checks on your books, across ${F.reports} reports` },
+          { live: 'reports', label: 'reports generated on SEG, live' }
+        ],
+        asOf: `Measured ${P.measuredOn} from our own ERP and ${F.measuredOn} from the platform code.`,
+        more: { label: 'How every number is counted', href: 'numbers/' }
+      },
+      sample: {
+        eyebrow: 'A sample result',
+        title: 'This is the screen you get on your own books.',
+        body: 'Findings ranked by severity, each one tied to its source entry. The figures in this panel are an illustrative sample, not client data.'
+      },
       risk: {
         title: 'Illustrative sample of a check result. You will see this same screen on your data.',
         badge: 'Illustrative example',
@@ -290,16 +309,12 @@ module.exports = {
     proof: {
       eyebrow: 'Why MFT',
       title: 'Credentials you can verify. Numbers you can audit.',
-      // The band carries counted figures only (CEO, 24 Nov 2026). Every value is read from a facts
-      // file; how each one is counted is on the numbers/ page.
       facts: [
         { live: 'reports', label: 'Reports generated on SEG so far' },
-        { value: `${P.hoursFloor}+`, label: 'Professional hours logged on client work' },
-        { value: String(P.engagements), label: `Engagements confirmed with ${P.clients} clients` },
-        { value: String(F.checks), label: `Automated checks across ${F.reports} reports` }
-      ],
-      note: `Practice figures are measured from our own ERP (${P.measuredOn}); platform figures are read from the platform code (${F.measuredOn}).`,
-      more: { label: 'How every number is counted', href: 'numbers/' }
+        { value: 'Reg. 57986', label: 'Led by a registered chartered accountant' },
+        { value: 'Odoo', label: 'Implementation experts led by accountants' },
+        { value: '2', label: 'Markets: Egypt and Saudi Arabia, expanding to the US' }
+      ]
     },
 
     stories: {
