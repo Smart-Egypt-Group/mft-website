@@ -468,6 +468,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .fact { display: flex; flex-direction: column; gap: 6px; padding-top: 18px; border-top: 2px solid var(--navy); }
 .fact-value { font-size: var(--fs-display); font-weight: 800; line-height: 1; color: var(--navy); font-variant-numeric: tabular-nums; }
 .fact-label { font-size: var(--fs-small); font-weight: 700; color: var(--navy); }
+/* Facts band foot (home) and the numbers/ page: the dated source note, the link to the definitions. */
+.proof-note { margin-top: 24px; font-size: var(--fs-small); color: var(--navy); max-width: 62ch; }
+.section-cyan .btn-link { color: var(--navy); }
+.numbers-how { margin: clamp(32px, 4vw, 48px) 0 16px; }
+.numbers-updated { padding-top: 24px; padding-bottom: 0; }
 
 /* Client stories & testimonials */
 .cases { margin-bottom: clamp(32px, 4vw, 48px); }
