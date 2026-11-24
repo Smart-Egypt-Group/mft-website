@@ -164,6 +164,22 @@ for (const lang of CONTENT_FILES) {
   if (hits.length) { money += hits.length; fail(`${lang}.js contains currency amounts: ${[...new Set(hits)].join(', ')}`); }
 }
 if (!money) ok('no client financial amounts in content (dashboard sample excluded)');
+// Published practice figures (CEO, 24 Nov 2026): clients, engagements and hours come from
+// content/practice-facts.js, measured from MFT's own ERP (PRACTICE-FACTS.md). They must be whole,
+// positive and dated, the published hours must be a floor of the measured hours so "more than N"
+// stays true, and both content files must read the figures from that file rather than type them.
+const PF = require(path.join(ROOT, 'src/content/practice-facts.js'));
+const pfProblems = [];
+for (const k of ['clients', 'engagements', 'hoursFloor', 'team', 'projects', 'tasksDone']) if (!Number.isInteger(PF[k]) || PF[k] <= 0) pfProblems.push(`${k} is not a positive whole number`);
+if (!(typeof PF.hours === 'number' && PF.hoursFloor <= PF.hours)) pfProblems.push('hoursFloor is above the measured hours');
+if (PF.hoursFloor % 100) pfProblems.push('hoursFloor is not floored to the hundred');
+if (!/^\d{4}-\d{2}-\d{2}$/.test(PF.measuredOn || '') || isNaN(Date.parse(PF.measuredOn))) pfProblems.push('measuredOn is not a date');
+for (const lang of ['en', 'ar']) {
+  if (!/require\('\.\/practice-facts'\)/.test(fs.readFileSync(path.join(ROOT, `src/content/${lang}.js`), 'utf8'))) pfProblems.push(`${lang}.js does not read practice-facts.js`);
+  if (!fs.existsSync(path.join(DIST, lang, 'numbers', 'index.html'))) pfProblems.push(`${lang}/numbers/ was not built`);
+}
+if (pfProblems.length) fail(`practice figures: ${pfProblems.join('; ')}`);
+else ok(`practice figures: measured ${PF.measuredOn}, whole, floored, read from practice-facts.js`);
 const cfg = fs.readFileSync(path.join(ROOT, 'src/site.config.js'), 'utf8');
 if (/PENDING-DOMAIN/.test(cfg)) console.log('  ! siteUrl still PENDING (decision with Ahmed) — set it before production deploy');
 else ok('siteUrl set');

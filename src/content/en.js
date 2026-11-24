@@ -8,6 +8,9 @@
 
 // Platform figures are generated from the seg-audit code (scripts/platform-facts.js); never type them here.
 const F = require('./platform-facts');
+// Practice figures (clients, engagements, hours on client work) are measured from MFT's own ERP
+// (content/practice-facts.js, method in PRACTICE-FACTS.md); never type them here either.
+const P = require('./practice-facts');
 const N = (x) => x.toLocaleString('en-US');
 const SIGNUP = 'https://app.seg-audit.com/en/signup';
 
@@ -98,6 +101,7 @@ module.exports = {
           { label: 'Contact', href: 'contact/' },
           { label: 'Privacy', href: 'privacy/' },
           { label: 'Trust & security', href: 'trust/' },
+          { label: 'Our work in numbers', href: 'numbers/' },
           { label: 'Founding Members', href: 'founding-members/' },
           { label: 'Partners', href: 'partners/' },
           { label: 'SEG platform', href: 'https://app.seg-audit.com', external: true }
@@ -166,6 +170,25 @@ module.exports = {
       assurance: ['Read-only', 'We change nothing in your system', 'No number without evidence'],
       cta: { label: 'Check your trial balance free', href: SIGNUP },
       secondary: { label: 'See our services', href: 'services/' },
+      // Real counted figures in the hero panel (CEO, 24 Nov 2026: the hero hooks with real counters).
+      // Every value is read from a facts file or the live reports counter, never typed here; how each
+      // one is counted is on the numbers/ page. The illustrative check result moves to `sample` below.
+      stats: {
+        title: 'Real figures, counted. Not samples.',
+        items: [
+          { value: `${F.testsFloor}+`, label: 'automated tests before every platform update' },
+          { value: `${P.hoursFloor}+`, label: 'professional hours on client work' },
+          { value: String(F.checks), label: `checks on your books, across ${F.reports} reports` },
+          { live: 'reports', label: 'reports generated on SEG, live' }
+        ],
+        asOf: `Measured ${P.measuredOn} from our own ERP and ${F.measuredOn} from the platform code.`,
+        more: { label: 'How every number is counted', href: 'numbers/' }
+      },
+      sample: {
+        eyebrow: 'A sample result',
+        title: 'This is the screen you get on your own books.',
+        body: 'Findings ranked by severity, each one tied to its source entry. The figures in this panel are an illustrative sample, not client data.'
+      },
       risk: {
         title: 'Illustrative sample of a check result. You will see this same screen on your data.',
         badge: 'Illustrative example',
@@ -1190,6 +1213,100 @@ module.exports = {
     securityEmail: 'security@seg-audit.com',
     platformLink: 'SEG platform',
     updated: `Last updated: ${F.measuredOn}`
+  },
+
+  // Our work in numbers (CEO, 24 Nov 2026): every figure the site publishes, with how it is counted,
+  // its source and the date it was measured. `label` reads after the number on the tile; `name` is
+  // the row title in the definitions list. Values come from the two facts files, never typed here.
+  numbers: {
+    title: 'Our work in numbers | Modern Financial Technology (MFT)',
+    description: 'Every figure MFT publishes about its practice and its platform, with how it is counted, where it comes from and the date it was measured.',
+    page: {
+      eyebrow: 'Our work in numbers',
+      title: 'Every number, how it is counted, and where it comes from.',
+      intro: 'We publish a figure only when it can be recounted from a system of record. Each one below carries its definition, its source and the date it was measured. Figures are rounded down, never up.'
+    },
+    howTitle: 'How each number is counted',
+    groups: [
+      {
+        eyebrow: 'The practice',
+        title: 'Client work, counted from our own ERP.',
+        intro: `Measured on ${P.measuredOn} from MFT’s own Odoo system, read-only. No client is named and no client amount is published.`,
+        items: [
+          {
+            value: String(P.clients),
+            label: 'Clients served',
+            name: 'Clients served',
+            how: 'Clients with at least one posted invoice for a professional service: internal audit, Odoo implementation, tax filing, policies and procedures, or financial consulting. Related companies count once. Commission invoices and non-professional items are left out.',
+            source: `Posted customer invoices in our ERP, counted on ${P.measuredOn}.`
+          },
+          {
+            value: String(P.engagements),
+            label: 'Confirmed engagements',
+            name: 'Confirmed engagements',
+            how: 'Orders confirmed for those clients. One client can hold several engagements.',
+            source: 'Confirmed sales orders in the same system.'
+          },
+          {
+            value: `${P.hoursFloor}+`,
+            label: 'Professional hours on client work',
+            name: 'Professional hours',
+            how: `Hours that ${P.team} team members logged on those clients’ projects: ${N(P.hours)} measured, published rounded down to the hundred. Only entries above zero and up to twelve hours are counted; bulk and correcting entries are left out.`,
+            source: `Timesheets in the same system, up to ${P.measuredOn}.`
+          },
+          {
+            value: String(P.projects),
+            label: 'Client projects',
+            name: 'Client projects',
+            how: 'Projects opened in our ERP for those clients.',
+            source: 'Projects linked to a client in the same system.'
+          },
+          {
+            value: String(P.tasksDone),
+            label: 'Work items completed',
+            name: 'Work items completed',
+            how: 'Tasks marked done on those projects.',
+            source: 'Project tasks in the same system.'
+          }
+        ]
+      },
+      {
+        eyebrow: 'The platform',
+        title: 'What SEG checks, counted from its code.',
+        intro: `Read from the platform code on ${F.measuredOn}. The reports counter is live.`,
+        items: [
+          {
+            value: String(F.checks),
+            label: 'Automated checks',
+            name: 'Automated checks',
+            how: 'Unique check codes the platform runs on a company’s books.',
+            source: 'The check registry generated from the platform’s engines.'
+          },
+          {
+            value: String(F.reports),
+            label: 'Report types',
+            name: 'Report types',
+            how: 'Reports in the platform catalogue, each one built from those checks.',
+            source: 'The report catalogue in the platform code.'
+          },
+          {
+            value: `${F.testsFloor}+`,
+            label: 'Automated tests before every update',
+            name: 'Automated tests',
+            how: `Test functions in the platform’s test suites, rounded down to the hundred. Test code is ${Math.floor(F.testRatio * 100)}% the size of the platform itself.`,
+            source: 'The test suites in the platform code.'
+          },
+          {
+            live: 'reports',
+            label: 'Reports generated on SEG so far',
+            name: 'Reports generated',
+            how: 'Report documents the platform has rendered and delivered.',
+            source: 'Live from the platform: the number updates while this page is open.'
+          }
+        ]
+      }
+    ],
+    updated: `Practice figures measured ${P.measuredOn}. Platform figures read ${F.measuredOn}.`
   },
 
   privacy: {

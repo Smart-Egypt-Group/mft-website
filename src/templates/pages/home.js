@@ -1,7 +1,7 @@
 const { t, esc, url, btn, sectionHead, phTag, pad2, seats, fm, fmh } = require('../html');
 const { faqBlock, faqSchema, seeAlso, reviewSchema } = require('./services');
 const { latestBlock } = require('./blog');
-const { heroA, heroB, heroC } = require('../partials/hero');
+const { heroA, heroB, heroC, sampleSection } = require('../partials/hero');
 const { isLive, liveAttrs, countSpan } = require('../live-reports');
 
 module.exports = function home(ctx, opts = {}) {
@@ -118,6 +118,7 @@ module.exports = function home(ctx, opts = {}) {
 
   const body = `${hero}
 ${founding}
+${variant === 'C' ? sampleSection(ctx) : ''}
 ${trust}
 <section class="section" aria-labelledby="pos-title">
   <div class="container">
