@@ -9,6 +9,9 @@
 
 // أرقام المنصة تُولَّد من كود seg-audit (scripts/platform-facts.js)، فلا تُكتب هنا يدويًا.
 const F = require('./platform-facts');
+// Practice figures (clients, engagements, hours on client work) are measured from MFT's own ERP
+// (content/practice-facts.js, method in PRACTICE-FACTS.md); never type them here either.
+const P = require('./practice-facts');
 const N = (x) => x.toLocaleString('en-US');
 const SIGNUP = 'https://app.seg-audit.com/ar/signup';
 
@@ -99,6 +102,7 @@ module.exports = {
           { label: 'تواصل معنا', href: 'contact/' },
           { label: 'الخصوصية', href: 'privacy/' },
           { label: 'الثقة والأمان', href: 'trust/' },
+          { label: 'أعمالنا بالأرقام', href: 'numbers/' },
           { label: 'الأعضاء المؤسِّسون', href: 'founding-members/' },
           { label: 'الشركاء', href: 'partners/' },
           { label: 'منصة {lat}SEG{/lat}', href: 'https://app.seg-audit.com', external: true }
@@ -285,12 +289,16 @@ module.exports = {
     proof: {
       eyebrow: 'لماذا {lat}MFT{/lat}',
       title: 'اعتمادات يمكنك التحقق منها. أرقام يمكنك مراجعتها.',
+      // The band carries counted figures only (CEO, 24 Nov 2026). Every value is read from a facts
+      // file; how each one is counted is on the numbers/ page.
       facts: [
         { live: 'reports', label: 'تقارير أصدرتها منصة {lat}SEG{/lat} حتى الآن' },
-        { value: 'قيد 57986', label: 'بقيادة محاسب قانوني مقيّد' },
-        { value: 'Odoo', label: 'خبراء تنفيذ يقودهم محاسبون' },
-        { value: '2', label: 'سوقان: مصر والسعودية، والتوسع في الولايات المتحدة' }
-      ]
+        { value: `${P.hoursFloor}+`, label: 'ساعة عمل مهني مسجّلة على أعمال العملاء' },
+        { value: String(P.engagements), label: `تعاقدًا مؤكدًا مع {lat}${P.clients}{/lat} عميلًا` },
+        { value: String(F.checks), label: `فحصًا آليًا في {lat}${F.reports}{/lat} تقريرًا` }
+      ],
+      note: `أرقام العمل مقيسة من نظامنا نفسه ({lat}${P.measuredOn}{/lat})، وأرقام المنصة مقروءة من كودها ({lat}${F.measuredOn}{/lat}).`,
+      more: { label: 'كيف يُعدّ كل رقم', href: 'numbers/' }
     },
 
     stories: {
@@ -1204,6 +1212,100 @@ module.exports = {
     securityEmail: 'security@seg-audit.com',
     platformLink: 'منصة {lat}SEG{/lat}',
     updated: `آخر تحديث: {lat}${F.measuredOn}{/lat}`
+  },
+
+  // Our work in numbers (CEO, 24 Nov 2026): every figure the site publishes, with how it is counted,
+  // its source and the date it was measured. `label` reads after the number on the tile; `name` is
+  // the row title in the definitions list. Values come from the two facts files, never typed here.
+  numbers: {
+    title: 'أعمالنا بالأرقام | Modern Financial Technology',
+    description: 'كل رقم تنشره MFT عن عملها وعن منصتها، مع طريقة عدّه ومصدره وتاريخ قياسه.',
+    page: {
+      eyebrow: 'أعمالنا بالأرقام',
+      title: 'كل رقم، وكيف يُعدّ، ومن أين يأتي.',
+      intro: 'لا ننشر رقمًا إلا إذا أمكن إعادة عدّه من نظام السجلات. كل رقم هنا معه تعريفه ومصدره وتاريخ قياسه. والأرقام تُقرَّب إلى الأدنى، لا إلى الأعلى.'
+    },
+    howTitle: 'كيف يُعدّ كل رقم',
+    groups: [
+      {
+        eyebrow: 'العمل مع العملاء',
+        title: 'أعمال العملاء، معدودة من نظامنا نفسه.',
+        intro: `قيست في {lat}${P.measuredOn}{/lat} من نظام {lat}Odoo{/lat} الخاص بـ{lat}MFT{/lat}، بالقراءة فقط. لا يُذكر اسم عميل، ولا يُنشر أي مبلغ يخص عميلًا.`,
+        items: [
+          {
+            value: String(P.clients),
+            label: 'عميلًا خدمناهم',
+            name: 'العملاء',
+            how: 'عملاء صدرت لهم فاتورة مرحّلة واحدة على الأقل عن خدمة مهنية: مراجعة داخلية، أو تنفيذ {lat}Odoo{/lat}، أو إقرارات ضريبية، أو سياسات وإجراءات، أو استشارات مالية. الشركات المرتبطة تُحسب مرة واحدة. وفواتير العمولات والبنود غير المهنية خارج العدّ.',
+            source: `فواتير العملاء المرحّلة في نظامنا، معدودة في {lat}${P.measuredOn}{/lat}.`
+          },
+          {
+            value: String(P.engagements),
+            label: 'تعاقدًا مؤكدًا',
+            name: 'التعاقدات المؤكدة',
+            how: 'أوامر مؤكدة لهؤلاء العملاء. والعميل الواحد قد يكون له أكثر من تعاقد.',
+            source: 'أوامر البيع المؤكدة في النظام نفسه.'
+          },
+          {
+            value: `${P.hoursFloor}+`,
+            label: 'ساعة عمل مهني على أعمال العملاء',
+            name: 'ساعات العمل المهني',
+            how: `ساعات سجّلها {lat}${P.team}{/lat} عضوًا في الفريق على مشاريع هؤلاء العملاء: المقيس {lat}${N(P.hours)}{/lat} ساعة، ويُنشر مقرَّبًا إلى المئة الأدنى. يُحسب فقط السطر الذي يزيد على الصفر ولا يتجاوز اثنتي عشرة ساعة، وتُستبعد الإدخالات المجمّعة والتصحيحية.`,
+            source: `الجداول الزمنية في النظام نفسه، حتى {lat}${P.measuredOn}{/lat}.`
+          },
+          {
+            value: String(P.projects),
+            label: 'مشروعًا للعملاء',
+            name: 'مشاريع العملاء',
+            how: 'مشاريع فُتحت في نظامنا لهؤلاء العملاء.',
+            source: 'المشاريع المرتبطة بعميل في النظام نفسه.'
+          },
+          {
+            value: String(P.tasksDone),
+            label: 'مهمة منجزة',
+            name: 'المهام المنجزة',
+            how: 'مهام حالتها «تم» على هذه المشاريع.',
+            source: 'مهام المشاريع في النظام نفسه.'
+          }
+        ]
+      },
+      {
+        eyebrow: 'المنصة',
+        title: 'ما تفحصه {lat}SEG{/lat}، معدودًا من كودها.',
+        intro: `قُرئت من كود المنصة في {lat}${F.measuredOn}{/lat}. وعدّاد التقارير مباشر.`,
+        items: [
+          {
+            value: String(F.checks),
+            label: 'فحصًا آليًا',
+            name: 'الفحوص الآلية',
+            how: 'رموز الفحوص الفريدة التي تشغّلها المنصة على دفاتر الشركة.',
+            source: 'سجل الفحوص المولَّد من محركات المنصة.'
+          },
+          {
+            value: String(F.reports),
+            label: 'نوعًا من التقارير',
+            name: 'أنواع التقارير',
+            how: 'التقارير في كتالوج المنصة، وكل منها مبني على تلك الفحوص.',
+            source: 'كتالوج التقارير في كود المنصة.'
+          },
+          {
+            value: `${F.testsFloor}+`,
+            label: 'اختبار آلي قبل كل تحديث',
+            name: 'الاختبارات الآلية',
+            how: `دوال الاختبار في مجموعات اختبار المنصة، مقرَّبة إلى المئة الأدنى. وحجم كود الاختبارات {lat}${Math.floor(F.testRatio * 100)}%{/lat} من حجم كود المنصة نفسها.`,
+            source: 'مجموعات الاختبار في كود المنصة.'
+          },
+          {
+            live: 'reports',
+            label: 'تقارير أصدرتها منصة {lat}SEG{/lat} حتى الآن',
+            name: 'التقارير الصادرة',
+            how: 'مستندات التقارير التي ولّدتها المنصة وسلّمتها.',
+            source: 'مباشر من المنصة: يتحدّث الرقم والصفحة مفتوحة.'
+          }
+        ]
+      }
+    ],
+    updated: `أرقام العمل قيست في {lat}${P.measuredOn}{/lat}. وأرقام المنصة قُرئت في {lat}${F.measuredOn}{/lat}.`
   },
 
   privacy: {
