@@ -68,7 +68,7 @@ const pad2 = (n) => String(n).padStart(2, '0');
 // content/platform-facts.js or content/practice-facts.js, never typed into copy.
 const figure = (v) => {
   const m = String(v).match(/^(\d+)(\+?)$/);
-  return m ? `<span class="count" data-count="${m[1]}">${m[1].replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>${m[2]}` : esc(v);
+  return m ? `<span class="count" data-count="${m[1]}">${m[1].replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>${m[2] ? '<span class="count-suffix">+</span>' : ''}` : esc(v);
 };
 
 // Founding Members: applications close at site.config → founding.closesAt (decision, 8 Nov 2026: a
