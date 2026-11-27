@@ -8,7 +8,17 @@
   var status = form.querySelector('.form-status');
   var btn = form.querySelector('button[type="submit"]');
   var MAX = 5 * 1024 * 1024;
-  var ERR = {
+  var EN = document.documentElement.lang === 'en';
+  var ERR = EN ? {
+    missing: 'Please complete the required fields.',
+    phone: 'The mobile number is not valid.',
+    email: 'The email address is not valid.',
+    cv_type: 'The CV must be a PDF or Word file.',
+    cv_size: 'The CV is larger than 5 MB.',
+    busy: 'The server is busy right now. Please try again in a few minutes.',
+    consent: 'Please agree to the use of your data.',
+    year: 'The graduation year is not valid.'
+  } : {
     missing: 'برجاء استكمال الحقول المطلوبة.',
     phone: 'رقم الموبايل غير صحيح.',
     email: 'البريد الإلكتروني غير صحيح.',
@@ -18,7 +28,9 @@
     consent: 'برجاء الموافقة على استخدام البيانات.',
     year: 'سنة التخرج غير صحيحة.'
   };
-  var FAIL = 'تعذّر الإرسال الآن. حاول مرة أخرى، أو راسلنا على واتساب ‎+20 106 239 9941 أو info@seg-audit.com.';
+  var FAIL = EN ? 'We could not send your application right now. Please try again, or message us on WhatsApp +20 106 239 9941 or info@seg-audit.com.'
+    : 'تعذّر الإرسال الآن. حاول مرة أخرى، أو راسلنا على واتساب ‎+20 106 239 9941 أو info@seg-audit.com.';
+  var TEST = EN ? '/en/training/test/' : '/ar/training/test/';
 
   try {
     var qs = new URLSearchParams(location.search);
@@ -56,11 +68,11 @@
     if (n) n.textContent = form.elements.name.value.trim().split(/\s+/)[0];
     var link = done.querySelector('[data-quiz-link]');
     if (data.quiz_token) {
-      link.href = '/ar/training/test/?t=' + encodeURIComponent(data.quiz_token);
+      link.href = TEST + '?t=' + encodeURIComponent(data.quiz_token);
     } else {
       link.hidden = true;
       var later = done.querySelector('[data-later]');
-      if (later) later.textContent = 'سيصلك رابط اختبار القبول على بريدك الإلكتروني.';
+      if (later) later.textContent = EN ? 'The admission test link will be sent to your email.' : 'سيصلك رابط اختبار القبول على بريدك الإلكتروني.';
     }
     done.focus();
     try { if (window.fbq) window.fbq('track', 'SubmitApplication'); } catch (e) {}
@@ -70,13 +82,13 @@
     if (err) return say(err, 'error');
     var fd = new FormData(form);
     if (!(fd.get('cv') && fd.get('cv').size)) fd.delete('cv');
-    fd.append('lang', 'ar');
+    fd.append('lang', EN ? 'en' : 'ar');
     try {
       var qs = new URLSearchParams(location.search);
       ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) { if (qs.get(k)) fd.append(k, qs.get(k)); });
     } catch (e) {}
     btn.disabled = true;
-    say('جارٍ الإرسال…');
+    say(EN ? 'Sending…' : 'جارٍ الإرسال…');
     fetch(API + '/mft/form/training', { method: 'POST', body: fd })
       .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
       .then(function (j) {
