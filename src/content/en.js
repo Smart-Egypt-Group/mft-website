@@ -93,6 +93,7 @@ module.exports = {
         links: [
           { label: 'About MFT', href: 'about/' },
           { label: 'MFT Intelligence AI Agents', href: 'intelligence/' },
+          { label: 'Graduate Program', href: 'training/' },
           { label: 'Request a quote', href: 'request-quote/' },
           { label: 'Insights (blog)', href: 'blog/' },
           { label: 'Contact', href: 'contact/' },
