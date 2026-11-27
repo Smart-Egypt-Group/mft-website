@@ -60,6 +60,7 @@ function head(ctx, page) {
   <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   ${ctx.lang === 'ar' ? '<link rel="preload" href="/assets/fonts/cairo-arabic-var.woff2" as="font" type="font/woff2" crossorigin>' : ''}
   <link rel="stylesheet" href="/assets/css/main.css?v=${ctx.buildId}">
+  ${(page.styles || []).map((f) => `<link rel="stylesheet" href="/assets/css/${f}?v=${ctx.buildId}">`).join('\n  ')}
   ${page.motion === false ? '' : `<script src="/assets/js/pre.js?v=${ctx.buildId}"></script>`}
   ${analytics}
   ${pixels}
