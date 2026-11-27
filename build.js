@@ -49,6 +49,7 @@ const agentPage = require('./src/templates/pages/agent');
 const quote = require('./src/templates/pages/quote');
 const locationPage = require('./src/templates/pages/locations');
 const blog = require('./src/templates/pages/blog');
+const training = require('./src/templates/pages/training');
 // Blog = base file + extra post batches + AEO fields (short answer, takeaways, FAQ) for the original posts.
 function loadBlog(lang) {
   const b = require(`./src/content/blog.${lang}.js`);
@@ -101,6 +102,9 @@ function pageList(c) {
     { path: 'privacy/', render: (ctx) => privacy(ctx) },
     { path: 'trust/', render: (ctx) => trust(ctx) },
     { path: 'partners/', render: (ctx) => partners(ctx) },
+    // Graduate program: landing + admission test (raw = full document, no site header/footer; noindex in its own head).
+    { path: 'training/', render: (ctx) => training.landing(ctx) },
+    { path: 'training/test/', render: (ctx) => training.test(ctx), raw: true, noindex: true },
     ...(config.founding && config.founding.enabled ? [{ path: 'founding-members/', render: (ctx) => founding(ctx) }, { path: 'founding-members/apply/', render: (ctx) => foundingApply(ctx) }] : []),
     { path: '404.html', render: (ctx) => notFound(ctx), file: true, noindex: true },
     // Review-only preview of the alternative hero. Excluded from sitemap, disallowed in robots.
@@ -136,8 +140,8 @@ function build() {
       for (const l of config.languages) altPaths[l] = page.path;
       const ctx = { lang, c, config, path: page.path, altPaths, buildId, gsapVersion, markPlaceholders };
       const rendered = page.render(ctx);
-      let html = layout(ctx, rendered);
-      if (page.noindex) html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n  <meta name="viewport"');
+      let html = page.raw ? rendered : layout(ctx, rendered);
+      if (page.noindex && !page.raw) html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n  <meta name="viewport"');
       if (page.redirect) {
         const to = `/${lang}/${page.redirect}`;
         html = html

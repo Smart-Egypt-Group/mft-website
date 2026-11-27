@@ -94,6 +94,7 @@ module.exports = {
         links: [
           { label: 'عن {lat}MFT{/lat}', href: 'about/' },
           { label: 'وكلاء {lat}MFT Intelligence{/lat}', href: 'intelligence/' },
+          { label: 'برنامج التدريب', href: 'training/' },
           { label: 'اطلب عرض سعر', href: 'request-quote/' },
           { label: 'المقالات', href: 'blog/' },
           { label: 'تواصل معنا', href: 'contact/' },

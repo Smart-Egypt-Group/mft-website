@@ -1,0 +1,81 @@
+<section class="page-header tp-hero-section">
+  <div class="container tp-hero">
+    <div class="tp-hero-copy">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/en/">Home</a></li><li aria-current="page">Graduate Program</li></ol></nav>
+      <p class="eyebrow">MFT Graduate Program</p>
+      <h1>Start your career in accounting and ERP systems</h1>
+      <p class="lead">An intensive, hands-on 30-day program for commerce graduates (accounting major), working on real business cases. Top performers join the MFT team.</p>
+      <div class="cta-row"><a class="btn btn-primary btn-lg" href="#apply">Apply now</a></div>
+      <ul class="tp-badges"><li>Completely free</li><li>30 days, two phases</li><li>Cairo, Heliopolis</li></ul>
+    </div>
+    <figure class="tp-hero-media">
+      <img src="/assets/img/training/program-en.webp" width="1000" height="820" alt="MFT Graduate Program: accounting track, Odoo ERP implementation track and the 30-day trainee journey" decoding="async">
+    </figure>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="tp-tracks">
+  <div class="container">
+    <div class="section-head"><p class="eyebrow">Tracks</p><h2 id="tp-tracks">Choose your track</h2></div>
+    <ul class="grid grid-2 service-grid tp-tracks">
+      <li class="card service-card"><span class="tp-tag">Track 1</span><h3>Accounting</h3><p>From the daily journal entry to the financial statements: the full accounting cycle, adjustments and reporting.</p></li>
+      <li class="card service-card"><span class="tp-tag">Track 2</span><h3>Odoo ERP implementation</h3><p>From analysing a company’s needs to running the system: configuring Odoo and implementing accounting and business workflows.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-mist" aria-labelledby="tp-how">
+  <div class="container">
+    <div class="section-head"><p class="eyebrow">How it works</p><h2 id="tp-how">From application to joining the team</h2></div>
+    <ol class="tp-steps">
+      <li class="card"><span class="tp-num">1</span><h3>Apply</h3><p>Fill in the form and upload your CV in one minute.</p></li>
+      <li class="card"><span class="tp-num">2</span><h3>Admission test</h3><p>A 30-minute online test you can start right after applying.</p></li>
+      <li class="card"><span class="tp-num">3</span><h3>Interview</h3><p>An in-person interview at our office; you book the slot yourself.</p></li>
+      <li class="card"><span class="tp-num">4</span><h3>Hands-on training</h3><p>30 days in two phases, each ending with an assessment.</p></li>
+      <li class="card"><span class="tp-num">5</span><h3>Join the team</h3><p>Top performers receive an offer to join the MFT team.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="apply" aria-labelledby="tp-apply">
+  <div class="container contact-grid">
+    <div class="tp-form-wrap">
+      <form class="lead-form card" id="training-form" method="post" action="https://erp.seg-audit.com/mft/form/training" enctype="multipart/form-data" novalidate>
+        <h2 id="tp-apply">Apply now</h2>
+        <div class="field-row">
+          <div class="field"><label for="t-name">Full name <span class="req" aria-hidden="true">*</span></label><input id="t-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
+          <div class="field"><label for="t-phone">Mobile (WhatsApp) <span class="req" aria-hidden="true">*</span></label><input id="t-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" required placeholder="01xxxxxxxxx"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="t-email">Email <span class="req" aria-hidden="true">*</span></label><input id="t-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" required><span class="hint">Your test link and the result of your application are sent here.</span></div>
+          <div class="field"><label for="t-track">Track <span class="req" aria-hidden="true">*</span></label><select id="t-track" name="track" required><option value="">Choose a track</option><option value="accounting">Accounting</option><option value="odoo">Odoo ERP implementation</option></select></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="t-year">Graduation year <span class="req" aria-hidden="true">*</span></label><input id="t-year" name="graduation_year" type="number" inputmode="numeric" min="1990" max="2026" required></div>
+          <div class="field"><label for="t-cv">CV</label><input id="t-cv" name="cv" type="file" accept=".pdf,.doc,.docx,application/pdf"><span class="hint">PDF or Word, max 5 MB</span></div>
+        </div>
+        <input type="hidden" name="qualification" value="Bachelor of Commerce (Accounting)">
+        <div class="field field-check"><input id="t-consent" name="consent" type="checkbox" required><label for="t-consent">I agree to the use of my data for this application and related contact, under the <a href="/en/privacy/">privacy notice</a>. <span class="req" aria-hidden="true">*</span></label></div>
+        <div class="hp" aria-hidden="true"><label for="t-website">Leave this field empty</label><input id="t-website" name="website" type="text" tabindex="-1" autocomplete="off" value=""></div>
+        <p class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+        <button class="btn btn-primary btn-lg" type="submit">Submit application</button>
+      </form>
+      <div class="card tp-done" id="training-done" hidden tabindex="-1">
+        <span class="tp-done-icon" aria-hidden="true">✓</span>
+        <h2>Application received</h2>
+        <p class="tp-done-lead">Thank you, <b data-name></b>. Next step: the <b>admission test</b>: 20 questions, 90 seconds each (30 minutes).</p>
+        <ul class="tp-rules"><li>One attempt only; you cannot go back to a previous question.</li><li>Choose a quiet place and a stable internet connection.</li><li>Do not leave the test page while answering.</li><li>The questions are in Arabic.</li></ul>
+        <div class="cta-row"><a class="btn btn-primary btn-lg" data-quiz-link href="/en/training/test/">Start the admission test now</a></div>
+        <p class="hint" data-later>Prefer to start later? The test link is in your email and stays valid for 3 days.</p>
+      </div>
+    </div>
+    <aside class="contact-details tp-aside">
+      <h2>Who can apply</h2>
+      <p>Graduates of the Faculty of Commerce (accounting major) who are serious about starting a career in accounting or ERP systems.</p>
+      <h2>Where</h2>
+      <dl><dt>Address</dt><dd>4A Sayed Abdel Wahed St., off Salah Salem, Korba, Heliopolis, Cairo</dd><dt>Company</dt><dd>Modern Financial Technology (MFT)</dd></dl>
+      <h2>Questions</h2>
+      <dl><dt>WhatsApp</dt><dd><a class="lat" href="https://wa.me/201062399941" rel="noopener" target="_blank">+20 106 239 9941</a></dd><dt>Email</dt><dd><a class="lat" href="mailto:info@seg-audit.com">info@seg-audit.com</a></dd></dl>
+    </aside>
+  </div>
+</section>
