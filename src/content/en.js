@@ -51,6 +51,7 @@ module.exports = {
       { label: 'MFT Intelligence', href: 'intelligence/' },
       { label: 'About', href: 'about/' },
       { label: 'Insights', href: 'blog/' },
+      { label: 'Training', href: 'training/' },
       { label: 'Contact', href: 'contact/' }
     ],
     cta: { label: 'Talk to Us', href: 'contact/' }

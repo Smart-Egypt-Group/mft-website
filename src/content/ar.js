@@ -52,6 +52,7 @@ module.exports = {
       { label: 'وكلاء {lat}MFT Intelligence{/lat}', href: 'intelligence/' },
       { label: 'عن الشركة', href: 'about/' },
       { label: 'المقالات', href: 'blog/' },
+      { label: 'التدريب', href: 'training/' },
       { label: 'تواصل معنا', href: 'contact/' }
     ],
     cta: { label: 'تحدث معنا', href: 'contact/' }
