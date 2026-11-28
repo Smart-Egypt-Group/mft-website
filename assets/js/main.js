@@ -2,6 +2,32 @@
 (function () {
   'use strict';
 
+  /* ---------- Graduate program link (header menu + footer) ----------
+     Bridge until the next full build, which renders these links from src/content (nav + footer). */
+  (function () {
+    var lang = document.documentElement.lang === 'en' ? 'en' : 'ar';
+    var href = '/' + lang + '/training/';
+    var label = lang === 'en' ? 'Training' : 'التدريب';
+    var footLabel = lang === 'en' ? 'Graduate Program' : 'برنامج التدريب';
+    var here = location.pathname.indexOf(href) === 0;
+    var has = function (root) { return root && root.querySelector('a[href="' + href + '"]'); };
+    var make = function (text) {
+      var li = document.createElement('li'), a = document.createElement('a');
+      a.href = href; a.textContent = text; if (here) a.setAttribute('aria-current', 'page');
+      li.appendChild(a); return li;
+    };
+    var menu = document.querySelector('#site-nav > ul');
+    if (menu && !has(menu)) {
+      var contact = menu.querySelector('a[href="/' + lang + '/contact/"]');
+      menu.insertBefore(make(label), contact ? contact.parentNode : null);
+    }
+    var foot = document.querySelector('.site-footer');
+    if (foot && !has(foot)) {
+      var after = foot.querySelector('a[href="/' + lang + '/intelligence/"]');
+      if (after && after.parentNode.parentNode) after.parentNode.parentNode.insertBefore(make(footLabel), after.parentNode.nextSibling);
+    }
+  })();
+
   /* ---------- Mobile navigation ---------- */
   var header = document.querySelector('.site-header');
   var toggle = document.querySelector('.nav-toggle');
